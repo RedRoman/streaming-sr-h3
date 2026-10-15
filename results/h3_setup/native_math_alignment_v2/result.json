@@ -1,0 +1,225 @@
+{
+  "status": "complete",
+  "scope": "Fixed bear_256 train case mathematical interface diagnostic only, not restoration quality. KnownHRlatent only constructs supervised x_sigma, never guide.",
+  "source_case": "bear_256, train, frames0..21",
+  "model_path": "external/h3_assets/minimax_h3_fl2va_pruned_bf16.safetensors",
+  "model_bytes": 40225724176,
+  "canonical_SHA_previously_verified": "a32572fb90b5508b201ec7c2eddcc184b13ddfd3c6f6d2cf06a0b46535d541b4",
+  "source_sha256": {
+    "external/ComfyUI_H3/comfy/model_base.py": "a1a1a7bb89a199710f996bf0bdf549d3e42484fe4dd91aa0a6361bb30c990508",
+    "external/ComfyUI_H3/comfy/model_sampling.py": "8afdc665272589a567792bb652389df7d4a83f69574c2b7e5b3d533d55592990",
+    "external/ComfyUI_H3/comfy/ldm/minimax/model.py": "15f0395cf0dbe6e5c13fd859ff359eacc7761b4e15f60aa0038853985d0e599b",
+    "external/ComfyUI_H3/comfy/latent_formats.py": "8f012cea828736e9fe1ac1753f67dfdbeade79cfeba48d5bc26d4c58549ed759"
+  },
+  "input_sha256": {
+    "results/h3_setup/native_sr_train_pairs/bear_256_lr_guide.safetensors": "1d2d7abfb6826357f8ca417d2668090129af69617f2b72729365cd1b247639b6",
+    "results/h3_setup/native_sr_train_pairs/bear_256_hr_supervision_target.safetensors": "0db7e517779a5f7f72d94c34fe7b2e50cf3405e9f87e93bc6da4024068352b4b",
+    "external/h3_assets/h3_qwen_context_neutral_restore.pt": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2"
+  },
+  "conditions": [
+    {
+      "label": "zero_adapter",
+      "guide_last_bias_channel0": 0.0,
+      "sampler_forward_calls": 1,
+      "sampler_timestep": [
+        439.0243835449219
+      ],
+      "input_video_dtype_train": "torch.bfloat16",
+      "input_video_dtype_official_wrapper": "torch.bfloat16",
+      "output_video_dtype_train": "torch.bfloat16",
+      "output_video_dtype_official_wrapper": "torch.bfloat16",
+      "official_audio_scale_flag": 4.0,
+      "guide_shapes_train": [
+        [
+          1,
+          24,
+          7,
+          16,
+          16
+        ]
+      ],
+      "guide_shapes_official": [
+        [
+          1,
+          24,
+          7,
+          16,
+          16
+        ]
+      ],
+      "layout_segments_identical": true,
+      "context_preprocess_train_vs_official": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "guide_before_aug_train_vs_official": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "guide_after_aug_GPUtrain_vs_CPUinfer": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "actual_condition_seed703_vs101_aug_rows": {
+        "max_abs": 0.006332814693450928,
+        "rmse": 0.0014123031869530678
+      },
+      "video_input_v2_vs_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "video_input_after_matching_wrapper_cast": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "audio_physical_v2_vs_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "v_native_io_v2_vs_official_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "v_matched_wrapper_precision_and_payload": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "official_oneEuler_output_vs_xt_minus_sigma_v": {
+        "max_abs": 2.384185791015625e-07,
+        "rmse": 5.140007974802074e-09
+      },
+      "training_x0_vs_official_oneEuler_output": {
+        "max_abs": 2.384185791015625e-07,
+        "rmse": 5.140007974802074e-09
+      },
+      "guide_condition_only_LR": true,
+      "HR_only_target_stream_for_math": true
+    },
+    {
+      "label": "one_guide_bias_plus_0p01",
+      "guide_last_bias_channel0": 0.01,
+      "sampler_forward_calls": 1,
+      "sampler_timestep": [
+        439.0243835449219
+      ],
+      "input_video_dtype_train": "torch.bfloat16",
+      "input_video_dtype_official_wrapper": "torch.bfloat16",
+      "output_video_dtype_train": "torch.bfloat16",
+      "output_video_dtype_official_wrapper": "torch.bfloat16",
+      "official_audio_scale_flag": 4.0,
+      "guide_shapes_train": [
+        [
+          1,
+          24,
+          7,
+          16,
+          16
+        ]
+      ],
+      "guide_shapes_official": [
+        [
+          1,
+          24,
+          7,
+          16,
+          16
+        ]
+      ],
+      "layout_segments_identical": true,
+      "context_preprocess_train_vs_official": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "guide_before_aug_train_vs_official": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "guide_after_aug_GPUtrain_vs_CPUinfer": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "actual_condition_seed703_vs101_aug_rows": {
+        "max_abs": 0.006332814693450928,
+        "rmse": 0.0014123031869530678
+      },
+      "video_input_v2_vs_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "video_input_after_matching_wrapper_cast": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "audio_physical_v2_vs_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "v_native_io_v2_vs_official_wrapper": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "v_matched_wrapper_precision_and_payload": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "official_oneEuler_output_vs_xt_minus_sigma_v": {
+        "max_abs": 2.384185791015625e-07,
+        "rmse": 5.580539141902818e-09
+      },
+      "training_x0_vs_official_oneEuler_output": {
+        "max_abs": 2.384185791015625e-07,
+        "rmse": 5.580539141902818e-09
+      },
+      "guide_condition_only_LR": true,
+      "HR_only_target_stream_for_math": true
+    }
+  ],
+  "sigma_grid_index": 46,
+  "sigma_video": 0.4390243887901306,
+  "sigma_audio": 0.16363637149333954,
+  "expected_timestep": 439.0243887901306,
+  "video_noise_seed": 101,
+  "condition_seed_aligned_for_audit": 703,
+  "actual_training_condition_seed": 703,
+  "actual_pilot_readout_condition_seed": 101,
+  "noise_scale": 1.0,
+  "video_head_weight_dtype": "torch.float32",
+  "video_head_count": 1,
+  "latent_format_scale_factor": 1.0,
+  "analytic_perfect_v_x0_vs_HR": {
+    "max_abs": 2.384185791015625e-07,
+    "rmse": 4.364489925023918e-08
+  },
+  "opposite_sign_control_x0_vs_HR": {
+    "max_abs": 5.6479644775390625,
+    "rmse": 1.2844182252883911
+  },
+  "timestep_runtime": [
+    439.0243835449219
+  ],
+  "video_process_in_out_roundtrip": {
+    "max_abs": 0.0,
+    "rmse": 0.0
+  },
+  "one_parameter_effect_on_official_x0": {
+    "max_abs": 0.2520960569381714,
+    "rmse": 0.011358494870364666
+  },
+  "native_io_v2_real_backward": {
+    "loss_float32": 0.21792571246623993,
+    "output_dtype": "torch.bfloat16",
+    "guide_input_grad_norm": 0.018232468515634537,
+    "lora_grad_norm": 0.00259535014629364,
+    "guide_projection_grad_norm": 0.1735280603170395,
+    "base_weight_grad_count": 0,
+    "frozen_base_tensors": 530
+  },
+  "native_io_v2_audit_passed": true,
+  "native_io_helper_sha256": "f0b879718aaf9a193052829caccacd81b0c43b741bdd05ba00726ffae1d70a27",
+  "base_frozen_tensor_versions_unchanged": true,
+  "base_weight_grad_count": 0,
+  "interpretation": "Native IO v2 exactly matches actual official wrapper BF16 streams, AV carry, video velocity and one-step x0 for zero adapter and +.01 guide bias. Full50 real backward nonzero adapters/guide, frozen base unchanged. No optimizer update in this audit.",
+  "seconds": 20.38792471215129,
+  "peak_allocated_bytes": 41365472256,
+  "peak_reserved_bytes": 41571844096
+}

@@ -19,11 +19,11 @@ def main():
     python=sys.executable
     jobs=[('decode',[python,'experiments/h3_backbone/decode_native_sr_pilot.py','--comfy','external/ComfyUI_H3','--vae','external/h3_assets/minimax_h3_video_vae_fp16.safetensors','--run',str(RUN),'--val','results/h3_setup/native_sr_val_pairs/pairs_manifest.json']),
           ('protocol_audit',[python,'experiments/h3_backbone/audit_native_sr_pilot.py','--run',str(RUN)]),
-          ('fixed_validation_metrics',[python,'experiments/h3_backbone/evaluate_native_sr_pilot.py','--run',str(RUN),'--val','results/h3_setup/native_sr_val_pairs/pairs_manifest.json','--device','cuda'])]
+          ('fixed_validation_metrics',[python,'experiments/h3_backbone/evaluate_native_sr_pilot.py','--run',str(RUN),'--val','results/h3_setup/native_sr_val_pairs/pairs_manifest.json','--device','cpu'])]
     try:
         for phase,command in jobs:
-            if phase!='protocol_audit':admit()
-            status.update(phase=phase,command=command,epoch=time.time());p.write_text(json.dumps(status,indent=2)+'\n')
+            if phase=='decode':admit()
+            status.update(phase=phase,device='cuda' if phase=='decode' else 'cpu',command=command,epoch=time.time());p.write_text(json.dumps(status,indent=2)+'\n')
             env=dict(os.environ)
             if phase=='fixed_validation_metrics':env.update(PYTHONPATH=str(ROOT/'external/eval_deps'),TORCH_HOME=str(ROOT/'external/eval_torch_cache'))
             subprocess.run(command,env=env,check=True)

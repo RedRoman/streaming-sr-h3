@@ -1,0 +1,158 @@
+{
+  "epoch": 1792066236.3507113,
+  "state": {
+    "status": "complete",
+    "pid": 1313621,
+    "host": "H100",
+    "gpu": "6",
+    "completed": [
+      "decode",
+      "protocol_audit",
+      "fixed_validation_metrics"
+    ],
+    "phase": "fixed_validation_metrics",
+    "device": "cpu",
+    "command": [
+      "/home/saiadmin/streaming_sr_20261015/external/h3_venv/bin/python",
+      "experiments/h3_backbone/evaluate_native_sr_pilot.py",
+      "--run",
+      "/home/saiadmin/streaming_sr_20261015/results/h3_setup/native_sr_pilot400_native_io_v2",
+      "--val",
+      "results/h3_setup/native_sr_val_pairs/pairs_manifest.json",
+      "--device",
+      "cpu"
+    ],
+    "epoch": 1792066224.6700523
+  },
+  "matching_live_process": null,
+  "launch": {
+    "pid": 1313621,
+    "epoch": 1792066035.6397665,
+    "command": [
+      "/home/saiadmin/streaming_sr_20261015/external/h3_venv/bin/python",
+      "-u",
+      "experiments/h3_backbone/finish_native_sr_pilot_v2.py"
+    ],
+    "stdout_stderr_log": "results/h3_setup/native_sr_pilot400_native_io_v2/logs/postprocess_20261015_200715.log",
+    "CUDA_VISIBLE_DEVICES": "6",
+    "foreground_only": true,
+    "not_detached": true
+  },
+  "latest_events": [
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "lora_only",
+      "mean_frame_psnr_db": 18.837382663380016,
+      "mean_lpips_alex_v01": 0.4205791001970118
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "lora_only_dc25",
+      "mean_frame_psnr_db": 26.767320199446246,
+      "mean_lpips_alex_v01": 0.29779874872077594
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "guide_only",
+      "mean_frame_psnr_db": 13.932951190254904,
+      "mean_lpips_alex_v01": 0.5516379394314506
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "guide_only_dc25",
+      "mean_frame_psnr_db": 26.450675010681152,
+      "mean_lpips_alex_v01": 0.30895363607189874
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "joint",
+      "mean_frame_psnr_db": 14.902881795709783,
+      "mean_lpips_alex_v01": 0.5000081157142465
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_256",
+      "method": "joint_dc25",
+      "mean_frame_psnr_db": 26.526841510425914,
+      "mean_lpips_alex_v01": 0.30735825814984064
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "bicubic"
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "bicubic_dc25"
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "vae_only"
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "vae_only_dc25"
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "unadapted"
+    },
+    {
+      "event": "cached_pilot_metric_reused",
+      "case": "dance-twirl_native480",
+      "method": "unadapted_dc25"
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "lora_only",
+      "mean_frame_psnr_db": 24.510690428993918,
+      "mean_lpips_alex_v01": 0.3840612647208301
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "lora_only_dc25",
+      "mean_frame_psnr_db": 28.43408064408736,
+      "mean_lpips_alex_v01": 0.3136364059014754
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "guide_only",
+      "mean_frame_psnr_db": 15.782654935663397,
+      "mean_lpips_alex_v01": 0.5010960359464992
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "guide_only_dc25",
+      "mean_frame_psnr_db": 27.724543051286176,
+      "mean_lpips_alex_v01": 0.31741504032503476
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "joint",
+      "mean_frame_psnr_db": 17.471049525521018,
+      "mean_lpips_alex_v01": 0.4495916149832986
+    },
+    {
+      "event": "pilot_metric_complete",
+      "case": "dance-twirl_native480",
+      "method": "joint_dc25",
+      "mean_frame_psnr_db": 27.858444040471856,
+      "mean_lpips_alex_v01": 0.3144268488342112
+    }
+  ],
+  "gpu6": "1, 81110, 0"
+}

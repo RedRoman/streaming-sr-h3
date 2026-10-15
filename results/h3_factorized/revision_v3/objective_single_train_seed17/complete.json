@@ -1,0 +1,108 @@
+{
+  "cache": "results/h3_factorized/revision_v3/cache",
+  "checkpoint": "results/h3_factorized/revision_v3/rgb_endpoint_stage2/closed_action_seed17/last.pt",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/revision_v3/objective_single_train_seed17",
+  "steps": 300,
+  "lr": 0.0005,
+  "seconds": 41.37234663963318,
+  "source": "train_100075",
+  "source_sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+  "packet": 0,
+  "query_step": 3,
+  "checkpoint_initial_step": 200,
+  "checkpoint_sha256": "7ea33d1032a461658fb56b15aaec194b6ea98c9a994fe31eaf97883892b5a46b",
+  "steps_per_arm": 300,
+  "arms": [
+    "latent_L1_only",
+    "actualD_RGB_only"
+  ],
+  "actual_D_backward_calls": 300,
+  "readouts": [
+    0,
+    50,
+    150,
+    300
+  ],
+  "selection": "none, fixed endpoint and fixed intermediate readouts",
+  "frozen": "native VAE/core/appearance; only existing4ch encoder+decoder optimized; same true simulated nuisance q supplied to both diagnostic arms",
+  "teacher": "actual measured-near prelift full24 nativecode and its nativeD RGB; supported current-anchor readout. No HR teaching in either arm. HR only metric.",
+  "scope": "One fixed TRAIN source/packet and sameappearance; capacity/objective/optimization diagnostic, not evidence of generalization or state update performance. Reconstructing one input can memorize the anchor; delta ablations reported.",
+  "training_log": [
+    {
+      "arm": "latent_L1_only",
+      "step": 50,
+      "train_loss": 0.13940483331680298,
+      "seconds": 0.7588810920715332
+    },
+    {
+      "arm": "latent_L1_only",
+      "step": 100,
+      "train_loss": 0.1324545294046402,
+      "seconds": 1.1844282150268555
+    },
+    {
+      "arm": "latent_L1_only",
+      "step": 150,
+      "train_loss": 0.1276412010192871,
+      "seconds": 1.4573876857757568
+    },
+    {
+      "arm": "latent_L1_only",
+      "step": 200,
+      "train_loss": 0.12318047881126404,
+      "seconds": 1.8608920574188232
+    },
+    {
+      "arm": "latent_L1_only",
+      "step": 250,
+      "train_loss": 0.11926975846290588,
+      "seconds": 2.1352407932281494
+    },
+    {
+      "arm": "latent_L1_only",
+      "step": 300,
+      "train_loss": 0.11630374938249588,
+      "seconds": 2.3716745376586914
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 50,
+      "train_loss": 0.0060033416375517845,
+      "seconds": 9.052661418914795
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 100,
+      "train_loss": 0.005230545997619629,
+      "seconds": 15.64354944229126
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 150,
+      "train_loss": 0.004568221513181925,
+      "seconds": 21.95019793510437
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 200,
+      "train_loss": 0.004056872334331274,
+      "seconds": 28.44188952445984
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 250,
+      "train_loss": 0.0036225798539817333,
+      "seconds": 34.77789235115051
+    },
+    {
+      "arm": "actualD_RGB_only",
+      "step": 300,
+      "train_loss": 0.0033257303293794394,
+      "seconds": 41.16994905471802
+    }
+  ],
+  "peak_GPU_bytes": 10735294976,
+  "test_accessed": false
+}

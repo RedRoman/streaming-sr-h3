@@ -1,0 +1,286 @@
+{
+  "source_averaged": {
+    "all": {
+      "sources": 4,
+      "methods": {
+        "bicubic": {
+          "psnr": 30.674406642913816,
+          "lpips": 0.22772464158323907,
+          "roi_psnr": 28.712485346939083,
+          "roi_lpips": 0.25475822944396864,
+          "temporal_error_excess_rmse": 0.011931510950955744
+        },
+        "h3_vae": {
+          "psnr": 30.204154450098674,
+          "lpips": 0.20559758532792333,
+          "roi_psnr": 27.746796773308596,
+          "roi_lpips": 0.2326781736930489,
+          "temporal_error_excess_rmse": 0.013566849411302751
+        },
+        "bicubic_dc25": {
+          "psnr": 31.65920843601227,
+          "lpips": 0.181921460799252,
+          "roi_psnr": 29.86745455823543,
+          "roi_lpips": 0.19976377745243903,
+          "temporal_error_excess_rmse": 0.013613437990990712
+        },
+        "h3_vae_dc25": {
+          "psnr": 31.97756653706233,
+          "lpips": 0.15224874630415192,
+          "roi_psnr": 30.147445856388536,
+          "roi_lpips": 0.1680694384219614,
+          "temporal_error_excess_rmse": 0.012919261942649468
+        }
+      }
+    },
+    "train": {
+      "sources": 1,
+      "methods": {
+        "bicubic": {
+          "psnr": 29.530957171122232,
+          "lpips": 0.28349787175655367,
+          "roi_psnr": 29.10397041835142,
+          "roi_lpips": 0.25856284863341633,
+          "temporal_error_excess_rmse": 0.01146698253422055
+        },
+        "h3_vae": {
+          "psnr": 29.00111714363098,
+          "lpips": 0.24828556845585506,
+          "roi_psnr": 28.215093488371775,
+          "roi_lpips": 0.22983367528731577,
+          "temporal_error_excess_rmse": 0.0136357342990703
+        },
+        "bicubic_dc25": {
+          "psnr": 30.364917147954305,
+          "lpips": 0.22306511419514816,
+          "roi_psnr": 30.14656061751119,
+          "roi_lpips": 0.1841401470494326,
+          "temporal_error_excess_rmse": 0.011988093928031263
+        },
+        "h3_vae_dc25": {
+          "psnr": 30.394493459065757,
+          "lpips": 0.1859278248498837,
+          "roi_psnr": 30.20425790079524,
+          "roi_lpips": 0.14633689465645316,
+          "temporal_error_excess_rmse": 0.011995956290805578
+        }
+      }
+    },
+    "val": {
+      "sources": 1,
+      "methods": {
+        "bicubic": {
+          "psnr": 33.83334235509237,
+          "lpips": 0.12103455820431312,
+          "roi_psnr": 30.096219188833143,
+          "roi_lpips": 0.24084934644715886,
+          "temporal_error_excess_rmse": 0.008269758194264022
+        },
+        "h3_vae": {
+          "psnr": 33.35878633817037,
+          "lpips": 0.10857467733323574,
+          "roi_psnr": 29.29436849936461,
+          "roi_lpips": 0.21383274964223686,
+          "temporal_error_excess_rmse": 0.009834595314943805
+        },
+        "bicubic_dc25": {
+          "psnr": 35.04562084833781,
+          "lpips": 0.09587284586081903,
+          "roi_psnr": 31.398558693759774,
+          "roi_lpips": 0.18194495729157623,
+          "temporal_error_excess_rmse": 0.009565120228435626
+        },
+        "h3_vae_dc25": {
+          "psnr": 35.46003936131795,
+          "lpips": 0.07960514148697256,
+          "roi_psnr": 31.83843660448665,
+          "roi_lpips": 0.1456217379862034,
+          "temporal_error_excess_rmse": 0.009154292558147285
+        }
+      }
+    },
+    "test": {
+      "sources": 2,
+      "methods": {
+        "bicubic": {
+          "psnr": 29.666663522720334,
+          "lpips": 0.2531830681860447,
+          "roi_psnr": 27.824875890285888,
+          "roi_lpips": 0.2598103613476496,
+          "temporal_error_excess_rmse": 0.013994651537669205
+        },
+        "h3_vae": {
+          "psnr": 29.22835715929667,
+          "lpips": 0.2327650477613012,
+          "roi_psnr": 26.738862552748994,
+          "roi_lpips": 0.2435231349213215,
+          "temporal_error_excess_rmse": 0.01539853401559845
+        },
+        "bicubic_dc25": {
+          "psnr": 30.61314787387848,
+          "lpips": 0.2043739415705204,
+          "roi_psnr": 28.962349460835384,
+          "roi_lpips": 0.21648500273437363,
+          "temporal_error_excess_rmse": 0.016450268903747976
+        },
+        "h3_vae_dc25": {
+          "psnr": 31.0278666639328,
+          "lpips": 0.17173100943987568,
+          "roi_psnr": 29.273544460136126,
+          "roi_lpips": 0.19015956052259453,
+          "temporal_error_excess_rmse": 0.015263399460822506
+        }
+      }
+    }
+  },
+  "long_gap_return": {
+    "book-20": {
+      "events": [
+        {
+          "absent_start_local": 220,
+          "return_local": 298,
+          "gap_frames": 78
+        }
+      ],
+      "methods": {
+        "bicubic": {
+          "frames": 17,
+          "psnr": 29.819561004638672,
+          "lpips": 0.2810397621463327,
+          "roi_psnr": 30.333800371955423,
+          "roi_lpips": 0.25761852264404295,
+          "temporal_error_excess_rmse": 0.012529283488059746
+        },
+        "h3_vae": {
+          "frames": 17,
+          "psnr": 29.24195435467888,
+          "lpips": 0.2442238409729565,
+          "roi_psnr": 29.044864430147058,
+          "roi_lpips": 0.2509707589944204,
+          "temporal_error_excess_rmse": 0.01520003005862236
+        },
+        "bicubic_dc25": {
+          "frames": 17,
+          "psnr": 30.64242654688218,
+          "lpips": 0.22024781563702753,
+          "roi_psnr": 31.423649507410385,
+          "roi_lpips": 0.16503345767656963,
+          "temporal_error_excess_rmse": 0.012793320066788617
+        },
+        "h3_vae_dc25": {
+          "frames": 17,
+          "psnr": 30.64396151374368,
+          "lpips": 0.1804695839391035,
+          "roi_psnr": 31.39025598413804,
+          "roi_lpips": 0.1309773360689481,
+          "temporal_error_excess_rmse": 0.012960267417571125
+        }
+      }
+    },
+    "hat-3": {
+      "events": [
+        {
+          "absent_start_local": 159,
+          "return_local": 242,
+          "gap_frames": 83
+        }
+      ],
+      "methods": {
+        "bicubic": {
+          "frames": 17,
+          "psnr": 34.344557369456574,
+          "lpips": 0.10440633270670385,
+          "roi_psnr": 34.89232265248018,
+          "roi_lpips": 0.146846563938786,
+          "temporal_error_excess_rmse": 0.007129913148031954
+        },
+        "h3_vae": {
+          "frames": 17,
+          "psnr": 33.80358460370232,
+          "lpips": 0.09422204687314875,
+          "roi_psnr": 32.88212013244629,
+          "roi_lpips": 0.13934257100610173,
+          "temporal_error_excess_rmse": 0.008622302125920267
+        },
+        "bicubic_dc25": {
+          "frames": 17,
+          "psnr": 35.636177736170154,
+          "lpips": 0.08119016140699387,
+          "roi_psnr": 35.90864058101879,
+          "roi_lpips": 0.10631086962187991,
+          "temporal_error_excess_rmse": 0.008179043806568883
+        },
+        "h3_vae_dc25": {
+          "frames": 17,
+          "psnr": 36.04039113661822,
+          "lpips": 0.06813593734713162,
+          "roi_psnr": 36.111113155589386,
+          "roi_lpips": 0.08017668653936948,
+          "temporal_error_excess_rmse": 0.007861440631506197
+        }
+      }
+    },
+    "book-19": {
+      "events": [],
+      "methods": {
+        "bicubic": {
+          "frames": 0
+        },
+        "h3_vae": {
+          "frames": 0
+        },
+        "bicubic_dc25": {
+          "frames": 0
+        },
+        "h3_vae_dc25": {
+          "frames": 0
+        }
+      }
+    },
+    "hat-1": {
+      "events": [
+        {
+          "absent_start_local": 154,
+          "return_local": 227,
+          "gap_frames": 73
+        }
+      ],
+      "methods": {
+        "bicubic": {
+          "frames": 17,
+          "psnr": 33.35845722871668,
+          "lpips": 0.19244918840772965,
+          "roi_psnr": 32.82993395188276,
+          "roi_lpips": 0.07413597125560045,
+          "temporal_error_excess_rmse": 0.013935241190826191
+        },
+        "h3_vae": {
+          "frames": 17,
+          "psnr": 32.48838458341711,
+          "lpips": 0.17756054944851818,
+          "roi_psnr": 30.916505589204675,
+          "roi_lpips": 0.06546484480301538,
+          "temporal_error_excess_rmse": 0.0144432001911542
+        },
+        "bicubic_dc25": {
+          "frames": 17,
+          "psnr": 34.50976629818187,
+          "lpips": 0.13826959098086639,
+          "roi_psnr": 34.59834076376522,
+          "roi_lpips": 0.03415551368768017,
+          "temporal_error_excess_rmse": 0.01732493915102061
+        },
+        "h3_vae_dc25": {
+          "frames": 17,
+          "psnr": 35.14172610114603,
+          "lpips": 0.11047822368495605,
+          "roi_psnr": 34.96005316341625,
+          "roi_lpips": 0.027609304416303833,
+          "temporal_error_excess_rmse": 0.014876965323791784
+        }
+      }
+    }
+  },
+  "long_gap_rule": "Same >=60 consecutive absent-frame threshold used in source selection; first17 visible frames after return, evaluated posthoc stratification, no parameter tuning",
+  "caution": "4 sources, frames not independent replicates; no learned persistent memory"
+}

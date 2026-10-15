@@ -1,0 +1,59 @@
+{
+  "cache": "results/h3_factorized/revision_v3/cache",
+  "phi": "results/h3_factorized/factorial_v5/phi",
+  "models": "results/h3_factorized/factorial_v5/main_seed17",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/factorial_v5/val_seed17",
+  "checkpoints": {
+    "anchor_skip0": {
+      "path": "results/h3_factorized/factorial_v5/main_seed17/anchor_skip0_seed17/last.pt",
+      "sha256": "bb447aa4e3f3736a89a5097538d4b844ea81a553eabf9cb69fa0a16451b95382",
+      "step": 672,
+      "parameters": 146224,
+      "active_parameters": 146192
+    },
+    "noanchor_skip0": {
+      "path": "results/h3_factorized/factorial_v5/main_seed17/noanchor_skip0_seed17/last.pt",
+      "sha256": "581f96a838d8928ac892b659af177dcaa95055d062254d2c9914033a5c0aecf6",
+      "step": 672,
+      "parameters": 146610,
+      "active_parameters": 146578
+    },
+    "anchor_skip1": {
+      "path": "results/h3_factorized/factorial_v5/main_seed17/anchor_skip1_seed17/last.pt",
+      "sha256": "546d705545abe3ef4922acdaf221426c2632e058247049f2ad85d51fd05dae1a",
+      "step": 672,
+      "parameters": 146224,
+      "active_parameters": 146192
+    },
+    "noanchor_skip1": {
+      "path": "results/h3_factorized/factorial_v5/main_seed17/noanchor_skip1_seed17/last.pt",
+      "sha256": "3d17152b7b8eba9cb9bcb866371cfb94d80ce41a16034057bb08ce3efa33007f",
+      "step": 672,
+      "parameters": 146610,
+      "active_parameters": 146578
+    }
+  },
+  "sources": [
+    "val_101085",
+    "val_101087",
+    "val_102061",
+    "val_103070",
+    "val_105025",
+    "val_106024",
+    "val_108005",
+    "val_108070"
+  ],
+  "source_average_before_statistics": true,
+  "actual_D_calls": 1208,
+  "actual_E_calls": 0,
+  "commonphi_D_calls_separate": 64,
+  "zero_base_all_val_pixel_maxabs": 0,
+  "seconds": 60.08819246292114,
+  "peak_GPU_bytes": 5645481984,
+  "rows": 3136,
+  "optimizer_updates": 0,
+  "test_accessed": false,
+  "scope": "One trainedseed17,VAL8development; all primarylast672. NN interventions hold physical base/H fixed. Bridge interventions hold trainedNN prediction fixed. NativeD frozenFP16,TF32off; no DiT/real-video claim."
+}

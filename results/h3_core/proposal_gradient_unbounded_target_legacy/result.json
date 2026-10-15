@@ -1,0 +1,93 @@
+{
+  "status": "complete",
+  "scope": "5-step actualnative22 proposal-memory adapter gradient integration; not quality/novelty evidence",
+  "config": {
+    "comfy": "external/ComfyUI_H3",
+    "model": "external/h3_assets/minimax_h3_fl2va_pruned_bf16.safetensors",
+    "context": "external/h3_assets/h3_qwen_context_neutral_restore.pt",
+    "data": "results/h3_core/proposal_gradient_train100075",
+    "out": "results/h3_core/proposal_gradient_train100075",
+    "steps": 5
+  },
+  "seed": 703,
+  "training_target": "Separate train-only physicalnew-support hybrid retains thisseedX0 commonnull beforeVAE; seepreparationaudit",
+  "sampling_control_note": "Basicsequentialflow/nativeadapter sameX0 control required for effectiveness; thisrun only verifies interface.",
+  "records": [
+    {
+      "step": 1,
+      "velocity_mse": 0.10811471939086914,
+      "guide_input_grad_norm": 0.07066704332828522,
+      "state_grad_norm": 0.016503769904375076,
+      "update_parameter_grad_norm": 0.01982545480132103,
+      "readout_parameter_grad_norm": 0.0,
+      "state_norm": 0.0,
+      "base_weight_grad_count": 0,
+      "native_video_finite": true,
+      "native_audio_finite": true
+    },
+    {
+      "step": 2,
+      "velocity_mse": 0.09124229848384857,
+      "guide_input_grad_norm": 0.19089047610759735,
+      "state_grad_norm": 0.0391559861600399,
+      "update_parameter_grad_norm": 0.047037336975336075,
+      "readout_parameter_grad_norm": 0.0011835433542728424,
+      "state_norm": 0.002779873088002205,
+      "base_weight_grad_count": 0,
+      "native_video_finite": true,
+      "native_audio_finite": true
+    },
+    {
+      "step": 3,
+      "velocity_mse": 0.10464487969875336,
+      "guide_input_grad_norm": 0.021359460428357124,
+      "state_grad_norm": 0.008657673373818398,
+      "update_parameter_grad_norm": 0.010422924533486366,
+      "readout_parameter_grad_norm": 0.0005293541471473873,
+      "state_norm": 0.004961359780281782,
+      "base_weight_grad_count": 0,
+      "native_video_finite": true,
+      "native_audio_finite": true
+    },
+    {
+      "step": 4,
+      "velocity_mse": 0.10490209609270096,
+      "guide_input_grad_norm": 0.06804592907428741,
+      "state_grad_norm": 0.021906595677137375,
+      "update_parameter_grad_norm": 0.02638907916843891,
+      "readout_parameter_grad_norm": 0.0013366823550313711,
+      "state_norm": 0.0063488478772342205,
+      "base_weight_grad_count": 0,
+      "native_video_finite": true,
+      "native_audio_finite": true
+    },
+    {
+      "step": 5,
+      "velocity_mse": 0.09549491852521896,
+      "guide_input_grad_norm": 0.03693213686347008,
+      "state_grad_norm": 0.011451312340795994,
+      "update_parameter_grad_norm": 0.013816448859870434,
+      "readout_parameter_grad_norm": 0.0014516523806378245,
+      "state_norm": 0.008015479892492294,
+      "base_weight_grad_count": 0,
+      "native_video_finite": true,
+      "native_audio_finite": true
+    }
+  ],
+  "trainable_parameters": 48280,
+  "frozen_native_blocks": 50,
+  "native_guide_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "condition_tokens": 448,
+  "zero_state_maxabs": 0.0,
+  "far_only_state_change": 0.0,
+  "duplicate_state_maxabs": 0.0,
+  "seconds": 20.46377220004797,
+  "peak_allocated_bytes": 41301067776,
+  "peak_reserved_bytes": 41662021632
+}

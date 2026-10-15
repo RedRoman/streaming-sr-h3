@@ -1,0 +1,157 @@
+{
+  "arms": [
+    {
+      "arm": "anchor_skip0",
+      "architecture_parameters": 146224,
+      "active_parameters": 146192,
+      "decoder_width": 64,
+      "zero_correction_raw_pixel_maxabs": 0.0,
+      "zero_correction_common_single_DC_maxabs": 0.0,
+      "actualD_RGB_only_steps": [
+        {
+          "step": 1,
+          "loss": 0.03457379713654518,
+          "gradients": {
+            "encoder": 0.0,
+            "decoder": 0.00018557639850769192,
+            "core": 0.0,
+            "appearance": 0.0
+          },
+          "VAE_weight_gradients": 0
+        },
+        {
+          "step": 2,
+          "loss": 0.03457368165254593,
+          "gradients": {
+            "encoder": 5.723340413155142e-06,
+            "decoder": 0.0002322436491013491,
+            "core": 8.841847686305582e-09,
+            "appearance": 2.3923676928383486e-09
+          },
+          "VAE_weight_gradients": 0
+        }
+      ],
+      "neural_anchor_poison_maxabs": 0.0001801569014787674,
+      "future_neural_firstquery_maxabs": 0.0,
+      "future_bridge_firstquery_maxabs": 0.0,
+      "no_evidence_vs_current_pixel_maxabs": 0.0
+    },
+    {
+      "arm": "noanchor_skip0",
+      "architecture_parameters": 146610,
+      "active_parameters": 146578,
+      "decoder_width": 74,
+      "zero_correction_raw_pixel_maxabs": 0.0,
+      "zero_correction_common_single_DC_maxabs": 0.0,
+      "actualD_RGB_only_steps": [
+        {
+          "step": 1,
+          "loss": 0.03457379713654518,
+          "gradients": {
+            "encoder": 0.0,
+            "decoder": 0.0003295897622592747,
+            "core": 0.0,
+            "appearance": 0.0
+          },
+          "VAE_weight_gradients": 0
+        },
+        {
+          "step": 2,
+          "loss": 0.034573592245578766,
+          "gradients": {
+            "encoder": 1.0299541569835924e-05,
+            "decoder": 0.0004008012292189278,
+            "core": 2.515578426814935e-08,
+            "appearance": 7.758106795874298e-09
+          },
+          "VAE_weight_gradients": 0
+        }
+      ],
+      "neural_anchor_poison_maxabs": 0.0,
+      "future_neural_firstquery_maxabs": 0.0,
+      "future_bridge_firstquery_maxabs": 0.0,
+      "no_evidence_vs_current_pixel_maxabs": 0.0
+    },
+    {
+      "arm": "anchor_skip1",
+      "architecture_parameters": 146224,
+      "active_parameters": 146192,
+      "decoder_width": 64,
+      "zero_correction_raw_pixel_maxabs": 0.0,
+      "zero_correction_common_single_DC_maxabs": 0.0,
+      "actualD_RGB_only_steps": [
+        {
+          "step": 1,
+          "loss": 0.029876694083213806,
+          "gradients": {
+            "encoder": 0.0,
+            "decoder": 0.00015187289682216942,
+            "core": 0.0,
+            "appearance": 0.0
+          },
+          "VAE_weight_gradients": 0
+        },
+        {
+          "step": 2,
+          "loss": 0.029876764863729477,
+          "gradients": {
+            "encoder": 2.8523096977650653e-06,
+            "decoder": 0.00015666203369413267,
+            "core": 7.664804454327045e-09,
+            "appearance": 2.1255378498952204e-09
+          },
+          "VAE_weight_gradients": 0
+        }
+      ],
+      "neural_anchor_poison_maxabs": 0.00020587618928402662,
+      "future_neural_firstquery_maxabs": 0.0,
+      "future_bridge_firstquery_maxabs": 0.0,
+      "no_evidence_vs_current_pixel_maxabs": 0.0
+    },
+    {
+      "arm": "noanchor_skip1",
+      "architecture_parameters": 146610,
+      "active_parameters": 146578,
+      "decoder_width": 74,
+      "zero_correction_raw_pixel_maxabs": 0.0,
+      "zero_correction_common_single_DC_maxabs": 0.0,
+      "actualD_RGB_only_steps": [
+        {
+          "step": 1,
+          "loss": 0.029876694083213806,
+          "gradients": {
+            "encoder": 0.0,
+            "decoder": 0.00023896399943623692,
+            "core": 0.0,
+            "appearance": 0.0
+          },
+          "VAE_weight_gradients": 0
+        },
+        {
+          "step": 2,
+          "loss": 0.02987670712172985,
+          "gradients": {
+            "encoder": 7.128425936642202e-06,
+            "decoder": 0.00027447988823325886,
+            "core": 1.8876552754926168e-08,
+            "appearance": 8.586920452469116e-09
+          },
+          "VAE_weight_gradients": 0
+        }
+      ],
+      "neural_anchor_poison_maxabs": 0.0,
+      "future_neural_firstquery_maxabs": 0.0,
+      "future_bridge_firstquery_maxabs": 0.0,
+      "no_evidence_vs_current_pixel_maxabs": 0.0
+    }
+  ],
+  "common_cached_phi_route_pixel_maxabs": 0.0,
+  "source": "train_100075",
+  "actual_D_backward_calls": 8,
+  "diagnostic_optimizer_updates": 8,
+  "main_training_updates": 0,
+  "seconds": 2.9039828777313232,
+  "peak_GPU_bytes": 10870973952,
+  "TF32": false,
+  "scope": "Independent pretraining checks, models discarded; raw base and finalDC zero parity both exact; q11 mixed groups, first zerohead coregrad expected0 then nonzero after update"
+}

@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-10-15T14:13:19.398064+00:00",
+  "payload_budget": 896,
+  "sources": "All fixed32TRAIN/8VAL; natural primary only; no auxiliary worlds",
+  "primary": "VAL8 source mean of four future phase PSNR; TRAIN descriptive",
+  "writer": "Only observed past uint8 RGB64x64; future phase and pixels unavailable",
+  "reader": "Only serialized payload, one arrived future uint8 RGB32x32, known physical camera and shared format",
+  "codecs": {
+    "dct_low": "448 fixed zigzag-like (u+v,max,u,v,RGB) orthonormal DCT-II coefficients, little-endian float16 =896bytes",
+    "dct_high": "448 coefficients ordered as above restricted max(u,v)>=32; rest supplied by the actual future-only base; 896bytes",
+    "webp": "Pillow WebP method6, integer quality0..100 exhaustively encoded; highest quality whose entire file<=896bytes; no GT",
+    "uncompressed": "Observed uint8 near RGB bytes=12288, capacity upper reference, not rate matched"
+  },
+  "future_only": "Upsample arrived far32 to128, inverse its known HR0/1 shift with border padding, reflect-pad4, then optional physical projection",
+  "physical_reader": "Exactly25 Dykstra iterations on full136, using actual far Ay/Ax and right inverses and [0,1] box, then crop4:132. No GT/phase tuning.",
+  "dct_high_reader": "Project future-only base into near camera; replace its selected DCT coefficients with transmitted ones; bicubic-to128 and reflect-pad4, then future P25",
+  "metrics": "PSNR and float physical future LR residual; raw/futureP25 independently named. No learned-arm postprocessor is changed.",
+  "scope": "Classical rate-utility controls, no newH3 E/D/DiT or GPU or optimizer updates",
+  "source_sha256": "c24906c38a8a9b4087ccc6c8b3a8052035d9588742a2d60b29b96a7c6126e490",
+  "manifest_sha256": "3b0f34110362e3a50730aa926151ba433c8aa2793a8ddba76cdb3fdb60d7e294",
+  "operators_sha256": "8c70362cf34eef07e678739da7aa2b343eb9ef73016dce9fb219e1d754e861d0"
+}

@@ -30,12 +30,18 @@ def main():
     parser.add_argument("--fps")
     parser.add_argument("--protocol", choices=["official", "causal_repeat_start"], default="official")
     parser.add_argument("--png-dir", type=Path, help="Lossless outputs for quality evaluation; wall times then include PNG writing")
+    parser.add_argument("--memory-fraction", type=float,
+                        help="Explicit CUDA allocator cap; omitted leaves the official allocator behavior unchanged")
     args = parser.parse_args()
     root = args.repository.resolve()
     args.metrics.parent.mkdir(parents=True, exist_ok=True)
     sys.path.insert(0, str(root))
     import torch
     import inference as official
+    if args.memory_fraction is not None:
+        if not 0 < args.memory_fraction <= 1:
+            raise ValueError("memory-fraction must be in (0,1]")
+        torch.cuda.set_per_process_memory_fraction(args.memory_fraction)
 
     rows = []
     meta = {
@@ -49,6 +55,7 @@ def main():
         "dtype": "bf16",
         "cuda_device": torch.cuda.get_device_name(0),
         "torch": torch.__version__,
+        "explicit_cuda_memory_fraction": args.memory_fraction,
         "packages": {name: importlib.metadata.version(name) for name in (
             "diffusers", "accelerate", "triton", "einops", "av", "safetensors", "numpy", "pillow")},
         "instrumentation": "Unmodified official inference.main with observer subclass; CUDA synchronization and event resolution before each output; input consumption tracked; no prediction, seed, weight, or sampler changes.",

@@ -1,0 +1,126 @@
+{
+  "scope": "Fixed4train2val natural-source developmentpilot, not heldouttest; no fabricated H3 diversity",
+  "sources": [
+    {
+      "id": "train_100075",
+      "split": "train",
+      "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+      "sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "train_100080",
+      "split": "train",
+      "path": "data/BSR/BSDS500/data/images/train/100080.jpg",
+      "sha256": "d52ff44bf19e17f49389eca134bcf57a90d27b15671952fabbd2f2334f75aa8e",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "train_100098",
+      "split": "train",
+      "path": "data/BSR/BSDS500/data/images/train/100098.jpg",
+      "sha256": "156fd9710dccd7bf3a821977f8d8155da0eccca553086f73771073e17a418aa6",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "train_103041",
+      "split": "train",
+      "path": "data/BSR/BSDS500/data/images/train/103041.jpg",
+      "sha256": "1e7ad4076e21f5558e487fddbd20f9553cc4e84629814a79c711f20c38e08461",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "val_101085",
+      "split": "val",
+      "path": "data/BSR/BSDS500/data/images/val/101085.jpg",
+      "sha256": "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "val_101087",
+      "split": "val",
+      "path": "data/BSR/BSDS500/data/images/val/101087.jpg",
+      "sha256": "d755a74144410290cff5e214bb7cbf352a8cb920d45fac3d992b9772ad92a017",
+      "canonical_rectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    }
+  ],
+  "views": {
+    "far": [
+      0.0,
+      0.0,
+      256.0,
+      256.0
+    ],
+    "A": [
+      32.0,
+      32.0,
+      160.0,
+      160.0
+    ],
+    "B": [
+      96.0,
+      96.0,
+      224.0,
+      224.0
+    ]
+  },
+  "candidate_seeds": [
+    101,
+    202
+  ],
+  "native_frames": 22,
+  "query": "Static canonical memory; repeatednativecontext, not realmotionvideo",
+  "operator": "Exact declared Torch reflectGaussian.6+bilinearwarp+AA bicubic; sigma.003/8bitround; effectiveSigma.005",
+  "conditional_subsets": {
+    "empty": [],
+    "A": [
+      "A"
+    ],
+    "B": [
+      "B"
+    ],
+    "AB": [
+      "A",
+      "B"
+    ]
+  },
+  "total_actual_H3_samples": 56,
+  "full50block_forwards": 2744,
+  "private_queries": "Four32x32corners, operational query definition; not identified semanticindependence",
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  }
+}

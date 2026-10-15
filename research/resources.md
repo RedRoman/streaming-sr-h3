@@ -129,3 +129,11 @@
 - 简单单clip RGB表征meanframePSNR：bicubic27.229、VAEguide25.406、BF16normal49 22.011dB；是需进一步学习约束的负结果，不作泛化结论。根线程做统一真实视频评价，A/B训练后再做同条件memory注入。
 - 原机当前无本resource子任务GPU进程，所有compute session终态见 `results/h3_setup/compute_live_jobs.json`。
 - H100完整VAE供A/B使用；BF16下载15:38为11.945/40.226GB verified ranges，16workers近实测10.90MB/s，PID1135745与session81647仍live，最终canonicalSHA仍待完成。
+
+
+## RelayVSR官方资源已补齐（2026-10-15）
+
+详见 `results/relay_baseline/RESOURCE_AUDIT.md` 与 `resource_audit.json`。Wan前台40657完整全SHA校验通过，Flash匹配官方SHA，独立venv真实CLI import通过；没有GPU推理或活跃下载。旧7.685GB不完整记录仅为历史，已被本次续传/最终SHA结果替代。主线H3不变。
+
+
+精确WAN权重header核查：5,033,156,288个tensor标量，约5B，BF16文件10,066,399,024字节；30层、24heads×128。早期1.3B描述作废；Relay仅外部比较基线。

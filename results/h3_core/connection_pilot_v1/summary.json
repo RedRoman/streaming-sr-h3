@@ -1,0 +1,955 @@
+{
+  "scope": "Completed fixed 4-train / 2-val development pilot, one seed17; no confirmation claim.",
+  "outcome": "No independent joint correction/private-preservation benefit. Do not scale or tune this loop head.",
+  "means": {
+    "train": {
+      "H3conditional_fixedsource": {
+        "highfrequency_rms": 0.026396027766168118,
+        "observed_prefix_lr_rmse": 0.025830595986917615,
+        "private_query_revision_rms": 0.0036003031418658793,
+        "psnr_full_db": 28.71257209777832,
+        "psnr_global_query_db": 29.22617244720459,
+        "source_count": 4
+      },
+      "H3conditional_minLR_candidate": {
+        "highfrequency_rms": 0.026396027766168118,
+        "observed_prefix_lr_rmse": 0.025830595986917615,
+        "private_query_revision_rms": 0.0036003031418658793,
+        "psnr_full_db": 28.71257209777832,
+        "psnr_global_query_db": 29.22617244720459,
+        "source_count": 4
+      },
+      "H3conditional_residual_scored_mean": {
+        "highfrequency_rms": 0.026396027766168118,
+        "observed_prefix_lr_rmse": 0.025830595986917615,
+        "private_query_revision_rms": 0.0036003031418658793,
+        "psnr_full_db": 28.71257209777832,
+        "psnr_global_query_db": 29.22617244720459,
+        "source_count": 4
+      },
+      "H3conditional_uniform_mean": {
+        "highfrequency_rms": 0.026383918710052967,
+        "observed_prefix_lr_rmse": 0.02583425771445036,
+        "private_query_revision_rms": 0.003490061266347766,
+        "psnr_full_db": 28.71447992324829,
+        "psnr_global_query_db": 29.227149963378906,
+        "source_count": 4
+      },
+      "VAEguide_response_same_U_private": {
+        "highfrequency_rms": 0.02642799960449338,
+        "observed_prefix_lr_rmse": 0.025860647205263376,
+        "private_query_revision_rms": 0.003430913609918207,
+        "psnr_full_db": 28.709022521972656,
+        "psnr_global_query_db": 29.227622032165527,
+        "source_count": 4
+      },
+      "basic_sequential": {
+        "RGB_path_mse": 2.7002105980500346e-05,
+        "far_lr_rmse": 8.99518701658053e-06,
+        "global_query_revision_rms": 0.014064827817492187,
+        "gradient_energy_l1": 0.034230756340548396,
+        "highfrequency_rms": 0.029916504863649607,
+        "latent_path_mse": 0.007717055850662291,
+        "observed_prefix_lr_rmse": 0.0225037126801908,
+        "private_query_revision_rms": 0.00565900289802812,
+        "psnr_full_db": 29.18787169456482,
+        "psnr_global_query_db": 29.67357325553894,
+        "source_count": 4
+      },
+      "classical_joint_LR": {
+        "highfrequency_rms": 0.03493186039850116,
+        "observed_prefix_lr_rmse": 0.0052324526477605104,
+        "private_query_revision_rms": 0.00027345931812305935,
+        "psnr_full_db": 30.645026206970215,
+        "psnr_global_query_db": 29.26412582397461,
+        "source_count": 4
+      },
+      "conditional_heuristic_OT": {
+        "highfrequency_rms": 0.026396027766168118,
+        "observed_prefix_lr_rmse": 0.025830595986917615,
+        "private_query_revision_rms": 0.0036003031418658793,
+        "psnr_full_db": 28.71257209777832,
+        "psnr_global_query_db": 29.22617244720459,
+        "source_count": 4
+      },
+      "connection_loop": {
+        "RGB_path_mse": 2.370174127008795e-05,
+        "far_lr_rmse": 9.133058270549554e-06,
+        "global_query_revision_rms": 0.01394797203829512,
+        "gradient_energy_l1": 0.03429663786664605,
+        "highfrequency_rms": 0.030043111881241202,
+        "latent_path_mse": 0.0063360866624861956,
+        "observed_prefix_lr_rmse": 0.022730202530510724,
+        "private_query_revision_rms": 0.005791134317405522,
+        "psnr_full_db": 29.169312715530396,
+        "psnr_global_query_db": 29.676740646362305,
+        "source_count": 4
+      },
+      "direct_H3_current_mean_RGB": {
+        "highfrequency_rms": 0.036127655766904354,
+        "observed_prefix_lr_rmse": 0.014794260263442993,
+        "private_query_revision_rms": 0.007643679564353079,
+        "psnr_full_db": 29.727519512176514,
+        "psnr_global_query_db": 29.106000900268555,
+        "source_count": 4
+      },
+      "direct_H3_current_minLR": {
+        "highfrequency_rms": 0.03644558368250728,
+        "observed_prefix_lr_rmse": 0.015180604998022318,
+        "private_query_revision_rms": 0.00797969801351428,
+        "psnr_full_db": 29.634483337402344,
+        "psnr_global_query_db": 29.07428741455078,
+        "source_count": 4
+      },
+      "direct_H3_empty_mean": {
+        "highfrequency_rms": 0.0285356305539608,
+        "observed_prefix_lr_rmse": 0.027743170503526926,
+        "private_query_revision_rms": 0.00783072505146265,
+        "psnr_full_db": 28.394357204437256,
+        "psnr_global_query_db": 29.041090965270996,
+        "source_count": 4
+      },
+      "direct_VAE_current_guide": {
+        "highfrequency_rms": 0.034336847718805075,
+        "observed_prefix_lr_rmse": 0.010104011744260788,
+        "private_query_revision_rms": 0.005813386291265488,
+        "psnr_full_db": 30.386592388153076,
+        "psnr_global_query_db": 29.304208278656006,
+        "source_count": 4
+      },
+      "gru": {
+        "RGB_path_mse": 4.924143240714329e-06,
+        "far_lr_rmse": 9.479182551785925e-06,
+        "global_query_revision_rms": 0.01286327000707388,
+        "gradient_energy_l1": 0.03410843317396939,
+        "highfrequency_rms": 0.028938326286152005,
+        "latent_path_mse": 0.0014949898759368807,
+        "observed_prefix_lr_rmse": 0.023524793330579996,
+        "private_query_revision_rms": 0.006052428594557568,
+        "psnr_full_db": 29.064168453216553,
+        "psnr_global_query_db": 29.61287784576416,
+        "source_count": 4
+      },
+      "initial_X0": {
+        "highfrequency_rms": 0.02572944713756442,
+        "observed_prefix_lr_rmse": 0.02702737762592733,
+        "private_query_revision_rms": 0.0,
+        "psnr_full_db": 28.613377571105957,
+        "psnr_global_query_db": 29.25712490081787,
+        "source_count": 4
+      },
+      "set": {
+        "RGB_path_mse": 0.0,
+        "far_lr_rmse": 1.0648996521922527e-05,
+        "global_query_revision_rms": 0.010685721528716385,
+        "gradient_energy_l1": 0.033631809055805206,
+        "highfrequency_rms": 0.02872549369931221,
+        "latent_path_mse": 0.0,
+        "observed_prefix_lr_rmse": 0.02302442630752921,
+        "private_query_revision_rms": 0.004319775674957782,
+        "psnr_full_db": 29.086243152618408,
+        "psnr_global_query_db": 29.584898471832275,
+        "source_count": 4
+      },
+      "structural_no_private_carrier_full24_H3response": {
+        "highfrequency_rms": 0.028585639782249928,
+        "observed_prefix_lr_rmse": 0.01909996452741325,
+        "private_query_revision_rms": 0.002210449893027544,
+        "psnr_full_db": 29.454055786132812,
+        "psnr_global_query_db": 29.304503440856934,
+        "source_count": 4
+      },
+      "structural_no_private_carrier_full24_VAEguide_response": {
+        "highfrequency_rms": 0.028715438209474087,
+        "observed_prefix_lr_rmse": 0.018801824189722538,
+        "private_query_revision_rms": 0.0021303795510903,
+        "psnr_full_db": 29.488407611846924,
+        "psnr_global_query_db": 29.30112361907959,
+        "source_count": 4
+      }
+    },
+    "val": {
+      "H3conditional_fixedsource": {
+        "highfrequency_rms": 0.028450109995901585,
+        "observed_prefix_lr_rmse": 0.0303602684289217,
+        "private_query_revision_rms": 0.003986147465184331,
+        "psnr_full_db": 25.48665142059326,
+        "psnr_global_query_db": 25.36422634124756,
+        "source_count": 2
+      },
+      "H3conditional_minLR_candidate": {
+        "highfrequency_rms": 0.028450109995901585,
+        "observed_prefix_lr_rmse": 0.0303602684289217,
+        "private_query_revision_rms": 0.003986147465184331,
+        "psnr_full_db": 25.48665142059326,
+        "psnr_global_query_db": 25.36422634124756,
+        "source_count": 2
+      },
+      "H3conditional_residual_scored_mean": {
+        "highfrequency_rms": 0.028450109995901585,
+        "observed_prefix_lr_rmse": 0.0303602684289217,
+        "private_query_revision_rms": 0.003986147465184331,
+        "psnr_full_db": 25.48665142059326,
+        "psnr_global_query_db": 25.36422634124756,
+        "source_count": 2
+      },
+      "H3conditional_uniform_mean": {
+        "highfrequency_rms": 0.028442597948014736,
+        "observed_prefix_lr_rmse": 0.03037000074982643,
+        "private_query_revision_rms": 0.0038215554086491466,
+        "psnr_full_db": 25.488449096679688,
+        "psnr_global_query_db": 25.365936279296875,
+        "source_count": 2
+      },
+      "VAEguide_response_same_U_private": {
+        "highfrequency_rms": 0.02854431513696909,
+        "observed_prefix_lr_rmse": 0.030425632372498512,
+        "private_query_revision_rms": 0.003772387863136828,
+        "psnr_full_db": 25.48384666442871,
+        "psnr_global_query_db": 25.3651180267334,
+        "source_count": 2
+      },
+      "basic_sequential": {
+        "RGB_path_mse": 1.2054253147653071e-05,
+        "far_lr_rmse": 4.41366895529427e-05,
+        "global_query_revision_rms": 0.008404269581660628,
+        "gradient_energy_l1": 0.03615967556834221,
+        "highfrequency_rms": 0.02806843863800168,
+        "latent_path_mse": 0.005957836285233498,
+        "observed_prefix_lr_rmse": 0.0315892593935132,
+        "private_query_revision_rms": 0.006485643447376788,
+        "psnr_full_db": 25.421452045440674,
+        "psnr_global_query_db": 25.384441375732422,
+        "source_count": 2
+      },
+      "classical_joint_LR": {
+        "highfrequency_rms": 0.039443012326955795,
+        "observed_prefix_lr_rmse": 0.005200886866077781,
+        "private_query_revision_rms": 0.00041245975444326177,
+        "psnr_full_db": 27.0974760055542,
+        "psnr_global_query_db": 25.418574333190918,
+        "source_count": 2
+      },
+      "conditional_heuristic_OT": {
+        "highfrequency_rms": 0.028450109995901585,
+        "observed_prefix_lr_rmse": 0.0303602684289217,
+        "private_query_revision_rms": 0.003986147465184331,
+        "psnr_full_db": 25.48665142059326,
+        "psnr_global_query_db": 25.36422634124756,
+        "source_count": 2
+      },
+      "connection_loop": {
+        "RGB_path_mse": 1.0348679097660352e-05,
+        "far_lr_rmse": 4.4607312361222284e-05,
+        "global_query_revision_rms": 0.008489941479638219,
+        "gradient_energy_l1": 0.036195010878145695,
+        "highfrequency_rms": 0.02805068390443921,
+        "latent_path_mse": 0.005138255364727229,
+        "observed_prefix_lr_rmse": 0.031622922979295254,
+        "private_query_revision_rms": 0.0065718552796170115,
+        "psnr_full_db": 25.417701721191406,
+        "psnr_global_query_db": 25.38084602355957,
+        "source_count": 2
+      },
+      "direct_H3_current_mean_RGB": {
+        "highfrequency_rms": 0.041621867567300797,
+        "observed_prefix_lr_rmse": 0.01786674279719591,
+        "private_query_revision_rms": 0.008762725628912449,
+        "psnr_full_db": 26.24232006072998,
+        "psnr_global_query_db": 25.225696563720703,
+        "source_count": 2
+      },
+      "direct_H3_current_minLR": {
+        "highfrequency_rms": 0.042109131813049316,
+        "observed_prefix_lr_rmse": 0.01836625300347805,
+        "private_query_revision_rms": 0.008986763190478086,
+        "psnr_full_db": 26.17932415008545,
+        "psnr_global_query_db": 25.207140922546387,
+        "source_count": 2
+      },
+      "direct_H3_empty_mean": {
+        "highfrequency_rms": 0.03125335182994604,
+        "observed_prefix_lr_rmse": 0.032291291281580925,
+        "private_query_revision_rms": 0.008594114799052477,
+        "psnr_full_db": 25.23657989501953,
+        "psnr_global_query_db": 25.18388271331787,
+        "source_count": 2
+      },
+      "direct_VAE_current_guide": {
+        "highfrequency_rms": 0.03886127844452858,
+        "observed_prefix_lr_rmse": 0.011522586457431316,
+        "private_query_revision_rms": 0.005982615519315004,
+        "psnr_full_db": 26.86789894104004,
+        "psnr_global_query_db": 25.454727172851562,
+        "source_count": 2
+      },
+      "exact_finite_prior_OT": {
+        "highfrequency_rms": 0.02780889719724655,
+        "observed_prefix_lr_rmse": 0.03142895735800266,
+        "private_query_revision_rms": 0.0,
+        "psnr_full_db": 25.428166389465332,
+        "psnr_global_query_db": 25.367633819580078,
+        "source_count": 2
+      },
+      "exact_finite_prior_exact_mean": {
+        "highfrequency_rms": 0.02780889719724655,
+        "observed_prefix_lr_rmse": 0.03142895735800266,
+        "private_query_revision_rms": 0.0,
+        "psnr_full_db": 25.428166389465332,
+        "psnr_global_query_db": 25.367633819580078,
+        "source_count": 2
+      },
+      "exact_finite_prior_fixedsource": {
+        "highfrequency_rms": 0.02780889719724655,
+        "observed_prefix_lr_rmse": 0.03142895735800266,
+        "private_query_revision_rms": 0.0,
+        "psnr_full_db": 25.428166389465332,
+        "psnr_global_query_db": 25.367633819580078,
+        "source_count": 2
+      },
+      "gru": {
+        "RGB_path_mse": 5.0254629968549125e-06,
+        "far_lr_rmse": 4.394390600737097e-05,
+        "global_query_revision_rms": 0.008116848883219063,
+        "gradient_energy_l1": 0.03613331355154514,
+        "highfrequency_rms": 0.028091898653656244,
+        "latent_path_mse": 0.0013589703012257814,
+        "observed_prefix_lr_rmse": 0.03153354208916426,
+        "private_query_revision_rms": 0.006370409741066396,
+        "psnr_full_db": 25.41928243637085,
+        "psnr_global_query_db": 25.369524002075195,
+        "source_count": 2
+      },
+      "initial_X0": {
+        "highfrequency_rms": 0.02780889719724655,
+        "observed_prefix_lr_rmse": 0.03142895735800266,
+        "private_query_revision_rms": 0.0,
+        "psnr_full_db": 25.428166389465332,
+        "psnr_global_query_db": 25.367633819580078,
+        "source_count": 2
+      },
+      "set": {
+        "RGB_path_mse": 0.0,
+        "far_lr_rmse": 4.394231109472457e-05,
+        "global_query_revision_rms": 0.0055368030443787575,
+        "gradient_energy_l1": 0.03572755679488182,
+        "highfrequency_rms": 0.027803925797343254,
+        "latent_path_mse": 0.0,
+        "observed_prefix_lr_rmse": 0.031299554742872715,
+        "private_query_revision_rms": 0.004224838106893003,
+        "psnr_full_db": 25.44480037689209,
+        "psnr_global_query_db": 25.38815689086914,
+        "source_count": 2
+      },
+      "structural_no_private_carrier_full24_H3response": {
+        "highfrequency_rms": 0.03175757918506861,
+        "observed_prefix_lr_rmse": 0.022735576145350933,
+        "private_query_revision_rms": 0.002991631510667503,
+        "psnr_full_db": 26.033297538757324,
+        "psnr_global_query_db": 25.3966646194458,
+        "source_count": 2
+      },
+      "structural_no_private_carrier_full24_VAEguide_response": {
+        "highfrequency_rms": 0.03177189826965332,
+        "observed_prefix_lr_rmse": 0.022423768416047096,
+        "private_query_revision_rms": 0.0028972605941817164,
+        "psnr_full_db": 26.06502342224121,
+        "psnr_global_query_db": 25.398009300231934,
+        "source_count": 2
+      }
+    }
+  },
+  "per_source_paired_differences": [
+    {
+      "source": "train_100075",
+      "split": "train",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.006588935852050781,
+        "psnr_global_query_db": -0.008839607238769531,
+        "observed_prefix_lr_rmse": 1.084059476852417e-06,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": 5.594431422650814e-05,
+        "global_query_revision_rms": 2.7802307158708572e-05,
+        "gradient_energy_l1": 4.3336302042007446e-05,
+        "highfrequency_rms": 0.00014406349509954453,
+        "RGB_path_mse": -7.283915692823939e-07,
+        "latent_path_mse": -0.00030571455135941505
+      }
+    },
+    {
+      "source": "train_100075",
+      "split": "train",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.017533302307128906,
+        "psnr_global_query_db": -0.029026031494140625,
+        "observed_prefix_lr_rmse": -5.4074451327323914e-05,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": -0.00020886026322841644,
+        "global_query_revision_rms": -0.0004588663578033447,
+        "gradient_energy_l1": -3.605149686336517e-05,
+        "highfrequency_rms": -0.00010356772691011429,
+        "RGB_path_mse": 2.025706635322422e-06,
+        "latent_path_mse": 0.0036563313333317637
+      }
+    },
+    {
+      "source": "train_100075",
+      "split": "train",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.013661384582519531,
+        "psnr_global_query_db": 0.009759902954101562,
+        "observed_prefix_lr_rmse": -0.0001578172668814659,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": 0.0012492535170167685,
+        "global_query_revision_rms": 0.0017109611071646214,
+        "gradient_energy_l1": 0.00031278468668460846,
+        "highfrequency_rms": -2.8009526431560516e-05,
+        "RGB_path_mse": 5.076660272607114e-06,
+        "latent_path_mse": 0.005035651847720146
+      }
+    },
+    {
+      "source": "train_100075",
+      "split": "train",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -1.846491813659668,
+        "psnr_global_query_db": -0.007213592529296875,
+        "observed_prefix_lr_rmse": 0.017597746104002,
+        "private_query_revision_rms": 0.004161988239502534,
+        "highfrequency_rms": -0.008099670521914959
+      }
+    },
+    {
+      "source": "train_100080",
+      "split": "train",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.023771286010742188,
+        "psnr_global_query_db": -0.029912948608398438,
+        "observed_prefix_lr_rmse": 5.7956669479608536e-05,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": -0.0001545596169307828,
+        "global_query_revision_rms": -0.00034356326796114445,
+        "gradient_energy_l1": -0.0001150304451584816,
+        "highfrequency_rms": -0.0001911493018269539,
+        "RGB_path_mse": -1.1361466931703035e-06,
+        "latent_path_mse": -0.0009848903864622116
+      }
+    },
+    {
+      "source": "train_100080",
+      "split": "train",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.0075092315673828125,
+        "psnr_global_query_db": -0.014780044555664062,
+        "observed_prefix_lr_rmse": -5.842605605721474e-05,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": -0.0007022576173767447,
+        "global_query_revision_rms": -0.0010586262214928865,
+        "gradient_energy_l1": -0.0002521025016903877,
+        "highfrequency_rms": -0.000338907353579998,
+        "RGB_path_mse": 4.7125149649218656e-07,
+        "latent_path_mse": 0.0013863220810890198
+      }
+    },
+    {
+      "source": "train_100080",
+      "split": "train",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.004665374755859375,
+        "psnr_global_query_db": -0.022617340087890625,
+        "observed_prefix_lr_rmse": -5.456758663058281e-05,
+        "far_lr_rmse": 0.0,
+        "private_query_revision_rms": 0.0007141949608922005,
+        "global_query_revision_rms": 0.0006860506255179644,
+        "gradient_energy_l1": 0.0002331230789422989,
+        "highfrequency_rms": -0.00010285060852766037,
+        "RGB_path_mse": 3.114278570137685e-06,
+        "latent_path_mse": 0.003679920919239521
+      }
+    },
+    {
+      "source": "train_100080",
+      "split": "train",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -2.0197067260742188,
+        "psnr_global_query_db": 0.23083114624023438,
+        "observed_prefix_lr_rmse": 0.009855713695287704,
+        "private_query_revision_rms": 0.0029365749651333317,
+        "highfrequency_rms": -0.002957685850560665
+      }
+    },
+    {
+      "source": "train_100098",
+      "split": "train",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.10142040252685547,
+        "psnr_global_query_db": -0.05817699432373047,
+        "observed_prefix_lr_rmse": 0.0009110402315855026,
+        "far_lr_rmse": 1.8132068362319842e-06,
+        "private_query_revision_rms": 0.0008971164934337139,
+        "global_query_revision_rms": 0.0006460901349782944,
+        "gradient_energy_l1": 0.0007410235702991486,
+        "highfrequency_rms": 0.001162741333246231,
+        "RGB_path_mse": -2.0771767594851553e-06,
+        "latent_path_mse": -0.0031121717765927315
+      }
+    },
+    {
+      "source": "train_100098",
+      "split": "train",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.20255565643310547,
+        "psnr_global_query_db": 0.17154979705810547,
+        "observed_prefix_lr_rmse": -0.0018723774701356888,
+        "far_lr_rmse": 1.3504195521818474e-06,
+        "private_query_revision_rms": -0.00023675523698329926,
+        "global_query_revision_rms": 0.0036727329716086388,
+        "gradient_energy_l1": 0.0002756640315055847,
+        "highfrequency_rms": 0.0024872981011867523,
+        "RGB_path_mse": 6.019218926667236e-05,
+        "latent_path_mse": 0.010092719458043575
+      }
+    },
+    {
+      "source": "train_100098",
+      "split": "train",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.0985116958618164,
+        "psnr_global_query_db": 0.18151569366455078,
+        "observed_prefix_lr_rmse": -0.00026066601276397705,
+        "far_lr_rmse": -4.902953151031397e-06,
+        "private_query_revision_rms": 0.0030484581366181374,
+        "global_query_revision_rms": 0.008282028138637543,
+        "gradient_energy_l1": 0.0015953555703163147,
+        "highfrequency_rms": 0.004328461363911629,
+        "RGB_path_mse": 7.128909783205017e-05,
+        "latent_path_mse": 0.011259579099714756
+      }
+    },
+    {
+      "source": "train_100098",
+      "split": "train",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.615229606628418,
+        "psnr_global_query_db": 0.8915300369262695,
+        "observed_prefix_lr_rmse": 0.02773014036938548,
+        "private_query_revision_rms": 0.010654458601493388,
+        "highfrequency_rms": -0.004519583657383919
+      }
+    },
+    {
+      "source": "train_103041",
+      "split": "train",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.057544708251953125,
+        "psnr_global_query_db": 0.10959911346435547,
+        "observed_prefix_lr_rmse": -6.41215592622757e-05,
+        "far_lr_rmse": -1.2617218203558878e-06,
+        "private_query_revision_rms": -0.0002699755132198334,
+        "global_query_revision_rms": -0.0007977522909641266,
+        "gradient_energy_l1": -0.0004058033227920532,
+        "highfrequency_rms": -0.0006092274561524391,
+        "RGB_path_mse": -9.25974381971173e-06,
+        "latent_path_mse": -0.0011211000382900238
+      }
+    },
+    {
+      "source": "train_103041",
+      "split": "train",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.22804546356201172,
+        "psnr_global_query_db": 0.12770748138427734,
+        "observed_prefix_lr_rmse": -0.0011934852227568626,
+        "far_lr_rmse": -2.7349166771273303e-06,
+        "private_query_revision_rms": 0.0001026960089802742,
+        "global_query_revision_rms": 0.0021835677325725555,
+        "gradient_energy_l1": 0.0007653087377548218,
+        "highfrequency_rms": 0.0023743193596601486,
+        "RGB_path_mse": 1.2421244719007518e-05,
+        "latent_path_mse": 0.004229014273732901
+      }
+    },
+    {
+      "source": "train_103041",
+      "split": "train",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.2154397964477539,
+        "psnr_global_query_db": 0.19871044158935547,
+        "observed_prefix_lr_rmse": -0.000703844241797924,
+        "far_lr_rmse": -1.1607998544604925e-06,
+        "private_query_revision_rms": 0.0008735279552638531,
+        "global_query_revision_rms": 0.00236996216699481,
+        "gradient_energy_l1": 0.0005180519074201584,
+        "highfrequency_rms": 0.0010728714987635612,
+        "RGB_path_mse": 1.5326928405556828e-05,
+        "latent_path_mse": 0.005369194783270359
+      }
+    },
+    {
+      "source": "train_103041",
+      "split": "train",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -1.4214258193969727,
+        "psnr_global_query_db": 0.5353116989135742,
+        "observed_prefix_lr_rmse": 0.014807399362325668,
+        "private_query_revision_rms": 0.004317678191000596,
+        "highfrequency_rms": -0.003978054039180279
+      }
+    },
+    {
+      "source": "val_101085",
+      "split": "val",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.008150100708007812,
+        "psnr_global_query_db": -0.0055389404296875,
+        "observed_prefix_lr_rmse": 5.399063229560852e-05,
+        "far_lr_rmse": 4.825765245186631e-07,
+        "private_query_revision_rms": 0.00036405259743332863,
+        "global_query_revision_rms": 0.00033188704401254654,
+        "gradient_energy_l1": 9.430386126041412e-05,
+        "highfrequency_rms": 0.00010876357555389404,
+        "RGB_path_mse": -3.042923708562739e-07,
+        "latent_path_mse": -0.00021762365940958261
+      }
+    },
+    {
+      "source": "val_101085",
+      "split": "val",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.004963874816894531,
+        "psnr_global_query_db": 0.02582263946533203,
+        "observed_prefix_lr_rmse": 0.00010647252202033997,
+        "far_lr_rmse": -1.2294549378566444e-08,
+        "private_query_revision_rms": -0.00027538416907191277,
+        "global_query_revision_rms": -9.069382213056087e-05,
+        "gradient_energy_l1": -0.00010081939399242401,
+        "highfrequency_rms": -8.387491106987e-05,
+        "RGB_path_mse": -5.4815245675854385e-09,
+        "latent_path_mse": 0.0008000154048204422
+      }
+    },
+    {
+      "source": "val_101085",
+      "split": "val",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.0063686370849609375,
+        "psnr_global_query_db": 0.035457611083984375,
+        "observed_prefix_lr_rmse": 0.00020748376846313477,
+        "far_lr_rmse": 1.7505055893707322e-06,
+        "private_query_revision_rms": 0.0027102725580334663,
+        "global_query_revision_rms": 0.003863167017698288,
+        "gradient_energy_l1": 0.00022027455270290375,
+        "highfrequency_rms": 0.00026320014148950577,
+        "RGB_path_mse": 4.560153683996759e-06,
+        "latent_path_mse": 0.0018579898169264197
+      }
+    },
+    {
+      "source": "val_101085",
+      "split": "val",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -1.6222724914550781,
+        "psnr_global_query_db": 0.021373748779296875,
+        "observed_prefix_lr_rmse": 0.02660640934482217,
+        "private_query_revision_rms": 0.004813218125491403,
+        "highfrequency_rms": -0.013483344577252865
+      }
+    },
+    {
+      "source": "val_101087",
+      "split": "val",
+      "comparator": "basic_sequential",
+      "loop_minus_comparator": {
+        "psnr_full_db": 0.0006494522094726562,
+        "psnr_global_query_db": -0.001651763916015625,
+        "observed_prefix_lr_rmse": 1.3336539268493652e-05,
+        "far_lr_rmse": 4.58669092040509e-07,
+        "private_query_revision_rms": -0.00019162893295288086,
+        "global_query_revision_rms": -0.00016054324805736542,
+        "gradient_energy_l1": -2.3633241653442383e-05,
+        "highfrequency_rms": -0.000144273042678833,
+        "RGB_path_mse": -3.1068557291291654e-06,
+        "latent_path_mse": -0.0014215381816029549
+      }
+    },
+    {
+      "source": "val_101087",
+      "split": "val",
+      "comparator": "gru",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.00812530517578125,
+        "psnr_global_query_db": -0.0031785964965820312,
+        "observed_prefix_lr_rmse": 7.228925824165344e-05,
+        "far_lr_rmse": 1.3391072570811957e-06,
+        "private_query_revision_rms": 0.0006782752461731434,
+        "global_query_revision_rms": 0.0008368790149688721,
+        "gradient_energy_l1": 0.00022421404719352722,
+        "highfrequency_rms": 1.4454126358032227e-06,
+        "RGB_path_mse": 1.0651913726178464e-05,
+        "latent_path_mse": 0.006758554722182453
+      }
+    },
+    {
+      "source": "val_101087",
+      "split": "val",
+      "comparator": "set",
+      "loop_minus_comparator": {
+        "psnr_full_db": -0.060565948486328125,
+        "psnr_global_query_db": -0.050079345703125,
+        "observed_prefix_lr_rmse": 0.00043925270438194275,
+        "far_lr_rmse": -4.205030563753098e-07,
+        "private_query_revision_rms": 0.0019837617874145508,
+        "global_query_revision_rms": 0.002043109852820635,
+        "gradient_energy_l1": 0.0007146336138248444,
+        "highfrequency_rms": 0.00023031607270240784,
+        "RGB_path_mse": 1.6137204511323944e-05,
+        "latent_path_mse": 0.008418520912528038
+      }
+    },
+    {
+      "source": "val_101087",
+      "split": "val",
+      "comparator": "classical_joint_LR",
+      "loop_minus_comparator": {
+        "psnr_full_db": -1.7372760772705078,
+        "psnr_global_query_db": -0.09683036804199219,
+        "observed_prefix_lr_rmse": 0.026237662881612778,
+        "private_query_revision_rms": 0.0075055729248560965,
+        "highfrequency_rms": -0.009301312267780304
+      }
+    }
+  ],
+  "protocol_checks": {
+    "connection_loop": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "basic_sequential": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "gru": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "set": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    }
+  },
+  "exact_set_path_mse_all6sources": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "cost": {
+    "native_H3_samples": 56,
+    "official_Euler_calls_per_sample": 49,
+    "full_50block_DiT_forward_calls": 2744,
+    "DiT_backward_calls": 0,
+    "native_VAE_encode_calls": 30,
+    "native_VAE_decode_calls_by_stage": {
+      "formal_training_4x300x4_endpoints_forward_backward": 4800,
+      "formal_evaluation_6sources_x4heads_x4endpoints_forward": 96,
+      "smoke_4x2_training_plus_6source_evaluation": 128,
+      "initial_native_output_decodes": 8,
+      "response_audit_6x4subsets_x2candidates": 48,
+      "first_strong_control_readouts": 26,
+      "repeated_controls_plus_full24_diagnosis": 74,
+      "independent_RGB_export_2val_x4heads_x4endpoints": 32,
+      "direct_native_readout_diagnosis_6x4": 24
+    },
+    "native_VAE_decode_calls_total": 5236,
+    "count_definition": "Top-level VAE.encode/decode invocations from executed loops, not internal-layer hook counters.",
+    "formal_optimizer_steps": 1200,
+    "smoke_optimizer_steps_excluded_from_formal_budget": 8,
+    "parameters_each_of_four_heads": {
+      "connection_loop": 18888,
+      "basic_sequential": 18888,
+      "gru": 18888,
+      "set": 18888
+    },
+    "formal_training_and_evaluation_seconds": 462.8019163161516,
+    "formal_peak_allocated_bytes": 26793027072,
+    "formal_peak_reserved_bytes": 29578231808,
+    "initial8_sampling_batch_seconds": 51.3406,
+    "conditional48_sampling_batch_seconds": 236.8976,
+    "extra_diagnostic_cost_is_not_part_of_matched_training_budget": true
+  },
+  "interpretation": [
+    "DeepSets has exactly zero order discrepancy by construction, on all six sources. Small loop reduction versus a path-dependent endpoint head is insufficient.",
+    "All trained heads and matched conditional controls share the same X0 channel-PCA8 and latent private complement. These coordinates are computational, not semantically identified.",
+    "Removing the arbitrary PCA/private split improves correction and can also reduce decoded private-query change; a frozen latent complement is not guaranteed visual identity protection.",
+    "VAE-guide response is at least as strong as actual H3 response here. Direct native output remains weaker than the direct VAE guide and classical inverse.",
+    "Exact finite-prior Bayes/MHT/OT claims apply only to two fixed far-only natural atoms with the specified likelihood. Cue-conditioned candidate rescoring is heuristic, not a calibrated posterior.",
+    "Private queries are four predeclared 32px corners, 6.25% of pixels. Global query is 50% outside nominal near rectangles and private queries. These are operational regions, not semantic conditional-independence labels or exact camera-support nulls.",
+    "Earlier project evaluation already used all BSDS val/test sources. These six sources are development data. Sealed DIV2K confirmation data was not read or evaluated.",
+    "All conditional caches use official BF16 sampling. Earlier five-step native guide gradient feasibility had an FP32-vs-BF16 IO discrepancy and is not evidence for this pilot."
+  ],
+  "independent_perceptual_evaluation": {
+    "path": "results/h3_core/connection_perceptual/evaluation.json",
+    "protocol": "Full RGB float outputs after identical existing bounded64-far/box DC. Each source has equal weight; learned AB/BA orders each half. No model or protocol selection.",
+    "LPIPS": "alex v0.1; same validated evaluation package/weights as all real-video runs",
+    "source_means": {
+      "H3_response_mean_AB": {
+        "psnr_full": 25.48844814300537,
+        "ssim_full": 0.652884304523468,
+        "lpips_full": 0.3376888334751129
+      },
+      "basic_sequential": {
+        "psnr_full": 25.421452045440674,
+        "ssim_full": 0.6481015682220459,
+        "lpips_full": 0.3393332287669182
+      },
+      "classical_AB": {
+        "psnr_full": 27.0974760055542,
+        "ssim_full": 0.7660940885543823,
+        "lpips_full": 0.24684155732393265
+      },
+      "connection_loop": {
+        "psnr_full": 25.417701721191406,
+        "ssim_full": 0.6478883326053619,
+        "lpips_full": 0.3393648713827133
+      },
+      "gru": {
+        "psnr_full": 25.41928243637085,
+        "ssim_full": 0.6478939652442932,
+        "lpips_full": 0.34036219120025635
+      },
+      "reference": {
+        "psnr_full": 25.428165435791016,
+        "ssim_full": 0.6499007940292358,
+        "lpips_full": 0.3494994640350342
+      },
+      "set": {
+        "psnr_full": 25.444802284240723,
+        "ssim_full": 0.6504343152046204,
+        "lpips_full": 0.3426283150911331
+      }
+    },
+    "by_source": [
+      {
+        "source": "101085",
+        "method": "H3_response_mean_AB",
+        "psnr_full": 25.22832679748535,
+        "ssim_full": 0.6283915042877197,
+        "lpips_full": 0.3542611300945282
+      },
+      {
+        "source": "101085",
+        "method": "basic_sequential",
+        "psnr_full": 25.19470977783203,
+        "ssim_full": 0.6240454018115997,
+        "lpips_full": 0.36062705516815186
+      },
+      {
+        "source": "101085",
+        "method": "classical_AB",
+        "psnr_full": 26.8088321685791,
+        "ssim_full": 0.745112419128418,
+        "lpips_full": 0.2668348550796509
+      },
+      {
+        "source": "101085",
+        "method": "connection_loop",
+        "psnr_full": 25.186559677124023,
+        "ssim_full": 0.6236048936843872,
+        "lpips_full": 0.3585115969181061
+      },
+      {
+        "source": "101085",
+        "method": "gru",
+        "psnr_full": 25.18159580230713,
+        "ssim_full": 0.6238654851913452,
+        "lpips_full": 0.35447509586811066
+      },
+      {
+        "source": "101085",
+        "method": "reference",
+        "psnr_full": 25.159948348999023,
+        "ssim_full": 0.6239405274391174,
+        "lpips_full": 0.3633182942867279
+      },
+      {
+        "source": "101085",
+        "method": "set",
+        "psnr_full": 25.180194854736328,
+        "ssim_full": 0.6246713399887085,
+        "lpips_full": 0.35824525356292725
+      },
+      {
+        "source": "101087",
+        "method": "H3_response_mean_AB",
+        "psnr_full": 25.74856948852539,
+        "ssim_full": 0.6773771047592163,
+        "lpips_full": 0.32111653685569763
+      },
+      {
+        "source": "101087",
+        "method": "basic_sequential",
+        "psnr_full": 25.648194313049316,
+        "ssim_full": 0.6721577346324921,
+        "lpips_full": 0.3180394023656845
+      },
+      {
+        "source": "101087",
+        "method": "classical_AB",
+        "psnr_full": 27.386119842529297,
+        "ssim_full": 0.7870757579803467,
+        "lpips_full": 0.22684825956821442
+      },
+      {
+        "source": "101087",
+        "method": "connection_loop",
+        "psnr_full": 25.64884376525879,
+        "ssim_full": 0.6721717715263367,
+        "lpips_full": 0.32021814584732056
+      },
+      {
+        "source": "101087",
+        "method": "gru",
+        "psnr_full": 25.65696907043457,
+        "ssim_full": 0.6719224452972412,
+        "lpips_full": 0.32624928653240204
+      },
+      {
+        "source": "101087",
+        "method": "reference",
+        "psnr_full": 25.696382522583008,
+        "ssim_full": 0.6758610606193542,
+        "lpips_full": 0.33568063378334045
+      },
+      {
+        "source": "101087",
+        "method": "set",
+        "psnr_full": 25.709409713745117,
+        "ssim_full": 0.6761972904205322,
+        "lpips_full": 0.327011376619339
+      }
+    ],
+    "conclusion": "No stable perceptual contribution: loop/basic source differences change sign; classical control is substantially stronger."
+  }
+}

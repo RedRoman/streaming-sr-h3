@@ -1,0 +1,97 @@
+{
+  "cache": "results/h3_factorized/revision_v3/cache",
+  "models": "results/h3_factorized/decoded_v4/main_seed17",
+  "checkpoint": "last",
+  "expected_step": 672,
+  "dense": true,
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/decoded_v4/val_seed17",
+  "seed": 17,
+  "seconds": 85.60202527046204,
+  "checkpoints": {
+    "closed_action": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/closed_action_seed17/last.pt",
+      "sha256": "8a80c2cc88daa9f11b457700dc1a168e93263fc08730e9927bcaf23cdb2c8657",
+      "step": 672,
+      "parameters": 146224,
+      "active_parameters": 146192,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/closed_action_seed17/last.pt"
+    },
+    "closed_action_no_equiv": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/closed_action_no_equiv_seed17/last.pt",
+      "sha256": "66e19ec36c8e8ca9c30a005bc4667c804594e6949a0d797f3b19536bd66547ac",
+      "step": 672,
+      "parameters": 146224,
+      "active_parameters": 146192,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/closed_action_no_equiv_seed17/last.pt"
+    },
+    "factor_cache_mlp": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/factor_cache_mlp_seed17/last.pt",
+      "sha256": "c2299ae16ecdf8b2586fed1dca5ae8b9ed031e941bed5e4f14d9f4019ef7c301",
+      "step": 672,
+      "parameters": 146576,
+      "active_parameters": 146544,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/factor_cache_mlp_seed17/last.pt"
+    },
+    "nonlinear_group": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/nonlinear_group_seed17/last.pt",
+      "sha256": "1752d1032a0f06019d26512685d40fcd5ff783d20d94928a415dcc9479bf16dd",
+      "step": 672,
+      "parameters": 146576,
+      "active_parameters": 146544,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/nonlinear_group_seed17/last.pt"
+    },
+    "gru_online": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/gru_online_seed17/last.pt",
+      "sha256": "595176f00d4f3aea2f1fb48a309d41f9d3a79c6f45d47c01126faa5a55d0b148",
+      "step": 672,
+      "parameters": 146028,
+      "active_parameters": 146000,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/gru_online_seed17/last.pt"
+    },
+    "gru_replay": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/gru_replay_seed17/last.pt",
+      "sha256": "8570bd1f2c7e8be61c5e3886b5e5b2f3e08a38102523d5325e072ea267b80ba6",
+      "step": 672,
+      "parameters": 146028,
+      "active_parameters": 146000,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/gru_replay_seed17/last.pt"
+    },
+    "anchor_only": {
+      "path": "results/h3_factorized/decoded_v4/main_seed17/anchor_only_seed17/last.pt",
+      "sha256": "9b1dfd36533670893e0d0ed52f5216970065fdf91eb6a7fe903d47239750b31c",
+      "step": 672,
+      "parameters": 146224,
+      "active_parameters": 146192,
+      "initial_checkpoint": "results/h3_factorized/revision_v3/latent_stage1/closed_action_seed17/last.pt"
+    }
+  },
+  "sources": [
+    "val_101085",
+    "val_101087",
+    "val_102061",
+    "val_103070",
+    "val_105025",
+    "val_106024",
+    "val_108005",
+    "val_108070"
+  ],
+  "capture_group_provenance": "Simulator known locked-exposure segment tags, all controls share; not discovered by LR and contains no numerical q or content/visibility labels",
+  "native_calls": {
+    "encode": 168,
+    "decode": 1016
+  },
+  "peak_GPU_bytes": 7213607424,
+  "VAE_parameter_bytes": 5207737968,
+  "shared_camera_operators_bytes": 524288,
+  "torch": "2.10.0+cu128",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "VAE_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "precision": "nativeFP16 E/D; cameraFP32; TF32off; RGBtargetscommonFP16 cache",
+  "classical_inverse": "LR-only relative multiplicative spatial gain+bias, confidence weighted48CG ridge.01 fixed earliertrain-only calibration; current-far-null,sharedDC64",
+  "scope": "32train/8val development natural photos with simulated camera/nuisance, no old16test, no real video or DiT claim",
+  "evaluation_source_independence": "Average queries within each source before bootstrap/pairwise statistics; one trained seed, not8x7 independent images",
+  "script_sha256": "f8dc49cb135868b10042c41959fdc9e42b4c32039e479c87c6b6b5806492ea17",
+  "rows": 2688
+}

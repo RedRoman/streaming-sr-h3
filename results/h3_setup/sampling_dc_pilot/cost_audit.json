@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "new_sampling_trajectories": 6,
+  "DiT_NFE": 294,
+  "E_calls": 27,
+  "D_calls_inside_sampler": 15,
+  "new_final_D_calls": 4,
+  "guard_final_RGB_not_separately_decoded": "Full-video/audio latent equality exact0 is stronger; guard original/identity latents retained, no redundant decoder calls.",
+  "final_guard_latent_maxabs": {
+    "video": 0.0,
+    "audio": 0.0
+  },
+  "sampling_seconds_sum": 168.5524767525494,
+  "hook_D_seconds": 5.672268375754356,
+  "hook_E_seconds": 20.90813223272562,
+  "hook_projection_seconds": 65.8244018368423,
+  "new_case_sample_results": [
+    {
+      "case": "bear_256",
+      "mode": "identity",
+      "seconds": 8.39319235086441,
+      "NFE": 49,
+      "E": 3,
+      "midD": 3
+    },
+    {
+      "case": "bear_256",
+      "mode": "original",
+      "seconds": 4.910640642046928,
+      "NFE": 49,
+      "E": 0,
+      "midD": 0
+    },
+    {
+      "case": "cows_native480",
+      "mode": "sampling_dc",
+      "seconds": 70.5551234409213,
+      "NFE": 49,
+      "E": 6,
+      "midD": 3
+    },
+    {
+      "case": "dance-twirl_native480",
+      "mode": "sampling_dc",
+      "seconds": 70.28589119389653,
+      "NFE": 49,
+      "E": 6,
+      "midD": 3
+    },
+    {
+      "case": "cows_256",
+      "mode": "sampling_dc",
+      "seconds": 7.24325580149889,
+      "NFE": 49,
+      "E": 6,
+      "midD": 3
+    },
+    {
+      "case": "dance-twirl_256",
+      "mode": "sampling_dc",
+      "seconds": 7.1643733233213425,
+      "NFE": 49,
+      "E": 6,
+      "midD": 3
+    }
+  ],
+  "baseline_reuse": "v2 unadapted andVAE per-PNG SHA verified; no baseline NFE hidden innew count"
+}

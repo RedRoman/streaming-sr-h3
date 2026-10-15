@@ -1,0 +1,50 @@
+{
+  "scope": "TRAIN one-source prior-support/reveal diagnostic, not model selection or population calibration. All controls here cost3actual49callH3initializations; no extraDiTupdates.",
+  "proposal_seeds": [
+    101,
+    202,
+    303
+  ],
+  "actual_initial_full50block_forwards": 147,
+  "near_packet_index": 17,
+  "likelihood": "Gaussian effectiveSigma.005 plus common observedLR perchannel bias/gain Schur; no HR weighting",
+  "exact_three_atom_posterior_weights": [
+    0.0,
+    1.0,
+    0.0
+  ],
+  "near_schur_rmse_each_seed": [
+    0.02471551850230251,
+    0.024609834314006394,
+    0.02467547157241324
+  ],
+  "effective_atoms": 1.0,
+  "fitted_gaussian_coefficient_norm": 1.2472286447061633,
+  "fitted_gaussian_gram_eigenvalues": [
+    1.770250612764812e-13,
+    507.64482777334183,
+    836.2495455397841
+  ],
+  "observed_near_fraction_within_empirical3sigma": 0.51904296875,
+  "metrics": {
+    "prior_mean": {
+      "psnr_db": 28.915366864630375,
+      "near_real_LR_rmse": 0.025044117061224815,
+      "near_LR_schur_rmse": 0.024630004580575886,
+      "first_real_LR_rmse": 1.0390135390782958e-09
+    },
+    "exact_three_atom_mean": {
+      "psnr_db": 28.897758477239787,
+      "near_real_LR_rmse": 0.02502519524751298,
+      "near_LR_schur_rmse": 0.024609834314006394,
+      "first_real_LR_rmse": 1.8065470678026076e-09
+    },
+    "same_three_samples_gaussian_map": {
+      "psnr_db": 28.898273637473096,
+      "near_real_LR_rmse": 0.025011247672217036,
+      "near_LR_schur_rmse": 0.02459722708872694,
+      "first_real_LR_rmse": 1.897488121984866e-09
+    }
+  },
+  "caution": "Three draws cannot establish full H3 support/calibration. Reweighting cannot create a new detail absent from all draws; any next learned transport must test newly generated evidence-compatible detail and unrelated-identity retention beyond these diagnostics."
+}

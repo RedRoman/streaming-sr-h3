@@ -1,0 +1,31 @@
+{
+  "pid": 1292592,
+  "epoch": 1792063987.4955595,
+  "command": [
+    "/home/saiadmin/streaming_sr_20261015/external/h3_venv/bin/python",
+    "-u",
+    "experiments/h3_backbone/train_native_sr_pilot_native_io_v2.py",
+    "--comfy",
+    "external/ComfyUI_H3",
+    "--model",
+    "external/h3_assets/minimax_h3_fl2va_pruned_bf16.safetensors",
+    "--train",
+    "results/h3_setup/native_sr_train_pairs/pairs_manifest.json",
+    "--val",
+    "results/h3_setup/native_sr_val_pairs/pairs_manifest.json",
+    "--context",
+    "external/h3_assets/h3_qwen_context_neutral_restore.pt",
+    "--out",
+    "results/h3_setup/native_sr_pilot400_native_io_v2",
+    "--steps",
+    "400",
+    "--seed",
+    "703",
+    "--lr",
+    "1e-5"
+  ],
+  "CUDA_VISIBLE_DEVICES": "6",
+  "stdout_stderr_log": "results/h3_setup/native_sr_pilot400_native_io_v2/logs/train_20261015_193307.log",
+  "foreground_only": true,
+  "not_detached": true
+}

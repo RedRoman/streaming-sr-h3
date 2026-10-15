@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "completed": [
+    "sample",
+    "decode"
+  ],
+  "phase": "decode",
+  "command": [
+    "/root/autodl-tmp/h3-w4a8-20261011/env/bin/python",
+    "experiments/h3_backbone/staged_bf16_guide.py",
+    "decode",
+    "--comfy",
+    "/root/autodl-tmp/h3-w4a8-20261011/ComfyUI",
+    "--output",
+    "results/h3_backbone/dit_bf16_neutral_davis22_832x480_normal49",
+    "--lr-directory",
+    "data/real_video/davis_bmx_trees_native480_lr22",
+    "--frames",
+    "22",
+    "--width",
+    "832",
+    "--height",
+    "480",
+    "--vae",
+    "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors"
+  ],
+  "epoch": 1792051939.4370477
+}

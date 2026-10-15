@@ -1,0 +1,41 @@
+{
+  "status": "proposal_only_not_executed",
+  "purpose": "Prior-work-based frozenH3 measurementconsistency baseline, not a new memory mechanism",
+  "foundation": "same canonical pruned BF16 H3/no LoRA/no guideprojection from native_io_v2 unadapted",
+  "guide": "exact existing official LRguide, neutraltextcache, allobservedprefix0..21,24fps",
+  "seed": 101,
+  "sampler": "official Euler/CFG1/exact50sigma grid,49NFE",
+  "correction_indices_zero_based": [
+    28,
+    45,
+    48
+  ],
+  "correction_sigmas": [
+    0.9,
+    0.5161290322580645,
+    0.20000000000000018
+  ],
+  "correction_strength": 1.0,
+  "pixel_projection": "same floating TorchAA bicubic operator, box[0,1],fixedDykstra25; HRneverread",
+  "correction_formula": "z0=x_sigma-sigma*v; r=D(z0); delta=E(P_y(r))-E(r); corrected_z0=z0+delta; officialEuler consumes corrected_z0; audiounchanged",
+  "vae": "same canonical FP16 storage/compute; native22 clip, scale1, pairedfloatRGB noPNGquantization",
+  "no_innovation_guard": "P(r)=r => shared E(r) => delta exactlyzero; hook-disabled andzero-correction officialtrajectory must match before qualityrun",
+  "training": false,
+  "validation_selection": false,
+  "minimal_new_sampling_trajectories": 6,
+  "minimal_new_DiT_NFE": 294,
+  "main_evaluation": "4 fixedvalcases cows/dance-twirl x256/native480; compareofficialbase existingraw/DC25 tosample-inner correctionraw/DC25; no test",
+  "guard": "bear_256 train: newofficial49+zero-correction49 numericalparity only, no stepsize selection",
+  "incremental_VAE_calls_per_maincase": {
+    "E": 6,
+    "D_before_final": 3,
+    "finalD": 1
+  },
+  "measured_resident_H100_reference_seconds": {
+    "49NFE_256": 5.24,
+    "49NFE_native480": 30.65,
+    "D22_256": 0.66,
+    "D22_native480": 4.49
+  },
+  "runtime_estimate_not_measurement": "main corrected256 ~10-15s/case; native480 ~55-80s/case if E/D andDiT co-resident; newGPUwork~3-5min plusinitialload/parity,CPUmetrics~2-4min. Eperresolution notseparatelymeasured; modelreload/offload canraisewalltime. Recordallcalls/transferandpeak."
+}

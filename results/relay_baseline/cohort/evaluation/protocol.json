@@ -1,0 +1,26 @@
+{
+  "status": "running",
+  "pid": 1352197,
+  "started_unix": 1792069032.4176552,
+  "code_sha256": "28b334ac6f354c73c3347d789c68058f78ddf89c470908aa43afc2ea970176c4",
+  "device": "cuda",
+  "protocol": "12 cases from 6 source videos: 4train/2val x 2 spatial contexts. No fitting, tuning or selection. Each method gets exactly one final P25, including bicubic and H3 VAE.",
+  "image_precision": "8-bit raw PNG/readouts for all methods; bicubic rounded to 8-bit; final P25 evaluated in float32 without re-quantization.",
+  "dc": "float64 AA-bicubic affine / RGB box Dykstra,25 iterations; actual residual reported; not exact Pillow operator.",
+  "temporal": "Fixed LR-only DIS, paired confidence>=.5; subtract warped HR residual. Does not measure motion endpoint error.",
+  "lpips": "alex v0.1, CUDA and cuDNN TF32 both disabled",
+  "comparison_limit": "Different pretrained models, data, budgets and waiting. H3 VAE sees all22; official Relay waits up to15 frames; causal Relay has0 future frames but changes reference conditioning and3->2 Wan calls.",
+  "h3_vae_preprocess": "Existing Torch AA-bicubic guide. Distinct from official H3 AddGuide uint8/Lanczos variant in native SR pilot.",
+  "scope": "Development6source cohort; no project-new confirmation data opened.",
+  "torch": "2.10.0+cu128",
+  "lpips_version": "unavailable: copied evaluation package has no dist-info; code and weights hashed",
+  "lpips_init_sha256": "36ee004a45e2cc2c5ab47fa3955f00c0e41f6a151ef0249fb6f362533ed58b22",
+  "projection_audit": {
+    "torch_separable_operator_max_abs": 3.3306690738754696e-16,
+    "affine_projection_max_lr_residual": 3.3306690738754696e-16,
+    "affine_update_nullspace_inner_product": 7.993605777301127e-15,
+    "bounded_projection_max_lr_rmse": 2.1744328027029633e-16,
+    "rectangular_operator_max_abs": 3.3306690738754696e-16,
+    "passed": true
+  }
+}

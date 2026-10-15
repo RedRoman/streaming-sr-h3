@@ -1,0 +1,600 @@
+{
+  "seed": 17,
+  "reason": "Difference of rebased accumulated h includes old-coarse recalibration; it is not a single-packet h. Original current_only results are invalid controls.",
+  "steps": 400,
+  "noise_and_data_schedule": "Replayed constructor and original Python/CUDA schedule; no prior retraining",
+  "evaluation": {
+    "val/101085": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 25.161487579345703,
+            "psnr_nominal_roi_db": 26.596689224243164,
+            "psnr_teacher90_support_db": 25.206911087036133,
+            "gradient_l1_full": 0.07380679249763489,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "bounded": {
+            "psnr_full_db": 25.19269561767578,
+            "psnr_nominal_roi_db": 26.598861694335938,
+            "psnr_teacher90_support_db": 25.20819854736328,
+            "gradient_l1_full": 0.07361486554145813,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "initialfootprint_lr_rmse": 7.756332706776448e-06,
+          "past_witness_clean_rmse": 7.74103136791382e-06,
+          "past_witness_raw_rmse": 7.756486411381047e-06,
+          "coefficient_norm": 32.97132110595703
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 25.170452117919922,
+            "psnr_nominal_roi_db": 26.759349822998047,
+            "psnr_teacher90_support_db": 25.365983963012695,
+            "gradient_l1_full": 0.0737946629524231,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "bounded": {
+            "psnr_full_db": 25.201923370361328,
+            "psnr_nominal_roi_db": 26.76274871826172,
+            "psnr_teacher90_support_db": 25.368005752563477,
+            "gradient_l1_full": 0.07359849661588669,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "initialfootprint_lr_rmse": 7.903198820713442e-06,
+          "past_witness_clean_rmse": 0.026114657521247864,
+          "past_witness_raw_rmse": 0.027206337079405785,
+          "coefficient_norm": 22.928279876708984
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 25.176237106323242,
+            "psnr_nominal_roi_db": 26.60936737060547,
+            "psnr_teacher90_support_db": 25.23046112060547,
+            "gradient_l1_full": 0.07374460995197296,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "bounded": {
+            "psnr_full_db": 25.20661163330078,
+            "psnr_nominal_roi_db": 26.612070083618164,
+            "psnr_teacher90_support_db": 25.232059478759766,
+            "gradient_l1_full": 0.07355807721614838,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "initialfootprint_lr_rmse": 7.1198160185304005e-06,
+          "past_witness_clean_rmse": 0.02143915370106697,
+          "past_witness_raw_rmse": 0.022335730493068695,
+          "coefficient_norm": 31.67948341369629
+        }
+      ],
+      "rgb_revision_17_38": 1.9726576283574104e-05
+    },
+    "val/101087": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 25.539236068725586,
+            "psnr_nominal_roi_db": 24.095741271972656,
+            "psnr_teacher90_support_db": 23.558773040771484,
+            "gradient_l1_full": 0.06328195333480835,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "bounded": {
+            "psnr_full_db": 25.683889389038086,
+            "psnr_nominal_roi_db": 24.103910446166992,
+            "psnr_teacher90_support_db": 23.569381713867188,
+            "gradient_l1_full": 0.06236649304628372,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "initialfootprint_lr_rmse": 6.617178587475792e-05,
+          "past_witness_clean_rmse": 5.785376924904995e-05,
+          "past_witness_raw_rmse": 6.613327423110604e-05,
+          "coefficient_norm": 17.794456481933594
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 25.570077896118164,
+            "psnr_nominal_roi_db": 24.458812713623047,
+            "psnr_teacher90_support_db": 23.938047409057617,
+            "gradient_l1_full": 0.06326005607843399,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "bounded": {
+            "psnr_full_db": 25.718767166137695,
+            "psnr_nominal_roi_db": 24.46549415588379,
+            "psnr_teacher90_support_db": 23.947065353393555,
+            "gradient_l1_full": 0.062331728637218475,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "initialfootprint_lr_rmse": 6.646961264777929e-05,
+          "past_witness_clean_rmse": 0.02082969807088375,
+          "past_witness_raw_rmse": 0.025853781029582024,
+          "coefficient_norm": 29.756549835205078
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 25.554698944091797,
+            "psnr_nominal_roi_db": 24.09196662902832,
+            "psnr_teacher90_support_db": 23.554208755493164,
+            "gradient_l1_full": 0.06311488151550293,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "bounded": {
+            "psnr_full_db": 25.701696395874023,
+            "psnr_nominal_roi_db": 24.102622985839844,
+            "psnr_teacher90_support_db": 23.566967010498047,
+            "gradient_l1_full": 0.06218888610601425,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "initialfootprint_lr_rmse": 4.1153580241370946e-05,
+          "past_witness_clean_rmse": 0.01747092790901661,
+          "past_witness_raw_rmse": 0.021563125774264336,
+          "coefficient_norm": 16.882953643798828
+        }
+      ],
+      "rgb_revision_17_38": 4.0228416764875874e-05
+    },
+    "val/102061": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 22.879514694213867,
+            "psnr_nominal_roi_db": 21.34341812133789,
+            "psnr_teacher90_support_db": 20.443115234375,
+            "gradient_l1_full": 0.07579292356967926,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "bounded": {
+            "psnr_full_db": 22.96502113342285,
+            "psnr_nominal_roi_db": 21.486513137817383,
+            "psnr_teacher90_support_db": 20.643957138061523,
+            "gradient_l1_full": 0.07519440352916718,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "initialfootprint_lr_rmse": 3.714733975357376e-05,
+          "past_witness_clean_rmse": 3.6495050153462216e-05,
+          "past_witness_raw_rmse": 3.7136564060347155e-05,
+          "coefficient_norm": 18.240022659301758
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 22.906402587890625,
+            "psnr_nominal_roi_db": 21.636749267578125,
+            "psnr_teacher90_support_db": 20.69626808166504,
+            "gradient_l1_full": 0.07571101188659668,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "bounded": {
+            "psnr_full_db": 22.99189567565918,
+            "psnr_nominal_roi_db": 21.784467697143555,
+            "psnr_teacher90_support_db": 20.905929565429688,
+            "gradient_l1_full": 0.07511137425899506,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "initialfootprint_lr_rmse": 3.665226176963188e-05,
+          "past_witness_clean_rmse": 0.01068219542503357,
+          "past_witness_raw_rmse": 0.010810760781168938,
+          "coefficient_norm": 25.15149688720703
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 22.896141052246094,
+            "psnr_nominal_roi_db": 21.392175674438477,
+            "psnr_teacher90_support_db": 20.474950790405273,
+            "gradient_l1_full": 0.07561787962913513,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "bounded": {
+            "psnr_full_db": 22.980060577392578,
+            "psnr_nominal_roi_db": 21.5250301361084,
+            "psnr_teacher90_support_db": 20.66735076904297,
+            "gradient_l1_full": 0.07503320276737213,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "initialfootprint_lr_rmse": 3.8394919101847336e-05,
+          "past_witness_clean_rmse": 0.008959431201219559,
+          "past_witness_raw_rmse": 0.009058520197868347,
+          "coefficient_norm": 18.125682830810547
+        }
+      ],
+      "rgb_revision_17_38": 3.0023467843420804e-05
+    },
+    "val/103070": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 28.605152130126953,
+            "psnr_nominal_roi_db": 27.275394439697266,
+            "psnr_teacher90_support_db": 24.928342819213867,
+            "gradient_l1_full": 0.03761192411184311,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "bounded": {
+            "psnr_full_db": 28.625167846679688,
+            "psnr_nominal_roi_db": 27.403108596801758,
+            "psnr_teacher90_support_db": 25.067256927490234,
+            "gradient_l1_full": 0.037558380514383316,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "initialfootprint_lr_rmse": 2.5543822630424984e-06,
+          "past_witness_clean_rmse": 2.533466840759502e-06,
+          "past_witness_raw_rmse": 2.5514259505143855e-06,
+          "coefficient_norm": 29.116357803344727
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 28.623329162597656,
+            "psnr_nominal_roi_db": 27.444047927856445,
+            "psnr_teacher90_support_db": 25.050273895263672,
+            "gradient_l1_full": 0.03756529465317726,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "bounded": {
+            "psnr_full_db": 28.640914916992188,
+            "psnr_nominal_roi_db": 27.571537017822266,
+            "psnr_teacher90_support_db": 25.17500877380371,
+            "gradient_l1_full": 0.03752057999372482,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "initialfootprint_lr_rmse": 1.8898189182436909e-06,
+          "past_witness_clean_rmse": 0.01717052422463894,
+          "past_witness_raw_rmse": 0.017307421192526817,
+          "coefficient_norm": 23.328786849975586
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 28.64105224609375,
+            "psnr_nominal_roi_db": 27.320955276489258,
+            "psnr_teacher90_support_db": 24.95968246459961,
+            "gradient_l1_full": 0.037427403032779694,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "bounded": {
+            "psnr_full_db": 28.660497665405273,
+            "psnr_nominal_roi_db": 27.456445693969727,
+            "psnr_teacher90_support_db": 25.09442138671875,
+            "gradient_l1_full": 0.037374675273895264,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "initialfootprint_lr_rmse": 2.4731918983889045e-06,
+          "past_witness_clean_rmse": 0.014138326980173588,
+          "past_witness_raw_rmse": 0.014252308756113052,
+          "coefficient_norm": 27.53911018371582
+        }
+      ],
+      "rgb_revision_17_38": 1.6747253539506346e-05
+    },
+    "val/105025": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 25.5303955078125,
+            "psnr_nominal_roi_db": 30.058908462524414,
+            "psnr_teacher90_support_db": 29.018571853637695,
+            "gradient_l1_full": 0.06570219993591309,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "bounded": {
+            "psnr_full_db": 25.564167022705078,
+            "psnr_nominal_roi_db": 30.058639526367188,
+            "psnr_teacher90_support_db": 29.029117584228516,
+            "gradient_l1_full": 0.06538446992635727,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "initialfootprint_lr_rmse": 4.894414450973272e-05,
+          "past_witness_clean_rmse": 4.591588367475197e-05,
+          "past_witness_raw_rmse": 4.890946365776472e-05,
+          "coefficient_norm": 12.907370567321777
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 25.53567886352539,
+            "psnr_nominal_roi_db": 30.19298553466797,
+            "psnr_teacher90_support_db": 29.136451721191406,
+            "gradient_l1_full": 0.06568272411823273,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "bounded": {
+            "psnr_full_db": 25.569429397583008,
+            "psnr_nominal_roi_db": 30.192710876464844,
+            "psnr_teacher90_support_db": 29.146146774291992,
+            "gradient_l1_full": 0.06536666303873062,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "initialfootprint_lr_rmse": 4.893078585155308e-05,
+          "past_witness_clean_rmse": 0.017595959827303886,
+          "past_witness_raw_rmse": 0.024857228621840477,
+          "coefficient_norm": 18.405296325683594
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 25.54708480834961,
+            "psnr_nominal_roi_db": 30.056732177734375,
+            "psnr_teacher90_support_db": 29.03928565979004,
+            "gradient_l1_full": 0.0655907392501831,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "bounded": {
+            "psnr_full_db": 25.580427169799805,
+            "psnr_nominal_roi_db": 30.05644989013672,
+            "psnr_teacher90_support_db": 29.049556732177734,
+            "gradient_l1_full": 0.06528345495462418,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "initialfootprint_lr_rmse": 2.1034969904576428e-05,
+          "past_witness_clean_rmse": 0.014475435949862003,
+          "past_witness_raw_rmse": 0.020398860797286034,
+          "coefficient_norm": 10.55129623413086
+        }
+      ],
+      "rgb_revision_17_38": 1.7868063878268003e-05
+    },
+    "val/106024": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 29.74851417541504,
+            "psnr_nominal_roi_db": 25.817882537841797,
+            "psnr_teacher90_support_db": 23.910160064697266,
+            "gradient_l1_full": 0.026673942804336548,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "bounded": {
+            "psnr_full_db": 29.988033294677734,
+            "psnr_nominal_roi_db": 25.857070922851562,
+            "psnr_teacher90_support_db": 24.02849006652832,
+            "gradient_l1_full": 0.026303548365831375,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "initialfootprint_lr_rmse": 3.4798493288690224e-05,
+          "past_witness_clean_rmse": 3.426052717259154e-05,
+          "past_witness_raw_rmse": 3.478185317362659e-05,
+          "coefficient_norm": 30.70627212524414
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 29.889575958251953,
+            "psnr_nominal_roi_db": 26.792125701904297,
+            "psnr_teacher90_support_db": 24.650306701660156,
+            "gradient_l1_full": 0.026492930948734283,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "bounded": {
+            "psnr_full_db": 30.146770477294922,
+            "psnr_nominal_roi_db": 26.902816772460938,
+            "psnr_teacher90_support_db": 24.84014892578125,
+            "gradient_l1_full": 0.026105493307113647,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "initialfootprint_lr_rmse": 3.4824959584511817e-05,
+          "past_witness_clean_rmse": 0.005531359929591417,
+          "past_witness_raw_rmse": 0.005541197489947081,
+          "coefficient_norm": 25.024322509765625
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 29.79454231262207,
+            "psnr_nominal_roi_db": 25.80738067626953,
+            "psnr_teacher90_support_db": 23.88729476928711,
+            "gradient_l1_full": 0.026345640420913696,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "bounded": {
+            "psnr_full_db": 30.034276962280273,
+            "psnr_nominal_roi_db": 25.838924407958984,
+            "psnr_teacher90_support_db": 23.9945068359375,
+            "gradient_l1_full": 0.025974536314606667,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "initialfootprint_lr_rmse": 3.24557586282026e-05,
+          "past_witness_clean_rmse": 0.004911709111183882,
+          "past_witness_raw_rmse": 0.004919957369565964,
+          "coefficient_norm": 30.070709228515625
+        }
+      ],
+      "rgb_revision_17_38": 3.503336483845487e-05
+    },
+    "val/108005": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 23.986024856567383,
+            "psnr_nominal_roi_db": 19.96377944946289,
+            "psnr_teacher90_support_db": 18.78704833984375,
+            "gradient_l1_full": 0.06963112950325012,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "bounded": {
+            "psnr_full_db": 24.057079315185547,
+            "psnr_nominal_roi_db": 19.979717254638672,
+            "psnr_teacher90_support_db": 18.809175491333008,
+            "gradient_l1_full": 0.0692739188671112,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "initialfootprint_lr_rmse": 1.3114608918840531e-06,
+          "past_witness_clean_rmse": 1.2774941069437773e-06,
+          "past_witness_raw_rmse": 1.3057875776212313e-06,
+          "coefficient_norm": 17.312671661376953
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 24.046985626220703,
+            "psnr_nominal_roi_db": 20.237640380859375,
+            "psnr_teacher90_support_db": 19.04610824584961,
+            "gradient_l1_full": 0.06945652514696121,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "bounded": {
+            "psnr_full_db": 24.116588592529297,
+            "psnr_nominal_roi_db": 20.255605697631836,
+            "psnr_teacher90_support_db": 19.06930923461914,
+            "gradient_l1_full": 0.0691073089838028,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "initialfootprint_lr_rmse": 1.0611367997626076e-06,
+          "past_witness_clean_rmse": 0.033069029450416565,
+          "past_witness_raw_rmse": 0.03480863571166992,
+          "coefficient_norm": 22.050783157348633
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 24.004337310791016,
+            "psnr_nominal_roi_db": 19.987422943115234,
+            "psnr_teacher90_support_db": 18.81195831298828,
+            "gradient_l1_full": 0.06952744722366333,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "bounded": {
+            "psnr_full_db": 24.074132919311523,
+            "psnr_nominal_roi_db": 20.004568099975586,
+            "psnr_teacher90_support_db": 18.83475112915039,
+            "gradient_l1_full": 0.06917476654052734,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "initialfootprint_lr_rmse": 9.504711329100246e-07,
+          "past_witness_clean_rmse": 0.02750050649046898,
+          "past_witness_raw_rmse": 0.02894372120499611,
+          "coefficient_norm": 16.225759506225586
+        }
+      ],
+      "rgb_revision_17_38": 3.943194678868167e-05
+    },
+    "val/108070": {
+      "audits": [
+        {
+          "frame": 0,
+          "affine": {
+            "psnr_full_db": 22.500774383544922,
+            "psnr_nominal_roi_db": 20.724029541015625,
+            "psnr_teacher90_support_db": 20.00216293334961,
+            "gradient_l1_full": 0.09780193865299225,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "bounded": {
+            "psnr_full_db": 22.534420013427734,
+            "psnr_nominal_roi_db": 20.923572540283203,
+            "psnr_teacher90_support_db": 20.18111228942871,
+            "gradient_l1_full": 0.09747430682182312,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "initialfootprint_lr_rmse": 2.9092519980622455e-05,
+          "past_witness_clean_rmse": 2.8622509489650838e-05,
+          "past_witness_raw_rmse": 2.908646820287686e-05,
+          "coefficient_norm": 18.603761672973633
+        },
+        {
+          "frame": 17,
+          "affine": {
+            "psnr_full_db": 22.532482147216797,
+            "psnr_nominal_roi_db": 21.08469009399414,
+            "psnr_teacher90_support_db": 20.317115783691406,
+            "gradient_l1_full": 0.09762978553771973,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "bounded": {
+            "psnr_full_db": 22.562292098999023,
+            "psnr_nominal_roi_db": 21.25739288330078,
+            "psnr_teacher90_support_db": 20.470413208007812,
+            "gradient_l1_full": 0.09731833636760712,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "initialfootprint_lr_rmse": 2.7933068849961273e-05,
+          "past_witness_clean_rmse": 0.03347673639655113,
+          "past_witness_raw_rmse": 0.037485670298337936,
+          "coefficient_norm": 15.226300239562988
+        },
+        {
+          "frame": 38,
+          "affine": {
+            "psnr_full_db": 22.512502670288086,
+            "psnr_nominal_roi_db": 20.750320434570312,
+            "psnr_teacher90_support_db": 20.02817153930664,
+            "gradient_l1_full": 0.09769640862941742,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "bounded": {
+            "psnr_full_db": 22.54507064819336,
+            "psnr_nominal_roi_db": 20.942298889160156,
+            "psnr_teacher90_support_db": 20.200389862060547,
+            "gradient_l1_full": 0.09737962484359741,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "initialfootprint_lr_rmse": 2.9283966796356253e-05,
+          "past_witness_clean_rmse": 0.027669208124279976,
+          "past_witness_raw_rmse": 0.030926721170544624,
+          "coefficient_norm": 18.095853805541992
+        }
+      ],
+      "rgb_revision_17_38": 3.4984812373295426e-05
+    }
+  }
+}

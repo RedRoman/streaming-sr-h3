@@ -1,13 +1,15 @@
 # Streaming SR with MiniMax-H3: Research Snapshot
 
-Private research snapshot captured on **2026-10-15T17:20:33+08:00**. This repository contains implementations, experiment protocols, numerical results and positive/negative findings. **A validated novel streaming-SR system has not yet been established.** Blockwise H3 generation alone is not evidence of streaming-SR capability.
+Private research snapshot captured on **2026-10-15T22:19:40+08:00**. This repository contains implementations, experiment protocols, numerical results and positive/negative findings. **A validated novel streaming-SR system has not yet been established.**
 
 - [Experiment report (Chinese)](EXPERIMENT_REPORT.md) — measured outcomes and limitations.
-- [Snapshot scope](SNAPSHOT.md) — included/excluded assets and reproducibility boundaries.
-- [Source-file SHA256 manifest](SNAPSHOT_MANIFEST.json) — provenance of the captured files.
-- [Original research brief](research/source_brief.md) and [related work](research/sources_and_method.md).
+- [Snapshot scope](SNAPSHOT.md) and [source SHA256 manifest](SNAPSHOT_MANIFEST.json).
+- [Eight-source H3 sampling-consistency evaluation](results/h3_setup/sampling_dc_davis8/REPORT.md).
+- [B5 four-arm structural experiment](results/h3_factorized/factorial_v5/B5_final_report.md).
+- [Delayed LR validation](results/real_video_history_inverse/delayed_lr_validation/REPORT.md).
+- [RelayVSR baseline](results/relay_baseline/cohort/REPORT.md).
 
-This is an independent snapshot. Active experiments continue in the original workspace; this repository is not automatically synchronized.
+H3 has positive restoration evidence, but the learned historical correction has not shown an independent advantage. New codec/data/protocol files are work in progress unless their own reports explicitly record completed results. This archive is updated through explicit snapshots; active experiment files remain in the original workspace.
 
 ---
 

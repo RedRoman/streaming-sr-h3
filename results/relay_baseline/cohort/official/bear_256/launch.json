@@ -1,0 +1,31 @@
+{
+  "cmd": [
+    "external/relay_venv/bin/python",
+    "-u",
+    "experiments/relay_baseline/measure_official.py",
+    "--repository",
+    "external/RelayVSR",
+    "--input",
+    "data/real_video/h3_256/train/bear/lr_x4",
+    "--fps",
+    "24",
+    "--max-frames",
+    "22",
+    "--window-size",
+    "16",
+    "--wan-checkpoint",
+    "external/RelayVSR/weights/wan.safetensors",
+    "--flash-checkpoint",
+    "data/flash.safetensors",
+    "--memory-fraction",
+    "0.8",
+    "--output",
+    "results/relay_baseline/cohort/official/bear_256/output_x4.mp4",
+    "--png-dir",
+    "results/relay_baseline/cohort/official/bear_256/png",
+    "--metrics",
+    "results/relay_baseline/cohort/official/bear_256/measurement.json"
+  ],
+  "gpu": 5,
+  "admission": "1, 81110, 0"
+}

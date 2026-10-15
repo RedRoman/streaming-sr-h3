@@ -17,7 +17,7 @@ def main():
         updates={entry['update']:entry for entry in logged};assert sorted(updates)==list(range(400))
         for scheduled in protocol['schedule']:
             row=updates[scheduled['update']]
-            assert row['mode']==mode and row['base_weight_grad_count']==0 and row['adapter_grad_norm_before_clip']>0
+            assert row['mode']==mode and row['base_weight_grad_count']==0 and row['adapter_grad_norm_before_clip']>0 and row['guide_input_grad_norm']>0
             assert all(row[key]==scheduled[key] for key in ['case','sigma','noise_seed'])
             assert row['case'] in protocol['train_cases'] and row['case'] not in protocol['validation_cases']
         val={v['update']:v for v in validations if v['mode']==mode};assert sorted(val)==[0,100,200,300,400]
@@ -29,7 +29,8 @@ def main():
             sample=json.loads((a.run/'readouts'/mode/case/'sample_result.json').read_text())
             assert sample['status']=='complete' and sample['split']=='val' and not sample['HR_condition']
             assert sample['steps_model_evaluations']==49 and sample['sigma_points']==50 and sample['seed']==101 and sample['cfg']==1 and sample['input_prefix']==[0,21]
-        rows.append({'mode':mode,'unique_updates':400,'append_only_log_rows':len(logged),'trainable_parameters':result['trainable_parameters'],'fixed_validation_initial':val[0]['mean_velocity_mse'],'fixed_validation_final400':val[400]['mean_velocity_mse'],'base_freeze_passed':True})
+        rows.append({'mode':mode,'unique_updates':400,'append_only_log_rows':len(logged),'trainable_parameters':result['trainable_parameters'],'fixed_validation_initial':val[0]['mean_velocity_mse'],'fixed_validation_final400':val[400]['mean_velocity_mse'],'base_freeze_passed':True,
+                     'guide_input_grad_norm_range':[min(v['guide_input_grad_norm'] for v in updates.values()),max(v['guide_input_grad_norm'] for v in updates.values())]})
     assert max(initial)-min(initial)<1e-12,initial
     result={'passed':True,'protocol_sha256':digest,'zero_adapter_parity':parity,'rows':rows,'checks':['same400case/sigma/noiseseeds acrosscontrols','validationneveroptimizerinput','fixedfinal400, no checkpointselection','base tensorversionsunchanged andgrad0','allnative49samplersLRonly, samepromptcontext/prefix/seed/CFG']}
     (a.run/'protocol_audit.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))

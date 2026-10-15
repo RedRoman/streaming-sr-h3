@@ -1,0 +1,282 @@
+{
+  "passed": true,
+  "source": "train_100075",
+  "kinds": [
+    {
+      "kind": "closed_action",
+      "parameters": 146224,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": 1.862645149230957e-09,
+      "withdrawal_vs_replay_maxabs": 9.313225746154785e-10,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.08933778231221368,
+            "decoder": 0.0016030612259783084,
+            "core": 0.01393929296227725,
+            "appearance": 0.05450207367539406
+          },
+          "parameter_delta_L1": {
+            "encoder": 125.29185407981277,
+            "decoder": 54.14876352995634,
+            "core": 25.00822465866804,
+            "appearance": 1.1714381091296673
+          },
+          "loss": 0.3522035777568817
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.3821011653635651,
+            "decoder": 0.01022576034119993,
+            "core": 0.06968066285480745,
+            "appearance": 0.05874151004536543
+          },
+          "parameter_delta_L1": {
+            "encoder": 85.54804599704221,
+            "decoder": 60.17659014463425,
+            "core": 17.48274676501751,
+            "appearance": 5.626253243535757
+          },
+          "loss": 0.35236993432044983
+        }
+      ]
+    },
+    {
+      "kind": "closed_action_no_equiv",
+      "parameters": 146224,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": 1.862645149230957e-09,
+      "withdrawal_vs_replay_maxabs": 9.313225746154785e-10,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.0022126279832264117,
+            "decoder": 0.0016030675219553814,
+            "core": 1.557046161337894e-05,
+            "appearance": 0.05450207367539406
+          },
+          "parameter_delta_L1": {
+            "encoder": 66.9588321018964,
+            "decoder": 54.148806259036064,
+            "core": 1.6494420496746898,
+            "appearance": 1.1714381091296673
+          },
+          "loss": 0.35214751958847046
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.03213751146904542,
+            "decoder": 0.04687942936652689,
+            "core": 0.0001994339629050046,
+            "appearance": 0.05874151276657358
+          },
+          "parameter_delta_L1": {
+            "encoder": 80.30234838696197,
+            "decoder": 75.29192423820496,
+            "core": 5.368146697990596,
+            "appearance": 5.626197397708893
+          },
+          "loss": 0.3520294725894928
+        }
+      ]
+    },
+    {
+      "kind": "factor_cache_mlp",
+      "parameters": 146576,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": null,
+      "withdrawal_vs_replay_maxabs": null,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.15714299063984072,
+            "decoder": 0.0015591216205166347,
+            "core": 0.012361114317966937,
+            "appearance": 0.05450205132365227
+          },
+          "parameter_delta_L1": {
+            "encoder": 127.2910113632679,
+            "decoder": 53.47573443129659,
+            "core": 13.230675305705518,
+            "appearance": 1.1714378725737333
+          },
+          "loss": 0.35220712423324585
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.5504611264914274,
+            "decoder": 0.005689224959951389,
+            "core": 0.03537986778351865,
+            "appearance": 0.0587409119179938
+          },
+          "parameter_delta_L1": {
+            "encoder": 85.04602683056146,
+            "decoder": 53.21763923019171,
+            "core": 11.619506599381566,
+            "appearance": 5.62619224190712
+          },
+          "loss": 0.3525029718875885
+        }
+      ]
+    },
+    {
+      "kind": "nonlinear_group",
+      "parameters": 146576,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": null,
+      "withdrawal_vs_replay_maxabs": null,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.15714299343380844,
+            "decoder": 0.0015591165686146269,
+            "core": 0.012361115375636444,
+            "appearance": 0.05450205132365227
+          },
+          "parameter_delta_L1": {
+            "encoder": 127.29101134091616,
+            "decoder": 53.47592540830374,
+            "core": 13.230685774236917,
+            "appearance": 1.1714378725737333
+          },
+          "loss": 0.35220712423324585
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.5504613150842488,
+            "decoder": 0.0056889204231538315,
+            "core": 0.035379856571267965,
+            "appearance": 0.058740910040796734
+          },
+          "parameter_delta_L1": {
+            "encoder": 85.0460460036993,
+            "decoder": 53.21749098598957,
+            "core": 11.619323822669685,
+            "appearance": 5.6261923629790545
+          },
+          "loss": 0.3525029718875885
+        }
+      ]
+    },
+    {
+      "kind": "gru_online",
+      "parameters": 146028,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": null,
+      "withdrawal_vs_replay_maxabs": null,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.1108255973449559,
+            "decoder": 0.08469152226462029,
+            "core": 0.011578876927728743,
+            "appearance": 0.054504018276929855
+          },
+          "parameter_delta_L1": {
+            "encoder": 126.44681300967932,
+            "decoder": 106.76851111650467,
+            "core": 20.14238490909338,
+            "appearance": 1.1714619509875774
+          },
+          "loss": 0.35221660137176514
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.392378518008627,
+            "decoder": 0.15251125513168518,
+            "core": 0.061441576634024386,
+            "appearance": 0.05868681958236266
+          },
+          "parameter_delta_L1": {
+            "encoder": 85.75079606473446,
+            "decoder": 76.85264667868614,
+            "core": 15.486750545911491,
+            "appearance": 5.636504108086228
+          },
+          "loss": 0.35222145915031433
+        }
+      ]
+    },
+    {
+      "kind": "gru_replay",
+      "parameters": 146028,
+      "duplicate_idempotent": true,
+      "query_readonly": true,
+      "zero_state_output_maxabs": 0,
+      "future_packet_poison_query0_maxabs": 0.0,
+      "group_rebase_vs_replay_maxabs": null,
+      "withdrawal_vs_replay_maxabs": null,
+      "gradient_audits": [
+        {
+          "step": 1,
+          "gradient_L1": {
+            "encoder": 0.1108250176985166,
+            "decoder": 0.05573527683009161,
+            "core": 0.009662796523798534,
+            "appearance": 0.05450399965047836
+          },
+          "parameter_delta_L1": {
+            "encoder": 126.44748565368354,
+            "decoder": 103.92955246567726,
+            "core": 15.846941980533302,
+            "appearance": 1.1714652925729752
+          },
+          "loss": 0.35221484303474426
+        },
+        {
+          "step": 2,
+          "gradient_L1": {
+            "encoder": 0.39237506507197395,
+            "decoder": 0.08429687393800123,
+            "core": 0.042799813889814686,
+            "appearance": 0.05871443900105078
+          },
+          "parameter_delta_L1": {
+            "encoder": 85.75399666186422,
+            "decoder": 75.761764369905,
+            "core": 12.208510811440647,
+            "appearance": 5.627500671893358
+          },
+          "loss": 0.35225796699523926
+        }
+      ]
+    }
+  ],
+  "native_zero_RGB_maxabs": 0.0,
+  "actual_native_D_backward_RGB_L1": 0.032288528978824615,
+  "actual_D_total_gradient_L1": {
+    "encoder": 0.22073619380535092,
+    "decoder": 0.010953626731861732,
+    "core": 0.037298332412319724,
+    "appearance": 0.06700708949938416
+  },
+  "frozen_VAE_weight_gradients": 0,
+  "seconds": 9.690064430236816,
+  "peak_GPU_bytes": 10861941760,
+  "scope": "Actual train cache and actual frozen H3 D; checks do not train a selected checkpoint"
+}

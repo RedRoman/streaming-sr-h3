@@ -1,0 +1,49 @@
+{
+  "status": "complete",
+  "pid": 1360754,
+  "GPU": "1",
+  "began": 1792069834.0136678,
+  "stages": [
+    {
+      "stage": "DCcarrier_rebase",
+      "exit_code": 0,
+      "seconds": 10.201027248054743
+    },
+    {
+      "stage": "DCfamily_assemble",
+      "exit_code": 0,
+      "seconds": 10.012445218861103
+    },
+    {
+      "stage": "DCformal900",
+      "exit_code": 0,
+      "seconds": 206.369853310287
+    },
+    {
+      "stage": "RAWfixed_compression_diagnostic",
+      "exit_code": 0,
+      "seconds": 16.069617457687855
+    },
+    {
+      "stage": "DCfixed_compression_diagnostic",
+      "exit_code": 0,
+      "seconds": 16.163942724466324
+    },
+    {
+      "stage": "sourcewise_matched_summary",
+      "exit_code": 0,
+      "seconds": 0.1306348629295826
+    }
+  ],
+  "current_stage": null,
+  "command": [
+    "/home/saiadmin/streaming_sr_20261015/external/h3_venv/bin/python",
+    "src/h3_core/summarize_operator_function.py",
+    "--roots",
+    "results/h3_core/operator_function_v1",
+    "results/h3_core/operator_function_dc_v1",
+    "--comparison",
+    "results/h3_core/operator_function_matched_comparison"
+  ],
+  "seconds": 258.9561059474945
+}

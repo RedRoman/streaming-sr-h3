@@ -1,0 +1,35 @@
+{
+  "foundation": "Comfy-Org/MiniMax-H3 minimax_h3_fl2va_pruned_bf16.safetensors",
+  "revision": "e5eb578a89295337b8ff433a035929ce0279e0b6",
+  "bytes": 40225724176,
+  "canonical_sha256": "a32572fb90b5508b201ec7c2eddcc184b13ddfd3c6f6d2cf06a0b46535d541b4",
+  "dit_precision": "BF16 attention/MLP foundation; official pruned FP16 AdaLN curve coefficients/F32 time table, native runtime AdaLN FP32. No Turbo/DiT quantization/VDN.",
+  "conditioning_encoder": "Actual Qwen3VL32B NVFP4-AWQ stored encoder with BF16 compute; raw neutral prompt, unnormalizedhidden50; text-only sameactualcache in allcontrols",
+  "context_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+  "vae_precision": "CanonicalFP16 storedweights andcompute for pairencode andfinaldecode",
+  "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "comfy_source_commit": "Unknown: existing deployment copy lacks.git; actualsourceSHA recorded instead",
+  "comfy_h3_model_sha256": "15f0395cf0dbe6e5c13fd859ff359eacc7761b4e15f60aa0038853985d0e599b",
+  "guide_preprocessing": "LRfloatAA bicubic4x upsample, actualofficiallanczoscenterhelper includesuint8truncation, standardH3VAEencode. Latentformatscale1.",
+  "layout": "22frames,24fps,video[1,24,7,H/16,W/16],audio[1,32,2,37], targetvideo separatefromguide rows; condtimestep.999; maxobservedprefixindex21.",
+  "loss": "Video flow velocityMSE only; no audio supervision; HR appears only supervised target/noised target, never sampler condition.",
+  "parameter_counts": {
+    "lora_only": 3942400,
+    "guide_only": 13880,
+    "joint": 3956280
+  },
+  "limits": [
+    "Fourtrain source videos, two independentvalidation sources; smallfixedbudgetpilot, no testbenchmark claim.",
+    "Parameters differ acrosscontrols; do not claim equalcapacity.",
+    "Native22 is mathematicallyvalidtemporalgrid but shorterthan officialqualityworkload124frames.",
+    "Singleofflineprefixblocks; no measuredreal-time acquisitiondelay or steadystatestreamthroughput.",
+    "Final400fixed; valstatistics/readouts do not selectcheckpoint/hyperparameters.",
+    "This is a backboneSRadaptationbaseline, not the proposedpersistentmemorymethod."
+  ],
+  "version": "native_io_v2",
+  "stream_io": "Exact official BF16 video input/output; BF16 carried audio -> BF16 physical audio; FP32 MSE",
+  "math_alignment_audit": "../native_math_alignment_v2/result.json",
+  "native_io_helper_sha256": "f0b879718aaf9a193052829caccacd81b0c43b741bdd05ba00726ffae1d70a27",
+  "initialized_from_legacy_checkpoint": false,
+  "native_output_head_weights": "Official F32 video/audio head weight islands; native forward returns BF16 output matching BF16 input streams"
+}

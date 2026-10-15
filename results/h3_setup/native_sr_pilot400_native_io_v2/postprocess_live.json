@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "pid": 1313621,
+  "host": "H100",
+  "gpu": "6",
+  "completed": [
+    "decode",
+    "protocol_audit",
+    "fixed_validation_metrics"
+  ],
+  "phase": "fixed_validation_metrics",
+  "device": "cpu",
+  "command": [
+    "/home/saiadmin/streaming_sr_20261015/external/h3_venv/bin/python",
+    "experiments/h3_backbone/evaluate_native_sr_pilot.py",
+    "--run",
+    "/home/saiadmin/streaming_sr_20261015/results/h3_setup/native_sr_pilot400_native_io_v2",
+    "--val",
+    "results/h3_setup/native_sr_val_pairs/pairs_manifest.json",
+    "--device",
+    "cpu"
+  ],
+  "epoch": 1792066224.6700523
+}

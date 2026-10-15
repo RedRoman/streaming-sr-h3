@@ -1,0 +1,165 @@
+{
+  "scope": "TRAIN-source posttraining readout audit; fivegradientsteps only. Sharedsupport/DC isclassiccontrol, not learnedbenefit.",
+  "manifest": {
+    "scope": "TRAIN-only five-step adapter true49readout interface; no quality ornovelty claim",
+    "prefix_index": 17,
+    "observed_indices": [
+      0,
+      17
+    ],
+    "canonical_query": "Static canonical memory at prefix17, native22 internalcontext; NOT actual futureframes0..21",
+    "resolved_frame_index": 0,
+    "conditioning_layout": "Whole synthetic canonical-memory22guide is anchored at nativequeryindex0; observednear timestamp17 remainsmetadata, not reindexed as physicaltime0",
+    "tokens_per_method": 448,
+    "methods": [
+      "reference",
+      "learned"
+    ],
+    "sampling_seed": 101,
+    "actual_initial_reference": "Same realBF16H3 generated X0seed101 forboth; referenceguide is E(X0), not E(upLR)",
+    "learned_condition_difference_rms": 0.0002936134987976402,
+    "state_norm": 0.007966265082359314,
+    "preparation": {
+      "status": "complete",
+      "scope": "Native22 realH3reference+realnearLR condition/physicalsupporttarget gradient-feasibility only; not quality evidence",
+      "source": {
+        "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+        "split": "train",
+        "source_hash": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+        "protocol": "zoom_revisit",
+        "sequence_seed": 17100,
+        "canonical_rectangle": [
+          112.5,
+          32.5,
+          368.5,
+          288.5
+        ],
+        "output_frame": 21,
+        "context_frames": 22
+      },
+      "reference_seed": 101,
+      "near_packet_id": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5:17100:17",
+      "near_index": 17,
+      "native_input_context": "22 copies of already-observed canonical memory; distinct cue observations1; no future packet",
+      "condition_shape": [
+        1,
+        24,
+        7,
+        16,
+        16
+      ],
+      "condition_tokens": 448,
+      "operator_maxabs": 7.152557373046875e-07,
+      "target_far_measurement_change_rmse": 1.7554913078754453e-09,
+      "reference_lock_check_maxabs_before_box": 5.960464477539063e-08,
+      "raw_target_range": [
+        0.05052684247493744,
+        1.034468412399292
+      ],
+      "native_encoder_target_range": [
+        0.05052684247493744,
+        1.0
+      ],
+      "common_box_extra_change_rms": 0.00014003213436808437,
+      "physical_new_support": "Nfar Pnear Nfar then common64-step far/boxDC; common classical constraints, not a novel projector or exact latent nullspace",
+      "target_caveat": "Identity preservation is exact for the raw supported correction, then boxDC can change it (measured); nativeE/D can further drift and must be audited. No inference HR input.",
+      "vae": {
+        "layers": 36,
+        "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+        "dtype": "torch.float16",
+        "missing_buffers": []
+      },
+      "config": {
+        "item": "results/h3_core/cache_quotient_v1_packetstats/train_100075.pt",
+        "proposal": "results/h3_core/dit_proposal_train100075/seed101",
+        "comfy": "external/ComfyUI_H3",
+        "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+        "out": "results/h3_core/proposal_gradient_train100075"
+      }
+    }
+  },
+  "query_measurement_norm": {
+    "far": 1.904880919667562e-09,
+    "near": 2.9188593764217785e-09
+  },
+  "metrics": {
+    "immutable_X0": {
+      "raw": {
+        "psnr_full_db": 28.894886016845703,
+        "near_real_LR_rmse": 0.02513018250465393,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 0.0,
+        "jointly_unobserved_query_revision": 0.0,
+        "highfrequency_rms": 0.019928928464651108
+      }
+    },
+    "classical_near_innovation": {
+      "common_far_box_dc": {
+        "psnr_full_db": 30.027196884155273,
+        "near_real_LR_rmse": 0.005278370808809996,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 1.5748372605983718e-09,
+        "jointly_unobserved_query_revision": 1.6730427043754048e-09,
+        "highfrequency_rms": 0.028448252007365227
+      }
+    },
+    "reference": {
+      "raw": {
+        "psnr_full_db": 27.95099449157715,
+        "near_real_LR_rmse": 0.03216898813843727,
+        "far_real_LR_rmse": 0.015409577637910843,
+        "outside_corners_revision_rms": 0.01639905944466591,
+        "jointly_unobserved_query_revision": 0.0014501374680548906,
+        "highfrequency_rms": 0.021853303536772728
+      },
+      "far_dc": {
+        "psnr_full_db": 28.7099552154541,
+        "near_real_LR_rmse": 0.02562783472239971,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 0.006906496360898018,
+        "jointly_unobserved_query_revision": 0.0014501515543088317,
+        "highfrequency_rms": 0.021853936836123466
+      },
+      "common_support_far_dc": {
+        "psnr_full_db": 28.83685302734375,
+        "near_real_LR_rmse": 0.02561204507946968,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 5.583082884896839e-10,
+        "jointly_unobserved_query_revision": 2.1065188482438657e-10,
+        "highfrequency_rms": 0.020538998767733574
+      },
+      "actual_full50block_forwards": 49
+    },
+    "learned": {
+      "raw": {
+        "psnr_full_db": 27.957691192626953,
+        "near_real_LR_rmse": 0.03207705169916153,
+        "far_real_LR_rmse": 0.015382115729153156,
+        "outside_corners_revision_rms": 0.01649167761206627,
+        "jointly_unobserved_query_revision": 0.00032983277924358845,
+        "highfrequency_rms": 0.02186056226491928
+      },
+      "far_dc": {
+        "psnr_full_db": 28.713878631591797,
+        "near_real_LR_rmse": 0.025610774755477905,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 0.006923063658177853,
+        "jointly_unobserved_query_revision": 0.0003298255614936352,
+        "highfrequency_rms": 0.02186119370162487
+      },
+      "common_support_far_dc": {
+        "psnr_full_db": 28.8382625579834,
+        "near_real_LR_rmse": 0.025595402345061302,
+        "far_real_LR_rmse": 0.0,
+        "outside_corners_revision_rms": 7.454217798574803e-10,
+        "jointly_unobserved_query_revision": 4.634981565221352e-10,
+        "highfrequency_rms": 0.020535103976726532
+      },
+      "actual_full50block_forwards": 49
+    }
+  },
+  "training_target_rgb_range": [
+    0.05052684247493744,
+    1.0
+  ]
+}

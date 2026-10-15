@@ -1,0 +1,58 @@
+{
+  "status": "complete",
+  "scope": "Native22 realH3reference+realnearLR condition/physicalsupporttarget gradient-feasibility only; not quality evidence",
+  "source": {
+    "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+    "split": "train",
+    "source_hash": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+    "protocol": "zoom_revisit",
+    "sequence_seed": 17100,
+    "canonical_rectangle": [
+      112.5,
+      32.5,
+      368.5,
+      288.5
+    ],
+    "output_frame": 21,
+    "context_frames": 22
+  },
+  "reference_seed": 101,
+  "near_packet_id": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5:17100:17",
+  "near_index": 17,
+  "native_input_context": "22 copies of already-observed canonical memory; distinct cue observations1; no future packet",
+  "condition_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "condition_tokens": 448,
+  "operator_maxabs": 7.152557373046875e-07,
+  "target_far_measurement_change_rmse": 1.7554913078754453e-09,
+  "reference_lock_check_maxabs_before_box": 5.960464477539063e-08,
+  "raw_target_range": [
+    0.05052684247493744,
+    1.034468412399292
+  ],
+  "native_encoder_target_range": [
+    0.05052684247493744,
+    1.0
+  ],
+  "common_box_extra_change_rms": 0.00014003213436808437,
+  "physical_new_support": "Nfar Pnear Nfar then common64-step far/boxDC; common classical constraints, not a novel projector or exact latent nullspace",
+  "target_caveat": "Identity preservation is exact for the raw supported correction, then boxDC can change it (measured); nativeE/D can further drift and must be audited. No inference HR input.",
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "config": {
+    "item": "results/h3_core/cache_quotient_v1_packetstats/train_100075.pt",
+    "proposal": "results/h3_core/dit_proposal_train100075/seed101",
+    "comfy": "external/ComfyUI_H3",
+    "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "out": "results/h3_core/proposal_gradient_train100075"
+  }
+}

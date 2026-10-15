@@ -1,0 +1,1582 @@
+{
+  "status": "complete",
+  "code_sha256": "5a5776c282288be5c3c13a13e410ac81fa85cae16f47cef9c17236132452e78e",
+  "inputs": [
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "path": "results/h3_core/operator_function_v1/fixed_seed17/val_101085_readouts.pt",
+      "sha256": "acfe627388199f9dd128a6457374fd994e68284efb7dfb5fb0b833d183e26bf3"
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "path": "results/h3_core/operator_function_v1/fixed_seed17/val_101087_readouts.pt",
+      "sha256": "af73ff0a90bc715a6b3613ebaebb66f5de061d8bc93f42f9202e7a7ae9aa8ade"
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "path": "results/h3_core/operator_function_dc_v1/fixed_seed17/val_101085_readouts.pt",
+      "sha256": "9d9b02456a10a7073e7613017ff7ec536a2ffee0bf9e97c1a81670cc7ec463da"
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "path": "results/h3_core/operator_function_dc_v1/fixed_seed17/val_101087_readouts.pt",
+      "sha256": "b8624ba3c277dc36db81a80ee51bcab3697934ef74b603e0770a6c7c4ce0a2ff"
+    }
+  ],
+  "weights_sha256": {
+    "/home/saiadmin/streaming_sr_20261015/external/eval_torch_cache/hub/checkpoints/alexnet-owt-7be5be79.pth": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "/home/saiadmin/streaming_sr_20261015/external/eval_deps/lpips/weights/v0.1/alex.pth": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+  },
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "tf32_matmul": false,
+  "tf32_cudnn": false,
+  "protocol": "Full float RGB after the same pre-existing bounded64 far/box DC. PSNR/SSIM use stored precision; LPIPS consistently casts all inputs to float32, matching the fixed pretrained network. Average two carrier readouts within source, then equal average of two development validation sources. No fitting or choice between raw/DC versions.",
+  "scope": "Conditional-response representation pilot after A+B arrival; not a causal compressed-before-cue memory experiment. Static repeated22 codec context. No motion or sealed confirmation.",
+  "rows": [
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.847183227539062,
+      "ssim": 0.6073250770568848,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2862977385520935
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "mixed",
+      "carrier": 0,
+      "psnr": 24.847183227539062,
+      "ssim": 0.6073250770568848,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2862977385520935
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.876710891723633,
+      "ssim": 0.6088998913764954,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3082409203052521
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "additive",
+      "carrier": 0,
+      "psnr": 24.876710891723633,
+      "ssim": 0.6088998913764954,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3082409203052521
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.860383987426758,
+      "ssim": 0.6053488850593567,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2979270815849304
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_set_cnp",
+      "carrier": 0,
+      "psnr": 24.860383987426758,
+      "ssim": 0.6053488850593567,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2979270815849304
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "source_carrier",
+      "carrier": 0,
+      "psnr": 24.924009323120117,
+      "ssim": 0.6098968386650085,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.32657185196876526
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_robust_inverse",
+      "carrier": 0,
+      "psnr": 26.599206924438477,
+      "ssim": 0.7368583083152771,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.24207744002342224
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 0,
+      "psnr": 25.799044545018518,
+      "ssim": 0.6783992620689,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2528921365737915
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 0,
+      "psnr": 25.822970916430975,
+      "ssim": 0.6845768984615981,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2535076141357422
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 0,
+      "psnr": 24.95137724182613,
+      "ssim": 0.6106117970256814,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.32929322123527527
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 0,
+      "psnr": 24.332704544067383,
+      "ssim": 0.5893651247024536,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3366181254386902
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.865381240844727,
+      "ssim": 0.6081953644752502,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2903950810432434
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "mixed",
+      "carrier": 1,
+      "psnr": 24.865381240844727,
+      "ssim": 0.6081953644752502,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2903950810432434
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.903972625732422,
+      "ssim": 0.610319197177887,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3048253655433655
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "additive",
+      "carrier": 1,
+      "psnr": 24.903972625732422,
+      "ssim": 0.610319197177887,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3048253655433655
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.86825942993164,
+      "ssim": 0.6060330867767334,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2997957468032837
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_set_cnp",
+      "carrier": 1,
+      "psnr": 24.86825942993164,
+      "ssim": 0.6060330867767334,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2997957468032837
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "source_carrier",
+      "carrier": 1,
+      "psnr": 24.951377868652344,
+      "ssim": 0.6106118559837341,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.32929322123527527
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "joint_robust_inverse",
+      "carrier": 1,
+      "psnr": 26.61324691772461,
+      "ssim": 0.7371274828910828,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.24508070945739746
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 1,
+      "psnr": 25.846592186511437,
+      "ssim": 0.6799555244657219,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2593741714954376
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 1,
+      "psnr": 25.89188132349181,
+      "ssim": 0.6859787167310846,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2611871659755707
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 1,
+      "psnr": 24.95137724182613,
+      "ssim": 0.6106117970256814,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.32929322123527527
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101085",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 1,
+      "psnr": 24.37908935546875,
+      "ssim": 0.5910739302635193,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.339718222618103
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.342731475830078,
+      "ssim": 0.6572676301002502,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.26004815101623535
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "mixed",
+      "carrier": 0,
+      "psnr": 25.342731475830078,
+      "ssim": 0.6572676301002502,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.26004815101623535
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.44256019592285,
+      "ssim": 0.6628797054290771,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.27212193608283997
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "additive",
+      "carrier": 0,
+      "psnr": 25.44256019592285,
+      "ssim": 0.6628797054290771,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.27212193608283997
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.427892684936523,
+      "ssim": 0.660621702671051,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2571232318878174
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_set_cnp",
+      "carrier": 0,
+      "psnr": 25.427892684936523,
+      "ssim": 0.660621702671051,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2571232318878174
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "source_carrier",
+      "carrier": 0,
+      "psnr": 25.511262893676758,
+      "ssim": 0.6661337018013,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2948129177093506
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_robust_inverse",
+      "carrier": 0,
+      "psnr": 27.21422576904297,
+      "ssim": 0.78074711561203,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.20640386641025543
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 0,
+      "psnr": 26.49896051104951,
+      "ssim": 0.7363520315125432,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.22050218284130096
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 0,
+      "psnr": 26.564103765211943,
+      "ssim": 0.7441234247493929,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.21628710627555847
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 0,
+      "psnr": 25.51189854461562,
+      "ssim": 0.6662921007310763,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.29939496517181396
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 0,
+      "psnr": 24.869338989257812,
+      "ssim": 0.6606476902961731,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2643187642097473
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.3580265045166,
+      "ssim": 0.6582307815551758,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2594732344150543
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "mixed",
+      "carrier": 1,
+      "psnr": 25.3580265045166,
+      "ssim": 0.6582307815551758,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2594732344150543
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.459280014038086,
+      "ssim": 0.6632562875747681,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2731359601020813
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "additive",
+      "carrier": 1,
+      "psnr": 25.459280014038086,
+      "ssim": 0.6632562875747681,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2731359601020813
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.43989372253418,
+      "ssim": 0.6614401936531067,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2609128952026367
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_set_cnp",
+      "carrier": 1,
+      "psnr": 25.43989372253418,
+      "ssim": 0.6614401936531067,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2609128952026367
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "source_carrier",
+      "carrier": 1,
+      "psnr": 25.511898040771484,
+      "ssim": 0.6662919521331787,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.29939496517181396
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "joint_robust_inverse",
+      "carrier": 1,
+      "psnr": 27.213476181030273,
+      "ssim": 0.7806819081306458,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2082894891500473
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 1,
+      "psnr": 26.51205470942264,
+      "ssim": 0.7381323972914268,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.22145770490169525
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 1,
+      "psnr": 26.55118827721347,
+      "ssim": 0.7435992441391682,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.21655690670013428
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 1,
+      "psnr": 25.51189854461562,
+      "ssim": 0.6662921007310763,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.29939496517181396
+    },
+    {
+      "version": "operator_function_v1",
+      "source": "101087",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 1,
+      "psnr": 24.875638961791992,
+      "ssim": 0.6614094972610474,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2656473219394684
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.79952621459961,
+      "ssim": 0.602209210395813,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.293019562959671
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "mixed",
+      "carrier": 0,
+      "psnr": 24.79952621459961,
+      "ssim": 0.602209210395813,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.293019562959671
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.925071716308594,
+      "ssim": 0.6114373207092285,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3075813353061676
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "additive",
+      "carrier": 0,
+      "psnr": 24.925071716308594,
+      "ssim": 0.6114373207092285,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3075813353061676
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 24.889394760131836,
+      "ssim": 0.6084364056587219,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.30722758173942566
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_set_cnp",
+      "carrier": 0,
+      "psnr": 24.889394760131836,
+      "ssim": 0.6084364056587219,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.30722758173942566
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "source_carrier",
+      "carrier": 0,
+      "psnr": 24.880054473876953,
+      "ssim": 0.6055713891983032,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.32355427742004395
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_robust_inverse",
+      "carrier": 0,
+      "psnr": 26.546348571777344,
+      "ssim": 0.7341498732566833,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2394755631685257
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 0,
+      "psnr": 25.68016518558645,
+      "ssim": 0.6685943108067605,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2567286491394043
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 0,
+      "psnr": 25.696776380338182,
+      "ssim": 0.6747078863793818,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.25711745023727417
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 0,
+      "psnr": 24.90306952766248,
+      "ssim": 0.606781103317026,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.3291974365711212
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 0,
+      "psnr": 24.083820343017578,
+      "ssim": 0.5767959952354431,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.33802151679992676
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.817031860351562,
+      "ssim": 0.604128897190094,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2936297059059143
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "mixed",
+      "carrier": 1,
+      "psnr": 24.817031860351562,
+      "ssim": 0.604128897190094,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2936297059059143
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.94762420654297,
+      "ssim": 0.6117694973945618,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.30896463990211487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "additive",
+      "carrier": 1,
+      "psnr": 24.94762420654297,
+      "ssim": 0.6117694973945618,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.30896463990211487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 24.881500244140625,
+      "ssim": 0.6083055734634399,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3032609820365906
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_set_cnp",
+      "carrier": 1,
+      "psnr": 24.881500244140625,
+      "ssim": 0.6083055734634399,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3032609820365906
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "source_carrier",
+      "carrier": 1,
+      "psnr": 24.9030704498291,
+      "ssim": 0.6067810654640198,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3291974365711212
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "joint_robust_inverse",
+      "carrier": 1,
+      "psnr": 26.56969451904297,
+      "ssim": 0.7354108691215515,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.24326129257678986
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 1,
+      "psnr": 25.68452460492527,
+      "ssim": 0.6690796836814847,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2584530711174011
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 1,
+      "psnr": 25.797271953507106,
+      "ssim": 0.6796255901282681,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2634795308113098
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 1,
+      "psnr": 24.90306952766248,
+      "ssim": 0.606781103317026,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.3291974365711212
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101085",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 1,
+      "psnr": 24.15473747253418,
+      "ssim": 0.5818029642105103,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.3399491310119629
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.369997024536133,
+      "ssim": 0.6580252647399902,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.26206913590431213
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "mixed",
+      "carrier": 0,
+      "psnr": 25.369997024536133,
+      "ssim": 0.6580252647399902,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.26206913590431213
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.51704216003418,
+      "ssim": 0.6655874252319336,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2822706699371338
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "additive",
+      "carrier": 0,
+      "psnr": 25.51704216003418,
+      "ssim": 0.6655874252319336,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2822706699371338
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 0,
+      "psnr": 25.5394287109375,
+      "ssim": 0.6663755774497986,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2837541401386261
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_set_cnp",
+      "carrier": 0,
+      "psnr": 25.5394287109375,
+      "ssim": 0.6663755774497986,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2837541401386261
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "source_carrier",
+      "carrier": 0,
+      "psnr": 25.47776222229004,
+      "ssim": 0.6639999747276306,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.29745182394981384
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_robust_inverse",
+      "carrier": 0,
+      "psnr": 27.176681518554688,
+      "ssim": 0.779536783695221,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.20616886019706726
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 0,
+      "psnr": 26.32879727514883,
+      "ssim": 0.7273695594756856,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.21525517106056213
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 0,
+      "psnr": 26.42869876989202,
+      "ssim": 0.7356430481065412,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.21658974885940552
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 0,
+      "psnr": 25.4758301884277,
+      "ssim": 0.6645908073191996,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2971639335155487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 0,
+      "psnr": 24.41962242126465,
+      "ssim": 0.6442000865936279,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.27634504437446594
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "mixed_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.3829345703125,
+      "ssim": 0.6587520241737366,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.25746676325798035
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "mixed",
+      "carrier": 1,
+      "psnr": 25.3829345703125,
+      "ssim": 0.6587520241737366,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.25746676325798035
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "additive_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.526960372924805,
+      "ssim": 0.666837215423584,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.28082767128944397
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "additive",
+      "carrier": 1,
+      "psnr": 25.526960372924805,
+      "ssim": 0.666837215423584,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.28082767128944397
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "carrier": 1,
+      "psnr": 25.539941787719727,
+      "ssim": 0.6668790578842163,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2809072434902191
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_set_cnp",
+      "carrier": 1,
+      "psnr": 25.539941787719727,
+      "ssim": 0.6668790578842163,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2809072434902191
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "source_carrier",
+      "carrier": 1,
+      "psnr": 25.475828170776367,
+      "ssim": 0.6645906567573547,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2971639335155487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "joint_robust_inverse",
+      "carrier": 1,
+      "psnr": 27.170867919921875,
+      "ssim": 0.779310405254364,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2059219479560852
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "carrier": 1,
+      "psnr": 26.38725356714785,
+      "ssim": 0.7314100606246638,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.21327829360961914
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "dense_VAE_family_pushforward",
+      "carrier": 1,
+      "psnr": 26.43167598860879,
+      "ssim": 0.7372595648520005,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2127506136894226
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "exact_finite_prior_joint_mean",
+      "carrier": 1,
+      "psnr": 25.4758301884277,
+      "ssim": 0.6645908073191996,
+      "stored_dtype": "torch.float64",
+      "lpips": 0.2971639335155487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "source": "101087",
+      "method": "affine_VAE_family_at_LR_query",
+      "carrier": 1,
+      "psnr": 24.439403533935547,
+      "ssim": 0.6482435464859009,
+      "stored_dtype": "torch.float32",
+      "lpips": 0.2757042646408081
+    }
+  ],
+  "source_means": [
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive",
+      "source": "101085",
+      "psnr": 24.93634796142578,
+      "ssim": 0.6116034090518951,
+      "lpips": 0.30827298760414124
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive",
+      "source": "101087",
+      "psnr": 25.522001266479492,
+      "ssim": 0.6662123203277588,
+      "lpips": 0.2815491706132889
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.93634796142578,
+      "ssim": 0.6116034090518951,
+      "lpips": 0.30827298760414124
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.522001266479492,
+      "ssim": 0.6662123203277588,
+      "lpips": 0.2815491706132889
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "source": "101085",
+      "psnr": 24.11927890777588,
+      "ssim": 0.5792994797229767,
+      "lpips": 0.3389853239059448
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "source": "101087",
+      "psnr": 24.429512977600098,
+      "ssim": 0.6462218165397644,
+      "lpips": 0.276024654507637
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_VAE_family_pushforward",
+      "source": "101085",
+      "psnr": 25.747024166922643,
+      "ssim": 0.6771667382538249,
+      "lpips": 0.260298490524292
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_VAE_family_pushforward",
+      "source": "101087",
+      "psnr": 26.430187379250405,
+      "ssim": 0.7364513064792708,
+      "lpips": 0.21467018127441406
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "source": "101085",
+      "psnr": 25.68234489525586,
+      "ssim": 0.6688369972441226,
+      "lpips": 0.2575908601284027
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "source": "101087",
+      "psnr": 26.35802542114834,
+      "ssim": 0.7293898100501748,
+      "lpips": 0.21426673233509064
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "source": "101085",
+      "psnr": 24.90306952766248,
+      "ssim": 0.606781103317026,
+      "lpips": 0.3291974365711212
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "source": "101087",
+      "psnr": 25.4758301884277,
+      "ssim": 0.6645908073191996,
+      "lpips": 0.2971639335155487
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_robust_inverse",
+      "source": "101085",
+      "psnr": 26.558021545410156,
+      "ssim": 0.7347803711891174,
+      "lpips": 0.24136842787265778
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_robust_inverse",
+      "source": "101087",
+      "psnr": 27.17377471923828,
+      "ssim": 0.7794235944747925,
+      "lpips": 0.20604540407657623
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp",
+      "source": "101085",
+      "psnr": 24.88544750213623,
+      "ssim": 0.6083709895610809,
+      "lpips": 0.3052442818880081
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp",
+      "source": "101087",
+      "psnr": 25.539685249328613,
+      "ssim": 0.6666273176670074,
+      "lpips": 0.2823306918144226
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.88544750213623,
+      "ssim": 0.6083709895610809,
+      "lpips": 0.3052442818880081
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.539685249328613,
+      "ssim": 0.6666273176670074,
+      "lpips": 0.2823306918144226
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed",
+      "source": "101085",
+      "psnr": 24.808279037475586,
+      "ssim": 0.6031690537929535,
+      "lpips": 0.29332463443279266
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed",
+      "source": "101087",
+      "psnr": 25.376465797424316,
+      "ssim": 0.6583886444568634,
+      "lpips": 0.25976794958114624
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.808279037475586,
+      "ssim": 0.6031690537929535,
+      "lpips": 0.29332463443279266
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.376465797424316,
+      "ssim": 0.6583886444568634,
+      "lpips": 0.25976794958114624
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "source_carrier",
+      "source": "101085",
+      "psnr": 24.891562461853027,
+      "ssim": 0.6061762273311615,
+      "lpips": 0.3263758569955826
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "source_carrier",
+      "source": "101087",
+      "psnr": 25.476795196533203,
+      "ssim": 0.6642953157424927,
+      "lpips": 0.2973078787326813
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive",
+      "source": "101085",
+      "psnr": 24.890341758728027,
+      "ssim": 0.6096095442771912,
+      "lpips": 0.3065331429243088
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive",
+      "source": "101087",
+      "psnr": 25.45092010498047,
+      "ssim": 0.6630679965019226,
+      "lpips": 0.27262894809246063
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.890341758728027,
+      "ssim": 0.6096095442771912,
+      "lpips": 0.3065331429243088
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.45092010498047,
+      "ssim": 0.6630679965019226,
+      "lpips": 0.27262894809246063
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "source": "101085",
+      "psnr": 24.355896949768066,
+      "ssim": 0.5902195274829865,
+      "lpips": 0.3381681740283966
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "source": "101087",
+      "psnr": 24.872488975524902,
+      "ssim": 0.6610285937786102,
+      "lpips": 0.26498304307460785
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_VAE_family_pushforward",
+      "source": "101085",
+      "psnr": 25.857426119961392,
+      "ssim": 0.6852778075963413,
+      "lpips": 0.25734739005565643
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_VAE_family_pushforward",
+      "source": "101087",
+      "psnr": 26.557646021212705,
+      "ssim": 0.7438613344442806,
+      "lpips": 0.21642200648784637
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "source": "101085",
+      "psnr": 25.822818365764977,
+      "ssim": 0.679177393267311,
+      "lpips": 0.25613315403461456
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "source": "101087",
+      "psnr": 26.505507610236073,
+      "ssim": 0.737242214401985,
+      "lpips": 0.2209799438714981
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "source": "101085",
+      "psnr": 24.95137724182613,
+      "ssim": 0.6106117970256814,
+      "lpips": 0.32929322123527527
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "source": "101087",
+      "psnr": 25.51189854461562,
+      "ssim": 0.6662921007310763,
+      "lpips": 0.29939496517181396
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_robust_inverse",
+      "source": "101085",
+      "psnr": 26.606226921081543,
+      "ssim": 0.7369928956031799,
+      "lpips": 0.24357907474040985
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_robust_inverse",
+      "source": "101087",
+      "psnr": 27.21385097503662,
+      "ssim": 0.7807145118713379,
+      "lpips": 0.20734667778015137
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp",
+      "source": "101085",
+      "psnr": 24.8643217086792,
+      "ssim": 0.605690985918045,
+      "lpips": 0.29886141419410706
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp",
+      "source": "101087",
+      "psnr": 25.43389320373535,
+      "ssim": 0.6610309481620789,
+      "lpips": 0.25901806354522705
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.8643217086792,
+      "ssim": 0.605690985918045,
+      "lpips": 0.29886141419410706
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.43389320373535,
+      "ssim": 0.6610309481620789,
+      "lpips": 0.25901806354522705
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed",
+      "source": "101085",
+      "psnr": 24.856282234191895,
+      "ssim": 0.6077602207660675,
+      "lpips": 0.28834640979766846
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed",
+      "source": "101087",
+      "psnr": 25.35037899017334,
+      "ssim": 0.657749205827713,
+      "lpips": 0.25976069271564484
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "source": "101085",
+      "psnr": 24.856282234191895,
+      "ssim": 0.6077602207660675,
+      "lpips": 0.28834640979766846
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "source": "101087",
+      "psnr": 25.35037899017334,
+      "ssim": 0.657749205827713,
+      "lpips": 0.25976069271564484
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "source_carrier",
+      "source": "101085",
+      "psnr": 24.93769359588623,
+      "ssim": 0.6102543473243713,
+      "lpips": 0.32793253660202026
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "source_carrier",
+      "source": "101087",
+      "psnr": 25.51158046722412,
+      "ssim": 0.6662128269672394,
+      "lpips": 0.2971039414405823
+    }
+  ],
+  "aggregate": [
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive",
+      "sources": 2,
+      "psnr": 25.229174613952637,
+      "ssim": 0.638907864689827,
+      "lpips": 0.29491107910871506
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.229174613952637,
+      "ssim": 0.638907864689827,
+      "lpips": 0.29491107910871506
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "sources": 2,
+      "psnr": 24.27439594268799,
+      "ssim": 0.6127606481313705,
+      "lpips": 0.3075049892067909
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_VAE_family_pushforward",
+      "sources": 2,
+      "psnr": 26.088605773086524,
+      "ssim": 0.7068090223665479,
+      "lpips": 0.23748433589935303
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "sources": 2,
+      "psnr": 26.0201851582021,
+      "ssim": 0.6991134036471487,
+      "lpips": 0.23592879623174667
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "sources": 2,
+      "psnr": 25.18944985804509,
+      "ssim": 0.6356859553181128,
+      "lpips": 0.31318068504333496
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_robust_inverse",
+      "sources": 2,
+      "psnr": 26.86589813232422,
+      "ssim": 0.757101982831955,
+      "lpips": 0.223706915974617
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp",
+      "sources": 2,
+      "psnr": 25.212566375732422,
+      "ssim": 0.6374991536140442,
+      "lpips": 0.29378748685121536
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.212566375732422,
+      "ssim": 0.6374991536140442,
+      "lpips": 0.29378748685121536
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed",
+      "sources": 2,
+      "psnr": 25.09237241744995,
+      "ssim": 0.6307788491249084,
+      "lpips": 0.27654629200696945
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.09237241744995,
+      "ssim": 0.6307788491249084,
+      "lpips": 0.27654629200696945
+    },
+    {
+      "version": "operator_function_dc_v1",
+      "method": "source_carrier",
+      "sources": 2,
+      "psnr": 25.184178829193115,
+      "ssim": 0.6352357715368271,
+      "lpips": 0.3118418678641319
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive",
+      "sources": 2,
+      "psnr": 25.170630931854248,
+      "ssim": 0.6363387703895569,
+      "lpips": 0.2895810455083847
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "additive_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.170630931854248,
+      "ssim": 0.6363387703895569,
+      "lpips": 0.2895810455083847
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "affine_VAE_family_at_LR_query",
+      "sources": 2,
+      "psnr": 24.614192962646484,
+      "ssim": 0.6256240606307983,
+      "lpips": 0.30157560855150223
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_VAE_family_pushforward",
+      "sources": 2,
+      "psnr": 26.207536070587047,
+      "ssim": 0.7145695710203109,
+      "lpips": 0.2368846982717514
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "dense_conditional_H3_pushforward_not_posterior",
+      "sources": 2,
+      "psnr": 26.164162988000527,
+      "ssim": 0.708209803834648,
+      "lpips": 0.23855654895305634
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "exact_finite_prior_joint_mean",
+      "sources": 2,
+      "psnr": 25.231637893220874,
+      "ssim": 0.6384519488783789,
+      "lpips": 0.3143440932035446
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_robust_inverse",
+      "sources": 2,
+      "psnr": 26.910038948059082,
+      "ssim": 0.7588537037372589,
+      "lpips": 0.2254628762602806
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp",
+      "sources": 2,
+      "psnr": 25.149107456207275,
+      "ssim": 0.633360967040062,
+      "lpips": 0.27893973886966705
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "joint_set_cnp_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.149107456207275,
+      "ssim": 0.633360967040062,
+      "lpips": 0.27893973886966705
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed",
+      "sources": 2,
+      "psnr": 25.103330612182617,
+      "ssim": 0.6327547132968903,
+      "lpips": 0.27405355125665665
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "mixed_mean_operator_diagnostic",
+      "sources": 2,
+      "psnr": 25.103330612182617,
+      "ssim": 0.6327547132968903,
+      "lpips": 0.27405355125665665
+    },
+    {
+      "version": "operator_function_v1",
+      "method": "source_carrier",
+      "sources": 2,
+      "psnr": 25.224637031555176,
+      "ssim": 0.6382335871458054,
+      "lpips": 0.31251823902130127
+    }
+  ]
+}

@@ -1,0 +1,1515 @@
+{
+  "epoch": 1792066030.2037992,
+  "state": {
+    "status": "complete",
+    "pid": 1292592,
+    "protocol_sha256": "57204621546e93b80195cd8f51be86f4d811f83ec697f2ed1562f4251d67c3e9",
+    "completed": [
+      "lora_only",
+      "guide_only",
+      "joint"
+    ],
+    "python": "3.13.12 | packaged by conda-forge | (main, Feb  5 2026, 05:53:46) [GCC 14.3.0]",
+    "torch": "2.10.0+cu128",
+    "script_sha256": "2d0a9261b5cec280ab18a8d1a3055166f21d3715f3841da382fe4c92a87f1f14",
+    "training_math_sha256": "1560c80e24d456e2a6f99677f3baec0d7e1f8890f0c4897418a001b107cbc03e",
+    "native_io_sha256": "f0b879718aaf9a193052829caccacd81b0c43b741bdd05ba00726ffae1d70a27",
+    "phase": "complete",
+    "epoch": 1792066027.3192039,
+    "native_block_count": 50,
+    "native_source_sha256": "15f0395cf0dbe6e5c13fd859ff359eacc7761b4e15f60aa0038853985d0e599b",
+    "initialization_sha256": "5298a4e6020866dc775f18e84c37b401cb45c95bfd47436089805b39f334998c",
+    "initialization_seed": 1703,
+    "mode": "joint",
+    "case": "dance-twirl_native480",
+    "update": 399,
+    "seconds": 2037.6656202226877,
+    "frozen_tensor_count": 530,
+    "frozen_parameter_count": 20111430528,
+    "base_parameter_versions_unchanged": true,
+    "base_weight_grad_count": 0
+  },
+  "matching_live_process": null,
+  "progress": {
+    "lora_only": {
+      "logged_updates": 400,
+      "last_update": {
+        "update": 399,
+        "case": "bus_256",
+        "sigma": 0.26311369811442686,
+        "noise_seed": 70300399,
+        "mode": "lora_only",
+        "trainable_parameters": 3942400,
+        "lora_parameters": 3942400,
+        "guide_parameters": 0,
+        "velocity_mse": 0.25763070583343506,
+        "guide_input_grad_norm": 0.040021851658821106,
+        "adapter_grad_norm_before_clip": 0.12142793834209442,
+        "base_weight_grad_count": 0,
+        "seconds": 0.3833008147776127
+      },
+      "result": {
+        "status": "complete",
+        "mode": "lora_only",
+        "trainable_parameters": 3942400,
+        "lora_parameters": 3942400,
+        "guide_parameters": 0,
+        "frozen_tensor_count": 530,
+        "frozen_parameter_count": 20111430528,
+        "base_parameter_versions_unchanged": true,
+        "base_weight_grad_count": 0,
+        "updates_completed": 400,
+        "protocol_sha256": "57204621546e93b80195cd8f51be86f4d811f83ec697f2ed1562f4251d67c3e9",
+        "resume_from_update": 0,
+        "seconds_this_execution_segment": 634.9335299804807,
+        "sum_logged_training_step_seconds": 544.4745715856552,
+        "checkpoint_selection": "none, final400fixed",
+        "peak_allocated_bytes": 45430238720,
+        "peak_reserved_bytes": 46967816192
+      }
+    },
+    "guide_only": {
+      "logged_updates": 400,
+      "last_update": {
+        "update": 399,
+        "case": "bus_256",
+        "sigma": 0.26311369811442686,
+        "noise_seed": 70300399,
+        "mode": "guide_only",
+        "trainable_parameters": 13880,
+        "lora_parameters": 0,
+        "guide_parameters": 13880,
+        "velocity_mse": 0.2906377911567688,
+        "guide_input_grad_norm": 0.2568504810333252,
+        "adapter_grad_norm_before_clip": 1.0786300897598267,
+        "base_weight_grad_count": 0,
+        "seconds": 0.3703531473875046
+      },
+      "result": {
+        "status": "complete",
+        "mode": "guide_only",
+        "trainable_parameters": 13880,
+        "lora_parameters": 0,
+        "guide_parameters": 13880,
+        "frozen_tensor_count": 530,
+        "frozen_parameter_count": 20111430528,
+        "base_parameter_versions_unchanged": true,
+        "base_weight_grad_count": 0,
+        "updates_completed": 400,
+        "protocol_sha256": "57204621546e93b80195cd8f51be86f4d811f83ec697f2ed1562f4251d67c3e9",
+        "resume_from_update": 0,
+        "seconds_this_execution_segment": 624.7564657405019,
+        "sum_logged_training_step_seconds": 534.2168771661818,
+        "checkpoint_selection": "none, final400fixed",
+        "peak_allocated_bytes": 45430238720,
+        "peak_reserved_bytes": 46967816192
+      }
+    },
+    "joint": {
+      "logged_updates": 400,
+      "last_update": {
+        "update": 399,
+        "case": "bus_256",
+        "sigma": 0.26311369811442686,
+        "noise_seed": 70300399,
+        "mode": "joint",
+        "trainable_parameters": 3956280,
+        "lora_parameters": 3942400,
+        "guide_parameters": 13880,
+        "velocity_mse": 0.24643364548683167,
+        "guide_input_grad_norm": 0.16455431282520294,
+        "adapter_grad_norm_before_clip": 0.5267654061317444,
+        "base_weight_grad_count": 0,
+        "seconds": 0.48819728568196297
+      },
+      "result": {
+        "status": "complete",
+        "mode": "joint",
+        "trainable_parameters": 3956280,
+        "lora_parameters": 3942400,
+        "guide_parameters": 13880,
+        "frozen_tensor_count": 530,
+        "frozen_parameter_count": 20111430528,
+        "base_parameter_versions_unchanged": true,
+        "base_weight_grad_count": 0,
+        "updates_completed": 400,
+        "protocol_sha256": "57204621546e93b80195cd8f51be86f4d811f83ec697f2ed1562f4251d67c3e9",
+        "resume_from_update": 0,
+        "seconds_this_execution_segment": 634.9782918505371,
+        "sum_logged_training_step_seconds": 544.3579067699611,
+        "checkpoint_selection": "none, final400fixed",
+        "peak_allocated_bytes": 45430351360,
+        "peak_reserved_bytes": 46967816192
+      }
+    }
+  },
+  "validation": [
+    {
+      "mode": "lora_only",
+      "update": 0,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3679811358451843,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16688862442970276,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12155141681432724,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.28979387879371643,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14521989226341248,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10549673438072205,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.44738370180130005,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18767203390598297,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15913552045822144,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2839711010456085,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.13016043603420258,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09950248152017593,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.2087297464410464
+    },
+    {
+      "mode": "lora_only",
+      "update": 100,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3671519458293915,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16664902865886688,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12211443483829498,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2895841598510742,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14508846402168274,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10552599281072617,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4470076858997345,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18792758882045746,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15799139440059662,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2838785648345947,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.13007411360740662,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09933844208717346,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20852765130499998
+    },
+    {
+      "mode": "lora_only",
+      "update": 200,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3639681339263916,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16504497826099396,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.11993247270584106,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.28844091296195984,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.1439770758152008,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10349826514720917,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4434024393558502,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18621782958507538,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.1576513946056366,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.28291648626327515,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12916165590286255,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09788507223129272,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20684139306346574
+    },
+    {
+      "mode": "lora_only",
+      "update": 300,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.35442695021629333,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.15981557965278625,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.1133216843008995,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.284376323223114,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14050380885601044,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.09777864813804626,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.43301665782928467,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18262125551700592,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.148697167634964,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.27934327721595764,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.1264222264289856,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09180492907762527,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20101070900758108
+    },
+    {
+      "mode": "lora_only",
+      "update": 400,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3411649465560913,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.15315964818000793,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.10519477725028992,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2794128656387329,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.136367067694664,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.0908011719584465,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.41730162501335144,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.1754988133907318,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.14070266485214233,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.27455389499664307,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12296122312545776,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.08504582196474075,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.19351371005177498
+    },
+    {
+      "mode": "guide_only",
+      "update": 0,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3679811358451843,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16688862442970276,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12155141681432724,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.28979387879371643,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14521989226341248,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10549673438072205,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.44738370180130005,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18767203390598297,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15913552045822144,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2839711010456085,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.13016043603420258,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09950248152017593,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.2087297464410464
+    },
+    {
+      "mode": "guide_only",
+      "update": 100,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3675335943698883,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16572192311286926,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12134277820587158,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2892587184906006,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14431162178516388,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.1028389260172844,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4437313675880432,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18803545832633972,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15867072343826294,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2844531238079071,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12970469892024994,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09870800375938416,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20785924481848875
+    },
+    {
+      "mode": "guide_only",
+      "update": 200,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.366673082113266,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16502462327480316,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.11830534785985947,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2892659902572632,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14316776394844055,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10075204074382782,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4413059949874878,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.186359703540802,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15204180777072906,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.28469714522361755,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12927813827991486,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09813521802425385,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20625057133535543
+    },
+    {
+      "mode": "guide_only",
+      "update": 300,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.36461207270622253,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.1637643277645111,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.11768954247236252,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.28881707787513733,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14187757670879364,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.09756091237068176,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.43752825260162354,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18602873384952545,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.1539650708436966,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.28463083505630493,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12876178324222565,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09745164215564728,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20522398563722768
+    },
+    {
+      "mode": "guide_only",
+      "update": 400,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.36438965797424316,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16310007870197296,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.11677440255880356,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2881999611854553,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14084792137145996,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.0948219746351242,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4361429810523987,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.1850956529378891,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15431919693946838,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.28502702713012695,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12877294421195984,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09531906992197037,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20440090571840605
+    },
+    {
+      "mode": "joint",
+      "update": 0,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3679811358451843,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16688862442970276,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12155141681432724,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.28979387879371643,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14521989226341248,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10549673438072205,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.44738370180130005,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18767203390598297,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15913552045822144,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2839711010456085,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.13016043603420258,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09950248152017593,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.2087297464410464
+    },
+    {
+      "mode": "joint",
+      "update": 100,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3668222427368164,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.1655542552471161,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.12056512385606766,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2892916202545166,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.14404018223285675,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.10216929763555527,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.4438181519508362,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18723449110984802,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.15414021909236908,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.28476598858833313,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.1296633630990982,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09845618158578873,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.20721009311576685
+    },
+    {
+      "mode": "joint",
+      "update": 200,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3612058460712433,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.16206757724285126,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.1170462816953659,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2874668836593628,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.1411832869052887,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.09750920534133911,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.43426379561424255,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.18450435996055603,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.1493171751499176,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2827284038066864,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12790338695049286,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.09691180288791656,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.2035090004404386
+    },
+    {
+      "mode": "joint",
+      "update": 300,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3472777009010315,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.1549052745103836,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.10724015533924103,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2817594110965729,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.13622280955314636,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.0884055569767952,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.41818201541900635,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.1772339791059494,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.1395186334848404,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.277555376291275,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.1241627037525177,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.08799828588962555,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.19503849186003208
+    },
+    {
+      "mode": "joint",
+      "update": 400,
+      "rows": [
+        {
+          "case": "cows_256",
+          "sigma": 0.2,
+          "noise_seed": 90300,
+          "velocity_mse": 0.3311072289943695,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.5,
+          "noise_seed": 90301,
+          "velocity_mse": 0.14629119634628296,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_256",
+          "sigma": 0.8,
+          "noise_seed": 90302,
+          "velocity_mse": 0.09996624290943146,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.2,
+          "noise_seed": 90303,
+          "velocity_mse": 0.2764715850353241,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.5,
+          "noise_seed": 90304,
+          "velocity_mse": 0.13230997323989868,
+          "audio_finite": true
+        },
+        {
+          "case": "cows_native480",
+          "sigma": 0.8,
+          "noise_seed": 90305,
+          "velocity_mse": 0.08178605884313583,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.2,
+          "noise_seed": 90306,
+          "velocity_mse": 0.40226173400878906,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.5,
+          "noise_seed": 90307,
+          "velocity_mse": 0.16997875273227692,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_256",
+          "sigma": 0.8,
+          "noise_seed": 90308,
+          "velocity_mse": 0.12727056443691254,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.2,
+          "noise_seed": 90309,
+          "velocity_mse": 0.2724348306655884,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.5,
+          "noise_seed": 90310,
+          "velocity_mse": 0.12083645910024643,
+          "audio_finite": true
+        },
+        {
+          "case": "dance-twirl_native480",
+          "sigma": 0.8,
+          "noise_seed": 90311,
+          "velocity_mse": 0.08113817870616913,
+          "audio_finite": true
+        }
+      ],
+      "mean_velocity_mse": 0.18682106708486876
+    }
+  ],
+  "all_GPU_compute_processes": "GPU-99d7fa8c-36c0-909d-c788-ec0948145cef, 3386138, VLLM::EngineCore, 67886 MiB\nGPU-83e89564-0a87-a71f-ac85-3c88a49c9370, 580270, VLLM::EngineCore, 69878 MiB\nGPU-f62f930f-3e92-4306-1d1e-f35073793607, 585616, VLLM::EngineCore, 69878 MiB\nGPU-4a0d4f1a-f33f-dc9a-6b88-aff986b85a83, 585636, VLLM::EngineCore, 69878 MiB\nGPU-0a1d07ab-206b-651d-5f38-72097acbdbde, 1312474, external/h3_venv/bin/python, 1506 MiB",
+  "gpu6": "1, 81110, 0"
+}

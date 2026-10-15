@@ -1,0 +1,163 @@
+{
+  "seconds": 12.907870292663574,
+  "actualD_calls": 284,
+  "optimizer_updates": 0,
+  "across_source_packet_h": {
+    "total_RMS": 0.1570190042257309,
+    "across_source_standard_deviation_RMS": 0.002205577911809087,
+    "source_mean_standard_deviation_RMS": 0.0005652399850077927
+  },
+  "across_source_packet_h_after_delta_zero": {
+    "total_RMS": 0.15691117942333221,
+    "across_source_standard_deviation_RMS": 0.0020632424857467413,
+    "source_mean_standard_deviation_RMS": 0.0005539476405829191
+  },
+  "variant_source_query_means": {
+    "actual": {
+      "packet_h_RMS": 0.1570189017802477,
+      "packet_h_change_RMS": 0.0,
+      "canonical_h_RMS": 0.11172813243631806,
+      "canonical_h_change_RMS": 0.0,
+      "readout_delta_RMS": 0.7492892635720116,
+      "readout_delta_change_RMS": 0.0,
+      "nativeD_change_RMS": 0.0,
+      "supported_change_RMS": 0.0,
+      "postDC_change_RMS": 0.0,
+      "supported_detail_RMS": 0.010850401769857854,
+      "raw_union_PSNR": 23.43915299006871,
+      "DC_union_PSNR": 24.114425897598267,
+      "baseline_DC_union_PSNR": 24.114425897598267,
+      "DC_source_anchor_RMSE": 3.3826012926801195e-05
+    },
+    "constant_packet_h_other_source": {
+      "packet_h_RMS": 0.15699273347854614,
+      "packet_h_change_RMS": 0.0029351951961871237,
+      "canonical_h_RMS": 0.11182380254779543,
+      "canonical_h_change_RMS": 0.0024739698107753482,
+      "readout_delta_RMS": 0.7499529793858528,
+      "readout_delta_change_RMS": 0.006609703031634646,
+      "nativeD_change_RMS": 0.0008468054651789966,
+      "supported_change_RMS": 0.00031447399617588544,
+      "postDC_change_RMS": 0.0003086427263302279,
+      "supported_detail_RMS": 0.010847881087101996,
+      "raw_union_PSNR": 23.43859342166356,
+      "DC_union_PSNR": 24.1138459614345,
+      "baseline_DC_union_PSNR": 24.114425897598267,
+      "DC_source_anchor_RMSE": 3.3837574322959085e-05
+    },
+    "delta_zero_proxy_fixed": {
+      "packet_h_RMS": 0.15691104531288147,
+      "packet_h_change_RMS": 0.0026903905818471685,
+      "canonical_h_RMS": 0.11152227928063699,
+      "canonical_h_change_RMS": 0.003322843015277093,
+      "readout_delta_RMS": 0.7475281410983631,
+      "readout_delta_change_RMS": 0.00991782543548782,
+      "nativeD_change_RMS": 0.001106314384482435,
+      "supported_change_RMS": 0.0003657847976553187,
+      "postDC_change_RMS": 0.0003591273703672674,
+      "supported_detail_RMS": 0.010766694787889719,
+      "raw_union_PSNR": 23.438174860818044,
+      "DC_union_PSNR": 24.11330315044948,
+      "baseline_DC_union_PSNR": 24.114425897598267,
+      "DC_source_anchor_RMSE": 3.383672526759339e-05
+    },
+    "neural_anchor_other_source": {
+      "packet_h_RMS": 0.1570189017802477,
+      "packet_h_change_RMS": 0.0,
+      "canonical_h_RMS": 0.11172813243631806,
+      "canonical_h_change_RMS": 0.0,
+      "readout_delta_RMS": 0.7487211748957634,
+      "readout_delta_change_RMS": 0.23798844165035657,
+      "nativeD_change_RMS": 0.025359732980307723,
+      "supported_change_RMS": 0.00817653798731044,
+      "postDC_change_RMS": 0.007929953160263332,
+      "supported_detail_RMS": 0.009861002630454354,
+      "raw_union_PSNR": 23.351413692746842,
+      "DC_union_PSNR": 24.02608289037432,
+      "baseline_DC_union_PSNR": 24.114425897598267,
+      "DC_source_anchor_RMSE": 3.5183297332303755e-05
+    },
+    "shuffled_delta_proxy": {
+      "packet_h_RMS": 0.1570189017802477,
+      "packet_h_change_RMS": 0.0031596507760696113,
+      "canonical_h_RMS": 0.11172810502882514,
+      "canonical_h_change_RMS": 0.0029117380160771844,
+      "readout_delta_RMS": 0.7491293581468719,
+      "readout_delta_change_RMS": 0.00772170489653945,
+      "nativeD_change_RMS": 0.0009600187232925757,
+      "supported_change_RMS": 0.000356921756065276,
+      "postDC_change_RMS": 0.00035002422620371884,
+      "supported_detail_RMS": 0.010834199434611946,
+      "raw_union_PSNR": 23.43872731072562,
+      "DC_union_PSNR": 24.11389102254595,
+      "baseline_DC_union_PSNR": 24.114425897598267,
+      "DC_source_anchor_RMSE": 3.384055738888035e-05
+    }
+  },
+  "single_TRAIN_comparison": [
+    {
+      "checkpoint": "multi_source_last672",
+      "variant": "actual",
+      "packet_h_change_RMS": 0.0,
+      "readout_delta_change_RMS": 0.0,
+      "nativeD_change_RMS": 0.0,
+      "supported_change_RMS": 0.0,
+      "postDC_change_RMS": 0.0,
+      "DC_single_near_PSNR": 26.54812240600586
+    },
+    {
+      "checkpoint": "multi_source_last672",
+      "variant": "delta_zero_proxy_fixed",
+      "packet_h_change_RMS": 0.0026322307530790567,
+      "readout_delta_change_RMS": 0.008007523603737354,
+      "nativeD_change_RMS": 0.0006078668520785868,
+      "supported_change_RMS": 0.00017138953262474388,
+      "postDC_change_RMS": 0.0001713731762720272,
+      "DC_single_near_PSNR": 26.54743003845215
+    },
+    {
+      "checkpoint": "single_TRAIN_RGB300",
+      "variant": "actual",
+      "packet_h_change_RMS": 0.0,
+      "readout_delta_change_RMS": 0.0,
+      "nativeD_change_RMS": 0.0,
+      "supported_change_RMS": 0.0,
+      "postDC_change_RMS": 0.0,
+      "DC_single_near_PSNR": 28.284019470214844
+    },
+    {
+      "checkpoint": "single_TRAIN_RGB300",
+      "variant": "delta_zero_proxy_fixed",
+      "packet_h_change_RMS": 0.19710193574428558,
+      "readout_delta_change_RMS": 0.3548130989074707,
+      "nativeD_change_RMS": 0.031148100271821022,
+      "supported_change_RMS": 0.013743738643825054,
+      "postDC_change_RMS": 0.013740579597651958,
+      "DC_single_near_PSNR": 26.535858154296875
+    }
+  ],
+  "scope": "Fixed last672 VAL8 intervention. Neural anchor swap affects only readout conditioning; physical frozen decoder/current source anchor and shared controller fixed. Constant-h counterfactual is a diagnostic, not an eligible reconstruction method. Single TRAIN trueq only reproduces prior diagnostic; no training/test.",
+  "constant_h_qualification": {
+    "donor": "val_101085",
+    "donor_split": "VAL, fixed preexisting feature, no fitting",
+    "first_source_is_self": true,
+    "true_intervention_source_count": 7,
+    "original_CSV_variant_name_is_legacy": "constant_packet_h_other_source",
+    "true_intervention7_source_means": {
+      "packet_h_RMS": 0.15699273347854614,
+      "packet_h_change_RMS": 0.003354508795642427,
+      "canonical_h_RMS": 0.11182361111348989,
+      "canonical_h_change_RMS": 0.002827394069457541,
+      "readout_delta_RMS": 0.7456053276451267,
+      "readout_delta_change_RMS": 0.007553946321868166,
+      "nativeD_change_RMS": 0.0009677776744902818,
+      "supported_change_RMS": 0.00035939885277244053,
+      "postDC_change_RMS": 0.00035273454437740335,
+      "supported_detail_RMS": 0.01107997780817808,
+      "raw_union_PSNR": 23.469943533138352,
+      "DC_union_PSNR": 24.173058217885544,
+      "baseline_DC_union_PSNR": 24.173721002072703,
+      "DC_source_anchor_RMSE": 3.7193931269561454e-05
+    }
+  }
+}

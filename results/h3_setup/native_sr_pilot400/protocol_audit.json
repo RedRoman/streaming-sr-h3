@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "protocol_sha256": "9b0bbef458d43314a97f6b496632805037e757bb3e1f7567a9f19e1d541c0b3d",
+  "zero_adapter_parity": {
+    "native_vs_scoped_video_maxabs": 0.0,
+    "native_vs_scoped_audio_maxabs": 0.0,
+    "zero_adapter_video_maxabs": 0.0,
+    "zero_adapter_audio_maxabs": 0.0
+  },
+  "rows": [
+    {
+      "mode": "lora_only",
+      "unique_updates": 400,
+      "append_only_log_rows": 400,
+      "trainable_parameters": 3942400,
+      "fixed_validation_initial": 0.20855263185997805,
+      "fixed_validation_final400": 0.193379582837224,
+      "base_freeze_passed": true,
+      "guide_input_grad_norm_range": [
+        0.004628096241503954,
+        3.252493143081665
+      ]
+    },
+    {
+      "mode": "guide_only",
+      "unique_updates": 400,
+      "append_only_log_rows": 400,
+      "trainable_parameters": 13880,
+      "fixed_validation_initial": 0.20855263185997805,
+      "fixed_validation_final400": 0.2043835986405611,
+      "base_freeze_passed": true,
+      "guide_input_grad_norm_range": [
+        0.0052246893756091595,
+        0.7361106872558594
+      ]
+    },
+    {
+      "mode": "joint",
+      "unique_updates": 400,
+      "append_only_log_rows": 400,
+      "trainable_parameters": 3956280,
+      "fixed_validation_initial": 0.20855263185997805,
+      "fixed_validation_final400": 0.18655296539266905,
+      "base_freeze_passed": true,
+      "guide_input_grad_norm_range": [
+        0.004675243981182575,
+        9.318792343139648
+      ]
+    }
+  ],
+  "checks": [
+    "same400case/sigma/noiseseeds acrosscontrols",
+    "validationneveroptimizerinput",
+    "fixedfinal400, no checkpointselection",
+    "base tensorversionsunchanged andgrad0",
+    "allnative49samplersLRonly, samepromptcontext/prefix/seed/CFG"
+  ]
+}

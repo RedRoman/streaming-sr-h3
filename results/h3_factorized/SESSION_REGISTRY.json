@@ -1,0 +1,493 @@
+{
+  "host": "sai-gpu161",
+  "project": "/home/saiadmin/streaming_sr_20261015",
+  "gpu": 7,
+  "foreground_only": true,
+  "sessions": [
+    {
+      "session": 3815,
+      "phase": "native_H3_cache",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 95.492
+    },
+    {
+      "session": 96205,
+      "phase": "seed17_latent_stage1",
+      "status": "complete",
+      "exit": 0
+    },
+    {
+      "session": 34543,
+      "phase": "native_D_gradient_parity_audit",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 7.32
+    },
+    {
+      "session": 75080,
+      "phase": "seed17_true_D_RGB_stage2",
+      "status": "complete",
+      "exit": 0
+    },
+    {
+      "session": 63796,
+      "phase": "seed17_native_D_val",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 21.11
+    },
+    {
+      "session": 32913,
+      "phase": "seed29_43_latent_stage1",
+      "status": "complete",
+      "exit": 0
+    },
+    {
+      "session": 83270,
+      "phase": "exact_physical_LR_recollection",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 1.946,
+      "all56_LR_RGB_bitwise_equal": true
+    },
+    {
+      "session": 37772,
+      "phase": "classical_DC_operator_protocol_audit",
+      "status": "complete",
+      "exit": 0
+    },
+    {
+      "session": 99924,
+      "phase": "seed29_43_actual_H3_D_RGB_training",
+      "status": "complete",
+      "exit": 0
+    },
+    {
+      "session": 12068,
+      "phase": "fixed_heldout_native_D_raw_DC_evaluation",
+      "status": "complete",
+      "sources": 16,
+      "exit": 0,
+      "seconds": 101.142
+    },
+    {
+      "session": 94524,
+      "phase": "B1_fixed_checkpoint_val_mechanism",
+      "status": "complete",
+      "sources": 8,
+      "exit": 0,
+      "seconds": 22.017
+    },
+    {
+      "session": 94630,
+      "phase": "B2_zero_proposal_train_val_actualH3_cache",
+      "status": "complete",
+      "sources": 40,
+      "exit": 0,
+      "seconds": 88.066
+    },
+    {
+      "session": 69538,
+      "phase": "B2_actual_H3_zero_anchor_support_gradient_audit",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 9.965
+    },
+    {
+      "session": 14014,
+      "phase": "B2_seed17_four_controls_latent_stage1",
+      "status": "complete",
+      "steps_per_model": 600,
+      "exit": 0
+    },
+    {
+      "session": 15491,
+      "phase": "B2_seed17_four_controls_actual_D_RGB_stage2",
+      "status": "complete",
+      "steps_per_model": 200,
+      "exit": 0
+    },
+    {
+      "session": 46816,
+      "phase": "B2_seed17_val_actual_D_and_frozen_B1_strong_controls",
+      "status": "complete",
+      "sources": 8,
+      "exit": 0,
+      "seconds": 25.799
+    },
+    {
+      "session": 45407,
+      "phase": "B2_seed29_43_fixed_budget_latent_stage1",
+      "status": "complete",
+      "steps_per_model": 600,
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0
+    },
+    {
+      "session": 24395,
+      "phase": "B3_natural_val_complementary_linear_probe_CPU",
+      "status": "complete",
+      "sources": 8,
+      "GPU_used": false,
+      "foreground": true,
+      "detail_live_path": "results/h3_factorized/complementary_v3/linear_probe/LIVE_STATE.json",
+      "exit": 0
+    },
+    {
+      "session": 70042,
+      "phase": "B2_seed29_43_actual_D_RGB_stage2",
+      "status": "interrupted_remote_close",
+      "steps_per_model": 200,
+      "gpu": 7,
+      "foreground": true,
+      "exit": 255,
+      "incomplete_kind": "mixed_memory",
+      "seed": 43,
+      "last_step": 100,
+      "recovery": "same init/schedule replay last control; partial weights+log retained"
+    },
+    {
+      "session": 7611,
+      "phase": "B3_classical_inverse_train_only_regularization_calibration",
+      "status": "complete",
+      "exit": 0,
+      "GPU_used": false,
+      "foreground": true,
+      "selection": "prefix4 union ROI over first4 TRAIN sources, grid [.001,.01,.1]"
+    },
+    {
+      "session": 78702,
+      "phase": "B3_natural_val_complementary_probe_train_selected_ridge",
+      "status": "complete",
+      "sources": 8,
+      "GPU_used": false,
+      "foreground": true,
+      "exit": 0,
+      "seconds": 11.363
+    },
+    {
+      "session": 8146,
+      "phase": "B2_mixed_seed43_actual_D_fixed_budget_replay_after_SSH_exit255",
+      "status": "complete",
+      "steps_per_model": 200,
+      "gpu": 7,
+      "foreground": true,
+      "previous_partial_steps_replayed": 100,
+      "exit": 0,
+      "seconds": 30.462
+    },
+    {
+      "session": 4926,
+      "phase": "B2_three_seed_val_actual_D_and_strong_controls",
+      "status": "complete",
+      "sources": 8,
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0,
+      "seconds": 52.407,
+      "raw_rows": 1080,
+      "DC_rows": 1080
+    },
+    {
+      "session": 84926,
+      "phase": "B2_three_seed_source_paired_CPU_statistics",
+      "status": "complete",
+      "exit": 0,
+      "GPU_used": false,
+      "foreground": true
+    },
+    {
+      "session": 83773,
+      "phase": "B3_native_H3_ED_complementary_val8_capacity",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "log": "results/h3_factorized/complementary_v3/native_capacity/logs/audit_20261015.log",
+      "sources": 8,
+      "training": false,
+      "exit": 0,
+      "seconds": 52.153,
+      "peak_GPU_bytes": 7251362816,
+      "raw_plus_DC_rows": 1920
+    },
+    {
+      "session": 74032,
+      "phase": "B3_native_ED_capacity_matched_history_support_control",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "training": false,
+      "log": "results/h3_factorized/complementary_v3/native_capacity_matched/logs/audit_20261015.log",
+      "exit": 0,
+      "seconds": 54.876,
+      "peak_GPU_bytes": 7277020160,
+      "raw_plus_DC_rows": 2176
+    },
+    {
+      "session": 46717,
+      "phase": "B3_single_near_physical_preprocessing_matched_native_control",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "training": false,
+      "expected_nativeE": 40,
+      "expected_nativeD": 40,
+      "SSH_keepalive_seconds": 15,
+      "log": "results/h3_factorized/complementary_v3/native_capacity_preconditioned/logs/audit_20261015.log",
+      "exit": 0,
+      "seconds": 16.486,
+      "peak_GPU_bytes": 7103702016
+    },
+    {
+      "session": 99938,
+      "phase": "B3R_actual_native_H3_train32_val8_cache",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "log": "results/h3_factorized/revision_v3/logs/cache_20261015.log",
+      "exit": 0,
+      "seconds": 255.026
+    },
+    {
+      "session": 61941,
+      "phase": "B3R_real_cache_structural_gradient_native_zero_checks",
+      "status": "failed_native_zero_cache_parity",
+      "exit": 1,
+      "all_six_latent_structural_gradient_checks_passed": true
+    },
+    {
+      "session": 90680,
+      "phase": "B3R_native_baseline_route_precision_probe",
+      "status": "complete",
+      "exit": 0,
+      "direct_cache_RMSE": 5.871e-05,
+      "native_repeat_maxabs": 0
+    },
+    {
+      "session": 12075,
+      "phase": "B3R_saved_query_baseline_route_alignment",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0
+    },
+    {
+      "session": 95650,
+      "phase": "B3R_aligned_baseline_all_six_structural_actualD_checks",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 9.69,
+      "native_zero_RGB_maxabs": 0,
+      "peak_GPU_bytes": 10861941760
+    },
+    {
+      "session": 55254,
+      "phase": "B3R_seed17_all_six_fixed_latent600_then_actualD200",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "steps_per_model": [
+        600,
+        200
+      ],
+      "exit": 0,
+      "all_six_models": true,
+      "actual_D_backward_calls": 300
+    },
+    {
+      "session": 51473,
+      "phase": "B3R_fixed_val8_actualD_then_compressed_stream_parity_and_cost",
+      "status": "GPU_evaluation_and_stream_audit_complete_CPU_summary_dependency_missing",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "exit": 1,
+      "val_seconds": 72.406,
+      "rows": 2464,
+      "all_six_stream_parity_passed": true,
+      "summary_recovery": "same CSV summarized locally with existing matplotlib; no GPU rerun"
+    },
+    {
+      "session": 61593,
+      "phase": "B3R_supplement_endpoint_last600_to_RGB200_all_six_then_last200_eval",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "physical_extra_steps": 1200,
+      "physical_extra_actualD_backward": 300,
+      "exit": 0,
+      "RGB_training_seconds": 208.848,
+      "val_seconds": 73.48,
+      "stream_parity_maxabs": 2.5034e-06
+    },
+    {
+      "session": 16869,
+      "phase": "B3R_fixed_checkpoint_prelift_vs_postlift_single_packet_actualD_diagnosis",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 15.504,
+      "training": false
+    },
+    {
+      "session": 64786,
+      "phase": "B3R_single_TRAIN_source_two_objective_arms300each",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "steps_per_arm": 300,
+      "lr": 0.0005,
+      "no_selection": true,
+      "exit": 0,
+      "seconds": 41.372,
+      "all_two_arms300": true
+    },
+    {
+      "session": 50320,
+      "phase": "fixed_saved_objective_checkpoints_input_dependence",
+      "status": "complete",
+      "exit": 0,
+      "training": false
+    },
+    {
+      "session": 29841,
+      "phase": "B3R_decoded_v4_TRAINquerylabels_then_actualD7checks_then_7x672",
+      "status": "all7_training_completed_before_SSH_close",
+      "gpu": 7,
+      "foreground": true,
+      "SSH_keepalive_seconds": 15,
+      "source_counts": [
+        32,
+        8
+      ],
+      "actualD_planned_backward": 4704,
+      "pid": 1342895,
+      "TRAINquerylabel_E_calls": 224,
+      "all7_checks": "passed",
+      "exit": 255,
+      "last_known_pid": 1342895,
+      "last_known_kind": "factor_cache_mlp",
+      "last_known_step": 336,
+      "actual_steps_per_model": 672,
+      "actualD_backward_total": 4704,
+      "seconds": 844.942,
+      "no_restart_or_replay": true
+    },
+    {
+      "session": 45500,
+      "phase": "single_readonly_PID_and_checkpoint_probe_after_SSH255",
+      "status": "complete",
+      "GPU_mutation": false,
+      "exit": 1,
+      "meaning": "ps confirmed PID absent; && stopped subsequent reads"
+    },
+    {
+      "session": 59355,
+      "phase": "readonly_all7_completion_checkpoint_GPU_verification",
+      "status": "complete",
+      "exit": 0,
+      "all7_complete": true,
+      "GPU7_used_MiB": 1
+    },
+    {
+      "session": 5352,
+      "phase": "decoded_v4_val8_last672_and_runtime",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0,
+      "seconds": 85.602,
+      "rows": 2688
+    },
+    {
+      "session": 68621,
+      "phase": "decoded_v4_all7_fixed_history_interventions_and_mixedquery_actualD_gradients",
+      "status": "complete",
+      "exit": 0,
+      "seconds": 33.147,
+      "optimizer_updates": 0
+    },
+    {
+      "session": 39550,
+      "phase": "B4_staged_pathway_argument_path_typo_before_model_load",
+      "status": "failed_before_GPU_load",
+      "exit": 1,
+      "optimizer_updates": 0
+    },
+    {
+      "session": 32711,
+      "phase": "B4_staged_pathway_fixedweights_readonly",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0,
+      "seconds": 12.908,
+      "actualD_calls": 284,
+      "optimizer_updates": 0
+    },
+    {
+      "session": 18452,
+      "phase": "B5_TRAIN_fixedphi_then_independent_acceptance",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0,
+      "phi_train_seconds": 10.256,
+      "phi_D_calls": 256,
+      "acceptance_seconds": 2.904,
+      "discarded_audit_actualD_backward": 8
+    },
+    {
+      "session": 70083,
+      "phase": "B5_fixed4x672_actualD",
+      "status": "complete",
+      "pid": 1381677,
+      "gpu": 7,
+      "foreground": true,
+      "steps_per_arm": 672,
+      "actualD_planned": 2688,
+      "log": "results/h3_factorized/factorial_v5/logs/train_seed17_20261015.log",
+      "exit": 0,
+      "actualD_backward": 2688,
+      "seconds": 482.50125646591187
+    },
+    {
+      "session": 76701,
+      "phase": "B5_VALphi64D_then_last672_VAL8_then_prefix_runtime",
+      "status": "complete",
+      "gpu": 7,
+      "foreground": true,
+      "exit": 0,
+      "eval_PID": 1386555,
+      "val_seconds": 60.088,
+      "val_rows": 3136,
+      "val_D_calls": 1208,
+      "runtime_seconds": 6.373,
+      "runtime_D_calls": 152,
+      "VALphi_D_calls": 64,
+      "stream_parity_maxabs": 0
+    },
+    {
+      "session": 81711,
+      "phase": "B5_final_fresh_GPU7_release_readonly",
+      "status": "complete",
+      "exit": 0,
+      "GPU7_used_MiB": 1,
+      "GPU7_free_MiB": 81110,
+      "GPU7_util": 0
+    },
+    {
+      "session": 23270,
+      "phase": "B5_local_remote_all4last672_frozen_source_report_SHA_validation",
+      "status": "complete",
+      "exit": 0,
+      "GPU_used": false
+    }
+  ],
+  "updated_unix": 1792072754.176876
+}

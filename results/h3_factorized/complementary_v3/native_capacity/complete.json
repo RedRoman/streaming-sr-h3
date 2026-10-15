@@ -1,0 +1,142 @@
+{
+  "manifest": "results/h3_factorized/cache_pilot/manifest.json",
+  "calibration": "results/h3_factorized/complementary_v3/baseline_calibration_complete.json",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/complementary_v3/native_capacity",
+  "count": 8,
+  "context": 22,
+  "iterations": 48,
+  "scope": "Frozen actual H3 VAE E/D capacity only; neutral photometry/no occlusion, exact known geometry, natural source photos under simulated camera, no training/test/DiT or actual video claim",
+  "sources": [
+    {
+      "id": "val_101085",
+      "source": "data/BSR/BSDS500/data/images/val/101085.jpg",
+      "source_sha256": "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a"
+    },
+    {
+      "id": "val_101087",
+      "source": "data/BSR/BSDS500/data/images/val/101087.jpg",
+      "source_sha256": "d755a74144410290cff5e214bb7cbf352a8cb920d45fac3d992b9772ad92a017"
+    },
+    {
+      "id": "val_102061",
+      "source": "data/BSR/BSDS500/data/images/val/102061.jpg",
+      "source_sha256": "35ce0a9baaebae00c19f6abccd1d7b3ecd8f1c62003e178610b2179c082f0a8e"
+    },
+    {
+      "id": "val_103070",
+      "source": "data/BSR/BSDS500/data/images/val/103070.jpg",
+      "source_sha256": "6d1d9e564b5459e969f65470ff03aa3104af779e93c93ca434ad546477e27261"
+    },
+    {
+      "id": "val_105025",
+      "source": "data/BSR/BSDS500/data/images/val/105025.jpg",
+      "source_sha256": "6678e84e923e5c1b085afe43ae2fc3735f7f424e02eaefe50a64405f76b9b51b"
+    },
+    {
+      "id": "val_106024",
+      "source": "data/BSR/BSDS500/data/images/val/106024.jpg",
+      "source_sha256": "ea31189313c34be7b7a48b7cd776c17f3afb5585de37a6e740a638320fa9847d"
+    },
+    {
+      "id": "val_108005",
+      "source": "data/BSR/BSDS500/data/images/val/108005.jpg",
+      "source_sha256": "e0210b50350e928e35f048fe4b8ea54e58200c58ae3bb5ff619b2074b38fac01"
+    },
+    {
+      "id": "val_108070",
+      "source": "data/BSR/BSDS500/data/images/val/108070.jpg",
+      "source_sha256": "6a5d0dd5e9e0a14f680b1c8225b151268c40a41935add1c91483575fd5db51cb"
+    }
+  ],
+  "ridge": 0.01,
+  "ridge_selection": "maximum prefix4 all-history union-ROI PSNR averaged over four TRAIN sources and two orders",
+  "prefix_protocol": "Same 4 measured near footprints and two orders as CPU probe; far return reuses fixed actual far packet to isolate representation. Cache computation is stateless; only arrived prefix packet indices enter each readout.",
+  "copied_context": "22 copies supply native temporal context only, not22 measurements",
+  "method_contract": "H3 full/delta nativeD followed by each measured footprint row-band and current-far null; decoded atlas precision-average of such near residuals. ED pixel baselines encode/decode LR-only classical reconstruction; anchored variants remove only nativeD coarse drift. All share actual current-far box/affine DC64.",
+  "oracle": "oracle_H3_HR uses HR only for a separately named representation ceiling, never state or valid-method inputs",
+  "precision": {
+    "native_E_D": "float16",
+    "camera_math": "float64",
+    "TF32": false,
+    "DC": "float32"
+  },
+  "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "native_calls": {
+    "encode": 216,
+    "decode": 216
+  },
+  "native_timings_seconds": {
+    "native_decode22_lastframe": 7.541949521750212,
+    "native_encode22": 27.56448508054018,
+    "pixel_atlas_prefix": 0.03266925364732742,
+    "pixel_inverse_prefix": 1.3334404565393925
+  },
+  "peak_GPU_bytes": 7251362816,
+  "seconds": 52.15317130088806,
+  "rows": 1920,
+  "state_cost": "state_cost.csv includes actual float32 persistent representation, common current LR and metadata; deterministic decoder-query memoization in audit is evaluation scratch, not falsely claimed runtime state. Inverse also has bounded per-footprint sum/count sufficient statistics, not inherently growing with duplicate/noisy packets.",
+  "shared_camera_matrix_bytes": 655360,
+  "packets": [
+    {
+      "source": "val_101085",
+      "source_sha256": "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_101085.pt",
+      "sha256": "398175b33a82a1e9b0bdd9dce390778b2dfac7e23acdf7469413111b6ce242e3",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_101087",
+      "source_sha256": "d755a74144410290cff5e214bb7cbf352a8cb920d45fac3d992b9772ad92a017",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_101087.pt",
+      "sha256": "a7d9dd209415c0319802a30e8569a1085318e976de4be1d05f2afd597d6396d8",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_102061",
+      "source_sha256": "35ce0a9baaebae00c19f6abccd1d7b3ecd8f1c62003e178610b2179c082f0a8e",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_102061.pt",
+      "sha256": "b689c5db93e37900f09c1cdfa675ad3a24ab2e1bf7e3ce381f54ff6cf26dbff1",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_103070",
+      "source_sha256": "6d1d9e564b5459e969f65470ff03aa3104af779e93c93ca434ad546477e27261",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_103070.pt",
+      "sha256": "593ce5f065d421d9cbeb5975e07c5aa0d3e54c2d239657b9200bf51a4e2f060d",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_105025",
+      "source_sha256": "6678e84e923e5c1b085afe43ae2fc3735f7f424e02eaefe50a64405f76b9b51b",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_105025.pt",
+      "sha256": "505858f0de98fa4c98d5c4c0dded0ecb247d839003e58f462634c1358539b437",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_106024",
+      "source_sha256": "ea31189313c34be7b7a48b7cd776c17f3afb5585de37a6e740a638320fa9847d",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_106024.pt",
+      "sha256": "cca846a462a023a13f4ad8bf0dcfdb3f8f3bfa8e0a84a0851c506153104883e6",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_108005",
+      "source_sha256": "e0210b50350e928e35f048fe4b8ea54e58200c58ae3bb5ff619b2074b38fac01",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_108005.pt",
+      "sha256": "2e4b27f1e5e31b4198640af88534b88fdccca2a155e2f3cb8bb6950f80171ff6",
+      "HR_in_runtime_inputs": false
+    },
+    {
+      "source": "val_108070",
+      "source_sha256": "6a5d0dd5e9e0a14f680b1c8225b151268c40a41935add1c91483575fd5db51cb",
+      "path": "results/h3_factorized/complementary_v3/native_capacity/inputs/val_108070.pt",
+      "sha256": "0109179e2c18d0f918f2d8c19d434e915346a54220dc3a4c312e09fb0a038d08",
+      "HR_in_runtime_inputs": false
+    }
+  ],
+  "torch": "2.10.0+cu128",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "script_sha256": "c594f20496764fac1ae5c759ba8311b6e47daf9ed218e2230f293f2c145c569b"
+}

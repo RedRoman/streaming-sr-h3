@@ -8,3 +8,5 @@ This snapshot does not assign a new blanket license to upstream code, model weig
 - DAVIS: dataset terms are retained under `data/real_video/source_metadata/`. The research records use the archive's CC BY-NC 4.0 terms; dataset images excluded except limited result panels.
 - LaSOT: source/revision/license evidence is recorded in `research/long_video/SOURCES.md` and dataset manifests; video frames excluded.
 - Other cited methods and implementations are attributed in `research/sources_and_method.md` and individual experiment reports.
+
+- RelayVSR: https://github.com/kopperx/RelayVSR . Used as an external baseline; its downloaded implementation and model weights are excluded. The protocol records the evaluated commit and conditioning differences.

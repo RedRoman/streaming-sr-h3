@@ -1,0 +1,74 @@
+{
+  "cache": "results/h3_factorized/revision_v3/cache",
+  "models": "results/h3_factorized/revision_v3/rgb_stage2",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/revision_v3/val_seed17",
+  "seed": 17,
+  "seconds": 72.40600633621216,
+  "checkpoints": {
+    "closed_action": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/closed_action_seed17/best.pt",
+      "sha256": "0556ca3fabb51b98fbce4302330ddc507b45f0cf6bfaac9848495624177fbeef",
+      "step": 150,
+      "parameters": 146224
+    },
+    "closed_action_no_equiv": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/closed_action_no_equiv_seed17/best.pt",
+      "sha256": "c161acde2eabb65ec68cef67979d1dd5fb3a92f4a6a2899f1d38e07b75263763",
+      "step": 150,
+      "parameters": 146224
+    },
+    "factor_cache_mlp": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/factor_cache_mlp_seed17/best.pt",
+      "sha256": "d54f71abce0d6abe54514ec19a7e10418ce59837e17225351923a31c697d87d7",
+      "step": 1,
+      "parameters": 146576
+    },
+    "nonlinear_group": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/nonlinear_group_seed17/best.pt",
+      "sha256": "ce8d6df1400c9404c61236d31fe6d9e12ec6594ae593628b0354057d422eb949",
+      "step": 150,
+      "parameters": 146576
+    },
+    "gru_online": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/gru_online_seed17/best.pt",
+      "sha256": "fd59205e11666f2e2d407ae526e4af4b2db7d1bf0693b91ee5c48b29e5a06d8b",
+      "step": 200,
+      "parameters": 146028
+    },
+    "gru_replay": {
+      "path": "results/h3_factorized/revision_v3/rgb_stage2/gru_replay_seed17/best.pt",
+      "sha256": "766f38e14bfe890be39113ed13e414fa139b087b458367f97f2f0b50384dbe7a",
+      "step": 100,
+      "parameters": 146028
+    }
+  },
+  "sources": [
+    "val_101085",
+    "val_101087",
+    "val_102061",
+    "val_103070",
+    "val_105025",
+    "val_106024",
+    "val_108005",
+    "val_108070"
+  ],
+  "capture_group_provenance": "Simulator known locked-exposure segment tags, all controls share; not discovered by LR and contains no numerical q or content/visibility labels",
+  "native_calls": {
+    "encode": 168,
+    "decode": 848
+  },
+  "peak_GPU_bytes": 7168429056,
+  "VAE_parameter_bytes": 5207737968,
+  "shared_camera_operators_bytes": 524288,
+  "torch": "2.10.0+cu128",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "VAE_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "precision": "nativeFP16 E/D; cameraFP32; TF32off; RGBtargetscommonFP16 cache",
+  "classical_inverse": "LR-only relative multiplicative spatial gain+bias, confidence weighted48CG ridge.01 fixed earliertrain-only calibration; current-far-null,sharedDC64",
+  "scope": "32train/8val development natural photos with simulated camera/nuisance, no old16test, no real video or DiT claim",
+  "evaluation_source_independence": "Average queries within each source before bootstrap/pairwise statistics; one trained seed, not8x7 independent images",
+  "script_sha256": "b01afacfbe7661ed562b72a84fb0d6ed080daeac5bfa2df384b26d0916b864c0",
+  "rows": 2464
+}

@@ -1,0 +1,2452 @@
+{
+  "status": "preregistered",
+  "scope": "NativeH3SRadaptation fixed400 pilot native_io_v2; interface correction, not extra optimization of legacy weights; no test fitting/selection",
+  "version": "native_io_v2",
+  "supersedes_legacy": "native_sr_pilot400/legacy_fp32_io.json; new initialization, identical seed/case/sigma/noise/lr budget",
+  "stream_io": "Exact official BaseModel BF16 video stream and BF16 carried audio then BF16 physical audio; native output BF16; FP32 MSE accumulation",
+  "native_io_helper_sha256": "f0b879718aaf9a193052829caccacd81b0c43b741bdd05ba00726ffae1d70a27",
+  "official_wrapper_math_backward_audit_sha256": "ead6b621e0bfdc5ee074df33d7a7d222f903a064b4f35cdc9c4a493cbe339fd1",
+  "seed": 703,
+  "updates_each": 400,
+  "controls": [
+    "lora_only",
+    "guide_only",
+    "joint"
+  ],
+  "lr": 1e-05,
+  "optimizer": "AdamW betas(.9,.999),eps1e-8,weight_decay.01,gradient_clip1",
+  "training_sigma": "Uniform actual video sigma [.05,.95]; no importanceweight; audio sigma exactnative shift12to3 conversion",
+  "loss": "unweighted video velocityMSE to epsilon-zHR; HR only target/noisedtarget; LRguideonly condition",
+  "train_cases": [
+    "bear_256",
+    "bear_native480",
+    "bus_256",
+    "bus_native480",
+    "car-turn_256",
+    "car-turn_native480",
+    "flamingo_256",
+    "flamingo_native480"
+  ],
+  "validation_cases": [
+    "cows_256",
+    "cows_native480",
+    "dance-twirl_256",
+    "dance-twirl_native480"
+  ],
+  "validation_sigmas": [
+    0.2,
+    0.5,
+    0.8
+  ],
+  "validation_schedule": "0/100/200/300/400updates fixed noise; no selection, final400readouts only",
+  "readout": "normal50sigmapoints/49Euler,CFG1,seed101,neutraltext only; all controls sameLRguide/prefix0..21",
+  "lora": "rank2 qkv/out every50nativeblock",
+  "guide_projection": "24to32to24 spatial3x3 residual identityinit; parameters differ acrosscontrols",
+  "context_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+  "model_sha256": "a32572fb90b5508b201ec7c2eddcc184b13ddfd3c6f6d2cf06a0b46535d541b4",
+  "train_manifest_sha256": "138221fba62be952cc60b3856f274031bf6a7d5195c6b3fbd30e052dd9b6fb3d",
+  "val_manifest_sha256": "252bef90dabeabcdda543a4158e04486b5991a77b515c93e47fd6a9be01f4fac",
+  "schedule": [
+    {
+      "update": 0,
+      "case": "flamingo_256",
+      "sigma": 0.3582333720692875,
+      "noise_seed": 70300000
+    },
+    {
+      "update": 1,
+      "case": "flamingo_native480",
+      "sigma": 0.06287250126879856,
+      "noise_seed": 70300001
+    },
+    {
+      "update": 2,
+      "case": "car-turn_256",
+      "sigma": 0.9057231020507318,
+      "noise_seed": 70300002
+    },
+    {
+      "update": 3,
+      "case": "car-turn_native480",
+      "sigma": 0.2574355457092942,
+      "noise_seed": 70300003
+    },
+    {
+      "update": 4,
+      "case": "bus_native480",
+      "sigma": 0.53332509476945,
+      "noise_seed": 70300004
+    },
+    {
+      "update": 5,
+      "case": "bear_native480",
+      "sigma": 0.4142602864306308,
+      "noise_seed": 70300005
+    },
+    {
+      "update": 6,
+      "case": "bus_256",
+      "sigma": 0.2756134666235769,
+      "noise_seed": 70300006
+    },
+    {
+      "update": 7,
+      "case": "bear_256",
+      "sigma": 0.2778453955804848,
+      "noise_seed": 70300007
+    },
+    {
+      "update": 8,
+      "case": "bus_256",
+      "sigma": 0.1572534093516106,
+      "noise_seed": 70300008
+    },
+    {
+      "update": 9,
+      "case": "bear_256",
+      "sigma": 0.6108516370680308,
+      "noise_seed": 70300009
+    },
+    {
+      "update": 10,
+      "case": "bus_native480",
+      "sigma": 0.574848544968136,
+      "noise_seed": 70300010
+    },
+    {
+      "update": 11,
+      "case": "flamingo_native480",
+      "sigma": 0.8134250717908501,
+      "noise_seed": 70300011
+    },
+    {
+      "update": 12,
+      "case": "car-turn_native480",
+      "sigma": 0.09133668475522813,
+      "noise_seed": 70300012
+    },
+    {
+      "update": 13,
+      "case": "bear_native480",
+      "sigma": 0.5308799233232387,
+      "noise_seed": 70300013
+    },
+    {
+      "update": 14,
+      "case": "flamingo_256",
+      "sigma": 0.15038574841276603,
+      "noise_seed": 70300014
+    },
+    {
+      "update": 15,
+      "case": "car-turn_256",
+      "sigma": 0.8920323846991353,
+      "noise_seed": 70300015
+    },
+    {
+      "update": 16,
+      "case": "bear_256",
+      "sigma": 0.7111465796579101,
+      "noise_seed": 70300016
+    },
+    {
+      "update": 17,
+      "case": "car-turn_256",
+      "sigma": 0.18864283388099484,
+      "noise_seed": 70300017
+    },
+    {
+      "update": 18,
+      "case": "flamingo_native480",
+      "sigma": 0.9402653883621036,
+      "noise_seed": 70300018
+    },
+    {
+      "update": 19,
+      "case": "bus_256",
+      "sigma": 0.06439160706226911,
+      "noise_seed": 70300019
+    },
+    {
+      "update": 20,
+      "case": "bus_native480",
+      "sigma": 0.49366009400129746,
+      "noise_seed": 70300020
+    },
+    {
+      "update": 21,
+      "case": "car-turn_native480",
+      "sigma": 0.4928518202149099,
+      "noise_seed": 70300021
+    },
+    {
+      "update": 22,
+      "case": "bear_native480",
+      "sigma": 0.9243210117879592,
+      "noise_seed": 70300022
+    },
+    {
+      "update": 23,
+      "case": "flamingo_256",
+      "sigma": 0.8398749867970934,
+      "noise_seed": 70300023
+    },
+    {
+      "update": 24,
+      "case": "bus_256",
+      "sigma": 0.6674641414244711,
+      "noise_seed": 70300024
+    },
+    {
+      "update": 25,
+      "case": "bear_256",
+      "sigma": 0.4135848301003541,
+      "noise_seed": 70300025
+    },
+    {
+      "update": 26,
+      "case": "car-turn_native480",
+      "sigma": 0.2123769138334946,
+      "noise_seed": 70300026
+    },
+    {
+      "update": 27,
+      "case": "flamingo_native480",
+      "sigma": 0.5405700935383582,
+      "noise_seed": 70300027
+    },
+    {
+      "update": 28,
+      "case": "bus_native480",
+      "sigma": 0.47444726923964475,
+      "noise_seed": 70300028
+    },
+    {
+      "update": 29,
+      "case": "bear_native480",
+      "sigma": 0.44736710082441894,
+      "noise_seed": 70300029
+    },
+    {
+      "update": 30,
+      "case": "flamingo_256",
+      "sigma": 0.39189372550224466,
+      "noise_seed": 70300030
+    },
+    {
+      "update": 31,
+      "case": "car-turn_256",
+      "sigma": 0.3245485043321957,
+      "noise_seed": 70300031
+    },
+    {
+      "update": 32,
+      "case": "bus_256",
+      "sigma": 0.927541991578485,
+      "noise_seed": 70300032
+    },
+    {
+      "update": 33,
+      "case": "car-turn_native480",
+      "sigma": 0.40547236656664987,
+      "noise_seed": 70300033
+    },
+    {
+      "update": 34,
+      "case": "bear_256",
+      "sigma": 0.6327478841667793,
+      "noise_seed": 70300034
+    },
+    {
+      "update": 35,
+      "case": "bus_native480",
+      "sigma": 0.5908983194200524,
+      "noise_seed": 70300035
+    },
+    {
+      "update": 36,
+      "case": "bear_native480",
+      "sigma": 0.3036185023721517,
+      "noise_seed": 70300036
+    },
+    {
+      "update": 37,
+      "case": "car-turn_256",
+      "sigma": 0.6274528782990642,
+      "noise_seed": 70300037
+    },
+    {
+      "update": 38,
+      "case": "flamingo_256",
+      "sigma": 0.22808181220976176,
+      "noise_seed": 70300038
+    },
+    {
+      "update": 39,
+      "case": "flamingo_native480",
+      "sigma": 0.6551318657667012,
+      "noise_seed": 70300039
+    },
+    {
+      "update": 40,
+      "case": "bear_native480",
+      "sigma": 0.5280985660233687,
+      "noise_seed": 70300040
+    },
+    {
+      "update": 41,
+      "case": "car-turn_native480",
+      "sigma": 0.684891323466935,
+      "noise_seed": 70300041
+    },
+    {
+      "update": 42,
+      "case": "bus_256",
+      "sigma": 0.1111788123415893,
+      "noise_seed": 70300042
+    },
+    {
+      "update": 43,
+      "case": "flamingo_native480",
+      "sigma": 0.09272796515789425,
+      "noise_seed": 70300043
+    },
+    {
+      "update": 44,
+      "case": "bus_native480",
+      "sigma": 0.18480118794204803,
+      "noise_seed": 70300044
+    },
+    {
+      "update": 45,
+      "case": "flamingo_256",
+      "sigma": 0.9232351143172941,
+      "noise_seed": 70300045
+    },
+    {
+      "update": 46,
+      "case": "car-turn_256",
+      "sigma": 0.09154235451951322,
+      "noise_seed": 70300046
+    },
+    {
+      "update": 47,
+      "case": "bear_256",
+      "sigma": 0.35818967408527963,
+      "noise_seed": 70300047
+    },
+    {
+      "update": 48,
+      "case": "car-turn_256",
+      "sigma": 0.6748714897624026,
+      "noise_seed": 70300048
+    },
+    {
+      "update": 49,
+      "case": "bus_native480",
+      "sigma": 0.9264279235308608,
+      "noise_seed": 70300049
+    },
+    {
+      "update": 50,
+      "case": "car-turn_native480",
+      "sigma": 0.8810460421053025,
+      "noise_seed": 70300050
+    },
+    {
+      "update": 51,
+      "case": "bus_256",
+      "sigma": 0.178896591604162,
+      "noise_seed": 70300051
+    },
+    {
+      "update": 52,
+      "case": "bear_256",
+      "sigma": 0.7060173935272338,
+      "noise_seed": 70300052
+    },
+    {
+      "update": 53,
+      "case": "flamingo_native480",
+      "sigma": 0.40175365950880654,
+      "noise_seed": 70300053
+    },
+    {
+      "update": 54,
+      "case": "bear_native480",
+      "sigma": 0.669330008670699,
+      "noise_seed": 70300054
+    },
+    {
+      "update": 55,
+      "case": "flamingo_256",
+      "sigma": 0.5629411270420257,
+      "noise_seed": 70300055
+    },
+    {
+      "update": 56,
+      "case": "flamingo_256",
+      "sigma": 0.09098838299747827,
+      "noise_seed": 70300056
+    },
+    {
+      "update": 57,
+      "case": "bear_256",
+      "sigma": 0.14115036600835057,
+      "noise_seed": 70300057
+    },
+    {
+      "update": 58,
+      "case": "bus_native480",
+      "sigma": 0.0892220064509811,
+      "noise_seed": 70300058
+    },
+    {
+      "update": 59,
+      "case": "bus_256",
+      "sigma": 0.3245860713678899,
+      "noise_seed": 70300059
+    },
+    {
+      "update": 60,
+      "case": "car-turn_native480",
+      "sigma": 0.49752253127283985,
+      "noise_seed": 70300060
+    },
+    {
+      "update": 61,
+      "case": "car-turn_256",
+      "sigma": 0.3979265377119984,
+      "noise_seed": 70300061
+    },
+    {
+      "update": 62,
+      "case": "bear_native480",
+      "sigma": 0.41459941753147855,
+      "noise_seed": 70300062
+    },
+    {
+      "update": 63,
+      "case": "flamingo_native480",
+      "sigma": 0.9287414814588759,
+      "noise_seed": 70300063
+    },
+    {
+      "update": 64,
+      "case": "bus_256",
+      "sigma": 0.8252158237570645,
+      "noise_seed": 70300064
+    },
+    {
+      "update": 65,
+      "case": "bus_native480",
+      "sigma": 0.7700815027256653,
+      "noise_seed": 70300065
+    },
+    {
+      "update": 66,
+      "case": "bear_256",
+      "sigma": 0.38503341310217937,
+      "noise_seed": 70300066
+    },
+    {
+      "update": 67,
+      "case": "bear_native480",
+      "sigma": 0.08585852161846871,
+      "noise_seed": 70300067
+    },
+    {
+      "update": 68,
+      "case": "car-turn_256",
+      "sigma": 0.30104613584048073,
+      "noise_seed": 70300068
+    },
+    {
+      "update": 69,
+      "case": "car-turn_native480",
+      "sigma": 0.582826832213552,
+      "noise_seed": 70300069
+    },
+    {
+      "update": 70,
+      "case": "flamingo_native480",
+      "sigma": 0.6265393430420128,
+      "noise_seed": 70300070
+    },
+    {
+      "update": 71,
+      "case": "flamingo_256",
+      "sigma": 0.8228884731384437,
+      "noise_seed": 70300071
+    },
+    {
+      "update": 72,
+      "case": "bus_256",
+      "sigma": 0.21582250824883825,
+      "noise_seed": 70300072
+    },
+    {
+      "update": 73,
+      "case": "flamingo_256",
+      "sigma": 0.24086343284124184,
+      "noise_seed": 70300073
+    },
+    {
+      "update": 74,
+      "case": "bear_native480",
+      "sigma": 0.7857852620591573,
+      "noise_seed": 70300074
+    },
+    {
+      "update": 75,
+      "case": "car-turn_native480",
+      "sigma": 0.6340299911838149,
+      "noise_seed": 70300075
+    },
+    {
+      "update": 76,
+      "case": "flamingo_native480",
+      "sigma": 0.3613938430579258,
+      "noise_seed": 70300076
+    },
+    {
+      "update": 77,
+      "case": "car-turn_256",
+      "sigma": 0.8919240478990121,
+      "noise_seed": 70300077
+    },
+    {
+      "update": 78,
+      "case": "bus_native480",
+      "sigma": 0.9119814049923675,
+      "noise_seed": 70300078
+    },
+    {
+      "update": 79,
+      "case": "bear_256",
+      "sigma": 0.25409758116706416,
+      "noise_seed": 70300079
+    },
+    {
+      "update": 80,
+      "case": "bear_256",
+      "sigma": 0.5969410697644714,
+      "noise_seed": 70300080
+    },
+    {
+      "update": 81,
+      "case": "car-turn_256",
+      "sigma": 0.2608112898078373,
+      "noise_seed": 70300081
+    },
+    {
+      "update": 82,
+      "case": "bus_native480",
+      "sigma": 0.5222478123784133,
+      "noise_seed": 70300082
+    },
+    {
+      "update": 83,
+      "case": "flamingo_native480",
+      "sigma": 0.5807206806700986,
+      "noise_seed": 70300083
+    },
+    {
+      "update": 84,
+      "case": "bear_native480",
+      "sigma": 0.8213259045645044,
+      "noise_seed": 70300084
+    },
+    {
+      "update": 85,
+      "case": "flamingo_256",
+      "sigma": 0.7497659266760469,
+      "noise_seed": 70300085
+    },
+    {
+      "update": 86,
+      "case": "bus_256",
+      "sigma": 0.8085590871523177,
+      "noise_seed": 70300086
+    },
+    {
+      "update": 87,
+      "case": "car-turn_native480",
+      "sigma": 0.5743423381767523,
+      "noise_seed": 70300087
+    },
+    {
+      "update": 88,
+      "case": "flamingo_native480",
+      "sigma": 0.8832770936181319,
+      "noise_seed": 70300088
+    },
+    {
+      "update": 89,
+      "case": "bus_256",
+      "sigma": 0.1522764539605836,
+      "noise_seed": 70300089
+    },
+    {
+      "update": 90,
+      "case": "flamingo_256",
+      "sigma": 0.8372087304554209,
+      "noise_seed": 70300090
+    },
+    {
+      "update": 91,
+      "case": "car-turn_native480",
+      "sigma": 0.5160278096745018,
+      "noise_seed": 70300091
+    },
+    {
+      "update": 92,
+      "case": "bear_native480",
+      "sigma": 0.39653868016345584,
+      "noise_seed": 70300092
+    },
+    {
+      "update": 93,
+      "case": "bus_native480",
+      "sigma": 0.8603928039756107,
+      "noise_seed": 70300093
+    },
+    {
+      "update": 94,
+      "case": "car-turn_256",
+      "sigma": 0.8404962544586281,
+      "noise_seed": 70300094
+    },
+    {
+      "update": 95,
+      "case": "bear_256",
+      "sigma": 0.6282455613989794,
+      "noise_seed": 70300095
+    },
+    {
+      "update": 96,
+      "case": "bus_256",
+      "sigma": 0.7468972268753449,
+      "noise_seed": 70300096
+    },
+    {
+      "update": 97,
+      "case": "bear_native480",
+      "sigma": 0.35467820694000995,
+      "noise_seed": 70300097
+    },
+    {
+      "update": 98,
+      "case": "flamingo_native480",
+      "sigma": 0.1515915637014304,
+      "noise_seed": 70300098
+    },
+    {
+      "update": 99,
+      "case": "bear_256",
+      "sigma": 0.10655002278324385,
+      "noise_seed": 70300099
+    },
+    {
+      "update": 100,
+      "case": "car-turn_native480",
+      "sigma": 0.8551561726330471,
+      "noise_seed": 70300100
+    },
+    {
+      "update": 101,
+      "case": "car-turn_256",
+      "sigma": 0.32266097832353346,
+      "noise_seed": 70300101
+    },
+    {
+      "update": 102,
+      "case": "bus_native480",
+      "sigma": 0.42788363317595063,
+      "noise_seed": 70300102
+    },
+    {
+      "update": 103,
+      "case": "flamingo_256",
+      "sigma": 0.915745375978372,
+      "noise_seed": 70300103
+    },
+    {
+      "update": 104,
+      "case": "flamingo_native480",
+      "sigma": 0.17444126898064094,
+      "noise_seed": 70300104
+    },
+    {
+      "update": 105,
+      "case": "bus_256",
+      "sigma": 0.5684522835499903,
+      "noise_seed": 70300105
+    },
+    {
+      "update": 106,
+      "case": "bear_256",
+      "sigma": 0.6537179052699288,
+      "noise_seed": 70300106
+    },
+    {
+      "update": 107,
+      "case": "bus_native480",
+      "sigma": 0.5961337768643664,
+      "noise_seed": 70300107
+    },
+    {
+      "update": 108,
+      "case": "car-turn_native480",
+      "sigma": 0.38954620312649313,
+      "noise_seed": 70300108
+    },
+    {
+      "update": 109,
+      "case": "car-turn_256",
+      "sigma": 0.45311128884340957,
+      "noise_seed": 70300109
+    },
+    {
+      "update": 110,
+      "case": "bear_native480",
+      "sigma": 0.46820851508732453,
+      "noise_seed": 70300110
+    },
+    {
+      "update": 111,
+      "case": "flamingo_256",
+      "sigma": 0.40048396555302146,
+      "noise_seed": 70300111
+    },
+    {
+      "update": 112,
+      "case": "bus_native480",
+      "sigma": 0.8913901768863679,
+      "noise_seed": 70300112
+    },
+    {
+      "update": 113,
+      "case": "flamingo_256",
+      "sigma": 0.18072542415114073,
+      "noise_seed": 70300113
+    },
+    {
+      "update": 114,
+      "case": "bear_256",
+      "sigma": 0.7795951480501564,
+      "noise_seed": 70300114
+    },
+    {
+      "update": 115,
+      "case": "car-turn_256",
+      "sigma": 0.5928478043791401,
+      "noise_seed": 70300115
+    },
+    {
+      "update": 116,
+      "case": "flamingo_native480",
+      "sigma": 0.33965463466501555,
+      "noise_seed": 70300116
+    },
+    {
+      "update": 117,
+      "case": "bear_native480",
+      "sigma": 0.3432367994133278,
+      "noise_seed": 70300117
+    },
+    {
+      "update": 118,
+      "case": "car-turn_native480",
+      "sigma": 0.8282568447069284,
+      "noise_seed": 70300118
+    },
+    {
+      "update": 119,
+      "case": "bus_256",
+      "sigma": 0.9302499577617015,
+      "noise_seed": 70300119
+    },
+    {
+      "update": 120,
+      "case": "flamingo_native480",
+      "sigma": 0.2345641660131801,
+      "noise_seed": 70300120
+    },
+    {
+      "update": 121,
+      "case": "bus_256",
+      "sigma": 0.7388100463368346,
+      "noise_seed": 70300121
+    },
+    {
+      "update": 122,
+      "case": "car-turn_native480",
+      "sigma": 0.6458850934255131,
+      "noise_seed": 70300122
+    },
+    {
+      "update": 123,
+      "case": "bus_native480",
+      "sigma": 0.779959509915397,
+      "noise_seed": 70300123
+    },
+    {
+      "update": 124,
+      "case": "car-turn_256",
+      "sigma": 0.42510082828996165,
+      "noise_seed": 70300124
+    },
+    {
+      "update": 125,
+      "case": "bear_native480",
+      "sigma": 0.8009046369254927,
+      "noise_seed": 70300125
+    },
+    {
+      "update": 126,
+      "case": "flamingo_256",
+      "sigma": 0.842580266312812,
+      "noise_seed": 70300126
+    },
+    {
+      "update": 127,
+      "case": "bear_256",
+      "sigma": 0.4171009215672537,
+      "noise_seed": 70300127
+    },
+    {
+      "update": 128,
+      "case": "flamingo_256",
+      "sigma": 0.9070548750682755,
+      "noise_seed": 70300128
+    },
+    {
+      "update": 129,
+      "case": "car-turn_native480",
+      "sigma": 0.36894416890738974,
+      "noise_seed": 70300129
+    },
+    {
+      "update": 130,
+      "case": "bus_native480",
+      "sigma": 0.8158315840626792,
+      "noise_seed": 70300130
+    },
+    {
+      "update": 131,
+      "case": "bear_256",
+      "sigma": 0.3906968932006324,
+      "noise_seed": 70300131
+    },
+    {
+      "update": 132,
+      "case": "bus_256",
+      "sigma": 0.33459956162751303,
+      "noise_seed": 70300132
+    },
+    {
+      "update": 133,
+      "case": "flamingo_native480",
+      "sigma": 0.8365370066293852,
+      "noise_seed": 70300133
+    },
+    {
+      "update": 134,
+      "case": "car-turn_256",
+      "sigma": 0.39034230668572906,
+      "noise_seed": 70300134
+    },
+    {
+      "update": 135,
+      "case": "bear_native480",
+      "sigma": 0.37632610339091416,
+      "noise_seed": 70300135
+    },
+    {
+      "update": 136,
+      "case": "bear_256",
+      "sigma": 0.34764737165679993,
+      "noise_seed": 70300136
+    },
+    {
+      "update": 137,
+      "case": "flamingo_256",
+      "sigma": 0.8016912494497919,
+      "noise_seed": 70300137
+    },
+    {
+      "update": 138,
+      "case": "flamingo_native480",
+      "sigma": 0.41991456869345783,
+      "noise_seed": 70300138
+    },
+    {
+      "update": 139,
+      "case": "car-turn_native480",
+      "sigma": 0.4072553040763681,
+      "noise_seed": 70300139
+    },
+    {
+      "update": 140,
+      "case": "car-turn_256",
+      "sigma": 0.709110106632648,
+      "noise_seed": 70300140
+    },
+    {
+      "update": 141,
+      "case": "bus_256",
+      "sigma": 0.5511388444943356,
+      "noise_seed": 70300141
+    },
+    {
+      "update": 142,
+      "case": "bear_native480",
+      "sigma": 0.3670229054551647,
+      "noise_seed": 70300142
+    },
+    {
+      "update": 143,
+      "case": "bus_native480",
+      "sigma": 0.5147072482790156,
+      "noise_seed": 70300143
+    },
+    {
+      "update": 144,
+      "case": "bear_256",
+      "sigma": 0.914515962651794,
+      "noise_seed": 70300144
+    },
+    {
+      "update": 145,
+      "case": "bus_256",
+      "sigma": 0.5626621289074423,
+      "noise_seed": 70300145
+    },
+    {
+      "update": 146,
+      "case": "bus_native480",
+      "sigma": 0.7170820787104981,
+      "noise_seed": 70300146
+    },
+    {
+      "update": 147,
+      "case": "bear_native480",
+      "sigma": 0.11609632327781998,
+      "noise_seed": 70300147
+    },
+    {
+      "update": 148,
+      "case": "flamingo_native480",
+      "sigma": 0.33335240787137194,
+      "noise_seed": 70300148
+    },
+    {
+      "update": 149,
+      "case": "car-turn_256",
+      "sigma": 0.5725550918334378,
+      "noise_seed": 70300149
+    },
+    {
+      "update": 150,
+      "case": "car-turn_native480",
+      "sigma": 0.5520258579000259,
+      "noise_seed": 70300150
+    },
+    {
+      "update": 151,
+      "case": "flamingo_256",
+      "sigma": 0.7195037259284989,
+      "noise_seed": 70300151
+    },
+    {
+      "update": 152,
+      "case": "bear_native480",
+      "sigma": 0.36526135587880143,
+      "noise_seed": 70300152
+    },
+    {
+      "update": 153,
+      "case": "car-turn_256",
+      "sigma": 0.9496932638128007,
+      "noise_seed": 70300153
+    },
+    {
+      "update": 154,
+      "case": "flamingo_native480",
+      "sigma": 0.5114419032602006,
+      "noise_seed": 70300154
+    },
+    {
+      "update": 155,
+      "case": "bus_native480",
+      "sigma": 0.6764496279817496,
+      "noise_seed": 70300155
+    },
+    {
+      "update": 156,
+      "case": "flamingo_256",
+      "sigma": 0.3321864733998214,
+      "noise_seed": 70300156
+    },
+    {
+      "update": 157,
+      "case": "bus_256",
+      "sigma": 0.200142855787874,
+      "noise_seed": 70300157
+    },
+    {
+      "update": 158,
+      "case": "car-turn_native480",
+      "sigma": 0.726552873615476,
+      "noise_seed": 70300158
+    },
+    {
+      "update": 159,
+      "case": "bear_256",
+      "sigma": 0.7908682524279775,
+      "noise_seed": 70300159
+    },
+    {
+      "update": 160,
+      "case": "car-turn_native480",
+      "sigma": 0.09839631647887692,
+      "noise_seed": 70300160
+    },
+    {
+      "update": 161,
+      "case": "bus_native480",
+      "sigma": 0.7057362805117585,
+      "noise_seed": 70300161
+    },
+    {
+      "update": 162,
+      "case": "bear_native480",
+      "sigma": 0.2708770748803258,
+      "noise_seed": 70300162
+    },
+    {
+      "update": 163,
+      "case": "bus_256",
+      "sigma": 0.37028813038434316,
+      "noise_seed": 70300163
+    },
+    {
+      "update": 164,
+      "case": "flamingo_256",
+      "sigma": 0.05860267440216012,
+      "noise_seed": 70300164
+    },
+    {
+      "update": 165,
+      "case": "flamingo_native480",
+      "sigma": 0.5316546115943355,
+      "noise_seed": 70300165
+    },
+    {
+      "update": 166,
+      "case": "bear_256",
+      "sigma": 0.275470483556668,
+      "noise_seed": 70300166
+    },
+    {
+      "update": 167,
+      "case": "car-turn_256",
+      "sigma": 0.5348253006386954,
+      "noise_seed": 70300167
+    },
+    {
+      "update": 168,
+      "case": "car-turn_256",
+      "sigma": 0.3844739929613175,
+      "noise_seed": 70300168
+    },
+    {
+      "update": 169,
+      "case": "flamingo_256",
+      "sigma": 0.47783120782937627,
+      "noise_seed": 70300169
+    },
+    {
+      "update": 170,
+      "case": "bus_native480",
+      "sigma": 0.157118937027779,
+      "noise_seed": 70300170
+    },
+    {
+      "update": 171,
+      "case": "car-turn_native480",
+      "sigma": 0.761529496211199,
+      "noise_seed": 70300171
+    },
+    {
+      "update": 172,
+      "case": "bear_native480",
+      "sigma": 0.15639232259054803,
+      "noise_seed": 70300172
+    },
+    {
+      "update": 173,
+      "case": "bus_256",
+      "sigma": 0.2928478961929811,
+      "noise_seed": 70300173
+    },
+    {
+      "update": 174,
+      "case": "flamingo_native480",
+      "sigma": 0.6570665728354289,
+      "noise_seed": 70300174
+    },
+    {
+      "update": 175,
+      "case": "bear_256",
+      "sigma": 0.8985835161340493,
+      "noise_seed": 70300175
+    },
+    {
+      "update": 176,
+      "case": "bear_native480",
+      "sigma": 0.5170577924533406,
+      "noise_seed": 70300176
+    },
+    {
+      "update": 177,
+      "case": "flamingo_256",
+      "sigma": 0.7699632455557776,
+      "noise_seed": 70300177
+    },
+    {
+      "update": 178,
+      "case": "bus_native480",
+      "sigma": 0.493592950524118,
+      "noise_seed": 70300178
+    },
+    {
+      "update": 179,
+      "case": "bus_256",
+      "sigma": 0.8817980727814438,
+      "noise_seed": 70300179
+    },
+    {
+      "update": 180,
+      "case": "car-turn_256",
+      "sigma": 0.4864515431314235,
+      "noise_seed": 70300180
+    },
+    {
+      "update": 181,
+      "case": "bear_256",
+      "sigma": 0.07021779181329649,
+      "noise_seed": 70300181
+    },
+    {
+      "update": 182,
+      "case": "car-turn_native480",
+      "sigma": 0.19326960856973546,
+      "noise_seed": 70300182
+    },
+    {
+      "update": 183,
+      "case": "flamingo_native480",
+      "sigma": 0.514961574899371,
+      "noise_seed": 70300183
+    },
+    {
+      "update": 184,
+      "case": "flamingo_256",
+      "sigma": 0.6866456819789639,
+      "noise_seed": 70300184
+    },
+    {
+      "update": 185,
+      "case": "car-turn_native480",
+      "sigma": 0.262605186025419,
+      "noise_seed": 70300185
+    },
+    {
+      "update": 186,
+      "case": "flamingo_native480",
+      "sigma": 0.3733410672987897,
+      "noise_seed": 70300186
+    },
+    {
+      "update": 187,
+      "case": "bear_native480",
+      "sigma": 0.8635020057795951,
+      "noise_seed": 70300187
+    },
+    {
+      "update": 188,
+      "case": "bus_native480",
+      "sigma": 0.7446296871423485,
+      "noise_seed": 70300188
+    },
+    {
+      "update": 189,
+      "case": "bus_256",
+      "sigma": 0.33285966283725316,
+      "noise_seed": 70300189
+    },
+    {
+      "update": 190,
+      "case": "bear_256",
+      "sigma": 0.09884569105457282,
+      "noise_seed": 70300190
+    },
+    {
+      "update": 191,
+      "case": "car-turn_256",
+      "sigma": 0.7236350846915326,
+      "noise_seed": 70300191
+    },
+    {
+      "update": 192,
+      "case": "flamingo_native480",
+      "sigma": 0.5406271893809742,
+      "noise_seed": 70300192
+    },
+    {
+      "update": 193,
+      "case": "flamingo_256",
+      "sigma": 0.2095026685183986,
+      "noise_seed": 70300193
+    },
+    {
+      "update": 194,
+      "case": "bus_256",
+      "sigma": 0.07534891816911324,
+      "noise_seed": 70300194
+    },
+    {
+      "update": 195,
+      "case": "car-turn_256",
+      "sigma": 0.40480734274903174,
+      "noise_seed": 70300195
+    },
+    {
+      "update": 196,
+      "case": "car-turn_native480",
+      "sigma": 0.5330111059849466,
+      "noise_seed": 70300196
+    },
+    {
+      "update": 197,
+      "case": "bus_native480",
+      "sigma": 0.503805244916216,
+      "noise_seed": 70300197
+    },
+    {
+      "update": 198,
+      "case": "bear_native480",
+      "sigma": 0.5581418122439544,
+      "noise_seed": 70300198
+    },
+    {
+      "update": 199,
+      "case": "bear_256",
+      "sigma": 0.3366106934992182,
+      "noise_seed": 70300199
+    },
+    {
+      "update": 200,
+      "case": "flamingo_native480",
+      "sigma": 0.15975855374700268,
+      "noise_seed": 70300200
+    },
+    {
+      "update": 201,
+      "case": "bus_256",
+      "sigma": 0.7607044040907729,
+      "noise_seed": 70300201
+    },
+    {
+      "update": 202,
+      "case": "car-turn_256",
+      "sigma": 0.4415479072806752,
+      "noise_seed": 70300202
+    },
+    {
+      "update": 203,
+      "case": "flamingo_256",
+      "sigma": 0.8988284646639796,
+      "noise_seed": 70300203
+    },
+    {
+      "update": 204,
+      "case": "bear_256",
+      "sigma": 0.47627238798709826,
+      "noise_seed": 70300204
+    },
+    {
+      "update": 205,
+      "case": "bear_native480",
+      "sigma": 0.7789679662661834,
+      "noise_seed": 70300205
+    },
+    {
+      "update": 206,
+      "case": "bus_native480",
+      "sigma": 0.08541642631431495,
+      "noise_seed": 70300206
+    },
+    {
+      "update": 207,
+      "case": "car-turn_native480",
+      "sigma": 0.820716836983451,
+      "noise_seed": 70300207
+    },
+    {
+      "update": 208,
+      "case": "flamingo_native480",
+      "sigma": 0.9259677414579836,
+      "noise_seed": 70300208
+    },
+    {
+      "update": 209,
+      "case": "car-turn_256",
+      "sigma": 0.8044238744224995,
+      "noise_seed": 70300209
+    },
+    {
+      "update": 210,
+      "case": "bear_256",
+      "sigma": 0.47771098347963536,
+      "noise_seed": 70300210
+    },
+    {
+      "update": 211,
+      "case": "bus_256",
+      "sigma": 0.2531825015052366,
+      "noise_seed": 70300211
+    },
+    {
+      "update": 212,
+      "case": "bear_native480",
+      "sigma": 0.8211594375868676,
+      "noise_seed": 70300212
+    },
+    {
+      "update": 213,
+      "case": "bus_native480",
+      "sigma": 0.3393974721219554,
+      "noise_seed": 70300213
+    },
+    {
+      "update": 214,
+      "case": "car-turn_native480",
+      "sigma": 0.6872646268084612,
+      "noise_seed": 70300214
+    },
+    {
+      "update": 215,
+      "case": "flamingo_256",
+      "sigma": 0.8824735992443611,
+      "noise_seed": 70300215
+    },
+    {
+      "update": 216,
+      "case": "bus_256",
+      "sigma": 0.9161221062242592,
+      "noise_seed": 70300216
+    },
+    {
+      "update": 217,
+      "case": "flamingo_native480",
+      "sigma": 0.18884698347039558,
+      "noise_seed": 70300217
+    },
+    {
+      "update": 218,
+      "case": "bus_native480",
+      "sigma": 0.18962270552668942,
+      "noise_seed": 70300218
+    },
+    {
+      "update": 219,
+      "case": "bear_native480",
+      "sigma": 0.8025877506685312,
+      "noise_seed": 70300219
+    },
+    {
+      "update": 220,
+      "case": "car-turn_native480",
+      "sigma": 0.3865724343226399,
+      "noise_seed": 70300220
+    },
+    {
+      "update": 221,
+      "case": "flamingo_256",
+      "sigma": 0.18263531035764569,
+      "noise_seed": 70300221
+    },
+    {
+      "update": 222,
+      "case": "bear_256",
+      "sigma": 0.878310106304151,
+      "noise_seed": 70300222
+    },
+    {
+      "update": 223,
+      "case": "car-turn_256",
+      "sigma": 0.3022198421655224,
+      "noise_seed": 70300223
+    },
+    {
+      "update": 224,
+      "case": "flamingo_256",
+      "sigma": 0.6675859709785847,
+      "noise_seed": 70300224
+    },
+    {
+      "update": 225,
+      "case": "bus_256",
+      "sigma": 0.24931945388646126,
+      "noise_seed": 70300225
+    },
+    {
+      "update": 226,
+      "case": "bear_native480",
+      "sigma": 0.7049225319871006,
+      "noise_seed": 70300226
+    },
+    {
+      "update": 227,
+      "case": "car-turn_256",
+      "sigma": 0.8919606032139249,
+      "noise_seed": 70300227
+    },
+    {
+      "update": 228,
+      "case": "flamingo_native480",
+      "sigma": 0.8742708546974235,
+      "noise_seed": 70300228
+    },
+    {
+      "update": 229,
+      "case": "car-turn_native480",
+      "sigma": 0.41748511717130066,
+      "noise_seed": 70300229
+    },
+    {
+      "update": 230,
+      "case": "bus_native480",
+      "sigma": 0.6565957037352574,
+      "noise_seed": 70300230
+    },
+    {
+      "update": 231,
+      "case": "bear_256",
+      "sigma": 0.4376850717298594,
+      "noise_seed": 70300231
+    },
+    {
+      "update": 232,
+      "case": "bus_256",
+      "sigma": 0.7842950322001356,
+      "noise_seed": 70300232
+    },
+    {
+      "update": 233,
+      "case": "bus_native480",
+      "sigma": 0.8964193533328209,
+      "noise_seed": 70300233
+    },
+    {
+      "update": 234,
+      "case": "flamingo_native480",
+      "sigma": 0.9469515660407603,
+      "noise_seed": 70300234
+    },
+    {
+      "update": 235,
+      "case": "car-turn_native480",
+      "sigma": 0.10728941980729124,
+      "noise_seed": 70300235
+    },
+    {
+      "update": 236,
+      "case": "bear_native480",
+      "sigma": 0.8704484543872996,
+      "noise_seed": 70300236
+    },
+    {
+      "update": 237,
+      "case": "car-turn_256",
+      "sigma": 0.20817155860670833,
+      "noise_seed": 70300237
+    },
+    {
+      "update": 238,
+      "case": "bear_256",
+      "sigma": 0.6254234745359617,
+      "noise_seed": 70300238
+    },
+    {
+      "update": 239,
+      "case": "flamingo_256",
+      "sigma": 0.8904464107878611,
+      "noise_seed": 70300239
+    },
+    {
+      "update": 240,
+      "case": "bear_native480",
+      "sigma": 0.355802683484963,
+      "noise_seed": 70300240
+    },
+    {
+      "update": 241,
+      "case": "car-turn_native480",
+      "sigma": 0.4981290422802738,
+      "noise_seed": 70300241
+    },
+    {
+      "update": 242,
+      "case": "car-turn_256",
+      "sigma": 0.6893048017663068,
+      "noise_seed": 70300242
+    },
+    {
+      "update": 243,
+      "case": "bus_256",
+      "sigma": 0.28710898131998347,
+      "noise_seed": 70300243
+    },
+    {
+      "update": 244,
+      "case": "bus_native480",
+      "sigma": 0.8039189034413762,
+      "noise_seed": 70300244
+    },
+    {
+      "update": 245,
+      "case": "flamingo_native480",
+      "sigma": 0.20119093826277817,
+      "noise_seed": 70300245
+    },
+    {
+      "update": 246,
+      "case": "flamingo_256",
+      "sigma": 0.8160076210278102,
+      "noise_seed": 70300246
+    },
+    {
+      "update": 247,
+      "case": "bear_256",
+      "sigma": 0.4582524143595418,
+      "noise_seed": 70300247
+    },
+    {
+      "update": 248,
+      "case": "flamingo_256",
+      "sigma": 0.3481051832994345,
+      "noise_seed": 70300248
+    },
+    {
+      "update": 249,
+      "case": "bear_native480",
+      "sigma": 0.570608169287945,
+      "noise_seed": 70300249
+    },
+    {
+      "update": 250,
+      "case": "bus_256",
+      "sigma": 0.5193829932978611,
+      "noise_seed": 70300250
+    },
+    {
+      "update": 251,
+      "case": "car-turn_256",
+      "sigma": 0.8835493576394581,
+      "noise_seed": 70300251
+    },
+    {
+      "update": 252,
+      "case": "flamingo_native480",
+      "sigma": 0.5217537645115868,
+      "noise_seed": 70300252
+    },
+    {
+      "update": 253,
+      "case": "car-turn_native480",
+      "sigma": 0.90673862823735,
+      "noise_seed": 70300253
+    },
+    {
+      "update": 254,
+      "case": "bus_native480",
+      "sigma": 0.908831579196259,
+      "noise_seed": 70300254
+    },
+    {
+      "update": 255,
+      "case": "bear_256",
+      "sigma": 0.12866016565958818,
+      "noise_seed": 70300255
+    },
+    {
+      "update": 256,
+      "case": "car-turn_256",
+      "sigma": 0.2702424656372174,
+      "noise_seed": 70300256
+    },
+    {
+      "update": 257,
+      "case": "bear_native480",
+      "sigma": 0.9151311829679645,
+      "noise_seed": 70300257
+    },
+    {
+      "update": 258,
+      "case": "flamingo_256",
+      "sigma": 0.5888508804333769,
+      "noise_seed": 70300258
+    },
+    {
+      "update": 259,
+      "case": "bus_native480",
+      "sigma": 0.4333154841801143,
+      "noise_seed": 70300259
+    },
+    {
+      "update": 260,
+      "case": "flamingo_native480",
+      "sigma": 0.14560001432486908,
+      "noise_seed": 70300260
+    },
+    {
+      "update": 261,
+      "case": "car-turn_native480",
+      "sigma": 0.2187321870565131,
+      "noise_seed": 70300261
+    },
+    {
+      "update": 262,
+      "case": "bus_256",
+      "sigma": 0.1922131774623025,
+      "noise_seed": 70300262
+    },
+    {
+      "update": 263,
+      "case": "bear_256",
+      "sigma": 0.834539458058116,
+      "noise_seed": 70300263
+    },
+    {
+      "update": 264,
+      "case": "bear_256",
+      "sigma": 0.7963641560327979,
+      "noise_seed": 70300264
+    },
+    {
+      "update": 265,
+      "case": "bear_native480",
+      "sigma": 0.4260570305856496,
+      "noise_seed": 70300265
+    },
+    {
+      "update": 266,
+      "case": "car-turn_native480",
+      "sigma": 0.578160828304723,
+      "noise_seed": 70300266
+    },
+    {
+      "update": 267,
+      "case": "car-turn_256",
+      "sigma": 0.15295458177648819,
+      "noise_seed": 70300267
+    },
+    {
+      "update": 268,
+      "case": "flamingo_256",
+      "sigma": 0.7153158481145766,
+      "noise_seed": 70300268
+    },
+    {
+      "update": 269,
+      "case": "bus_256",
+      "sigma": 0.7918821743668489,
+      "noise_seed": 70300269
+    },
+    {
+      "update": 270,
+      "case": "bus_native480",
+      "sigma": 0.6972259225185408,
+      "noise_seed": 70300270
+    },
+    {
+      "update": 271,
+      "case": "flamingo_native480",
+      "sigma": 0.7921765997541902,
+      "noise_seed": 70300271
+    },
+    {
+      "update": 272,
+      "case": "flamingo_native480",
+      "sigma": 0.13535552680315893,
+      "noise_seed": 70300272
+    },
+    {
+      "update": 273,
+      "case": "car-turn_256",
+      "sigma": 0.2959415163027758,
+      "noise_seed": 70300273
+    },
+    {
+      "update": 274,
+      "case": "flamingo_256",
+      "sigma": 0.07583679726434364,
+      "noise_seed": 70300274
+    },
+    {
+      "update": 275,
+      "case": "bear_native480",
+      "sigma": 0.8429988728278777,
+      "noise_seed": 70300275
+    },
+    {
+      "update": 276,
+      "case": "bear_256",
+      "sigma": 0.7499029933195908,
+      "noise_seed": 70300276
+    },
+    {
+      "update": 277,
+      "case": "bus_256",
+      "sigma": 0.7058815252181776,
+      "noise_seed": 70300277
+    },
+    {
+      "update": 278,
+      "case": "car-turn_native480",
+      "sigma": 0.8645111495230388,
+      "noise_seed": 70300278
+    },
+    {
+      "update": 279,
+      "case": "bus_native480",
+      "sigma": 0.5217832393835237,
+      "noise_seed": 70300279
+    },
+    {
+      "update": 280,
+      "case": "bus_native480",
+      "sigma": 0.40490336012433137,
+      "noise_seed": 70300280
+    },
+    {
+      "update": 281,
+      "case": "bear_native480",
+      "sigma": 0.30723241067347007,
+      "noise_seed": 70300281
+    },
+    {
+      "update": 282,
+      "case": "bear_256",
+      "sigma": 0.769637994172376,
+      "noise_seed": 70300282
+    },
+    {
+      "update": 283,
+      "case": "bus_256",
+      "sigma": 0.7023544412853693,
+      "noise_seed": 70300283
+    },
+    {
+      "update": 284,
+      "case": "car-turn_native480",
+      "sigma": 0.147618554424054,
+      "noise_seed": 70300284
+    },
+    {
+      "update": 285,
+      "case": "car-turn_256",
+      "sigma": 0.5177900437284996,
+      "noise_seed": 70300285
+    },
+    {
+      "update": 286,
+      "case": "flamingo_256",
+      "sigma": 0.2469196306184287,
+      "noise_seed": 70300286
+    },
+    {
+      "update": 287,
+      "case": "flamingo_native480",
+      "sigma": 0.1138036663247555,
+      "noise_seed": 70300287
+    },
+    {
+      "update": 288,
+      "case": "bus_native480",
+      "sigma": 0.5949547228907252,
+      "noise_seed": 70300288
+    },
+    {
+      "update": 289,
+      "case": "bear_native480",
+      "sigma": 0.33890115244637437,
+      "noise_seed": 70300289
+    },
+    {
+      "update": 290,
+      "case": "flamingo_native480",
+      "sigma": 0.40010721241239433,
+      "noise_seed": 70300290
+    },
+    {
+      "update": 291,
+      "case": "bear_256",
+      "sigma": 0.4861776499285232,
+      "noise_seed": 70300291
+    },
+    {
+      "update": 292,
+      "case": "car-turn_256",
+      "sigma": 0.3967487622664796,
+      "noise_seed": 70300292
+    },
+    {
+      "update": 293,
+      "case": "bus_256",
+      "sigma": 0.6245328943038184,
+      "noise_seed": 70300293
+    },
+    {
+      "update": 294,
+      "case": "car-turn_native480",
+      "sigma": 0.41628244756224236,
+      "noise_seed": 70300294
+    },
+    {
+      "update": 295,
+      "case": "flamingo_256",
+      "sigma": 0.15860107965395898,
+      "noise_seed": 70300295
+    },
+    {
+      "update": 296,
+      "case": "bear_256",
+      "sigma": 0.3008440246164676,
+      "noise_seed": 70300296
+    },
+    {
+      "update": 297,
+      "case": "bear_native480",
+      "sigma": 0.6211020564341034,
+      "noise_seed": 70300297
+    },
+    {
+      "update": 298,
+      "case": "bus_256",
+      "sigma": 0.19579287127601525,
+      "noise_seed": 70300298
+    },
+    {
+      "update": 299,
+      "case": "bus_native480",
+      "sigma": 0.7465454450507331,
+      "noise_seed": 70300299
+    },
+    {
+      "update": 300,
+      "case": "flamingo_256",
+      "sigma": 0.5528126167498942,
+      "noise_seed": 70300300
+    },
+    {
+      "update": 301,
+      "case": "flamingo_native480",
+      "sigma": 0.15427494536274555,
+      "noise_seed": 70300301
+    },
+    {
+      "update": 302,
+      "case": "car-turn_native480",
+      "sigma": 0.8825113350004974,
+      "noise_seed": 70300302
+    },
+    {
+      "update": 303,
+      "case": "car-turn_256",
+      "sigma": 0.6346754188320397,
+      "noise_seed": 70300303
+    },
+    {
+      "update": 304,
+      "case": "car-turn_256",
+      "sigma": 0.3793024749314467,
+      "noise_seed": 70300304
+    },
+    {
+      "update": 305,
+      "case": "flamingo_256",
+      "sigma": 0.8862563516739019,
+      "noise_seed": 70300305
+    },
+    {
+      "update": 306,
+      "case": "car-turn_native480",
+      "sigma": 0.4795535845976878,
+      "noise_seed": 70300306
+    },
+    {
+      "update": 307,
+      "case": "bear_256",
+      "sigma": 0.8145707942333217,
+      "noise_seed": 70300307
+    },
+    {
+      "update": 308,
+      "case": "bear_native480",
+      "sigma": 0.3768093036865518,
+      "noise_seed": 70300308
+    },
+    {
+      "update": 309,
+      "case": "flamingo_native480",
+      "sigma": 0.8016248052926739,
+      "noise_seed": 70300309
+    },
+    {
+      "update": 310,
+      "case": "bus_256",
+      "sigma": 0.76278036404945,
+      "noise_seed": 70300310
+    },
+    {
+      "update": 311,
+      "case": "bus_native480",
+      "sigma": 0.8005053795663164,
+      "noise_seed": 70300311
+    },
+    {
+      "update": 312,
+      "case": "bear_256",
+      "sigma": 0.5479082658489967,
+      "noise_seed": 70300312
+    },
+    {
+      "update": 313,
+      "case": "car-turn_native480",
+      "sigma": 0.08906853598061565,
+      "noise_seed": 70300313
+    },
+    {
+      "update": 314,
+      "case": "bus_256",
+      "sigma": 0.3250251116503315,
+      "noise_seed": 70300314
+    },
+    {
+      "update": 315,
+      "case": "car-turn_256",
+      "sigma": 0.4186237098005396,
+      "noise_seed": 70300315
+    },
+    {
+      "update": 316,
+      "case": "flamingo_native480",
+      "sigma": 0.7535842992411842,
+      "noise_seed": 70300316
+    },
+    {
+      "update": 317,
+      "case": "bus_native480",
+      "sigma": 0.7360032342414202,
+      "noise_seed": 70300317
+    },
+    {
+      "update": 318,
+      "case": "bear_native480",
+      "sigma": 0.6993690950602843,
+      "noise_seed": 70300318
+    },
+    {
+      "update": 319,
+      "case": "flamingo_256",
+      "sigma": 0.6615270374301313,
+      "noise_seed": 70300319
+    },
+    {
+      "update": 320,
+      "case": "bear_native480",
+      "sigma": 0.8885317951447783,
+      "noise_seed": 70300320
+    },
+    {
+      "update": 321,
+      "case": "bus_256",
+      "sigma": 0.5953547509724837,
+      "noise_seed": 70300321
+    },
+    {
+      "update": 322,
+      "case": "bus_native480",
+      "sigma": 0.7850538715464449,
+      "noise_seed": 70300322
+    },
+    {
+      "update": 323,
+      "case": "car-turn_native480",
+      "sigma": 0.08032888628801893,
+      "noise_seed": 70300323
+    },
+    {
+      "update": 324,
+      "case": "flamingo_256",
+      "sigma": 0.6791632425843369,
+      "noise_seed": 70300324
+    },
+    {
+      "update": 325,
+      "case": "car-turn_256",
+      "sigma": 0.4964693767230743,
+      "noise_seed": 70300325
+    },
+    {
+      "update": 326,
+      "case": "flamingo_native480",
+      "sigma": 0.23855166958969515,
+      "noise_seed": 70300326
+    },
+    {
+      "update": 327,
+      "case": "bear_256",
+      "sigma": 0.18281385305582037,
+      "noise_seed": 70300327
+    },
+    {
+      "update": 328,
+      "case": "flamingo_native480",
+      "sigma": 0.34061351477907736,
+      "noise_seed": 70300328
+    },
+    {
+      "update": 329,
+      "case": "bear_256",
+      "sigma": 0.8718243480099337,
+      "noise_seed": 70300329
+    },
+    {
+      "update": 330,
+      "case": "car-turn_256",
+      "sigma": 0.4874018062124672,
+      "noise_seed": 70300330
+    },
+    {
+      "update": 331,
+      "case": "flamingo_256",
+      "sigma": 0.46092715013733376,
+      "noise_seed": 70300331
+    },
+    {
+      "update": 332,
+      "case": "bus_256",
+      "sigma": 0.8127574029294994,
+      "noise_seed": 70300332
+    },
+    {
+      "update": 333,
+      "case": "bus_native480",
+      "sigma": 0.6488445435285799,
+      "noise_seed": 70300333
+    },
+    {
+      "update": 334,
+      "case": "car-turn_native480",
+      "sigma": 0.09688014369973638,
+      "noise_seed": 70300334
+    },
+    {
+      "update": 335,
+      "case": "bear_native480",
+      "sigma": 0.22208871442407152,
+      "noise_seed": 70300335
+    },
+    {
+      "update": 336,
+      "case": "bear_native480",
+      "sigma": 0.9276420731496522,
+      "noise_seed": 70300336
+    },
+    {
+      "update": 337,
+      "case": "flamingo_256",
+      "sigma": 0.37556939653168486,
+      "noise_seed": 70300337
+    },
+    {
+      "update": 338,
+      "case": "car-turn_native480",
+      "sigma": 0.6701790369195828,
+      "noise_seed": 70300338
+    },
+    {
+      "update": 339,
+      "case": "car-turn_256",
+      "sigma": 0.8098056014321964,
+      "noise_seed": 70300339
+    },
+    {
+      "update": 340,
+      "case": "bus_native480",
+      "sigma": 0.5942442971542475,
+      "noise_seed": 70300340
+    },
+    {
+      "update": 341,
+      "case": "flamingo_native480",
+      "sigma": 0.47069682291109866,
+      "noise_seed": 70300341
+    },
+    {
+      "update": 342,
+      "case": "bear_256",
+      "sigma": 0.2200366823844251,
+      "noise_seed": 70300342
+    },
+    {
+      "update": 343,
+      "case": "bus_256",
+      "sigma": 0.09313422132703442,
+      "noise_seed": 70300343
+    },
+    {
+      "update": 344,
+      "case": "bus_256",
+      "sigma": 0.39283366659150476,
+      "noise_seed": 70300344
+    },
+    {
+      "update": 345,
+      "case": "bus_native480",
+      "sigma": 0.6843881779494747,
+      "noise_seed": 70300345
+    },
+    {
+      "update": 346,
+      "case": "bear_native480",
+      "sigma": 0.7108651312059578,
+      "noise_seed": 70300346
+    },
+    {
+      "update": 347,
+      "case": "car-turn_native480",
+      "sigma": 0.7752579837483953,
+      "noise_seed": 70300347
+    },
+    {
+      "update": 348,
+      "case": "bear_256",
+      "sigma": 0.7965858699787794,
+      "noise_seed": 70300348
+    },
+    {
+      "update": 349,
+      "case": "flamingo_native480",
+      "sigma": 0.16701724913333027,
+      "noise_seed": 70300349
+    },
+    {
+      "update": 350,
+      "case": "flamingo_256",
+      "sigma": 0.8331526076857237,
+      "noise_seed": 70300350
+    },
+    {
+      "update": 351,
+      "case": "car-turn_256",
+      "sigma": 0.3054747323590671,
+      "noise_seed": 70300351
+    },
+    {
+      "update": 352,
+      "case": "car-turn_native480",
+      "sigma": 0.4903317001984783,
+      "noise_seed": 70300352
+    },
+    {
+      "update": 353,
+      "case": "flamingo_native480",
+      "sigma": 0.09911596404424225,
+      "noise_seed": 70300353
+    },
+    {
+      "update": 354,
+      "case": "car-turn_256",
+      "sigma": 0.7737401995185302,
+      "noise_seed": 70300354
+    },
+    {
+      "update": 355,
+      "case": "bus_256",
+      "sigma": 0.19482056210890492,
+      "noise_seed": 70300355
+    },
+    {
+      "update": 356,
+      "case": "flamingo_256",
+      "sigma": 0.34528764818465707,
+      "noise_seed": 70300356
+    },
+    {
+      "update": 357,
+      "case": "bear_native480",
+      "sigma": 0.10176516205005737,
+      "noise_seed": 70300357
+    },
+    {
+      "update": 358,
+      "case": "bear_256",
+      "sigma": 0.5363912517664104,
+      "noise_seed": 70300358
+    },
+    {
+      "update": 359,
+      "case": "bus_native480",
+      "sigma": 0.23527664365811768,
+      "noise_seed": 70300359
+    },
+    {
+      "update": 360,
+      "case": "bus_256",
+      "sigma": 0.24072009233681824,
+      "noise_seed": 70300360
+    },
+    {
+      "update": 361,
+      "case": "bus_native480",
+      "sigma": 0.3851199887778385,
+      "noise_seed": 70300361
+    },
+    {
+      "update": 362,
+      "case": "car-turn_256",
+      "sigma": 0.9095883596124251,
+      "noise_seed": 70300362
+    },
+    {
+      "update": 363,
+      "case": "flamingo_native480",
+      "sigma": 0.6536462003909783,
+      "noise_seed": 70300363
+    },
+    {
+      "update": 364,
+      "case": "bear_256",
+      "sigma": 0.8428538252322283,
+      "noise_seed": 70300364
+    },
+    {
+      "update": 365,
+      "case": "flamingo_256",
+      "sigma": 0.4272732306168899,
+      "noise_seed": 70300365
+    },
+    {
+      "update": 366,
+      "case": "car-turn_native480",
+      "sigma": 0.5717737755478514,
+      "noise_seed": 70300366
+    },
+    {
+      "update": 367,
+      "case": "bear_native480",
+      "sigma": 0.3715591104676179,
+      "noise_seed": 70300367
+    },
+    {
+      "update": 368,
+      "case": "bus_256",
+      "sigma": 0.7435787537655426,
+      "noise_seed": 70300368
+    },
+    {
+      "update": 369,
+      "case": "bear_256",
+      "sigma": 0.34254526120071843,
+      "noise_seed": 70300369
+    },
+    {
+      "update": 370,
+      "case": "bear_native480",
+      "sigma": 0.5580301109101655,
+      "noise_seed": 70300370
+    },
+    {
+      "update": 371,
+      "case": "car-turn_native480",
+      "sigma": 0.18637602822228017,
+      "noise_seed": 70300371
+    },
+    {
+      "update": 372,
+      "case": "flamingo_native480",
+      "sigma": 0.7487870489988836,
+      "noise_seed": 70300372
+    },
+    {
+      "update": 373,
+      "case": "car-turn_256",
+      "sigma": 0.7868927739276466,
+      "noise_seed": 70300373
+    },
+    {
+      "update": 374,
+      "case": "flamingo_256",
+      "sigma": 0.6859777412822177,
+      "noise_seed": 70300374
+    },
+    {
+      "update": 375,
+      "case": "bus_native480",
+      "sigma": 0.8977868781879791,
+      "noise_seed": 70300375
+    },
+    {
+      "update": 376,
+      "case": "bear_native480",
+      "sigma": 0.5957517026732063,
+      "noise_seed": 70300376
+    },
+    {
+      "update": 377,
+      "case": "car-turn_native480",
+      "sigma": 0.667455379872295,
+      "noise_seed": 70300377
+    },
+    {
+      "update": 378,
+      "case": "flamingo_native480",
+      "sigma": 0.5781588472697943,
+      "noise_seed": 70300378
+    },
+    {
+      "update": 379,
+      "case": "car-turn_256",
+      "sigma": 0.27020352627609706,
+      "noise_seed": 70300379
+    },
+    {
+      "update": 380,
+      "case": "bus_native480",
+      "sigma": 0.7837413409697189,
+      "noise_seed": 70300380
+    },
+    {
+      "update": 381,
+      "case": "bus_256",
+      "sigma": 0.5897127982680226,
+      "noise_seed": 70300381
+    },
+    {
+      "update": 382,
+      "case": "flamingo_256",
+      "sigma": 0.7562564536937796,
+      "noise_seed": 70300382
+    },
+    {
+      "update": 383,
+      "case": "bear_256",
+      "sigma": 0.38185805712436693,
+      "noise_seed": 70300383
+    },
+    {
+      "update": 384,
+      "case": "car-turn_256",
+      "sigma": 0.6112164161401156,
+      "noise_seed": 70300384
+    },
+    {
+      "update": 385,
+      "case": "flamingo_native480",
+      "sigma": 0.47449212314799005,
+      "noise_seed": 70300385
+    },
+    {
+      "update": 386,
+      "case": "car-turn_native480",
+      "sigma": 0.14388735095566269,
+      "noise_seed": 70300386
+    },
+    {
+      "update": 387,
+      "case": "bus_native480",
+      "sigma": 0.5418425957047772,
+      "noise_seed": 70300387
+    },
+    {
+      "update": 388,
+      "case": "bus_256",
+      "sigma": 0.6236347589607554,
+      "noise_seed": 70300388
+    },
+    {
+      "update": 389,
+      "case": "flamingo_256",
+      "sigma": 0.6408929671767123,
+      "noise_seed": 70300389
+    },
+    {
+      "update": 390,
+      "case": "bear_native480",
+      "sigma": 0.59383380947209,
+      "noise_seed": 70300390
+    },
+    {
+      "update": 391,
+      "case": "bear_256",
+      "sigma": 0.37318055522817356,
+      "noise_seed": 70300391
+    },
+    {
+      "update": 392,
+      "case": "flamingo_native480",
+      "sigma": 0.4146572824453247,
+      "noise_seed": 70300392
+    },
+    {
+      "update": 393,
+      "case": "bus_native480",
+      "sigma": 0.2845646578553646,
+      "noise_seed": 70300393
+    },
+    {
+      "update": 394,
+      "case": "car-turn_native480",
+      "sigma": 0.9172883822014706,
+      "noise_seed": 70300394
+    },
+    {
+      "update": 395,
+      "case": "flamingo_256",
+      "sigma": 0.8427767268535058,
+      "noise_seed": 70300395
+    },
+    {
+      "update": 396,
+      "case": "bear_256",
+      "sigma": 0.18793540579550216,
+      "noise_seed": 70300396
+    },
+    {
+      "update": 397,
+      "case": "car-turn_256",
+      "sigma": 0.08503128802113513,
+      "noise_seed": 70300397
+    },
+    {
+      "update": 398,
+      "case": "bear_native480",
+      "sigma": 0.053767845417363215,
+      "noise_seed": 70300398
+    },
+    {
+      "update": 399,
+      "case": "bus_256",
+      "sigma": 0.26311369811442686,
+      "noise_seed": 70300399
+    }
+  ],
+  "native_math": "scoped officialeagerRoPE+functionalresidual, unchangedexternalcode; zeroadapterparity audited"
+}

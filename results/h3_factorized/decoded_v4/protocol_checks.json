@@ -1,0 +1,171 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "kind": "closed_action",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/closed_action_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146224,
+      "active_parameters": 146192,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.net.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.035043634474277496,
+      "gradients": {
+        "encoder": 1.19843592250254,
+        "decoder": 1.7683940984425135,
+        "core": 0.019712692897883244,
+        "appearance": 0.3578460142016411
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "closed_action_no_equiv",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/closed_action_no_equiv_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146224,
+      "active_parameters": 146192,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.net.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.03510068356990814,
+      "gradients": {
+        "encoder": 0.7629029310774058,
+        "decoder": 3.0468791374005377,
+        "core": 6.492815590730672e-09,
+        "appearance": 0.35299908742308617
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "factor_cache_mlp",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/factor_cache_mlp_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146576,
+      "active_parameters": 146544,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.inverse.net.4.bias",
+        "core.forward_net.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.03529554605484009,
+      "gradients": {
+        "encoder": 1.5601854505948722,
+        "decoder": 3.1207477193092927,
+        "core": 0.024766700013060472,
+        "appearance": 0.3579249195754528
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "nonlinear_group",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/nonlinear_group_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146576,
+      "active_parameters": 146544,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.inverse.net.4.bias",
+        "core.forward_net.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.03506623953580856,
+      "gradients": {
+        "encoder": 1.2560362529475242,
+        "decoder": 2.1542468385305256,
+        "core": 0.030464559415122494,
+        "appearance": 0.35762032866477966
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "gru_online",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/gru_online_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146028,
+      "active_parameters": 146000,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.query.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.034924328327178955,
+      "gradients": {
+        "encoder": 0.028117404894146603,
+        "decoder": 1.875853781704791,
+        "core": 0.3516384537704198,
+        "appearance": 0.33383119758218527
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "gru_replay",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/gru_replay_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146028,
+      "active_parameters": 146000,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.query.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.03493762016296387,
+      "gradients": {
+        "encoder": 0.019162535008035775,
+        "decoder": 1.7435443278809544,
+        "core": 0.3480224267327685,
+        "appearance": 0.32664878852665424
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": null
+    },
+    {
+      "kind": "anchor_only",
+      "initial": "results/h3_factorized/revision_v3/latent_stage1/closed_action_seed17/last.pt",
+      "initial_step": 600,
+      "architecture_parameters": 146224,
+      "active_parameters": 146192,
+      "frozen_cancelling_biases": [
+        "decoder.net.4.bias",
+        "core.net.net.4.bias"
+      ],
+      "actualD_RGB_L1": 0.03471782058477402,
+      "gradients": {
+        "encoder": 0.6830107528949156,
+        "decoder": 0.5915953344447189,
+        "core": 0.011613965361902956,
+        "appearance": 0.3580152988433838
+      },
+      "frozen_VAE_grads": 0,
+      "future_packet_poison_maxabs": 0.0,
+      "zero_evidence_delta_maxabs": 0.0,
+      "zero_evidence_actualD_RGB_maxabs": 0.0,
+      "anchor_all_history_poison_maxabs": 0.0
+    }
+  ],
+  "seconds": 2.815979480743408,
+  "peak_GPU_bytes": 11019380224,
+  "scope": "ActualTRAINcache and nativeFP16D, all7controls. No update or validation selection."
+}

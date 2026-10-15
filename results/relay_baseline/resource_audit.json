@@ -1,0 +1,94 @@
+{
+  "status": "official_assets_complete_no_inference_run",
+  "checked_at": "2026-10-15T20:31:42.916415+08:00",
+  "host": "sai-gpu161",
+  "project": "/home/saiadmin/streaming_sr_20261015",
+  "repository_commit": "e856773350f53036d825404c9ea9228e6dffadca",
+  "repository_status_short": "",
+  "official_source_sha256": {
+    "inference.py": "3e2a85ec6348d5db3e4a10b76eed3c980f4be0782672d5aa9cd1efb165d9e550",
+    "refvsr_inference/checkpoints.py": "8e7dd153ae6fd964231b9cc76f6144441ec06e0d9829d9a45db1a60a1a4b86fe",
+    "refvsr_inference/runtime/streaming.py": "2a610eca5ea52752ab82ab9c5b80c89788b94afa515ddb237930fd9fb703c5e8"
+  },
+  "HF_revision": "d43dc5545f9a3bd1c7730b68ebff4ab1f9199bd1",
+  "WAN": {
+    "status": "complete",
+    "pid": 1321838,
+    "url": "https://huggingface.co/kopper/RelayVSR/resolve/d43dc5545f9a3bd1c7730b68ebff4ab1f9199bd1/wan.safetensors",
+    "revision": "d43dc5545f9a3bd1c7730b68ebff4ab1f9199bd1",
+    "expected_bytes": 10066399024,
+    "expected_sha256": "638acb6a27c17ba87b2e66a1770f17e61a99ad87cfff6fa3d3e05c2d57f2eb98",
+    "part": "/home/saiadmin/streaming_sr_20261015/external/RelayVSR/weights/wan.safetensors.partial",
+    "canonical": "/home/saiadmin/streaming_sr_20261015/external/RelayVSR/weights/wan.safetensors",
+    "foreground_only": true,
+    "incomplete_canonical_moved_to_partial": true,
+    "resume_offset": 7685209714,
+    "bytes": 10066399024,
+    "epoch": 1792067097.8358362,
+    "http_status": 206,
+    "content_range": "bytes 7685209714-10066399023/10066399024",
+    "downloaded_this_execution": 2381189310,
+    "bytes_per_second_since_launch": 7106978.85441939,
+    "sha256": "638acb6a27c17ba87b2e66a1770f17e61a99ad87cfff6fa3d3e05c2d57f2eb98",
+    "seconds": 350.26891684532166,
+    "bytes_per_second_entire_execution": 6798174.76082678,
+    "exec_session_id": 40657,
+    "exit_code": 0
+  },
+  "Flash": {
+    "path": "data/flash.safetensors",
+    "bytes": 127759784,
+    "sha256": "7b8b8c99275fd5c4501b0589cc7b4c4506456a5df83160ef4e207e147b30f714",
+    "variant": "S60000EMA,current-relativeRoPE,2framevideoattention,endpoints"
+  },
+  "python": "external/relay_venv/bin/python",
+  "dependencies": {
+    "torch": "2.10.0",
+    "diffusers": "0.37.1",
+    "accelerate": "1.13.0",
+    "triton": "3.6.0",
+    "einops": "0.8.2",
+    "av": "18.1.0",
+    "safetensors": "0.7.0",
+    "numpy": "1.26.4",
+    "pillow": "12.1.1"
+  },
+  "official_CLI_import_help_exit_code": 0,
+  "missing_official_files": [],
+  "default_flash_path_caveat": "pass --flash-checkpoint data/flash.safetensors explicitly; default repo weights/flash path not populated",
+  "official_protocol": {
+    "K": 16,
+    "max_lookahead_frames": 15,
+    "fps": 24,
+    "nominal_acquisition_bound_seconds": 0.625,
+    "for22frames_WAN_reference_indices": [
+      0,
+      15,
+      21
+    ],
+    "WAN_NFE_22frameclip": 3,
+    "Flash_decode_calls_22frameclip": 23,
+    "emitted_unique_frames": 22,
+    "WAN": "30layers,24headsx128,48channels,temporalKV4,oneframecausalblock;1step t1000,shift5,CFG1,seed42",
+    "prompt": "fixed prompt embeddings embedded inofficialWANcheckpoint; no textencoder/HRcaption needed"
+  },
+  "strictcausal_variant": {
+    "name": "causal_repeat_start_ablation",
+    "future_input": false,
+    "WAN_reference_indices_22frames": [
+      0,
+      15
+    ],
+    "Flash_decode_calls_22frames": 22,
+    "changed_protocol": "startreference repeated inboth endpointslots, refresh/resetFlash every15; not officialequivalence or equalcomputebudget"
+  },
+  "inference_ready_but_not_executed": true,
+  "admission_plan": "Fresh idle H100 with >60GBfree for native480; initial LR64x64/22frames to measure actualmemory/JIT; set .8perprocesscap inprojectwrapper; no claimweightbytes predictactivationpeak",
+  "wan_tensor_scalar_count": 5033156288,
+  "wan_parameter_label": "approximately5B; BF16 tensors about10.066GB; not1.3B",
+  "wan_architecture_confirmed": {
+    "layers": 30,
+    "heads": 24,
+    "head_dim": 128
+  }
+}

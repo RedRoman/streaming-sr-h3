@@ -1,0 +1,1582 @@
+{
+  "scope": "Fixed4train2val developmentpilot; not testconfirmation or H3semanticfactoridentification",
+  "config": {
+    "root": "results/h3_core/connection_pilot_v1",
+    "comfy": "external/ComfyUI_H3",
+    "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "out": "results/h3_core/connection_pilot_v1/fixed_seed17",
+    "steps": 300,
+    "seed": 17,
+    "resume": false,
+    "eval_only": false
+  },
+  "native_response_budget": "56officialH3samples/2744full50forwards shared; headtraining actualD only",
+  "head_parameters": {
+    "connection_loop": 18888,
+    "basic_sequential": 18888,
+    "gru": 18888,
+    "set": 18888
+  },
+  "shared_U_private": "SameimmutableX0channelPCA8/privatecarrier for allheads; not semanticallyidentified",
+  "steps_per_head": 300,
+  "loss": "100RGBoutside4cornerprivatequeries+25observedLR+100reference-privateHF; proposedonly+25RGBloop+.01codeloop",
+  "source_hashes": {
+    "train_100075": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+    "train_100080": "d52ff44bf19e17f49389eca134bcf57a90d27b15671952fabbd2f2334f75aa8e",
+    "train_100098": "156fd9710dccd7bf3a821977f8d8155da0eccca553086f73771073e17a418aa6",
+    "train_103041": "1e7ad4076e21f5558e487fddbd20f9553cc4e84629814a79c711f20c38e08461",
+    "val_101085": "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a",
+    "val_101087": "d755a74144410290cff5e214bb7cbf352a8cb920d45fac3d992b9772ad92a017"
+  },
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "training_history": [
+    {
+      "step": 1,
+      "source": "train_103041",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.1358681619167328,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.009070664644241333
+        },
+        "basic_sequential": {
+          "loss": 0.1358681619167328,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.009070664644241333
+        },
+        "gru": {
+          "loss": 0.1358681619167328,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.016639498993754387
+        },
+        "set": {
+          "loss": 0.1358681619167328,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.006399455014616251
+        }
+      },
+      "seconds": 5.385815914720297
+    },
+    {
+      "step": 26,
+      "source": "train_100075",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.14286640286445618,
+          "RGB_loop_mse": 2.195301647134329e-07,
+          "code_loop_mse": 0.0002466068253852427,
+          "gradient_norm": 0.014681294560432434
+        },
+        "basic_sequential": {
+          "loss": 0.14279504120349884,
+          "RGB_loop_mse": 2.126737825847158e-07,
+          "code_loop_mse": 0.00024182074412237853,
+          "gradient_norm": 0.013893231749534607
+        },
+        "gru": {
+          "loss": 0.1431686282157898,
+          "RGB_loop_mse": 2.2729784632247174e-07,
+          "code_loop_mse": 0.00014457358338404447,
+          "gradient_norm": 0.014730897732079029
+        },
+        "set": {
+          "loss": 0.14264968037605286,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.00828061904758215
+        }
+      },
+      "seconds": 43.89943439513445
+    },
+    {
+      "step": 51,
+      "source": "train_100080",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.047427911311388016,
+          "RGB_loop_mse": 4.7449151452383376e-07,
+          "code_loop_mse": 0.00037658135988749564,
+          "gradient_norm": 0.013188066892325878
+        },
+        "basic_sequential": {
+          "loss": 0.04746363312005997,
+          "RGB_loop_mse": 5.875149327039253e-07,
+          "code_loop_mse": 0.0004470670537557453,
+          "gradient_norm": 0.013392438180744648
+        },
+        "gru": {
+          "loss": 0.046991050243377686,
+          "RGB_loop_mse": 3.883977512941783e-07,
+          "code_loop_mse": 0.00018978823209181428,
+          "gradient_norm": 0.015657808631658554
+        },
+        "set": {
+          "loss": 0.04752807691693306,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.011482924222946167
+        }
+      },
+      "seconds": 81.86981278285384
+    },
+    {
+      "step": 76,
+      "source": "train_103041",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.13330687582492828,
+          "RGB_loop_mse": 3.3047288070520153e-06,
+          "code_loop_mse": 0.0013099327916279435,
+          "gradient_norm": 0.08035008609294891
+        },
+        "basic_sequential": {
+          "loss": 0.13374552130699158,
+          "RGB_loop_mse": 3.552440830389969e-06,
+          "code_loop_mse": 0.0013730915961787105,
+          "gradient_norm": 0.09880132973194122
+        },
+        "gru": {
+          "loss": 0.13582578301429749,
+          "RGB_loop_mse": 9.752864116308047e-07,
+          "code_loop_mse": 0.00036509166238829494,
+          "gradient_norm": 0.13990269601345062
+        },
+        "set": {
+          "loss": 0.13428130745887756,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.09700550884008408
+        }
+      },
+      "seconds": 119.67115292698145
+    },
+    {
+      "step": 101,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.6486634016036987,
+          "RGB_loop_mse": 1.7734098946675658e-05,
+          "code_loop_mse": 0.0036432372871786356,
+          "gradient_norm": 0.6504859328269958
+        },
+        "basic_sequential": {
+          "loss": 0.6602272987365723,
+          "RGB_loop_mse": 1.8025235476670787e-05,
+          "code_loop_mse": 0.003117915941402316,
+          "gradient_norm": 0.46063700318336487
+        },
+        "gru": {
+          "loss": 0.6280871629714966,
+          "RGB_loop_mse": 4.162019649811555e-06,
+          "code_loop_mse": 0.0005973441293463111,
+          "gradient_norm": 0.677539050579071
+        },
+        "set": {
+          "loss": 0.6790085434913635,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.599233865737915
+        }
+      },
+      "seconds": 157.32726017013192
+    },
+    {
+      "step": 126,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.6250547170639038,
+          "RGB_loop_mse": 2.6268764486303553e-05,
+          "code_loop_mse": 0.003456014208495617,
+          "gradient_norm": 0.4290400445461273
+        },
+        "basic_sequential": {
+          "loss": 0.6156293153762817,
+          "RGB_loop_mse": 4.491810250328854e-05,
+          "code_loop_mse": 0.004664051812142134,
+          "gradient_norm": 0.24435724318027496
+        },
+        "gru": {
+          "loss": 0.6167802214622498,
+          "RGB_loop_mse": 5.31529076397419e-06,
+          "code_loop_mse": 0.0007789619849063456,
+          "gradient_norm": 0.4863484799861908
+        },
+        "set": {
+          "loss": 0.6137257814407349,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.20672984421253204
+        }
+      },
+      "seconds": 195.38133655115962
+    },
+    {
+      "step": 151,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.6144574880599976,
+          "RGB_loop_mse": 2.5340370484627783e-05,
+          "code_loop_mse": 0.004051696974784136,
+          "gradient_norm": 0.3914749324321747
+        },
+        "basic_sequential": {
+          "loss": 0.5971136093139648,
+          "RGB_loop_mse": 6.602982466574758e-05,
+          "code_loop_mse": 0.006067441310733557,
+          "gradient_norm": 0.25343045592308044
+        },
+        "gru": {
+          "loss": 0.5943184494972229,
+          "RGB_loop_mse": 6.182806828292087e-06,
+          "code_loop_mse": 0.0008664900669828057,
+          "gradient_norm": 0.15191712975502014
+        },
+        "set": {
+          "loss": 0.6004301309585571,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.31555959582328796
+        }
+      },
+      "seconds": 233.29663165286183
+    },
+    {
+      "step": 176,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.5866818428039551,
+          "RGB_loop_mse": 4.2822808609344065e-05,
+          "code_loop_mse": 0.005841806996613741,
+          "gradient_norm": 0.14823387563228607
+        },
+        "basic_sequential": {
+          "loss": 0.5834250450134277,
+          "RGB_loop_mse": 6.504800694528967e-05,
+          "code_loop_mse": 0.006709853652864695,
+          "gradient_norm": 0.12141960114240646
+        },
+        "gru": {
+          "loss": 0.5824475884437561,
+          "RGB_loop_mse": 5.2938030421501026e-06,
+          "code_loop_mse": 0.0007882366189733148,
+          "gradient_norm": 0.07693441212177277
+        },
+        "set": {
+          "loss": 0.5853160619735718,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.15935561060905457
+        }
+      },
+      "seconds": 270.9733133614063
+    },
+    {
+      "step": 201,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.574848473072052,
+          "RGB_loop_mse": 4.19468960899394e-05,
+          "code_loop_mse": 0.007321493234485388,
+          "gradient_norm": 0.29278483986854553
+        },
+        "basic_sequential": {
+          "loss": 0.564741849899292,
+          "RGB_loop_mse": 7.741014269413427e-05,
+          "code_loop_mse": 0.009276319295167923,
+          "gradient_norm": 0.15633539855480194
+        },
+        "gru": {
+          "loss": 0.5686178207397461,
+          "RGB_loop_mse": 6.476131602539681e-06,
+          "code_loop_mse": 0.0008416987839154899,
+          "gradient_norm": 0.10822349041700363
+        },
+        "set": {
+          "loss": 0.5709627866744995,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.3189718425273895
+        }
+      },
+      "seconds": 308.77631739526987
+    },
+    {
+      "step": 226,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.5644719004631042,
+          "RGB_loop_mse": 5.036638322053477e-05,
+          "code_loop_mse": 0.00898945052176714,
+          "gradient_norm": 0.25820136070251465
+        },
+        "basic_sequential": {
+          "loss": 0.5561928749084473,
+          "RGB_loop_mse": 8.803013770375401e-05,
+          "code_loop_mse": 0.011555963195860386,
+          "gradient_norm": 0.18584369122982025
+        },
+        "gru": {
+          "loss": 0.5624634027481079,
+          "RGB_loop_mse": 6.913636298122583e-06,
+          "code_loop_mse": 0.0009531049290671945,
+          "gradient_norm": 0.1940566897392273
+        },
+        "set": {
+          "loss": 0.5627604722976685,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.2942745089530945
+        }
+      },
+      "seconds": 346.69172410294414
+    },
+    {
+      "step": 251,
+      "source": "train_100098",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.5573222637176514,
+          "RGB_loop_mse": 8.981193968793377e-05,
+          "code_loop_mse": 0.011393136344850063,
+          "gradient_norm": 0.4153793752193451
+        },
+        "basic_sequential": {
+          "loss": 0.5478760600090027,
+          "RGB_loop_mse": 8.964048174675554e-05,
+          "code_loop_mse": 0.013453714549541473,
+          "gradient_norm": 0.41882216930389404
+        },
+        "gru": {
+          "loss": 0.5552091598510742,
+          "RGB_loop_mse": 8.361690561287105e-06,
+          "code_loop_mse": 0.001122666522860527,
+          "gradient_norm": 0.25230872631073
+        },
+        "set": {
+          "loss": 0.5551812648773193,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.28557294607162476
+        }
+      },
+      "seconds": 384.58906853199005
+    },
+    {
+      "step": 276,
+      "source": "train_103041",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.11654919385910034,
+          "RGB_loop_mse": 1.3666623090102803e-05,
+          "code_loop_mse": 0.004975487943738699,
+          "gradient_norm": 0.03332296386361122
+        },
+        "basic_sequential": {
+          "loss": 0.11693084239959717,
+          "RGB_loop_mse": 1.7039292288245633e-05,
+          "code_loop_mse": 0.005372109357267618,
+          "gradient_norm": 0.09831537306308746
+        },
+        "gru": {
+          "loss": 0.11915485560894012,
+          "RGB_loop_mse": 2.6009327029896667e-06,
+          "code_loop_mse": 0.0011118603870272636,
+          "gradient_norm": 0.04108746349811554
+        },
+        "set": {
+          "loss": 0.11802363395690918,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.03580931946635246
+        }
+      },
+      "seconds": 422.5951319485903
+    },
+    {
+      "step": 300,
+      "source": "train_103041",
+      "heads": {
+        "connection_loop": {
+          "loss": 0.11416240781545639,
+          "RGB_loop_mse": 1.5533078112639487e-05,
+          "code_loop_mse": 0.005384110379964113,
+          "gradient_norm": 0.09420348703861237
+        },
+        "basic_sequential": {
+          "loss": 0.11456499248743057,
+          "RGB_loop_mse": 2.3810393031453714e-05,
+          "code_loop_mse": 0.006304335314780474,
+          "gradient_norm": 0.07562272995710373
+        },
+        "gru": {
+          "loss": 0.11800427734851837,
+          "RGB_loop_mse": 2.8865276817668928e-06,
+          "code_loop_mse": 0.001134441583417356,
+          "gradient_norm": 0.06870223581790924
+        },
+        "set": {
+          "loss": 0.11661535501480103,
+          "RGB_loop_mse": 0.0,
+          "code_loop_mse": 0.0,
+          "gradient_norm": 0.08231997489929199
+        }
+      },
+      "seconds": 458.9771138802171
+    }
+  ],
+  "evaluation": {
+    "val_101085": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.171764373779297,
+            "psnr_global_query_db": 25.12007713317871,
+            "observed_prefix_lr_rmse": 0.029112087562680244,
+            "far_lr_rmse": 5.990068530081771e-06,
+            "private_query_revision_rms": 0.0023444336839020252,
+            "global_query_revision_rms": 0.003759424202144146,
+            "gradient_energy_l1": 0.03722386807203293,
+            "highfrequency_rms": 0.021421752870082855
+          },
+          "AB": {
+            "psnr_full_db": 25.187747955322266,
+            "psnr_global_query_db": 25.159236907958984,
+            "observed_prefix_lr_rmse": 0.03165937960147858,
+            "far_lr_rmse": 7.087658104865113e-06,
+            "private_query_revision_rms": 0.004988737870007753,
+            "global_query_revision_rms": 0.007358793634921312,
+            "gradient_energy_l1": 0.03743841126561165,
+            "highfrequency_rms": 0.02174718864262104
+          },
+          "B": {
+            "psnr_full_db": 25.181110382080078,
+            "psnr_global_query_db": 25.133975982666016,
+            "observed_prefix_lr_rmse": 0.03388165682554245,
+            "far_lr_rmse": 5.0495468713052105e-06,
+            "private_query_revision_rms": 0.0024610180407762527,
+            "global_query_revision_rms": 0.004073728807270527,
+            "gradient_energy_l1": 0.03720283508300781,
+            "highfrequency_rms": 0.021355604752898216
+          },
+          "BA": {
+            "psnr_full_db": 25.18537139892578,
+            "psnr_global_query_db": 25.163516998291016,
+            "observed_prefix_lr_rmse": 0.03171230107545853,
+            "far_lr_rmse": 7.046342943795025e-06,
+            "private_query_revision_rms": 0.005103103816509247,
+            "global_query_revision_rms": 0.007533233147114515,
+            "gradient_energy_l1": 0.037437163293361664,
+            "highfrequency_rms": 0.0217667818069458
+          }
+        },
+        "RGB_path_mse": 4.560153683996759e-06,
+        "latent_path_mse": 0.0018579898169264197
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.172632217407227,
+            "psnr_global_query_db": 25.120216369628906,
+            "observed_prefix_lr_rmse": 0.029143864288926125,
+            "far_lr_rmse": 5.6143367146432865e-06,
+            "private_query_revision_rms": 0.0021443571895360947,
+            "global_query_revision_rms": 0.0034874228294938803,
+            "gradient_energy_l1": 0.03717702627182007,
+            "highfrequency_rms": 0.021356802433729172
+          },
+          "AB": {
+            "psnr_full_db": 25.195377349853516,
+            "psnr_global_query_db": 25.164316177368164,
+            "observed_prefix_lr_rmse": 0.031610067933797836,
+            "far_lr_rmse": 6.580759418284288e-06,
+            "private_query_revision_rms": 0.004642382729798555,
+            "global_query_revision_rms": 0.0070338197983801365,
+            "gradient_energy_l1": 0.037348054349422455,
+            "highfrequency_rms": 0.0216472577303648
+          },
+          "B": {
+            "psnr_full_db": 25.184856414794922,
+            "psnr_global_query_db": 25.13423728942871,
+            "observed_prefix_lr_rmse": 0.03380836173892021,
+            "far_lr_rmse": 4.902843556919834e-06,
+            "private_query_revision_rms": 0.002252686768770218,
+            "global_query_revision_rms": 0.00376922357827425,
+            "gradient_energy_l1": 0.03715503215789795,
+            "highfrequency_rms": 0.021272100508213043
+          },
+          "BA": {
+            "psnr_full_db": 25.194042205810547,
+            "psnr_global_query_db": 25.16951560974121,
+            "observed_prefix_lr_rmse": 0.03165363147854805,
+            "far_lr_rmse": 6.588088581338525e-06,
+            "private_query_revision_rms": 0.004721353761851788,
+            "global_query_revision_rms": 0.007194432895630598,
+            "gradient_energy_l1": 0.03733891248703003,
+            "highfrequency_rms": 0.021649185568094254
+          }
+        },
+        "RGB_path_mse": 4.864446054853033e-06,
+        "latent_path_mse": 0.0020756134763360023
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.17096519470215,
+            "psnr_global_query_db": 25.115100860595703,
+            "observed_prefix_lr_rmse": 0.029109202325344086,
+            "far_lr_rmse": 6.2208423514675815e-06,
+            "private_query_revision_rms": 0.0030419728718698025,
+            "global_query_revision_rms": 0.004762055352330208,
+            "gradient_energy_l1": 0.03733102232217789,
+            "highfrequency_rms": 0.021493379026651382
+          },
+          "AB": {
+            "psnr_full_db": 25.18225860595703,
+            "psnr_global_query_db": 25.133007049560547,
+            "observed_prefix_lr_rmse": 0.031555864959955215,
+            "far_lr_rmse": 7.202043434517691e-06,
+            "private_query_revision_rms": 0.005272225942462683,
+            "global_query_revision_rms": 0.007499007508158684,
+            "gradient_energy_l1": 0.03754216805100441,
+            "highfrequency_rms": 0.021841030567884445
+          },
+          "B": {
+            "psnr_full_db": 25.18207359313965,
+            "psnr_global_query_db": 25.127403259277344,
+            "observed_prefix_lr_rmse": 0.03373769670724869,
+            "far_lr_rmse": 5.167786639503902e-06,
+            "private_query_revision_rms": 0.0032492466270923615,
+            "global_query_revision_rms": 0.005023882258683443,
+            "gradient_energy_l1": 0.0372985377907753,
+            "highfrequency_rms": 0.021444221958518028
+          },
+          "BA": {
+            "psnr_full_db": 25.180932998657227,
+            "psnr_global_query_db": 25.13810157775879,
+            "observed_prefix_lr_rmse": 0.03160287067294121,
+            "far_lr_rmse": 6.956546712899581e-06,
+            "private_query_revision_rms": 0.005370384082198143,
+            "global_query_revision_rms": 0.007574406918138266,
+            "gradient_energy_l1": 0.03753504529595375,
+            "highfrequency_rms": 0.021840689703822136
+          }
+        },
+        "RGB_path_mse": 4.565635208564345e-06,
+        "latent_path_mse": 0.0010579744121059775
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.173290252685547,
+            "psnr_global_query_db": 25.11727523803711,
+            "observed_prefix_lr_rmse": 0.029052579775452614,
+            "far_lr_rmse": 5.318633611750556e-06,
+            "private_query_revision_rms": 0.0020366408862173557,
+            "global_query_revision_rms": 0.0029407660476863384,
+            "gradient_energy_l1": 0.037175051867961884,
+            "highfrequency_rms": 0.02137051895260811
+          },
+          "AB": {
+            "psnr_full_db": 25.180191040039062,
+            "psnr_global_query_db": 25.125919342041016,
+            "observed_prefix_lr_rmse": 0.03147835657000542,
+            "far_lr_rmse": 5.316494934959337e-06,
+            "private_query_revision_rms": 0.0023356482852250338,
+            "global_query_revision_rms": 0.003582846373319626,
+            "gradient_energy_l1": 0.03721751272678375,
+            "highfrequency_rms": 0.021493785083293915
+          },
+          "B": {
+            "psnr_full_db": 25.180566787719727,
+            "psnr_global_query_db": 25.123384475708008,
+            "observed_prefix_lr_rmse": 0.03371666744351387,
+            "far_lr_rmse": 4.808375251741381e-06,
+            "private_query_revision_rms": 0.00213617249391973,
+            "global_query_revision_rms": 0.0031743012368679047,
+            "gradient_energy_l1": 0.03716037794947624,
+            "highfrequency_rms": 0.021318918094038963
+          },
+          "BA": {
+            "psnr_full_db": 25.180191040039062,
+            "psnr_global_query_db": 25.125919342041016,
+            "observed_prefix_lr_rmse": 0.03147835657000542,
+            "far_lr_rmse": 5.316494934959337e-06,
+            "private_query_revision_rms": 0.0023356482852250338,
+            "global_query_revision_rms": 0.003582846373319626,
+            "gradient_energy_l1": 0.03721751272678375,
+            "highfrequency_rms": 0.021493785083293915
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    },
+    "val_101087": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.686159133911133,
+            "psnr_global_query_db": 25.635623931884766,
+            "observed_prefix_lr_rmse": 0.035058218985795975,
+            "far_lr_rmse": 8.28067641123198e-05,
+            "private_query_revision_rms": 0.0054420228116214275,
+            "global_query_revision_rms": 0.006927579175680876,
+            "gradient_energy_l1": 0.0342843160033226,
+            "highfrequency_rms": 0.03441130369901657
+          },
+          "AB": {
+            "psnr_full_db": 25.644454956054688,
+            "psnr_global_query_db": 25.597599029541016,
+            "observed_prefix_lr_rmse": 0.03156937286257744,
+            "far_lr_rmse": 8.242770127253607e-05,
+            "private_query_revision_rms": 0.008048751391470432,
+            "global_query_revision_rms": 0.009540555067360401,
+            "gradient_energy_l1": 0.03496893495321274,
+            "highfrequency_rms": 0.03436717763543129
+          },
+          "B": {
+            "psnr_full_db": 25.709518432617188,
+            "psnr_global_query_db": 25.638107299804688,
+            "observed_prefix_lr_rmse": 0.026920083910226822,
+            "far_lr_rmse": 8.26160903670825e-05,
+            "private_query_revision_rms": 0.005832985043525696,
+            "global_query_revision_rms": 0.007184789516031742,
+            "gradient_energy_l1": 0.03419755399227142,
+            "highfrequency_rms": 0.034265048801898956
+          },
+          "BA": {
+            "psnr_full_db": 25.65323257446289,
+            "psnr_global_query_db": 25.603031158447266,
+            "observed_prefix_lr_rmse": 0.03155063837766647,
+            "far_lr_rmse": 8.186754712369293e-05,
+            "private_query_revision_rms": 0.008146828040480614,
+            "global_query_revision_rms": 0.009527184069156647,
+            "gradient_energy_l1": 0.03493553400039673,
+            "highfrequency_rms": 0.03432158753275871
+          }
+        },
+        "RGB_path_mse": 1.6137204511323944e-05,
+        "latent_path_mse": 0.008418520912528038
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.689876556396484,
+            "psnr_global_query_db": 25.64445686340332,
+            "observed_prefix_lr_rmse": 0.035114843398332596,
+            "far_lr_rmse": 8.261820767074823e-05,
+            "private_query_revision_rms": 0.00549741368740797,
+            "global_query_revision_rms": 0.0068589202128350735,
+            "gradient_energy_l1": 0.034218680113554,
+            "highfrequency_rms": 0.03441881760954857
+          },
+          "AB": {
+            "psnr_full_db": 25.646181106567383,
+            "psnr_global_query_db": 25.602272033691406,
+            "observed_prefix_lr_rmse": 0.03155478462576866,
+            "far_lr_rmse": 8.190212247427553e-05,
+            "private_query_revision_rms": 0.008286220021545887,
+            "global_query_revision_rms": 0.009721358306705952,
+            "gradient_energy_l1": 0.034983985126018524,
+            "highfrequency_rms": 0.03452245518565178
+          },
+          "B": {
+            "psnr_full_db": 25.707275390625,
+            "psnr_global_query_db": 25.636445999145508,
+            "observed_prefix_lr_rmse": 0.026947923004627228,
+            "far_lr_rmse": 8.262247138191015e-05,
+            "private_query_revision_rms": 0.005901723634451628,
+            "global_query_revision_rms": 0.007188842631876469,
+            "gradient_energy_l1": 0.0341796912252903,
+            "highfrequency_rms": 0.03428862243890762
+          },
+          "BA": {
+            "psnr_full_db": 25.65020751953125,
+            "psnr_global_query_db": 25.601661682128906,
+            "observed_prefix_lr_rmse": 0.03153855353593826,
+            "far_lr_rmse": 8.147578773787245e-05,
+            "private_query_revision_rms": 0.00829261727631092,
+            "global_query_revision_rms": 0.009667467325925827,
+            "gradient_energy_l1": 0.03496775031089783,
+            "highfrequency_rms": 0.03445485606789589
+          }
+        },
+        "RGB_path_mse": 1.924406024045311e-05,
+        "latent_path_mse": 0.009840059094130993
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.683013916015625,
+            "psnr_global_query_db": 25.624570846557617,
+            "observed_prefix_lr_rmse": 0.03497748449444771,
+            "far_lr_rmse": 8.15369639894925e-05,
+            "private_query_revision_rms": 0.0055832769721746445,
+            "global_query_revision_rms": 0.006922748405486345,
+            "gradient_energy_l1": 0.03430156782269478,
+            "highfrequency_rms": 0.034380991011857986
+          },
+          "AB": {
+            "psnr_full_db": 25.656396865844727,
+            "psnr_global_query_db": 25.60247230529785,
+            "observed_prefix_lr_rmse": 0.03148060664534569,
+            "far_lr_rmse": 8.042585250223055e-05,
+            "private_query_revision_rms": 0.007291584741324186,
+            "global_query_revision_rms": 0.008647899143397808,
+            "gradient_energy_l1": 0.034724943339824677,
+            "highfrequency_rms": 0.034333594143390656
+          },
+          "B": {
+            "psnr_full_db": 25.69260597229004,
+            "psnr_global_query_db": 25.625186920166016,
+            "observed_prefix_lr_rmse": 0.02706228196620941,
+            "far_lr_rmse": 8.243537013186142e-05,
+            "private_query_revision_rms": 0.00595131516456604,
+            "global_query_revision_rms": 0.007206168957054615,
+            "gradient_energy_l1": 0.034277886152267456,
+            "highfrequency_rms": 0.03440549969673157
+          },
+          "BA": {
+            "psnr_full_db": 25.657541275024414,
+            "psnr_global_query_db": 25.604515075683594,
+            "observed_prefix_lr_rmse": 0.03149482607841492,
+            "far_lr_rmse": 8.119118137983605e-05,
+            "private_query_revision_rms": 0.007547444198280573,
+            "global_query_revision_rms": 0.008746081963181496,
+            "gradient_energy_l1": 0.034731097519397736,
+            "highfrequency_rms": 0.03435228019952774
+          }
+        },
+        "RGB_path_mse": 5.48529078514548e-06,
+        "latent_path_mse": 0.0016599661903455853
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 25.707969665527344,
+            "psnr_global_query_db": 25.649145126342773,
+            "observed_prefix_lr_rmse": 0.034783151000738144,
+            "far_lr_rmse": 8.277860615635291e-05,
+            "private_query_revision_rms": 0.005538975819945335,
+            "global_query_revision_rms": 0.00710363918915391,
+            "gradient_energy_l1": 0.034154824912548065,
+            "highfrequency_rms": 0.03422599285840988
+          },
+          "AB": {
+            "psnr_full_db": 25.709409713745117,
+            "psnr_global_query_db": 25.650394439697266,
+            "observed_prefix_lr_rmse": 0.031120752915740013,
+            "far_lr_rmse": 8.256812725448981e-05,
+            "private_query_revision_rms": 0.006114027928560972,
+            "global_query_revision_rms": 0.007490759715437889,
+            "gradient_energy_l1": 0.03423760086297989,
+            "highfrequency_rms": 0.03411406651139259
+          },
+          "B": {
+            "psnr_full_db": 25.718000411987305,
+            "psnr_global_query_db": 25.646324157714844,
+            "observed_prefix_lr_rmse": 0.026965729892253876,
+            "far_lr_rmse": 8.306629752041772e-05,
+            "private_query_revision_rms": 0.006164721213281155,
+            "global_query_revision_rms": 0.0073946029879152775,
+            "gradient_energy_l1": 0.03411088511347771,
+            "highfrequency_rms": 0.03413481265306473
+          },
+          "BA": {
+            "psnr_full_db": 25.709409713745117,
+            "psnr_global_query_db": 25.650394439697266,
+            "observed_prefix_lr_rmse": 0.031120752915740013,
+            "far_lr_rmse": 8.256812725448981e-05,
+            "private_query_revision_rms": 0.006114027928560972,
+            "global_query_revision_rms": 0.007490759715437889,
+            "gradient_energy_l1": 0.03423760086297989,
+            "highfrequency_rms": 0.03411406651139259
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    },
+    "train_100075": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 28.993854522705078,
+            "psnr_global_query_db": 29.47439193725586,
+            "observed_prefix_lr_rmse": 0.022584322839975357,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003324714256450534,
+            "global_query_revision_rms": 0.0046940394677221775,
+            "gradient_energy_l1": 0.026142794638872147,
+            "highfrequency_rms": 0.020024724304676056
+          },
+          "AB": {
+            "psnr_full_db": 28.995689392089844,
+            "psnr_global_query_db": 29.470836639404297,
+            "observed_prefix_lr_rmse": 0.022242669016122818,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.004437148105353117,
+            "global_query_revision_rms": 0.006106209009885788,
+            "gradient_energy_l1": 0.026428326964378357,
+            "highfrequency_rms": 0.02004573494195938
+          },
+          "B": {
+            "psnr_full_db": 28.984134674072266,
+            "psnr_global_query_db": 29.479068756103516,
+            "observed_prefix_lr_rmse": 0.0219509806483984,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0033220218028873205,
+            "global_query_revision_rms": 0.0048318058252334595,
+            "gradient_energy_l1": 0.026097478345036507,
+            "highfrequency_rms": 0.020002467557787895
+          },
+          "BA": {
+            "psnr_full_db": 28.999528884887695,
+            "psnr_global_query_db": 29.47992706298828,
+            "observed_prefix_lr_rmse": 0.022253958508372307,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.004392491187900305,
+            "global_query_revision_rms": 0.006181760691106319,
+            "gradient_energy_l1": 0.026424523442983627,
+            "highfrequency_rms": 0.02005079574882984
+          }
+        },
+        "RGB_path_mse": 5.076660272607114e-06,
+        "latent_path_mse": 0.005035651847720146
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 28.994863510131836,
+            "psnr_global_query_db": 29.476490020751953,
+            "observed_prefix_lr_rmse": 0.022571537643671036,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0032468209974467754,
+            "global_query_revision_rms": 0.0046491557732224464,
+            "gradient_energy_l1": 0.02615400031208992,
+            "highfrequency_rms": 0.019995540380477905
+          },
+          "AB": {
+            "psnr_full_db": 29.001760482788086,
+            "psnr_global_query_db": 29.48123550415039,
+            "observed_prefix_lr_rmse": 0.022247064858675003,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0043748426251113415,
+            "global_query_revision_rms": 0.006078321021050215,
+            "gradient_energy_l1": 0.026396360248327255,
+            "highfrequency_rms": 0.01992121711373329
+          },
+          "B": {
+            "psnr_full_db": 28.98452377319336,
+            "psnr_global_query_db": 29.479637145996094,
+            "observed_prefix_lr_rmse": 0.021946800872683525,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003239208599552512,
+            "global_query_revision_rms": 0.004765592515468597,
+            "gradient_energy_l1": 0.02607681229710579,
+            "highfrequency_rms": 0.019944632425904274
+          },
+          "BA": {
+            "psnr_full_db": 29.006635665893555,
+            "psnr_global_query_db": 29.487207412719727,
+            "observed_prefix_lr_rmse": 0.022247394546866417,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.004342908039689064,
+            "global_query_revision_rms": 0.0061540440656244755,
+            "gradient_energy_l1": 0.026369817554950714,
+            "highfrequency_rms": 0.019887186586856842
+          }
+        },
+        "RGB_path_mse": 5.805051841889508e-06,
+        "latent_path_mse": 0.005341366399079561
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 29.01474380493164,
+            "psnr_global_query_db": 29.495445251464844,
+            "observed_prefix_lr_rmse": 0.022474072873592377,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0033994768746197224,
+            "global_query_revision_rms": 0.005019212141633034,
+            "gradient_energy_l1": 0.026104595512151718,
+            "highfrequency_rms": 0.02003423683345318
+          },
+          "AB": {
+            "psnr_full_db": 29.015350341796875,
+            "psnr_global_query_db": 29.5029239654541,
+            "observed_prefix_lr_rmse": 0.022290369495749474,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.004660794045776129,
+            "global_query_revision_rms": 0.006590002682060003,
+            "gradient_energy_l1": 0.026485372334718704,
+            "highfrequency_rms": 0.02017286978662014
+          },
+          "B": {
+            "psnr_full_db": 29.001752853393555,
+            "psnr_global_query_db": 29.505321502685547,
+            "observed_prefix_lr_rmse": 0.021990077570080757,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0034418245777487755,
+            "global_query_revision_rms": 0.005126794800162315,
+            "gradient_energy_l1": 0.02608024701476097,
+            "highfrequency_rms": 0.01998259499669075
+          },
+          "BA": {
+            "psnr_full_db": 29.014934539794922,
+            "psnr_global_query_db": 29.505891799926758,
+            "observed_prefix_lr_rmse": 0.0223144069314003,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.004586565773934126,
+            "global_query_revision_rms": 0.0066156997345387936,
+            "gradient_energy_l1": 0.02643958106637001,
+            "highfrequency_rms": 0.02013079635798931
+          }
+        },
+        "RGB_path_mse": 3.0509536372846924e-06,
+        "latent_path_mse": 0.0013793205143883824
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 28.981111526489258,
+            "psnr_global_query_db": 29.463937759399414,
+            "observed_prefix_lr_rmse": 0.022737396880984306,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0032831644639372826,
+            "global_query_revision_rms": 0.004462709184736013,
+            "gradient_energy_l1": 0.026092518121004105,
+            "highfrequency_rms": 0.019930565729737282
+          },
+          "AB": {
+            "psnr_full_db": 28.98394775390625,
+            "psnr_global_query_db": 29.465621948242188,
+            "observed_prefix_lr_rmse": 0.02240613102912903,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0031655661296099424,
+            "global_query_revision_rms": 0.004433023743331432,
+            "gradient_energy_l1": 0.026113640516996384,
+            "highfrequency_rms": 0.020076274871826172
+          },
+          "B": {
+            "psnr_full_db": 28.970746994018555,
+            "psnr_global_query_db": 29.47156524658203,
+            "observed_prefix_lr_rmse": 0.022011220455169678,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0032362837810069323,
+            "global_query_revision_rms": 0.004497995134443045,
+            "gradient_energy_l1": 0.026056688278913498,
+            "highfrequency_rms": 0.01988764852285385
+          },
+          "BA": {
+            "psnr_full_db": 28.98394775390625,
+            "psnr_global_query_db": 29.465621948242188,
+            "observed_prefix_lr_rmse": 0.02240613102912903,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0031655661296099424,
+            "global_query_revision_rms": 0.004433023743331432,
+            "gradient_energy_l1": 0.026113640516996384,
+            "highfrequency_rms": 0.020076274871826172
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    },
+    "train_100080": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 34.16297149658203,
+            "psnr_global_query_db": 35.805267333984375,
+            "observed_prefix_lr_rmse": 0.012790926732122898,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0018537248251959682,
+            "global_query_revision_rms": 0.003028514329344034,
+            "gradient_energy_l1": 0.015036847442388535,
+            "highfrequency_rms": 0.02390829659998417
+          },
+          "AB": {
+            "psnr_full_db": 34.27928161621094,
+            "psnr_global_query_db": 35.824790954589844,
+            "observed_prefix_lr_rmse": 0.014291878789663315,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0030963097233325243,
+            "global_query_revision_rms": 0.004806122742593288,
+            "gradient_energy_l1": 0.015465117990970612,
+            "highfrequency_rms": 0.02393878623843193
+          },
+          "B": {
+            "psnr_full_db": 34.27477264404297,
+            "psnr_global_query_db": 35.82720947265625,
+            "observed_prefix_lr_rmse": 0.015882639214396477,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0017776995664462447,
+            "global_query_revision_rms": 0.003102896735072136,
+            "gradient_energy_l1": 0.01498590037226677,
+            "highfrequency_rms": 0.023946097120642662
+          },
+          "BA": {
+            "psnr_full_db": 34.29090118408203,
+            "psnr_global_query_db": 35.83433532714844,
+            "observed_prefix_lr_rmse": 0.014249601401388645,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003060196293517947,
+            "global_query_revision_rms": 0.004824251402169466,
+            "gradient_energy_l1": 0.015435662120580673,
+            "highfrequency_rms": 0.023935629054903984
+          }
+        },
+        "RGB_path_mse": 3.114278570137685e-06,
+        "latent_path_mse": 0.003679920919239521
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 34.18633270263672,
+            "psnr_global_query_db": 35.82584762573242,
+            "observed_prefix_lr_rmse": 0.01278961356729269,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.001995635451748967,
+            "global_query_revision_rms": 0.003245815634727478,
+            "gradient_energy_l1": 0.015052517876029015,
+            "highfrequency_rms": 0.023937849327921867
+          },
+          "AB": {
+            "psnr_full_db": 34.30393600463867,
+            "psnr_global_query_db": 35.859310150146484,
+            "observed_prefix_lr_rmse": 0.01424736250191927,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003256801748648286,
+            "global_query_revision_rms": 0.0051694223657250404,
+            "gradient_energy_l1": 0.015583118423819542,
+            "highfrequency_rms": 0.024120500311255455
+          },
+          "B": {
+            "psnr_full_db": 34.30851745605469,
+            "psnr_global_query_db": 35.85883712768555,
+            "observed_prefix_lr_rmse": 0.015768444165587425,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0018987355288118124,
+            "global_query_revision_rms": 0.003306497586891055,
+            "gradient_energy_l1": 0.014969553798437119,
+            "highfrequency_rms": 0.023981543257832527
+          },
+          "BA": {
+            "psnr_full_db": 34.31378936767578,
+            "psnr_global_query_db": 35.859642028808594,
+            "observed_prefix_lr_rmse": 0.014178204350173473,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0032088235020637512,
+            "global_query_revision_rms": 0.005148078314960003,
+            "gradient_energy_l1": 0.015547722578048706,
+            "highfrequency_rms": 0.024136213585734367
+          }
+        },
+        "RGB_path_mse": 4.250425263307989e-06,
+        "latent_path_mse": 0.004664811305701733
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 34.191776275634766,
+            "psnr_global_query_db": 35.85808181762695,
+            "observed_prefix_lr_rmse": 0.012850997969508171,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0027669197879731655,
+            "global_query_revision_rms": 0.0041391910053789616,
+            "gradient_energy_l1": 0.015209153294563293,
+            "highfrequency_rms": 0.023899635300040245
+          },
+          "AB": {
+            "psnr_full_db": 34.2769660949707,
+            "psnr_global_query_db": 35.846153259277344,
+            "observed_prefix_lr_rmse": 0.014328458346426487,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003770356997847557,
+            "global_query_revision_rms": 0.005849406123161316,
+            "gradient_energy_l1": 0.01570034958422184,
+            "highfrequency_rms": 0.024251718074083328
+          },
+          "B": {
+            "psnr_full_db": 34.29884338378906,
+            "psnr_global_query_db": 35.89762878417969,
+            "observed_prefix_lr_rmse": 0.015911992639303207,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0028220696840435266,
+            "global_query_revision_rms": 0.004409721586853266,
+            "gradient_energy_l1": 0.015185517258942127,
+            "highfrequency_rms": 0.02398916520178318
+          },
+          "BA": {
+            "psnr_full_db": 34.2781982421875,
+            "psnr_global_query_db": 35.842533111572266,
+            "observed_prefix_lr_rmse": 0.014329873956739902,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.003790664253756404,
+            "global_query_revision_rms": 0.005898220464587212,
+            "gradient_energy_l1": 0.01570463553071022,
+            "highfrequency_rms": 0.024300511926412582
+          }
+        },
+        "RGB_path_mse": 2.6430270736454986e-06,
+        "latent_path_mse": 0.0022935988381505013
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 34.18342208862305,
+            "psnr_global_query_db": 35.82612609863281,
+            "observed_prefix_lr_rmse": 0.012850229628384113,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.001917559653520584,
+            "global_query_revision_rms": 0.003278681542724371,
+            "gradient_energy_l1": 0.015064927749335766,
+            "highfrequency_rms": 0.023971954360604286
+          },
+          "AB": {
+            "psnr_full_db": 34.280426025390625,
+            "psnr_global_query_db": 35.85218048095703,
+            "observed_prefix_lr_rmse": 0.014325307682156563,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0023640580475330353,
+            "global_query_revision_rms": 0.004129136446863413,
+            "gradient_energy_l1": 0.015217266976833344,
+            "highfrequency_rms": 0.024040058255195618
+          },
+          "B": {
+            "psnr_full_db": 34.28413772583008,
+            "psnr_global_query_db": 35.85647201538086,
+            "observed_prefix_lr_rmse": 0.01586407981812954,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0018625952070578933,
+            "global_query_revision_rms": 0.0033770117443054914,
+            "gradient_energy_l1": 0.014983374625444412,
+            "highfrequency_rms": 0.023995069786906242
+          },
+          "BA": {
+            "psnr_full_db": 34.280426025390625,
+            "psnr_global_query_db": 35.85218048095703,
+            "observed_prefix_lr_rmse": 0.014325307682156563,
+            "far_lr_rmse": 0.0,
+            "private_query_revision_rms": 0.0023640580475330353,
+            "global_query_revision_rms": 0.004129136446863413,
+            "gradient_energy_l1": 0.015217266976833344,
+            "highfrequency_rms": 0.024040058255195618
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    },
+    "train_100098": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 23.015701293945312,
+            "psnr_global_query_db": 22.587833404541016,
+            "observed_prefix_lr_rmse": 0.03862582892179489,
+            "far_lr_rmse": 3.6758839996764436e-05,
+            "private_query_revision_rms": 0.008499330841004848,
+            "global_query_revision_rms": 0.025869105011224747,
+            "gradient_energy_l1": 0.06453657150268555,
+            "highfrequency_rms": 0.04838811233639717
+          },
+          "AB": {
+            "psnr_full_db": 23.141281127929688,
+            "psnr_global_query_db": 22.751447677612305,
+            "observed_prefix_lr_rmse": 0.034753281623125076,
+            "far_lr_rmse": 3.433969686739147e-05,
+            "private_query_revision_rms": 0.011105205863714218,
+            "global_query_revision_rms": 0.03352310508489609,
+            "gradient_energy_l1": 0.06559696048498154,
+            "highfrequency_rms": 0.05149761214852333
+          },
+          "B": {
+            "psnr_full_db": 22.859806060791016,
+            "psnr_global_query_db": 22.498092651367188,
+            "observed_prefix_lr_rmse": 0.030556216835975647,
+            "far_lr_rmse": 4.426109080668539e-05,
+            "private_query_revision_rms": 0.008384407497942448,
+            "global_query_revision_rms": 0.0236116461455822,
+            "gradient_energy_l1": 0.06364987790584564,
+            "highfrequency_rms": 0.0450458787381649
+          },
+          "BA": {
+            "psnr_full_db": 23.114622116088867,
+            "psnr_global_query_db": 22.728939056396484,
+            "observed_prefix_lr_rmse": 0.03503522649407387,
+            "far_lr_rmse": 3.460413063294254e-05,
+            "private_query_revision_rms": 0.011066550388932228,
+            "global_query_revision_rms": 0.032780472189188004,
+            "gradient_energy_l1": 0.06527281552553177,
+            "highfrequency_rms": 0.05058035999536514
+          }
+        },
+        "RGB_path_mse": 7.128909783205017e-05,
+        "latent_path_mse": 0.011259579099714756
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 23.12152099609375,
+            "psnr_global_query_db": 22.64215660095215,
+            "observed_prefix_lr_rmse": 0.036835622042417526,
+            "far_lr_rmse": 3.9158232539193705e-05,
+            "private_query_revision_rms": 0.007936638779938221,
+            "global_query_revision_rms": 0.026623167097568512,
+            "gradient_energy_l1": 0.06410016119480133,
+            "highfrequency_rms": 0.04789169877767563
+          },
+          "AB": {
+            "psnr_full_db": 23.259742736816406,
+            "psnr_global_query_db": 22.809307098388672,
+            "observed_prefix_lr_rmse": 0.033602382987737656,
+            "far_lr_rmse": 3.3458978577982634e-05,
+            "private_query_revision_rms": 0.010136310942471027,
+            "global_query_revision_rms": 0.03306051343679428,
+            "gradient_energy_l1": 0.06486515700817108,
+            "highfrequency_rms": 0.05045371130108833
+          },
+          "B": {
+            "psnr_full_db": 22.90957260131836,
+            "psnr_global_query_db": 22.552873611450195,
+            "observed_prefix_lr_rmse": 0.03047391027212143,
+            "far_lr_rmse": 5.160616274224594e-05,
+            "private_query_revision_rms": 0.008037297055125237,
+            "global_query_revision_rms": 0.02369447983801365,
+            "gradient_energy_l1": 0.06332001090049744,
+            "highfrequency_rms": 0.04459187760949135
+          },
+          "BA": {
+            "psnr_full_db": 23.19900131225586,
+            "psnr_global_query_db": 22.787433624267578,
+            "observed_prefix_lr_rmse": 0.03436404466629028,
+            "far_lr_rmse": 3.185843524988741e-05,
+            "private_query_revision_rms": 0.010241212323307991,
+            "global_query_revision_rms": 0.03195088356733322,
+            "gradient_energy_l1": 0.06452257186174393,
+            "highfrequency_rms": 0.04929877817630768
+          }
+        },
+        "RGB_path_mse": 7.336627459153533e-05,
+        "latent_path_mse": 0.014371750876307487
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 22.805896759033203,
+            "psnr_global_query_db": 22.438922882080078,
+            "observed_prefix_lr_rmse": 0.04208403453230858,
+            "far_lr_rmse": 3.7625628465320915e-05,
+            "private_query_revision_rms": 0.009805227629840374,
+            "global_query_revision_rms": 0.025069020688533783,
+            "gradient_energy_l1": 0.06432144343852997,
+            "highfrequency_rms": 0.04645024240016937
+          },
+          "AB": {
+            "psnr_full_db": 22.934024810791016,
+            "psnr_global_query_db": 22.572532653808594,
+            "observed_prefix_lr_rmse": 0.036688268184661865,
+            "far_lr_rmse": 3.2840369385667145e-05,
+            "private_query_revision_rms": 0.011242387816309929,
+            "global_query_revision_rms": 0.02958984300494194,
+            "gradient_energy_l1": 0.06517311930656433,
+            "highfrequency_rms": 0.048594240099191666
+          },
+          "B": {
+            "psnr_full_db": 22.689800262451172,
+            "psnr_global_query_db": 22.399417877197266,
+            "observed_prefix_lr_rmse": 0.03202458471059799,
+            "far_lr_rmse": 4.400961915962398e-05,
+            "private_query_revision_rms": 0.009833917953073978,
+            "global_query_revision_rms": 0.02385660633444786,
+            "gradient_energy_l1": 0.0639352798461914,
+            "highfrequency_rms": 0.04507407173514366
+          },
+          "BA": {
+            "psnr_full_db": 22.916767120361328,
+            "psnr_global_query_db": 22.564754486083984,
+            "observed_prefix_lr_rmse": 0.036844994872808456,
+            "far_lr_rmse": 3.340261901030317e-05,
+            "private_query_revision_rms": 0.011402878910303116,
+            "global_query_revision_rms": 0.029368268325924873,
+            "gradient_energy_l1": 0.0651453286409378,
+            "highfrequency_rms": 0.0485091358423233
+          }
+        },
+        "RGB_path_mse": 1.1096908565377817e-05,
+        "latent_path_mse": 0.0011668596416711807
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 22.97400665283203,
+            "psnr_global_query_db": 22.505760192871094,
+            "observed_prefix_lr_rmse": 0.0386817492544651,
+            "far_lr_rmse": 3.8692258385708556e-05,
+            "private_query_revision_rms": 0.00820076558738947,
+            "global_query_revision_rms": 0.024589903652668,
+            "gradient_energy_l1": 0.0638577938079834,
+            "highfrequency_rms": 0.04666834697127342
+          },
+          "AB": {
+            "psnr_full_db": 23.02943992614746,
+            "psnr_global_query_db": 22.558677673339844,
+            "observed_prefix_lr_rmse": 0.03515492007136345,
+            "far_lr_rmse": 3.93748669011984e-05,
+            "private_query_revision_rms": 0.008037419989705086,
+            "global_query_revision_rms": 0.024869760498404503,
+            "gradient_energy_l1": 0.06383953243494034,
+            "highfrequency_rms": 0.04671052470803261
+          },
+          "B": {
+            "psnr_full_db": 22.77288055419922,
+            "psnr_global_query_db": 22.423221588134766,
+            "observed_prefix_lr_rmse": 0.03138701245188713,
+            "far_lr_rmse": 4.6798460971331224e-05,
+            "private_query_revision_rms": 0.008164333179593086,
+            "global_query_revision_rms": 0.022720864042639732,
+            "gradient_energy_l1": 0.06340200453996658,
+            "highfrequency_rms": 0.0442960187792778
+          },
+          "BA": {
+            "psnr_full_db": 23.02943992614746,
+            "psnr_global_query_db": 22.558677673339844,
+            "observed_prefix_lr_rmse": 0.03515492007136345,
+            "far_lr_rmse": 3.93748669011984e-05,
+            "private_query_revision_rms": 0.008037419989705086,
+            "global_query_revision_rms": 0.024869760498404503,
+            "gradient_energy_l1": 0.06383953243494034,
+            "highfrequency_rms": 0.04671052470803261
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    },
+    "train_103041": {
+      "connection_loop": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 29.83475685119629,
+            "psnr_global_query_db": 30.3078556060791,
+            "observed_prefix_lr_rmse": 0.018971053883433342,
+            "far_lr_rmse": 4.821802122023655e-06,
+            "private_query_revision_rms": 0.002729140454903245,
+            "global_query_revision_rms": 0.00648197066038847,
+            "gradient_energy_l1": 0.028562378138303757,
+            "highfrequency_rms": 0.022213799878954887
+          },
+          "AB": {
+            "psnr_full_db": 30.24432945251465,
+            "psnr_global_query_db": 30.647186279296875,
+            "observed_prefix_lr_rmse": 0.019595086574554443,
+            "far_lr_rmse": 1.7569101373737794e-06,
+            "private_query_revision_rms": 0.004613347351551056,
+            "global_query_revision_rms": 0.01167349237948656,
+            "gradient_energy_l1": 0.029825884848833084,
+            "highfrequency_rms": 0.025091787800192833
+          },
+          "B": {
+            "psnr_full_db": 29.944580078125,
+            "psnr_global_query_db": 30.367334365844727,
+            "observed_prefix_lr_rmse": 0.021944943815469742,
+            "far_lr_rmse": 6.945597306184936e-06,
+            "private_query_revision_rms": 0.0027773960027843714,
+            "global_query_revision_rms": 0.006837209686636925,
+            "gradient_energy_l1": 0.028623465448617935,
+            "highfrequency_rms": 0.022467225790023804
+          },
+          "BA": {
+            "psnr_full_db": 30.288867950439453,
+            "psnr_global_query_db": 30.676462173461914,
+            "observed_prefix_lr_rmse": 0.019419917836785316,
+            "far_lr_rmse": 2.3637285266886465e-06,
+            "private_query_revision_rms": 0.0045578256249427795,
+            "global_query_revision_rms": 0.011688362807035446,
+            "gradient_energy_l1": 0.029923811554908752,
+            "highfrequency_rms": 0.025204189121723175
+          }
+        },
+        "RGB_path_mse": 1.5326928405556828e-05,
+        "latent_path_mse": 0.005369194783270359
+      },
+      "basic_sequential": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 29.821147918701172,
+            "psnr_global_query_db": 30.290390014648438,
+            "observed_prefix_lr_rmse": 0.01898394711315632,
+            "far_lr_rmse": 6.01487590756733e-06,
+            "private_query_revision_rms": 0.0027299888897687197,
+            "global_query_revision_rms": 0.006526724435389042,
+            "gradient_energy_l1": 0.028633542358875275,
+            "highfrequency_rms": 0.02230881154537201
+          },
+          "AB": {
+            "psnr_full_db": 30.18191146850586,
+            "psnr_global_query_db": 30.52863883972168,
+            "observed_prefix_lr_rmse": 0.01970844529569149,
+            "far_lr_rmse": 2.7121661787532503e-06,
+            "private_query_revision_rms": 0.004890944343060255,
+            "global_query_revision_rms": 0.012430665083229542,
+            "gradient_energy_l1": 0.03021833300590515,
+            "highfrequency_rms": 0.02567080780863762
+          },
+          "B": {
+            "psnr_full_db": 29.937936782836914,
+            "psnr_global_query_db": 30.358612060546875,
+            "observed_prefix_lr_rmse": 0.021971939131617546,
+            "far_lr_rmse": 6.757807568646967e-06,
+            "private_query_revision_rms": 0.0027376613579690456,
+            "global_query_revision_rms": 0.006908870302140713,
+            "gradient_energy_l1": 0.02870235964655876,
+            "highfrequency_rms": 0.022592071443796158
+          },
+          "BA": {
+            "psnr_full_db": 30.236196517944336,
+            "psnr_global_query_db": 30.5758113861084,
+            "observed_prefix_lr_rmse": 0.01943480223417282,
+            "far_lr_rmse": 3.931916126020951e-06,
+            "private_query_revision_rms": 0.004820179659873247,
+            "global_query_revision_rms": 0.012526694685220718,
+            "gradient_energy_l1": 0.03034297004342079,
+            "highfrequency_rms": 0.025843624025583267
+          }
+        },
+        "RGB_path_mse": 2.4586672225268558e-05,
+        "latent_path_mse": 0.006490294821560383
+      },
+      "gru": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 29.811601638793945,
+            "psnr_global_query_db": 30.369667053222656,
+            "observed_prefix_lr_rmse": 0.01945294439792633,
+            "far_lr_rmse": 5.191209766053362e-06,
+            "private_query_revision_rms": 0.0034803913440555334,
+            "global_query_revision_rms": 0.007380014751106501,
+            "gradient_energy_l1": 0.02873590774834156,
+            "highfrequency_rms": 0.02201525680720806
+          },
+          "AB": {
+            "psnr_full_db": 30.03301239013672,
+            "psnr_global_query_db": 30.531757354736328,
+            "observed_prefix_lr_rmse": 0.020726673305034637,
+            "far_lr_rmse": 4.657279987441143e-06,
+            "private_query_revision_rms": 0.004527573008090258,
+            "global_query_revision_rms": 0.009572368115186691,
+            "gradient_energy_l1": 0.02913077548146248,
+            "highfrequency_rms": 0.022800127044320107
+          },
+          "B": {
+            "psnr_full_db": 29.8786563873291,
+            "psnr_global_query_db": 30.397794723510742,
+            "observed_prefix_lr_rmse": 0.02271074801683426,
+            "far_lr_rmse": 6.496785317722242e-06,
+            "private_query_revision_rms": 0.003344495315104723,
+            "global_query_revision_rms": 0.007276634685695171,
+            "gradient_energy_l1": 0.028673788532614708,
+            "highfrequency_rms": 0.022002143785357475
+          },
+          "BA": {
+            "psnr_full_db": 30.04409408569336,
+            "psnr_global_query_db": 30.536476135253906,
+            "observed_prefix_lr_rmse": 0.020675301551818848,
+            "far_lr_rmse": 4.933192030875944e-06,
+            "private_query_revision_rms": 0.004438207950443029,
+            "global_query_revision_rms": 0.009422351606190205,
+            "gradient_energy_l1": 0.029088303446769714,
+            "highfrequency_rms": 0.022747211158275604
+          }
+        },
+        "RGB_path_mse": 2.9056836865493096e-06,
+        "latent_path_mse": 0.0011401805095374584
+      },
+      "set": {
+        "prefixes": {
+          "A": {
+            "psnr_full_db": 29.825199127197266,
+            "psnr_global_query_db": 30.340803146362305,
+            "observed_prefix_lr_rmse": 0.018888605758547783,
+            "far_lr_rmse": 3.848951564577874e-06,
+            "private_query_revision_rms": 0.0032585461158305407,
+            "global_query_revision_rms": 0.007832275703549385,
+            "gradient_energy_l1": 0.02899688296020031,
+            "highfrequency_rms": 0.023133011534810066
+          },
+          "AB": {
+            "psnr_full_db": 30.051158905029297,
+            "psnr_global_query_db": 30.46311378479004,
+            "observed_prefix_lr_rmse": 0.020211346447467804,
+            "far_lr_rmse": 3.2211191864917055e-06,
+            "private_query_revision_rms": 0.0037120585329830647,
+            "global_query_revision_rms": 0.009310965426266193,
+            "gradient_energy_l1": 0.02935679629445076,
+            "highfrequency_rms": 0.024075116962194443
+          },
+          "B": {
+            "psnr_full_db": 29.932647705078125,
+            "psnr_global_query_db": 30.411502838134766,
+            "observed_prefix_lr_rmse": 0.022070424631237984,
+            "far_lr_rmse": 5.167276867723558e-06,
+            "private_query_revision_rms": 0.0033349499572068453,
+            "global_query_revision_rms": 0.007961026392877102,
+            "gradient_energy_l1": 0.029056411236524582,
+            "highfrequency_rms": 0.023274974897503853
+          },
+          "BA": {
+            "psnr_full_db": 30.051158905029297,
+            "psnr_global_query_db": 30.46311378479004,
+            "observed_prefix_lr_rmse": 0.020211346447467804,
+            "far_lr_rmse": 3.2211191864917055e-06,
+            "private_query_revision_rms": 0.0037120585329830647,
+            "global_query_revision_rms": 0.009310965426266193,
+            "gradient_energy_l1": 0.02935679629445076,
+            "highfrequency_rms": 0.024075116962194443
+          }
+        },
+        "RGB_path_mse": 0.0,
+        "latent_path_mse": 0.0
+      }
+    }
+  },
+  "protocol_checks": {
+    "connection_loop": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "basic_sequential": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "gru": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    },
+    "set": {
+      "future_prefix_maxabs": 0.0,
+      "duplicate_maxabs": 0.0
+    }
+  },
+  "seconds": 462.8019163161516,
+  "total_optimizer_steps": 1200,
+  "peak_allocated_bytes": 26793027072,
+  "peak_reserved_bytes": 29578231808
+}

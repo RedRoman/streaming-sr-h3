@@ -1,0 +1,1155 @@
+{
+  "scope": "Fixed4train2val actualH3 nonlinearresponse audit; HR usedonlyinmetrics, notconditionalgeneration/learnerfeatures",
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "sources": {
+    "train_100075": {
+      "source": {
+        "id": "train_100075",
+        "split": "train",
+        "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+        "sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 28.92584228515625,
+        "psnr_global_query_db": 29.434947967529297,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 0.0,
+        "A_lr_rmse": 0.023517196998000145,
+        "B_lr_rmse": 0.022125685587525368,
+        "highfrequency_rms": 0.019968748092651367
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 28.92584228515625,
+          "psnr_global_query_db": 29.434947967529297,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.023517196998000145,
+          "B_lr_rmse": 0.022125685587525368,
+          "highfrequency_rms": 0.019968748092651367
+        },
+        "A": {
+          "psnr_full_db": 30.0179443359375,
+          "psnr_global_query_db": 29.445459365844727,
+          "private_query_revision_rms": 0.00010770923836389557,
+          "global_query_revision_rms": 0.002727583749219775,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.004664896056056023,
+          "B_lr_rmse": 0.018294045701622963,
+          "highfrequency_rms": 0.025310397148132324
+        },
+        "B": {
+          "psnr_full_db": 29.91103172302246,
+          "psnr_global_query_db": 29.47271156311035,
+          "private_query_revision_rms": 0.00022874170099385083,
+          "global_query_revision_rms": 0.0032431718427687883,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.02003513276576996,
+          "B_lr_rmse": 0.004614748526364565,
+          "highfrequency_rms": 0.024814428761601448
+        },
+        "AB": {
+          "psnr_full_db": 30.844100952148438,
+          "psnr_global_query_db": 29.482595443725586,
+          "private_query_revision_rms": 0.0002528314071241766,
+          "global_query_revision_rms": 0.004247136879712343,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.004672217182815075,
+          "B_lr_rmse": 0.004628817085176706,
+          "highfrequency_rms": 0.02814793586730957
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 28.92584228515625,
+              "psnr_global_query_db": 29.434947967529297,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.023517196998000145,
+              "B_lr_rmse": 0.022125685587525368,
+              "highfrequency_rms": 0.019968748092651367
+            },
+            {
+              "psnr_full_db": 28.92584228515625,
+              "psnr_global_query_db": 29.434947967529297,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.023517196998000145,
+              "B_lr_rmse": 0.022125685587525368,
+              "highfrequency_rms": 0.019968748092651367
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.11422687768936157
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 28.96297836303711,
+              "psnr_global_query_db": 29.39968490600586,
+              "private_query_revision_rms": 0.0021843917202204466,
+              "global_query_revision_rms": 0.0036418833769857883,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.022397786378860474,
+              "B_lr_rmse": 0.022083252668380737,
+              "highfrequency_rms": 0.020493140444159508
+            },
+            {
+              "psnr_full_db": 28.96084213256836,
+              "psnr_global_query_db": 29.395164489746094,
+              "private_query_revision_rms": 0.0024019067641347647,
+              "global_query_revision_rms": 0.0037678999360650778,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.0224064439535141,
+              "B_lr_rmse": 0.02209196239709854,
+              "highfrequency_rms": 0.020542902871966362
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.46251973509788513,
+            0.46841543912887573
+          ],
+          "raw_candidate_pair_rms": 0.0956161692738533
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 28.947202682495117,
+              "psnr_global_query_db": 29.42525863647461,
+              "private_query_revision_rms": 0.002095419680699706,
+              "global_query_revision_rms": 0.003264797618612647,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.023283086717128754,
+              "B_lr_rmse": 0.021598082035779953,
+              "highfrequency_rms": 0.020362896844744682
+            },
+            {
+              "psnr_full_db": 28.941207885742188,
+              "psnr_global_query_db": 29.420011520385742,
+              "private_query_revision_rms": 0.002070846501737833,
+              "global_query_revision_rms": 0.0033439318649470806,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.023315323516726494,
+              "B_lr_rmse": 0.021633611992001534,
+              "highfrequency_rms": 0.02039102092385292
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.3854336440563202,
+            0.39009666442871094
+          ],
+          "raw_candidate_pair_rms": 0.10151685774326324
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 28.977436065673828,
+              "psnr_global_query_db": 29.400712966918945,
+              "private_query_revision_rms": 0.0035441427025943995,
+              "global_query_revision_rms": 0.004932285752147436,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.02241448312997818,
+              "B_lr_rmse": 0.021776847541332245,
+              "highfrequency_rms": 0.02065834030508995
+            },
+            {
+              "psnr_full_db": 28.970054626464844,
+              "psnr_global_query_db": 29.390409469604492,
+              "private_query_revision_rms": 0.0035841993521898985,
+              "global_query_revision_rms": 0.005046638194471598,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.02243087626993656,
+              "B_lr_rmse": 0.02181369438767433,
+              "highfrequency_rms": 0.020724592730402946
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.405801922082901,
+            0.41128429770469666
+          ],
+          "raw_candidate_pair_rms": 0.09448790550231934
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.36110663414001465,
+        "guide_relative": 0.3597109019756317,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      }
+    },
+    "train_100080": {
+      "source": {
+        "id": "train_100080",
+        "split": "train",
+        "path": "data/BSR/BSDS500/data/images/train/100080.jpg",
+        "sha256": "d52ff44bf19e17f49389eca134bcf57a90d27b15671952fabbd2f2334f75aa8e",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 34.06285095214844,
+        "psnr_global_query_db": 35.74940490722656,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 0.0,
+        "A_lr_rmse": 0.012956615537405014,
+        "B_lr_rmse": 0.01713930442929268,
+        "highfrequency_rms": 0.02385755255818367
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 34.06285095214844,
+          "psnr_global_query_db": 35.74940490722656,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.012956615537405014,
+          "B_lr_rmse": 0.01713930442929268,
+          "highfrequency_rms": 0.02385755255818367
+        },
+        "A": {
+          "psnr_full_db": 34.963348388671875,
+          "psnr_global_query_db": 35.65133285522461,
+          "private_query_revision_rms": 0.00011585727770579979,
+          "global_query_revision_rms": 0.002427284372970462,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.00436753872781992,
+          "B_lr_rmse": 0.01399915385991335,
+          "highfrequency_rms": 0.025318002328276634
+        },
+        "B": {
+          "psnr_full_db": 36.01056671142578,
+          "psnr_global_query_db": 35.69493103027344,
+          "private_query_revision_rms": 8.154656097758561e-05,
+          "global_query_revision_rms": 0.0022773174569010735,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.00831897184252739,
+          "B_lr_rmse": 0.00439049955457449,
+          "highfrequency_rms": 0.02632598765194416
+        },
+        "AB": {
+          "psnr_full_db": 36.3047981262207,
+          "psnr_global_query_db": 35.598731994628906,
+          "private_query_revision_rms": 0.00014167804329190403,
+          "global_query_revision_rms": 0.003326564561575651,
+          "far_lr_rmse": 0.0,
+          "A_lr_rmse": 0.004404244013130665,
+          "B_lr_rmse": 0.00442578224465251,
+          "highfrequency_rms": 0.026894893497228622
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 34.06285095214844,
+              "psnr_global_query_db": 35.74940490722656,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012956615537405014,
+              "B_lr_rmse": 0.01713930442929268,
+              "highfrequency_rms": 0.02385755255818367
+            },
+            {
+              "psnr_full_db": 34.06285095214844,
+              "psnr_global_query_db": 35.74940490722656,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012956615537405014,
+              "B_lr_rmse": 0.01713930442929268,
+              "highfrequency_rms": 0.02385755255818367
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.07009945064783096
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 34.055667877197266,
+              "psnr_global_query_db": 35.698150634765625,
+              "private_query_revision_rms": 0.0015428659971803427,
+              "global_query_revision_rms": 0.0020766195375472307,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012729406356811523,
+              "B_lr_rmse": 0.01695142686367035,
+              "highfrequency_rms": 0.024210985749959946
+            },
+            {
+              "psnr_full_db": 34.05943298339844,
+              "psnr_global_query_db": 35.70404052734375,
+              "private_query_revision_rms": 0.0015111626125872135,
+              "global_query_revision_rms": 0.002167275408282876,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012748314067721367,
+              "B_lr_rmse": 0.016978247091174126,
+              "highfrequency_rms": 0.02421191893517971
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5362725257873535,
+            0.5359330773353577
+          ],
+          "raw_candidate_pair_rms": 0.06668984144926071
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 34.19697189331055,
+              "psnr_global_query_db": 35.72906494140625,
+              "private_query_revision_rms": 0.0013438110472634435,
+              "global_query_revision_rms": 0.0021988642401993275,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012736029922962189,
+              "B_lr_rmse": 0.01621251553297043,
+              "highfrequency_rms": 0.024351557716727257
+            },
+            {
+              "psnr_full_db": 34.197181701660156,
+              "psnr_global_query_db": 35.73961639404297,
+              "private_query_revision_rms": 0.0013509182026609778,
+              "global_query_revision_rms": 0.0022264020517468452,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012741940096020699,
+              "B_lr_rmse": 0.016243156045675278,
+              "highfrequency_rms": 0.024364199489355087
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5601762533187866,
+            0.5612125992774963
+          ],
+          "raw_candidate_pair_rms": 0.06671331822872162
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 34.165863037109375,
+              "psnr_global_query_db": 35.680320739746094,
+              "private_query_revision_rms": 0.002416206058114767,
+              "global_query_revision_rms": 0.0031981002539396286,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012792615219950676,
+              "B_lr_rmse": 0.01614098809659481,
+              "highfrequency_rms": 0.024517269805073738
+            },
+            {
+              "psnr_full_db": 34.16582489013672,
+              "psnr_global_query_db": 35.68613052368164,
+              "private_query_revision_rms": 0.002378833945840597,
+              "global_query_revision_rms": 0.003286208724603057,
+              "far_lr_rmse": 0.0,
+              "A_lr_rmse": 0.012798462063074112,
+              "B_lr_rmse": 0.01615738868713379,
+              "highfrequency_rms": 0.024522557854652405
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5580693483352661,
+            0.5587869882583618
+          ],
+          "raw_candidate_pair_rms": 0.06526187062263489
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.37936151027679443,
+        "guide_relative": 0.3825134038925171,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      }
+    },
+    "train_100098": {
+      "source": {
+        "id": "train_100098",
+        "split": "train",
+        "path": "data/BSR/BSDS500/data/images/train/100098.jpg",
+        "sha256": "156fd9710dccd7bf3a821977f8d8155da0eccca553086f73771073e17a418aa6",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 22.062965393066406,
+        "psnr_global_query_db": 21.7667236328125,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 0.00010577135981293395,
+        "A_lr_rmse": 0.05343252047896385,
+        "B_lr_rmse": 0.035803310573101044,
+        "highfrequency_rms": 0.0380677692592144
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 22.062965393066406,
+          "psnr_global_query_db": 21.7667236328125,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 0.00010577135981293395,
+          "A_lr_rmse": 0.05343252047896385,
+          "B_lr_rmse": 0.035803310573101044,
+          "highfrequency_rms": 0.0380677692592144
+        },
+        "A": {
+          "psnr_full_db": 23.233531951904297,
+          "psnr_global_query_db": 21.831863403320312,
+          "private_query_revision_rms": 0.0004138686344958842,
+          "global_query_revision_rms": 0.005880413576960564,
+          "far_lr_rmse": 9.122796654992271e-06,
+          "A_lr_rmse": 0.008449969813227654,
+          "B_lr_rmse": 0.03094393201172352,
+          "highfrequency_rms": 0.051385145634412766
+        },
+        "B": {
+          "psnr_full_db": 22.602642059326172,
+          "psnr_global_query_db": 21.786279678344727,
+          "private_query_revision_rms": 0.000217033812077716,
+          "global_query_revision_rms": 0.003984761890023947,
+          "far_lr_rmse": 1.3176542779547162e-05,
+          "A_lr_rmse": 0.049893058836460114,
+          "B_lr_rmse": 0.0058845640160143375,
+          "highfrequency_rms": 0.04522595554590225
+        },
+        "AB": {
+          "psnr_full_db": 23.743181228637695,
+          "psnr_global_query_db": 21.848663330078125,
+          "private_query_revision_rms": 0.0004314195248298347,
+          "global_query_revision_rms": 0.0070840055122971535,
+          "far_lr_rmse": 9.031677109305747e-06,
+          "A_lr_rmse": 0.008365771733224392,
+          "B_lr_rmse": 0.005715147126466036,
+          "highfrequency_rms": 0.055558569729328156
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 22.062965393066406,
+              "psnr_global_query_db": 21.7667236328125,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.00010577135981293395,
+              "A_lr_rmse": 0.05343252047896385,
+              "B_lr_rmse": 0.035803310573101044,
+              "highfrequency_rms": 0.0380677692592144
+            },
+            {
+              "psnr_full_db": 22.062965393066406,
+              "psnr_global_query_db": 21.7667236328125,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 0.00010577135981293395,
+              "A_lr_rmse": 0.05343252047896385,
+              "B_lr_rmse": 0.035803310573101044,
+              "highfrequency_rms": 0.0380677692592144
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.058103047311306
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 22.15524673461914,
+              "psnr_global_query_db": 21.77001190185547,
+              "private_query_revision_rms": 0.004090738948434591,
+              "global_query_revision_rms": 0.006040223408490419,
+              "far_lr_rmse": 0.00010254309017909691,
+              "A_lr_rmse": 0.0502777062356472,
+              "B_lr_rmse": 0.03531922399997711,
+              "highfrequency_rms": 0.03873751312494278
+            },
+            {
+              "psnr_full_db": 22.1509952545166,
+              "psnr_global_query_db": 21.76740264892578,
+              "private_query_revision_rms": 0.0038023083470761776,
+              "global_query_revision_rms": 0.006118928547948599,
+              "far_lr_rmse": 0.00010199435928370804,
+              "A_lr_rmse": 0.05029822140932083,
+              "B_lr_rmse": 0.03542112931609154,
+              "highfrequency_rms": 0.03877320885658264
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5429705381393433,
+            0.5402736663818359
+          ],
+          "raw_candidate_pair_rms": 0.05992404744029045
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 22.083412170410156,
+              "psnr_global_query_db": 21.76909637451172,
+              "private_query_revision_rms": 0.003160856431350112,
+              "global_query_revision_rms": 0.005262485705316067,
+              "far_lr_rmse": 0.00010202993144048378,
+              "A_lr_rmse": 0.05296561121940613,
+              "B_lr_rmse": 0.035026080906391144,
+              "highfrequency_rms": 0.038264162838459015
+            },
+            {
+              "psnr_full_db": 22.084596633911133,
+              "psnr_global_query_db": 21.77008628845215,
+              "private_query_revision_rms": 0.0026953783817589283,
+              "global_query_revision_rms": 0.005254009738564491,
+              "far_lr_rmse": 0.0001014704248518683,
+              "A_lr_rmse": 0.05294260382652283,
+              "B_lr_rmse": 0.03506939858198166,
+              "highfrequency_rms": 0.03831825405359268
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.428174763917923,
+            0.4275141656398773
+          ],
+          "raw_candidate_pair_rms": 0.05839841440320015
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 22.164703369140625,
+              "psnr_global_query_db": 21.776044845581055,
+              "private_query_revision_rms": 0.005431638564914465,
+              "global_query_revision_rms": 0.008088505826890469,
+              "far_lr_rmse": 0.00010237983224214986,
+              "A_lr_rmse": 0.05026823282241821,
+              "B_lr_rmse": 0.03506649285554886,
+              "highfrequency_rms": 0.03883161395788193
+            },
+            {
+              "psnr_full_db": 22.15798568725586,
+              "psnr_global_query_db": 21.772096633911133,
+              "private_query_revision_rms": 0.005211085546761751,
+              "global_query_revision_rms": 0.008171360939741135,
+              "far_lr_rmse": 0.00010260652925353497,
+              "A_lr_rmse": 0.05031634122133255,
+              "B_lr_rmse": 0.035203974694013596,
+              "highfrequency_rms": 0.038873180747032166
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.45274782180786133,
+            0.4496007263660431
+          ],
+          "raw_candidate_pair_rms": 0.05962492898106575
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.35271066427230835,
+        "guide_relative": 0.35305488109588623,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      }
+    },
+    "train_103041": {
+      "source": {
+        "id": "train_103041",
+        "split": "train",
+        "path": "data/BSR/BSDS500/data/images/train/103041.jpg",
+        "sha256": "1e7ad4076e21f5558e487fddbd20f9553cc4e84629814a79c711f20c38e08461",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 29.401851654052734,
+        "psnr_global_query_db": 30.077423095703125,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 8.928471288527362e-06,
+        "A_lr_rmse": 0.022805847227573395,
+        "B_lr_rmse": 0.026280520483851433,
+        "highfrequency_rms": 0.021023718640208244
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 29.401851654052734,
+          "psnr_global_query_db": 30.077423095703125,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 8.928471288527362e-06,
+          "A_lr_rmse": 0.022805847227573395,
+          "B_lr_rmse": 0.026280520483851433,
+          "highfrequency_rms": 0.021023718640208244
+        },
+        "A": {
+          "psnr_full_db": 30.445220947265625,
+          "psnr_global_query_db": 30.069828033447266,
+          "private_query_revision_rms": 0.00016055084415711462,
+          "global_query_revision_rms": 0.002555374288931489,
+          "far_lr_rmse": 2.851515091606416e-06,
+          "A_lr_rmse": 0.004606078844517469,
+          "B_lr_rmse": 0.02093854360282421,
+          "highfrequency_rms": 0.02548268996179104
+        },
+        "B": {
+          "psnr_full_db": 30.975784301757812,
+          "psnr_global_query_db": 30.134923934936523,
+          "private_query_revision_rms": 0.00021447284962050617,
+          "global_query_revision_rms": 0.0031370404176414013,
+          "far_lr_rmse": 2.76281866717909e-06,
+          "A_lr_rmse": 0.016643384471535683,
+          "B_lr_rmse": 0.004865038674324751,
+          "highfrequency_rms": 0.027026768773794174
+        },
+        "AB": {
+          "psnr_full_db": 31.688024520874023,
+          "psnr_global_query_db": 30.12651252746582,
+          "private_query_revision_rms": 0.00026790829724632204,
+          "global_query_revision_rms": 0.004047289956361055,
+          "far_lr_rmse": 2.8515153189800913e-06,
+          "A_lr_rmse": 0.004558634478598833,
+          "B_lr_rmse": 0.00483743567019701,
+          "highfrequency_rms": 0.029126042500138283
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 29.401851654052734,
+              "psnr_global_query_db": 30.077423095703125,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 8.928471288527362e-06,
+              "A_lr_rmse": 0.022805847227573395,
+              "B_lr_rmse": 0.026280520483851433,
+              "highfrequency_rms": 0.021023718640208244
+            },
+            {
+              "psnr_full_db": 29.401851654052734,
+              "psnr_global_query_db": 30.077423095703125,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 8.928471288527362e-06,
+              "A_lr_rmse": 0.022805847227573395,
+              "B_lr_rmse": 0.026280520483851433,
+              "highfrequency_rms": 0.021023718640208244
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.09744066745042801
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 29.48014259338379,
+              "psnr_global_query_db": 30.04937171936035,
+              "private_query_revision_rms": 0.001669872784987092,
+              "global_query_revision_rms": 0.0029253249522298574,
+              "far_lr_rmse": 8.510975021636114e-06,
+              "A_lr_rmse": 0.021456772461533546,
+              "B_lr_rmse": 0.025777794420719147,
+              "highfrequency_rms": 0.021307919174432755
+            },
+            {
+              "psnr_full_db": 29.48184585571289,
+              "psnr_global_query_db": 30.04880714416504,
+              "private_query_revision_rms": 0.0016684309812262654,
+              "global_query_revision_rms": 0.002991840010508895,
+              "far_lr_rmse": 8.644423360237852e-06,
+              "A_lr_rmse": 0.021460389718413353,
+              "B_lr_rmse": 0.025756116956472397,
+              "highfrequency_rms": 0.021307168528437614
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.6188246011734009,
+            0.6221109628677368
+          ],
+          "raw_candidate_pair_rms": 0.09221989661455154
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 29.512197494506836,
+              "psnr_global_query_db": 30.065534591674805,
+              "private_query_revision_rms": 0.002055942080914974,
+              "global_query_revision_rms": 0.0034295697696506977,
+              "far_lr_rmse": 8.933134267863352e-06,
+              "A_lr_rmse": 0.02219865657389164,
+              "B_lr_rmse": 0.024741346016526222,
+              "highfrequency_rms": 0.021380269899964333
+            },
+            {
+              "psnr_full_db": 29.518482208251953,
+              "psnr_global_query_db": 30.069494247436523,
+              "private_query_revision_rms": 0.002165630692616105,
+              "global_query_revision_rms": 0.0033829021267592907,
+              "far_lr_rmse": 8.910472388379276e-06,
+              "A_lr_rmse": 0.022185543552041054,
+              "B_lr_rmse": 0.02468877285718918,
+              "highfrequency_rms": 0.021384604275226593
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.6041716933250427,
+            0.604443371295929
+          ],
+          "raw_candidate_pair_rms": 0.09279978275299072
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 29.54006576538086,
+              "psnr_global_query_db": 30.04330062866211,
+              "private_query_revision_rms": 0.0028655841015279293,
+              "global_query_revision_rms": 0.004625562112778425,
+              "far_lr_rmse": 8.773743502388243e-06,
+              "A_lr_rmse": 0.0216087456792593,
+              "B_lr_rmse": 0.02493600733578205,
+              "highfrequency_rms": 0.021544979885220528
+            },
+            {
+              "psnr_full_db": 29.542285919189453,
+              "psnr_global_query_db": 30.047611236572266,
+              "private_query_revision_rms": 0.0030092252418398857,
+              "global_query_revision_rms": 0.004695972427725792,
+              "far_lr_rmse": 9.062389835889917e-06,
+              "A_lr_rmse": 0.021626021713018417,
+              "B_lr_rmse": 0.02490268461406231,
+              "highfrequency_rms": 0.021576886996626854
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.6051213145256042,
+            0.6102532148361206
+          ],
+          "raw_candidate_pair_rms": 0.08583789318799973
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.3738066852092743,
+        "guide_relative": 0.3793187439441681,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      }
+    },
+    "val_101085": {
+      "source": {
+        "id": "val_101085",
+        "split": "val",
+        "path": "data/BSR/BSDS500/data/images/val/101085.jpg",
+        "sha256": "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 25.159948348999023,
+        "psnr_global_query_db": 25.102102279663086,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 4.400720627018018e-06,
+        "A_lr_rmse": 0.029138969257473946,
+        "B_lr_rmse": 0.0339658185839653,
+        "highfrequency_rms": 0.021195244044065475
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 25.159948348999023,
+          "psnr_global_query_db": 25.102102279663086,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 4.400720627018018e-06,
+          "A_lr_rmse": 0.029138969257473946,
+          "B_lr_rmse": 0.0339658185839653,
+          "highfrequency_rms": 0.021195244044065475
+        },
+        "A": {
+          "psnr_full_db": 25.83329963684082,
+          "psnr_global_query_db": 25.11298179626465,
+          "private_query_revision_rms": 0.00020265682542230934,
+          "global_query_revision_rms": 0.0029947601724416018,
+          "far_lr_rmse": 2.2093351148555485e-08,
+          "A_lr_rmse": 0.004925180226564407,
+          "B_lr_rmse": 0.03118741884827614,
+          "highfrequency_rms": 0.028683926910161972
+        },
+        "B": {
+          "psnr_full_db": 26.1637020111084,
+          "psnr_global_query_db": 25.12904167175293,
+          "private_query_revision_rms": 0.00011437234934419394,
+          "global_query_revision_rms": 0.003545833984389901,
+          "far_lr_rmse": 1.3577209756476805e-07,
+          "A_lr_rmse": 0.025437355041503906,
+          "B_lr_rmse": 0.005243541672825813,
+          "highfrequency_rms": 0.030772292986512184
+        },
+        "AB": {
+          "psnr_full_db": 26.8088321685791,
+          "psnr_global_query_db": 25.140003204345703,
+          "private_query_revision_rms": 0.00023270271776709706,
+          "global_query_revision_rms": 0.004637561272829771,
+          "far_lr_rmse": 2.210070704222744e-08,
+          "A_lr_rmse": 0.004933844320476055,
+          "B_lr_rmse": 0.005220958963036537,
+          "highfrequency_rms": 0.035240329802036285
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.159948348999023,
+              "psnr_global_query_db": 25.102102279663086,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 4.400720627018018e-06,
+              "A_lr_rmse": 0.029138969257473946,
+              "B_lr_rmse": 0.0339658185839653,
+              "highfrequency_rms": 0.021195244044065475
+            },
+            {
+              "psnr_full_db": 25.159948348999023,
+              "psnr_global_query_db": 25.102102279663086,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 4.400720627018018e-06,
+              "A_lr_rmse": 0.029138969257473946,
+              "B_lr_rmse": 0.0339658185839653,
+              "highfrequency_rms": 0.021195244044065475
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.10213997215032578
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.194629669189453,
+              "psnr_global_query_db": 25.095050811767578,
+              "private_query_revision_rms": 0.0025211279280483723,
+              "global_query_revision_rms": 0.0038658357225358486,
+              "far_lr_rmse": 3.1107663289731136e-06,
+              "A_lr_rmse": 0.027767255902290344,
+              "B_lr_rmse": 0.033691033720970154,
+              "highfrequency_rms": 0.021633591502904892
+            },
+            {
+              "psnr_full_db": 25.192869186401367,
+              "psnr_global_query_db": 25.093772888183594,
+              "private_query_revision_rms": 0.002644808730110526,
+              "global_query_revision_rms": 0.0038981579709798098,
+              "far_lr_rmse": 2.668205752343056e-06,
+              "A_lr_rmse": 0.027801407501101494,
+              "B_lr_rmse": 0.03366151079535484,
+              "highfrequency_rms": 0.02168654464185238
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5436305403709412,
+            0.5385099649429321
+          ],
+          "raw_candidate_pair_rms": 0.09543795883655548
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.205440521240234,
+              "psnr_global_query_db": 25.124469757080078,
+              "private_query_revision_rms": 0.002584941918030381,
+              "global_query_revision_rms": 0.004424800630658865,
+              "far_lr_rmse": 4.12327608501073e-06,
+              "A_lr_rmse": 0.02905331179499626,
+              "B_lr_rmse": 0.033077213913202286,
+              "highfrequency_rms": 0.021547606214880943
+            },
+            {
+              "psnr_full_db": 25.208385467529297,
+              "psnr_global_query_db": 25.124454498291016,
+              "private_query_revision_rms": 0.002508578822016716,
+              "global_query_revision_rms": 0.0045134578831493855,
+              "far_lr_rmse": 4.091456048627151e-06,
+              "A_lr_rmse": 0.02892204187810421,
+              "B_lr_rmse": 0.03305225074291229,
+              "highfrequency_rms": 0.02153303474187851
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5338705778121948,
+            0.5323352217674255
+          ],
+          "raw_candidate_pair_rms": 0.0971851646900177
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.224517822265625,
+              "psnr_global_query_db": 25.108537673950195,
+              "private_query_revision_rms": 0.004188656806945801,
+              "global_query_revision_rms": 0.006134034134447575,
+              "far_lr_rmse": 3.298152705610846e-06,
+              "A_lr_rmse": 0.02793901413679123,
+              "B_lr_rmse": 0.033016618341207504,
+              "highfrequency_rms": 0.021830393001437187
+            },
+            {
+              "psnr_full_db": 25.22777557373047,
+              "psnr_global_query_db": 25.109846115112305,
+              "private_query_revision_rms": 0.0043313028290867805,
+              "global_query_revision_rms": 0.006177728530019522,
+              "far_lr_rmse": 2.6004513529187534e-06,
+              "A_lr_rmse": 0.027899647131562233,
+              "B_lr_rmse": 0.032972823828458786,
+              "highfrequency_rms": 0.02175167389214039
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5411745309829712,
+            0.5388337969779968
+          ],
+          "raw_candidate_pair_rms": 0.09344346076250076
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.35083842277526855,
+        "guide_relative": 0.3547912836074829,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      },
+      "natural_initial_pair_rms": 0.006534071639180183
+    },
+    "val_101087": {
+      "source": {
+        "id": "val_101087",
+        "split": "val",
+        "path": "data/BSR/BSDS500/data/images/val/101087.jpg",
+        "sha256": "d755a74144410290cff5e214bb7cbf352a8cb920d45fac3d992b9772ad92a017",
+        "canonical_rectangle": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      "U_protocol": "Top8channelPCAofX0, immutable perobject; computationalcoordinates, not semanticfactoridentification",
+      "initial": {
+        "psnr_full_db": 25.69638442993164,
+        "psnr_global_query_db": 25.63316535949707,
+        "private_query_revision_rms": 0.0,
+        "global_query_revision_rms": 0.0,
+        "far_lr_rmse": 8.09959601610899e-05,
+        "A_lr_rmse": 0.03482656180858612,
+        "B_lr_rmse": 0.02712300978600979,
+        "highfrequency_rms": 0.03442255035042763
+      },
+      "classical": {
+        "empty": {
+          "psnr_full_db": 25.69638442993164,
+          "psnr_global_query_db": 25.63316535949707,
+          "private_query_revision_rms": 0.0,
+          "global_query_revision_rms": 0.0,
+          "far_lr_rmse": 8.09959601610899e-05,
+          "A_lr_rmse": 0.03482656180858612,
+          "B_lr_rmse": 0.02712300978600979,
+          "highfrequency_rms": 0.03442255035042763
+        },
+        "A": {
+          "psnr_full_db": 26.909482955932617,
+          "psnr_global_query_db": 25.670053482055664,
+          "private_query_revision_rms": 0.0005783149972558022,
+          "global_query_revision_rms": 0.00367630529217422,
+          "far_lr_rmse": 5.4975411330815405e-05,
+          "A_lr_rmse": 0.005884744692593813,
+          "B_lr_rmse": 0.02038479782640934,
+          "highfrequency_rms": 0.04139459505677223
+        },
+        "B": {
+          "psnr_full_db": 26.373428344726562,
+          "psnr_global_query_db": 25.662532806396484,
+          "private_query_revision_rms": 0.0005745308590121567,
+          "global_query_revision_rms": 0.00382340420037508,
+          "far_lr_rmse": 5.49636097275652e-05,
+          "A_lr_rmse": 0.029755856841802597,
+          "B_lr_rmse": 0.004873341415077448,
+          "highfrequency_rms": 0.03886576369404793
+        },
+        "AB": {
+          "psnr_full_db": 27.386119842529297,
+          "psnr_global_query_db": 25.697145462036133,
+          "private_query_revision_rms": 0.0005922167911194265,
+          "global_query_revision_rms": 0.005295408423990011,
+          "far_lr_rmse": 5.497539314092137e-05,
+          "A_lr_rmse": 0.00581809226423502,
+          "B_lr_rmse": 0.004775402136147022,
+          "highfrequency_rms": 0.043645694851875305
+        }
+      },
+      "conditional": {
+        "empty": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.69638442993164,
+              "psnr_global_query_db": 25.63316535949707,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 8.09959601610899e-05,
+              "A_lr_rmse": 0.03482656180858612,
+              "B_lr_rmse": 0.02712300978600979,
+              "highfrequency_rms": 0.03442255035042763
+            },
+            {
+              "psnr_full_db": 25.69638442993164,
+              "psnr_global_query_db": 25.63316535949707,
+              "private_query_revision_rms": 0.0,
+              "global_query_revision_rms": 0.0,
+              "far_lr_rmse": 8.09959601610899e-05,
+              "A_lr_rmse": 0.03482656180858612,
+              "B_lr_rmse": 0.02712300978600979,
+              "highfrequency_rms": 0.03442255035042763
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.0,
+            0.0
+          ],
+          "raw_candidate_pair_rms": 0.05744917690753937
+        },
+        "A": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.739824295043945,
+              "psnr_global_query_db": 25.62103271484375,
+              "private_query_revision_rms": 0.0025047764647752047,
+              "global_query_revision_rms": 0.003841933561488986,
+              "far_lr_rmse": 8.020462701097131e-05,
+              "A_lr_rmse": 0.033694226294755936,
+              "B_lr_rmse": 0.02666405774652958,
+              "highfrequency_rms": 0.03490843251347542
+            },
+            {
+              "psnr_full_db": 25.73895263671875,
+              "psnr_global_query_db": 25.62334442138672,
+              "private_query_revision_rms": 0.0021759942173957825,
+              "global_query_revision_rms": 0.003738967003300786,
+              "far_lr_rmse": 8.037646330194548e-05,
+              "A_lr_rmse": 0.03373323008418083,
+              "B_lr_rmse": 0.02671402506530285,
+              "highfrequency_rms": 0.034894563257694244
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.5383976101875305,
+            0.5383710265159607
+          ],
+          "raw_candidate_pair_rms": 0.05640483647584915
+        },
+        "B": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.7209415435791,
+              "psnr_global_query_db": 25.63394546508789,
+              "private_query_revision_rms": 0.0023179210256785154,
+              "global_query_revision_rms": 0.003973977640271187,
+              "far_lr_rmse": 8.056690421653911e-05,
+              "A_lr_rmse": 0.03447913005948067,
+              "B_lr_rmse": 0.026241492480039597,
+              "highfrequency_rms": 0.03489852696657181
+            },
+            {
+              "psnr_full_db": 25.721424102783203,
+              "psnr_global_query_db": 25.62786865234375,
+              "private_query_revision_rms": 0.00221714423969388,
+              "global_query_revision_rms": 0.0039386143907904625,
+              "far_lr_rmse": 8.094542135950178e-05,
+              "A_lr_rmse": 0.03445516899228096,
+              "B_lr_rmse": 0.02624298818409443,
+              "highfrequency_rms": 0.03488030284643173
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.504865825176239,
+            0.5043308734893799
+          ],
+          "raw_candidate_pair_rms": 0.05703851208090782
+        },
+        "AB": {
+          "shared_carrier_candidates": [
+            {
+              "psnr_full_db": 25.745527267456055,
+              "psnr_global_query_db": 25.618606567382812,
+              "private_query_revision_rms": 0.0036409921012818813,
+              "global_query_revision_rms": 0.005777221638709307,
+              "far_lr_rmse": 8.011802128748968e-05,
+              "A_lr_rmse": 0.0337119959294796,
+              "B_lr_rmse": 0.02617287077009678,
+              "highfrequency_rms": 0.03514854609966278
+            },
+            {
+              "psnr_full_db": 25.74700927734375,
+              "psnr_global_query_db": 25.622127532958984,
+              "private_query_revision_rms": 0.0033982719760388136,
+              "global_query_revision_rms": 0.005699317902326584,
+              "far_lr_rmse": 8.052547491388395e-05,
+              "A_lr_rmse": 0.033772800117731094,
+              "B_lr_rmse": 0.02622208185493946,
+              "highfrequency_rms": 0.03514905646443367
+            }
+          ],
+          "U_response_energy_fraction": [
+            0.506637454032898,
+            0.5077189207077026
+          ],
+          "raw_candidate_pair_rms": 0.05788562819361687
+        }
+      },
+      "interaction": {
+        "latent_relative": 0.30600637197494507,
+        "guide_relative": 0.30489400029182434,
+        "caveat": "Nonlinear conditionalpipeline includes classicaljoint-guide/Einteraction; this statistic doesnot isolate pureDiT curvature."
+      },
+      "natural_initial_pair_rms": 0.0037485389038920403
+    }
+  },
+  "all56_sample_records_complete": true,
+  "training_decision": "Complete fixed4headsx300 whenever finite/nonzero, includingweakrawglobalheadroom; no selection/sweep."
+}

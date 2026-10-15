@@ -1,0 +1,48 @@
+{
+  "case": "cows_native480",
+  "sequence": "cows",
+  "split": "val",
+  "resolution": "native480",
+  "shape_hw": [
+    480,
+    832
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 22.70361432162198,
+      "ssim": 0.5182307335463437,
+      "lpips": 0.5665811950510199,
+      "lr_pillow_rmse": 0.016206007366153328
+    },
+    "h3_vae": {
+      "psnr": 22.558253981850363,
+      "ssim": 0.50014221126383,
+      "lpips": 0.5315945879979567,
+      "lr_pillow_rmse": 0.023048786954446274
+    },
+    "bicubic_dc": {
+      "psnr": 23.111810424111106,
+      "ssim": 0.570360619913448,
+      "lpips": 0.518153889612718,
+      "lr_pillow_rmse": 7.182636049533771e-05
+    },
+    "h3_vae_dc": {
+      "psnr": 23.3508395281705,
+      "ssim": 0.5854832990603014,
+      "lpips": 0.4776230901479721,
+      "lr_pillow_rmse": 6.696136452691545e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 2.3119620410725474,
+      "max_float_lr_rmse": 3.3081167724136007e-06
+    },
+    "h3_vae": {
+      "seconds": 2.364282624796033,
+      "max_float_lr_rmse": 5.301824516623015e-06
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

@@ -1,0 +1,751 @@
+{
+  "unit": "16 distinct natural-photo canonical source episodes, not videos; two lighting events averaged inside each source/seed, then three trained seeds averaged within source",
+  "CI": "5000 circular source-block(length2) draws, conditional on these three trained checkpoints; donor reuse means remaining correlation and exploratory interval",
+  "training_seed_interpretation": "Seed changes optimization only; never count as an independent source or video",
+  "results": [
+    {
+      "family": "raw",
+      "group": "return",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.12442533175150555,
+      "source_wins": 14,
+      "source_win_rate": 0.875,
+      "source_bootstrap_CI95": [
+        0.047964297731717426,
+        0.2157206664482752
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.06597411632537842,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.13881170749664307,
+          "source_wins": 12,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.16849017143249512,
+          "source_wins": 13,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "return",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.05411438147226969,
+      "source_wins": 10,
+      "source_win_rate": 0.625,
+      "source_bootstrap_CI95": [
+        0.009096629420916241,
+        0.09333780010541279
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.027804970741271973,
+          "source_wins": 9,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.17669057846069336,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.04215240478515625,
+          "source_wins": 7,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "return",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.4596360921859741,
+      "source_wins": 16,
+      "source_win_rate": 1.0,
+      "source_bootstrap_CI95": [
+        0.30662723282972976,
+        0.6497952967882156
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.4376370906829834,
+          "source_wins": 15,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.6460366249084473,
+          "source_wins": 15,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.2952345609664917,
+          "source_wins": 13,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "return",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.5123591025670369,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -0.6688109358151754,
+        -0.3559991836547853
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.48116564750671387,
+          "source_wins": 1,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.5359183549880981,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.5199933052062988,
+          "source_wins": 1,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "lighting",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.060407479604085296,
+      "source_wins": 6,
+      "source_win_rate": 0.375,
+      "source_bootstrap_CI95": [
+        -0.1846514642238617,
+        0.04497170050938923
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.12476718425750732,
+          "source_wins": 6,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.01904451847076416,
+          "source_wins": 9,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.037410736083984375,
+          "source_wins": 9,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "lighting",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.05203096071879069,
+      "source_wins": 6,
+      "source_win_rate": 0.375,
+      "source_bootstrap_CI95": [
+        -0.10229066709677379,
+        -0.007949848969777445
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.013356506824493408,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.05221903324127197,
+          "source_wins": 7,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.1172303557395935,
+          "source_wins": 3,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "lighting",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.5402276118596395,
+      "source_wins": 16,
+      "source_win_rate": 1.0,
+      "source_bootstrap_CI95": [
+        0.2770496154824893,
+        0.8399054596821467
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.7706116437911987,
+          "source_wins": 15,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.6798706650733948,
+          "source_wins": 13,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.17020052671432495,
+          "source_wins": 14,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "lighting",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.7923322518666585,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -1.011521947880586,
+        -0.5734285945693652
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.7637650370597839,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.796974241733551,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.8162574768066406,
+          "source_wins": 0,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.02219255765279134,
+      "source_wins": 13,
+      "source_win_rate": 0.8125,
+      "source_bootstrap_CI95": [
+        -0.07523290018240611,
+        0.10654044946034748
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.12843918800354004,
+          "source_wins": 7,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.13322806358337402,
+          "source_wins": 10,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.06178879737854004,
+          "source_wins": 9,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.02119743824005127,
+      "source_wins": 12,
+      "source_win_rate": 0.75,
+      "source_bootstrap_CI95": [
+        -0.06341770788033804,
+        0.09400309224923452
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.03464770317077637,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.09382247924804688,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.06487786769866943,
+          "source_wins": 6,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.41620683670043945,
+      "source_wins": 15,
+      "source_win_rate": 0.9375,
+      "source_bootstrap_CI95": [
+        0.2667935460805893,
+        0.6148200760285057
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.35494184494018555,
+          "source_wins": 15,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.5888911485671997,
+          "source_wins": 15,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.3047875165939331,
+          "source_wins": 14,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "raw",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -2.1507381200790405,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -2.6326606631278993,
+        -1.638350059588751
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -2.1952176094055176,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -2.081434488296509,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -2.175562262535095,
+          "source_wins": 0,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "return",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.0928638776143392,
+      "source_wins": 13,
+      "source_win_rate": 0.8125,
+      "source_bootstrap_CI95": [
+        0.05555092493693035,
+        0.13108642697334286
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.0671849250793457,
+          "source_wins": 12,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.16207921504974365,
+          "source_wins": 13,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.04932749271392822,
+          "source_wins": 11,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "return",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.0014123121897379543,
+      "source_wins": 6,
+      "source_win_rate": 0.375,
+      "source_bootstrap_CI95": [
+        -0.02522085110346476,
+        0.028409602244694993
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.0009837150573730469,
+          "source_wins": 8,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.041286349296569824,
+          "source_wins": 9,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.04650700092315674,
+          "source_wins": 6,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "return",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.15821460882822674,
+      "source_wins": 16,
+      "source_win_rate": 1.0,
+      "source_bootstrap_CI95": [
+        0.11954118609428406,
+        0.19816685219605762
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.14100754261016846,
+          "source_wins": 13,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.25002825260162354,
+          "source_wins": 14,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.08360803127288818,
+          "source_wins": 11,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "return",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.5589629411697388,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -0.7432067692279817,
+        -0.3983535895744961
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.5260686874389648,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.5648297071456909,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.5859904289245605,
+          "source_wins": 0,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "lighting",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.0043176015218098955,
+      "source_wins": 8,
+      "source_win_rate": 0.5,
+      "source_bootstrap_CI95": [
+        -0.01529811720053355,
+        0.023740313450495376
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.01523369550704956,
+          "source_wins": 5,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.06281423568725586,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.03462773561477661,
+          "source_wins": 8,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "lighting",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.062313695748647056,
+      "source_wins": 3,
+      "source_win_rate": 0.1875,
+      "source_bootstrap_CI95": [
+        -0.1049986700216929,
+        -0.025182695190111824
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.0034395456314086914,
+          "source_wins": 8,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.09561431407928467,
+          "source_wins": 5,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.0878872275352478,
+          "source_wins": 3,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "lighting",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.06296577056248984,
+      "source_wins": 11,
+      "source_win_rate": 0.6875,
+      "source_bootstrap_CI95": [
+        -0.0026405031482378623,
+        0.12180997331937148
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.06463271379470825,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.1341000199317932,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.009835422039031982,
+          "source_wins": 9,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "lighting",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.720536470413208,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -0.9416576489806174,
+        -0.532129561404387
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.68776535987854,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -0.7354881763458252,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.7383558750152588,
+          "source_wins": 0,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus factorized_no_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -0.028274893760681156,
+      "source_wins": 9,
+      "source_win_rate": 0.5625,
+      "source_bootstrap_CI95": [
+        -0.11746928195158642,
+        0.040067118406295774
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -0.1776106357574463,
+          "source_wins": 9,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.059473395347595215,
+          "source_wins": 6,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.03331255912780762,
+          "source_wins": 10,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus noninvertible_swap",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.00908350944519043,
+      "source_wins": 11,
+      "source_win_rate": 0.6875,
+      "source_bootstrap_CI95": [
+        -0.11023650964101156,
+        0.09005920191605885
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.0476306676864624,
+          "source_wins": 11,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.03562319278717041,
+          "source_wins": 8,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -0.05600333213806152,
+          "source_wins": 7,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus mixed_memory",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": 0.2487593094507853,
+      "source_wins": 16,
+      "source_win_rate": 1.0,
+      "source_bootstrap_CI95": [
+        0.18372383912404378,
+        0.3235956321159996
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": 0.06932353973388672,
+          "source_wins": 12,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": 0.4600118398666382,
+          "source_wins": 13,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": 0.21694254875183105,
+          "source_wins": 13,
+          "n_sources": 16
+        }
+      }
+    },
+    {
+      "family": "DC",
+      "group": "true_replacement",
+      "comparison": "factorized_swap minus H3_current_LR",
+      "n_sources": 16,
+      "n_training_seeds": 3,
+      "mean_difference_dB": -1.371521512667338,
+      "source_wins": 0,
+      "source_win_rate": 0.0,
+      "source_bootstrap_CI95": [
+        -1.671061631043752,
+        -1.0311448295911154
+      ],
+      "per_seed": {
+        "17": {
+          "mean_difference_dB": -1.4064334630966187,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "29": {
+          "mean_difference_dB": -1.3332016468048096,
+          "source_wins": 0,
+          "n_sources": 16
+        },
+        "43": {
+          "mean_difference_dB": -1.374929428100586,
+          "source_wins": 0,
+          "n_sources": 16
+        }
+      }
+    }
+  ]
+}

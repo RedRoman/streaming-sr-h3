@@ -1,0 +1,48 @@
+{
+  "case": "bmx-trees_256",
+  "sequence": "bmx-trees",
+  "split": "test",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 27.2287935777144,
+      "ssim": 0.8357663452625275,
+      "lpips": 0.2810942686416886,
+      "lr_pillow_rmse": 0.01310908112844283
+    },
+    "h3_vae": {
+      "psnr": 25.405650398947976,
+      "ssim": 0.76390094648708,
+      "lpips": 0.28080413016405975,
+      "lr_pillow_rmse": 0.03130004715851762
+    },
+    "bicubic_dc": {
+      "psnr": 28.10040621324019,
+      "ssim": 0.8560046472332694,
+      "lpips": 0.22955102067102084,
+      "lr_pillow_rmse": 0.0003163195221780122
+    },
+    "h3_vae_dc": {
+      "psnr": 28.229142102328215,
+      "ssim": 0.8510620621117678,
+      "lpips": 0.19256252930922943,
+      "lr_pillow_rmse": 0.0003111108532969163
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.2925581247545779,
+      "max_float_lr_rmse": 0.00012996197832752253
+    },
+    "h3_vae": {
+      "seconds": 0.2940926249139011,
+      "max_float_lr_rmse": 0.00012789746759939846
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

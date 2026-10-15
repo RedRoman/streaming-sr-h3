@@ -1,0 +1,63 @@
+{
+  "config": {
+    "vae": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "/root/autodl-tmp/h3-w4a8-20261011/ComfyUI",
+    "data": "data/BSDS/images",
+    "out": "results/h3_core/cache_native22_fp32",
+    "counts": [
+      1,
+      1,
+      1
+    ],
+    "size": 256,
+    "frames": 39,
+    "atoms": 32,
+    "epsilon": 0.1,
+    "effective_noise": 0.005,
+    "nuisance": false,
+    "context_frames": 22,
+    "output_frame": 21,
+    "span": null,
+    "teacher_dtype": "float32"
+  },
+  "vae": {
+    "layers": 36,
+    "checkpoint": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": [],
+    "encoder_compute": "float16",
+    "decoder_teacher_compute": "float32"
+  },
+  "protocol": "Native 22-frame encoding of copies of the already observed anchor (no future input); canonical 4x4-token central ROI; rank32 fixed decoder span; camera+visibility oracle; no DiT rollout yet",
+  "limits": [
+    "Decoder finite differences are a local approximation.",
+    "PIL vs torch degradation mismatch is included in effective noise, but must be measured.",
+    "39 frames is a short pilot, not long revisit evidence."
+  ],
+  "items": [
+    {
+      "id": "train_100075",
+      "path": "results/h3_core/cache_native22_fp32/train_100075.pt",
+      "fd_relative_halfstep": 0.012800518423318863,
+      "anchor_lr_operator_rmse": 0.004043587949126959,
+      "roundtrip_psnr_db": 41.112841477892246,
+      "seconds": 16.054262161254883
+    },
+    {
+      "id": "val_101085",
+      "path": "results/h3_core/cache_native22_fp32/val_101085.pt",
+      "fd_relative_halfstep": 0.009622886776924133,
+      "anchor_lr_operator_rmse": 0.0040334914810955524,
+      "roundtrip_psnr_db": 40.43465761298023,
+      "seconds": 31.440529108047485
+    },
+    {
+      "id": "test_100007",
+      "path": "results/h3_core/cache_native22_fp32/test_100007.pt",
+      "fd_relative_halfstep": 0.010562931187450886,
+      "anchor_lr_operator_rmse": 0.003997719846665859,
+      "roundtrip_psnr_db": 42.95219585053988,
+      "seconds": 46.89512753486633
+    }
+  ]
+}

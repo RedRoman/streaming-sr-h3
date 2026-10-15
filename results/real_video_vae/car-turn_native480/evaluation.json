@@ -1,0 +1,48 @@
+{
+  "case": "car-turn_native480",
+  "sequence": "car-turn",
+  "split": "train",
+  "resolution": "native480",
+  "shape_hw": [
+    480,
+    832
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 26.99431376023726,
+      "ssim": 0.6707715527577833,
+      "lpips": 0.5100038241256367,
+      "lr_pillow_rmse": 0.010281027802689508
+    },
+    "h3_vae": {
+      "psnr": 26.84452134912664,
+      "ssim": 0.6598027483983473,
+      "lpips": 0.47586050494150683,
+      "lr_pillow_rmse": 0.014210539954629812
+    },
+    "bicubic_dc": {
+      "psnr": 27.41863675550981,
+      "ssim": 0.6990963654084639,
+      "lpips": 0.4681258242238652,
+      "lr_pillow_rmse": 6.007601272854531e-05
+    },
+    "h3_vae_dc": {
+      "psnr": 27.600803115151145,
+      "ssim": 0.7050583579323508,
+      "lpips": 0.42952179366892035,
+      "lr_pillow_rmse": 4.887569974181877e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 2.365645666141063,
+      "max_float_lr_rmse": 4.289610454582847e-06
+    },
+    "h3_vae": {
+      "seconds": 2.3346000420860946,
+      "max_float_lr_rmse": 2.0408708973712236e-06
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

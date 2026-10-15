@@ -1,0 +1,48 @@
+{
+  "case": "bear_256",
+  "sequence": "bear",
+  "split": "train",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 23.609397194602273,
+      "ssim": 0.4908487783236937,
+      "lpips": 0.5997178500348871,
+      "lr_pillow_rmse": 0.01267311963337389
+    },
+    "h3_vae": {
+      "psnr": 23.489416642622515,
+      "ssim": 0.4750958342443813,
+      "lpips": 0.5727724162015048,
+      "lr_pillow_rmse": 0.018048814497888088
+    },
+    "bicubic_dc": {
+      "psnr": 23.916712847622957,
+      "ssim": 0.5425299514423717,
+      "lpips": 0.5555012280290778,
+      "lr_pillow_rmse": 5.8340765793797224e-05
+    },
+    "h3_vae_dc": {
+      "psnr": 24.070456851612438,
+      "ssim": 0.5541022528301586,
+      "lpips": 0.5187910903583873,
+      "lr_pillow_rmse": 3.991333108966831e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.27149495761841536,
+      "max_float_lr_rmse": 2.6829293221471313e-06
+    },
+    "h3_vae": {
+      "seconds": 0.26787712471559644,
+      "max_float_lr_rmse": 2.2607663131782495e-07
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

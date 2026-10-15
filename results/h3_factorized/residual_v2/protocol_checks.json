@@ -1,0 +1,134 @@
+{
+  "passed": true,
+  "source": "actual train_100075 cache; no test/val for checks",
+  "initial_proposal": "zero",
+  "results": [
+    {
+      "kind": "factorized_swap",
+      "parameters": 144748,
+      "gradient_l1": [
+        {
+          "appearance": 0.2274475395679474,
+          "chart": 0.2388292355608428,
+          "update_head": 3.3028838634490967
+        },
+        {
+          "appearance": 0.2738623528712196,
+          "chart": 0.23169143690392957,
+          "update_head": 5.136911669746041
+        }
+      ],
+      "parameter_update_l1": {
+        "appearance": 30.61248940229416,
+        "chart": 170.58276918530464,
+        "update_head": 142.8178982436657
+      },
+      "zero_residual_native_LR_VAE_maxabs": {
+        "2": 0.0,
+        "4": 0.0
+      },
+      "near_read_native_LR_VAE_maxabs": 0.0,
+      "far_anchor_measurement_difference_rms": 1.5919354723337165e-09,
+      "zero_initial_detail": true,
+      "far_cannot_overwrite_near": true,
+      "query_read_only": true,
+      "duplicate_idempotent": true
+    },
+    {
+      "kind": "factorized_no_swap",
+      "parameters": 144748,
+      "gradient_l1": [
+        {
+          "appearance": 0.23887130618095398,
+          "chart": 2.2684743059692147e-10,
+          "update_head": 3.1667134761810303
+        },
+        {
+          "appearance": 0.2783836340968264,
+          "chart": 0.0004599136750318422,
+          "update_head": 4.881494484841824
+        }
+      ],
+      "parameter_update_l1": {
+        "appearance": 30.408227760344744,
+        "chart": 18.645289873005822,
+        "update_head": 142.4243447780609
+      },
+      "zero_residual_native_LR_VAE_maxabs": {
+        "2": 0.0,
+        "4": 0.0
+      },
+      "near_read_native_LR_VAE_maxabs": 0.0,
+      "far_anchor_measurement_difference_rms": 1.6242034384106319e-09,
+      "zero_initial_detail": true,
+      "far_cannot_overwrite_near": true,
+      "query_read_only": true,
+      "duplicate_idempotent": true
+    },
+    {
+      "kind": "noninvertible_swap",
+      "parameters": 144614,
+      "gradient_l1": [
+        {
+          "appearance": 0.2518075555562973,
+          "chart": 0.12509805335866986,
+          "update_head": 3.7277653217315674
+        },
+        {
+          "appearance": 0.29802550945896655,
+          "chart": 0.16569200649973936,
+          "update_head": 5.3108087703585625
+        }
+      ],
+      "parameter_update_l1": {
+        "appearance": 30.457722099497914,
+        "chart": 151.85612453520298,
+        "update_head": 141.44477720558643
+      },
+      "zero_residual_native_LR_VAE_maxabs": {
+        "2": 0.0,
+        "4": 0.0
+      },
+      "near_read_native_LR_VAE_maxabs": 0.0,
+      "far_anchor_measurement_difference_rms": 1.5858052648809462e-09,
+      "zero_initial_detail": true,
+      "far_cannot_overwrite_near": true,
+      "query_read_only": true,
+      "duplicate_idempotent": true
+    },
+    {
+      "kind": "mixed_memory",
+      "parameters": 143748,
+      "gradient_l1": [
+        {
+          "appearance": 0.23024509102106094,
+          "chart": 0.9757364963807049,
+          "update_head": 3.2365357279777527
+        },
+        {
+          "appearance": 0.2567433684016578,
+          "chart": 1.1691838221304351,
+          "update_head": 4.856210337951779
+        }
+      ],
+      "parameter_update_l1": {
+        "appearance": 30.23883369192481,
+        "chart": 156.87757897749543,
+        "update_head": 142.83562756329775
+      },
+      "zero_residual_native_LR_VAE_maxabs": {
+        "2": 0.0,
+        "4": 0.0
+      },
+      "near_read_native_LR_VAE_maxabs": 0.0,
+      "far_anchor_measurement_difference_rms": 1.631791368694735e-09,
+      "zero_initial_detail": true,
+      "far_cannot_overwrite_near": true,
+      "query_read_only": true,
+      "duplicate_idempotent": true
+    }
+  ],
+  "true_D_same_far_detail_gradient_rms": 0.0,
+  "true_D_historical_near_detail_gradient_rms": 4.583575446304167e-06,
+  "seconds": 9.965405464172363
+}

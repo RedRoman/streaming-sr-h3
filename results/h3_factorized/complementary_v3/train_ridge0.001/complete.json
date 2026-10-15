@@ -1,0 +1,252 @@
+{
+  "manifest": "results/h3_factorized/cache_pilot/manifest.json",
+  "out": "results/h3_factorized/complementary_v3/train_ridge0.001",
+  "iterations": 48,
+  "ridge": 0.001,
+  "split": "train",
+  "count": 4,
+  "sources": [
+    {
+      "id": "train_100075",
+      "split": "train",
+      "source": "data/BSR/BSDS500/data/images/train/100075.jpg",
+      "source_sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5"
+    },
+    {
+      "id": "train_100080",
+      "split": "train",
+      "source": "data/BSR/BSDS500/data/images/train/100080.jpg",
+      "source_sha256": "d52ff44bf19e17f49389eca134bcf57a90d27b15671952fabbd2f2334f75aa8e"
+    },
+    {
+      "id": "train_100098",
+      "split": "train",
+      "source": "data/BSR/BSDS500/data/images/train/100098.jpg",
+      "source_sha256": "156fd9710dccd7bf3a821977f8d8155da0eccca553086f73771073e17a418aa6"
+    },
+    {
+      "id": "train_103041",
+      "split": "train",
+      "source": "data/BSR/BSDS500/data/images/train/103041.jpg",
+      "source_sha256": "1e7ad4076e21f5558e487fddbd20f9553cc4e84629814a79c711f20c38e08461"
+    }
+  ],
+  "footprints": [
+    [
+      32,
+      32
+    ],
+    [
+      32,
+      96
+    ],
+    [
+      96,
+      32
+    ],
+    [
+      96,
+      96
+    ]
+  ],
+  "scope": "Natural source photos, exact known neutral camera, no H3 and no neural training; establishes multi-view information headroom only",
+  "causal": true,
+  "HR_used_only_measurement_simulation_and_evaluation": true,
+  "ridge_fixed_before_running": true,
+  "prebox_current_anchor_difference_max_rms": 5.121913573692972e-10,
+  "seconds": 7.12252402305603,
+  "torch": "2.10.0+cu128",
+  "script_sha256": "ce37327b6fadad3c367c63147b547db3f2d947dd458cbd6e2c29b783882462c8",
+  "summary": [
+    {
+      "prefix": 1,
+      "method": "current_far",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.416206778816957,
+      "mean_union_roi_psnr": 26.421929066073
+    },
+    {
+      "prefix": 1,
+      "method": "last_near_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.99419632391934,
+      "mean_union_roi_psnr": 28.893912407424594
+    },
+    {
+      "prefix": 1,
+      "method": "aligned_residual_average",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 28.376652522425047,
+      "mean_union_roi_psnr": 30.461001897407932
+    },
+    {
+      "prefix": 1,
+      "method": "all_history_linear_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.99419632391934,
+      "mean_union_roi_psnr": 28.893912407424594
+    },
+    {
+      "prefix": 2,
+      "method": "current_far",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.416206778816957,
+      "mean_union_roi_psnr": 26.453653386229462
+    },
+    {
+      "prefix": 2,
+      "method": "last_near_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 28.032627715189015,
+      "mean_union_roi_psnr": 27.998242175261957
+    },
+    {
+      "prefix": 2,
+      "method": "aligned_residual_average",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 28.89761798701702,
+      "mean_union_roi_psnr": 30.505606428814012
+    },
+    {
+      "prefix": 2,
+      "method": "all_history_linear_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.962256559006683,
+      "mean_union_roi_psnr": 28.110152252673906
+    },
+    {
+      "prefix": 3,
+      "method": "current_far",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.416206778816957,
+      "mean_union_roi_psnr": 26.60768254242324
+    },
+    {
+      "prefix": 3,
+      "method": "last_near_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 28.032627715189015,
+      "mean_union_roi_psnr": 27.749754679719643
+    },
+    {
+      "prefix": 3,
+      "method": "aligned_residual_average",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 29.424472434766365,
+      "mean_union_roi_psnr": 30.74677296460451
+    },
+    {
+      "prefix": 3,
+      "method": "all_history_linear_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.911706041823052,
+      "mean_union_roi_psnr": 27.870957198798735
+    },
+    {
+      "prefix": 4,
+      "method": "current_far",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.416206778816957,
+      "mean_union_roi_psnr": 26.803454554431553
+    },
+    {
+      "prefix": 4,
+      "method": "last_near_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.99419632391934,
+      "mean_union_roi_psnr": 27.780579483516245
+    },
+    {
+      "prefix": 4,
+      "method": "aligned_residual_average",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 29.632375548155185,
+      "mean_union_roi_psnr": 31.001461473641825
+    },
+    {
+      "prefix": 4,
+      "method": "all_history_linear_inverse",
+      "n_sources": 4,
+      "n_orders": 2,
+      "mean_psnr": 27.605128936146077,
+      "mean_union_roi_psnr": 27.513819716552163
+    }
+  ],
+  "source_paired_differences": [
+    {
+      "source": "train_100075",
+      "prefix": 2,
+      "full_minus_last_union_roi_dB": 0.13008277526948575
+    },
+    {
+      "source": "train_100075",
+      "prefix": 3,
+      "full_minus_last_union_roi_dB": -0.12690651830296318
+    },
+    {
+      "source": "train_100075",
+      "prefix": 4,
+      "full_minus_last_union_roi_dB": -0.6173044327016939
+    },
+    {
+      "source": "train_100080",
+      "prefix": 2,
+      "full_minus_last_union_roi_dB": -1.4050998769724075
+    },
+    {
+      "source": "train_100080",
+      "prefix": 3,
+      "full_minus_last_union_roi_dB": -1.9301304482388204
+    },
+    {
+      "source": "train_100080",
+      "prefix": 4,
+      "full_minus_last_union_roi_dB": -2.793568990247394
+    },
+    {
+      "source": "train_100098",
+      "prefix": 2,
+      "full_minus_last_union_roi_dB": 1.4687570291231715
+    },
+    {
+      "source": "train_100098",
+      "prefix": 3,
+      "full_minus_last_union_roi_dB": 2.512186955474373
+    },
+    {
+      "source": "train_100098",
+      "prefix": 4,
+      "full_minus_last_union_roi_dB": 2.7516311470340895
+    },
+    {
+      "source": "train_103041",
+      "prefix": 2,
+      "full_minus_last_union_roi_dB": 0.25390038222752764
+    },
+    {
+      "source": "train_103041",
+      "prefix": 3,
+      "full_minus_last_union_roi_dB": 0.029660087383781786
+    },
+    {
+      "source": "train_103041",
+      "prefix": 4,
+      "full_minus_last_union_roi_dB": -0.40779679194132257
+    }
+  ]
+}

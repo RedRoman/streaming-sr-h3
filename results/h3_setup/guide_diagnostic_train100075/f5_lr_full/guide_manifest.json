@@ -1,0 +1,36 @@
+{
+  "case": "f5_lr_full",
+  "scope": "Guide interface diagnosis only. HR-oracle is forbidden as a causal SR method input.",
+  "target_frames": 5,
+  "guide_input_frames": 5,
+  "guide_shape": [
+    1,
+    24,
+    2,
+    16,
+    16
+  ],
+  "guide_quality": "lr",
+  "guide_mode": "full",
+  "oracle_HR_guide": false,
+  "official_AddGuide_execute_vs_direct_encode_max_abs": 0.0,
+  "official_lanczos_center_same_canvas_max_abs": 0.0039215534925460815,
+  "guide_encoding": "Actual MiniMaxH3AddGuide.execute with standard comfy.sd.VAE; raw0..1RGB, native wrapper normalization; latent formatscale1",
+  "frame_idx": 0,
+  "fps": 24,
+  "audio_latent_fps": 40,
+  "frame_per_token": [
+    1,
+    4,
+    4,
+    4,
+    4
+  ],
+  "frame_rescale": 1.6666666666666667,
+  "visual_cond_timestep": 0.999,
+  "context_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+  "source_sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+  "source_split": "BSDS500 official train",
+  "source_image": "data/BSDS/images/train/100075.jpg",
+  "guide_sha256": "9f27665dc486434a987398b4297669917fb530669e2308d5b16e2ae4900d5333"
+}

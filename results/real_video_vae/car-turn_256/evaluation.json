@@ -1,0 +1,48 @@
+{
+  "case": "car-turn_256",
+  "sequence": "car-turn",
+  "split": "train",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 26.6176325191151,
+      "ssim": 0.5893324396827004,
+      "lpips": 0.5217543677850203,
+      "lr_pillow_rmse": 0.010414467912844637
+    },
+    "h3_vae": {
+      "psnr": 26.453523289073598,
+      "ssim": 0.576173947616057,
+      "lpips": 0.49070758440277795,
+      "lr_pillow_rmse": 0.01431257011030208
+    },
+    "bicubic_dc": {
+      "psnr": 27.015342539007012,
+      "ssim": 0.6252507865428925,
+      "lpips": 0.4801757823337208,
+      "lr_pillow_rmse": 5.2375721927753396e-05
+    },
+    "h3_vae_dc": {
+      "psnr": 27.15128517150879,
+      "ssim": 0.6323627666993574,
+      "lpips": 0.44801711765202606,
+      "lr_pillow_rmse": 4.7326973964862354e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.2881877077743411,
+      "max_float_lr_rmse": 1.6485029135525568e-11
+    },
+    "h3_vae": {
+      "seconds": 0.2706355410628021,
+      "max_float_lr_rmse": 6.370708123994835e-13
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

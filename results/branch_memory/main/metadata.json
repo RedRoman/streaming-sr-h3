@@ -1,0 +1,63 @@
+{
+  "args": {
+    "seeds": 32,
+    "episodes": 8,
+    "tag": "main"
+  },
+  "runtime_seconds": 14.956221103668213,
+  "command": "experiments/branch_memory/run_branch_suite.py --seeds 32 --episodes 8 --tag main",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy": "2.5.1",
+  "scipy": "1.18.0",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "source_sha256": "4753ec7b0234d306ccb79dbb504c12fa3e8c24fee6788690c5d8550d88d2ae09",
+  "max_exact_MHT_compressed_difference": 8.104628079763643e-15,
+  "max_archive_return_MHT_difference": 6.5503158452884236e-15,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "dimensions": {
+    "identities": 4,
+    "coefficients": 48,
+    "hr_pixels": 256
+  },
+  "observation_protocol": "4x4 box far LR exactly shared; 2x2 near LR Hadamard sufficient statistics with coefficient noise .03; 3 independent near enrollment observations",
+  "limitations": [
+    "Synthetic periodic box-filtered textures; no trained generator or real video claim",
+    "MHT/fork equivalence is intentional; exact sufficient-statistic compression is not new Bayesian inference",
+    "Capacity bytes are measured array .nbytes, not process RSS or GPU latency",
+    "Capacity pruning preserves confirmed entries but discarded weak cues can hurt future pre-reveal retrieval"
+  ]
+}

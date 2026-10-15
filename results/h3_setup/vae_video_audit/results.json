@@ -1,0 +1,261 @@
+{
+  "scope": "Fixed native H3 FP16 VAE E-D audit; same source image repeated for T frames; no DiT and no SR quality claim",
+  "api": "comfy.sd.VAE.encode(float [T,H,W,C] in[0,1]); decode(latent)",
+  "weights": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+  "weights_sha256_verified_by": "../vae_smoke_128/result.json",
+  "source_image": "data/66053.jpg",
+  "source_sha256": "bc27ff2d520d63f8ffc8575269a14c295788542cb723fcce6bda3752e9de27a7",
+  "memory_fraction": 0.35,
+  "cases": [
+    {
+      "name": "256x5",
+      "input_shape": [
+        5,
+        256,
+        256,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        2,
+        16,
+        16
+      ],
+      "output_shape": [
+        5,
+        256,
+        256,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        26.551225662231445,
+        26.588111877441406,
+        26.642498016357422,
+        26.563278198242188,
+        26.68706512451172
+      ],
+      "mean_psnr_db": 26.606435775756836,
+      "min_psnr_db": 26.551225662231445,
+      "max_psnr_db": 26.68706512451172,
+      "output_range": [
+        0.0,
+        1.0
+      ],
+      "encode_seconds": 1.1421275958418846,
+      "decode_seconds": 0.11732814460992813,
+      "peak_allocated_bytes": 6416403456,
+      "peak_reserved_bytes": 6513754112
+    },
+    {
+      "name": "256x1",
+      "input_shape": [
+        1,
+        256,
+        256,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        1,
+        16,
+        16
+      ],
+      "output_shape": [
+        1,
+        256,
+        256,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        25.666645050048828
+      ],
+      "mean_psnr_db": 25.666645050048828,
+      "min_psnr_db": 25.666645050048828,
+      "max_psnr_db": 25.666645050048828,
+      "output_range": [
+        0.0,
+        0.9686098098754883
+      ],
+      "encode_seconds": 0.024274330586194992,
+      "decode_seconds": 0.042705561965703964,
+      "peak_allocated_bytes": 6416403456,
+      "peak_reserved_bytes": 6515851264
+    },
+    {
+      "name": "512x1",
+      "input_shape": [
+        1,
+        512,
+        512,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        1,
+        32,
+        32
+      ],
+      "output_shape": [
+        1,
+        512,
+        512,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        27.210716247558594
+      ],
+      "mean_psnr_db": 27.210716247558594,
+      "min_psnr_db": 27.210716247558594,
+      "max_psnr_db": 27.210716247558594,
+      "output_range": [
+        0.0,
+        1.0
+      ],
+      "encode_seconds": 0.05270802974700928,
+      "decode_seconds": 0.32833627238869667,
+      "peak_allocated_bytes": 6416403456,
+      "peak_reserved_bytes": 6515851264
+    },
+    {
+      "name": "128x5",
+      "input_shape": [
+        5,
+        128,
+        128,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        2,
+        8,
+        8
+      ],
+      "output_shape": [
+        5,
+        128,
+        128,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        22.145721435546875,
+        22.161941528320312,
+        22.08770751953125,
+        21.976516723632812,
+        21.84284019470215
+      ],
+      "mean_psnr_db": 22.04294548034668,
+      "min_psnr_db": 21.84284019470215,
+      "max_psnr_db": 22.161941528320312,
+      "output_range": [
+        0.0,
+        0.9829225540161133
+      ],
+      "encode_seconds": 0.01562165841460228,
+      "decode_seconds": 0.02236957475543022,
+      "peak_allocated_bytes": 6416403456,
+      "peak_reserved_bytes": 6515851264
+    },
+    {
+      "name": "512x5",
+      "input_shape": [
+        5,
+        512,
+        512,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        2,
+        32,
+        32
+      ],
+      "output_shape": [
+        5,
+        512,
+        512,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        28.53911590576172,
+        28.563121795654297,
+        28.655906677246094,
+        28.608179092407227,
+        28.68133544921875
+      ],
+      "mean_psnr_db": 28.609531784057616,
+      "min_psnr_db": 28.53911590576172,
+      "max_psnr_db": 28.68133544921875,
+      "output_range": [
+        0.0,
+        1.0
+      ],
+      "encode_seconds": 0.44845734536647797,
+      "decode_seconds": 0.465779073536396,
+      "peak_allocated_bytes": 6503762944,
+      "peak_reserved_bytes": 6801063936
+    },
+    {
+      "name": "256x22",
+      "input_shape": [
+        22,
+        256,
+        256,
+        3
+      ],
+      "latent_shape": [
+        1,
+        24,
+        7,
+        16,
+        16
+      ],
+      "output_shape": [
+        22,
+        256,
+        256,
+        3
+      ],
+      "psnr_rgb_per_frame_db": [
+        28.4445743560791,
+        28.471162796020508,
+        28.47451400756836,
+        28.471824645996094,
+        28.49834632873535,
+        28.519073486328125,
+        28.52017593383789,
+        28.528640747070312,
+        28.548503875732422,
+        28.52886962890625,
+        28.527376174926758,
+        28.537799835205078,
+        28.552509307861328,
+        28.56336784362793,
+        28.563329696655273,
+        28.579849243164062,
+        28.59676742553711,
+        28.5074405670166,
+        28.521324157714844,
+        28.524301528930664,
+        28.533010482788086,
+        28.56513214111328
+      ],
+      "mean_psnr_db": 28.52626791867343,
+      "min_psnr_db": 28.4445743560791,
+      "max_psnr_db": 28.59676742553711,
+      "output_range": [
+        0.0,
+        0.9914207458496094
+      ],
+      "encode_seconds": 0.10645272210240364,
+      "decode_seconds": 0.059817224740982056,
+      "peak_allocated_bytes": 6503762944,
+      "peak_reserved_bytes": 6801063936
+    }
+  ],
+  "status": "complete"
+}

@@ -1,0 +1,40 @@
+# Local dependencies and downloaded assets
+.venv*/
+__pycache__/
+*.py[cod]
+.DS_Store
+/external/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Large model/data/cache artifacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.npz
+*.npy
+*.zip
+*.tar
+*.tgz
+*.gz
+*.mp4
+*.mov
+*.log
+# Preserve metadata but keep source/generated frames local
+/data/**
+!/data/**/
+!/data/**/*.json
+!/data/**/*.md
+!/data/**/*.txt
+!/data/**/*.csv
+/results/**/*.png
+/results/**/*.jpg
+# Selected small evidence panels
+!/results/fourier_stream/curves.png
+!/results/fourier_stream/comparison.png
+!/results/real_video_evaluation/bmx_trees22/comparison.png
+!/results/real_video_evaluation/bmx_trees22_native480/comparison.png

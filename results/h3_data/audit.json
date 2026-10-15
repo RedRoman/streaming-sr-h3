@@ -1,0 +1,29 @@
+{
+  "lr_packet_fields": [
+    "index",
+    "source_time",
+    "rgb",
+    "world_rectangle",
+    "visible_mask",
+    "observation_id"
+  ],
+  "lr_shape": [
+    64,
+    64,
+    3
+  ],
+  "hr_shape": [
+    256,
+    256,
+    3
+  ],
+  "same_return_view_max_gt_error": 0,
+  "metadata_grid": true,
+  "script_sha256": "5a6dbac48b8ec3556f68e4aade7305441cc97da7b5216f4ca2360ed5704f37a6",
+  "notes": "Oracle visibility and camera geometry. HR target returned separately, absent from restoration packet. 39 frames/24fps is a prototype, not a long-return real video.",
+  "split_overlap_counts": {
+    "train/val": 0,
+    "train/test": 0,
+    "val/test": 0
+  }
+}

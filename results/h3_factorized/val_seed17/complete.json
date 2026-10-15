@@ -1,0 +1,23 @@
+{
+  "cache": "results/h3_factorized/cache_pilot",
+  "runs": "results/h3_factorized/rgb_stage2",
+  "out": "results/h3_factorized/val_seed17",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "split": "val",
+  "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "encoder_storage_dtype": "float16",
+  "actual_decoder_dtype": "float16",
+  "RGB_range": "0..1",
+  "native_H3_VAE": true,
+  "DiT_used": false,
+  "selected_only_by_validation": true,
+  "checkpoint_paths": [
+    "results/h3_factorized/rgb_stage2/factorized_no_swap_seed17/best.pt",
+    "results/h3_factorized/rgb_stage2/factorized_swap_seed17/best.pt",
+    "results/h3_factorized/rgb_stage2/mixed_memory_seed17/best.pt",
+    "results/h3_factorized/rgb_stage2/noninvertible_swap_seed17/best.pt"
+  ],
+  "seconds": 21.114348888397217,
+  "script_sha256": "08369c587b3491c50638540a3e62227afee85f43bfe1461ec83f47ace396f8f3"
+}

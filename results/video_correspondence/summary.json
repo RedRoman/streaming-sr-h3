@@ -1,0 +1,101 @@
+{
+  "scope": "Classical LR-only motion interface and non-generative baselines; no H3 or learned SR evaluation",
+  "sequences": {
+    "test/bmx-trees": {
+      "bicubic_psnr": 27.42504750765287,
+      "temporal_blend_psnr": 27.250859040480393,
+      "fixed_reference_psnr": 27.408165662716595,
+      "pair_coverage": 0.5254031450320513,
+      "canonical_coverage": 0.05125701121794872,
+      "flow_seconds": 0.0007195960825834519,
+      "hr_warp_rmse_trusted": 0.04004605261510924,
+      "hr_warp_rmse_untrusted": 0.26831648851695816,
+      "frames": 39
+    },
+    "test/soapbox": {
+      "bicubic_psnr": 28.46469600384052,
+      "temporal_blend_psnr": 28.377971209012546,
+      "fixed_reference_psnr": 28.348251538398937,
+      "pair_coverage": 0.9121281550480769,
+      "canonical_coverage": 0.4238782051282051,
+      "flow_seconds": 0.0006678097953016942,
+      "hr_warp_rmse_trusted": 0.0258708009986501,
+      "hr_warp_rmse_untrusted": 0.3645235111838893,
+      "frames": 39
+    },
+    "train/bear": {
+      "bicubic_psnr": 23.93360323783679,
+      "temporal_blend_psnr": 23.863728938958584,
+      "fixed_reference_psnr": 23.862689971923828,
+      "pair_coverage": 0.9560859875801282,
+      "canonical_coverage": 0.22893504607371795,
+      "flow_seconds": 0.0007215235143517837,
+      "hr_warp_rmse_trusted": 0.04261375630372449,
+      "hr_warp_rmse_untrusted": 0.19434801567541926,
+      "frames": 39
+    },
+    "train/bus": {
+      "bicubic_psnr": 22.934490008231922,
+      "temporal_blend_psnr": 22.93074485583183,
+      "fixed_reference_psnr": 22.91030756632487,
+      "pair_coverage": 0.875557141426282,
+      "canonical_coverage": 0.33009064503205127,
+      "flow_seconds": 0.0006684445155163606,
+      "hr_warp_rmse_trusted": 0.03566118913065446,
+      "hr_warp_rmse_untrusted": 0.24300235470658854,
+      "frames": 39
+    },
+    "train/car-turn": {
+      "bicubic_psnr": 26.54907612922864,
+      "temporal_blend_psnr": 26.533329205635265,
+      "fixed_reference_psnr": 26.411117602617313,
+      "pair_coverage": 0.9459885817307693,
+      "canonical_coverage": 0.6446877504006411,
+      "flow_seconds": 0.000697661346445481,
+      "hr_warp_rmse_trusted": 0.02210113092472679,
+      "hr_warp_rmse_untrusted": 0.1918048895895481,
+      "frames": 39
+    },
+    "train/flamingo": {
+      "bicubic_psnr": 25.178910866761818,
+      "temporal_blend_psnr": 25.027976256150467,
+      "fixed_reference_psnr": 25.136321581327,
+      "pair_coverage": 0.8554750100160257,
+      "canonical_coverage": 0.108642578125,
+      "flow_seconds": 0.0007436004562828785,
+      "hr_warp_rmse_trusted": 0.05034718093903441,
+      "hr_warp_rmse_untrusted": 0.18845983986791812,
+      "frames": 39
+    },
+    "val/cows": {
+      "bicubic_psnr": 22.859918349828476,
+      "temporal_blend_psnr": 22.827552648691032,
+      "fixed_reference_psnr": 22.791395334097054,
+      "pair_coverage": 0.9100811298076923,
+      "canonical_coverage": 0.2570299979967949,
+      "flow_seconds": 0.0007249647393249548,
+      "hr_warp_rmse_trusted": 0.045871490612626076,
+      "hr_warp_rmse_untrusted": 0.25035950659137024,
+      "frames": 39
+    },
+    "val/dance-twirl": {
+      "bicubic_psnr": 25.78140527774126,
+      "temporal_blend_psnr": 25.606326567821014,
+      "fixed_reference_psnr": 25.732771897927307,
+      "pair_coverage": 0.6664287860576923,
+      "canonical_coverage": 0.09519606370192307,
+      "flow_seconds": 0.000712272448417468,
+      "hr_warp_rmse_trusted": 0.04692728533164451,
+      "hr_warp_rmse_untrusted": 0.26930008279649836,
+      "frames": 39
+    }
+  },
+  "elapsed_seconds": 2.851432917173952,
+  "limits": [
+    "Eight short clips do not prove long-gap identity recovery.",
+    "Confidence is a consistency score, not object recognition.",
+    "Bicubic/temporal blend do not generate H3 details.",
+    "HR warp differences include true appearance/occlusion changes, not only flow error."
+  ],
+  "next": "Use identical cached LR-only maps for H3 baseline and learned memory comparisons; retain a no-correspondence ablation."
+}

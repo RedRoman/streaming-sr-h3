@@ -1,0 +1,47 @@
+{
+  "args": {
+    "seeds": 16,
+    "n": 24,
+    "steps": 16,
+    "noise": 0.003,
+    "lam": 0.000225,
+    "window": 4,
+    "tag": "low_noise"
+  },
+  "command": "experiments/mechanism/run_suite.py --seeds 16 --n 24 --steps 16 --noise .003 --lam .000225 --tag low_noise",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "numpy": "2.5.1",
+  "scipy": "1.18.0",
+  "matplotlib": "3.11.1",
+  "pillow": "12.3.0",
+  "runtime_seconds": 27.79219698905945,
+  "seed_list": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "source_sha256": "d7bb1dcc1fa74f1f61f8220b33ae32b788cdc3d5d6771edbeb4c56ae358a4a43",
+  "data_provenance": "even seeds analytic Fourier textures; odd seeds deterministic patches of Matplotlib bundled Grace Hopper photograph",
+  "strict_causality": "time-t methods access observations at <=t only; HR truth used only in metric computation and observation simulator",
+  "limitations": [
+    "20x20 grayscale controlled patches, known periodic shift/blur/downsampling; not real video evaluation",
+    "photograph patches share a single source image; bootstrap over seeds does not establish population generalization",
+    "no network training, learned priors, optical flow estimation, or latency benchmark",
+    "persistent evidence and all-history MAP intentionally identical",
+    "quarantine rule thresholds prespecified; must be validated on separate scenes"
+  ]
+}

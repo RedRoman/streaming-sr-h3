@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "phase": "sample",
+  "pid": 364079,
+  "scope": "Static repeated-image 5-frame 256-square LR-guide integration smoke, not motion SR quality or streaming latency",
+  "dit_precision": "Full pruned BF16 foundation weights, no DiT quantization/LoRA/VDN",
+  "text_precision": "real Qwen3VL32B NVFP4-AWQ text encoder, BF16 hidden-state cache",
+  "vae_precision": "FP16 stored weights and computation",
+  "gpu_memory_fraction": 0.5,
+  "observed_distinct_frame_indices": [
+    0
+  ],
+  "actual_latest_distinct_observation_index": 0,
+  "future_gt_semantics_used": false,
+  "forward_events": [],
+  "prompt": "Restore the observed video faithfully. Preserve the visible scene geometry, motion, colors, and appearance. Recover consistent fine details supported by the observed frames.",
+  "context_shape": [
+    29,
+    5120
+  ],
+  "context_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+  "model_path": "/root/autodl-tmp/h3-qf-vdn-20261015/models/minimax_h3_fl2va_pruned_bf16.safetensors",
+  "model_bytes": 40225724176,
+  "steps": 4,
+  "cfg": 1.0,
+  "scheduler": "simple",
+  "sampler": "euler",
+  "seed": 101,
+  "native_model_class": "MiniMaxH3Model",
+  "native_block_count": 50,
+  "exception": "OutOfMemoryError('CUDA out of memory. Tried to allocate 222.00 MiB. GPU 0 has a total capacity of 31.36 GiB of which 12.01 GiB is free. Process 160856 has 880.00 MiB memory in use. Process 324962 has 942.00 MiB memory in use. Process 330142 has 498.00 MiB memory in use. Process 354738 has 498.00 MiB memory in use. Including non-PyTorch memory, this process has 16.07 GiB memory in use. Process 364237 has 498.00 MiB memory in use. 15.68 GiB allowed; Of the allocated memory 15.58 GiB is allocated by PyTorch, and 6.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')",
+  "seconds": 48.00419695302844,
+  "peak_allocated_bytes": 16724263424,
+  "peak_reserved_bytes": 16731078656
+}

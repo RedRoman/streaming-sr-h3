@@ -1,0 +1,32 @@
+{
+  "scope": "Full BF16 base static repeated-image 5frame256 integration; no video motion or measured acquisition delay",
+  "dit_weights": {
+    "bytes": 40225724176,
+    "sha256": "a32572fb90b5508b201ec7c2eddcc184b13ddfd3c6f6d2cf06a0b46535d541b4",
+    "verification_evidence": "Donor full_donor_verified.json full-file canonical SHA record + actual file/header length checked; official Comfy-Org pinned revision e5eb578a89295337b8ff433a035929ce0279e0b6",
+    "precision": "BF16 unquantized pruned FL2VA; no LoRA/VDN"
+  },
+  "text_encoder": "NVFP4-AWQ Qwen3VL32B BF16 compute; raw fixed neutral text, hidden50; actual cached context SHA fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+  "source_original_image_sha256": "bc27ff2d520d63f8ffc8575269a14c295788542cb723fcce6bda3752e9de27a7",
+  "comfy_version": "0.39.0",
+  "source_commit": null,
+  "source_commit_evidence": "Donor extracted tree has no .git, exact commit unavailable; source file hashes recorded in vae_smoke_128/result.json",
+  "file_sha256": {
+    "output_04.png": "e2e09a5ff66d29a3c733c60662524174478611d685621dfaf2b5b39be5c1cdbf",
+    "sampled_av_latents.safetensors": "ce1d6616c6c715e86c38ccb990ebe61ebf078b6e0d386f5e3d34bceae218016a",
+    "sample_result.json": "12caa7716b744f1edc89d535a6542ee2f3e7949e0f00ff7078d52667a788997f",
+    "output_01.png": "d1a8041ca4decab52d6b898ea4b2139f864dfa766fb8acf6d3f58163985466c8",
+    "observed_lr.png": "0c593f4fb0989b25bb60a75170772b368f5a3eb4a33b8e7312c79e426c4d9b59",
+    "output_00.png": "1d19b3ebdc8fec54c8af93a8ad68a48932d3dcae0c920978d63ee97e0ab3e088",
+    "output_02.png": "bb18f5fd0d3a5c92bffd53fa883d72d418863370c60ecc9bf66a749d83f92581",
+    "output_03.png": "d72f2acdc66e92ce359da41ce76f4b3ad577a72f6ff6137674d2713d20ae2168",
+    "source_hr_for_evaluation_only.png": "235a2abf96ef04ad01c0ad9c9cd32bfca07f54981091aca983ba8986288ff9d6",
+    "encode_result.json": "e87f1e3be57891f3bd79d1f23e85265d1e070fd48bff02348d0b95cad0b3c6b5",
+    "guide.safetensors": "0a541efd2dc64a8b9f5119b54fcf166dd63787c82f17cb23551b6ab0dd702b32",
+    "static_characterization.json": "c8feaf73336b12ebb4f7c598d4f3ad909455579ddeb33ba5d68596323fbdd81e",
+    "decode_result.json": "eecc3be720ca63ebb19e38a745efcea32060602edbef8b4929101df363d37377",
+    "lr_upsampled_guide.png": "7e0845295b3035cf0514d24a7db281ddb0b8306a38e558b6b4b9c18cf4ea61ed"
+  },
+  "sampling_protocol": "50 exact sigma grid points with terminal0 =>49 Euler evaluations, video shift12/audio3; no LoRA",
+  "guide_preprocessing_caveat": "Historicalmanualguide used floatTorchAA bicubic output directly, without officialAddGuide same-canvas lanczos uint8 truncation (max1/255RGB). Laterofficial6case audit maxabs0 validates API after officialresize. This historicalbaseline is not pixel-exact officialAddGuide."
+}

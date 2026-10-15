@@ -1,0 +1,24 @@
+{
+  "cache": "results/h3_factorized/cache_pilot",
+  "observations": "results/h3_factorized/observations",
+  "runs": "results/h3_factorized/rgb_stage2",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/val_mechanism",
+  "split": "val_only",
+  "source_count": 8,
+  "training_seeds": [
+    17,
+    29,
+    43
+  ],
+  "HR_only_evaluation": true,
+  "checkpoints_frozen": true,
+  "new_training": false,
+  "band": "C=N_far P_near_emb N_far, a linear near-supported/far-null contrast; not an orthogonal projector or a novel algorithm",
+  "far_null_test_rms": 6.5243228597466896e-09,
+  "coarse_annihilation_test_rms": 2.1648691728159974e-08,
+  "actual_H3_D": "native256x22 float16",
+  "chart": "strict float32 noTF32",
+  "seconds": 22.017008066177368
+}

@@ -1,0 +1,48 @@
+{
+  "case": "dance-twirl_256",
+  "sequence": "dance-twirl",
+  "split": "val",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 26.063349290327594,
+      "ssim": 0.7543631764975461,
+      "lpips": 0.4011368765072389,
+      "lr_pillow_rmse": 0.015572304244745861
+    },
+    "h3_vae": {
+      "psnr": 24.684564763849433,
+      "ssim": 0.695234780961817,
+      "lpips": 0.37269726395606995,
+      "lr_pillow_rmse": 0.031809180551631885
+    },
+    "bicubic_dc": {
+      "psnr": 26.92229028181596,
+      "ssim": 0.7841645154086027,
+      "lpips": 0.3495694182135842,
+      "lr_pillow_rmse": 0.00022997211238940838
+    },
+    "h3_vae_dc": {
+      "psnr": 27.232402974909004,
+      "ssim": 0.7890080376104875,
+      "lpips": 0.2982464974576777,
+      "lr_pillow_rmse": 0.00021366666128001683
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.2800294579938054,
+      "max_float_lr_rmse": 0.0001151899745541406
+    },
+    "h3_vae": {
+      "seconds": 0.28418120788410306,
+      "max_float_lr_rmse": 5.775870142532985e-05
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

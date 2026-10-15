@@ -1,0 +1,48 @@
+{
+  "case": "flamingo_256",
+  "sequence": "flamingo",
+  "split": "train",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 24.059855981306598,
+      "ssim": 0.704465391961011,
+      "lpips": 0.4373163486068899,
+      "lr_pillow_rmse": 0.015890639783306557
+    },
+    "h3_vae": {
+      "psnr": 23.694076104597613,
+      "ssim": 0.6708792420950803,
+      "lpips": 0.41222795979543164,
+      "lr_pillow_rmse": 0.025032453577626835
+    },
+    "bicubic_dc": {
+      "psnr": 24.651582371104848,
+      "ssim": 0.732663791288029,
+      "lpips": 0.38390329209241,
+      "lr_pillow_rmse": 0.0002787547782645561
+    },
+    "h3_vae_dc": {
+      "psnr": 24.937525402415883,
+      "ssim": 0.7401119091294028,
+      "lpips": 0.3426209606907584,
+      "lr_pillow_rmse": 0.00024838504892117766
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.31562699982896447,
+      "max_float_lr_rmse": 9.983680143033504e-05
+    },
+    "h3_vae": {
+      "seconds": 0.27732804231345654,
+      "max_float_lr_rmse": 7.989743744147951e-05
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

@@ -1,0 +1,465 @@
+{
+  "scope": "One held-out DAVIS/bmx-trees native22 block, 64LR/256HR; interface/conditioning characterization only, no method or dataset claim",
+  "protocol": "Observed LR0..21 only; fixed neutral real text; BF16 DiT and FP16 VAE; output all22 after observation21, bounded block lookahead<=21; no later frames, GT pixels, oracle geometry or visibility in restoration",
+  "limitation": "Custom LR-VAE guide protocol, no Qwen vision input; shorter/smaller than official4-15sec768p generation. Singleblock has no persistent reference update comparison.",
+  "metrics": "RGB0..1 PNG8bit, fullcrop/no border shaving; LR consistency uses same Pillow bicubic4x reduction; bicubic control uses torch bicubic antialias as runner then PNG8bit rounding",
+  "summary": {
+    "bicubic": {
+      "mean_frame_psnr_db": 27.228793488390394,
+      "pooled_rgb_psnr_db": 26.899230042653073,
+      "lr_operator_rmse": 0.01326679435064515
+    },
+    "vae_guide_roundtrip": {
+      "mean_frame_psnr_db": 25.405540669073442,
+      "pooled_rgb_psnr_db": 25.0955528915523,
+      "lr_operator_rmse": 0.0320859402700748
+    },
+    "h3_bf16_normal49": {
+      "mean_frame_psnr_db": 22.01117758595342,
+      "pooled_rgb_psnr_db": 21.70069620364909,
+      "lr_operator_rmse": 0.06515894225899985
+    }
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.002578291843506704,
+          "rgb_psnr_db": 25.88667925287148,
+          "lr_operator_mse": 0.0002131028831058567
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0029343333055495482,
+          "rgb_psnr_db": 25.32490556975509,
+          "lr_operator_mse": 0.0004879483451877483
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.003574591625291354,
+          "rgb_psnr_db": 24.467735664539415,
+          "lr_operator_mse": 0.0009867261089484814
+        }
+      }
+    },
+    {
+      "frame": 1,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.002382658484592264,
+          "rgb_psnr_db": 26.229382022553335,
+          "lr_operator_mse": 0.00020548236655773422
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0036959610855550346,
+          "rgb_psnr_db": 24.322726100757635,
+          "lr_operator_mse": 0.0012735223531814687
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006779620111805956,
+          "rgb_psnr_db": 21.687946406415875,
+          "lr_operator_mse": 0.0038987734084646925
+        }
+      }
+    },
+    {
+      "frame": 2,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.002511416147660555,
+          "rgb_psnr_db": 26.000813176900802,
+          "lr_operator_mse": 0.00020435099080481868
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0038871114149806162,
+          "rgb_psnr_db": 24.103730111521585,
+          "lr_operator_mse": 0.0013098114807606049
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.00884161976901412,
+          "rgb_psnr_db": 20.534681657216733,
+          "lr_operator_mse": 0.005624887363033449
+        }
+      }
+    },
+    {
+      "frame": 3,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0025931801038813194,
+          "rgb_psnr_db": 25.86167319171441,
+          "lr_operator_mse": 0.0002127724813373062
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0041531208199170186,
+          "rgb_psnr_db": 23.81625434490886,
+          "lr_operator_mse": 0.0014924998798539022
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.008238220723274502,
+          "rgb_psnr_db": 20.841665763494994,
+          "lr_operator_mse": 0.004991716176871074
+        }
+      }
+    },
+    {
+      "frame": 4,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0024190457784165546,
+          "rgb_psnr_db": 26.16355912900799,
+          "lr_operator_mse": 0.00021979226739715491
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0030181532775104525,
+          "rgb_psnr_db": 25.202587082692965,
+          "lr_operator_mse": 0.0007429171372388823
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.0061596740699190215,
+          "rgb_psnr_db": 22.104422672804667,
+          "lr_operator_mse": 0.003310633230007689
+        }
+      }
+    },
+    {
+      "frame": 5,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.002547909273301334,
+          "rgb_psnr_db": 25.938160405463044,
+          "lr_operator_mse": 0.00022776821615083943
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.00466640951021442,
+          "rgb_psnr_db": 23.31017151478299,
+          "lr_operator_mse": 0.001911091387126746
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.01013400153962218,
+          "rgb_psnr_db": 19.94219034064554,
+          "lr_operator_mse": 0.006816915619393182
+        }
+      }
+    },
+    {
+      "frame": 6,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0030191092837640577,
+          "rgb_psnr_db": 25.201211663817734,
+          "lr_operator_mse": 0.0002335264681853133
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0048354129089723105,
+          "rgb_psnr_db": 23.155664344183116,
+          "lr_operator_mse": 0.0016946394315487633
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.01112639712077386,
+          "rgb_psnr_db": 19.536454433810917,
+          "lr_operator_mse": 0.0072249517913783165
+        }
+      }
+    },
+    {
+      "frame": 7,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.003137126229870523,
+          "rgb_psnr_db": 25.03468006060534,
+          "lr_operator_mse": 0.00025893111023003973
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.00508521361976163,
+          "rgb_psnr_db": 22.93690798506222,
+          "lr_operator_mse": 0.0018023917083173138
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.009807894759402433,
+          "rgb_psnr_db": 20.08424202863997,
+          "lr_operator_mse": 0.005867323415272972
+        }
+      }
+    },
+    {
+      "frame": 8,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.00285339480620935,
+          "rgb_psnr_db": 25.44638133602115,
+          "lr_operator_mse": 0.00024300424315968215
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.003437307969616053,
+          "rgb_psnr_db": 24.637815549989558,
+          "lr_operator_mse": 0.000728737394671921
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006437123244990909,
+          "rgb_psnr_db": 21.91308175800799,
+          "lr_operator_mse": 0.0031850580305651673
+        }
+      }
+    },
+    {
+      "frame": 9,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0019679581934131905,
+          "rgb_psnr_db": 27.059841318004146,
+          "lr_operator_mse": 0.00020577897723631934
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0034663216877973617,
+          "rgb_psnr_db": 24.601311355769752,
+          "lr_operator_mse": 0.0014201681745001922
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006576289580630046,
+          "rgb_psnr_db": 21.82019071304271,
+          "lr_operator_mse": 0.004084196382801487
+        }
+      }
+    },
+    {
+      "frame": 10,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0026894390297351575,
+          "rgb_psnr_db": 25.70338296836578,
+          "lr_operator_mse": 0.0001995964592945021
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.004077997516855496,
+          "rgb_psnr_db": 23.89553043005227,
+          "lr_operator_mse": 0.0013189288174420095
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.008393344197168758,
+          "rgb_psnr_db": 20.7606496682303,
+          "lr_operator_mse": 0.005103172958317314
+        }
+      }
+    },
+    {
+      "frame": 11,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.001990111929230945,
+          "rgb_psnr_db": 27.01122497017252,
+          "lr_operator_mse": 0.00018254197103678073
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.003194843992795239,
+          "rgb_psnr_db": 24.95550343991453,
+          "lr_operator_mse": 0.0011627301298378831
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006694003814888904,
+          "rgb_psnr_db": 21.743140444752946,
+          "lr_operator_mse": 0.004226759739843649
+        }
+      }
+    },
+    {
+      "frame": 12,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0022946605415935777,
+          "rgb_psnr_db": 26.392815523126846,
+          "lr_operator_mse": 0.0001815269868159682
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.002835170927222502,
+          "rgb_psnr_db": 25.47420753169023,
+          "lr_operator_mse": 0.0006205082880783033
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.004884828779921384,
+          "rgb_psnr_db": 23.111506543072405,
+          "lr_operator_mse": 0.002318170144896194
+        }
+      }
+    },
+    {
+      "frame": 13,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0023411223516546123,
+          "rgb_psnr_db": 26.30575888627206,
+          "lr_operator_mse": 0.00017135336569268228
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.003472882869319092,
+          "rgb_psnr_db": 24.593098639873112,
+          "lr_operator_mse": 0.0010719897895841342
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.007259074299973768,
+          "rgb_psnr_db": 21.391187583696084,
+          "lr_operator_mse": 0.004435838980199923
+        }
+      }
+    },
+    {
+      "frame": 14,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0019358715197680379,
+          "rgb_psnr_db": 27.13123469397123,
+          "lr_operator_mse": 0.00015120136085479942
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.002821254160684392,
+          "rgb_psnr_db": 25.495577874317927,
+          "lr_operator_mse": 0.0008839849256696142
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006974792050258114,
+          "rgb_psnr_db": 21.56468736121991,
+          "lr_operator_mse": 0.004518335546023965
+        }
+      }
+    },
+    {
+      "frame": 15,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0013279169344923424,
+          "rgb_psnr_db": 28.768290906456286,
+          "lr_operator_mse": 0.0001300656598423683
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0022274423198609507,
+          "rgb_psnr_db": 26.52193533302509,
+          "lr_operator_mse": 0.0008772367198513391
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006120802270561002,
+          "rgb_psnr_db": 22.131916499390236,
+          "lr_operator_mse": 0.004312755560761886
+        }
+      }
+    },
+    {
+      "frame": 16,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0010490459523780917,
+          "rgb_psnr_db": 29.792054875670388,
+          "lr_operator_mse": 0.00012253149830193517
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0014613627201927545,
+          "rgb_psnr_db": 28.352419758337483,
+          "lr_operator_mse": 0.0004709701997629117
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.003357233489673443,
+          "rgb_psnr_db": 24.740184532856585,
+          "lr_operator_mse": 0.002052280573176983
+        }
+      }
+    },
+    {
+      "frame": 17,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0009378508172187379,
+          "rgb_psnr_db": 30.27866238818588,
+          "lr_operator_mse": 9.960361799948739e-05
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0011476554709276478,
+          "rgb_psnr_db": 29.40188468673188,
+          "lr_operator_mse": 0.0002659120991125208
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.001619013329583774,
+          "rgb_psnr_db": 27.90749575619172,
+          "lr_operator_mse": 0.0006440356473471741
+        }
+      }
+    },
+    {
+      "frame": 18,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0008833182556238385,
+          "rgb_psnr_db": 30.538827938642733,
+          "lr_operator_mse": 9.82119257016532e-05
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0018223148410967734,
+          "rgb_psnr_db": 27.393765878797115,
+          "lr_operator_mse": 0.0008684159938485196
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.007371610362575891,
+          "rgb_psnr_db": 21.324376281267664,
+          "lr_operator_mse": 0.006158105756600025
+        }
+      }
+    },
+    {
+      "frame": 19,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0009446516651748526,
+          "rgb_psnr_db": 30.24728305544473,
+          "lr_operator_mse": 9.459377603165447e-05
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0017043409160539217,
+          "rgb_psnr_db": 27.684435297851945,
+          "lr_operator_mse": 0.0007119519836120722
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.007339052178073537,
+          "rgb_psnr_db": 21.34360024608743,
+          "lr_operator_mse": 0.005851220083621683
+        }
+      }
+    },
+    {
+      "frame": 20,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0011180014428795414,
+          "rgb_psnr_db": 29.515576359538723,
+          "lr_operator_mse": 9.605054746571831e-05
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.002086244138497413,
+          "rgb_psnr_db": 26.806348705028974,
+          "lr_operator_mse": 0.0008950195938260924
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.006428992576848448,
+          "rgb_psnr_db": 21.918570756906192,
+          "lr_operator_mse": 0.004914334580850313
+        }
+      }
+    },
+    {
+      "frame": 21,
+      "methods": {
+        "bicubic": {
+          "rgb_mse": 0.0014041184236281317,
+          "rgb_psnr_db": 28.525962621782046,
+          "lr_operator_mse": 0.00012038513832820709
+        },
+        "vae_guide_roundtrip": {
+          "rgb_mse": 0.0020252968234373,
+          "rgb_psnr_db": 26.935113184571392,
+          "lr_operator_mse": 0.0006377905533128283
+        },
+        "h3_bf16_normal49": {
+          "rgb_mse": 0.004596232847267277,
+          "rgb_psnr_db": 23.37597977868487,
+          "lr_operator_mse": 0.002878939540481225
+        }
+      }
+    }
+  ]
+}

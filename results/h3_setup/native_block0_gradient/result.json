@@ -1,0 +1,33 @@
+{
+  "scope": "Only one exact pretrained H3 DiT block, synthetic token input; tests autograd/LoRA plumbing, never restoration or whole-DiT training evidence",
+  "weights_sha256": "bc712fc8152b8d0fb657374d556219e674dfc37dfcf75667624b6f10f0e1811e",
+  "base_storage": "BF16 attn/MLP, FP16 pruned AdaLN coefficients copied exactly to native FP32 compute",
+  "tokens_shape": [
+    64,
+    5376
+  ],
+  "native_vs_scoped_forward_maxabs": 0.0,
+  "native_vs_scoped_forward_rmse": 0.0,
+  "unmodified_residual_backward_error": "one of the variables needed for gradient computation has been modified by an inplace operation: [CUDABFloat16Type [64, 5376]], which is output 0 of torch::autograd::CopySlices, is at version 8; expected version 4 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).",
+  "status": "complete",
+  "steps": [
+    {
+      "step": 0,
+      "loss": 10.029143333435059,
+      "input_grad_norm": 79.75235748291016,
+      "lora_grad_norm": 1.1959478855133057,
+      "base_weight_grad_count": 0
+    },
+    {
+      "step": 1,
+      "loss": 10.029143333435059,
+      "input_grad_norm": 79.75204467773438,
+      "lora_grad_norm": 1.1971137523651123,
+      "base_weight_grad_count": 0
+    }
+  ],
+  "trainable_parameters": 78848,
+  "seconds": 1.4356792382895947,
+  "peak_allocated_bytes": 885411840,
+  "peak_reserved_bytes": 903872512
+}

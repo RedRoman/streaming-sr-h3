@@ -1,0 +1,21 @@
+{
+  "cache": "results/h3_factorized/residual_v2/cache",
+  "runs": "results/h3_factorized/residual_v2/rgb_stage2",
+  "b1_runs": "results/h3_factorized/rgb_stage2",
+  "observations": "results/h3_factorized/observations",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "out": "results/h3_factorized/residual_v2/val_seed17",
+  "split": "val",
+  "initial_proposal": "zero for all B2",
+  "HR_only_evaluation": true,
+  "actual_H3_D": "native FP16",
+  "chart_projector": "strict FP32/noTF32",
+  "DiT_used": false,
+  "b1_probes": "Zero ADDITIONAL training; frozen B1 learned appearance/chart, current LR anchor, historical-near/current-null support. No HR inference inputs.",
+  "raw": "boxed readout; anchor invariance audited prebox",
+  "DC": "same64 iteration affine/box Dykstra all models and probes, actual physical current footprint only",
+  "seconds": 25.798302173614502,
+  "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "script_sha256": "0137bbe5db100f753493c68c1634f651243bcc496ef5e76f009693419e6e0d50"
+}

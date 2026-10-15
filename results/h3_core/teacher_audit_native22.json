@@ -1,0 +1,100 @@
+{
+  "config": {
+    "vae": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "/root/autodl-tmp/h3-w4a8-20261011/ComfyUI",
+    "source": "data/BSDS/images/val/101085.jpg",
+    "out": "results/h3_core/teacher_audit_native22.json",
+    "size": 256,
+    "context": 22,
+    "output_frame": 21
+  },
+  "vae": {
+    "layers": 36,
+    "checkpoint": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "anchor_latent_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "reports": {
+    "torch.float16": {
+      "0.1": {
+        "rgb_derivative_rms": 0.0008189624059014022,
+        "lr_derivative_rms": 0.0005426464485935867,
+        "rgb_forward_linearization_rmse": 6.948601367184892e-05,
+        "lr_forward_linearization_rmse": 3.094189378316514e-05,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.0,
+          "0.3": 0.3687766194343567,
+          "1.0": 0.9520881175994873
+        }
+      },
+      "0.3": {
+        "rgb_derivative_rms": 0.0007131006568670273,
+        "lr_derivative_rms": 0.0005067936726845801,
+        "rgb_forward_linearization_rmse": 0.0001360193855362013,
+        "lr_forward_linearization_rmse": 8.14402083051391e-05,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.34441134333610535,
+          "0.3": 0.0,
+          "1.0": 0.8147322535514832
+        }
+      },
+      "1.0": {
+        "rgb_derivative_rms": 0.0005334788002073765,
+        "lr_derivative_rms": 0.0003745306166820228,
+        "rgb_forward_linearization_rmse": 0.0007337967399507761,
+        "lr_forward_linearization_rmse": 0.0004596990183927119,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.6571233868598938,
+          "0.3": 0.6021027565002441,
+          "1.0": 0.0
+        }
+      }
+    },
+    "torch.float32": {
+      "0.1": {
+        "rgb_derivative_rms": 0.000717314425855875,
+        "lr_derivative_rms": 0.0005149542121216655,
+        "rgb_forward_linearization_rmse": 1.198226436827099e-05,
+        "lr_forward_linearization_rmse": 7.949441169330385e-06,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.0,
+          "0.3": 0.05160804092884064,
+          "1.0": 0.8290983438491821
+        },
+        "fp16_lr_derivative_relative_error_same_epsilon": 0.34276247024536133
+      },
+      "0.3": {
+        "rgb_derivative_rms": 0.0006963383639231324,
+        "lr_derivative_rms": 0.0005007231375202537,
+        "rgb_forward_linearization_rmse": 0.00010553488391451538,
+        "lr_forward_linearization_rmse": 7.040764467092231e-05,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.05018182098865509,
+          "0.3": 0.0,
+          "1.0": 0.7900407910346985
+        },
+        "fp16_lr_derivative_relative_error_same_epsilon": 0.13922002911567688
+      },
+      "1.0": {
+        "rgb_derivative_rms": 0.0005320198833942413,
+        "lr_derivative_rms": 0.00037445221096277237,
+        "rgb_forward_linearization_rmse": 0.0007289183558896184,
+        "lr_forward_linearization_rmse": 0.0004581511311698705,
+        "lr_relative_to_epsilon": {
+          "0.1": 0.6028845906257629,
+          "0.3": 0.5908110737800598,
+          "1.0": 0.0
+        },
+        "fp16_lr_derivative_relative_error_same_epsilon": 0.06635783612728119
+      }
+    }
+  },
+  "note": "FP32 compute uses the exact same FP16-stored weights cast to float32; final rollout must still audit actual target precision."
+}

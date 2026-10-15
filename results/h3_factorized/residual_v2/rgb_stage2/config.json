@@ -1,0 +1,44 @@
+{
+  "cache": "results/h3_factorized/residual_v2/cache",
+  "initial": "results/h3_factorized/residual_v2/latent_stage1",
+  "out": "results/h3_factorized/residual_v2/rgb_stage2",
+  "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+  "comfy": "external/ComfyUI_H3",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 200,
+  "batch": 4,
+  "lr": 0.0005,
+  "rgb_every": 4,
+  "rgb_weight": 5.0,
+  "validate_every": 50,
+  "kinds": [
+    "factorized_swap",
+    "factorized_no_swap",
+    "noninvertible_swap",
+    "mixed_memory"
+  ],
+  "residual_v2": true,
+  "torch": "2.10.0+cu128",
+  "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+  "actual_decoder_dtype": "float16",
+  "test_accessed": false,
+  "selection": "minimum mean actual-D validation RGB L1 across five unique new-evidence stages",
+  "source_hashes": {
+    "evaluate.py": "f9a3a60d10440aa9cfdb96d1e49dd316f58aec6c5e3859a7ecf20354395d3500",
+    "native_vae.py": "bd1a148df023fc5a281d14b99bb45dd458dd5e184af9d8864c74e13c881208c7",
+    "cache_residual.py": "2dae87b9ffb909668a76e9ddc5fbf64a5df1510d067ed71c05e10b8d88944b1a",
+    "cache_pairs.py": "daf3f283b6f5bfcfaa1352ba3ee2c30cc11bbd7fd810609f9c92224ac7569d93",
+    "train_rgb.py": "69cd97efc4ae65fcc988a0f2eebd3de1a76b79eb3708ed6780ad8a35e1a63ca7",
+    "evaluate_residual.py": "0137bbe5db100f753493c68c1634f651243bcc496ef5e76f009693419e6e0d50",
+    "model.py": "9326cc6df95826d832062a2e7b7b9e3a5177258bdccbd8c9c356056e321a24cb",
+    "residual_readout.py": "758da6ba4edbb023d5cfd1245fb11228bc7391f4faaea099e6609faedf5d4ff1",
+    "train.py": "11306f89a0588404bbaeb049b62ad53b167cdb0942805f4b2dd667d3c4f5a137",
+    "observations.py": "a72ea35905a47689799792d83b4cec359c180a09e3a5d477e405148afcf24b43",
+    "pixel_dc.py": "1aeb3c7ac96bff8c4463ed601079dc96aa2a986298e09c10a71256c5ec522269",
+    "residual_model.py": "20e8fcbd521a9ce0f0994fb18e0e614a203204d006083d0b548bf6b19591cfc4"
+  }
+}

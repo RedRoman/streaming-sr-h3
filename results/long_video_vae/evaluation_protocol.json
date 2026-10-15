@@ -1,0 +1,19 @@
+{
+  "base_protocol_sha256": "e38f2803851e584e8ffa4ae20c99d3d5430106a4ff0ff312816b55bfd73fa6f5",
+  "fixed_before_first_long_stream_metric": true,
+  "precision": "Both raw methods quantized8bit before common float64 DC25; report actualPillow residual too",
+  "metrics": [
+    "RGB PSNR",
+    "RGB SSIM11x11sigma1.5 valid",
+    "LPIPS-Alex0.1",
+    "LR reprojection error",
+    "temporalexcess LR-onlyDIS confidence>=.5 subtractHRmotion/appearance",
+    "annotation-visible target bbox PSNR and LPIPS if minside>=32"
+  ],
+  "bbox": "Evaluationonly, fullsource annotation converted through recorded resize/crop; provided coordinates without extra1based offset; not exact surface mask or identity truth",
+  "return": "First17frames since annotation absence\u2192visible, approximate return event; annotationnever modelinput",
+  "boundary": "Firstnew frame emitted by each block afterinitial; separate subset",
+  "sample_unit": "Sourcevideo; frames notindependent trials; only4sources,1train1val2test",
+  "model_selection": "No trainedparameter, no test-dependent protocolselection",
+  "evaluation_source_sha256": "4af2a1f55d0682de93a5f2c3a896ff025aa4cae32b293cad21b8bdbf72e717c7"
+}

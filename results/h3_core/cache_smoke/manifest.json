@@ -1,0 +1,57 @@
+{
+  "config": {
+    "vae": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "/root/autodl-tmp/h3-w4a8-20261011/ComfyUI",
+    "data": "data/BSDS/images",
+    "out": "results/h3_core/cache_smoke",
+    "counts": [
+      1,
+      1,
+      1
+    ],
+    "size": 128,
+    "frames": 39,
+    "atoms": 32,
+    "epsilon": 0.1,
+    "effective_noise": 0.005,
+    "nuisance": false
+  },
+  "vae": {
+    "layers": 36,
+    "checkpoint": "/root/autodl-tmp/h3-quality-repair-20261013/models/vae/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "protocol": "Single-frame causal encoding; canonical 4x4-token central ROI; rank32 fixed decoder span; camera+visibility oracle; no DiT rollout yet",
+  "limits": [
+    "Decoder finite differences are a local approximation.",
+    "PIL vs torch degradation mismatch is included in effective noise, but must be measured.",
+    "39 frames is a short pilot, not long revisit evidence."
+  ],
+  "items": [
+    {
+      "id": "train_100075",
+      "path": "results/h3_core/cache_smoke/train_100075.pt",
+      "fd_relative_halfstep": 0.39350658655166626,
+      "anchor_lr_operator_rmse": 0.00407966086640954,
+      "roundtrip_psnr_db": 28.758921069720994,
+      "seconds": 2.3235278129577637
+    },
+    {
+      "id": "val_101085",
+      "path": "results/h3_core/cache_smoke/val_101085.pt",
+      "fd_relative_halfstep": 0.38939929008483887,
+      "anchor_lr_operator_rmse": 0.004101164173334837,
+      "roundtrip_psnr_db": 26.70777544532281,
+      "seconds": 3.69632625579834
+    },
+    {
+      "id": "test_100007",
+      "path": "results/h3_core/cache_smoke/test_100007.pt",
+      "fd_relative_halfstep": 0.5438924431800842,
+      "anchor_lr_operator_rmse": 0.003967429976910353,
+      "roundtrip_psnr_db": 27.27985438971284,
+      "seconds": 5.055677890777588
+    }
+  ]
+}

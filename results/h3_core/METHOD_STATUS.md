@@ -1,0 +1,28 @@
+# H3 canonical memory adapter: current implementation and evidence
+
+This is an implemented research prototype. An effective new H3 restoration method has **not** yet been established.
+
+The stream state lives in canonical coordinates rather than target diffusion-noise coordinates. A fixed decoder span P0 covers one 4×4 spatial latent ROI over the native temporal context. The conditional chart Cφ(anchor) has orthonormal columns, and the reference is z(a)=z_anchor+P0 Cφ a. P0 is fixed before response caching. Therefore a cached decoder response K0 remains compatible with changing Cφ through K(Cφ)=K0 Cφ; cached operators do not become stale just because the conditional chart is learned.
+
+Actual low-resolution packets alone write G0 and h0. The same copied observation ID writes nothing; a new noisy packet at the same footprint increases precision. Camera geometry and visibility are oracle inputs in this controlled prototype. The physical teacher is the real H3 decoder followed by camera warp, blur and downsampling, linearized locally. It is not an exact latent nullspace or an exact video inverse model.
+
+The analytic mean/covariance are classical controls. The additional learned component transports persistent, whitened identity detail and changes it according to new information and current context. Its transition uses log-determinant precision gain, including repeated independent measurements. It must be compared with deterministic MAP, nonzero shared-noise identity, fresh noise, Cholesky coupling and Bures coupling. These controls use the same initial identity draw; the fresh-noise control also starts with that same draw. Stateless and GRU detail heads receive the same full analytic evidence ledger to isolate learned transport from the benefit of bookkeeping.
+
+The neural heads have 11,536 / 11,432 / 11,695 / 11,432 parameters (transport / stateless / GRU / single-packet), in addition to the shared conditional chart. Fixed-PCA and random coordinate controls are implemented. Conditional basis superiority has not been demonstrated. The current training driver freezes the shared chart after pretraining; joint basis/transport learning, counterfactual cue rollouts, and held-out fixed-basis comparisons remain main-method work.
+
+Native H3 video latents are [1,24,7,16,16] for the selected 256×256×22 context. Encoding copies of one already observed anchor supplies valid decoder context without introducing future observations or extra data packets. Native 22-frame decode can return CPU buffers even when inference runs on CUDA; the integration layer explicitly normalizes the selected RGB frame back to the latent device.
+
+The native guide builder can replace the baseline's one LR-upsample clip guide with one memory-composited clip guide. Current known poses render the canonical memory into the 22 already observed views. Current LR fills unknown or occluded content. This preserves the number of guide clips and diffusion calls. No target latent is pinned. Blocks are [0,22) and [17,39), with five overlapping input frames; the second block emits only [22,39), and maximum input wait is 21 frames plus computation.
+
+Verified so far:
+
+- The separate small-model experiment completed 18,000 optimizer steps over three seeds. Its conclusions and limits are in ../learned_core/FINDINGS.md.
+- Actual FP16 H3 VAE encoding/decoding and actual NVFP4-all H3 DiT guide sampling ran successfully. This proves integration, not SR effectiveness.
+- Tiny 128-pixel/single-latent VAE outputs have visible artifacts; they are not the main teacher protocol.
+- Native 256×22 roundtrip is materially better. With the same FP16-stored weights, FP32 decoder computation reduces finite-difference noise: epsilon .1 vs .3 LR derivative disagreement is about 5%, and epsilon .1 actual LR forward prediction error is 7.95e-6.
+- Synthetic API and gradient checks cover strict prefix causality, no update from exact packet copies, information gain from independent same-footprint measurements, nonzero analytic identity transport, finite backward passes, guide timing and block emission rules. Their scope is explicitly synthetic tensors, not actual H3 effectiveness.
+
+Next execution is recorded in LIVE_STATE.json. The initial three-source native cache and 25-step adapter run are pipeline validation. They cannot support training-data generalization or a paper claim. A real frozen FP16 H3 decoder must audit RGB reconstruction, LR reprojection, and linearization error after training; cached coefficient loss alone is insufficient. Train-only PCA fitting actually encoded all 200 official training images; the rank32 span covers 96.39% of their SR residual energy. Held-out coverage and learned conditional-basis gains remain to be measured. Long revisit, real motion, estimated correspondence and final H3 restored-video comparisons remain incomplete.
+
+
+The distributed PCA precision audit identified cuDNN TF32 as the remaining FD discrepancy: explicitly disabling TF32 reduced epsilon .05/.1 degraded-LR derivative disagreement from 46.4% to 0.242%, and .1/.3 to 0.141%. Strict native and scoped eager math agreed exactly. Partial default-TF32 caches are preserved separately as numerical audit evidence. Cross-source 32/8/16 caches are now being generated with a declared strict FP32 decoder teacher and final FP16 RGB rollout audit. The new nonlinear memory driver trains actual frozen-D RGB/support-region and past-LR-witness losses rather than assuming that a finite-difference operator remains valid for codes 60–80 times its probe norm. It is not yet an established restoration method.

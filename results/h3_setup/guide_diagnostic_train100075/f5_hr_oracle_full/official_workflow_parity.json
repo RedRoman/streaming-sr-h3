@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "scope": "Exact official sampling nodes with identical cached actual AddGuide output, prompt, seed101, CFG1/Euler and exact normal50 sigma points; no Turbo LoRA, no model patches",
+  "actual_nodes": [
+    "EmptyMiniMaxH3LatentAV.execute",
+    "Noise_RandomNoise.generate_noise",
+    "BasicGuider.execute",
+    "SamplerCustomAdvanced.execute"
+  ],
+  "guide_encoding": "Actual official AddGuide was separately parity-verified; reuse its exact saved output to keep VAE and40GBDiT in separate processes",
+  "noise_maxabs_per_stream": [
+    0.0,
+    0.0
+  ],
+  "video_maxabs_vs_direct_sampler": 0.0,
+  "audio_maxabs_vs_direct_sampler": 0.0,
+  "sigma_maxabs_vs_official_BasicScheduler_simple49": 0.004711627960205078,
+  "cfg": 1.0,
+  "model_sampling_shifts": [
+    12.0,
+    3.0
+  ],
+  "video_head_shape": [
+    96,
+    5376
+  ],
+  "audio_head_shape": [
+    32,
+    5376
+  ],
+  "head_note": "Single native velocity head (96 video/32 audio), no PDD/Turbo head bank",
+  "seconds": 51.91857897862792,
+  "peak_allocated_bytes": 7589859840
+}

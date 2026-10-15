@@ -1,0 +1,162 @@
+{
+  "status": "complete",
+  "scope": "Real quantized native MiniMax-H3 DiT plus guide-conditioned sampling integration smoke; not a quality benchmark",
+  "model_path": "/root/autodl-tmp/h3-w4a4-20261013/models/diffusion_models/minimax_h3_fl2va_pruned_nvfp4_all.safetensors",
+  "precision_label": "Native NVFP4-all pruned FL2VA DiT; BF16 compute and independently cached genuine BF16 Qwen3-VL text; FP16 VAE",
+  "steps": 4,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "cfg": 1.0,
+  "seed": 101,
+  "frames": 5,
+  "size": 256,
+  "max_observed_input_index": 4,
+  "max_input_wait_frames": 4,
+  "future_beyond_block_used": false,
+  "memory_fraction_limit": 0.5,
+  "comfy_reserved_vram_gb": 10.0,
+  "forward_events": [
+    {
+      "call": 0,
+      "video_shape": [
+        1,
+        24,
+        2,
+        16,
+        16
+      ],
+      "audio_shape": [
+        1,
+        32,
+        2,
+        8
+      ],
+      "context_shape": [
+        1,
+        99,
+        5376
+      ],
+      "timestep": [
+        1000.0
+      ],
+      "video_output_finite": true,
+      "audio_output_finite": true
+    },
+    {
+      "call": 1,
+      "video_shape": [
+        1,
+        24,
+        2,
+        16,
+        16
+      ],
+      "audio_shape": [
+        1,
+        32,
+        2,
+        8
+      ],
+      "context_shape": [
+        1,
+        99,
+        5376
+      ],
+      "timestep": [
+        972.9729614257812
+      ],
+      "video_output_finite": true,
+      "audio_output_finite": true
+    },
+    {
+      "call": 2,
+      "video_shape": [
+        1,
+        24,
+        2,
+        16,
+        16
+      ],
+      "audio_shape": [
+        1,
+        32,
+        2,
+        8
+      ],
+      "context_shape": [
+        1,
+        99,
+        5376
+      ],
+      "timestep": [
+        923.076904296875
+      ],
+      "video_output_finite": true,
+      "audio_output_finite": true
+    },
+    {
+      "call": 3,
+      "video_shape": [
+        1,
+        24,
+        2,
+        16,
+        16
+      ],
+      "audio_shape": [
+        1,
+        32,
+        2,
+        8
+      ],
+      "context_shape": [
+        1,
+        99,
+        5376
+      ],
+      "timestep": [
+        800.0
+      ],
+      "video_output_finite": true,
+      "audio_output_finite": true
+    }
+  ],
+  "prompt": "A single woolly sheep walks calmly along a fence in a green field. Show the complete animal from the side with coherent hoof placement and natural wool movement. A slow tracking camera keeps a stable distance. Sound: Muted hoofsteps in grass, a quiet sheep breath and a light breeze. Photorealistic natural motion at normal speed, fine surface detail and consistent subject identity. One continuous shot with no cuts, no montage, no captions, no overlaid text, no logos and no watermark.",
+  "context_shape": [
+    99,
+    5120
+  ],
+  "context_sha256": "7c6c992cbcd0bbd002aa48bf4c1510ae275553e480db7b8a8a1ec22551972195",
+  "context_protocol": "Qwen3-VL32B BF16 raw prompt without chat/special tokens; unnormalized hidden_states[50]; TEXT_TAG=1; cached source provenance archived separately",
+  "guide_latent_shape": [
+    1,
+    24,
+    2,
+    16,
+    16
+  ],
+  "native_model_class": "MiniMaxH3Model",
+  "native_block_count": 50,
+  "sampling_seconds_including_offload_and_observers": 10.373468790203333,
+  "output_shape": [
+    5,
+    256,
+    256,
+    3
+  ],
+  "output_range": [
+    0.0,
+    1.0
+  ],
+  "total_seconds": 15.163824439048767,
+  "peak_allocated_bytes": 9365466112,
+  "peak_reserved_bytes": 9586081792,
+  "semantic_condition_warning": "Actual cache prompt describes one sheep; smoke source image has three pigs. The earlier claim of semantic match was incorrect. This cache was used only for an explicitly cross-semantic integration smoke, not SR quality comparisons.",
+  "input_protocol": "Static repeated-image smoke: one observed LR image repeated 5 times; no actual motion clip or acquisition waiting was measured",
+  "observed_distinct_frame_indices": [
+    0
+  ],
+  "actual_latest_distinct_observation_index": 0,
+  "max_input_wait_frames_interpretation": "Nominal 5-frame block budget upper bound only; all guide frames were already available from the first LR image",
+  "streaming_throughput_claim": false
+}

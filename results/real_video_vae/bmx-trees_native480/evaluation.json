@@ -1,0 +1,48 @@
+{
+  "case": "bmx-trees_native480",
+  "sequence": "bmx-trees",
+  "split": "test",
+  "resolution": "native480",
+  "shape_hw": [
+    480,
+    832
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 31.32738035375422,
+      "ssim": 0.8704531653360887,
+      "lpips": 0.2549918910319155,
+      "lr_pillow_rmse": 0.008341254941611127
+    },
+    "h3_vae": {
+      "psnr": 29.36546074260365,
+      "ssim": 0.8157819672064348,
+      "lpips": 0.25693380561741913,
+      "lr_pillow_rmse": 0.020106541543183
+    },
+    "bicubic_dc": {
+      "psnr": 32.11438612504439,
+      "ssim": 0.8845519748601046,
+      "lpips": 0.21037704158913006,
+      "lr_pillow_rmse": 0.00015714763205985284
+    },
+    "h3_vae_dc": {
+      "psnr": 32.149420044638894,
+      "ssim": 0.8780598884279077,
+      "lpips": 0.17324880307370966,
+      "lr_pillow_rmse": 0.00013704954571122389
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 2.4225876252166927,
+      "max_float_lr_rmse": 5.6930578055725335e-05
+    },
+    "h3_vae": {
+      "seconds": 2.2352682910859585,
+      "max_float_lr_rmse": 6.0167249660771564e-05
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

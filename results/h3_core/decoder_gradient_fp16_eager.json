@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "Actual native H3 VAE, frozen weights, RGB supervision gradient to latent input; not DiT training",
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "dtype": "float16",
+  "latent_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "loss_mse": 0.0015279515646398067,
+  "eager_autograd": true,
+  "forward_parity_rmse": 0.0,
+  "latent_gradient_rms": 5.127391844439444e-08,
+  "latent_gradient_max": 4.410743713378906e-06,
+  "frozen_parameter_grads": 0,
+  "peak_allocated_bytes": 10705762304,
+  "seconds": 0.5053451061248779
+}

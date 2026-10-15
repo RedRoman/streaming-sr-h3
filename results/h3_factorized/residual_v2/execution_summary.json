@@ -1,0 +1,44 @@
+{
+  "status": "fixed_three_seed_training_and_val_complete",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "train_sources": 32,
+  "val_sources": 8,
+  "B2_test_accessed": false,
+  "architecture_or_loss_tuned_after_seed17": false,
+  "training_budget": {
+    "latent_Adam_steps": 600,
+    "RGB_Adam_steps": 200,
+    "batch": 4,
+    "RGB_every": 4,
+    "actual_D_backward_per_model": 50
+  },
+  "data_cache": {
+    "sources": 40,
+    "seconds": 88.066
+  },
+  "actual_decoder_evaluation_seconds": 52.407,
+  "raw_rows": 1080,
+  "DC_rows": 1080,
+  "interruption": {
+    "session": 70042,
+    "exit": 255,
+    "kind": "mixed_memory",
+    "seed": 43,
+    "last_step": 100,
+    "replayed_effective_steps": 200,
+    "extra_physical_compute_steps": 100,
+    "complete_replay_session": 8146
+  },
+  "active_gpu_sessions": [],
+  "unix_time": 1792055635.918029,
+  "effective_optimizer_loop_seconds": {
+    "latent_stage1": 775.4576194286346,
+    "rgb_stage2": 406.38077902793884
+  },
+  "RGB_backward_detail_effective_steps_per_model": 20,
+  "root_complete_seconds_warning": "Only last invocation duration, not multi-invocation total"
+}

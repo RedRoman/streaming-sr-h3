@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/sgl-project/sglang/blob/main/python/sglang/multimodal_gen/runtime/pipelines_core/stages/model_specific_stages/minimax_h3/release_metadata.py",
+  "source_sha256": "9389abc75f2161c9cede60b208792833072a0597728db979212b9a66c8152ce2",
+  "quality_workload": {
+    "num_inference_steps": 50,
+    "flow_shift": 12.0,
+    "audio_flow_shift": 3.0
+  },
+  "counting_note": "SGLang/diffusers num_inference_steps count sigma grid points including terminal zero; normal 50 grid points =>49 model evaluations. Comfy steps counts model evaluations; verify actual sigma grid rather than naming both 50 steps.",
+  "comfy_template_warning": "Current official Comfy i2v template includes turbo LoRA; do not attribute its 4-step setting to unmodified base."
+}

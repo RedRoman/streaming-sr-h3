@@ -1,0 +1,48 @@
+{
+  "case": "soapbox_256",
+  "sequence": "soapbox",
+  "split": "test",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 28.741053928028453,
+      "ssim": 0.8042753582650964,
+      "lpips": 0.34713412685827777,
+      "lr_pillow_rmse": 0.009221882093697786
+    },
+    "h3_vae": {
+      "psnr": 28.474630269137297,
+      "ssim": 0.7883508584716103,
+      "lpips": 0.3371566479856318,
+      "lr_pillow_rmse": 0.014108540447936817
+    },
+    "bicubic_dc": {
+      "psnr": 29.273128682916816,
+      "ssim": 0.8158479251644828,
+      "lpips": 0.3138843517411839,
+      "lr_pillow_rmse": 0.00010903470320045017
+    },
+    "h3_vae_dc": {
+      "psnr": 29.586792252280496,
+      "ssim": 0.8212843456051566,
+      "lpips": 0.27808600664138794,
+      "lr_pillow_rmse": 6.136116479121318e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.45939358277246356,
+      "max_float_lr_rmse": 7.141211273785119e-06
+    },
+    "h3_vae": {
+      "seconds": 0.3193017919547856,
+      "max_float_lr_rmse": 1.5553803698373941e-06
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

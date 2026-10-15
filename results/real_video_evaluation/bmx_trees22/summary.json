@@ -1,0 +1,99 @@
+{
+  "source_video": "DAVIS/bmx-trees",
+  "split": "test",
+  "frames": 22,
+  "methods": {
+    "bicubic": {
+      "psnr_rgb": 27.2318453355269,
+      "ssim_rgb": 0.8363325731320814,
+      "lpips_alex_v01": 0.2820669351653619,
+      "lr_pillow_rmse": 0.013109064364636486,
+      "highpass_error_rmse": 0.029003411531448364,
+      "highpass_energy_ratio": 0.08371586081656543,
+      "temporal_error_excess_rmse": 0.03437630158095133,
+      "temporal_mask_coverage": 0.4970463344029018
+    },
+    "h3_vae_only": {
+      "psnr_rgb": 25.405540206215598,
+      "ssim_rgb": 0.7638878117908131,
+      "lpips_alex_v01": 0.2808150432326577,
+      "lr_pillow_rmse": 0.03130100904540582,
+      "highpass_error_rmse": 0.030426973561671646,
+      "highpass_energy_ratio": 0.12856130335818639,
+      "temporal_error_excess_rmse": 0.04259836984177431,
+      "temporal_mask_coverage": 0.4970463344029018
+    },
+    "h3_bf16": {
+      "psnr_rgb": 22.0111777565696,
+      "ssim_rgb": 0.6713647977872328,
+      "lpips_alex_v01": 0.3194563090801239,
+      "lr_pillow_rmse": 0.0634110529314388,
+      "highpass_error_rmse": 0.0318377393043854,
+      "highpass_energy_ratio": 0.14154815301299095,
+      "temporal_error_excess_rmse": 0.0643623870398317,
+      "temporal_mask_coverage": 0.4970463344029018
+    },
+    "bicubic_dc": {
+      "psnr_rgb": 28.103794704784047,
+      "ssim_rgb": 0.8564919531345367,
+      "lpips_alex_v01": 0.23039267618547787,
+      "lr_pillow_rmse": 0.0003139259404799139,
+      "highpass_error_rmse": 0.02835426428778605,
+      "highpass_energy_ratio": 0.2149460112506693,
+      "temporal_error_excess_rmse": 0.03463952119151751,
+      "temporal_mask_coverage": 0.4970463344029018
+    },
+    "h3_vae_only_dc": {
+      "psnr_rgb": 28.228893973610617,
+      "ssim_rgb": 0.8510597158562053,
+      "lpips_alex_v01": 0.19257007336074655,
+      "lr_pillow_rmse": 0.0003108032046425664,
+      "highpass_error_rmse": 0.028793984346769073,
+      "highpass_energy_ratio": 0.27383660118688236,
+      "temporal_error_excess_rmse": 0.034528510024150215,
+      "temporal_mask_coverage": 0.4970463344029018
+    },
+    "h3_bf16_dc": {
+      "psnr_rgb": 27.93793331493031,
+      "ssim_rgb": 0.8414158929478038,
+      "lpips_alex_v01": 0.1943884871222756,
+      "lr_pillow_rmse": 0.0003321252423285676,
+      "highpass_error_rmse": 0.029403361745856026,
+      "highpass_energy_ratio": 0.2950790808959441,
+      "temporal_error_excess_rmse": 0.0357694397015231,
+      "temporal_mask_coverage": 0.4970463344029018
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.2818655828014016,
+      "max_float_operator_lr_rmse": 0.0001292087284485968
+    },
+    "h3_vae_only": {
+      "seconds": 0.27181287482380867,
+      "max_float_operator_lr_rmse": 0.00012771962635384776
+    },
+    "h3_bf16": {
+      "seconds": 0.2727383328601718,
+      "max_float_operator_lr_rmse": 0.00014227656763811906
+    }
+  },
+  "projection_iterations": 25,
+  "projection_type": "Classical separable floating-AA bicubic affine + RGB box Dykstra; no HR fitting",
+  "input_sha_verified": true,
+  "perceptual_weights_sha256": {
+    "/Users/hezihao/.cache/torch/hub/checkpoints/alexnet-owt-7be5be79.pth": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "/Users/hezihao/Documents/New project/route3_conditional_world_20261013/.venv/lib/python3.14/site-packages/lpips/weights/v0.1/alex.pth": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+  },
+  "lpips_package": "0.1.4",
+  "torch": "2.14.1",
+  "lpips_reference": "https://github.com/richzhang/PerceptualSimilarity",
+  "limits": [
+    "One clip, no sequence-level significance inference",
+    "LR is synthetically degraded and motion is real",
+    "Pillow integer forward differs from floating Torch operator; actual Pillow residual reported",
+    "Temporal residual subtracts HR motion/appearance residual; flow is from LR only",
+    "Highpass ratio is diagnostic, not a perceptual score",
+    "H3 baseline is frozen foundation inference, no learned memory yet"
+  ]
+}

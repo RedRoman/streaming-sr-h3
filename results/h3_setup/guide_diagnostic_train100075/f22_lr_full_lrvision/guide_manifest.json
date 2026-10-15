@@ -1,0 +1,39 @@
+{
+  "case": "f22_lr_full_lrvision",
+  "scope": "Guide interface diagnosis only. HR-oracle is forbidden as a causal SR method input.",
+  "target_frames": 22,
+  "guide_input_frames": 22,
+  "guide_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "guide_quality": "lr",
+  "guide_mode": "full",
+  "oracle_HR_guide": false,
+  "official_AddGuide_execute_vs_direct_encode_max_abs": 0.0,
+  "official_lanczos_center_same_canvas_max_abs": 0.0039215534925460815,
+  "guide_encoding": "Actual MiniMaxH3AddGuide.execute with standard comfy.sd.VAE; raw0..1RGB, native wrapper normalization; latent formatscale1",
+  "frame_idx": 0,
+  "fps": 24,
+  "audio_latent_fps": 40,
+  "frame_per_token": [
+    1,
+    4,
+    4,
+    4,
+    4
+  ],
+  "frame_rescale": 1.6666666666666667,
+  "visual_cond_timestep": 0.999,
+  "context_sha256": "7725f434491fa4631b93e0c225dce549ad30b66cd2dc35748c9ed79f9543b340",
+  "source_sha256": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+  "source_split": "BSDS500 official train",
+  "source_image": "data/BSDS/images/train/100075.jpg",
+  "guide_sha256": "5d01849d76b1a5bea6ec2b189300be648312270861d8f1e1001298ceb7475662",
+  "context_protocol": "Actual MiniMaxH3Tokenizer raw neutral prompt + observedLR firstimage vision block; unnormalizedQwen3VL layer50, visiontag0/texttag1; no HR vision",
+  "shared_context_observed_lr_sha256": "f46c6c9ed63d299e5beff35dc14f87c2f6b3229f2a88509769aa50a15707b8bf",
+  "uses_future_gt_semantics": false
+}

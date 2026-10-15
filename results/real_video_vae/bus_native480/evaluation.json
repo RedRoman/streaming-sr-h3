@@ -1,0 +1,48 @@
+{
+  "case": "bus_native480",
+  "sequence": "bus",
+  "split": "train",
+  "resolution": "native480",
+  "shape_hw": [
+    480,
+    832
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 26.313007614829324,
+      "ssim": 0.8006295643069528,
+      "lpips": 0.38920805941928516,
+      "lr_pillow_rmse": 0.013250622644343159
+    },
+    "h3_vae": {
+      "psnr": 26.117079041220926,
+      "ssim": 0.7834670408205553,
+      "lpips": 0.36224615438417956,
+      "lr_pillow_rmse": 0.018440723165192387
+    },
+    "bicubic_dc": {
+      "psnr": 27.14533519744873,
+      "ssim": 0.8166416368701241,
+      "lpips": 0.3483883901075883,
+      "lr_pillow_rmse": 0.0003244884071384811
+    },
+    "h3_vae_dc": {
+      "psnr": 27.420959646051582,
+      "ssim": 0.8222038556228984,
+      "lpips": 0.3007861470634287,
+      "lr_pillow_rmse": 0.0003107853236460042
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 2.253171583171934,
+      "max_float_lr_rmse": 0.00012961077318135726
+    },
+    "h3_vae": {
+      "seconds": 2.2453247075900435,
+      "max_float_lr_rmse": 0.00011532253693549241
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

@@ -1,0 +1,412 @@
+{
+  "config": {
+    "cache": "results/h3_core/cache_quotient_v1_packetstats",
+    "checkpoint": "results/h3_core/projected_nonlinear_v1/seed17/checkpoint.pt",
+    "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "external/ComfyUI_H3",
+    "out": "results/h3_core/nonlinear_lr_inverse_val",
+    "steps": 40,
+    "wait_repair": "results/h3_core/projected_nonlinear_v1"
+  },
+  "scope": "VAL-only classical nonlinearinverse diagnostic; ALL39 realLR targets+sharedprior, noHR optimization; extra40Dbackwardcalls vs neural1Dreadout",
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "items": {
+    "val_101085": {
+      "objective_before": 4057185.2739780424,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 1.076841726899147e-08,
+      "minimum_valid_pixels": 488,
+      "initial_code_norm": 24.893047332763672,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 25.187793731689453,
+            "psnr_nominal_roi_db": 26.809738159179688,
+            "psnr_teacher90_support_db": 25.405824661254883,
+            "gradient_l1_full": 0.07373315095901489,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "bounded": {
+            "psnr_full_db": 25.218341827392578,
+            "psnr_nominal_roi_db": 26.81296157836914,
+            "psnr_teacher90_support_db": 25.407730102539062,
+            "gradient_l1_full": 0.07354369759559631,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "all39_lr_schur_rmse": 0.022800933569669724
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0767059326171875
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_101087": {
+      "objective_before": 4293271.094745414,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 9.837094694375992e-09,
+      "minimum_valid_pixels": 3360,
+      "initial_code_norm": 30.69910430908203,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 25.58551788330078,
+            "psnr_nominal_roi_db": 24.458160400390625,
+            "psnr_teacher90_support_db": 23.941871643066406,
+            "gradient_l1_full": 0.0631117969751358,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "bounded": {
+            "psnr_full_db": 25.73674774169922,
+            "psnr_nominal_roi_db": 24.466230392456055,
+            "psnr_teacher90_support_db": 23.952133178710938,
+            "gradient_l1_full": 0.062174033373594284,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "all39_lr_schur_rmse": 0.021638860926032066
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.059295654296875
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_102061": {
+      "objective_before": 1116460.5507010163,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 6.897607818245888e-09,
+      "minimum_valid_pixels": 480,
+      "initial_code_norm": 41.70333480834961,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 22.90951919555664,
+            "psnr_nominal_roi_db": 21.564329147338867,
+            "psnr_teacher90_support_db": 20.627090454101562,
+            "gradient_l1_full": 0.07564010471105576,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "bounded": {
+            "psnr_full_db": 22.997135162353516,
+            "psnr_nominal_roi_db": 21.75151824951172,
+            "psnr_teacher90_support_db": 20.871082305908203,
+            "gradient_l1_full": 0.07503315806388855,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "all39_lr_schur_rmse": 0.012349393218755722
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0585784912109375
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_103070": {
+      "objective_before": 2016461.8628497582,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 1.90084392670542e-08,
+      "minimum_valid_pixels": 728,
+      "initial_code_norm": 22.316293716430664,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 28.656328201293945,
+            "psnr_nominal_roi_db": 27.462509155273438,
+            "psnr_teacher90_support_db": 25.061180114746094,
+            "gradient_l1_full": 0.037387993186712265,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "bounded": {
+            "psnr_full_db": 28.672151565551758,
+            "psnr_nominal_roi_db": 27.58125114440918,
+            "psnr_teacher90_support_db": 25.172388076782227,
+            "gradient_l1_full": 0.03734610229730606,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "all39_lr_schur_rmse": 0.016070835292339325
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.060394287109375
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_105025": {
+      "objective_before": 4132739.0922501395,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 1.5745172277092934e-08,
+      "minimum_valid_pixels": 3360,
+      "initial_code_norm": 19.57097053527832,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 25.5501766204834,
+            "psnr_nominal_roi_db": 30.15265655517578,
+            "psnr_teacher90_support_db": 29.110294342041016,
+            "gradient_l1_full": 0.06556609272956848,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "bounded": {
+            "psnr_full_db": 25.583541870117188,
+            "psnr_nominal_roi_db": 30.15241813659668,
+            "psnr_teacher90_support_db": 29.119779586791992,
+            "gradient_l1_full": 0.06526150554418564,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "all39_lr_schur_rmse": 0.021406490355730057
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.074554443359375
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_106024": {
+      "objective_before": 496189.38233925065,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 5.0640664994716644e-09,
+      "minimum_valid_pixels": 660,
+      "initial_code_norm": 49.95376205444336,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 29.86638641357422,
+            "psnr_nominal_roi_db": 26.120651245117188,
+            "psnr_teacher90_support_db": 24.16683578491211,
+            "gradient_l1_full": 0.026429247111082077,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "bounded": {
+            "psnr_full_db": 30.118656158447266,
+            "psnr_nominal_roi_db": 26.21932601928711,
+            "psnr_teacher90_support_db": 24.325153350830078,
+            "gradient_l1_full": 0.02604023739695549,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "all39_lr_schur_rmse": 0.00800763163715601
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.05206298828125
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_108005": {
+      "objective_before": 6920943.86168729,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 2.4796463549137115e-08,
+      "minimum_valid_pixels": 728,
+      "initial_code_norm": 24.20030403137207,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 24.06189727783203,
+            "psnr_nominal_roi_db": 20.27098846435547,
+            "psnr_teacher90_support_db": 19.069746017456055,
+            "gradient_l1_full": 0.06934432685375214,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "bounded": {
+            "psnr_full_db": 24.130767822265625,
+            "psnr_nominal_roi_db": 20.28912353515625,
+            "psnr_teacher90_support_db": 19.09282875061035,
+            "gradient_l1_full": 0.06899912655353546,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "all39_lr_schur_rmse": 0.02941097505390644
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.057159423828125
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    },
+    "val_108070": {
+      "objective_before": 8244688.96869499,
+      "objective_after": NaN,
+      "operator_probe_maxabs": 2.782326191663742e-08,
+      "minimum_valid_pixels": 3360,
+      "initial_code_norm": 16.860107421875,
+      "final_code_norm": NaN,
+      "extra_gradient_decoder_calls": 40,
+      "metrics": {
+        "linear_map": {
+          "affine": {
+            "psnr_full_db": 22.544780731201172,
+            "psnr_nominal_roi_db": 21.14104461669922,
+            "psnr_teacher90_support_db": 20.36724090576172,
+            "gradient_l1_full": 0.09756304323673248,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "bounded": {
+            "psnr_full_db": 22.573650360107422,
+            "psnr_nominal_roi_db": 21.30724334716797,
+            "psnr_teacher90_support_db": 20.514490127563477,
+            "gradient_l1_full": 0.09725172817707062,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "all39_lr_schur_rmse": 0.030068179592490196
+        },
+        "nonlinear_map40": {
+          "affine": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "bounded": {
+            "psnr_full_db": NaN,
+            "psnr_nominal_roi_db": NaN,
+            "psnr_teacher90_support_db": NaN,
+            "gradient_l1_full": NaN,
+            "nominal_roi_fraction": 0.0625,
+            "teacher90_support_fraction": 0.0598602294921875
+          },
+          "all39_lr_schur_rmse": NaN
+        }
+      }
+    }
+  }
+}

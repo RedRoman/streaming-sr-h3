@@ -1,0 +1,48 @@
+{
+  "case": "bus_256",
+  "sequence": "bus",
+  "split": "train",
+  "resolution": "256",
+  "shape_hw": [
+    256,
+    256
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 22.6721265966242,
+      "ssim": 0.7479807517745278,
+      "lpips": 0.4174711528149518,
+      "lr_pillow_rmse": 0.019555639136921276
+    },
+    "h3_vae": {
+      "psnr": 22.674469340931285,
+      "ssim": 0.7333827858621423,
+      "lpips": 0.397000713781877,
+      "lr_pillow_rmse": 0.025027034296230835
+    },
+    "bicubic_dc": {
+      "psnr": 23.515827005559746,
+      "ssim": 0.7615807408636267,
+      "lpips": 0.359780107032169,
+      "lr_pillow_rmse": 0.0004111175208394839
+    },
+    "h3_vae_dc": {
+      "psnr": 23.819749138572,
+      "ssim": 0.7719239484180104,
+      "lpips": 0.326455448161472,
+      "lr_pillow_rmse": 0.00038468172715511173
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 0.28598112519830465,
+      "max_float_lr_rmse": 0.00016302911061822763
+    },
+    "h3_vae": {
+      "seconds": 0.28280254220589995,
+      "max_float_lr_rmse": 0.00015526445584203205
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

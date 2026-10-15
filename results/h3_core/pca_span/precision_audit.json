@@ -1,0 +1,174 @@
+{
+  "config": {
+    "cache": "results/h3_core/cache_pca32/train_100075.pt",
+    "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "external/ComfyUI_H3",
+    "out": "results/h3_core/pca_span/precision_audit.json"
+  },
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  },
+  "p0": "fixed train-only PCA; first two atoms; no restoration loss selection",
+  "original_tf32": {
+    "matmul": false,
+    "cudnn": true
+  },
+  "reports": {
+    "native": {
+      "identical_input_repeat_rgb_rmse": 0.0,
+      "0.05": {
+        "rgb_derivative_rms": 0.0003554255818016827,
+        "lr_derivative_rms": 0.00025189825100824237,
+        "lr_forward_linearization_rmse": 2.754518391157035e-07,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.48908770084381104,
+          "0.3": 0.48092731833457947
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.5155262351036072,
+          "0.3": 0.48920801281929016
+        },
+        "lr_relative_to_strict_eager": 0.4681965708732605
+      },
+      "0.1": {
+        "rgb_derivative_rms": 0.0003334075736347586,
+        "lr_derivative_rms": 0.00023902035900391638,
+        "lr_forward_linearization_rmse": 4.191309415091382e-07,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.4640839099884033,
+          "0.1": 0.0,
+          "0.3": 0.2915131747722626
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.4835902452468872,
+          "0.1": 0.0,
+          "0.3": 0.28228989243507385
+        },
+        "lr_relative_to_strict_eager": 0.2867114841938019
+      },
+      "0.3": {
+        "rgb_derivative_rms": 0.0003221023653168231,
+        "lr_derivative_rms": 0.0002312268188688904,
+        "lr_forward_linearization_rmse": 1.3036597010795958e-06,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.4414611756801605,
+          "0.1": 0.2820080518722534,
+          "0.3": 0.0
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.4433419108390808,
+          "0.1": 0.27271801233291626,
+          "0.3": 0.0
+        },
+        "lr_relative_to_strict_eager": 0.12402177602052689
+      }
+    },
+    "strict_fp32": {
+      "identical_input_repeat_rgb_rmse": 0.0,
+      "0.05": {
+        "rgb_derivative_rms": 0.0003240383812226355,
+        "lr_derivative_rms": 0.00023412132577504963,
+        "lr_forward_linearization_rmse": 5.210446829551074e-08,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.0024173599667847157,
+          "0.3": 0.002413823502138257
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.006279537919908762,
+          "0.3": 0.005977940745651722
+        },
+        "lr_relative_to_strict_eager": 0.0
+      },
+      "0.1": {
+        "rgb_derivative_rms": 0.0003240224614273757,
+        "lr_derivative_rms": 0.00023411617439705878,
+        "lr_forward_linearization_rmse": 1.3301745127591857e-07,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0024173071142286062,
+          "0.1": 0.0,
+          "0.3": 0.00140979397110641
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.006279229652136564,
+          "0.1": 0.0,
+          "0.3": 0.0032992297783493996
+        },
+        "lr_relative_to_strict_eager": 0.0
+      },
+      "0.3": {
+        "rgb_derivative_rms": 0.00032382202334702015,
+        "lr_derivative_rms": 0.0002340121427550912,
+        "lr_forward_linearization_rmse": 1.1477271755211405e-06,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0024126979988068342,
+          "0.1": 0.0014091674238443375,
+          "0.3": 0.0
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.00597394909709692,
+          "0.1": 0.0032971887849271297,
+          "0.3": 0.0
+        },
+        "lr_relative_to_strict_eager": 0.0
+      }
+    },
+    "strict_fp32_eager": {
+      "identical_input_repeat_rgb_rmse": 0.0,
+      "0.05": {
+        "rgb_derivative_rms": 0.0003240383812226355,
+        "lr_derivative_rms": 0.00023412132577504963,
+        "lr_forward_linearization_rmse": 5.210446829551074e-08,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.0024173599667847157,
+          "0.3": 0.002413823502138257
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.0,
+          "0.1": 0.006279537919908762,
+          "0.3": 0.005977940745651722
+        },
+        "lr_relative_to_strict_eager": 0.0
+      },
+      "0.1": {
+        "rgb_derivative_rms": 0.0003240224614273757,
+        "lr_derivative_rms": 0.00023411617439705878,
+        "lr_forward_linearization_rmse": 1.3301745127591857e-07,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0024173071142286062,
+          "0.1": 0.0,
+          "0.3": 0.00140979397110641
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.006279229652136564,
+          "0.1": 0.0,
+          "0.3": 0.0032992297783493996
+        },
+        "lr_relative_to_strict_eager": 0.0
+      },
+      "0.3": {
+        "rgb_derivative_rms": 0.00032382202334702015,
+        "lr_derivative_rms": 0.0002340121427550912,
+        "lr_forward_linearization_rmse": 1.1477271755211405e-06,
+        "lr_relative_to_epsilon": {
+          "0.05": 0.0024126979988068342,
+          "0.1": 0.0014091674238443375,
+          "0.3": 0.0
+        },
+        "rgb_relative_to_epsilon": {
+          "0.05": 0.00597394909709692,
+          "0.1": 0.0032971887849271297,
+          "0.3": 0.0
+        },
+        "lr_relative_to_strict_eager": 0.0
+      }
+    }
+  }
+}

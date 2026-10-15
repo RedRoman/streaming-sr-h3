@@ -1,0 +1,48 @@
+{
+  "case": "soapbox_native480",
+  "sequence": "soapbox",
+  "split": "test",
+  "resolution": "native480",
+  "shape_hw": [
+    480,
+    832
+  ],
+  "methods": {
+    "bicubic": {
+      "psnr": 27.213687549937855,
+      "ssim": 0.7037699276750738,
+      "lpips": 0.4969561276110736,
+      "lr_pillow_rmse": 0.010004728609188036
+    },
+    "h3_vae": {
+      "psnr": 27.00046799399636,
+      "ssim": 0.6882418665018949,
+      "lpips": 0.47045202417807147,
+      "lr_pillow_rmse": 0.01517726235430349
+    },
+    "bicubic_dc": {
+      "psnr": 27.64277778972279,
+      "ssim": 0.7250285907225176,
+      "lpips": 0.4597663107243451,
+      "lr_pillow_rmse": 8.468581092363985e-05
+    },
+    "h3_vae_dc": {
+      "psnr": 27.909982767972078,
+      "ssim": 0.7319217757745222,
+      "lpips": 0.4155612818219445,
+      "lr_pillow_rmse": 6.704419121722987e-05
+    }
+  },
+  "projection": {
+    "bicubic": {
+      "seconds": 2.206420209258795,
+      "max_float_lr_rmse": 1.3033360727392632e-05
+    },
+    "h3_vae": {
+      "seconds": 2.194675291888416,
+      "max_float_lr_rmse": 1.2783020302964836e-05
+    }
+  },
+  "projection_iterations": 25,
+  "selection": "Fixed protocol; no test-dependent selection"
+}

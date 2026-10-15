@@ -1,0 +1,161 @@
+{
+  "manifest": {
+    "scope": "Fixed actual H3 DiT-generated identity proposals; interface pilot, not restored-video efficacy",
+    "source": {
+      "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+      "split": "train",
+      "source_hash": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+      "protocol": "zoom_revisit",
+      "sequence_seed": 17100,
+      "canonical_rectangle": [
+        112.5,
+        32.5,
+        368.5,
+        288.5
+      ],
+      "output_frame": 21,
+      "context_frames": 22
+    },
+    "observed_packet_ids": [
+      "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5:17100:0"
+    ],
+    "latest_observed_index": 0,
+    "distinct_observations": 1,
+    "native_repeated_context_frames": 22,
+    "guide_shape": [
+      1,
+      24,
+      7,
+      16,
+      16
+    ],
+    "guide_tokens": 448,
+    "resolved_frame_index": 0,
+    "canonical_readout_frame": 21,
+    "input_export": "Only inputs.anchor and first LR packet exported; original cache supervision is not exported or passed to the sampler.",
+    "preprocessing": "Cached actual native H3 encode(2*bicubic(LR)-1), 22 copies of already-observed frame0; no official UI8bit resize truncation.",
+    "seeds": [
+      101,
+      202,
+      303
+    ],
+    "sampler": "Unmodified experiments/h3_backbone/staged_bf16_guide.py",
+    "sample_protocol": "Full BF16 H3, neutral real Qwen cache, exact49Euler official grid; same guide and per-seed proposal for all later controls",
+    "evaluation_selection": "Seed list and frame21 fixed before sampling; no HR selection.",
+    "protected_identity": "Each seed uses its own fixed X0; unknown-region identity is never replaced by a common HR target.",
+    "prefix_sha256": "73351757334636729f73bf243228aba827c60a64bad32c5ec416914692813f9c"
+  },
+  "scope": "Post-sampling evaluation; no learned update trained yet. DC is classical and matched across controls.",
+  "items": {
+    "101": {
+      "raw": {
+        "first_lr_rmse": 0.01751841977238655,
+        "gradient_energy": 0.00047196162631735206,
+        "highfrequency_rms": 0.01992819830775261,
+        "psnr_db": 27.714994430541992
+      },
+      "dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007744211470708251,
+        "highfrequency_rms": 0.019928928464651108,
+        "psnr_db": 28.894886016845703
+      },
+      "actual_full50block_forwards": 49,
+      "sampling_seconds": 11.091595534235239,
+      "guide_sha256": "0fec0ed18c7aa10cf6be73a8ecb36632352ceecacd292b98b7c259d405cc1c05",
+      "sample_sha256": "63b29cfba0891c35a0620d5c28325c7b8cc9b5a3941a7d7a1432f90843f9f04c",
+      "identity_sha256": "3fd29725d05ca9845382088b9db963e7236cbd4875dca98557e8570c066a091f",
+      "actual_latest_distinct_observation_index": 0,
+      "warning": "Sampler generic scope text may say5frames; actual tensor temporal7 and22 RGB outputs are recorded here.",
+      "vae_guide_raw": {
+        "first_lr_rmse": 0.011968681588768959,
+        "gradient_energy": 0.0004318786086514592,
+        "highfrequency_rms": 0.01913594827055931,
+        "psnr_db": 28.15610694885254
+      },
+      "vae_guide_dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007591708563268185,
+        "highfrequency_rms": 0.019136924296617508,
+        "psnr_db": 28.902891159057617
+      }
+    },
+    "202": {
+      "raw": {
+        "first_lr_rmse": 0.01660141348838806,
+        "gradient_energy": 0.0004755305708386004,
+        "highfrequency_rms": 0.019862016662955284,
+        "psnr_db": 27.80461883544922
+      },
+      "dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007722481968812644,
+        "highfrequency_rms": 0.01986294612288475,
+        "psnr_db": 28.89775848388672
+      },
+      "actual_full50block_forwards": 49,
+      "sampling_seconds": 12.250883638858795,
+      "guide_sha256": "0fec0ed18c7aa10cf6be73a8ecb36632352ceecacd292b98b7c259d405cc1c05",
+      "sample_sha256": "afe7ea1731fe43c67dcfea49a60fb4b6b8fa68be030a72a0cf22ad01f8aed62f",
+      "identity_sha256": "bc3f5d67615af58d46db54cc3d6ee739e5ad1d39dc297fedf7ec8a533dbfc18c",
+      "actual_latest_distinct_observation_index": 0,
+      "warning": "Sampler generic scope text may say5frames; actual tensor temporal7 and22 RGB outputs are recorded here.",
+      "vae_guide_raw": {
+        "first_lr_rmse": 0.011968681588768959,
+        "gradient_energy": 0.0004318786086514592,
+        "highfrequency_rms": 0.01913594827055931,
+        "psnr_db": 28.15610694885254
+      },
+      "vae_guide_dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007591708563268185,
+        "highfrequency_rms": 0.019136924296617508,
+        "psnr_db": 28.902891159057617
+      }
+    },
+    "303": {
+      "raw": {
+        "first_lr_rmse": 0.017336275428533554,
+        "gradient_energy": 0.0004806192882824689,
+        "highfrequency_rms": 0.019955841824412346,
+        "psnr_db": 27.7027530670166
+      },
+      "dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007776025449857116,
+        "highfrequency_rms": 0.019957365468144417,
+        "psnr_db": 28.894519805908203
+      },
+      "actual_full50block_forwards": 49,
+      "sampling_seconds": 12.609693102538586,
+      "guide_sha256": "0fec0ed18c7aa10cf6be73a8ecb36632352ceecacd292b98b7c259d405cc1c05",
+      "sample_sha256": "5a6a369a120a574aa3892af9506c092010043f80b5434dbc399b66beeb49b2d4",
+      "identity_sha256": "93452ed7c3711fdcc8f1882dc30e2aac77d90a47d00b516e31745cd2f352daa3",
+      "actual_latest_distinct_observation_index": 0,
+      "warning": "Sampler generic scope text may say5frames; actual tensor temporal7 and22 RGB outputs are recorded here.",
+      "vae_guide_raw": {
+        "first_lr_rmse": 0.011968681588768959,
+        "gradient_energy": 0.0004318786086514592,
+        "highfrequency_rms": 0.01913594827055931,
+        "psnr_db": 28.15610694885254
+      },
+      "vae_guide_dc": {
+        "first_lr_rmse": 0.0,
+        "gradient_energy": 0.0007591708563268185,
+        "highfrequency_rms": 0.019136924296617508,
+        "psnr_db": 28.902891159057617
+      }
+    }
+  },
+  "bicubic": {
+    "first_lr_rmse": 0.009216971695423126,
+    "gradient_energy": 0.00035774498246610165,
+    "highfrequency_rms": 0.018526848405599594,
+    "psnr_db": 28.48558807373047
+  },
+  "pairwise_identity_mse": {
+    "101-202": 1.4195913536241278e-05,
+    "101-303": 1.925655124068726e-05,
+    "202-303": 1.8926055417978205e-05
+  }
+}

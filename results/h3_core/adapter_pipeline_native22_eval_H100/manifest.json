@@ -1,0 +1,40 @@
+{
+  "config": {
+    "cache": "results/h3_core/cache_native22_fp32",
+    "out": "results/h3_core/adapter_pipeline_native22_eval_H100",
+    "steps": 0,
+    "basis_steps": 0,
+    "seeds": [
+      17
+    ],
+    "device": "cuda",
+    "vae": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "comfy": "external/ComfyUI_H3",
+    "basis_mode": "learned",
+    "eval_only": "results/h3_core/adapter_pipeline_native22/checkpoint_seed17.pt",
+    "source_root": "data/BSR/BSDS500/data/images"
+  },
+  "split_sources": {
+    "train": [
+      "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5"
+    ],
+    "val": [
+      "dbefbd4ae3749913ee9fffcdb663bea87ab6634dc8b989422f741243bdbedc8a"
+    ],
+    "test": [
+      "464449ecba30a5a5c229c0133059c83b034e9000bd1d7752a189a8cf21182bf9"
+    ]
+  },
+  "scope": "Actual frozen H3 VAE teacher; H3 DiT is NOT trained/evaluated here. Small source counts are pipeline evidence only.",
+  "cache_files": [
+    "results/h3_core/cache_native22_fp32/test_100007.pt",
+    "results/h3_core/cache_native22_fp32/train_100075.pt",
+    "results/h3_core/cache_native22_fp32/val_101085.pt"
+  ],
+  "vae": {
+    "layers": 36,
+    "checkpoint": "external/h3_assets/minimax_h3_video_vae_fp16.safetensors",
+    "dtype": "torch.float16",
+    "missing_buffers": []
+  }
+}

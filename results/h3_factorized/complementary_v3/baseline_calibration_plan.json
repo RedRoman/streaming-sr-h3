@@ -1,0 +1,13 @@
+{
+  "status": "train_only_baseline_regularization_calibration",
+  "ridges": [
+    0.001,
+    0.01,
+    0.1
+  ],
+  "train_count": 4,
+  "selection": "maximum prefix4 all-history union-ROI PSNR averaged over four TRAIN sources and two orders",
+  "reason": "Initial fixed ridge .0001 amplifies near/far noisy weak directions; not a strong inverse control. Preserve original val pilot and calibrate baseline on train only.",
+  "test_accessed": false,
+  "unix_time": 1792054570.7938805
+}

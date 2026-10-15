@@ -1,0 +1,48 @@
+{
+  "scope": "Fixed actual H3 DiT-generated identity proposals; interface pilot, not restored-video efficacy",
+  "source": {
+    "path": "data/BSR/BSDS500/data/images/train/100075.jpg",
+    "split": "train",
+    "source_hash": "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5",
+    "protocol": "zoom_revisit",
+    "sequence_seed": 17100,
+    "canonical_rectangle": [
+      112.5,
+      32.5,
+      368.5,
+      288.5
+    ],
+    "output_frame": 21,
+    "context_frames": 22
+  },
+  "observed_packet_ids": [
+    "b4b2461595dc3f70270574715acf287dc70027ec9d419a9917ed242036d1b0e5:17100:0"
+  ],
+  "latest_observed_index": 0,
+  "distinct_observations": 1,
+  "native_repeated_context_frames": 22,
+  "guide_shape": [
+    1,
+    24,
+    7,
+    16,
+    16
+  ],
+  "guide_tokens": 448,
+  "resolved_frame_index": 0,
+  "canonical_readout_frame": 21,
+  "input_export": "Only inputs.anchor and first LR packet exported; original cache supervision is not exported or passed to the sampler.",
+  "preprocessing": "Cached actual native H3 encode(2*bicubic(LR)-1), 22 copies of already-observed frame0; no official UI8bit resize truncation.",
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "sampler": "Unmodified experiments/h3_backbone/staged_bf16_guide.py",
+  "sample_protocol": "Full BF16 H3, neutral real Qwen cache, exact49Euler official grid; same guide and per-seed proposal for all later controls",
+  "evaluation_selection": "Seed list and frame21 fixed before sampling; no HR selection.",
+  "protected_identity": "Each seed uses its own fixed X0; unknown-region identity is never replaced by a common HR target.",
+  "prefix_sha256": "73351757334636729f73bf243228aba827c60a64bad32c5ec416914692813f9c",
+  "seed": 202,
+  "guide_sha256": "0fec0ed18c7aa10cf6be73a8ecb36632352ceecacd292b98b7c259d405cc1c05"
+}

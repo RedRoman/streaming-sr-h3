@@ -1,0 +1,32 @@
+{
+  "args": {
+    "seeds": 2,
+    "episodes": 8,
+    "tag": "pilot"
+  },
+  "runtime_seconds": 1.3142259120941162,
+  "command": "experiments/branch_memory/run_branch_suite.py --seeds 2 --episodes 8 --tag pilot",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy": "2.5.1",
+  "scipy": "1.18.0",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "source_sha256": "0fa1226e224d45b6092519897f10d4ce133b4d85d3396517193ee2b1c4c27c5e",
+  "max_exact_MHT_compressed_difference": 2.9976021664879227e-15,
+  "seeds": [
+    0,
+    1
+  ],
+  "dimensions": {
+    "identities": 4,
+    "coefficients": 48,
+    "hr_pixels": 256
+  },
+  "observation_protocol": "4x4 box far LR exactly shared; 2x2 near LR Hadamard sufficient statistics with coefficient noise .03; 3 independent near enrollment observations",
+  "limitations": [
+    "Synthetic periodic box-filtered textures; no trained generator or real video claim",
+    "MHT/fork equivalence is intentional; exact sufficient-statistic compression is not new Bayesian inference",
+    "Capacity bytes are numeric representation accounting, not process RSS or GPU latency",
+    "Capacity pruning safe only for no-cue, zero-information episodes; informative discarded cues can hurt future retrieval"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+ "sequence": "truck-19",
+ "category": "truck",
+ "absent_frames": 30,
+ "revisit_pairs": [
+  {
+   "a": 3156,
+   "b": 3218,
+   "scale": 0.717163671334451,
+   "coverage": 0.3794958431512026,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 95.80359649658203,
+    "lpips_change": 0.3421611189842224,
+    "registration_psnr": 27.17348286541882
+   },
+   "vae_only": {
+    "ICR": 0.4848444153750884,
+    "unobs_energy_a": 9.987447992898524e-05,
+    "gt_unobs_energy_a": 0.0018897145055234432,
+    "change_ratio": 0.10798446090834646,
+    "lpips_change": 0.2948424816131592,
+    "psnr_a": 26.904359247338014,
+    "psnr_b_warped": 29.191687341708935,
+    "lpips_a": 0.33325040340423584,
+    "lpips_b_warped": 0.26370376348495483
+   },
+   "innerdc": {
+    "ICR": 0.5774877801895268,
+    "unobs_energy_a": 0.0003062042233068496,
+    "gt_unobs_energy_a": 0.0018897145055234432,
+    "change_ratio": 0.3650020159798757,
+    "lpips_change": 0.3254711925983429,
+    "psnr_a": 27.63920036426783,
+    "psnr_b_warped": 29.879285345817195,
+    "lpips_a": 0.2671681344509125,
+    "lpips_b_warped": 0.20591582357883453
+   }
+  },
+  {
+   "a": 3156,
+   "b": 3224,
+   "scale": 0.6648136545893155,
+   "coverage": 0.37438314142177564,
+   "dropped": "scale"
+  },
+  {
+   "a": 3156,
+   "b": 3229,
+   "scale": 0.6484773604458545,
+   "coverage": 0.3773914847582211,
+   "dropped": "scale"
+  },
+  {
+   "a": 3161,
+   "b": 3218,
+   "scale": 0.7423251454672746,
+   "coverage": 0.22227011494252874,
+   "dropped": "coverage"
+  },
+  {
+   "a": 3161,
+   "b": 3224,
+   "scale": 0.6881384439529084,
+   "coverage": 0.23504150702426566,
+   "dropped": "coverage"
+  },
+  {
+   "a": 3161,
+   "b": 3229,
+   "scale": 0.6712289957876435,
+   "coverage": 0.16080779054916985,
+   "dropped": "coverage"
+  },
+  {
+   "a": 3166,
+   "b": 3218,
+   "scale": 0.8962933504540304,
+   "coverage": 0.06481438675974296,
+   "dropped": "coverage"
+  },
+  {
+   "a": 3166,
+   "b": 3224,
+   "scale": 0.8308675992897047,
+   "coverage": 0.05420461374878646,
+   "dropped": "coverage"
+  },
+  {
+   "a": 3166,
+   "b": 3229,
+   "scale": 0.8104509044721879,
+   "coverage": 0.08677361194581851,
+   "dropped": "coverage"
+  }
+ ],
+ "control_pairs": [
+  {
+   "a": 3149,
+   "b": 3150,
+   "scale": 1.0024453782120062,
+   "coverage": 0.7743399339933993,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 38.89741134643555,
+    "lpips_change": 0.06828130781650543,
+    "registration_psnr": 36.076568639745254
+   },
+   "vae_only": {
+    "ICR": 0.10075750406013864,
+    "unobs_energy_a": 8.373022865271196e-05,
+    "gt_unobs_energy_a": 0.0017817055340856314,
+    "change_ratio": 0.13303672415147494,
+    "lpips_change": 0.05404093116521835,
+    "psnr_a": 27.237737548896096,
+    "psnr_b_warped": 29.418551513537178,
+    "lpips_a": 0.3476940393447876,
+    "lpips_b_warped": 0.28335410356521606
+   },
+   "innerdc": {
+    "ICR": 0.14119915948913514,
+    "unobs_energy_a": 0.0003053874825127423,
+    "gt_unobs_energy_a": 0.0017817055340856314,
+    "change_ratio": 0.45043672364150716,
+    "lpips_change": 0.07047896832227707,
+    "psnr_a": 27.8777112519942,
+    "psnr_b_warped": 30.448963294137997,
+    "lpips_a": 0.2894524037837982,
+    "lpips_b_warped": 0.20998862385749817
+   }
+  }
+ ],
+ "seed_sensitivity": [
+  {
+   "frame": 3156,
+   "gt_unobs_energy": 0.0011988230980932713,
+   "vae_only_energy_ratio": 0.057332452029615615,
+   "innerdc_energy_ratio": 0.16918844022400098,
+   "innerdc_s202_energy_ratio": 0.16432003953849614,
+   "ICR_seed": 0.012123486027121544
+  },
+  {
+   "frame": 3161,
+   "gt_unobs_energy": 0.0010313864331692457,
+   "vae_only_energy_ratio": 0.05641358915618889,
+   "innerdc_energy_ratio": 0.20125323634111109,
+   "innerdc_s202_energy_ratio": 0.19758044490335958,
+   "ICR_seed": 0.018540360033512115
+  },
+  {
+   "frame": 3166,
+   "gt_unobs_energy": 0.0006675617769360542,
+   "vae_only_energy_ratio": 0.0756728967659939,
+   "innerdc_energy_ratio": 0.26019980688180205,
+   "innerdc_s202_energy_ratio": 0.25320038393446326,
+   "ICR_seed": 0.03477802500128746
+  }
+ ]
+}

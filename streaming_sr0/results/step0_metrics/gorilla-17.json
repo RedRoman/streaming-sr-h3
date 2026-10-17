@@ -1,0 +1,159 @@
+{
+ "sequence": "gorilla-17",
+ "category": "gorilla",
+ "absent_frames": 30,
+ "revisit_pairs": [
+  {
+   "a": 73,
+   "b": 124,
+   "scale": 0.8472506631750625,
+   "coverage": 0.09843075024244027,
+   "dropped": "coverage"
+  },
+  {
+   "a": 73,
+   "b": 131,
+   "scale": 0.9751699675254825,
+   "coverage": 0.3030944194657498,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 6.940423011779785,
+    "lpips_change": 0.27553847432136536,
+    "registration_psnr": 27.833990022840837
+   },
+   "vae_only": {
+    "ICR": 0.6745988023548788,
+    "unobs_energy_a": 6.489681254606694e-05,
+    "gt_unobs_energy_a": 0.0003251477319281548,
+    "change_ratio": 0.1850943777729929,
+    "lpips_change": 0.26221024990081787,
+    "psnr_a": 33.10490040529856,
+    "psnr_b_warped": 34.05197038170498,
+    "lpips_a": 0.24846389889717102,
+    "lpips_b_warped": 0.1774732768535614
+   },
+   "innerdc": {
+    "ICR": 0.694896765406326,
+    "unobs_energy_a": 0.00011395144974812865,
+    "gt_unobs_energy_a": 0.0003251477319281548,
+    "change_ratio": 0.4142695952668758,
+    "lpips_change": 0.28042072057724,
+    "psnr_a": 33.36544791335187,
+    "psnr_b_warped": 34.39977127752277,
+    "lpips_a": 0.15147563815116882,
+    "lpips_b_warped": 0.11271965503692627
+   }
+  },
+  {
+   "a": 73,
+   "b": 138,
+   "scale": 0.7970714080676292,
+   "coverage": 0.04760645331922772,
+   "dropped": "coverage"
+  },
+  {
+   "a": 78,
+   "b": 124,
+   "scale": 1.316192713249989,
+   "coverage": 0.17844444444444443,
+   "dropped": "coverage"
+  },
+  {
+   "a": 78,
+   "b": 131,
+   "scale": 1.51491366277286,
+   "coverage": 0.2137777777777778,
+   "dropped": "scale"
+  },
+  {
+   "a": 78,
+   "b": 138,
+   "scale": 1.2382399032973703,
+   "coverage": 0.19555555555555557,
+   "dropped": "coverage"
+  },
+  {
+   "a": 83,
+   "b": 124,
+   "scale": 2.1281945297650164,
+   "coverage": 0.1354621848739496,
+   "dropped": "scale"
+  },
+  {
+   "a": 83,
+   "b": 131,
+   "scale": 2.44951285455653,
+   "coverage": 0.18487394957983194,
+   "dropped": "scale"
+  },
+  {
+   "a": 83,
+   "b": 138,
+   "scale": 2.002150112370141,
+   "coverage": 0.1146218487394958,
+   "dropped": "scale"
+  }
+ ],
+ "control_pairs": [
+  {
+   "a": 72,
+   "b": 73,
+   "scale": 0.92915365613054,
+   "coverage": 0.9436757407128892,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 13.911017417907715,
+    "lpips_change": 0.06630554795265198,
+    "registration_psnr": 37.08949992404193
+   },
+   "vae_only": {
+    "ICR": 0.25640340553957225,
+    "unobs_energy_a": 6.193952140165493e-05,
+    "gt_unobs_energy_a": 0.0005272254929877818,
+    "change_ratio": 0.3112733267204867,
+    "lpips_change": 0.04700828343629837,
+    "psnr_a": 31.894705518806063,
+    "psnr_b_warped": 32.552730406196055,
+    "lpips_a": 0.27661430835723877,
+    "lpips_b_warped": 0.24325792491436005
+   },
+   "innerdc": {
+    "ICR": 0.34852772310338676,
+    "unobs_energy_a": 0.00018560007447376847,
+    "gt_unobs_energy_a": 0.0005272254929877818,
+    "change_ratio": 0.7311550153121745,
+    "lpips_change": 0.07477725297212601,
+    "psnr_a": 33.02269516190603,
+    "psnr_b_warped": 32.91059338499576,
+    "lpips_a": 0.160089910030365,
+    "lpips_b_warped": 0.15197458863258362
+   }
+  }
+ ],
+ "seed_sensitivity": [
+  {
+   "frame": 73,
+   "gt_unobs_energy": 0.00037062031333334744,
+   "vae_only_energy_ratio": 0.1666879802978024,
+   "innerdc_energy_ratio": 0.3641669265267503,
+   "innerdc_s202_energy_ratio": 0.35916705099259744,
+   "ICR_seed": 0.03465087339282036
+  },
+  {
+   "frame": 78,
+   "gt_unobs_energy": 0.00011915106006199494,
+   "vae_only_energy_ratio": 0.24832613244860754,
+   "innerdc_energy_ratio": 0.5341269908635181,
+   "innerdc_s202_energy_ratio": 0.47094863903553474,
+   "ICR_seed": 0.05414107069373131
+  },
+  {
+   "frame": 83,
+   "gt_unobs_energy": 0.00033392326440662146,
+   "vae_only_energy_ratio": 0.2178647547970474,
+   "innerdc_energy_ratio": 0.4410308052039148,
+   "innerdc_s202_energy_ratio": 0.38888515081166053,
+   "ICR_seed": 0.021755041554570198
+  }
+ ]
+}

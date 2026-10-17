@@ -1,0 +1,132 @@
+{
+ "sequence": "deer-4",
+ "category": "deer",
+ "absent_frames": 56,
+ "revisit_pairs": [
+  {
+   "a": 617,
+   "b": 702,
+   "scale": 0.4203916802194156,
+   "coverage": 0.002696053651467664,
+   "dropped": "scale"
+  },
+  {
+   "a": 617,
+   "b": 708,
+   "scale": 0.6005664023140234,
+   "coverage": 0.010127051528325414,
+   "dropped": "scale"
+  },
+  {
+   "a": 617,
+   "b": 715,
+   "scale": 0.6803271349988262,
+   "coverage": 0.006689583122704142,
+   "dropped": "coverage"
+  },
+  {
+   "a": 625,
+   "b": 702,
+   "scale": 0.4734831874592968,
+   "coverage": 0.005436760204627668,
+   "dropped": "scale"
+  },
+  {
+   "a": 625,
+   "b": 708,
+   "scale": 0.6764122789018822,
+   "coverage": 0.007876880926389692,
+   "dropped": "coverage"
+  },
+  {
+   "a": 625,
+   "b": 715,
+   "scale": 0.7662460404215641,
+   "coverage": 0.002119052205740705,
+   "dropped": "coverage"
+  },
+  {
+   "a": 633,
+   "b": 702,
+   "scale": 1.0738578731411885,
+   "coverage": 0.004271631982475356,
+   "dropped": "coverage"
+  },
+  {
+   "a": 633,
+   "b": 708,
+   "scale": 1.5341001970647636,
+   "coverage": 0.007667031763417305,
+   "dropped": "scale"
+  },
+  {
+   "a": 633,
+   "b": 715,
+   "scale": 1.7378427894880508,
+   "coverage": 0.009200438116100766,
+   "dropped": "scale"
+  }
+ ],
+ "control_pairs": [
+  {
+   "a": 616,
+   "b": 617,
+   "scale": 1.0691614418746442,
+   "coverage": 0.49325314210810395,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 8.932815551757812,
+    "lpips_change": 0.1106404960155487,
+    "registration_psnr": 33.755294269820126
+   },
+   "vae_only": {
+    "ICR": 0.5911379415949054,
+    "unobs_energy_a": 3.550724431988783e-05,
+    "gt_unobs_energy_a": 0.00014239989104680717,
+    "change_ratio": 0.35865268328262906,
+    "lpips_change": 0.07056234031915665,
+    "psnr_a": 35.46466736863222,
+    "psnr_b_warped": 34.52637142407102,
+    "lpips_a": 0.14405770599842072,
+    "lpips_b_warped": 0.0908973291516304
+   },
+   "innerdc": {
+    "ICR": 0.6958521060288535,
+    "unobs_energy_a": 6.529677921207622e-05,
+    "gt_unobs_energy_a": 0.00014239989104680717,
+    "change_ratio": 0.7410024153557867,
+    "lpips_change": 0.09755316376686096,
+    "psnr_a": 35.7790225585026,
+    "psnr_b_warped": 33.857131426835785,
+    "lpips_a": 0.11363017559051514,
+    "lpips_b_warped": 0.07412657886743546
+   }
+  }
+ ],
+ "seed_sensitivity": [
+  {
+   "frame": 617,
+   "gt_unobs_energy": 0.0001844486832851544,
+   "vae_only_energy_ratio": 0.22582911203808187,
+   "innerdc_energy_ratio": 0.4681603873132902,
+   "innerdc_s202_energy_ratio": 0.4290008604980885,
+   "ICR_seed": 0.10708073526620865
+  },
+  {
+   "frame": 625,
+   "gt_unobs_energy": 0.0001526227279100567,
+   "vae_only_energy_ratio": 0.2568483691219637,
+   "innerdc_energy_ratio": 0.49830170304516885,
+   "innerdc_s202_energy_ratio": 0.5344948691638204,
+   "ICR_seed": 0.0758872777223587
+  },
+  {
+   "frame": 633,
+   "gt_unobs_energy": 0.00021903910965193063,
+   "vae_only_energy_ratio": 0.23379154602304386,
+   "innerdc_energy_ratio": 0.6793739781014843,
+   "innerdc_s202_energy_ratio": 0.7169171950537903,
+   "ICR_seed": 0.0558653324842453
+  }
+ ]
+}

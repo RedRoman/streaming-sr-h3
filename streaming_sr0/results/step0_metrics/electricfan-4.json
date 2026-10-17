@@ -1,0 +1,132 @@
+{
+ "sequence": "electricfan-4",
+ "category": "electricfan",
+ "absent_frames": 42,
+ "revisit_pairs": [
+  {
+   "a": 651,
+   "b": 719,
+   "scale": 0.5001647383872461,
+   "coverage": 0.0026461823039769807,
+   "dropped": "scale"
+  },
+  {
+   "a": 651,
+   "b": 725,
+   "scale": 0.6404311760484126,
+   "coverage": 0.004354639810913575,
+   "dropped": "scale"
+  },
+  {
+   "a": 651,
+   "b": 731,
+   "scale": 0.7790019938767027,
+   "coverage": 0.0080284657280855,
+   "dropped": "coverage"
+  },
+  {
+   "a": 657,
+   "b": 719,
+   "scale": 0.6551897413850288,
+   "coverage": 0.006645401382243487,
+   "dropped": "scale"
+  },
+  {
+   "a": 657,
+   "b": 725,
+   "scale": 0.8389314647871007,
+   "coverage": 0.011407939039517987,
+   "dropped": "coverage"
+  },
+  {
+   "a": 657,
+   "b": 731,
+   "scale": 1.0204520145747114,
+   "coverage": 0.002901825270246323,
+   "dropped": "coverage"
+  },
+  {
+   "a": 664,
+   "b": 719,
+   "scale": 1.3299014974168355,
+   "coverage": 0.03333333333333333,
+   "dropped": "coverage"
+  },
+  {
+   "a": 664,
+   "b": 725,
+   "scale": 1.7028597073146394,
+   "coverage": 0.0,
+   "dropped": "scale"
+  },
+  {
+   "a": 664,
+   "b": 731,
+   "scale": 2.071309387958535,
+   "coverage": 0.0027548209366391185,
+   "dropped": "scale"
+  }
+ ],
+ "control_pairs": [
+  {
+   "a": 650,
+   "b": 651,
+   "scale": 0.9821559067074768,
+   "coverage": 0.6921019060947969,
+   "dropped": null,
+   "gt": {
+    "change_unobs": 33.12752151489258,
+    "lpips_change": 0.11416060477495193,
+    "registration_psnr": 32.57093776116404
+   },
+   "vae_only": {
+    "ICR": 0.7592765105899575,
+    "unobs_energy_a": 2.2862943296786398e-05,
+    "gt_unobs_energy_a": 0.0001456236932426691,
+    "change_ratio": 0.14125161889186788,
+    "lpips_change": 0.0628165453672409,
+    "psnr_a": 35.808728263918645,
+    "psnr_b_warped": 34.572961583540575,
+    "lpips_a": 0.16876493394374847,
+    "lpips_b_warped": 0.1548413336277008
+   },
+   "innerdc": {
+    "ICR": 0.8344698118722423,
+    "unobs_energy_a": 5.1664977945620194e-05,
+    "gt_unobs_energy_a": 0.0001456236932426691,
+    "change_ratio": 0.2980828877242425,
+    "lpips_change": 0.07976724207401276,
+    "psnr_a": 36.40578515878208,
+    "psnr_b_warped": 34.38600637369366,
+    "lpips_a": 0.11485394090414047,
+    "lpips_b_warped": 0.11016952246427536
+   }
+  }
+ ],
+ "seed_sensitivity": [
+  {
+   "frame": 651,
+   "gt_unobs_energy": 0.00016656726074870676,
+   "vae_only_energy_ratio": 0.10396563028686275,
+   "innerdc_energy_ratio": 0.2162641097671192,
+   "innerdc_s202_energy_ratio": 0.20951075074597592,
+   "ICR_seed": 0.04507467895746231
+  },
+  {
+   "frame": 657,
+   "gt_unobs_energy": 6.51493392069824e-05,
+   "vae_only_energy_ratio": 0.13846102107681468,
+   "innerdc_energy_ratio": 0.22310068497441998,
+   "innerdc_s202_energy_ratio": 0.2176325770541778,
+   "ICR_seed": 0.06771046668291092
+  },
+  {
+   "frame": 664,
+   "gt_unobs_energy": 9.00929717317922e-06,
+   "vae_only_energy_ratio": 0.5539685379120795,
+   "innerdc_energy_ratio": 0.8302974602726254,
+   "innerdc_s202_energy_ratio": 0.7327184797392484,
+   "ICR_seed": 0.2319299578666687
+  }
+ ]
+}

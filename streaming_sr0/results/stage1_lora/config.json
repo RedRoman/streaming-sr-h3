@@ -1,0 +1,24 @@
+{
+ "data": "../data/pilot_latents",
+ "out": "../results/stage1_lora",
+ "steps": "2000",
+ "rank": "32",
+ "lr": "0.0001",
+ "warmup": "100",
+ "save_every": "250",
+ "val_every": "250",
+ "seed": "20261016",
+ "world": 8,
+ "n_train": 2874,
+ "n_val": 16,
+ "conditioning": "native keyframe guide (official LR guide latent)",
+ "lora_targets": [
+  "attn.qkv_proj",
+  "attn.out_proj",
+  "mlp.fc1",
+  "mlp.fc2"
+ ],
+ "sigma_sampling": "uniform grid u, sigma=12u/(1+11u)",
+ "audio": "noise input, no loss",
+ "text": "cached neutral restore context"
+}

@@ -1,0 +1,98 @@
+{
+ "case": "bear_256",
+ "load_seconds": 23.482341193128377,
+ "precision_initial": {
+  "matmul_allow_hf32": false,
+  "conv_allow_hf32": true
+ },
+ "precision_used": {
+  "matmul_hf32": false,
+  "conv_hf32": false
+ },
+ "torch": "2.10.0+cpu",
+ "torch_npu": "2.10.0.post2",
+ "torch_npu_module_to_cast_weight_dropped": true,
+ "mm_bmm_format_nd": true,
+ "jit_compile_false": true,
+ "comfy_commit": "5a665890ded5020c282f63c4ea2dd9e083e025ff",
+ "vae_load_seconds": 1.9980723168700933,
+ "dit_load_seconds": 12.823998065665364,
+ "guide_helper_sha256": "108ceff11e5a5c9a34a57bbc380447cf9941beb673a1bd421abc818de54ccd5c",
+ "encode_guide": {
+  "max_abs": 0.10309278219938278,
+  "rms": 0.0015106501523405313,
+  "ref_rms": 1.116106390953064,
+  "seconds_cold_warm": [
+   1.3079262976534665,
+   0.2988169686868787
+  ]
+ },
+ "decode_archived_vae_only": {
+  "max_abs_u8": 2,
+  "frac_identical": 0.9830491037079783,
+  "frac_diff_gt1": 2.3119377367424243e-07,
+  "psnr_between": 65.83869924355992,
+  "psnr_vs_gt_npu_decode": 23.47058834101329,
+  "psnr_vs_gt_h100_png": 23.47079406835612,
+  "seconds_cold_warm": [
+   1.3270549597218633,
+   0.11307149520143867
+  ]
+ },
+ "decode_archived_sampling_dc": {
+  "max_abs_u8": 1,
+  "frac_identical": 0.970655499082623,
+  "frac_diff_gt1": 0.0,
+  "psnr_between": 63.45553633308058,
+  "psnr_vs_gt_npu_decode": 23.423662172615302,
+  "psnr_vs_gt_h100_png": 23.423589010148113,
+  "seconds_cold_warm": [
+   0.11230302322655916,
+   0.11347834626212716
+  ]
+ },
+ "peak_allocated_GB_after_vae": 7.044652544,
+ "sample_innerdc": {
+  "mode": "innerdc",
+  "seed": 101,
+  "steps": 49,
+  "cfg": 1.0,
+  "seconds": 23.99549380503595,
+  "correction_events": [
+   {
+    "index": 28,
+    "sigma": 0.8999999761581421,
+    "delta_rms": 0.694900393486023,
+    "projected_lr_rmse_max": 8.450743962384877e-07,
+    "hook_seconds": 0.6620531617663801
+   },
+   {
+    "index": 45,
+    "sigma": 0.5161290168762207,
+    "delta_rms": 0.6594638824462891,
+    "projected_lr_rmse_max": 5.314441864356922e-07,
+    "hook_seconds": 0.5058636367321014
+   },
+   {
+    "index": 48,
+    "sigma": 0.20000000298023224,
+    "delta_rms": 0.5068100690841675,
+    "projected_lr_rmse_max": 3.825474834684428e-07,
+    "hook_seconds": 0.5109313670545816
+   }
+  ],
+  "projection_device_dtype": "npu/float32",
+  "base_parameter_versions_unchanged": true,
+  "frozen_base_tensors": 530,
+  "latent_max_abs_vs_h100": 0.8935240507125854,
+  "latent_rms_vs_h100": 0.053616415709257126,
+  "latent_ref_rms": 1.3341376781463623,
+  "max_abs_u8": 36,
+  "frac_identical": 0.34146719267874054,
+  "frac_diff_gt1": 0.27094430634469696,
+  "psnr_between": 42.04613401797395,
+  "psnr_vs_gt_npu": 23.414638094367177,
+  "psnr_vs_gt_h100": 23.423589010148113,
+  "peak_allocated_GB": 47.46231552
+ }
+}

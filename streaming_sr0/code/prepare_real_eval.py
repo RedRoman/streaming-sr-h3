@@ -1,0 +1,131 @@
+"""Step 1 of the new design: a real-footage evaluation set, in the same layout as data/stage2_eval.
+
+Why this replaces the generated 12-clip set as the primary evaluation:
+  - every confidence interval in this project is computed over 12 clips, and the one comparison that
+    matters most -- LPIPS against a published baseline under realistic degradation -- came out at
+    -0.0099 [-0.059, +0.023], i.e. no resolution at all with n=9;
+  - mech1 showed that generated soundtracks behave differently from real ones (the audio/video event
+    correlation flips sign with content), so nothing about audio can be claimed on generated material.
+
+Source clips come from build_real_av.py, which already filtered AudioSet segments on container resolution,
+duration, a real audio track, and -- the part that matters -- the energy in the band our task has to
+reproduce, against the bar set by the VIDGEN clips we had already accepted.
+
+Two degradation variants are written per clip:
+  const  the clip-constant chain used everywhere else in this project, for comparability;
+  tvary  the same chain but with the parameters redrawn partway through, which is what a real stream does
+         (bitrate and conditions change) and what the operator estimator in the new design has to track.
+         The switch frame is recorded so re-convergence can be measured against it.
+"""
+import argparse, hashlib, json, subprocess
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+import degrade as DG
+
+ROOT = Path('/cache/zihaohe/streaming_sr0')
+CAND = ROOT / 'data/real_av/candidates.json'
+SRC = ROOT / 'data/real_av/_cand'
+OUT = ROOT / 'data/real_eval'
+T, H, W = 124, 480, 832
+FPS = 24.0
+SEED = 20261019
+
+
+def read_window(path, start_s, n=T):
+    r = subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-ss', f'{start_s}', '-i', str(path),
+                        '-vf', f'fps={FPS},crop={W}:{H}', '-frames:v', str(n),
+                        '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'],
+                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    a = np.frombuffer(r.stdout, dtype=np.uint8)
+    if a.size < n * H * W * 3:
+        return None
+    return a[:n * H * W * 3].reshape(n, H, W, 3).copy()
+
+
+def read_audio(path, start_s, dur, sr=32000):
+    r = subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-ss', f'{start_s}', '-i', str(path),
+                        '-map', '0:a', '-t', f'{dur}', '-f', 'f32le', '-ac', '2', '-ar', str(sr), '-'],
+                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    a = np.frombuffer(r.stdout, dtype=np.float32)
+    return a.reshape(-1, 2).T.copy() if a.size >= 2 * sr else None
+
+
+def degrade_tvary(hr, rng, n_seg=2):
+    """Redraw the degradation parameters partway through the clip.
+
+    Segments are cut on block boundaries (stride 17) so a switch never lands inside a block: the point of
+    the test is whether the estimator re-converges across blocks, not whether a block straddling two
+    operators looks bad."""
+    bounds = [0] + sorted(rng.choice([17 * k for k in range(2, 6)], n_seg - 1, replace=False).tolist()) + [len(hr)]
+    parts, params = [], []
+    for i in range(len(bounds) - 1):
+        seg = hr[bounds[i]:bounds[i + 1]]
+        lr, p = DG.degrade(seg, rng)
+        parts.append(lr)
+        params.append({'from_frame': int(bounds[i]), 'to_frame': int(bounds[i + 1]), **p})
+    return np.concatenate(parts), {'kind': 'time_varying', 'switch_frames': [int(b) for b in bounds[1:-1]],
+                                   'segments': params}
+
+
+def write_png(arr, path):
+    Image.fromarray(arr).save(path)
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--keep', type=int, default=24)
+    ap.add_argument('--variant', default='const', choices=['const', 'tvary'])
+    ap.add_argument('--shard', type=int, default=0)
+    ap.add_argument('--nshards', type=int, default=1)
+    a = ap.parse_args()
+    sel = json.loads(CAND.read_text())['selected'][:a.keep]
+    root = OUT / a.variant
+    root.mkdir(parents=True, exist_ok=True)
+    done = []
+    for i, c in enumerate(sel):
+        if i % a.nshards != a.shard:
+            continue
+        name = Path(c['file']).stem
+        d = root / name
+        if (d / 'meta.json').exists():
+            done.append(name); continue
+        src = SRC / c['file']
+        start = max(0.0, (c['duration'] - T / FPS) / 2)
+        hr = read_window(src, start)
+        if hr is None:
+            print(json.dumps({'skip': name, 'why': 'short'}), flush=True); continue
+        rng = np.random.default_rng(SEED + i)
+        lr, params = (degrade_tvary(hr, rng) if a.variant == 'tvary' else DG.degrade(hr, rng))
+        assert lr.shape == (T, H // 4, W // 4, 3), lr.shape
+        (d / 'hr').mkdir(parents=True, exist_ok=True)
+        (d / 'lr').mkdir(parents=True, exist_ok=True)
+        rec = {}
+        for t in range(T):
+            rec[str(t)] = {'hr_sha256': write_png(hr[t], d / 'hr' / f'{t:06d}.png'),
+                           'lr_sha256': write_png(lr[t], d / 'lr' / f'{t:06d}.png')}
+        au = read_audio(src, start, T / FPS)
+        if au is not None:
+            np.save(d / 'audio_gt.npy', au.astype(np.float32))
+        meta = {'id': name, 'video': str(src), 'source': 'audioset_real', 'category': 'real',
+                'frames': T, 'hr_wh': [W, H], 'start_s': start, 'variant': a.variant,
+                'band_ratio': c['band_ratio'], 'above_8k_ratio': c['above_8k_ratio'],
+                'audio_present': bool(au is not None), 'degradation': params, 'frame_records': rec}
+        (d / 'meta.json').write_text(json.dumps(meta, indent=1))
+        done.append(name)
+        print(json.dumps({'done': name, 'variant': a.variant,
+                          'degradation': params.get('kind'), 'audio': bool(au is not None)}), flush=True)
+    if a.nshards == 1 or a.shard == 0:
+        blocks = [{'k': k, 'range': [17 * k, 17 * k + 22],
+                   'new': [0 if k == 0 else 17 * k + 5, 17 * k + 22]} for k in range(7)]
+        man = {'n': len(done), 'frames': T, 'hr_wh': [W, H], 'blocks': blocks,
+               'source': 'audioset_real', 'variant': a.variant, 'seed': SEED, 'clips': sorted(done)}
+        (root / 'manifest.json').write_text(json.dumps(man, indent=1))
+        print(json.dumps({'manifest': str(root / 'manifest.json'), 'clips': len(done)}), flush=True)
+
+
+if __name__ == '__main__':
+    main()

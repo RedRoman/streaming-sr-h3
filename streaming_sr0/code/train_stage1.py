@@ -18,7 +18,7 @@ from torch.utils.checkpoint import checkpoint
 from safetensors.torch import load_file, save_file
 
 import lora as L
-from h3_comfy import CONTEXT_PATH, DIT_PATH, ROOT, native_training_math, patch_module_to, set_precision
+from h3_comfy import VAE_PATH, CONTEXT_PATH, DIT_PATH, ROOT, native_training_math, patch_module_to, set_precision
 
 SHIFT = 12.0
 
@@ -49,6 +49,20 @@ def main():
     p.add_argument('--save_every', type=int, default=250)
     p.add_argument('--val_every', type=int, default=250)
     p.add_argument('--seed', type=int, default=20261016)
+    p.add_argument('--perc', type=float, default=0.0,
+                   help="weight on an LPIPS term computed on decoded pixels. Velocity MSE is only weakly "
+                        "related to what we are judged on: training with a clean range estimate cut it by "
+                        "39%% and bought 0.0184 LPIPS, and switching the training data from generated to "
+                        "real footage moved LPIPS by 0.0003. Real-ESRGAN optimises perceptual quality "
+                        "directly and beats us on it, so this optimises it directly too.")
+    p.add_argument('--perc-sigma', type=float, default=0.6,
+                   help='only apply it below this sigma, where x0 is close enough to be worth decoding')
+    p.add_argument('--perc-crop', type=int, default=16, help='latent crop side; 16 -> 256x256 pixels')
+    p.add_argument('--guide-key', default='guide',
+                   help="which guide the model is conditioned on. Stage-7 latents carry two: guide_raw is "
+                        "the degraded observation Stage 1 used, guide_oracle is the same pipeline fed the "
+                        "true D(x). Training on the oracle bounds what a range branch could ever buy, "
+                        "which is cheaper to measure now than after R_phi converges.")
     a = p.parse_args()
     dist.init_process_group('hccl')
     rank, world = dist.get_rank(), dist.get_world_size()
@@ -72,7 +86,7 @@ def main():
     if rank == 0:
         (a.out / 'config.json').write_text(json.dumps({**{k: str(v) for k, v in vars(a).items()}, 'world': world,
                                                        'n_train': len(train_files), 'n_val': len(val_files),
-                                                       'conditioning': 'native keyframe guide (official LR guide latent)',
+                                                       'conditioning': 'native keyframe guide', 'guide_key': a.guide_key,
                                                        'lora_targets': list(L.TARGETS), 'sigma_sampling': 'uniform grid u, sigma=12u/(1+11u)',
                                                        'audio': 'noise input, no loss', 'text': 'cached neutral restore context'}, indent=1))
 
@@ -99,7 +113,46 @@ def main():
     with torch.no_grad():
         context = model.preprocess_text_embeds(cache['prompt_embeds'][None].to(dev).to(torch.bfloat16)).detach()
 
-    def forward(target, guide, sigma, gen):
+    vae = None
+    lpips_net = None
+    if a.perc > 0:
+        import lpips as _lp
+        sd_vae, meta_vae = comfy.utils.load_torch_file(str(VAE_PATH), return_metadata=True)
+        vae = comfy.sd.VAE(sd=sd_vae, device=dev, dtype=torch.float16, metadata=meta_vae)
+        vae.first_stage_model.eval().requires_grad_(False).to(dev)
+        # Pin the VAE on the device. ComfyUI manages VAE memory itself and will offload parts of it under
+        # pressure; with rank 32 that never triggered, but a larger LoRA leaves less headroom and the
+        # offloaded weights come back mid-forward, so the backward pass through the decode then sees a
+        # layer_norm weight on cpu against activations on npu.
+        vae.device = dev
+        vae.offload_device = dev
+        # comfy's VAE.decode calls load_models_gpu(force_full_load=self.disable_offload); left at False it
+        # partially loads under memory pressure, which a larger LoRA creates. The backward pass through the
+        # decode then finds half the VAE on cpu. Forcing a full load keeps it whole.
+        vae.disable_offload = True
+        del sd_vae
+        lpips_net = _lp.LPIPS(net='alex', version='0.1', verbose=False).eval().to(dev)
+        for q in lpips_net.parameters():
+            q.requires_grad_(False)
+
+    def perceptual(x0_hat, target, gen):
+        """LPIPS between decoded x0 and the decoded target, on a random latent crop.
+
+        Two latent frames is the smallest unit the H3 VAE accepts (its temporal layout is 2+5k, so 2 gives
+        5 pixel frames), and a 16x16 latent crop keeps the decode that the gradient has to pass through
+        small enough to fit alongside the DiT's own activations."""
+        c = a.perc_crop
+        H16, W16 = x0_hat.shape[-2], x0_hat.shape[-1]
+        y0 = int(torch.randint(0, max(1, H16 - c + 1), (1,), generator=gen, device=dev).cpu().item())
+        x0 = int(torch.randint(0, max(1, W16 - c + 1), (1,), generator=gen, device=dev).cpu().item())
+        sl = (slice(None), slice(None), slice(0, 2), slice(y0, y0 + c), slice(x0, x0 + c))
+        dec_hat = vae.decode(x0_hat[sl].to(torch.float16))
+        with torch.no_grad():
+            dec_tgt = vae.decode(target[sl].to(torch.float16))
+        f = lambda z: (z[0] if z.ndim == 5 else z).permute(0, 3, 1, 2).float().clamp(0, 1).to(dev) * 2 - 1
+        return lpips_net(f(dec_hat), f(dec_tgt)).mean()
+
+    def forward(target, guide, sigma, gen, perc=True):
         eps = torch.randn(target.shape, device=dev, generator=gen)
         s = torch.tensor(sigma, device=dev, dtype=torch.float32)
         xt = (1 - s) * target + s * eps
@@ -110,11 +163,21 @@ def main():
                    'layout': PackedLayout(context.shape[1], tt, hh, ww, 37, keyframes=kf)}
         vio, aio, ts = official_stream_inputs(xt, audio, sigma, time_shift_sigma)
         out = model([vio, aio], ts, context, minimax_payload=payload, transformer_options={})
-        return F.mse_loss(out[0].float(), eps - target)
+        v = out[0].float()
+        mse = F.mse_loss(v, eps - target)
+        # validation always reports pure velocity MSE so the arms stay comparable: two of its three
+        # sigmas sit below the perceptual threshold, which would otherwise fold an LPIPS term into the
+        # number and make a perc=4 run look worse than a perc=0 one at step 0.
+        if not perc or a.perc <= 0 or sigma > a.perc_sigma:
+            return mse
+        # flow matching: xt = x + s*(eps - x), so x0 = xt - s*v
+        x0_hat = (xt.float() - s * v)
+        return mse + a.perc * perceptual(x0_hat, target.float(), gen)
 
     def load(path):
         d = load_file(str(path))
-        return d['target'].to(dev), d['guide'].to(dev)
+        k = a.guide_key if a.guide_key in d else 'guide'
+        return d['target'].to(dev), d[k].to(dev)
 
     def validate(step):
         losses = []
@@ -125,7 +188,7 @@ def main():
                 tgt, gd = load(f)
                 for j, sg in enumerate([0.2, 0.5, 0.8]):
                     g = torch.Generator(device=dev).manual_seed(900000 + i * 10 + j)
-                    losses.append(float(forward(tgt, gd, sg, g)))
+                    losses.append(float(forward(tgt, gd, sg, g, perc=False)))
         t = torch.tensor([sum(losses), len(losses)], device=dev, dtype=torch.float32)  # HCCL has no float64
         dist.all_reduce(t)
         v = float(t[0] / t[1])

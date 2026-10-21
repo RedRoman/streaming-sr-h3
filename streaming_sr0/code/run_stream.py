@@ -18,6 +18,7 @@ import torch.nn.functional as F
 from PIL import Image
 
 import causal_mask as CM
+import kv_cache as KV
 from h3_comfy import H3, ROOT, sync, to_u8
 
 D = ROOT / 'data/stage2_eval'
@@ -49,6 +50,20 @@ def main():
     p.add_argument('--tau', type=float, default=1.0)
     p.add_argument('--ref-dir', type=Path, default=ROOT / 'results/stage2_blocks/indep')
     p.add_argument('--attn', default='bidir', help='bidir | causal | causal_cw2')
+    p.add_argument('--kv', action='store_true', help='cross-chunk KV cache (Stage 5)')
+    p.add_argument('--kv-window', type=int, default=2)
+    p.add_argument('--kv-tail', type=int, default=2)
+    p.add_argument('--kv-quota', action='store_true', help='observation energy quota on cached K/V')
+    p.add_argument('--abs-noise', action='store_true',
+                   help="draw the sampling noise once per clip and slice it by clip-absolute latent frame. "
+                        'Blocks overlap by 5 pixel frames, but those frames sit at the END of block k and the '
+                        'START of block k+1, so per-block noise gives the two blocks different noise for the '
+                        'same instants and they disagree there. Indexing by absolute frame makes them solve '
+                        'nearly the same problem, which is block consistency without any cross-block memory.')
+    p.add_argument('--kv-commit', choices=['output', 'guide'], default='output',
+                   help="what the cache stores: the chunk's own output, or its pure observation "
+                        '(control: the guide carries no generated content, so anything that still '
+                        'drifts is an artifact of attending to cached history, not feedback)')
     p.add_argument('--out', type=Path, default=ROOT / 'results/stage2_blocks')
     p.add_argument('--shard', type=int, default=0); p.add_argument('--nshards', type=int, default=1)
     a = p.parse_args()
@@ -58,8 +73,12 @@ def main():
     blocks = man['blocks']
     h3 = H3(load_dit=True, dit='fl2va', lora_path=a.lora, lora_rank=a.lora_rank)
     chunk = int(a.attn.split('cw')[1]) if 'cw' in a.attn else 1
-    handle = CM.install(h3.patcher.model.diffusion_model, 'causal' if a.attn.startswith('causal') else 'bidir', chunk)
-    write(a.out / f'runtime_{a.mode}_shard{a.shard}.json', {**h3.record, 'mode': a.mode, 'attn': a.attn,
+    cache = KV.H3KVCache(window=a.kv_window, tail_frames=a.kv_tail) if a.kv else None
+    if a.kv:
+        handle = KV.install(h3.patcher.model.diffusion_model, cache)
+    else:
+        handle = CM.install(h3.patcher.model.diffusion_model, 'causal' if a.attn.startswith('causal') else 'bidir', chunk)
+    write(a.out / f'runtime_{a.mode}_shard{a.shard}.json', {**h3.record, 'mode': a.mode, 'attn': a.attn, 'kv': bool(a.kv),
                                                             'attn_chunk': chunk, 'clips': len(clips)})
     for name in clips:
         m = json.loads((D / name / 'meta.json').read_text())
@@ -69,7 +88,18 @@ def main():
             continue
         lr_all = torch.stack([torch.from_numpy(np.array(Image.open(D / name / 'lr' / f'{f:06d}.png').convert('RGB')).copy()).permute(2, 0, 1)
                               for f in range(m['frames'])]).float() / 255
+        if cache is not None:
+            cache.clear()
+        clip_noise = None
+        if a.abs_noise:
+            import comfy.nested_tensor
+            lt = (m['frames'] - 5) // 17 * 5 + 2                  # 124 pixel frames -> 37 latent frames
+            at = round(m['frames'] / 24 * 40)
+            g = torch.Generator().manual_seed(101)
+            clip_noise = (torch.randn(1, 24, lt, hw[0] // 16, hw[1] // 16, generator=g),
+                          torch.randn(1, 32, 2, at, generator=g))
         prev_tail = None          # decoded HR pixels of the previous block's last 5 emitted frames
+        n_block0 = None           # block 0 runs with an empty cache, so its residual norm is un-accumulated
         stream = {}               # frame -> pixels, each from the block that newly emits it
         recs = []
         for b in blocks:
@@ -84,6 +114,9 @@ def main():
                 rd = a.ref_dir / name / f'block{k:03d}'
                 ref_tail = torch.stack([torch.from_numpy(np.array(Image.open(rd / f'{f:06d}.png').convert('RGB')).copy())
                                         for f in range(s, s + 5)]).float() / 255
+            if cache is not None:
+                # block k covers pixel frames [17k, 17k+22), i.e. clip latent frames [5k, 5k+7)
+                cache.latent_start = 5 * k
             upx = up(low, hw).permute(0, 2, 3, 1).contiguous()    # [22,H,W,3]
             anchor_rec = {}
             if prev_tail is not None and a.mode != 'indep':
@@ -108,7 +141,14 @@ def main():
             torch.npu.reset_peak_memory_stats(); sync(); t0 = time.perf_counter()
             guide = h3.encode_guide_pixels(upx, hw)
             t_guide = time.perf_counter() - t0
-            sampled, rec = h3.sample(guide, 'innerdc', low=low, hw=hw, seed=101)
+            nz = None
+            if clip_noise is not None:
+                import comfy.nested_tensor
+                a0 = round(s / 24 * 40)
+                nz = comfy.nested_tensor.NestedTensor(
+                    (clip_noise[0][:, :, 5 * k:5 * k + 7].clone(),
+                     clip_noise[1][:, :, :, a0:a0 + round((e - s) / 24 * 40)].clone()))
+            sampled, rec = h3.sample(guide, 'innerdc', low=low, hw=hw, seed=101, noise=nz)
             t1 = time.perf_counter()
             px = h3.decode(sampled['video']); sync()
             t_dec = time.perf_counter() - t1
@@ -123,7 +163,39 @@ def main():
                 if f >= new_lo:
                     stream[f] = u8[i]
             prev_tail = px[-5:].clone()
-            r = {'block': k, 'range': [s, e], 'new': b['new'], 'guide_seconds': t_guide, **anchor_rec,
+            kv_rec = {}
+            if cache is not None:
+                sync(); tk = time.perf_counter()
+                lat = sampled['video']
+                g = guide.to(device=lat.device, dtype=lat.dtype)
+                # residual of the finished chunk against this block's own observation: what the model generated
+                # beyond U(LR). This is the quantity that accumulates once the cache feeds it to the next chunk.
+                rc = lat - g
+                n_c = float(rc.float().square().sum().sqrt())
+                if k == 0:
+                    n_block0 = n_c
+                anchor = {'resid_norm': n_c}
+                if a.kv_commit == 'guide':
+                    lat = g            # control arm: cache the observation, never the generated content
+                if a.kv_quota and k > 0:
+                    # reference = this block sampled without the cache, which the Stage-2 indep run already
+                    # produced from the same guide and seed; read it instead of sampling the block twice.
+                    rd = a.ref_dir / name / f'block{k:03d}'
+                    refpx = torch.stack([torch.from_numpy(np.array(Image.open(rd / f'{f:06d}.png').convert('RGB')).copy())
+                                         for f in range(s, e)]).float() / 255
+                    z_ref = h3.encode(refpx).to(device=lat.device, dtype=lat.dtype)
+                    n_r = float((z_ref - g).float().square().sum().sqrt())
+                    rho = n_c / max(n_r, 1e-12)
+                    if rho > a.tau:
+                        lat = g + rc * (a.tau / rho)
+                    anchor |= {'rho': rho, 'scaled': bool(rho > a.tau), 'tau': a.tau,
+                               'ref_resid_norm': n_r,
+                               # what a cache-free reference would have cost: block 0 needs no second pass
+                               'rho_vs_block0': n_c / max(n_block0, 1e-12)}
+                kv_rec = {'kv': KV.commit_pass(h3, lat, guide, hw, cache), 'anchor': anchor,
+                          'kv_commit_seconds': time.perf_counter() - tk}
+                cache.advance()
+            r = {'block': k, 'range': [s, e], 'new': b['new'], 'guide_seconds': t_guide, **anchor_rec, **kv_rec,
                  'sample_seconds': rec['seconds'], 'decode_seconds': t_dec,
                  'total_seconds': time.perf_counter() - t0, 'peak_GB': torch.npu.max_memory_allocated() / 1e9,
                  'outputs_sha256': files}
@@ -132,14 +204,14 @@ def main():
         sd = base / 'stream'; sd.mkdir(exist_ok=True)
         for f, im in sorted(stream.items()):
             Image.fromarray(im).save(sd / f'{f:06d}.png')
-        write(base / 'stream_result.json', {'status': 'complete', 'clip': name, 'mode': a.mode, 'attn': a.attn,
+        write(base / 'stream_result.json', {'status': 'complete', 'clip': name, 'mode': a.mode, 'attn': a.attn, 'kv': bool(a.kv),
                                             'frames_emitted': sorted(stream), 'blocks': recs,
                                             'lora_sha256': h3.record.get('lora', {}).get('sha256'),
                                             'wait_frames_per_block': 22 - 5, 'HR_input': a.mode == 'carry' and False})
         print(json.dumps({'done': name, 'mode': a.mode, 'blocks': len(recs),
                           'sec_total': round(sum(r['total_seconds'] for r in recs), 1)}), flush=True)
     handle.remove()
-    print(json.dumps({'shard': a.shard, 'mode': a.mode, 'attn': a.attn, 'finished': True}), flush=True)
+    print(json.dumps({'shard': a.shard, 'mode': a.mode, 'attn': a.attn, 'kv': bool(a.kv), 'finished': True}), flush=True)
 
 
 if __name__ == '__main__':

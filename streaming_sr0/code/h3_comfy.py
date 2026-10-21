@@ -206,12 +206,16 @@ class H3:
         z = self.vae.encode(resized.float()).cpu().contiguous()
         return {'kind': 'image', 'latent_h': th // 16, 'latent_w': tw // 16, 'latent': z}
 
-    def sample(self, guide, mode, low=None, hw=None, log=None, seed=SEED, context=None, refs=None):
+    def sample(self, guide, mode, low=None, hw=None, log=None, seed=SEED, context=None, refs=None, noise=None):
         """mode: 'base' (unadapted 49-step with LR guide) or 'innerdc' (post-CFG z0 += E(P25(D z0)) - E(D z0) at POINTS)."""
         import comfy.nested_tensor
         import comfy.sample
         from pixel_consistency import BicubicConsistency
         assert mode in ('base', 'innerdc')
+        # the step count follows the sigma schedule: a turbo LoRA runs the same sampler on 8 points, not 49
+        n_steps = len(SIGMAS) - 1
+        # innerDC's projection points were chosen on the 49-step grid; keep their relative position
+        points = sorted({min(n_steps - 1, max(0, round(i * n_steps / 49))) for i in POINTS})
         T = guide.shape[2]
         h16, w16 = guide.shape[3], guide.shape[4]
         frames = (T - 2) // 5 * 17 + 5
@@ -226,7 +230,7 @@ class H3:
         events, state = [], {'calls': 0, 'hooks': 0}
 
         def observer(module, args, kwargs, output):
-            if state['calls'] in [0, *POINTS]:
+            if state['calls'] in [0, *points]:
                 actual = kwargs['minimax_payload']['cond_video_latents'][0].detach().cpu()
                 assert float((actual - guide).abs().max()) == 0
             state['calls'] += 1
@@ -241,7 +245,7 @@ class H3:
             index = state['hooks']
             state['hooks'] += 1
             assert state['calls'] == index + 1 and abs(float(args['sigma'].flatten()[0]) - float(SIGMAS[index])) < 1e-6
-            if index not in POINTS:
+            if index not in points:
                 return args['denoised']
             begin = time.perf_counter()
             z0, audio = self.cu.unpack_latents(args['denoised'], shapes)
@@ -264,16 +268,18 @@ class H3:
         t = time.perf_counter()
         try:
             with torch.no_grad(), native_training_math():
-                samples = comfy.sample.sample(current, comfy.sample.prepare_noise(latent, seed), 49, 1., 'euler', 'simple', positive, [], latent,
+                z = comfy.sample.prepare_noise(latent, seed) if noise is None else noise
+                samples = comfy.sample.sample(current, z, n_steps, 1., 'euler', 'simple', positive, [], latent,
                                               seed=seed, disable_pbar=True, sigmas=SIGMAS)
             sync()
         finally:
             handle.remove()
         video, audio = samples.unbind()
-        assert state['calls'] == 49 and torch.isfinite(video).all() and torch.isfinite(audio).all()
+        assert state['calls'] == n_steps and torch.isfinite(video).all() and torch.isfinite(audio).all()
         if mode == 'innerdc':
-            assert state['hooks'] == 49 and [e['index'] for e in events] == POINTS
-        return {'video': video.cpu(), 'audio': audio.cpu()}, {'mode': mode, 'seed': seed, 'steps': 49, 'cfg': 1.,
+            assert state['hooks'] == n_steps and [e['index'] for e in events] == points
+        return {'video': video.cpu(), 'audio': audio.cpu()}, {'mode': mode, 'seed': seed, 'steps': n_steps, 'cfg': 1.,
+                                                              'noise': 'absolute' if noise is not None else 'per_block',
                                                               'seconds': time.perf_counter() - t, 'correction_events': events, 'projection_device_dtype': 'npu/float32' if mode == 'innerdc' else None,
                                                               **self.freeze_audit()}
 

@@ -1,0 +1,4 @@
+/cache/zihaohe/streaming_sr0/code/prepare_audio_pairs.py:86: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  return vae.encode(w[None].movedim(1, -1).to(dev)).float().cpu()
+{"shard": 0, "ok": 25, "skip": 0, "latent": [1, 32, 2, 36]}
+{"shard": 0, "done": 29, "skipped": 0, "dir": "/cache/zihaohe/audio_pairs/val", "files": 108}

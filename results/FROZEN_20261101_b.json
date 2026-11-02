@@ -1,0 +1,397 @@
+{
+ "date": "2026-11-01",
+ "part": "b",
+ "host": "ma-job-fd85d556-b030-4d02-b993-4f586512fefc-worker-0",
+ "noise_floors": {
+  "lpips_2step": 0.0009,
+  "lpips_4step": 0.0018
+ },
+ "sections": {
+  "conditioning_signal": {
+   "question": "does MEASURING the operator (radial MTF of U(D(.)), 16 bands + severity) beat NAMING it (one-hot over 5 operators + severity)?",
+   "matched": "same five operators, same K=3 causal stack, same data, same schedule, same seeds; only the FiLM input differs. 2.045M params (mtf) vs 2.020M (onehot).",
+   "per_seed": {
+    "omni_mtf_k3": {
+     "cond": "mtf",
+     "seed": 0,
+     "k": 3,
+     "params": 2044899,
+     "gain_dB": {
+      "2": 2.6328,
+      "4": 2.8308,
+      "8": 2.7806,
+      "deblur": 8.4411,
+      "denoise": 6.3595
+     },
+     "vs_single_dB": {
+      "2": 0.3638,
+      "4": 0.3048,
+      "8": 0.8556,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_mtf_k3_s1": {
+     "cond": "mtf",
+     "seed": 1,
+     "k": 3,
+     "params": 2044899,
+     "gain_dB": {
+      "2": 2.6417,
+      "4": 2.8637,
+      "8": 2.8672,
+      "deblur": 8.5137,
+      "denoise": 6.4156
+     },
+     "vs_single_dB": {
+      "2": 0.3727,
+      "4": 0.3377,
+      "8": 0.9422,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_mtf_k3_s2": {
+     "cond": "mtf",
+     "seed": 2,
+     "k": 3,
+     "params": 2044899,
+     "gain_dB": {
+      "2": 2.6516,
+      "4": 2.8439,
+      "8": 2.8326,
+      "deblur": 8.5212,
+      "denoise": 6.4411
+     },
+     "vs_single_dB": {
+      "2": 0.3826,
+      "4": 0.3179,
+      "8": 0.9076,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_mtf_k3_s3": {
+     "cond": "mtf",
+     "seed": 3,
+     "k": 3,
+     "params": 2044899,
+     "gain_dB": {
+      "2": 2.662,
+      "4": 2.8585,
+      "8": 2.8066,
+      "deblur": 8.5473,
+      "denoise": 6.4082
+     },
+     "vs_single_dB": {
+      "2": 0.393,
+      "4": 0.3325,
+      "8": 0.8816,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_onehot_k3": {
+     "cond": "onehot",
+     "seed": 0,
+     "k": 3,
+     "params": 2019555,
+     "gain_dB": {
+      "2": 2.6629,
+      "4": 2.8625,
+      "8": 2.8524,
+      "deblur": 8.5853,
+      "denoise": 6.3732
+     },
+     "vs_single_dB": {
+      "2": 0.3939,
+      "4": 0.3365,
+      "8": 0.9274,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_onehot_k3_s1": {
+     "cond": "onehot",
+     "seed": 1,
+     "k": 3,
+     "params": 2019555,
+     "gain_dB": {
+      "2": 2.65,
+      "4": 2.847,
+      "8": 2.8129,
+      "deblur": 8.6126,
+      "denoise": 6.4014
+     },
+     "vs_single_dB": {
+      "2": 0.381,
+      "4": 0.321,
+      "8": 0.8879,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_onehot_k3_s2": {
+     "cond": "onehot",
+     "seed": 2,
+     "k": 3,
+     "params": 2019555,
+     "gain_dB": {
+      "2": 2.6543,
+      "4": 2.8499,
+      "8": 2.8433,
+      "deblur": 8.6231,
+      "denoise": 6.4022
+     },
+     "vs_single_dB": {
+      "2": 0.3853,
+      "4": 0.3239,
+      "8": 0.9183,
+      "deblur": null,
+      "denoise": null
+     }
+    },
+    "omni_onehot_k3_s3": {
+     "cond": "onehot",
+     "seed": 3,
+     "k": 3,
+     "params": 2019555,
+     "gain_dB": {
+      "2": 2.6622,
+      "4": 2.8522,
+      "8": 2.8387,
+      "deblur": 8.6389,
+      "denoise": 6.4148
+     },
+     "vs_single_dB": {
+      "2": 0.3932,
+      "4": 0.3262,
+      "8": 0.9137,
+      "deblur": null,
+      "denoise": null
+     }
+    }
+   },
+   "aggregate_gain_dB": {
+    "mtf": {
+     "2": {
+      "mean": 2.647,
+      "sd": 0.0126,
+      "n_seeds": 4
+     },
+     "4": {
+      "mean": 2.8492,
+      "sd": 0.0149,
+      "n_seeds": 4
+     },
+     "8": {
+      "mean": 2.8217,
+      "sd": 0.037,
+      "n_seeds": 4
+     },
+     "deblur": {
+      "mean": 8.5058,
+      "sd": 0.0455,
+      "n_seeds": 4
+     },
+     "denoise": {
+      "mean": 6.4061,
+      "sd": 0.0341,
+      "n_seeds": 4
+     }
+    },
+    "onehot": {
+     "2": {
+      "mean": 2.6574,
+      "sd": 0.0063,
+      "n_seeds": 4
+     },
+     "4": {
+      "mean": 2.8529,
+      "sd": 0.0067,
+      "n_seeds": 4
+     },
+     "8": {
+      "mean": 2.8368,
+      "sd": 0.0169,
+      "n_seeds": 4
+     },
+     "deblur": {
+      "mean": 8.615,
+      "sd": 0.0225,
+      "n_seeds": 4
+     },
+     "denoise": {
+      "mean": 6.3979,
+      "sd": 0.0176,
+      "n_seeds": 4
+     }
+    }
+   },
+   "mtf_minus_onehot": {
+    "2": {
+     "mtf_minus_onehot_dB": -0.0104,
+     "max_seed_sd_dB": 0.0126,
+     "sigma": 0.83,
+     "verdict": "inside_noise"
+    },
+    "4": {
+     "mtf_minus_onehot_dB": -0.0037,
+     "max_seed_sd_dB": 0.0149,
+     "sigma": 0.25,
+     "verdict": "inside_noise"
+    },
+    "8": {
+     "mtf_minus_onehot_dB": -0.0151,
+     "max_seed_sd_dB": 0.037,
+     "sigma": 0.41,
+     "verdict": "inside_noise"
+    },
+    "deblur": {
+     "mtf_minus_onehot_dB": -0.1092,
+     "max_seed_sd_dB": 0.0455,
+     "sigma": 2.4,
+     "verdict": "real"
+    },
+    "denoise": {
+     "mtf_minus_onehot_dB": 0.0082,
+     "max_seed_sd_dB": 0.0341,
+     "sigma": 0.24,
+     "verdict": "inside_noise"
+    }
+   },
+   "finding": "mtf is not a better conditioner. On x2/x4/x8/denoise the delta is inside the seed spread; on deblur mtf is behind by 0.109 dB with no overlap across four seeds. The deblur MTF (0.90/0.57/0.24/0.06) overlaps the scale operators heavily while a one-hot is orthogonal by construction, so a measured operator is least discriminative exactly where two operators have similar spectra.",
+   "claim_that_survives": "expressiveness, not accuracy: a one-hot cannot be evaluated at an operator outside its vocabulary at all, an MTF can. Measured price inside the vocabulary is about 0.1 dB.",
+   "K3_result": "K=3 omni beats the K=1 single-operator specialists by +0.36/+0.31/+0.86 dB at x2/x4/x8, so the causal stack added to OmniRange today is net positive and the earlier caveat in cmp_m4.sh -- \"K=1, because OmniRange has no causal stack\" -- no longer applies."
+  },
+  "operator_holdout_x6": {
+   "setup": "trained on {2,4,8,deblur,denoise}; x6 pairs built by the same generator, never trained on by any arm. 72 scored frames.",
+   "mtf": {
+    "base_dB": 29.907,
+    "psnr_dB": 31.701,
+    "gain_dB": 1.794
+   },
+   "onehot": "UNREPRESENTABLE -- raises by name, OPS has no slot for 6",
+   "trained_operator_reference_gain_dB": {
+    "x2": 2.633,
+    "x4": 2.831,
+    "x8": 2.781
+   },
+   "fraction_of_trained_gain": 0.634,
+   "probe_structure": "x6 sits strictly between x4 and x8 in every radial band: band0 1.00/0.98/0.88, band1 0.83/0.44/0.17, band2 0.32/0.04/0.00",
+   "mis_conditioning_control": {
+    "x6_data_fed": {
+     "x6_correct": 1.794,
+     "x4": 1.69,
+     "x8": 1.685,
+     "x2": 1.471,
+     "denoise": 1.397
+    },
+    "cost_of_wrong_descriptor_dB": {
+     "x4": -0.104,
+     "x8": -0.109,
+     "x2": -0.323,
+     "denoise": -0.398
+    },
+    "reading": "the ordering is monotone in operator distance -- nearest neighbours cost least, the identity costs most -- so the descriptor is read as a position in operator space, not ignored. But the CORRECT descriptor leads its neighbour by only 0.104 dB, the same size as the deblur deficit, so most of the +1.794 dB is broad robustness to nearby operators. \"Interpolation\" is not supported at this magnitude."
+   },
+   "files": {
+    "holdout_json": false,
+    "miscond_json": true
+   }
+  },
+  "sharpness_negative": {
+   "objective_tested": "hf_mode=energy with hf_w=2 -- match the local RMS of the sigma=2 high pass rather than the high pass itself, so the model is asked for the right AMOUNT of detail where it cannot know the phase",
+   "estimate_layer_final": {
+    "r7_energy": {
+     "iter": 24000,
+     "gain_dB": 2.692,
+     "mid_ratio": 1.0143,
+     "mid_ratio_y": 1.0463
+    },
+    "r7_deficit": {
+     "iter": 24000,
+     "gain_dB": 2.536,
+     "mid_ratio": 0.9867,
+     "mid_ratio_y": 1.0463
+    }
+   },
+   "observation_itself": "mid_ratio_y = 1.0463: the degraded observation already carries 4.6% MORE mid-band energy than the truth, because compression adds high-frequency junk. r7_energy lands at 1.0143, closer to the truth than the input is, so this is not a naive overshoot.",
+   "pre_registered_gate": "mid_ratio > 0.93 and estimate PSNR not down more than 0.3 dB",
+   "gate_result": "PASSED on both arms",
+   "delivered_lpips": {
+    "r7energy": {
+     "n": 77,
+     "lpips": 0.204,
+     "psnr": 25.44
+    },
+    "plain2": {
+     "n": 77,
+     "lpips": 0.1929,
+     "psnr": 25.78
+    },
+    "flashvsr_plus": {
+     "n": 77,
+     "lpips": 0.2072,
+     "psnr": 24.23
+    },
+    "bicubic": {
+     "n": 77,
+     "lpips": 0.4442,
+     "psnr": 24.67
+    }
+   },
+   "delta_vs_shipped": 0.0111,
+   "verdict": "worse",
+   "per_clip_better": "27/77",
+   "mechanism_measured": {
+    "r7energy": {
+     "range": {
+      "energy_ratio": 1.0209,
+      "cos": 0.9955
+     },
+     "null": {
+      "energy_ratio": 0.5979,
+      "cos": 0.4789
+     },
+     "mid": {
+      "energy_ratio": 0.9519,
+      "cos": 0.8622
+     }
+    },
+    "plain2": {
+     "range": {
+      "energy_ratio": 1.0131,
+      "cos": 0.996
+     },
+     "null": {
+      "energy_ratio": 0.5441,
+      "cos": 0.4876
+     },
+     "mid": {
+      "energy_ratio": 0.81,
+      "cos": 0.8754
+     }
+    },
+    "flashvsr_plus": {
+     "range": {
+      "energy_ratio": 0.983,
+      "cos": 0.9944
+     },
+     "null": {
+      "energy_ratio": 0.6437,
+      "cos": 0.4207
+     },
+     "mid": {
+      "energy_ratio": 0.8607,
+      "cos": 0.8511
+     }
+    }
+   },
+   "mechanism_reading": "band_energy settles it. r7_energy moves mid-band energy 0.8100 -> 0.9519 and null-band energy 0.5441 -> 0.5979, exactly as designed, and the cosine against the truth FALLS in both bands, 0.8754 -> 0.8622 and 0.4876 -> 0.4789. Energy up, correlation down: the added detail is the right amount in the wrong phase. A moment-matching objective is phase-blind by construction, so this family of losses cannot improve delivered sharpness, and guide mid_ratio is not a valid proxy for it. The quota gate then amplifies the error, because it scales generated detail by the guide local std.",
+   "reframing_of_the_complaint": "FlashVSR+ has the HIGHEST null-band energy (0.6437) and the LOWEST null-band cosine (0.4207); our shipped arm has the highest cosine in all three bands. The perceived softness is the price of phase correctness under this objective family, which is also why we lead on LPIPS, 0.1929 against 0.2072.",
+   "what_would_be_needed": "an objective that constrains phase rather than a moment -- perceptual, adversarial or flow-consistent -- or more conditioning information (K>3, cross-block memory), not another moment term.",
+   "confound_stated": "the deployed checkpoint was iteration 16000 (mid_ratio 1.0293), not the final 24000 (1.0143); the gap is small against a 0.0112 LPIPS deficit and is not expected to flip the sign, but it is untested. r7_deficit was never deployed: its run OOMed when the host reservation daemon reclaimed the cards."
+  }
+ }
+}

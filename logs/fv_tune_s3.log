@@ -1,0 +1,62 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[W1024 18:14:12.438883395 ToKernelNpu.cpp:41] Warning: Device do not support double dtype now, dtype cast replace with float. (function operator())
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:183: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  return fn(*args, **kwargs)
+Loading models from: /temp/zihaohe/ssr_xfer/flashvsr_weights/diffusion_pytorch_model_streaming_dmd.safetensors
+    model_name: wan_video_dit model_class: WanModel
+        This model is initialized with extra kwargs: {'has_image_input': False, 'patch_size': [1, 2, 2], 'in_dim': 16, 'dim': 1536, 'ffn_dim': 8960, 'freq_dim': 256, 'text_dim': 4096, 'out_dim': 16, 'num_heads': 12, 'num_layers': 30, 'eps': 1e-06}
+    The following models are loaded: ['wan_video_dit'].
+
+███████╗██╗      █████╗ ███████╗██╗  ██╗██╗   ██╗███████╗█████╗
+██╔════╝██║     ██╔══██╗██╔════╝██║  ██║██║   ██║██╔════╝██╔══██╗
+█████╗  ██║     ███████║███████╗███████║╚██╗ ██╔╝███████╗███████║
+██╔══╝  ██║     ██╔══██║╚════██║██╔══██║ ╚████╔╝ ╚════██║██╔═██║
+██║     ███████╗██║  ██║███████║██║  ██║  ╚██╔╝  ███████║██║  ██║
+╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+                         ⚡FlashVSR
+
+Using wan_video_dit from /temp/zihaohe/ssr_xfer/flashvsr_weights/diffusion_pytorch_model_streaming_dmd.safetensors.
+No wan_video_vae models available.
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:08<01:49,  8.39s/it] 14%|█▍        | 2/14 [00:11<01:04,  5.39s/it] 21%|██▏       | 3/14 [00:14<00:45,  4.11s/it] 29%|██▊       | 4/14 [00:17<00:36,  3.62s/it] 36%|███▌      | 5/14 [00:20<00:30,  3.40s/it] 43%|████▎     | 6/14 [00:22<00:25,  3.14s/it] 50%|█████     | 7/14 [00:25<00:21,  3.09s/it] 57%|█████▋    | 8/14 [00:28<00:18,  3.10s/it] 64%|██████▍   | 9/14 [00:31<00:14,  2.92s/it] 71%|███████▏  | 10/14 [00:34<00:11,  2.93s/it] 79%|███████▊  | 11/14 [00:37<00:08,  2.96s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.83s/it] 93%|█████████▎| 13/14 [00:43<00:02,  2.92s/it]100%|██████████| 14/14 [00:45<00:00,  2.90s/it]100%|██████████| 14/14 [00:45<00:00,  3.28s/it]
+{"done": "-D_ljLTbCK0", "sec": 47.3, "peak_GB": 8.6, "shim_calls": 420, "mask_density": 0.9522}
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:08<01:44,  8.04s/it] 14%|█▍        | 2/14 [00:10<01:00,  5.00s/it] 21%|██▏       | 3/14 [00:13<00:44,  4.07s/it] 29%|██▊       | 4/14 [00:16<00:35,  3.57s/it] 36%|███▌      | 5/14 [00:19<00:29,  3.24s/it] 43%|████▎     | 6/14 [00:22<00:25,  3.24s/it] 50%|█████     | 7/14 [00:25<00:21,  3.05s/it] 57%|█████▋    | 8/14 [00:28<00:17,  2.98s/it] 64%|██████▍   | 9/14 [00:31<00:15,  3.04s/it] 71%|███████▏  | 10/14 [00:33<00:11,  2.89s/it] 79%|███████▊  | 11/14 [00:36<00:08,  2.90s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.93s/it] 93%|█████████▎| 13/14 [00:42<00:02,  2.80s/it]100%|██████████| 14/14 [00:45<00:00,  2.85s/it]100%|██████████| 14/14 [00:45<00:00,  3.23s/it]
+{"done": "-K-k1pxeRtQ", "sec": 46.6, "peak_GB": 9.6, "shim_calls": 420, "mask_density": 0.9524}
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:07<01:42,  7.86s/it] 14%|█▍        | 2/14 [00:11<01:02,  5.20s/it] 21%|██▏       | 3/14 [00:13<00:44,  4.03s/it] 29%|██▊       | 4/14 [00:16<00:35,  3.54s/it] 36%|███▌      | 5/14 [00:19<00:30,  3.41s/it] 43%|████▎     | 6/14 [00:22<00:25,  3.14s/it] 50%|█████     | 7/14 [00:25<00:21,  3.07s/it] 57%|█████▋    | 8/14 [00:28<00:18,  3.06s/it] 64%|██████▍   | 9/14 [00:30<00:14,  2.90s/it] 71%|███████▏  | 10/14 [00:33<00:11,  2.88s/it] 79%|███████▊  | 11/14 [00:36<00:08,  2.92s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.81s/it] 93%|█████████▎| 13/14 [00:42<00:02,  2.94s/it]100%|██████████| 14/14 [00:45<00:00,  2.91s/it]100%|██████████| 14/14 [00:45<00:00,  3.25s/it]
+{"done": "1_K3G1EcYLw", "sec": 46.7, "peak_GB": 9.6, "shim_calls": 420, "mask_density": 0.9522}
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:07<01:41,  7.81s/it] 14%|█▍        | 2/14 [00:10<00:58,  4.87s/it] 21%|██▏       | 3/14 [00:13<00:42,  3.86s/it] 29%|██▊       | 4/14 [00:16<00:36,  3.61s/it] 36%|███▌      | 5/14 [00:19<00:29,  3.27s/it] 43%|████▎     | 6/14 [00:21<00:24,  3.12s/it] 50%|█████     | 7/14 [00:24<00:21,  3.03s/it] 57%|█████▋    | 8/14 [00:27<00:17,  2.95s/it] 64%|██████▍   | 9/14 [00:30<00:14,  2.89s/it] 71%|███████▏  | 10/14 [00:33<00:11,  2.98s/it] 79%|███████▊  | 11/14 [00:36<00:08,  2.88s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.86s/it] 93%|█████████▎| 13/14 [00:42<00:02,  2.96s/it]100%|██████████| 14/14 [00:44<00:00,  2.85s/it]100%|██████████| 14/14 [00:44<00:00,  3.20s/it]
+{"done": "3nctZAcB24g", "sec": 46.5, "peak_GB": 9.6, "shim_calls": 420, "mask_density": 0.952}
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:07<01:41,  7.81s/it] 14%|█▍        | 2/14 [00:10<00:57,  4.82s/it] 21%|██▏       | 3/14 [00:13<00:42,  3.86s/it] 29%|██▊       | 4/14 [00:16<00:34,  3.49s/it] 36%|███▌      | 5/14 [00:19<00:29,  3.25s/it] 43%|████▎     | 6/14 [00:21<00:24,  3.06s/it] 50%|█████     | 7/14 [00:24<00:21,  3.11s/it] 57%|█████▋    | 8/14 [00:27<00:17,  2.96s/it] 64%|██████▍   | 9/14 [00:30<00:14,  2.95s/it] 71%|███████▏  | 10/14 [00:33<00:12,  3.01s/it] 79%|███████▊  | 11/14 [00:36<00:08,  2.86s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.91s/it] 93%|█████████▎| 13/14 [00:42<00:02,  2.92s/it]100%|██████████| 14/14 [00:44<00:00,  2.86s/it]100%|██████████| 14/14 [00:44<00:00,  3.20s/it]
+{"done": "606_Owd6dHs", "sec": 46.9, "peak_GB": 9.6, "shim_calls": 420, "mask_density": 0.9521}
+  0%|          | 0/14 [00:00<?, ?it/s]{"bsa_call": 1, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+{"bsa_mode": "DENSE (mask dropped)", "excluded_block_fraction": 0.0408}
+{"bsa_call": 2, "L_q": 10752, "L_k": 10752, "heads": 12, "blocks_q": 84, "blocks_k": 84, "block_q": 128, "block_k": 128, "density": 0.9592, "token_mask_GB": 1.39}
+  7%|▋         | 1/14 [00:07<01:43,  7.98s/it] 14%|█▍        | 2/14 [00:10<00:59,  4.99s/it] 21%|██▏       | 3/14 [00:13<00:44,  4.01s/it] 29%|██▊       | 4/14 [00:16<00:34,  3.46s/it] 36%|███▌      | 5/14 [00:19<00:28,  3.21s/it] 43%|████▎     | 6/14 [00:22<00:25,  3.20s/it] 50%|█████     | 7/14 [00:24<00:21,  3.01s/it] 57%|█████▋    | 8/14 [00:27<00:17,  2.98s/it] 64%|██████▍   | 9/14 [00:30<00:14,  3.00s/it] 71%|███████▏  | 10/14 [00:33<00:11,  2.86s/it] 79%|███████▊  | 11/14 [00:36<00:08,  2.94s/it] 86%|████████▌ | 12/14 [00:39<00:05,  2.90s/it] 93%|█████████▎| 13/14 [00:42<00:02,  2.85s/it]100%|██████████| 14/14 [00:45<00:00,  2.89s/it]100%|██████████| 14/14 [00:45<00:00,  3.22s/it]
+{"done": "63GTFc5Okms", "sec": 46.9, "peak_GB": 9.6, "shim_calls": 420, "mask_density": 0.9519}
+{"shard": 3, "finished": true}

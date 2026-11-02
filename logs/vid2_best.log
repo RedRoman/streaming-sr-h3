@@ -1,0 +1,32 @@
+{
+ "pick": "best",
+ "arms_in_judge": [
+  "bicubic",
+  "dck3",
+  "dcy",
+  "flashvsr",
+  "flashvsr_plus",
+  "infvsr",
+  "plain2"
+ ],
+ "clips": [
+  {
+   "clip": "Jc73va5hsQU",
+   "ours": 0.2661,
+   "fvp": 0.4126,
+   "ours_minus_fvp": -0.1465
+  },
+  {
+   "clip": "HrwpdRe7meM",
+   "ours": 0.1087,
+   "fvp": 0.2161,
+   "ours_minus_fvp": -0.1075
+  }
+ ]
+}
+/cache/zihaohe/streaming_sr0/code/make_compare_video2.py:77: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(gt).permute(2, 0, 1)[None].float() / 255
+{"clip": "Jc73va5hsQU", "sheet": "full", "frames": 124, "canvas": [960, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_Jc73va5hsQU_full.mp4", "bytes": 4017243}
+{"clip": "Jc73va5hsQU", "sheet": "zoom", "frames": 124, "canvas": [512, 1024], "crop_yx": [224, 320], "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_Jc73va5hsQU_zoom.mp4", "bytes": 877013}
+{"clip": "HrwpdRe7meM", "sheet": "full", "frames": 124, "canvas": [960, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_HrwpdRe7meM_full.mp4", "bytes": 29951160}
+{"clip": "HrwpdRe7meM", "sheet": "zoom", "frames": 124, "canvas": [512, 1024], "crop_yx": [224, 288], "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_HrwpdRe7meM_zoom.mp4", "bytes": 4943135}

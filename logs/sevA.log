@@ -1,0 +1,26 @@
+{"tag": "sevA", "params": 2096356, "oracle_sev": true, "sev_w": 1.0, "iters": 12000, "train_clips": 782, "val_clips": 89, "kinds_train": {"pillow_bicubic": 184, "realistic": 598}}
+/cache/zihaohe/streaming_sr0/code/train_range_sev.py:179: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x, g, s = x.to(dev), g.to(dev), s.to(dev)
+/cache/zihaohe/streaming_sr0/code/train_range_sev.py:185: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 1000, "loss": 0.011280333623290062, "val": {"pillow_bicubic": {"n": 108, "psnr": 47.18739255269369, "base": 58.0767093234592, "gain_dB": -10.889316770765511, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 30.778810268276732, "base": 30.15903011733937, "gain_dB": 0.6197801509373626, "sev_mae": 0.36038130647699596}}, "sec": 279.7}
+{"iter": 2000, "loss": 0.010968854650855064, "val": {"pillow_bicubic": {"n": 108, "psnr": 46.11943531036377, "base": 58.0767093234592, "gain_dB": -11.957274013095429, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 30.874682596591718, "base": 30.15903011733937, "gain_dB": 0.7156524792523484, "sev_mae": 0.36038130647699596}}, "sec": 548.7}
+{"iter": 3000, "loss": 0.010450202040374279, "val": {"pillow_bicubic": {"n": 108, "psnr": 45.308568742540146, "base": 58.0767093234592, "gain_dB": -12.768140580919052, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.303555018465286, "base": 30.15903011733937, "gain_dB": 1.1445249011259158, "sev_mae": 0.36038130647699596}}, "sec": 832.8}
+{"iter": 4000, "loss": 0.01263887993991375, "val": {"pillow_bicubic": {"n": 108, "psnr": 45.19186274210612, "base": 58.0767093234592, "gain_dB": -12.88484658135308, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.0932941884502, "base": 30.15903011733937, "gain_dB": 0.9342640711108317, "sev_mae": 0.36038130647699596}}, "sec": 1105.8}
+{"iter": 5000, "loss": 0.012564167380332947, "val": {"pillow_bicubic": {"n": 108, "psnr": 45.38641827194779, "base": 58.0767093234592, "gain_dB": -12.690291051511409, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 30.961341925070318, "base": 30.15903011733937, "gain_dB": 0.8023118077309483, "sev_mae": 0.36038130647699596}}, "sec": 1378.2}
+{"iter": 6000, "loss": 0.011057944037020206, "val": {"pillow_bicubic": {"n": 108, "psnr": 46.53417368288393, "base": 58.0767093234592, "gain_dB": -11.542535640575267, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.264403553635862, "base": 30.15903011733937, "gain_dB": 1.1053734362964924, "sev_mae": 0.36038130647699596}}, "sec": 1570.6}
+{"iter": 7000, "loss": 0.012469753623008728, "val": {"pillow_bicubic": {"n": 108, "psnr": 45.27819682933666, "base": 58.0767093234592, "gain_dB": -12.79851249412254, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 30.953630792143198, "base": 30.15903011733937, "gain_dB": 0.7946006748038279, "sev_mae": 0.36038130647699596}}, "sec": 1715.1}
+{"iter": 8000, "loss": 0.012203344143927097, "val": {"pillow_bicubic": {"n": 108, "psnr": 45.336338926244665, "base": 58.0767093234592, "gain_dB": -12.740370397214534, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.144495767047147, "base": 30.15903011733937, "gain_dB": 0.985465649707777, "sev_mae": 0.36038130647699596}}, "sec": 1859.7}
+{"iter": 9000, "loss": 0.012240073643624783, "val": {"pillow_bicubic": {"n": 108, "psnr": 44.31985727945963, "base": 58.0767093234592, "gain_dB": -13.756852043999565, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.127699081886544, "base": 30.15903011733937, "gain_dB": 0.9686689645471738, "sev_mae": 0.36038130647699596}}, "sec": 2004.2}
+{"iter": 10000, "loss": 0.011109781451523304, "val": {"pillow_bicubic": {"n": 108, "psnr": 44.91465953544334, "base": 58.0767093234592, "gain_dB": -13.162049788015857, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.203421028567032, "base": 30.15903011733937, "gain_dB": 1.0443909112276621, "sev_mae": 0.36038130647699596}}, "sec": 2148.8}
+{"iter": 11000, "loss": 0.009554486721754074, "val": {"pillow_bicubic": {"n": 108, "psnr": 44.63172577045582, "base": 58.0767093234592, "gain_dB": -13.444983553003375, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.107339290386076, "base": 30.15903011733937, "gain_dB": 0.9483091730467059, "sev_mae": 0.36038130647699596}}, "sec": 2293.2}
+{"iter": 12000, "loss": 0.012519319541752338, "val": {"pillow_bicubic": {"n": 108, "psnr": 44.568250832734286, "base": 58.0767093234592, "gain_dB": -13.508458490724912, "sev_mae": 0.43473339080810547}, "realistic": {"n": 426, "psnr": 31.10781644991306, "base": 30.15903011733937, "gain_dB": 0.9487863325736896, "sev_mae": 0.36038130647699596}}, "sec": 2437.7}
+{
+ "tag": "sevA",
+ "GATE_A_PASS": false,
+ "per_kind": {
+  "pillow_bicubic": -13.508,
+  "realistic": 0.949
+ }
+}

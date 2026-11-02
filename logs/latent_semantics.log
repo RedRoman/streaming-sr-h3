@@ -1,0 +1,22 @@
+/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py:668: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  clip_x = x[:, :, i * self.clip_length:(i + 1) * self.clip_length, :, :].to(device)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+{"clip": "-B3_mFE3pog", "latent_pool_vs_lo": 1.1031, "latent_pool_rms": 1.1272, "latent_lo_rms": 1.4503, "direct_psnr": 36.7652, "direct_lpips": 0.0133, "latent_pool_psnr": 19.8629, "latent_pool_lpips": 0.3997, "lr_encode_psnr": 19.7558, "lr_encode_lpips": 0.3477, "lr_encode_pixelup_psnr": 29.2587, "lr_encode_pixelup_lpips": 0.1076}
+{"clip": "-BqpAyCLh7U", "latent_pool_vs_lo": 0.8996, "latent_pool_rms": 0.8509, "latent_lo_rms": 1.0112, "direct_psnr": 26.8803, "direct_lpips": 0.0349, "latent_pool_psnr": 14.0896, "latent_pool_lpips": 0.8182, "lr_encode_psnr": 13.0903, "lr_encode_lpips": 0.7428, "lr_encode_pixelup_psnr": 22.1248, "lr_encode_pixelup_lpips": 0.4925}
+{"clip": "-CgdUiJaNdU", "latent_pool_vs_lo": 0.7693, "latent_pool_rms": 0.9763, "latent_lo_rms": 1.1428, "direct_psnr": 34.9546, "direct_lpips": 0.0359, "latent_pool_psnr": 22.4424, "latent_pool_lpips": 0.4523, "lr_encode_psnr": 22.1366, "lr_encode_lpips": 0.5211, "lr_encode_pixelup_psnr": 28.5069, "lr_encode_pixelup_lpips": 0.1962}
+{"clip": "-D_ljLTbCK0", "latent_pool_vs_lo": 0.7361, "latent_pool_rms": 1.2133, "latent_lo_rms": 1.2971, "direct_psnr": 24.1345, "direct_lpips": 0.0542, "latent_pool_psnr": 10.8973, "latent_pool_lpips": 0.7001, "lr_encode_psnr": 9.568, "lr_encode_lpips": 0.6116, "lr_encode_pixelup_psnr": 21.8121, "lr_encode_pixelup_lpips": 0.3447}
+{"clip": "-DeAdhYKbGE", "latent_pool_vs_lo": 0.6976, "latent_pool_rms": 1.0835, "latent_lo_rms": 1.1921, "direct_psnr": 27.924, "direct_lpips": 0.0457, "latent_pool_psnr": 15.0484, "latent_pool_lpips": 0.6147, "lr_encode_psnr": 14.2666, "lr_encode_lpips": 0.6051, "lr_encode_pixelup_psnr": 25.8427, "lr_encode_pixelup_lpips": 0.3728}
+{"clip": "-GbQWmFzVdY", "latent_pool_vs_lo": 1.0015, "latent_pool_rms": 0.9408, "latent_lo_rms": 1.0429, "direct_psnr": 23.4526, "direct_lpips": 0.1074, "latent_pool_psnr": 15.9522, "latent_pool_lpips": 0.6638, "lr_encode_psnr": 14.9852, "lr_encode_lpips": 0.6741, "lr_encode_pixelup_psnr": 21.9558, "lr_encode_pixelup_lpips": 0.4581}
+
+arm                      PSNR    LPIPS
+direct                 29.019   0.0486
+latent_pool            16.382   0.6081
+lr_encode              15.634   0.5837
+lr_encode_pixelup      24.917   0.3287
+
+latent space: ||pool(E(HR)) - E(LR)|| rms 0.8679  (pool rms 1.0320, E(LR) rms 1.1894)
+cost of latent-space resampling alone : 12.64 dB
+additional cost of starting from E(LR): 0.75 dB

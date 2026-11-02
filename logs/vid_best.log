@@ -1,0 +1,24 @@
+{
+ "picked": "best",
+ "clips": [
+  {
+   "clip": "Jc73va5hsQU",
+   "lpips_ours": 0.2858,
+   "lpips_fvp": 0.4126,
+   "ours_minus_fvp": -0.1268
+  },
+  {
+   "clip": "HrwpdRe7meM",
+   "lpips_ours": 0.1038,
+   "lpips_fvp": 0.2161,
+   "ours_minus_fvp": -0.1124
+  }
+ ]
+}
+/cache/zihaohe/streaming_sr0/code/make_compare_video.py:125: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  z = torch.from_numpy(load(lr_dir / f'{t:06d}.png')).float().permute(2, 0, 1)[None] / 255
+{"clip": "Jc73va5hsQU", "frames": 124, "canvas": [960, 2496], "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_Jc73va5hsQU.mp4", "bytes": 2481669}
+{"clip": "HrwpdRe7meM", "frames": 124, "canvas": [960, 2496], "out": "/cache/zihaohe/streaming_sr0/results/compare_video/best_HrwpdRe7meM.mp4", "bytes": 18054468}
+
+/cache/zihaohe/streaming_sr0/results/compare_video/best_Jc73va5hsQU.mp4
+/cache/zihaohe/streaming_sr0/results/compare_video/best_HrwpdRe7meM.mp4

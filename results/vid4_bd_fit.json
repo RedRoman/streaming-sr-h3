@@ -1,0 +1,77 @@
+{
+ "best": {
+  "rule": "area",
+  "ksize": 21,
+  "sigma": 1.1,
+  "psnr_vs_released_BD": 53.391897439474825
+ },
+ "top10": [
+  {
+   "rule": "area",
+   "ksize": 21,
+   "sigma": 1.1,
+   "psnr_vs_released_BD": 53.391897439474825
+  },
+  {
+   "rule": "area",
+   "ksize": 13,
+   "sigma": 1.1,
+   "psnr_vs_released_BD": 53.391897424924636
+  },
+  {
+   "rule": "area",
+   "ksize": 7,
+   "sigma": 1.1,
+   "psnr_vs_released_BD": 53.34900876943914
+  },
+  {
+   "rule": "area",
+   "ksize": 13,
+   "sigma": 1.0,
+   "psnr_vs_released_BD": 50.79757658180388
+  },
+  {
+   "rule": "area",
+   "ksize": 21,
+   "sigma": 1.0,
+   "psnr_vs_released_BD": 50.79757658180388
+  },
+  {
+   "rule": "area",
+   "ksize": 7,
+   "sigma": 1.0,
+   "psnr_vs_released_BD": 50.734600900558526
+  },
+  {
+   "rule": "area",
+   "ksize": 7,
+   "sigma": 1.2,
+   "psnr_vs_released_BD": 50.095740371336404
+  },
+  {
+   "rule": "area",
+   "ksize": 13,
+   "sigma": 1.2,
+   "psnr_vs_released_BD": 49.68658198436664
+  },
+  {
+   "rule": "area",
+   "ksize": 21,
+   "sigma": 1.2,
+   "psnr_vs_released_BD": 49.68657946716701
+  },
+  {
+   "rule": "area",
+   "ksize": 13,
+   "sigma": 0.9,
+   "psnr_vs_released_BD": 46.86093697884465
+  }
+ ],
+ "distance_to_range_target": {
+  "released_vs_Dx": 38.17418683735063,
+  "fitted_vs_Dx": 38.777445617282616,
+  "fitted_vs_released": 53.391897439474825
+ },
+ "synthetic_bd_base_for_reference": 30.559,
+ "note": "released_vs_Dx is the number the training chain has to match: a specialist trained on pairs whose observation sits a different distance from D(x) will mis-scale its correction, which is exactly the -12.7 dB sp_bd showed on Vid4"
+}

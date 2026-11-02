@@ -1,0 +1,36 @@
+# Sampled frames and decoded video: 548 GB and regenerable from code plus a checkpoint.
+results/deploy_runs/
+results/deploy/*/
+results/compare_video/
+results/baseline_infvsr/
+results/baseline_flashvsr/
+results/baseline_flashvsr_plus/
+
+# Datasets and weights, none of which are ours to redistribute.
+data/
+assets/
+venv/
+envs/
+tmp/
+torch_home/
+
+# Third-party source, pinned by commit in REPRODUCE.md instead.
+code/ComfyUI/
+
+# Checkpoints. The small ones are listed explicitly below if wanted; 270 MB of .pt does not belong
+# in a git history that is meant to be readable.
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.npz
+*.npy
+*.mp4
+*.mkv
+*.png
+*.jpg
+*.wav
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

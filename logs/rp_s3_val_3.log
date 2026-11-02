@@ -1,0 +1,28 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/prepare_range_data.py", line 133, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/prepare_range_data.py", line 117, in main
+    lr, rec = degrade(hr, rng, SCALE)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/degrade.py", line 149, in degrade
+    x = h264_roundtrip(x, crf)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/degrade.py", line 70, in h264_roundtrip
+    for pkt in st.encode(av.VideoFrame.from_ndarray(np.ascontiguousarray(f), format='rgb24')):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "av/video/stream.py", line 34, in av.video.stream.VideoStream.encode
+  File "av/video/stream.py", line 44, in av.video.stream.VideoStream.encode
+  File "av/codec/context.py", line 685, in av.codec.context.CodecContext.encode
+  File "av/codec/context.py", line 669, in av.codec.context.CodecContext._prepare_and_time_rebase_frames_for_encode
+  File "av/codec/context.py", line 418, in av.codec.context.CodecContext.open
+  File "av/error.py", line 354, in av.error.err_check
+av.error.ExternalError: [Errno 542398533] Generic error in an external library: 'avcodec_open2("libx264", {\'crf\': \'30\', \'preset\': \'veryfast\'})'
+[ERROR] 2026-10-31-23:31:57 (PID:610875, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

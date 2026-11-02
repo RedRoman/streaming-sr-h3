@@ -1,0 +1,32 @@
+{"tag": "r4_k3", "seed": 0, "kinds": "realistic", "k": 3, "ch": 128, "blocks": 16, "params": 4736643, "iters": 24000, "batch": 32, "crop": 112, "lr": 0.0003, "hf_w": 1.0, "std_w": 1.0, "hf_sigma": 2.0, "std_mode": "l1", "hf_mode": "l1", "perc": 0.0, "train_windows": 5184, "val_windows": 178}
+/cache/zihaohe/streaming_sr0/code/train_range2.py:212: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x, g = x.to(dev), g.to(dev)
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/train_range2.py", line 250, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/train_range2.py", line 213, in main
+    pred = model(x[:, None])
+           ^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/range_branch.py", line 96, in forward
+    return (stack[:, -1] + self.tail(self.body(self.head(x)))).clamp(0, 1)
+                                               ^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+RuntimeError: Given groups=1, weight of size [128, 9, 3, 3], expected input[32, 3, 112, 112] to have 9 channels, but got 3 channels instead
+[ERROR] 2026-10-27-21:26:45 (PID:4069328, Device:0, RankID:-1) ERR01001 OPS invalid parameter

@@ -1,0 +1,120 @@
+"""Stand-in for mit-han-lab/Block-Sparse-Attention so FlashVSR's LCSA runs on Ascend.
+
+The real package is a CUDA kernel. It is a *performance* optimisation: it skips (query-block, key-block)
+pairs that the mask marks dead, instead of computing them and discarding them. The attention it computes is
+ordinary masked attention at block granularity, so expanding the block mask to token granularity and
+calling scaled_dot_product_attention gives the same numbers on any backend, slower.
+
+This is NOT the degraded fallback the FlashVSR authors warn about. That one drops the mask and runs dense
+attention over everything, which changes what the model computes and visibly costs quality. Here the mask
+is preserved exactly; only the kernel differs. Quality figures produced through this shim are comparable;
+latency figures are not, and must be measured with the official kernel on CUDA.
+
+`_SHIM_CHECK` records every call's shapes plus the mask density, so a run can prove it actually took the
+sparse path rather than silently attending everywhere.
+"""
+import json
+import os
+
+import torch
+import torch.nn.functional as F
+
+_SHIM_CHECK = {'calls': 0, 'dense_calls': 0, 'mask_density': [], 'shapes': set(),
+               'rows_dense': 0, 'rows_masked': 0}
+_ROWS = int(os.environ.get('BSA_ROWS', 2048))   # query tokens per pass; caps mask memory
+
+
+def block_sparse_attn_func(q, k, v, cu_seqlens_q, cu_seqlens_k, head_mask_type, streaming_info,
+                           base_blockmask, max_seqlen_q_, max_seqlen_k_, p_dropout,
+                           deterministic=False, softmax_scale=None, is_causal=False,
+                           exact_streaming=False, return_attn_probs=False):
+    """q, k, v: [total_tokens, nheads, head_dim] for a single sequence (cu_seqlens = [0, L]).
+
+    base_blockmask: [batch, nheads, n_blocks_q, n_blocks_k] bool. Block size is inferred from the token
+    count, and the inference is asserted to divide evenly -- a wrong block size would silently shift every
+    mask entry, so it must not be guessed.
+    """
+    assert not return_attn_probs and not exact_streaming and not is_causal, 'unused by FlashVSR LCSA'
+    assert p_dropout == 0.0, p_dropout
+    assert cu_seqlens_q.numel() == 2 and cu_seqlens_k.numel() == 2, 'single sequence only'
+    L_q, H, D = q.shape
+    L_k = k.shape[0]
+    assert L_q == int(max_seqlen_q_) and L_k == int(max_seqlen_k_), (L_q, max_seqlen_q_, L_k, max_seqlen_k_)
+
+    _SHIM_CHECK['calls'] += 1
+    _SHIM_CHECK['shapes'].add((L_q, L_k, H, D))
+
+    qh = q.transpose(0, 1).unsqueeze(0)                      # [1, H, L_q, D]
+    kh = k.transpose(0, 1).unsqueeze(0)
+    vh = v.transpose(0, 1).unsqueeze(0)
+
+    if base_blockmask is None:
+        _SHIM_CHECK['dense_calls'] += 1
+        out = F.scaled_dot_product_attention(qh, kh, vh, scale=softmax_scale)
+    else:
+        bm = base_blockmask
+        assert bm.dim() == 4, bm.shape
+        nbq, nbk = bm.shape[-2], bm.shape[-1]
+        assert L_q % nbq == 0 and L_k % nbk == 0, (L_q, nbq, L_k, nbk)
+        bq, bk = L_q // nbq, L_k // nbk
+        dens = float(bm.float().mean())
+        _SHIM_CHECK['mask_density'].append(dens)
+        if _SHIM_CHECK['calls'] <= 2 or os.environ.get('BSA_VERBOSE'):
+            print(json.dumps({'bsa_call': _SHIM_CHECK['calls'], 'L_q': L_q, 'L_k': L_k, 'heads': H,
+                              'blocks_q': nbq, 'blocks_k': nbk, 'block_q': bq, 'block_k': bk,
+                              'density': round(dens, 4),
+                              'token_mask_GB': round(H * L_q * L_k / 1e9, 2)}), flush=True)
+        # head_mask_type: 1 = use the block mask for this head, 0 = dense. FlashVSR passes all ones.
+        hmt = head_mask_type.tolist() if torch.is_tensor(head_mask_type) else list(head_mask_type)
+        assert set(hmt) <= {0, 1}, set(hmt)
+        m = bm.to(torch.bool)
+        if m.shape[1] == 1 and H > 1:
+            m = m.expand(-1, H, -1, -1)
+        if any(t == 0 for t in hmt):                         # dense heads see everything
+            allow = torch.tensor([t == 0 for t in hmt], device=m.device).view(1, H, 1, 1)
+            m = m | allow
+        # Expanding the whole mask at once costs H*L_q*L_k bytes -- 1.39 GB on a 10752x10752 chunk, built
+        # once per layer per step, which is what made the first attempt hang. Walk the queries in block
+        # rows instead: peak mask memory drops by L_q/ROWS, and any row whose mask is all-true skips the
+        # mask entirely (at the measured 96% density most rows are), which is exactly equivalent.
+        rows = max(1, _ROWS // bq)
+        outs = []
+        for i0 in range(0, nbq, rows):
+            i1 = min(i0 + rows, nbq)
+            mi = m[:, :, i0:i1]
+            qi = qh[:, :, i0 * bq:i1 * bq]
+            if bool(mi.all()):
+                oi = F.scaled_dot_product_attention(qi, kh, vh, scale=softmax_scale)
+                _SHIM_CHECK['rows_dense'] += 1
+            else:
+                tok = mi.repeat_interleave(bq, dim=-2).repeat_interleave(bk, dim=-1)
+                oi = F.scaled_dot_product_attention(qi, kh, vh, attn_mask=tok, scale=softmax_scale)
+                del tok
+                _SHIM_CHECK['rows_masked'] += 1
+            outs.append(oi)
+        out = torch.cat(outs, dim=2) if len(outs) > 1 else outs[0]
+    return out[0].transpose(0, 1).contiguous()               # [L_q, H, D]
+
+
+def _selftest(device='cpu', dtype=torch.float32):
+    """An all-true block mask must reproduce plain attention; a mask must change the result."""
+    torch.manual_seed(0)
+    L, H, D, nb = 32, 2, 8, 4
+    q, k, v = (torch.randn(L, H, D, device=device, dtype=dtype) for _ in range(3))
+    cu = torch.tensor([0, L], dtype=torch.int32, device=device)
+    hmt = torch.ones(H, dtype=torch.int32, device=device)
+    full = torch.ones(1, H, nb, nb, dtype=torch.bool, device=device)
+    got = block_sparse_attn_func(q, k, v, cu, cu, hmt, None, full, L, L, 0.0)
+    want = F.scaled_dot_product_attention(*(x.transpose(0, 1).unsqueeze(0) for x in (q, k, v)))[0].transpose(0, 1)
+    e_full = float((got - want).abs().max())
+    tri = torch.tril(torch.ones(nb, nb, dtype=torch.bool, device=device)).view(1, 1, nb, nb).expand(1, H, nb, nb)
+    got2 = block_sparse_attn_func(q, k, v, cu, cu, hmt, None, tri.contiguous(), L, L, 0.0)
+    e_tri = float((got2 - want).abs().max())
+    assert e_full < 1e-5, f'all-true mask must equal dense attention, got {e_full}'
+    assert e_tri > 1e-3, f'a restrictive mask must change the output, got {e_tri}'
+    return {'all_true_vs_dense_maxabs': e_full, 'causal_vs_dense_maxabs': e_tri}
+
+
+if __name__ == '__main__':
+    import json
+    print(json.dumps(_selftest(), indent=1))

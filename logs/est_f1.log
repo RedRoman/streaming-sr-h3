@@ -1,0 +1,19 @@
+{"tag": "est_f1", "frames": 1, "loss": "l1", "iters": 4000, "params": 241089}
+/cache/zihaohe/streaming_sr0/code/sev_est.py:139: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x, s = x.to(dev), s.to(dev)
+/cache/zihaohe/streaming_sr0/code/sev_est.py:150: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 500, "loss": 0.41377556324005127, "val": {"pillow_bicubic": {"n": 18, "mae": 0.2307019998918737, "pred_mean": 0.28529997169971466, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.48699152001933416, "pred_mean": 0.35744287745213843, "true_mean": 0.8395775771910016}}, "sec": 8.7}
+{"iter": 1000, "loss": 0.42145824432373047, "val": {"pillow_bicubic": {"n": 18, "mae": 0.14270926017821461, "pred_mean": 0.18743791498450768, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.4987809275881621, "pred_mean": 0.34897249104441996, "true_mean": 0.8395775771910016}}, "sec": 17.6}
+{"iter": 1500, "loss": 0.35963061451911926, "val": {"pillow_bicubic": {"n": 18, "mae": 0.1274429962105836, "pred_mean": 0.15988894342444837, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.5520591223575425, "pred_mean": 0.28979931585490704, "true_mean": 0.8395775771910016}}, "sec": 26.8}
+{"iter": 2000, "loss": 0.2758287787437439, "val": {"pillow_bicubic": {"n": 18, "mae": 0.2140757565709903, "pred_mean": 0.257451656817769, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.46936193539424587, "pred_mean": 0.379785433936287, "true_mean": 0.8395775771910016}}, "sec": 35.5}
+{"iter": 2500, "loss": 0.27709484100341797, "val": {"pillow_bicubic": {"n": 18, "mae": 0.2661754851458076, "pred_mean": 0.3137559863324795, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.42143318948150854, "pred_mean": 0.43689228305724304, "true_mean": 0.8395775771910016}}, "sec": 44.2}
+{"iter": 3000, "loss": 0.2923358082771301, "val": {"pillow_bicubic": {"n": 18, "mae": 0.22713058958812438, "pred_mean": 0.27038375818584526, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.44953137870392307, "pred_mean": 0.4032074258282361, "true_mean": 0.8395775771910016}}, "sec": 52.8}
+{"iter": 3500, "loss": 0.3126111328601837, "val": {"pillow_bicubic": {"n": 18, "mae": 0.2541697682153057, "pred_mean": 0.3004134663173722, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.42845990581660603, "pred_mean": 0.42336116599994644, "true_mean": 0.8395775771910016}}, "sec": 62.8}
+{"iter": 4000, "loss": 0.17668764293193817, "val": {"pillow_bicubic": {"n": 18, "mae": 0.25114131462888956, "pred_mean": 0.29716692875242895, "true_mean": 0.054597971807840984}, "realistic": {"n": 71, "mae": 0.4289774117624827, "pred_mean": 0.4237015150539892, "true_mean": 0.8395775771910016}}, "sec": 72.7}
+{
+ "tag": "est_f1",
+ "pillow_mae": 0.2511,
+ "GATE_CLOSED": false
+}

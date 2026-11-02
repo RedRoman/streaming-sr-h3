@@ -1,0 +1,38 @@
+{"tag": "opcnn", "params": 746696, "iters": 4000, "batch": 32, "crop": 96, "train_clips": 782, "val_clips": 89, "trivial_baselines": {"zeros": 0.28735819458961487, "mean": 0.2998295724391937, "median": 0.2516610622406006}}
+/cache/zihaohe/streaming_sr0/code/op_cnn.py:143: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev)), th_.to(dev))
+/cache/zihaohe/streaming_sr0/code/op_cnn.py:147: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val_mae': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 500, "loss": 0.26029089093208313, "val_mae": {"1": {"pillow_bicubic": 0.21737940940592024, "ALL": 0.26031237418941233, "realistic": 0.2711967877964948}, "8": {"pillow_bicubic": 0.21739703085687426, "ALL": 0.2605552696256658, "realistic": 0.2714967949473312}, "21": {"pillow_bicubic": 0.21741310755411783, "ALL": 0.2606300463209326, "realistic": 0.2715864533322378}}, "sec": 28.6}
+{"iter": 1000, "loss": 0.23338019847869873, "val_mae": {"1": {"pillow_bicubic": 0.2530299847324689, "ALL": 0.25742433308048196, "realistic": 0.2585383932250486}, "8": {"pillow_bicubic": 0.25292175345950657, "ALL": 0.25758865324968705, "realistic": 0.2587718109429722}, "21": {"pillow_bicubic": 0.25321869138214326, "ALL": 0.25775384597396583, "realistic": 0.258903603476118}}, "sec": 54.4}
+{"iter": 1500, "loss": 0.26363080739974976, "val_mae": {"1": {"pillow_bicubic": 0.23759177741077211, "ALL": 0.2563518136530445, "realistic": 0.2611078791792544}, "8": {"pillow_bicubic": 0.2378793234626452, "ALL": 0.2567787652605035, "realistic": 0.26157017304024227}, "21": {"pillow_bicubic": 0.23856807996829352, "ALL": 0.2569800289452411, "realistic": 0.26164784699573485}}, "sec": 80.3}
+{"iter": 2000, "loss": 0.2745443284511566, "val_mae": {"1": {"pillow_bicubic": 0.24755354308419758, "ALL": 0.2560425659202123, "realistic": 0.2581947125546949}, "8": {"pillow_bicubic": 0.24745305462015998, "ALL": 0.2565496526030677, "realistic": 0.25885583237338233}, "21": {"pillow_bicubic": 0.24833376540078056, "ALL": 0.256813930703348, "realistic": 0.2589638317659707}}, "sec": 105.8}
+{"iter": 2500, "loss": 0.24378475546836853, "val_mae": {"1": {"pillow_bicubic": 0.24034697893593046, "ALL": 0.25520495102437357, "realistic": 0.2589717608496127}, "8": {"pillow_bicubic": 0.24028786023457846, "ALL": 0.2556514074356201, "realistic": 0.2595463912330673}, "21": {"pillow_bicubic": 0.2414860361152225, "ALL": 0.25604159838070023, "realistic": 0.25973174092687773}}, "sec": 131.1}
+{"iter": 3000, "loss": 0.24932895600795746, "val_mae": {"1": {"pillow_bicubic": 0.2317804214027193, "ALL": 0.2545729991299718, "realistic": 0.26035139911716254}, "8": {"pillow_bicubic": 0.23192458848158518, "ALL": 0.25495564757605615, "realistic": 0.2607945076281756}, "21": {"pillow_bicubic": 0.2340527143743303, "ALL": 0.25568700318088694, "realistic": 0.2611717524557886}}, "sec": 157.2}
+{"iter": 3500, "loss": 0.2689443826675415, "val_mae": {"1": {"pillow_bicubic": 0.2268822035855717, "ALL": 0.25414994663527507, "realistic": 0.2610628955774534}, "8": {"pillow_bicubic": 0.22694044063488641, "ALL": 0.25440691132098436, "realistic": 0.2613702419174599}, "21": {"pillow_bicubic": 0.22915191368924248, "ALL": 0.2550858672331558, "realistic": 0.26166067235696483}}, "sec": 183.1}
+{"iter": 4000, "loss": 0.2490084022283554, "val_mae": {"1": {"pillow_bicubic": 0.22835592014922035, "ALL": 0.25428307794160054, "realistic": 0.2608561601988237}, "8": {"pillow_bicubic": 0.22831782781415516, "ALL": 0.2545085019861045, "realistic": 0.2611483912127958}, "21": {"pillow_bicubic": 0.23054900020360947, "ALL": 0.2551614513955592, "realistic": 0.26140122775408164}}, "sec": 209.8}
+{
+ "trivial": {
+  "zeros": 0.28735819458961487,
+  "mean": 0.2998295724391937,
+  "median": 0.2516610622406006
+ },
+ "final": {
+  "1": {
+   "pillow_bicubic": 0.22835592014922035,
+   "ALL": 0.25428307794160054,
+   "realistic": 0.2608561601988237
+  },
+  "8": {
+   "pillow_bicubic": 0.22831782781415516,
+   "ALL": 0.2545085019861045,
+   "realistic": 0.2611483912127958
+  },
+  "21": {
+   "pillow_bicubic": 0.23054900020360947,
+   "ALL": 0.2551614513955592,
+   "realistic": 0.26140122775408164
+  }
+ }
+}

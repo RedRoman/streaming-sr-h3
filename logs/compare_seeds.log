@@ -1,0 +1,13 @@
+{"val_items": {"2": 74, "4": 71, "8": 68, "deblur": 71, "denoise": 71}, "single_tag": {"2": "r2_s2", "4": "sgl_sr4", "8": "r2_s8", "deblur": "sgl_deblur", "denoise": "sgl_denoise"}, "train_crop": {"r2_s2": 112, "sgl_sr4": 48, "r2_s8": 48, "sgl_deblur": 48, "sgl_denoise": 48}}
+
+model                    2         4         8    deblur   denoise
+single               2.282     2.437     1.952     8.364     5.773
+omni5                2.228     2.478     2.116     8.191     5.532
+omni5_s1             2.242     2.455     2.105     8.198     5.534
+omni5_s2             2.201     2.438     2.102     8.131     5.472
+
+omni5               -0.054    +0.041    +0.164    -0.173    -0.241  blind, vs specialists
+omni5_s1            -0.040    +0.018    +0.153    -0.166    -0.239  blind, vs specialists
+omni5_s2            -0.081    +0.001    +0.150    -0.232    -0.301  blind, vs specialists
+
+frames per operator: {"2": 222, "4": 213, "8": 204, "deblur": 213, "denoise": 213}

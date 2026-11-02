@@ -1,0 +1,315 @@
+"""Deployable sampling configurations on the 24-clip real-footage set, one variable at a time.
+
+eval_stage7.py fixes two choices that the offline study (deploy_eval.py, offline1) puts in question:
+
+  innerDC target  the post-CFG projection at steps 28/45/48 makes the decoded block consistent with the raw
+                  observation y under a bicubic x4 operator. Under the realistic chain y is blurred, noisy and
+                  compressed, so the projection writes that noise back into the range of every block -- and
+                  the range is where most of the realistic-clip error sits (GT-range substitution takes
+                  LPIPS 0.323 -> 0.218 on those 19 clips).
+  guide source    U(y) only.
+
+Each arm changes one of: --dc {y, rphi, none}, --guide {y, rphi}, --turbo-steps. R_phi is the K=1 range
+branch (results/range_branch/k1.pt, trained on generated clips only, so it has never seen this eval set).
+Every block's 22 frames are kept, not only the stitched stream, so seams can be re-stitched offline.
+"""
+import argparse, hashlib, json, os, time
+from pathlib import Path
+
+import numpy as np
+import torch
+from PIL import Image
+
+from h3_comfy import H3, ROOT, sync, to_u8
+
+# Hold the device before the 40 GB DiT load. A reservation daemon on one host spawns a holder for any
+# device its DCMI query reports as idle, and loading the model leaves the card looking idle for minutes:
+# that is how an r7 deploy died with "11.93 MiB free" after its card was handed to a 59.5 GB holder
+# mid-load. One allocation up front makes the device non-idle, so the race does not have to be run.
+# See patches/claim_card_early.py for the same change in the two trainers.
+def _claim_device_early():
+    import os as _os
+    if not _os.environ.get('ASCEND_RT_VISIBLE_DEVICES'):
+        return None
+    try:
+        import torch as _t
+        import torch_npu  # noqa: F401
+        return _t.zeros(1 << 28, device='npu:0')
+    except Exception:
+        return None
+
+
+_CLAIM = _claim_device_early()
+
+D_ = ROOT / os.environ.get('EVAL_SET', 'data/real_eval/const')
+OUT = ROOT / 'results/deploy_runs'
+H, W = 480, 832
+# The same lightx2v 8-step turbo delta is merged regardless of how many points the schedule is evaluated
+# on: it is a weight edit, not a schedule. turbo_sigmas(n, 12) then picks n points off the shift-12 family,
+# so n=1 gives [1.0, 0.0] -- the single jump a distilled student is trained for.
+TURBO_PATH = ROOT / 'assets/turbo/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors'
+
+
+def load_png(p):
+    return torch.from_numpy(np.asarray(Image.open(p).convert('RGB')).copy()).float() / 255
+
+
+def range_estimate(lr, ckpt, dev=None, op=None):
+    """R_phi(y) for every frame, [T,3,h,w]. K=1, so frame t only ever sees frame t (causal by construction).
+
+    Runs on the accelerator and batches the frames. Both matter: the estimate was previously computed on
+    CPU one frame at a time, which measured 3.445 s per 22-frame block against 0.030 s here -- 115x, and
+    large enough that it dominated the fixed cost the step-count work was trying to reduce. With K=1 the
+    frames are independent, so the batched call is exactly equivalent (verified: max abs diff 0.0)."""
+    st = torch.load(ckpt, map_location='cpu')
+    cfg = dict(st['cfg'])
+    # Absence of 'k' used to be the omni test, which held only while OmniRange was single-frame. It now
+    # carries a causal stack and writes 'k' like RangeBranch does, so an omni checkpoint was built as a
+    # RangeBranch and died with "RangeBranch.__init__() got an unexpected keyword argument 'cond'".
+    # That is exactly what killed the x6 deploy on this host: the fix existed on the other host and this
+    # copy never received it.
+    is_omni = bool(cfg.pop('omni', False)) or 'cond' in cfg or 'k' not in cfg
+    if not is_omni:
+        from range_branch import RangeBranch
+        rb = RangeBranch(**cfg).eval(); rb.load_state_dict(st['state'])
+        K = cfg['k']
+        if K == 1:
+            call = lambda x: rb(x[:, None])
+        else:
+            # Causal K-stack, built exactly as training does: frames t-K+1..t with the clip start
+            # clamped by repeating the first frame. K=3 beats K=1 by 0.237 dB on the estimate now that
+            # the data is there (mech6 measured range content 0.614-correlated across a block stride),
+            # but the frames are no longer independent, so this cannot be a plain batched call.
+            def call(x, K=K):
+                idx = torch.stack([torch.arange(t - K + 1, t + 1).clamp_min(0)
+                                   for t in range(x.shape[0])])
+                return rb(x[idx])
+    else:
+        # multi-operator estimator: one network for every operator, selected by a one-hot. The operator
+        # is a deployment-time input, not something inferred from the frame -- blind estimation of the
+        # degradation from a single LR frame tops out at AUC 0.61-0.68, which is why the conditioning is
+        # explicit. Severity is left at 0: it is the oracle channel and is not available at deployment.
+        from omni_stage1 import COND_DIM, OPS, OmniRange, mtf_cond
+        if op is None:
+            raise SystemExit('--op is required for a multi-operator estimator (%s)' % (OPS,))
+        key = int(op) if str(op).isdigit() else op
+        mode = cfg.pop('cond', 'onehot')
+        cfg.pop('ops', None)
+        if mode != 'mtf' and key not in OPS:
+            raise SystemExit(
+                'operator %r is outside the one-hot vocabulary %s this checkpoint was trained with. An '
+                'mtf-conditioned checkpoint can be asked for it; this one has no slot for it.'
+                % (op, OPS))
+        K = int(cfg.get('k', 1))
+        cfg.setdefault('cdim', COND_DIM[mode])
+        rb = OmniRange(**cfg).eval(); rb.load_state_dict(st['state'])
+        if mode == 'mtf':
+            vec = mtf_cond(key, 0.0, False)
+        else:
+            vec = [0.0] * (len(OPS) + 1)
+            vec[OPS.index(key)] = 1.0
+        cond = torch.tensor([vec], dtype=torch.float32)
+        if K == 1:
+            def call(x, cond=cond):
+                return rb(x, cond.to(x.device).expand(x.shape[0], -1))
+        else:
+            def call(x, cond=cond, K=K):
+                idx = torch.stack([torch.arange(t - K + 1, t + 1).clamp_min(0)
+                                   for t in range(x.shape[0])])
+                return rb(x[idx], cond.to(x.device).expand(x.shape[0], -1))
+    if dev is not None:
+        rb = rb.to(dev)
+    with torch.no_grad():
+        # Chunk over frames. One call over all 124 frames fits at x4 (LR 208x120) but not at x2
+        # (416x240, four times the pixels): a 128-channel activation over 124 frames at that size is
+        # about 6 GB and the run died asking for 11.81 GiB. For K=1 the frames are independent so any
+        # chunking is exact; for K>1 each chunk is given the preceding K-1 frames as context and their
+        # outputs are dropped, which reproduces the whole-clip result rather than restarting the causal
+        # stack at every boundary.
+        K = st['cfg'].get('k', 1)
+        out, T = [], lr.shape[0]
+        step = max(1, int(os.environ.get('RPHI_CHUNK', '16')))
+        for a0 in range(0, T, step):
+            lo = max(0, a0 - (K - 1))
+            x = lr[lo:a0 + step]
+            if dev is not None:
+                x = x.to(dev)
+            y = call(x)
+            out.append(y[a0 - lo:].clamp(0, 1).cpu())
+            del x, y
+        return torch.cat(out)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--tag', required=True)
+    ap.add_argument('--lora', type=Path, default=ROOT / 'results/stage1_lora/lora_step002000.safetensors')
+    ap.add_argument('--lora-rank', type=int, default=32)
+    ap.add_argument('--dc', choices=['y', 'rphi', 'none'], default='y')
+    ap.add_argument('--guide', choices=['y', 'rphi'], default='y')
+    ap.add_argument('--rphi', type=Path, default=ROOT / 'results/range_branch/k1.pt')
+    ap.add_argument('--refiner', type=Path, default=None,
+                    help='Open-H3 2K refiner LoRA, applied on top of the merged Stage-1 weights. Its '
+                         'rank differs per module (384, and 1152 on the fused qkv) and its key names '
+                         'are converted by lora.convert_openh3_refiner. Loaded strictly: a silently '
+                         'dropped adapter is indistinguishable from one that works.')
+    ap.add_argument('--seed', type=int, default=101,
+                    help='sampling seed. It was hardcoded to 101, so every number in the quality table '
+                         'comes from one draw of the sampler. The margin over FlashVSR+ is 0.0107 LPIPS; '
+                         'if the seed-to-seed spread of a single arm is that size, the headline is not '
+                         'safe. Sol-H3 is the precedent -- a 0.44 dB evaluation noise floor there '
+                         'swallowed a 1 dB arm gap and reversed the ordering.')
+    ap.add_argument('--refiner-strength', type=float, default=1.0,
+                    help='scale on the refiner delta when folding it in. 1.0 assumes alpha == rank, '
+                         'which is what Open-H3 reports (384/384) but not something the file states. '
+                         'A regression that shrinks smoothly to zero as this goes to 0 means the '
+                         'direction is simply wrong for our input; a minimum at some s < 1 would mean '
+                         'the scale assumption was wrong.')
+    ap.add_argument('--op', default=None,
+                    help='operator one-hot for a multi-operator estimator, e.g. 4, 8, deblur. '
+                         'Ignored by the single-operator RangeBranch checkpoints.')
+    ap.add_argument('--turbo-steps', type=int, default=0, help='0 = stock 49 steps')
+    ap.add_argument('--quota-s0', type=float, default=0.0,
+                    help='>0 enables the in-sampling spatial detail quota; gate = clip(localstd(U(R_phi y))/s0,0,1)')
+    ap.add_argument('--quota-p', type=float, default=1.0)
+    ap.add_argument('--merge-lora', action='store_true',
+                    help='fold the Stage-1 LoRA into the base weights; the float32 LoRA branch costs '
+                         '0.61 s/step (26%) and is algebraically redundant at inference')
+    ap.add_argument('--clips', default='', help='comma list; default all')
+    ap.add_argument('--shard', type=int, default=0)
+    ap.add_argument('--nshards', type=int, default=1)
+    a = ap.parse_args()
+    out_root = OUT / a.tag
+    out_root.mkdir(parents=True, exist_ok=True)
+    man = json.loads((D_ / 'manifest.json').read_text())
+    blocks = man['blocks']
+    names = a.clips.split(',') if a.clips else man['clips']
+    names = [c for i, c in enumerate(names) if i % a.nshards == a.shard]
+
+    if a.turbo_steps:
+        # same composition as bench_turbo.py: merge the turbo delta first, Stage-1 wrappers after
+        import h3_comfy
+        import lora as L
+        import turbo as TB
+        from safetensors.torch import load_file
+        h3 = H3(load_dit=True, dit='fl2va', lora_path=None)
+        model = h3.patcher.model.diffusion_model
+        h3.record['turbo'] = TB.merge(model, TURBO_PATH)
+        L.inject(model, a.lora_rank)
+        h3.record['lora'] = {'path': str(a.lora), 'tensors_loaded': L.load(model, load_file(str(a.lora)))}
+        import lora_merge as LM
+        if a.merge_lora:
+            h3.record['lora_merge'] = LM.merge_(model, verify_samples=3)
+        if a.refiner:
+            sd, ranks, alphas = L.convert_openh3_refiner(load_file(str(a.refiner)))
+            # NOT `names`: that is the clip list, set from the manifest above. Shadowing it made the
+            # sampler iterate module names and look for data/real_eval/heldout/blocks.0.attn.qkv_proj.
+            ref_mods = L.inject(model, ranks, alpha=alphas, token_refiner=True)
+            loaded = L.load(model, sd, strict=True, strict_unused=True)
+            assert loaded == 2 * len(ref_mods), (loaded, len(ref_mods))
+            # Fold it in, for the same two reasons the Stage-1 LoRA is folded -- plus a third that only
+            # showed up at inference: ComfyUI keeps the DiT on CPU and moves it to the device itself, and
+            # it moves only the weights it knows about, so freshly injected adapter parameters stayed on
+            # CPU and the first matmul died with "other is on cpu". A merged adapter has no live
+            # parameters to leave behind, costs nothing per step (the float32 branch is 26% of a step),
+            # and is algebraically exact up to one rounding step, which verify_samples measures.
+            rel = L.refiner_weight_ratio(model)
+            mrec = LM.merge_(model, strength=a.refiner_strength, verify_samples=3)
+            h3.record['refiner'] = {'path': str(a.refiner),
+                                    'ranks_sample': dict(list(ranks.items())[:4]),
+                                    'per_module_alpha': alphas is not None,
+                                    'modules': len(ref_mods), 'tensors_loaded': loaded,
+                                    'merge': mrec, 'delta_over_base_norm': rel}
+        # frozen snapshot is taken after any merge, so the audit tracks the weights actually used
+        h3.frozen = [(n, v, v._version) for n, v in model.named_parameters()
+                     if not (n.endswith('.lora_a') or n.endswith('.lora_b'))]
+        h3_comfy.SIGMAS = TB.turbo_sigmas(a.turbo_steps, 12.0)
+    else:
+        h3 = H3(load_dit=True, dit='fl2va', lora_path=a.lora, lora_rank=a.lora_rank)
+        if a.merge_lora:
+            import lora_merge as LM
+            h3.record['lora_merge'] = LM.merge_(h3.patcher.model.diffusion_model, verify_samples=3)
+            h3.frozen = [(n, v, v._version) for n, v in h3.patcher.model.diffusion_model.named_parameters()
+                         if not (n.endswith('.lora_a') or n.endswith('.lora_b'))]
+    cfg = {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(a).items()}
+    (out_root / f'runtime_shard{a.shard}.json').write_text(json.dumps({**cfg, **h3.record}, indent=1, default=str))
+
+    for name in names:
+        base = out_root / name
+        if (base / 'stream_result.json').exists():
+            continue
+        T = json.loads((D_ / name / 'meta.json').read_text())['frames']
+        lr = torch.stack([load_png(D_ / name / 'lr' / f'{t:06d}.png') for t in range(T)]).permute(0, 3, 1, 2)
+        est = range_estimate(lr, a.rphi, dev=h3.dev, op=a.op) if 'rphi' in (a.dc, a.guide) else None
+        gsrc = est if a.guide == 'rphi' else lr
+        dsrc = est if a.dc == 'rphi' else lr
+        # Activity gate for the in-sampling quota, from the deployable range estimate only.
+        act = None
+        if a.quota_s0 > 0 or a.quota_s0 < 0:
+            src_act = est if est is not None else lr
+            up = torch.nn.functional.interpolate(src_act, size=(H, W), mode='bicubic',
+                                                 align_corners=False, antialias=True).clamp(0, 1)
+            y = up.mean(1)[None]                                   # [1,T,H,W]
+            m = torch.nn.functional.avg_pool2d(y, 8, 8)
+            s2 = (torch.nn.functional.avg_pool2d(y * y, 8, 8) - m * m).clamp_min(0).sqrt()
+            act = torch.nn.functional.interpolate(s2, size=(H, W), mode='bilinear', align_corners=False)[0]
+
+        stream, recs = {}, []
+        for b in blocks:
+            k, (s, e) = b['k'], b['range']
+            torch.npu.reset_peak_memory_stats(); sync(); t0 = time.perf_counter()
+            guide = h3.encode_guide(gsrc[s:e], [H, W])
+            t_g = time.perf_counter() - t0
+            mode = 'base' if a.dc == 'none' else 'innerdc'
+            q = None
+            if act is not None:
+                q = {'gate': act[s:e][None], 's0': a.quota_s0, 'p': a.quota_p}
+            sampled, rec = h3.sample(guide, mode, low=dsrc[s:e], hw=[H, W], seed=a.seed, quota=q)
+            t1 = time.perf_counter()
+            px = h3.decode(sampled['video']); sync()
+            t_d = time.perf_counter() - t1
+            # Sub-step timers. `total_s` is measured after the PNG writes, so guide + sample + decode has
+            # never summed to it: about 11 s of a 32.1 s block was unaccounted for and the gap was being
+            # guessed at. These name the rest instead.
+            t2 = time.perf_counter()
+            assert px.shape == (e - s, H, W, 3) and torch.isfinite(px).all()
+            t_fin = time.perf_counter() - t2
+            t2 = time.perf_counter()
+            u8 = to_u8(px)
+            t_u8 = time.perf_counter() - t2
+            fo = base / f'block{k:03d}'
+            fo.mkdir(parents=True, exist_ok=True)
+            t2 = time.perf_counter()
+            for i, f in enumerate(range(s, e)):
+                Image.fromarray(u8[i]).save(fo / f'{f:06d}.png')
+                if f >= b['new'][0]:
+                    stream[f] = u8[i]
+            t_png = time.perf_counter() - t2
+            recs.append({'block': k, 'guide_s': t_g, 'sample_s': rec['seconds'], 'decode_s': t_d,
+                         'isfinite_s': t_fin, 'to_u8_s': t_u8, 'png_write_s': t_png,
+                         'total_s': time.perf_counter() - t0, 'steps': rec['steps'],
+                         'dc_events': len(rec.get('correction_events', [])),
+                         'quota_steps': rec.get('quota_steps', 0),
+                         'peak_GB': torch.npu.max_memory_allocated() / 1e9})
+        sd = base / 'stream'; sd.mkdir(parents=True, exist_ok=True)
+        files = {}
+        t_stream0 = time.perf_counter()
+        for f, im in sorted(stream.items()):
+            q = sd / f'{f:06d}.png'; Image.fromarray(im).save(q)
+            files[q.name] = hashlib.sha256(q.read_bytes()).hexdigest()
+        t_stream = time.perf_counter() - t_stream0
+        (base / 'stream_result.json').write_text(json.dumps(
+            {'clip': name, **cfg, 'stream_write_s': t_stream, 'blocks': recs, 'frames_emitted': sorted(stream), 'sha256': files}, indent=1))
+        blk = {k: round(float(sum(r[k] for r in recs)), 2) for k in
+               ('guide_s', 'sample_s', 'decode_s', 'isfinite_s', 'to_u8_s', 'png_write_s', 'total_s')}
+        blk['rest_s'] = round(blk['total_s'] - sum(
+            blk[k] for k in ('guide_s', 'sample_s', 'decode_s', 'isfinite_s', 'to_u8_s', 'png_write_s')), 2)
+        blk['stream_write_s'] = round(t_stream, 2)
+        print(json.dumps({'done': name, 'tag': a.tag, 'sec': round(sum(r['total_s'] for r in recs), 1),
+                          'sample_s_mean': round(float(np.mean([r['sample_s'] for r in recs])), 1),
+                          'phases_whole_clip': blk}), flush=True)
+    print(json.dumps({'tag': a.tag, 'shard': a.shard, 'finished': True}), flush=True)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,17 @@
+{"tag": "omni_m", "seed": 0, "scales": [2, 4, 8, "deblur", "denoise"], "use_sev": false, "crop": 112, "params": 4758403, "train_items": {"2": 10183, "4": 10351, "8": 10331, "deblur": 10351, "denoise": 10351}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/omni_stage1.py", line 224, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/omni_stage1.py", line 204, in main
+    x, g, c = tr.batch(rng, a.batch, a.crop, a.use_sev)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/omni_stage1.py", line 134, in batch
+    return f(xb), f(yb), torch.tensor(cb, dtype=torch.float32)
+           ^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/omni_stage1.py", line 133, in <lambda>
+    f = lambda a: torch.from_numpy(np.stack(a)).float().permute(0, 3, 1, 2) / 255
+                                   ^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/numpy/core/shape_base.py", line 449, in stack
+    raise ValueError('all input arrays must have the same shape')
+ValueError: all input arrays must have the same shape
+[ERROR] 2026-10-28-21:46:52 (PID:3418040, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

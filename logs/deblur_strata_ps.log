@@ -1,0 +1,16 @@
+{"items": 137, "sigma_min": 1.0066685598136582, "sigma_max": 2.477781718711014}
+/cache/zihaohe/streaming_sr0/code/deblur_strata.py:69: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = torch.from_numpy(it['y'][st]).float().permute(0, 1, 4, 2, 3).to(dev) / 255
+{"arm": "trained", "mean_gain_dB": 8.3443}
+{"arm": "persample", "mean_gain_dB": 8.3979}
+{"arm": "onehot", "mean_gain_dB": 8.4385}
+
+gain over the degraded input, dB. Bins hold equal counts of blur sigma.
+arm             overall   s 1.01-1.35   s 1.35-1.84   s 1.84-2.17   s 2.17-2.48
+trained          8.3443        7.3868        9.3962        8.0144        8.5732
+persample        8.3979        7.5149        9.4269        8.0269        8.6166
+onehot           8.4385        7.5937        9.4769        8.0505        8.6274
+
+persample - trained = +0.0536 dB   (>0: the MTF->behaviour mapping survived a degenerate training condition)
+trained   - onehot  = -0.0942 dB   (the published deblur delta, reproduced here)
+wrote /cache/zihaohe/streaming_sr0/results/omni/deblur_strata_ps.json

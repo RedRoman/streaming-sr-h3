@@ -1,0 +1,78 @@
+{
+ "benchmark": "Vid4",
+ "degradation": "BIx4",
+ "rphi": "results/range_branch/r6_xl_k3.pt",
+ "stride": 4,
+ "note": "BIx4 is the operator the range/null split is defined by, so y = D(x) and the range branch has nothing to recover; BDx4 is a different operator, so y != D(x) and a gain is expected",
+ "per_clip": [
+  {
+   "clip": "calendar",
+   "frames": 11,
+   "hw": [
+    576,
+    720
+   ],
+   "psnr_y_vs_Dx": 45.84947204589844,
+   "psnr_rphi_vs_Dx": 36.45151138305664,
+   "gain_dB": -9.397960662841797,
+   "psnr_bicubic_vs_gt": 18.974624633789062,
+   "psnr_rphi_up_vs_gt": 18.798215866088867,
+   "lpips_bicubic": 0.5671906904740767,
+   "lpips_rphi_up": 0.5898487622087653
+  },
+  {
+   "clip": "city",
+   "frames": 9,
+   "hw": [
+    576,
+    704
+   ],
+   "psnr_y_vs_Dx": 57.010894775390625,
+   "psnr_rphi_vs_Dx": 42.95676803588867,
+   "gain_dB": -14.054126739501953,
+   "psnr_bicubic_vs_gt": 23.77622413635254,
+   "psnr_rphi_up_vs_gt": 23.624366760253906,
+   "lpips_bicubic": 0.5288152661588457,
+   "lpips_rphi_up": 0.5593732860353258
+  },
+  {
+   "clip": "foliage",
+   "frames": 13,
+   "hw": [
+    480,
+    720
+   ],
+   "psnr_y_vs_Dx": 53.66727828979492,
+   "psnr_rphi_vs_Dx": 37.90045928955078,
+   "gain_dB": -15.76681900024414,
+   "psnr_bicubic_vs_gt": 22.212316513061523,
+   "psnr_rphi_up_vs_gt": 22.03415298461914,
+   "lpips_bicubic": 0.568505951991448,
+   "lpips_rphi_up": 0.5915093926283029
+  },
+  {
+   "clip": "walk",
+   "frames": 12,
+   "hw": [
+    480,
+    720
+   ],
+   "psnr_y_vs_Dx": 53.7841796875,
+   "psnr_rphi_vs_Dx": 41.65265655517578,
+   "gain_dB": -12.131523132324219,
+   "psnr_bicubic_vs_gt": 24.938413619995117,
+   "psnr_rphi_up_vs_gt": 24.80851173400879,
+   "lpips_bicubic": 0.3736893559495608,
+   "lpips_rphi_up": 0.3857184698184331
+  }
+ ],
+ "mean": {
+  "psnr_y_vs_Dx": 52.577956199645996,
+  "psnr_rphi_vs_Dx": 39.74034881591797,
+  "gain_dB": -12.837607383728027,
+  "psnr_bicubic_vs_gt": 22.47539472579956,
+  "psnr_rphi_up_vs_gt": 22.316311836242676,
+  "lpips_bicubic": 0.5095503161434828,
+  "lpips_rphi_up": 0.5316124776727068
+ }
+}

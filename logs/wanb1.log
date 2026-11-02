@@ -1,0 +1,46 @@
+/temp/liusonghua/h3_wan_full_pipeline_20261022/ascend_eval/upstream/inference/sr/dit_sparse/models.py:93: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @amp.autocast(enabled=False)
+/cache/zihaohe/streaming_sr0/code/wan_sr_route.py:104: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  z = vae.encode([x.permute(1, 0, 2, 3).to(dev) * 2 - 1])[0][None]
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+[SparseDebug] grid already aligned: is_stream=True, grid=(2, 32, 52), sparse_block_size=(2, 4, 4)
+{"clip": "-BqpAyCLh7U", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 11.242860150523484, "s_per_frame": 0.09291619959110317, "psnr_stride8": 21.09514414599262}
+{"clip": "-D_ljLTbCK0", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 10.018179179169238, "s_per_frame": 0.08279486924933255, "psnr_stride8": 24.608642481802494}
+{"clip": "-GbQWmFzVdY", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.911328577436507, "s_per_frame": 0.0819118064250951, "psnr_stride8": 19.456014266955314}
+{"clip": "-K-k1pxeRtQ", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.915158006362617, "s_per_frame": 0.08194345459803816, "psnr_stride8": 29.406100877407695}
+{"clip": "1OJ3grdpoD0", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.931139786727726, "s_per_frame": 0.08207553542750187, "psnr_stride8": 23.26246680490707}
+{"clip": "1_K3G1EcYLw", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.891848948784173, "s_per_frame": 0.08175081775854688, "psnr_stride8": 20.20554047786248}
+{"clip": "1dr8P7o36lY", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.92051462456584, "s_per_frame": 0.08198772416996562, "psnr_stride8": 24.944869984712227}
+{"clip": "3nctZAcB24g", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.942788425832987, "s_per_frame": 0.08217180517217344, "psnr_stride8": 20.445930327291876}
+{"clip": "41MtICTvZGM", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 10.08239771425724, "s_per_frame": 0.08332560094427471, "psnr_stride8": 28.287170726591647}
+{"clip": "606_Owd6dHs", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.890831027179956, "s_per_frame": 0.08174240518330543, "psnr_stride8": 18.628212223935435}
+{"clip": "60kn1weBK8M", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.908641474321485, "s_per_frame": 0.08188959896133459, "psnr_stride8": 22.29657775791143}
+{"clip": "63GTFc5Okms", "cond": "bicubic", "frames": 121, "latents": 32, "seconds": 9.94249212089926, "s_per_frame": 0.08216935637106826, "psnr_stride8": 29.362644271630643}

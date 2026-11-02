@@ -1,0 +1,10 @@
+{"identity_scale1_rel_err": 2.6178, "in_rms": 2.0169, "out_rms": 6.8419, "params": 345280216}
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/latent_sr_ceiling.py", line 149, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/latent_sr_ceiling.py", line 97, in main
+    assert rel < 0.35, f'scale=1 is not near-identity (rel {rel:.3f}); the architecture still does not match'
+           ^^^^^^^^^^
+AssertionError: scale=1 is not near-identity (rel 2.618); the architecture still does not match
+[ERROR] 2026-10-22-01:00:19 (PID:1201038, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+EXIT 1

@@ -1,0 +1,29 @@
+/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py:668: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  clip_x = x[:, :, i * self.clip_length:(i + 1) * self.clip_length, :, :].to(device)
+{
+ "latent_shape_block0": [
+  1,
+  24,
+  7,
+  30,
+  52
+ ],
+ "latent_shape_block1": [
+  1,
+  24,
+  7,
+  30,
+  52
+ ],
+ "best_matching_latent_pair": {
+  "block0_latent_idx": 5,
+  "block1_latent_idx": 0,
+  "rel": 0.0,
+  "max_abs": 0.0
+ },
+ "reusable": true,
+ "unrelated_baseline_rel": 0.26636195182800293
+}
+
+VERDICT: REUSABLE: overlapping frames encode identically, guide cost can drop by 5/22
+EXIT 0

@@ -1,0 +1,38 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/deploy_eval.py", line 138, in _blend
+    a = load(src / name / f'block{k - 1:03d}' / f'{t:06d}.png')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/deploy_eval.py", line 47, in load
+    return torch.from_numpy(np.asarray(Image.open(p).convert('RGB')).copy()).float() / 255
+                                       ^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/PIL/Image.py", line 3639, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../results/deploy_runs/dc_rphi/-B3_mFE3pog/block000/000017.png'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/deploy_eval.py", line 419, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/deploy_eval.py", line 399, in main
+    for name, n in pool.imap_unordered(_blend, jobs):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/multiprocessing/pool.py", line 873, in next
+    raise value
+FileNotFoundError: [Errno 2] No such file or directory: '../results/deploy_runs/dc_rphi/-B3_mFE3pog/block000/000017.png'
+[ERROR] 2026-10-21-20:04:16 (PID:3500689, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

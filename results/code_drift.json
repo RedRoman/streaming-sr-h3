@@ -1,0 +1,115 @@
+{
+ "host": "ma-job-fd85d556-b030-4d02-b993-4f586512fefc-worker-0",
+ "checks": 18,
+ "missing": 4,
+ "rows": [
+  {
+   "file": "run_deploy.py",
+   "marker": "is_omni",
+   "state": "ok",
+   "cost": "an mtf/K>1 omni checkpoint is built as a RangeBranch and dies on cfg key \"cond\" (killed x6 at 17:03)"
+  },
+  {
+   "file": "run_deploy.py",
+   "marker": "_claim_device_early",
+   "state": "ok",
+   "cost": "the card is idle for the 40 GB DiT load and a reservation holder can take it mid-load"
+  },
+  {
+   "file": "omni_stage1.py",
+   "marker": "COND_DIM",
+   "state": "ok",
+   "cost": "no mtf conditioning at all; --cond mtf and --holdout-scales are unavailable"
+  },
+  {
+   "file": "omni_stage1.py",
+   "marker": "claim_card_early",
+   "state": "ok",
+   "cost": "the card is idle while 31 GB of npz loads"
+  },
+  {
+   "file": "train_range2.py",
+   "marker": "claim_card_early",
+   "state": "ok",
+   "cost": "same; an r7 run was killed at iteration 2000 by a holder taking the card during the load"
+  },
+  {
+   "file": "operator_desc.py",
+   "marker": "def operator_mtf",
+   "state": "ok",
+   "cost": "the radial MTF descriptor is missing, so omni_stage1 cannot import it"
+  },
+  {
+   "file": "omni_holdout.py",
+   "marker": "mis_cond",
+   "state": "ok",
+   "cost": "the x6 holdout and its mis-conditioning control cannot be run"
+  },
+  {
+   "file": "degrade_audio.py",
+   "marker": "def degrade_audio",
+   "state": "ok",
+   "cost": "no audio degradation operator; audio pairs and audio_lr cannot be produced"
+  },
+  {
+   "file": "degrade_audio.py",
+   "marker": "def mel_dist",
+   "state": "ok",
+   "cost": "the mel metric is missing and LSD would be used, which reads a 25x perceptual codec as capped"
+  },
+  {
+   "file": "audio_line1.py",
+   "marker": "def align",
+   "state": "ok",
+   "cost": "waveform metrics are computed without the constant -266 sample codec delay, a ~30 dB artefact"
+  },
+  {
+   "file": "prepare_audio_pairs.py",
+   "marker": "def read_audio",
+   "state": "ok",
+   "cost": "audio latent pairs cannot be generated"
+  },
+  {
+   "file": "train_audio_range.py",
+   "marker": "lsd_regressed_clips",
+   "state": "ok",
+   "cost": "the audio verdict ignores LSD and reports mel-only wins as unqualified"
+  },
+  {
+   "file": "prepare_range_data.py",
+   "marker": "RANGE_SRC_PREFIX",
+   "state": "MARKER ABSENT",
+   "cost": "the manifests absolute paths do not resolve on a host where /temp is grafted differently"
+  },
+  {
+   "file": "band_energy.py",
+   "marker": "'cos'",
+   "state": "ok",
+   "cost": "band energy is reported without the cosine, which is the term that explained the sharpness failure"
+  },
+  {
+   "file": "bench_deploy_latency.py",
+   "marker": "attn_share",
+   "state": "MARKER ABSENT",
+   "cost": "attention share of the DiT cannot be measured, so a sparse-attention port is decided on extrapolation"
+  },
+  {
+   "file": "freeze_today.py",
+   "marker": "eval_set_fingerprint",
+   "state": "FILE ABSENT",
+   "cost": "the day-1 results cannot be frozen on this host"
+  },
+  {
+   "file": "freeze_today_b.py",
+   "marker": "conditioning_signal",
+   "state": "ok",
+   "cost": "the conditioning/holdout/sharpness half cannot be frozen"
+  },
+  {
+   "file": "freeze_audio.py",
+   "marker": "corr_headroom_vs_lsd_change",
+   "state": "FILE ABSENT",
+   "cost": "the audio line cannot be frozen"
+  }
+ ]
+}

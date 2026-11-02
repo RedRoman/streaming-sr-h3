@@ -1,0 +1,45 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/streaming_sr0/code/prepare_mvsr4x.py:59: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(gt).permute(2, 0, 1)[None].float() / 255
+{"clip": "003", "crop_yx": [496, 16], "gap_vs_synthetic_x4": 0.5299, "gap_vs_probe": 2.2482, "control_vs_probe": 2.5406}
+{"clip": "065", "crop_yx": [0, 192], "gap_vs_synthetic_x4": 0.9164, "gap_vs_probe": 2.4177, "control_vs_probe": 2.6462}
+{"clip": "075", "crop_yx": [432, 192], "gap_vs_synthetic_x4": 0.6037, "gap_vs_probe": 2.7219, "control_vs_probe": 2.7198}
+{"clip": "106", "crop_yx": [544, 0], "gap_vs_synthetic_x4": 0.8354, "gap_vs_probe": 2.2831, "control_vs_probe": 2.443}
+{"clip": "115", "crop_yx": [0, 144], "gap_vs_synthetic_x4": 1.0576, "gap_vs_probe": 2.3409, "control_vs_probe": 2.4333}
+{"clip": "139", "crop_yx": [336, 192], "gap_vs_synthetic_x4": 1.2156, "gap_vs_probe": 1.1515, "control_vs_probe": 1.3039}
+{"clip": "158", "crop_yx": [224, 0], "gap_vs_synthetic_x4": 0.4659, "gap_vs_probe": 2.7955, "control_vs_probe": 2.7967}
+{"clip": "171", "crop_yx": [416, 192], "gap_vs_synthetic_x4": 0.9611, "gap_vs_probe": 2.0156, "control_vs_probe": 2.1295}
+{"clip": "230", "crop_yx": [320, 96], "gap_vs_synthetic_x4": 0.52, "gap_vs_probe": 2.3718, "control_vs_probe": 2.5452}
+{"clip": "232", "crop_yx": [544, 192], "gap_vs_synthetic_x4": 0.496, "gap_vs_probe": 2.7662, "control_vs_probe": 3.1016}
+{"clip": "263", "crop_yx": [544, 0], "gap_vs_synthetic_x4": 0.5892, "gap_vs_probe": 2.9927, "control_vs_probe": 2.9185}
+{"clip": "280", "crop_yx": [368, 192], "gap_vs_synthetic_x4": 1.2172, "gap_vs_probe": 1.447, "control_vs_probe": 1.5704}
+{"clip": "427", "crop_yx": [0, 0], "gap_vs_synthetic_x4": 0.7942, "gap_vs_probe": 2.6362, "control_vs_probe": 2.8446}
+{"clip": "465", "crop_yx": [304, 0], "gap_vs_synthetic_x4": 0.6787, "gap_vs_probe": 2.5074, "control_vs_probe": 2.7029}
+{"clip": "466", "crop_yx": [0, 0], "gap_vs_synthetic_x4": 0.6049, "gap_vs_probe": 2.3465, "control_vs_probe": 2.5181}
+
+{
+ "written": 15,
+ "frames": 90,
+ "blocks": 5,
+ "lr": [
+  208,
+  120
+ ],
+ "hr": [
+  832,
+  480
+ ],
+ "mtf_gap_mean": 0.7657,
+ "mtf_gap_max": 1.2172,
+ "dst": "/cache/zihaohe/streaming_sr0/data/real_eval/mvsr4x"
+}
+
+For scale: a descriptor L2 of 0.21 (x6 against the trained set) generalised fine, while
+0.32-1.05 (a sigma-0.6 blur) collapsed 2.9 dB. That is the yardstick for the gap above.

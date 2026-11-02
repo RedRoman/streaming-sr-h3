@@ -1,0 +1,38 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:94: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = x.to(dev)
+[1987278] [2026-11-01 14:09:02:723] torch_npu.memory: [ERROR] [1987278] NPU out of memory. Tried to allocate 220.00 MiB (NPU 0; 60.96 GiB total capacity; 232.38 MiB already allocated; 232.38 MiB current active; 11.93 MiB free; 238.00 MiB reserved in total by PyTorch).If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 273, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 201, in main
+    est = range_estimate(lr, a.rphi, dev=h3.dev, op=a.op) if 'rphi' in (a.dc, a.guide) else None
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 95, in range_estimate
+    y = call(x)
+        ^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 60, in call
+    return rb(x[idx])
+           ^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/streaming_sr0/code/range_branch.py", line 96, in forward
+    return (stack[:, -1] + self.tail(self.body(self.head(x)))).clamp(0, 1)
+                                               ^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+torch.OutOfMemoryError: NPU out of memory. Tried to allocate 220.00 MiB (NPU 0; 60.96 GiB total capacity; 232.38 MiB already allocated; 232.38 MiB current active; 11.93 MiB free; 238.00 MiB reserved in total by PyTorch).If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.
+[ERROR] 2026-11-01-14:09:03 (PID:1987278, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

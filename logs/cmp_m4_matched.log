@@ -1,0 +1,11 @@
+{"val_items": {"2": 132, "4": 137, "deblur": 137, "denoise": 137}, "single_tag": {"2": "sp_s2", "4": "r5_big", "deblur": "sp_deblur", "denoise": "sp_denoise"}, "train_crop": {"sp_s2": null, "r5_big": null, "sp_deblur": null, "sp_denoise": null}}
+/cache/zihaohe/streaming_sr0/code/omni_compare.py:56: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = torch.from_numpy(it['y'][sel]).float().permute(0, 3, 1, 2).to(dev) / 255
+
+model                    2         4    deblur   denoise
+single               3.733     3.029     8.840     6.515
+omni_m4              3.695     2.937     8.662     6.379
+
+omni_m4             -0.037    -0.092    -0.177    -0.137  blind, vs specialists
+
+frames per operator: {"2": 396, "4": 411, "deblur": 411, "denoise": 411}

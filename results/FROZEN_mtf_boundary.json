@@ -1,0 +1,141 @@
+{
+ "date": "2026-11-02",
+ "host": "ma-job-fd85d556-b030-4d02-b993-4f586512fefc-worker-0",
+ "sections": {
+  "in_vocabulary": {
+   "measurement": "R_phi val gain, 4 seeds per arm, identical data and capacity",
+   "mtf_minus_onehot_dB": {
+    "x2": -0.0103,
+    "x4": -0.0037,
+    "x8": -0.0151,
+    "deblur": -0.1091,
+    "denoise": 0.0082
+   },
+   "sign_across_4_seeds": {
+    "x2": "4/4 negative but |delta| 0.000-0.030, at the edge of resolution",
+    "x4": "mixed (-0.032/+0.017/-0.006/+0.006) -> noise",
+    "x8": "mixed (-0.072/+0.054/-0.011/-0.032) -> noise",
+    "deblur": "4/4 negative at -0.144/-0.099/-0.102/-0.092 -> a real, consistent deficit",
+    "denoise": "mixed -> noise"
+   },
+   "training_windows_per_operator": 590,
+   "caveat": "the big sets hold 10351-13672 per operator and were never used for this comparison; a sweep is running because a 17-dim condition is more data-hungry than a 6-dim one"
+  },
+  "end_to_end_lpips_cannot_decide_this": {
+   "mtf_minus_onehot_lpips": 0.0008,
+   "paired_clips": 77,
+   "sem": 0.0004,
+   "noise_floor": 0.0009,
+   "mis_conditioning_control": {
+    "setup": "x4 input, x6 descriptor, same 53 clips, paired against the x4 descriptor",
+    "wrong_minus_right_lpips": 0.0009,
+    "sem": 0.0006,
+    "reading": "handing the arm the WRONG operator costs the same as the entire mtf-vs-onehot difference, so this metric has no resolving power for the conditioning signal. The innerDC projection onto R_phi(y) absorbs it. Conditioning must be judged at the R_phi level, not after the DiT."
+   }
+  },
+  "deblur_conditioning_was_never_implemented": {
+   "bug": "mtf_cond caches on the operator STRING; every deblur sample passed the bare 'deblur' and operator_desc fell back to its default sigma=1.75, so one constant vector covered a kernel range of sigma 1.0-2.5",
+   "discarded_signal": "||MTF(sigma=1.0) - MTF(sigma=2.5)|| = 0.8851",
+   "cannot_be_fixed_at_inference": {
+    "feeding_true_descriptors_to_the_old_weights": -0.4094,
+    "worst_bin_furthest_from_1.75": -1.1,
+    "reading": "the network bound that constant as the identity of \"deblur\"; a retrain was required to test the idea at all"
+   },
+   "after_retraining_with_per_sample_kernels": {
+    "flag": "--mtf-persample (opt-in, so every earlier number stays reproducible)",
+    "seeds": 4,
+    "persample_minus_bare_dB": 0.0335,
+    "seed_sd": 0.0394,
+    "persample_minus_onehot_dB": -0.0756,
+    "on_137_val_items": {
+     "persample_minus_bare": 0.0536,
+     "persample_minus_onehot": -0.0406
+    },
+    "per_sigma_bin": "one-hot leads in every bin; its lead shrinks as sigma grows (0.079 -> 0.011)",
+    "verdict": "the fix is real and directionally right, but within the seed spread and still behind one-hot. The deblur column is a negative result, not an implementation note -- which is only knowable because the implementation was fixed first."
+   }
+  },
+  "the_boundary": {
+   "principle": "MTF generalises to an operator it never trained on when the descriptor lands among trained operators that share a behaviour; it collapses when the bracketing operators behave incompatibly, and distance alone does not predict which",
+   "works": {
+    "x6": {
+     "descriptor_L2": 0.2067,
+     "bracketed_by": [
+      "x4",
+      "x8"
+     ],
+     "behaviours": "one operator at two strengths",
+     "mtf_gain_dB": 2.088,
+     "mtf_persample_gain_dB": 1.997,
+     "onehot": "UNREPRESENTABLE"
+    },
+    "x3": {
+     "descriptor_L2": 0.2731,
+     "bracketed_by": [
+      "x2",
+      "x4"
+     ],
+     "behaviours": "one operator at two strengths",
+     "mtf_gain_dB": 7.586,
+     "mtf_persample_gain_dB": 7.446,
+     "onehot": "UNREPRESENTABLE"
+    },
+    "deblur_sigma_2.6_3.5": {
+     "descriptor_L2": [
+      0.03,
+      0.21
+     ],
+     "nearest": [
+      "x8",
+      "deblur:2.5"
+     ],
+     "vs_onehot_dB": -0.038,
+     "reading": "behaves like in-range"
+    }
+   },
+   "fails": {
+    "deblur_sigma_0.5_0.9": {
+     "descriptor_L2": [
+      0.14,
+      1.05
+     ],
+     "bracketed_by": [
+      "denoise (MTF all ones, nothing to restore)",
+      "x2 (restore three quarters of the spectrum)"
+     ],
+     "vs_onehot_dB": -2.917,
+     "vs_a_wrong_constant_descriptor_dB": -2.4725,
+     "per_bin": [
+      -2.736,
+      -3.139,
+      -2.872
+     ],
+     "reading": "flat across bins rather than graded by distance, which is what \"the condition selects an incompatible behaviour\" predicts"
+    }
+   },
+   "why_distance_is_not_the_criterion": "deblur:0.9 sits at L2 0.139, closer than x6 at 0.207, and still collapses",
+   "why_the_direction_is_asymmetric": "an MTF is bounded in [0,1]: sigma 1.0->0.5 moves it 1.30 in L2 toward all-ones, while sigma 2.5->3.5 moves it only 0.24 toward all-zeros. The physical parameter does not reveal which extrapolation is cheap.",
+   "checkable_before_deployment": "compute the descriptor from the operator alone, take its distance to the trained set and read the nearest neighbours; no image is involved, so this stays inside the non-blind setting"
+  },
+  "what_this_means_for_the_claim": {
+   "do_not_write": "MTF handles arbitrary unseen operators (sigma 0.5-0.9 refutes it)",
+   "do_write": "a one-hot cannot represent an operator outside its vocabulary at all -- x6 and x3 raise SystemExit rather than scoring badly -- while an MTF runs and delivers +2.09 dB and +7.59 dB there, PROVIDED the descriptor is bracketed by trained operators of the same behavioural family. The proviso is part of the contribution, not a caveat on it, because it is decidable from the operator alone."
+  },
+  "sources": {
+   "omni_mtf_k3": "present",
+   "omni_mtf_ps_s0": "present",
+   "deblur_or_lo": "present",
+   "deblur_or_hi": "present",
+   "deblur_or_ctl": "present",
+   "deblur_strata_ps": "present",
+   "omni_holdout_hull": "present",
+   "judge_cond_full": "present"
+  },
+  "limits": [
+   "the boundary principle is supported by four operator families (x6, x3, two deblur ranges), not proven; it predicts the sign of every case measured so far but has not been tested on an operator bracketed by same-behaviour trainers at LARGE descriptor distance",
+   "all conditioning comparisons are at 590 training windows per operator; the 3000-window sweep is running and the 10351-window point is not done",
+   "the x6 and x3 numbers are R_phi-level PSNR; the pixel-level x6 table is being judged separately on data/real_eval/heldout_s6",
+   "x3 has only 22 training windows available in its pair set, so its val n is 6 -- the +7.586 dB is indicative, not a measurement at the same weight as x6"
+  ]
+ }
+}

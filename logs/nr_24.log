@@ -1,0 +1,33 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+{"fit_clips": 12, "test_clips": 12}
+{"fit_clips_done": 5, "patches": 750}
+{"fit_clips_done": 10, "patches": 1816}
+{"pristine_patches": 2362, "dim": 36}
+{"arm": "gt", "mean": 3.6706, "clips": 12}
+{"arm": "bicubic", "mean": 6.1759, "clips": 12}
+{"arm": "infvsr", "mean": 3.8617, "clips": 12}
+{"arm": "flashvsr", "mean": 3.8492, "clips": 12}
+{"arm": "flashvsr_plus", "mean": 3.0591, "clips": 12}
+{"arm": "plain2", "mean": 3.5906, "clips": 12}
+{"arm": "dck3", "mean": 3.6641, "clips": 12}
+
+pristine fitted on GT of 12 clips, every arm scored on the other 12. LOWER is more natural.
+arm                   NR mean  NR median   clips
+flashvsr_plus          3.0591     3.0072      12
+plain2                 3.5906     3.5212      12
+dck3                   3.6641     3.5028      12
+gt                     3.6706     2.9820      12
+flashvsr               3.8492     3.8660      12
+infvsr                 3.8617     3.7778      12
+bicubic                6.1759     6.2273      12
+
+gt is the floor this metric can reach and bicubic the ceiling; an arm between them is
+only as meaningful as that spread is wide.
+wrote /cache/zihaohe/streaming_sr0/results/nr_24.json

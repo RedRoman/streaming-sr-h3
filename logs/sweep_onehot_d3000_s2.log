@@ -1,0 +1,32 @@
+{"tag": "omni_onehot_d3000_s2", "seed": 2, "scales": ["2", "4", "8", "deblur", "denoise"], "use_sev": false, "crop": 48, "cond": "onehot", "cdim": 6, "k": 3, "holdout_scales": [], "params": 2019555, "train_items": {"2": 3000, "4": 3000, "8": 3000, "deblur": 3000, "denoise": 3000}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "holdout_items": {}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:331: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev), c.to(dev)), g.to(dev))
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:338: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 2000, "loss": 0.0193660706281662, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 33.87794311841329, "gain_dB": 2.2651213010152205, "vs_single": -0.0038786989847796605}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.18248963356018, "gain_dB": 1.5091484652625198, "vs_single": -1.01685153473748}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 30.826926098929512, "gain_dB": 2.449765523274742, "vs_single": 0.5247655232747419}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.19197781880697, "gain_dB": 6.071791463428077, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.12123486730788, "gain_dB": 4.587346262402008, "vs_single": null}}, "sec": 105.0}
+{"iter": 4000, "loss": 0.01907036080956459, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.129916800393, "gain_dB": 2.5170949829949265, "vs_single": 0.24809498299492638}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.49315428733826, "gain_dB": 1.819813119040596, "vs_single": -0.7061868809594039}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.097302940156723, "gain_dB": 2.720142364501953, "vs_single": 0.7951423645019531}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.68287266625298, "gain_dB": 6.562686310874092, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.669906006919014, "gain_dB": 5.136017402013145, "vs_single": null}}, "sec": 207.7}
+{"iter": 6000, "loss": 0.01621057465672493, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.30003150304159, "gain_dB": 2.6872096856435164, "vs_single": 0.41820968564351624}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.63706292046441, "gain_dB": 1.963721752166748, "vs_single": -0.5622782478332518}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.303407351175945, "gain_dB": 2.926246775521175, "vs_single": 1.0012467755211751}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.031088299221466, "gain_dB": 6.910901943842575, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.081943379508125, "gain_dB": 5.548054774602257, "vs_single": null}}, "sec": 299.8}
+{"iter": 8000, "loss": 0.015985284000635147, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.50930171542697, "gain_dB": 2.8964798980289004, "vs_single": 0.6274798980289003}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.87510895729065, "gain_dB": 2.2017677889929885, "vs_single": -0.3242322110070113}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.43325689103868, "gain_dB": 3.056096315383911, "vs_single": 1.131096315383911}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.141004986233185, "gain_dB": 7.0208186308542935, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.27159229914347, "gain_dB": 5.737703694237602, "vs_single": null}}, "sec": 391.4}
+{"iter": 10000, "loss": 0.015417504124343395, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.517333878411186, "gain_dB": 2.904512061013115, "vs_single": 0.6355120610131149}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.883524338404335, "gain_dB": 2.2101831701066743, "vs_single": -0.3158168298933255}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.42112644513448, "gain_dB": 3.0439658694797096, "vs_single": 1.1189658694797096}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.384894900851776, "gain_dB": 7.264708545472885, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.422259940041435, "gain_dB": 5.888371335135567, "vs_single": null}}, "sec": 501.2}
+{"iter": 12000, "loss": 0.013103804551064968, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.545058727264404, "gain_dB": 2.932236909866333, "vs_single": 0.6632369098663329}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.9392872121599, "gain_dB": 2.265946043862236, "vs_single": -0.2600539561377637}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.45618266529507, "gain_dB": 3.0790220896403007, "vs_single": 1.1540220896403006}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.455958949195015, "gain_dB": 7.335772593816124, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.45377967092726, "gain_dB": 5.919891066021393, "vs_single": null}}, "sec": 599.9}
+{
+ "tag": "omni_onehot_d3000_s2",
+ "cond": "onehot",
+ "k": 3,
+ "gain": {
+  "2": 2.932,
+  "4": 2.266,
+  "8": 3.079,
+  "deblur": 7.336,
+  "denoise": 5.92
+ },
+ "vs_single": {
+  "2": 0.663,
+  "4": -0.26,
+  "8": 1.154,
+  "deblur": null,
+  "denoise": null
+ },
+ "ALL_NONNEGATIVE": true
+}

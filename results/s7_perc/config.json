@@ -1,0 +1,28 @@
+{
+ "data": "../data/stage7_latents",
+ "out": "../results/s7_perc",
+ "steps": "2000",
+ "rank": "32",
+ "lr": "0.0001",
+ "warmup": "100",
+ "save_every": "250",
+ "val_every": "250",
+ "seed": "20261016",
+ "perc": "1.0",
+ "perc_sigma": "0.6",
+ "perc_crop": "16",
+ "guide_key": "guide_oracle",
+ "world": 4,
+ "n_train": 795,
+ "n_val": 16,
+ "conditioning": "native keyframe guide",
+ "lora_targets": [
+  "attn.qkv_proj",
+  "attn.out_proj",
+  "mlp.fc1",
+  "mlp.fc2"
+ ],
+ "sigma_sampling": "uniform grid u, sigma=12u/(1+11u)",
+ "audio": "noise input, no loss",
+ "text": "cached neutral restore context"
+}

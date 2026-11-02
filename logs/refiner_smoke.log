@@ -1,0 +1,76 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:80: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  lr = lr.to(dev)
+[W1029 14:53:00.280760847 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{
+ "clip": "-B3_mFE3pog",
+ "block_frames": [
+  17,
+  39
+ ],
+ "steps": 4,
+ "arms": {
+  "base": {
+   "stage1_merged": true,
+   "refiner": false,
+   "block_s": 59.6,
+   "latent_shape": [
+    1,
+    24,
+    7,
+    30,
+    52
+   ],
+   "pixel_min": 0.0,
+   "pixel_max": 1.0,
+   "pixel_finite": true,
+   "pixel_std": 0.10273891687393188
+  },
+  "refiner": {
+   "stage1_merged": true,
+   "refiner": true,
+   "refiner_ranks": {
+    "attn.out_proj": 384,
+    "attn.qkv_proj": 1152,
+    "mlp.fc1": 384,
+    "mlp.fc2": 384
+   },
+   "modules_injected": 208,
+   "tensors_loaded": 416,
+   "params_expected": 416,
+   "delta_over_base_norm": {
+    "n": 200,
+    "mean": 0.008339225603267551,
+    "min": 0.003090152284130454,
+    "max": 0.0241332296282053
+   },
+   "merge": {
+    "merged_modules": 208,
+    "skipped_not_lora": 0,
+    "strength": 1.0,
+    "verify_rel_err": [
+     0.0021512156818062067,
+     0.0020937728695571423,
+     0.0022130452562123537
+    ]
+   },
+   "block_s": 53.45,
+   "latent_shape": [
+    1,
+    24,
+    7,
+    30,
+    52
+   ],
+   "pixel_min": 0.0,
+   "pixel_max": 1.0,
+   "pixel_finite": true,
+   "pixel_std": 0.10331403464078903
+  }
+ },
+ "latent_rel_change": 0.08609785884618759,
+ "latent_max_abs_change": 1.709207534790039,
+ "fires": true
+}
+
+refiner fires: True  relative latent change 0.0861
+block seconds   base 59.60   refiner 53.45

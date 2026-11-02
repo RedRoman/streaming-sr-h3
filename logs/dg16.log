@@ -1,0 +1,20 @@
+{"tag": "dg16", "iters": 4000, "clips_per_batch": 16, "crop": 112, "params": 298496, "note": "no degradation label used in training"}
+/cache/zihaohe/streaming_sr0/code/degrep.py:185: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = info_nce(model(x.to(dev)), ids.to(dev), a.tau)
+/cache/zihaohe/streaming_sr0/code/degrep.py:192: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': j, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 500, "loss": 1.1724509000778198, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.6619718309859155, "auc_probe": 0.5375586854460094, "probe_mae": 0.29416634661285207, "probe_mae_pillow": 0.5941932078319451, "probe_rho_realistic": 0.1549966465459423}, "sec": 16.8}
+{"iter": 1000, "loss": 1.041469693183899, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.702660406885759, "auc_probe": 0.539906103286385, "probe_mae": 0.29491947049156814, "probe_mae_pillow": 0.5920770731028759, "probe_rho_realistic": 0.11945003353454056}, "sec": 34.3}
+{"iter": 1500, "loss": 0.5713125467300415, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.6533646322378717, "auc_probe": 0.5172143974960877, "probe_mae": 0.29463956748201914, "probe_mae_pillow": 0.5935694802588909, "probe_rho_realistic": 0.13142186452045607}, "sec": 50.4}
+{"iter": 2000, "loss": 0.7171003818511963, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.6956181533646323, "auc_probe": 0.5469483568075117, "probe_mae": 0.2963017870179774, "probe_mae_pillow": 0.5922331195875156, "probe_rho_realistic": 0.09007377598926894}, "sec": 68.2}
+{"iter": 2500, "loss": 0.46881988644599915, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.689358372456964, "auc_probe": 0.5305164319248826, "probe_mae": 0.29647844590820854, "probe_mae_pillow": 0.5884071356556249, "probe_rho_realistic": 0.07850435949027498}, "sec": 85.4}
+{"iter": 3000, "loss": 0.2272082269191742, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.6791862284820032, "auc_probe": 0.5125195618153364, "probe_mae": 0.2968640808612655, "probe_mae_pillow": 0.585041743722839, "probe_rho_realistic": 0.10704225352112676}, "sec": 102.3}
+{"iter": 3500, "loss": 0.6114616394042969, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.687793427230047, "auc_probe": 0.5156494522691706, "probe_mae": 0.2969020538851219, "probe_mae_pillow": 0.5834142662468383, "probe_rho_realistic": 0.10459423205902077}, "sec": 119.8}
+{"iter": 4000, "loss": 0.27801865339279175, "val": {"n_val": 89, "n_train": 782, "auc_pc1": 0.6885758998435054, "auc_probe": 0.5172143974960877, "probe_mae": 0.29676746213382976, "probe_mae_pillow": 0.5836013416813768, "probe_rho_realistic": 0.09798792756539235}, "sec": 136.1}
+{
+ "tag": "dg16",
+ "auc_pc1": 0.689,
+ "auc_probe": 0.517,
+ "beats_regression_0.736": false
+}

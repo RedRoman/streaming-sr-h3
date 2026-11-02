@@ -1,0 +1,33 @@
+<frozen runpy>:128: RuntimeWarning: 'torch.distributed.run' found in sys.modules after import of package 'torch.distributed', but prior to execution of 'torch.distributed.run'; this may result in unpredictable behaviour
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+{"val_step": 0, "val_velocity_mse": 0.25069}
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/autograd/__init__.py:230: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  torch.ones_like(out, memory_format=torch.preserve_format)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/autograd/__init__.py:230: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  torch.ones_like(out, memory_format=torch.preserve_format)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/autograd/__init__.py:230: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  torch.ones_like(out, memory_format=torch.preserve_format)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/autograd/__init__.py:230: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  torch.ones_like(out, memory_format=torch.preserve_format)
+/cache/zihaohe/streaming_sr0/code/train_distill.py:264: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  lt = torch.tensor([float(loss)], device=dev); dist.all_reduce(lt); lt /= world
+/cache/zihaohe/streaming_sr0/code/train_distill.py:264: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  lt = torch.tensor([float(loss)], device=dev); dist.all_reduce(lt); lt /= world
+/cache/zihaohe/streaming_sr0/code/train_distill.py:264: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  lt = torch.tensor([float(loss)], device=dev); dist.all_reduce(lt); lt /= world
+/cache/zihaohe/streaming_sr0/code/train_distill.py:264: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  lt = torch.tensor([float(loss)], device=dev); dist.all_reduce(lt); lt /= world
+{"event": "train", "step": 1, "loss": 0.7113201022148132, "grad_norm": 0.026192544028162956, "lr": 1.0000000000000002e-06, "sigma_rank0": 1.0, "sec_per_step": 7.603532314300537, "peak_GB": 47.377014272}
+{"val_step": 6, "val_velocity_mse": 0.25069}
+{"event": "train", "step": 10, "loss": 0.7664693593978882, "grad_norm": 0.031270191073417664, "lr": 1e-05, "sigma_rank0": 1.0, "sec_per_step": 9.348607754707336, "peak_GB": 48.574564352}
+{"val_step": 12, "val_velocity_mse": 0.2507}
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+EXIT 0

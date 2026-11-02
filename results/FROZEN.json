@@ -1,0 +1,426 @@
+{
+ "noise_floor": {
+  "shipped_floor": {
+   "source": "judge_noise2.json, same arm (r5_k3, dc=rphi, 2-step, merged Stage-1, no adapter), seeds 101/202/303 over the full 96 held-out clips",
+   "steps": 2,
+   "lpips_sd": 0.0009,
+   "lpips_spread": 0.0016,
+   "psnr_sd": 0.0563,
+   "null_cos_sd": 0.001,
+   "terr_null_sd": 0.0305,
+   "lpips_three_seed_mean": 0.1939
+  },
+  "legacy_4step_floor": {
+   "source": "judge_seeds.json, same arm (r6_xl_k3, dc=rphi, 4-step, merged Stage-1), seeds 101/202/303 over the full 96 held-out clips",
+   "steps": 4,
+   "lpips_sd": 0.0018,
+   "lpips_spread": 0.0035,
+   "psnr_sd": 0.058,
+   "null_cos_sd": 0.0019,
+   "terr_null_sd": 0.0316
+  },
+  "lpips_sd": 0.0009,
+  "lpips_spread": 0.0016,
+  "rule": "a delta below 2 x lpips_sd is not interpretable; use the floor that matches the step count the arms were sampled at, and say which one was used"
+ },
+ "main": {
+  "judge": "judge_xl.json",
+  "group": "realistic",
+  "n": 77,
+  "rows": {
+   "bicubic": {
+    "lpips": 0.44423,
+    "psnr": 24.67181,
+    "lpips_gtrange": 0.28275,
+    "null_cos": 0.2377,
+    "p8.terr_null": 1.17531
+   },
+   "infvsr": {
+    "lpips": 0.23444,
+    "psnr": 23.28237,
+    "lpips_gtrange": 0.16435,
+    "null_cos": 0.37253,
+    "p8.terr_null": 1.30168
+   },
+   "flashvsr_plus": {
+    "lpips": 0.20717,
+    "psnr": 24.22993,
+    "lpips_gtrange": 0.15286,
+    "null_cos": 0.39702,
+    "p8.terr_null": 1.37338
+   },
+   "dck3": {
+    "lpips": 0.19843,
+    "psnr": 25.84077,
+    "lpips_gtrange": 0.13685,
+    "null_cos": 0.45441,
+    "p8.terr_null": 1.13822
+   },
+   "dcxl": {
+    "lpips": 0.19643,
+    "psnr": 25.86995,
+    "lpips_gtrange": 0.13621,
+    "null_cos": 0.45609,
+    "p8.terr_null": 1.13544
+   }
+  },
+  "vs_flashvsr_plus": {
+   "lpips_mean": -0.01074,
+   "ci95": [
+    -0.01988,
+    -0.00136
+   ],
+   "a_lower_on": "48/77",
+   "noise_floors": 11.93,
+   "interpretable": true
+  },
+  "vs_infvsr": {
+   "lpips_mean": -0.03801,
+   "ci95": [
+    -0.04817,
+    -0.02811
+   ],
+   "a_lower_on": "63/77",
+   "noise_floors": 42.23,
+   "interpretable": true
+  },
+  "width_step_dcxl_vs_dck3": {
+   "lpips_mean": -0.002,
+   "ci95": [
+    -0.00265,
+    -0.00129
+   ],
+   "a_lower_on": "61/77",
+   "noise_floors": 2.22,
+   "interpretable": true
+  },
+  "note": "dck3 = R_phi r5_k3 (4.7M, K=3); dcxl = r6_xl_k3 (13.3M, K=3). The width step between them is +0.0020 LPIPS, 1.1 noise floors, so it is NOT established -- the shipped configuration should be the 4.7M one. The headline LPIPS is the three-seed mean 0.1980 +- 0.0018, not the seed-101 draw of 0.1964."
+ },
+ "steps": {
+  "judge": "judge_plain2.json",
+  "n": 77,
+  "rows": {
+   "flashvsr_plus": {
+    "lpips": 0.20717,
+    "psnr": 24.22993,
+    "lpips_gtrange": 0.15286,
+    "null_cos": 0.39702,
+    "p8.terr_null": 1.37338
+   },
+   "dck3": {
+    "lpips": 0.19843,
+    "psnr": 25.84077,
+    "lpips_gtrange": 0.13685,
+    "null_cos": 0.45441,
+    "p8.terr_null": 1.13822
+   },
+   "plain2": {
+    "lpips": 0.19286,
+    "psnr": 25.77706,
+    "lpips_gtrange": 0.13396,
+    "null_cos": 0.45882,
+    "p8.terr_null": 1.16967
+   },
+   "step2": {
+    "lpips": 0.2502,
+    "psnr": 24.85041,
+    "lpips_gtrange": 0.20427,
+    "null_cos": 0.3843,
+    "p8.terr_null": 1.5197
+   }
+  },
+  "plain2_vs_dck3": {
+   "lpips_mean": -0.00557,
+   "ci95": [
+    -0.00783,
+    -0.00344
+   ],
+   "a_lower_on": "53/77",
+   "noise_floors": 6.19,
+   "interpretable": true
+  },
+  "plain2_vs_flashvsr_plus": {
+   "lpips_mean": -0.01432,
+   "ci95": [
+    -0.02297,
+    -0.00576
+   ],
+   "a_lower_on": "50/77",
+   "noise_floors": 15.91,
+   "interpretable": true
+  },
+  "plain2_vs_step2": {
+   "lpips_mean": -0.05734,
+   "ci95": [
+    -0.07238,
+    -0.04342
+   ],
+   "a_lower_on": "67/77",
+   "noise_floors": 63.72,
+   "interpretable": true
+  },
+  "shipped": "R_phi r5_k3 (4.7M, K=3), 2 steps via turbo_sigmas(2, 12.0), innerDC onto R_phi(y), no quota gate, no third-party adapter",
+  "deployed_s_per_frame": 0.781,
+  "deployed_x_realtime": 18.7,
+  "two_step_floor_measured": "sd 0.0009 over seeds 101/202/303 at 2 steps, half the 4-step floor. The -0.0056 is 6.3 of these, not 3.1 of the 4-step ones.",
+  "lpips_three_seed_mean": 0.1939
+ },
+ "ablation": {
+  "judge": "judge_abl.json",
+  "group": "realistic",
+  "n": 77,
+  "rows": {
+   "dcy": {
+    "lpips": 0.32458,
+    "psnr": 23.88292,
+    "lpips_gtrange": 0.21682,
+    "null_cos": 0.35991,
+    "p8.terr_null": 1.61622
+   },
+   "dcy_q": {
+    "lpips": 0.25822,
+    "psnr": 24.94848,
+    "lpips_gtrange": 0.18036,
+    "null_cos": 0.3733,
+    "p8.terr_null": 1.53185
+   },
+   "dcr": {
+    "lpips": 0.22334,
+    "psnr": 25.318,
+    "lpips_gtrange": 0.14451,
+    "null_cos": 0.42968,
+    "p8.terr_null": 1.15994
+   },
+   "dcr_q": {
+    "lpips": 0.23185,
+    "psnr": 25.49893,
+    "lpips_gtrange": 0.14705,
+    "null_cos": 0.43159,
+    "p8.terr_null": 1.21396
+   }
+  },
+  "gate_effect_at_dcr": {
+   "lpips_mean": -0.00851,
+   "ci95": [
+    -0.01198,
+    -0.00499
+   ],
+   "a_lower_on": "60/77",
+   "noise_floors": 9.46,
+   "interpretable": true
+  },
+  "projection_target_effect": {
+   "lpips_mean": 0.10124,
+   "ci95": [
+    0.07447,
+    0.12985
+   ],
+   "a_lower_on": "13/77",
+   "noise_floors": 112.49,
+   "interpretable": true
+  },
+  "note": "2x2 over innerDC target x quota gate. The gate is a net regression on held-out data (LPIPS +0.0085 = 4.7 noise floors, terr_null worse on 67 of 71 clips) and was dropped; its gain was tuned on the 24-clip const set and reversed on the 96-clip held-out set."
+ },
+ "omni": {
+  "x2": {
+   "judge": "judge_omni_s2.json",
+   "n": 77,
+   "rows": {
+    "bicubic": {
+     "lpips": 0.31815,
+     "psnr": 27.29569,
+     "lpips_gtrange": 0.11198,
+     "null_cos": 0.22007,
+     "p8.terr_null": 0.39281
+    },
+    "single": {
+     "lpips": 0.14405,
+     "psnr": 28.01756,
+     "lpips_gtrange": 0.05024,
+     "null_cos": 0.42454,
+     "p8.terr_null": 0.37451
+    },
+    "omni": {
+     "lpips": 0.14407,
+     "psnr": 28.26504,
+     "lpips_gtrange": 0.04958,
+     "null_cos": 0.4282,
+     "p8.terr_null": 0.36606
+    }
+   },
+   "omni_minus_single": {
+    "lpips_mean": 2e-05,
+    "ci95": [
+     -0.00238,
+     0.00234
+    ],
+    "a_lower_on": "35/77",
+    "noise_floors": 0.02,
+    "interpretable": false
+   }
+  },
+  "x4": {
+   "judge": "judge_omni_s4.json",
+   "n": 77,
+   "rows": {
+    "bicubic": {
+     "lpips": 0.44423,
+     "psnr": 24.67181,
+     "lpips_gtrange": 0.28275,
+     "null_cos": 0.2377,
+     "p8.terr_null": 1.17531
+    },
+    "single": {
+     "lpips": 0.20456,
+     "psnr": 25.74026,
+     "lpips_gtrange": 0.13908,
+     "null_cos": 0.44849,
+     "p8.terr_null": 1.15293
+    },
+    "omni": {
+     "lpips": 0.20672,
+     "psnr": 25.76213,
+     "lpips_gtrange": 0.14005,
+     "null_cos": 0.44735,
+     "p8.terr_null": 1.1525
+    }
+   },
+   "omni_minus_single": {
+    "lpips_mean": 0.00216,
+    "ci95": [
+     0.00106,
+     0.0032
+    ],
+    "a_lower_on": "18/77",
+    "noise_floors": 2.4,
+    "interpretable": true
+   }
+  },
+  "x8": {
+   "judge": "judge_omni_s8.json",
+   "n": 77,
+   "rows": {
+    "bicubic": {
+     "lpips": 0.58725,
+     "psnr": 22.14998,
+     "lpips_gtrange": 0.47253,
+     "null_cos": 0.20624,
+     "p8.terr_null": 2.09949
+    },
+    "single": {
+     "lpips": 0.30512,
+     "psnr": 22.65834,
+     "lpips_gtrange": 0.26554,
+     "null_cos": 0.30512,
+     "p8.terr_null": 2.35095
+    },
+    "omni": {
+     "lpips": 0.3106,
+     "psnr": 22.7899,
+     "lpips_gtrange": 0.26856,
+     "null_cos": 0.29872,
+     "p8.terr_null": 2.33954
+    }
+   },
+   "omni_minus_single": {
+    "lpips_mean": 0.00548,
+    "ci95": [
+     0.00414,
+     0.00684
+    ],
+    "a_lower_on": "9/77",
+    "noise_floors": 6.08,
+    "interpretable": true
+   }
+  },
+  "note": "single = r5_big, omni = omni_m4; matched on width (4.73 vs 4.76M), windows (10351), iters (24000), crop (112) and K (1 -- OmniRange has no causal stack). The x2 and x8 held-out sets use the same 96 clips as x4 with byte-identical HR frames."
+ },
+ "negative": [
+  {
+   "what": "Open-H3 2K refiner LoRA",
+   "judge": "judge_ref.json",
+   "delta": {
+    "lpips_mean": 0.0443,
+    "ci95": [
+     0.03167,
+     0.06056
+    ],
+    "a_lower_on": "6/77",
+    "noise_floors": 49.22,
+    "interpretable": true
+   },
+   "why": "lpips +0.0443 (25 noise floors), 6/77 clips better, and lpips_gtrange +0.0496 -- it degrades the generated detail itself. A strength sweep at 0.25/0.50/1.00 degrades monotonically from zero, so the scale assumption was right and the direction is wrong for degraded camera footage."
+  },
+  {
+   "what": "pdmd 2-step adapter",
+   "judge": "judge_step2.json",
+   "delta": {
+    "lpips_mean": 0.05177,
+    "ci95": [
+     0.03745,
+     0.06725
+    ],
+    "a_lower_on": "11/77",
+    "noise_floors": 57.52,
+    "interpretable": true
+   },
+   "why": "lpips +0.0518 at its own 2 steps and +0.0933 at 4 steps, with lpips_gtrange 0.1368 -> 0.2043 / 0.2482. Together with the Open-H3 refiner (+0.0443 lpips, +0.0496 gtrange) this is two independent third-party H3 adapters failing in the same band: both were distilled on H3's own generation distribution, not on a restoration pipeline with a guide latent and an innerDC projection. Reducing the step count WITHOUT an adapter is fine and in fact better -- see the steps section."
+  },
+  {
+   "what": "post-hoc range substitution on other methods",
+   "judge": "judge_xbackbone.json",
+   "delta": {
+    "lpips_mean": 0.01322,
+    "ci95": [
+     0.00899,
+     0.01754
+    ],
+    "a_lower_on": "16/77",
+    "noise_floors": 14.69,
+    "interpretable": true
+   },
+   "why": "lpips +0.0132 on FlashVSR+ and +0.0031 on InfVSR: the substitution buys PSNR and temporal error, not perceptual quality. lpips_gtrange moves +0.0004, which is the correctness check -- that metric replaces the range with truth, so substituting the range should not move it."
+  }
+ ],
+ "public_benchmark": {
+  "files": {
+   "r6_xl_k3 on BDx4": "vid4_BDx4_r6_xl_k3.json",
+   "sp_bd on BDx4": "vid4_BDx4_sp_bd.json",
+   "r6_xl_k3 on BIx4": "vid4_BIx4.json"
+  },
+  "operator_fit": "vid4_bd_fit.json",
+  "note": "Vid4 is out of the training degradation family both ways. BI is y = D(x) exactly, so the identity is optimal and our estimator loses 12.84 dB. BD is blur-then-subsample with no noise and no compression: +0.251 dB mean with 2 of 4 clips negative, i.e. noise. A specialist trained on a GUESSED bd chain scored +15.174 dB on its own data and -12.708 dB on Vid4, uniformly across clips, because the guessed chain sits 30.56 dB from D(x) while Vid4 BD sits 38.17 dB away -- a severity mismatch. The operator was then identified from Vid4 GT/BD pairs directly: INTER_AREA subsample, ksize 21, sigma 1.10 reproduces the released frames at 53.392 dB. Retraining on the fitted chain is not done, and the pre-registered check is that the new pairs base must land near 38 dB."
+ },
+ "latency": {
+  "source": "logs/g4_fixed.log + logs/g4_e2e.log, warm, R_phi on the accelerator",
+  "harness_s_per_frame": 1.4639,
+  "harness_x_realtime": 35.1,
+  "deployed_s_per_frame": 1.2156,
+  "deployed_x_realtime": 29.2,
+  "png_share_of_harness": 0.17,
+  "dit_share_of_deployed": 0.81,
+  "superseded_s_per_frame_1821": "included PNG writes and the sha256 pass; do not quote",
+  "whole_clip_profile_s": {
+   "sample": 126.54,
+   "png_write": 30.66,
+   "guide": 20.29,
+   "decode": 7.35,
+   "to_u8": 3.04,
+   "stream_write": 24.71
+  },
+  "levers": {
+   "drop_png": 0.26,
+   "steps_4_to_2": 0.4,
+   "pipelining": 0.18,
+   "guide_reuse_dropped": 0.025,
+   "light_vae_dropped": 0.03
+  },
+  "block_s": 32.103,
+  "dit_per_step_s": 3.446,
+  "vae_decode_s": 4.194,
+  "vae_encode_guide_s": 2.858,
+  "rphi_s_per_clip": 1.063,
+  "rphi_share_of_e2e": 0.0047,
+  "note": "the block timer starts inside the block loop, so every latency figure reported before this one excluded R_phi; 1.821 is the end-to-end number. About 11 s of the 32.1 s block is still unaccounted for."
+ }
+}

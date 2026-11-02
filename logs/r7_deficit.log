@@ -1,0 +1,7 @@
+{"tag": "r7_deficit", "seed": 0, "kinds": "realistic", "k": 3, "ch": 128, "blocks": 16, "params": 4736643, "iters": 24000, "batch": 32, "crop": 112, "lr": 0.0003, "hf_w": 1.0, "std_w": 2.0, "hf_sigma": 2.0, "std_mode": "deficit", "hf_mode": "l1", "perc": 0.0, "train_windows": 10351, "val_windows": 178}
+/cache/zihaohe/streaming_sr0/code/train_range2.py:232: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x, g = x.to(dev), g.to(dev)
+/cache/zihaohe/streaming_sr0/code/train_range2.py:235: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  parts = {'l1': float(loss)}
+{"iter": 2000, "loss": 0.02444709837436676, "l1": 0.016632813960313797, "hf": 0.0038465142715722322, "std": 0.0019838847219944, "val": {"realistic": {"n": 822, "psnr": 32.24961165732131, "base": 30.865355644782966, "gain_dB": 1.3842560125383443, "mid_ratio": 0.9718257045498581, "mid_ratio_y": 1.0462843455946809}, "pillow_bicubic": {"n": 246, "psnr": 37.643060645436854, "base": 58.17244453740314, "gain_dB": -20.529383891966283, "mid_ratio": 1.128467509220944, "mid_ratio_y": 0.99996153041672}}, "sec": 709.2}

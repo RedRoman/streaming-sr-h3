@@ -1,0 +1,6 @@
+{"tag": "r7_energy", "seed": 0, "kinds": "realistic", "k": 3, "ch": 128, "blocks": 16, "params": 4736643, "iters": 24000, "batch": 32, "crop": 112, "lr": 0.0003, "hf_w": 2.0, "std_w": 2.0, "hf_sigma": 2.0, "std_mode": "deficit", "hf_mode": "energy", "perc": 0.0, "train_windows": 10351, "val_windows": 178}
+/cache/zihaohe/streaming_sr0/code/train_range2.py:232: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x, g = x.to(dev), g.to(dev)
+/cache/zihaohe/streaming_sr0/code/train_range2.py:235: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  parts = {'l1': float(loss)}

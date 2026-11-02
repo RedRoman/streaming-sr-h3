@@ -1,0 +1,11 @@
+{"val_items": {"4": 71, "deblur": 71, "denoise": 71}, "single_tag": {"4": "sgl_sr4", "deblur": "sgl_deblur", "denoise": "sgl_denoise"}, "train_crop": {"sgl_sr4": 48, "sgl_deblur": 48, "sgl_denoise": 48}}
+
+model                    4    deblur   denoise
+single               2.437     8.364     5.773
+het_scale            2.473     8.335     5.649
+het_scalesev         2.708     8.401     5.758
+
+het_scale           +0.037    -0.029    -0.124  blind, vs specialists
+het_scalesev        +0.271    +0.037    -0.015  ORACLE severity, vs specialists
+
+frames per operator: {"4": 213, "deblur": 213, "denoise": 213}

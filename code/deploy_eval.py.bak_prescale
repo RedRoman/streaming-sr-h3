@@ -1,0 +1,454 @@
+"""Offline deployment study on the 24-clip real-footage set: no sampling, only the outputs already on disk.
+
+Three subcommands:
+
+  rangesub  out = U(R_phi(y)) + N(stream)  for every frame of an arm, written as PNG.
+            real_metrics.py measured this on the Stage-1 stream (LPIPS 0.2774 -> 0.2467) but only at the
+            evaluated frames and only as a number; here it becomes an actual output stream, so the same
+            temporal and seam metrics can be run on it.
+  blend     linear cross-fade over the 5 frames every two adjacent blocks share. The stitched stream drops
+            block k's copy of those frames (run_stream.py), so the seam is a hard cut between two
+            independently sampled detail patterns; this is the zero-cost fix that was never measured.
+            Cost: the 5 shared frames can only be emitted once block k is done, i.e. one block later.
+  eval      one metric pass over any set of arms, with the gaps of the earlier tables closed:
+              - fidelity: PSNR / LPIPS every 8th frame (same frames and code as metrics_s7 / real_metrics)
+              - null-space diagnostic: the same with the range replaced by the truth, U(D x_GT) + N(out),
+                which isolates the quality of the generated detail from the range error
+              - detail energy and cosine of N(out) against N(x_GT)
+              - temporal: the GT-normalised ratios used so far, plus absolute temporal error
+                |d out - d GT|^2 per band, which stays defined on near-static clips where the ratio
+                denominator is ~0 (1OJ3grdpoD0 / 1PeBvAdub4w drove the old means)
+              - warp error split into the range and the null band
+              - every aggregate as mean, bootstrap CI and median, by degradation kind, and on the 16
+                clips that never entered the Stage-7 training set (8 of the 24 did)
+"""
+import argparse, json, os, sys
+from multiprocessing import Pool
+from pathlib import Path
+
+import cv2
+import numpy as np
+import torch
+import torch.nn.functional as F
+from PIL import Image
+
+ROOT = Path('/cache/zihaohe/streaming_sr0')
+sys.path.insert(0, str(ROOT / 'code'))
+D_ = ROOT / os.environ.get('EVAL_SET', 'data/real_eval/const')
+OUT = ROOT / 'results/deploy'
+STRIDE = 8
+SEAM_FIRST = [17 * k + 5 for k in range(1, 7)]          # first frame each new block emits: 22, 39, ..., 107
+# clips of the eval set that are also in data/stage7_train/train (checked 2026-10-21 on 31984)
+LEAKED = {'1OJ3grdpoD0', '1_K3G1EcYLw', '1aulP-srFAI', '1dr8P7o36lY', '3nctZAcB24g', '41MtICTvZGM',
+          '619xf0ifoSQ', '63GTFc5Okms'}
+
+
+def load(p):
+    return torch.from_numpy(np.asarray(Image.open(p).convert('RGB')).copy()).float() / 255
+
+
+def save(p, x):
+    Image.fromarray(np.uint8(x.numpy().clip(0, 1) * 255 + .5)).save(p)
+
+
+def split(x, s=4):
+    """x [H,W,3] -> (range, null) with range = U(D x), the decomposition used by real_metrics.rng_null."""
+    t = x.permute(2, 0, 1)[None].double()
+    h, w = t.shape[-2:]
+    d = F.interpolate(t, size=(h // s, w // s), mode='bicubic', align_corners=False, antialias=True)
+    u = F.interpolate(d, size=(h, w), mode='bicubic', align_corners=False)
+    r = u[0].permute(1, 2, 0).float()
+    return r, x - r
+
+
+def up(lr, hw):
+    return F.interpolate(lr.permute(2, 0, 1)[None].double(), size=hw, mode='bicubic',
+                         align_corners=False)[0].permute(1, 2, 0).float()
+
+
+def psnr(a, b):
+    return float(10 * np.log10(1.0 / max(float((a - b).square().mean()), 1e-12)))
+
+
+def ci(v, n=10000, seed=0):
+    v = np.asarray(v, float)
+    g = np.random.default_rng(seed)
+    m = np.array([g.choice(v, v.size, replace=True).mean() for _ in range(n)])
+    return [float(np.percentile(m, 2.5)), float(np.percentile(m, 97.5))]
+
+
+def clips():
+    return json.loads((D_ / 'manifest.json').read_text())['clips']
+
+
+def meta(name):
+    return json.loads((D_ / name / 'meta.json').read_text())
+
+
+# ---------------------------------------------------------------------------------------------- rangesub
+def _rangesub(job):
+    name, src, dst, ckpt = job
+    torch.set_num_threads(4)
+    from range_branch import RangeBranch
+    st = torch.load(ckpt, map_location='cpu')
+    rb = RangeBranch(**st['cfg']).eval(); rb.load_state_dict(st['state'])
+    K = st['cfg']['k']
+    m = meta(name)
+    T, hw = m['frames'], (m['hr_wh'][1], m['hr_wh'][0])
+    od = dst / name / 'stream'
+    od.mkdir(parents=True, exist_ok=True)
+    lr = torch.stack([load(D_ / name / 'lr' / f'{t:06d}.png') for t in range(T)])
+    n = 0
+    with torch.no_grad():
+        for t in range(T):
+            f = src / name / 'stream' / f'{t:06d}.png'
+            if not f.exists():
+                continue
+            stack = lr[max(0, t - K + 1):t + 1]
+            if stack.shape[0] < K:
+                stack = torch.cat([stack[:1].repeat(K - stack.shape[0], 1, 1, 1), stack])
+            est = rb(stack.permute(0, 3, 1, 2)[None])[0].permute(1, 2, 0)
+            _, yn = split(load(f))
+            save(od / f'{t:06d}.png', (up(est, hw) + yn).clamp(0, 1))
+            n += 1
+    (dst / name / 'stream_result.json').write_text(json.dumps(
+        {'clip': name, 'op': 'rangesub', 'src': str(src), 'ckpt': str(ckpt), 'k': K, 'frames': n}, indent=1))
+    return name, n
+
+
+# ------------------------------------------------------------------------------------------------- blend
+def _blend(job):
+    name, src, dst = job
+    m = meta(name)
+    T = m['frames']
+    od = dst / name / 'stream'
+    od.mkdir(parents=True, exist_ok=True)
+    blocks = json.loads((D_ / 'manifest.json').read_text())['blocks']
+    shared = {}
+    for b in blocks[1:]:
+        k, s = b['k'], b['range'][0]
+        for i in range(5):                                   # frames s..s+4 exist in block k-1 and block k
+            shared[s + i] = (k, (i + 1) / 6)                 # 6 equal steps from pure k-1 to pure k
+    for t in range(T):
+        f = src / name / 'stream' / f'{t:06d}.png'
+        if t not in shared:
+            Image.open(f).save(od / f'{t:06d}.png')
+            continue
+        k, w = shared[t]
+        a = load(src / name / f'block{k - 1:03d}' / f'{t:06d}.png')
+        b = load(src / name / f'block{k:03d}' / f'{t:06d}.png')
+        save(od / f'{t:06d}.png', (1 - w) * a + w * b)
+    (dst / name / 'stream_result.json').write_text(json.dumps(
+        {'clip': name, 'op': 'blend', 'src': str(src), 'ramp': '(i+1)/6 over the 5 shared frames',
+         'extra_latency': 'shared frames wait for the next block'}, indent=1))
+    return name, T
+
+
+# ------------------------------------------------------------------------------------------- quota
+def _gauss1d(sigma):
+    r = max(1, int(round(3 * sigma)))
+    a = torch.arange(-r, r + 1, dtype=torch.float32)
+    g = torch.exp(-0.5 * (a / sigma) ** 2)
+    return (g / g.sum()).view(1, 1, 1, -1)
+
+
+def _unsharp(x, alpha, sigma=1.0):
+    """x [H,W,3] -> x + alpha * (x - blur(x)), at LR resolution.
+
+    R_phi is trained with L1 against D(x) and an L1-optimal estimate is a conditional median, so its output
+    carries 28% less mid-frequency energy than the truth (cross_band.py). guide_sweep.py swept alpha with
+    the sampled stream held fixed: 0.2-0.3 buys LPIPS and PSNR together on the realistic clips, and past
+    0.6 the halos cost more than the energy is worth.
+    """
+    if not alpha:
+        return x
+    t = x.permute(2, 0, 1)[None]
+    g = _gauss1d(sigma).expand(3, 1, 1, -1)
+    r = g.shape[-1] // 2
+    b = F.conv2d(F.pad(t, (r, r, 0, 0), mode='reflect'), g, groups=3)
+    b = F.conv2d(F.pad(b, (0, 0, r, r), mode='reflect'), g.transpose(-1, -2), groups=3)
+    return (x + alpha * (x - b[0].permute(1, 2, 0))).clamp(0, 1)
+
+
+def _local_std(x, k=8):
+    y = x.mean(-1)[None, None]
+    m = F.avg_pool2d(y, k, k)
+    s = (F.avg_pool2d(y * y, k, k) - m * m).clamp_min(0).sqrt()
+    return F.interpolate(s, size=y.shape[-2:], mode='bilinear', align_corners=False)[0, 0, ..., None]
+
+
+def _quota(job):
+    """out' = R(out) + N(out) * clip((s/s0)**p, 0, 1), s = local std of U(R_phi(y)) in an 8x8 window.
+
+    flat_hallucination.py measured 2.95x the ground truth's unobserved-band energy in the flattest half of
+    the pixels (InfVSR 1.03x) and three times its squared error there, while the textured fifth stayed
+    within 4% of InfVSR. A per-block scalar quota (Stage 3) cannot act on that, because flat sky and brick
+    wall occur inside the same block. This gate is per pixel and reads only the observation, so it ships.
+    """
+    name, src, dst, ckpt, s0, p, sharp, gain = job
+    torch.set_num_threads(4)
+    from range_branch import RangeBranch
+    st = torch.load(ckpt, map_location='cpu')
+    rb = RangeBranch(**st['cfg']).eval(); rb.load_state_dict(st['state'])
+    K = st['cfg']['k']
+    m = meta(name)
+    T, hw = m['frames'], (m['hr_wh'][1], m['hr_wh'][0])
+    od = dst / name / 'stream'
+    od.mkdir(parents=True, exist_ok=True)
+    lr = torch.stack([load(D_ / name / 'lr' / f'{t:06d}.png') for t in range(T)])
+    n = 0
+    with torch.no_grad():
+        for t in range(T):
+            f = src / name / 'stream' / f'{t:06d}.png'
+            if not f.exists():
+                continue
+            stack = lr[max(0, t - K + 1):t + 1]
+            if stack.shape[0] < K:
+                stack = torch.cat([stack[:1].repeat(K - stack.shape[0], 1, 1, 1), stack])
+            est = _unsharp(rb(stack.permute(0, 3, 1, 2)[None])[0].permute(1, 2, 0), sharp)
+            guide = up(est, hw).clamp(0, 1)
+            _, nn = split(load(f))
+            w = (_local_std(guide) / s0).clamp(0, 1)
+            if p != 1.0:
+                w = w ** p
+            # The gate as shipped could only remove detail, but the 4-step output already carries 0.41 of
+            # the truth's unobserved-band energy, so once the flat regions are handled the rest is
+            # under-produced rather than over-produced. guide_sweep swept this with the stream fixed:
+            # 1.0 -> 0.2165, 1.15 -> 0.2113, 1.30 -> 0.2082, 1.45 -> 0.2068, 1.60 -> 0.2068 LPIPS on the
+            # 19 realistic clips, 14/19 clips improving and the same direction on the held-out subsets.
+            if gain != 1.0:
+                w = w * gain
+            save(od / f'{t:06d}.png', (guide + nn * w).clamp(0, 1))
+            n += 1
+    (dst / name / 'stream_result.json').write_text(json.dumps(
+        {'clip': name, 'op': 'quota', 'src': str(src), 'ckpt': str(ckpt), 's0': s0, 'p': p,
+         'sharp': sharp, 'gain': gain,
+         'gate': 'local std of U(R_phi(y)), 8x8 window', 'frames': n}, indent=1))
+    return name, n
+
+
+# -------------------------------------------------------------------------------------------------- eval
+def flow(a, b):
+    return cv2.calcOpticalFlowFarneback(a, b, None, 0.5, 4, 25, 3, 7, 1.5, 0)
+
+
+def warp(img, fl):
+    h, w = fl.shape[:2]
+    gx, gy = np.meshgrid(np.arange(w, dtype=np.float32), np.arange(h, dtype=np.float32))
+    return cv2.remap(np.ascontiguousarray(img), gx + fl[..., 0], gy + fl[..., 1], cv2.INTER_LINEAR,
+                     borderMode=cv2.BORDER_REPLICATE)
+
+
+def gray(x):
+    return (x.mean(-1).numpy() * 255).astype(np.uint8)
+
+
+def arm_frame(arm, name, t):
+    if arm == 'bicubic':
+        m = meta(name)
+        return up(load(D_ / name / 'lr' / f'{t:06d}.png'), (m['hr_wh'][1], m['hr_wh'][0])).clamp(0, 1)
+    p = Path(arm) / name / 'stream' / f'{t:06d}.png'
+    if not p.exists():
+        p = Path(arm) / name / f'{t:06d}.png'                # baseline_frames layout
+    return load(p) if p.exists() else None
+
+
+# Each method emits on its own block grid, so "seam" is not a shared frame set. Ours start a block every
+# 17 frames with 5 overlapped, so the first new frame is 17k+5. InfVSR consumes 9 then 12 pixel frames, so
+# its chunk boundaries are 9, 21, 33, ... Scoring one method on the other's boundaries measures nothing.
+# p8 (every 8th consecutive pair) is the shared temporal comparison; seam/interior are per-method diagnostics.
+SEAMS = {'infvsr': [9 + 12 * k for k in range(10)]}
+
+
+def seam_first(tag):
+    return SEAMS.get(tag.split(':')[0], SEAM_FIRST)
+
+
+def pair_sets(T, tag):
+    sf = [t for t in seam_first(tag) if 0 < t < T]
+    return {'p8': [(t, t + 1) for t in range(0, T - 1, STRIDE)],
+            'seam': [(t - 1, t) for t in sf],
+            'interior': [(t - 7, t - 6) for t in sf if t - 7 >= 0]}
+
+
+def _eval(job):
+    name, arms = job
+    torch.set_num_threads(3)
+    cv2.setNumThreads(2)        # cv2 otherwise starts one thread per core in every worker (load 600 on 31984)
+    from revisit_metrics import lpips_dist
+    m = meta(name)
+    T = m['frames']
+    gcache = {}
+
+    def G(t):
+        if t not in gcache:
+            g = load(D_ / name / 'hr' / f'{t:06d}.png')
+            gcache[t] = (g, *split(g))
+        return gcache[t]
+
+    fcache = {}
+
+    def FL(t0, t1):
+        if (t0, t1) not in fcache:
+            fcache[(t0, t1)] = flow(gray(G(t0)[0]), gray(G(t1)[0]))
+        return fcache[(t0, t1)]
+
+    rec = {'clip': name, 'degradation': m['degradation'].get('kind', '?'), 'leaked': name in LEAKED, 'arms': {}}
+    for tag, arm in arms.items():
+        r = {}
+        # fidelity + null-space diagnostic + detail energy / cosine
+        acc = {k: [] for k in ('psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos')}
+        for t in range(0, T, STRIDE):
+            y = arm_frame(arm, name, t)
+            if y is None:
+                continue
+            g, gr, gn = G(t)
+            _, yn = split(y)
+            sub = (gr + yn).clamp(0, 1)
+            acc['psnr'].append(psnr(y, g)); acc['lpips'].append(lpips_dist(y, g))
+            acc['psnr_gtrange'].append(psnr(sub, g)); acc['lpips_gtrange'].append(lpips_dist(sub, g))
+            acc['null_energy'].append(float(yn.square().sum() / gn.square().sum().clamp_min(1e-12)))
+            acc['null_cos'].append(float((yn * gn).sum() / (yn.norm() * gn.norm()).clamp_min(1e-12)))
+        if not acc['psnr']:
+            continue
+        r.update({k: float(np.mean(v)) for k, v in acc.items()})
+        r['n_frames'] = len(acc['psnr'])
+        r['seam_grid'] = seam_first(tag)[:3]
+        # temporal
+        for pset, pairs in pair_sets(T, tag).items():
+            s = {k: [] for k in ('dn', 'dg', 'tn', 'tr', 'wf', 'wf_g', 'wr', 'wr_g', 'wn', 'wn_g')}
+            for t0, t1 in pairs:
+                y0, y1 = arm_frame(arm, name, t0), arm_frame(arm, name, t1)
+                if y0 is None or y1 is None:
+                    s = None
+                    break
+                (g0, gr0, gn0), (g1, gr1, gn1) = G(t0), G(t1)
+                yr0, yn0 = split(y0); yr1, yn1 = split(y1)
+                s['dn'].append(float((yn1 - yn0).square().mean()))
+                s['dg'].append(float((gn1 - gn0).square().mean()))
+                s['tn'].append(float(((yn1 - yn0) - (gn1 - gn0)).square().mean()))
+                s['tr'].append(float(((yr1 - yr0) - (gr1 - gr0)).square().mean()))
+                fw = FL(t0, t1)
+                for key, a0, a1, b0, b1 in (('wf', y0, y1, g0, g1), ('wr', yr0, yr1, gr0, gr1), ('wn', yn0, yn1, gn0, gn1)):
+                    s[key].append(float(np.abs(warp(a0.numpy(), fw) - a1.numpy()).mean()))
+                    s[key + '_g'].append(float(np.abs(warp(b0.numpy(), fw) - b1.numpy()).mean()))
+            if not s:
+                continue
+            mean = {k: float(np.mean(v)) for k, v in s.items()}
+            static = mean['dg'] < 1e-7 or mean['wf_g'] < 1e-5
+            r[pset] = {'static': static,
+                       'flicker': None if static else mean['dn'] / mean['dg'],
+                       'warp': None if static else mean['wf'] / mean['wf_g'],
+                       'warp_range': None if static else mean['wr'] / mean['wr_g'],
+                       'warp_null': None if static else mean['wn'] / mean['wn_g'],
+                       # absolute, x1e3, defined on static clips too
+                       'terr_null': 1e3 * mean['tn'], 'terr_range': 1e3 * mean['tr'],
+                       'warp_abs_excess': 1e3 * (mean['wf'] - mean['wf_g'])}
+        rec['arms'][tag] = r
+    return rec
+
+
+def summarise(rows, tags):
+    groups = {'all': lambda r: True,
+              'realistic': lambda r: r['degradation'] == 'realistic',
+              'bicubic': lambda r: r['degradation'] != 'realistic',
+              'clean16': lambda r: not r['leaked']}
+    scalar = ['psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos']
+    tkeys = ['flicker', 'warp', 'warp_range', 'warp_null', 'terr_null', 'terr_range', 'warp_abs_excess']
+    out = {}
+    for gname, sel in groups.items():
+        rs = [r for r in rows if sel(r)]
+        out[gname] = {'n': len(rs)}
+        for tag in tags:
+            d = {}
+            for k in scalar:
+                v = [r['arms'][tag][k] for r in rs if tag in r['arms']]
+                if v:
+                    d[k] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)), 'n': len(v)}
+            for pset in ('p8', 'seam', 'interior'):
+                for k in tkeys:
+                    v = [r['arms'][tag][pset][k] for r in rs
+                         if tag in r['arms'] and pset in r['arms'][tag] and r['arms'][tag][pset][k] is not None
+                         and not r['arms'][tag][pset]['static']]
+                    if v:
+                        d[f'{pset}.{k}'] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)),
+                                            'n': len(v)}
+            out[gname][tag] = d
+    return out
+
+
+def paired(rows, a, b, keys):
+    res = {}
+    for k in keys:
+        pset, _, key = k.rpartition('.')
+        v = []
+        for r in rows:
+            if a not in r['arms'] or b not in r['arms']:
+                continue
+            ra, rb = r['arms'][a], r['arms'][b]
+            if pset:
+                if pset not in ra or pset not in rb or ra[pset]['static'] or rb[pset]['static']:
+                    continue
+                if ra[pset][key] is None or rb[pset][key] is None:
+                    continue
+                v.append(ra[pset][key] - rb[pset][key])
+            else:
+                v.append(ra[key] - rb[key])
+        if v:
+            res[k] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)),
+                      'a_better': int(sum(x < 0 for x in v)), 'n': len(v)}
+    return res
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    sub = ap.add_subparsers(dest='cmd', required=True)
+    p = sub.add_parser('rangesub'); p.add_argument('--src', type=Path, required=True); p.add_argument('--tag', required=True)
+    p.add_argument('--ckpt', type=Path, default=ROOT / 'results/range_branch/k1.pt')
+    p = sub.add_parser('blend'); p.add_argument('--src', type=Path, required=True); p.add_argument('--tag', required=True)
+    p = sub.add_parser('quota'); p.add_argument('--src', type=Path, required=True)
+    p.add_argument('--tag', required=True); p.add_argument('--s0', type=float, default=0.02)
+    p.add_argument('--p', type=float, default=1.0)
+    p.add_argument('--sharp', type=float, default=0.0, help='unsharp alpha on R_phi(y); see _unsharp')
+    p.add_argument('--gain', type=float, default=1.0, help='multiplier on the admitted detail')
+    p.add_argument('--ckpt', type=Path, default=ROOT / 'results/range_branch/k1.pt')
+    p = sub.add_parser('eval'); p.add_argument('--arm', action='append', required=True, help='tag=path | tag=bicubic')
+    p.add_argument('--name', required=True); p.add_argument('--pair', action='append', default=[], help='a,b')
+    ap.add_argument('--procs', type=int, default=24)
+    a = ap.parse_args()
+    OUT.mkdir(parents=True, exist_ok=True)
+    names = clips()
+    if a.cmd == 'rangesub':
+        jobs = [(n, a.src, OUT / a.tag, a.ckpt) for n in names]
+        with Pool(a.procs) as pool:
+            for name, n in pool.imap_unordered(_rangesub, jobs):
+                print(json.dumps({'rangesub': a.tag, 'clip': name, 'frames': n}), flush=True)
+    elif a.cmd == 'quota':
+        jobs = [(n, a.src, OUT / a.tag, a.ckpt, a.s0, a.p, a.sharp, a.gain) for n in names]
+        with Pool(a.procs) as pool:
+            for name, n in pool.imap_unordered(_quota, jobs):
+                print(json.dumps({'quota': a.tag, 'clip': name, 'frames': n}), flush=True)
+    elif a.cmd == 'blend':
+        jobs = [(n, a.src, OUT / a.tag) for n in names]
+        with Pool(a.procs) as pool:
+            for name, n in pool.imap_unordered(_blend, jobs):
+                print(json.dumps({'blend': a.tag, 'clip': name, 'frames': n}), flush=True)
+    else:
+        arms = dict(x.split('=', 1) for x in a.arm)
+        with Pool(a.procs) as pool:
+            rows = sorted(pool.imap_unordered(_eval, [(n, arms) for n in names]), key=lambda r: r['clip'])
+        keys = ['psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos',
+                'p8.flicker', 'p8.warp', 'p8.warp_range', 'p8.warp_null', 'p8.terr_null', 'p8.terr_range',
+                'seam.terr_null', 'seam.flicker', 'seam.warp']
+        res = {'arms': arms, 'leaked': sorted(LEAKED), 'per_clip': rows, 'summary': summarise(rows, list(arms)),
+               'paired': {pr: {g: paired([r for r in rows if sel(r)], *pr.split(','), keys)
+                               for g, sel in (('all', lambda r: True),
+                                              ('realistic', lambda r: r['degradation'] == 'realistic'),
+                                              ('clean16', lambda r: not r['leaked']))}
+                          for pr in a.pair}}
+        (OUT / f'{a.name}.json').write_text(json.dumps(res, indent=1))
+        print(json.dumps({'written': str(OUT / f'{a.name}.json'), 'clips': len(rows)}), flush=True)
+
+
+if __name__ == '__main__':
+    main()

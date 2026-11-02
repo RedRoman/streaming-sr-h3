@@ -1,0 +1,74 @@
+{
+ "ops": [
+  "4",
+  "deblur",
+  "denoise"
+ ],
+ "rows": {
+  "single": {
+   "4": {
+    "gain_dB": 5.339947700500485,
+    "psnr": 33.72766653696696,
+    "base": 28.387718836466473,
+    "n_frames": 6
+   },
+   "deblur": {
+    "gain_dB": 7.499751408894859,
+    "psnr": 43.438794453938804,
+    "base": 35.939043045043945,
+    "n_frames": 6
+   },
+   "denoise": {
+    "gain_dB": 9.805510520935062,
+    "psnr": 37.33301099141439,
+    "base": 27.52750047047933,
+    "n_frames": 6
+   }
+  },
+  "het_scale": {
+   "4": {
+    "gain_dB": 5.4946994781494105,
+    "psnr": 33.88241831461588,
+    "base": 28.387718836466473,
+    "n_frames": 6
+   },
+   "deblur": {
+    "gain_dB": 7.383249282836914,
+    "psnr": 43.32229232788086,
+    "base": 35.939043045043945,
+    "n_frames": 6
+   },
+   "denoise": {
+    "gain_dB": 9.701802253723148,
+    "psnr": 37.229302724202476,
+    "base": 27.52750047047933,
+    "n_frames": 6
+   }
+  }
+ },
+ "meta": {
+  "single": {
+   "oracle_severity": false,
+   "models": 3
+  },
+  "het_scale": {
+   "oracle_severity": false,
+   "models": 1
+  }
+ },
+ "val_items": {
+  "4": 2,
+  "deblur": 2,
+  "denoise": 2
+ },
+ "single_tag": {
+  "4": "sgl_sr4",
+  "deblur": "sgl_deblur",
+  "denoise": "sgl_denoise"
+ },
+ "train_crop": {
+  "sgl_sr4": 48,
+  "sgl_deblur": 48,
+  "sgl_denoise": 48
+ }
+}

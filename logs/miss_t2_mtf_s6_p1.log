@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 315, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/run_deploy.py", line 241, in main
+    T = json.loads((D_ / name / 'meta.json').read_text())['frames']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/cache/zihaohe/streaming_sr0/data/real_eval/const/Gf8F2tBCaPk/meta.json'
+[ERROR] 2026-11-02-18:28:20 (PID:3535624, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

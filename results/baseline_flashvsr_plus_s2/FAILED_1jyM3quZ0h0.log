@@ -1,0 +1,70 @@
+███████╗██╗      █████╗ ███████╗██╗  ██╗██╗   ██╗███████╗██████╗      ██╗
+██╔════╝██║     ██╔══██╗██╔════╝██║  ██║██║   ██║██╔════╝██╔══██╗     ██║
+█████╗  ██║     ███████║███████╗███████║██║   ██║███████╗██████╔╝  ████████╗
+██╔══╝  ██║     ██╔══██║╚════██║██╔══██║╚██╗ ██╔╝╚════██║██╔══██╗  ╚══██╔══╝
+██║     ███████╗██║  ██║███████║██║  ██║ ╚████╔╝ ███████║██║  ██║     ██║
+╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝     ╚═╝
+                 STRUCTURED VIDEO SUPER-RESOLUTION
+
+● Loading model weights...
+✓ Model loading complete
+● Attention mode: TURBO / HYBRID-B25
+● Configuration: turbo · sdpa · bf16 · npu:0 · decoder=tiny
+● Running inference...
+✓ Input preprocessing complete
+✓ KV cache policy: auto; offload 0 layers; VRAM information unavailable; keep cache on GPU
+MASK_GUARD {"q": [1, 12, 8192, 128], "k": [1, 12, 20480, 128], "entries": 2013265920, "block_mask": [1, 12, 64, 160], "block_token_size": 128}
+MASK_CACHE {"hit": 46, "miss": 14, "verified": 0, "build_s": 0.8364727357402444, "key_s": 0.015039925463497639, "entries": 2, "wall_s": 31.5}
+[ERROR] 2026-10-30-22:54:53 (PID:2064372, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+
+---
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[W1030 22:54:49.838579669 ToKernelNpu.cpp:41] Warning: Device do not support double dtype now, dtype cast replace with float. (function operator())
+/cache/zihaohe/baselines/FlashVSR_Plus/models/attention_backends/sparse.py:157: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  q_spatial = torch.arange(query_blocks, device=device) % (rows * cols)
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/fvp_run_stream.py", line 52, in <module>
+    runpy.run_module('inference.run_stream', run_name='__main__')
+  File "<frozen runpy>", line 229, in run_module
+  File "<frozen runpy>", line 88, in _run_code
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/inference/run_stream.py", line 207, in <module>
+    main()
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/inference/run_stream.py", line 190, in main
+    result = pipeline.infer(
+             ^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/inference/pipeline.py", line 110, in infer
+    output = self.runner.run(
+             ^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/inference/runners/stream.py", line 262, in run
+    prediction = self.bundle.denoiser.forward_stream(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/models/dit.py", line 265, in forward_stream
+    x, next_cache = block.forward_stream(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/models/blocks.py", line 70, in forward_stream
+    attention_output, next_cache = self.self_attn.forward_stream(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/models/attention.py", line 179, in forward_stream
+    return self._forward_stream_impl(x, runtime, use_cache=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/models/attention.py", line 265, in _forward_stream_impl
+    output = run_attention(
+             ^^^^^^^^^^^^^^
+  File "/cache/zihaohe/baselines/FlashVSR_Plus/models/attention_backends/kernels.py", line 342, in run_attention
+    raise RuntimeError(
+RuntimeError: SDPA block-mask fallback would allocate too many mask entries; install block_sparse_attn or select a shorter sequence

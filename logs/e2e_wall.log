@@ -1,0 +1,35 @@
+/cache/zihaohe/streaming_sr0/code/bench_e2e_wall.py:70: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  rb = rb.to(h3.dev); x = lr.to(h3.dev)
+[W1022 14:51:23.014090112 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{
+ "clip": "-B3_mFE3pog",
+ "frames": 124,
+ "steps": 4,
+ "new_frames_per_block": 17,
+ "blocks": 7,
+ "devices": {
+  "cpu": {
+   "rphi_s_per_clip": 1.5113109285011888,
+   "e2e_s_per_clip": 223.08697929698974,
+   "e2e_s_per_frame": 1.7990885427176593,
+   "realtime_factor": 43.17812502522382,
+   "rphi_share": 0.006774536699827832
+  },
+  "npu": {
+   "rphi_s_per_clip": 0.29955421946942806,
+   "e2e_s_per_clip": 221.87522258795798,
+   "e2e_s_per_frame": 1.7893163111932096,
+   "realtime_factor": 42.94359146863703,
+   "rphi_share": 0.0013501021699287572
+  }
+ },
+ "block_s": 31.65366690978408,
+ "sampling_total_s_per_clip": 221.57566836848855
+}
+
+R_phi     rphi s/clip     e2e s/clip      s/frame x realtime
+cpu             1.511         223.09        1.799       43.2
+npu             0.300         221.88        1.789       42.9
+
+R_phi on NPU saves 1.21 s/clip = 0.010 s/frame (0.5% of end-to-end)
+EXIT 0

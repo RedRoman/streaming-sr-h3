@@ -1,0 +1,7 @@
+/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py:668: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  clip_x = x[:, :, i * self.clip_length:(i + 1) * self.clip_length, :, :].to(device)
+[W1019 22:21:41.985010642 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{"done": "-D_ljLTbCK0", "mode": "indep", "blocks": 7, "sec_total": 906.1}
+{"done": "1_K3G1EcYLw", "mode": "indep", "blocks": 7, "sec_total": 891.3}
+{"done": "606_Owd6dHs", "mode": "indep", "blocks": 7, "sec_total": 875.2}
+{"shard": 3, "mode": "indep", "attn": "bidir", "kv": false, "finished": true}

@@ -1,0 +1,5 @@
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:207: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = torch.from_numpy(it['y'][st]).float().permute(0, 1, 4, 2, 3).to(dev) / 255
+{"ckpt": "omni_mtf_k3", "cond": "mtf", "k": 3, "op": "6", "n": 72, "base_dB": 29.907, "psnr_dB": 31.701, "gain_dB": 1.794}
+{"ckpt": "omni_mtf_k3", "cond": "mtf", "k": 3, "op": "3", "n": 6, "base_dB": 29.361, "psnr_dB": 36.947, "gain_dB": 7.586}
+one-hot conditioning has no slot for operator 6 (OPS is [2, 4, 8, 'deblur', 'denoise']). This is not a bug to code around: it is the limitation the mtf arm exists to remove, and an operator outside the vocabulary is unrepresentable rather than merely untrained. Use --cond mtf to evaluate one.

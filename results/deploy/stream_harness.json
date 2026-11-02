@@ -1,0 +1,136 @@
+{
+ "runs": "results/deploy_runs/t8_dcr",
+ "clips": 24,
+ "frames": 124,
+ "fps": 24.0,
+ "workers": 1,
+ "block_seconds_mean": 36.112193836178854,
+ "post_per_block_s": 0.17,
+ "content_seconds_per_block": 0.7083333333333334,
+ "needed_speedup_for_bounded_backlog": 50.981920709899555,
+ "speedups": {
+  "1.0": {
+   "first_frame_latency_s": 37.749172471227745,
+   "last_frame_latency_s": 248.53535685325198,
+   "latency_growth_s_per_block": 35.33892962412732,
+   "backlog_bounded": false,
+   "frames_late_vs_steady_deadline": 102,
+   "realtime_factor": 50.981920709899555
+  },
+  "8.0": {
+   "first_frame_latency_s": 5.484271558903468,
+   "last_frame_latency_s": 27.348169606656498,
+   "latency_growth_s_per_block": 3.7975745363492477,
+   "backlog_bounded": false,
+   "frames_late_vs_steady_deadline": 102,
+   "realtime_factor": 50.981920709899555
+  },
+  "10.0": {
+   "first_frame_latency_s": 4.562417247122775,
+   "last_frame_latency_s": 21.028535685325195,
+   "latency_growth_s_per_block": 2.896392962412731,
+   "backlog_bounded": false,
+   "frames_late_vs_steady_deadline": 102,
+   "realtime_factor": 50.981920709899555
+  },
+  "20.0": {
+   "first_frame_latency_s": 2.7187086235613873,
+   "last_frame_latency_s": 8.389267842662598,
+   "latency_growth_s_per_block": 1.0940298145396985,
+   "backlog_bounded": false,
+   "frames_late_vs_steady_deadline": 102,
+   "realtime_factor": 50.981920709899555
+  },
+  "40.0": {
+   "first_frame_latency_s": 1.7968543117806937,
+   "last_frame_latency_s": 2.069633921331299,
+   "latency_growth_s_per_block": 0.19284824060318273,
+   "backlog_bounded": false,
+   "frames_late_vs_steady_deadline": 62,
+   "realtime_factor": 50.981920709899555
+  },
+  "51.0": {
+   "first_frame_latency_s": 1.5980229896319167,
+   "last_frame_latency_s": 0.7075226062313149,
+   "latency_growth_s_per_block": -0.001364580450007154,
+   "backlog_bounded": true,
+   "frames_late_vs_steady_deadline": 0,
+   "realtime_factor": 50.981920709899555
+  },
+  "60.0": {
+   "first_frame_latency_s": 1.489569541187129,
+   "last_frame_latency_s": 0.6013942152966179,
+   "latency_growth_s_per_block": 0.0,
+   "backlog_bounded": true,
+   "frames_late_vs_steady_deadline": 0,
+   "realtime_factor": 50.981920709899555
+  }
+ },
+ "causality": [
+  {
+   "stage": "R_phi(y)",
+   "note": "K=1 range branch",
+   "reads_from": 0,
+   "reads_to": 0,
+   "causal": true,
+   "look_ahead_frames": 0,
+   "look_ahead_s": 0.0
+  },
+  {
+   "stage": "guide = VAE_enc(U(y))",
+   "note": "per block",
+   "reads_from": -21,
+   "reads_to": 21,
+   "causal": false,
+   "look_ahead_frames": 21,
+   "look_ahead_s": 0.875
+  },
+  {
+   "stage": "DiT self-attention",
+   "note": "bidirectional inside the 22-frame block",
+   "reads_from": -21,
+   "reads_to": 21,
+   "causal": false,
+   "look_ahead_frames": 21,
+   "look_ahead_s": 0.875
+  },
+  {
+   "stage": "innerDC projection",
+   "note": "inside the block only",
+   "reads_from": -21,
+   "reads_to": 21,
+   "causal": false,
+   "look_ahead_frames": 21,
+   "look_ahead_s": 0.875
+  },
+  {
+   "stage": "block stitching",
+   "note": "frame taken from the block that first emits it",
+   "reads_from": 0,
+   "reads_to": 0,
+   "causal": true,
+   "look_ahead_frames": 0,
+   "look_ahead_s": 0.0
+  },
+  {
+   "stage": "cross-fade (not in t8dcr_q)",
+   "note": "needs the NEXT block",
+   "reads_from": 0,
+   "reads_to": 22,
+   "causal": false,
+   "look_ahead_frames": 22,
+   "look_ahead_s": 0.9166666666666666
+  },
+  {
+   "stage": "spatial quota",
+   "note": "local std of U(R_phi(y)) at this frame",
+   "reads_from": 0,
+   "reads_to": 0,
+   "causal": true,
+   "look_ahead_frames": 0,
+   "look_ahead_s": 0.0
+  }
+ ],
+ "total_look_ahead_frames": 22,
+ "total_look_ahead_s": 0.9166666666666666
+}

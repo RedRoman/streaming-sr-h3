@@ -1,0 +1,56 @@
+{
+ "omni_mtf_ps_s0": {
+  "cond": "mtf",
+  "k": 3,
+  "ops": {
+   "6": {
+    "status": "ok",
+    "n": 180,
+    "base": 29.17192859649658,
+    "psnr": 31.168657959832085,
+    "gain_dB": 1.996729363335504
+   },
+   "3": {
+    "status": "ok",
+    "n": 6,
+    "base": 29.36120382944743,
+    "psnr": 36.80757713317871,
+    "gain_dB": 7.446373303731281
+   }
+  }
+ },
+ "omni_mtf_k3": {
+  "cond": "mtf",
+  "k": 3,
+  "ops": {
+   "6": {
+    "status": "ok",
+    "n": 180,
+    "base": 29.17192859649658,
+    "psnr": 31.25958670510186,
+    "gain_dB": 2.087658108605279
+   },
+   "3": {
+    "status": "ok",
+    "n": 6,
+    "base": 29.36120382944743,
+    "psnr": 36.9467970530192,
+    "gain_dB": 7.585593223571774
+   }
+  }
+ },
+ "omni_onehot_k3": {
+  "cond": "onehot",
+  "k": 3,
+  "ops": {
+   "6": {
+    "status": "UNREPRESENTABLE",
+    "reason": "one-hot conditioning has no slot for operator 6 (OPS is [2, 4, 8, 'deblur', 'denoise']). This is not a bug to code around: it is the limitation the mtf arm exists to remove, and an operator outside the vocabulary is unrepresentable rather than merely untrained. Use --cond mtf to evaluate one."
+   },
+   "3": {
+    "status": "UNREPRESENTABLE",
+    "reason": "one-hot conditioning has no slot for operator 3 (OPS is [2, 4, 8, 'deblur', 'denoise']). This is not a bug to code around: it is the limitation the mtf arm exists to remove, and an operator outside the vocabulary is unrepresentable rather than merely untrained. Use --cond mtf to evaluate one."
+   }
+  }
+ }
+}

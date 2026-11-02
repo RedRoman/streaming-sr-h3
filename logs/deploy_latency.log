@@ -1,0 +1,33 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:94: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = x.to(dev)
+[W1031 00:37:09.732220592 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{
+ "clip": "1jyM3quZ0h0",
+ "frames": 124,
+ "blocks": 7,
+ "steps": 4,
+ "phases_s": {
+  "rphi": 1.0,
+  "guide": 17.92,
+  "sample": 122.04,
+  "decode": 7.38,
+  "to_u8": 2.39,
+  "png": 30.79
+ },
+ "harness_wall_s": 181.52,
+ "deployed_wall_s": 150.73,
+ "harness_s_per_frame": 1.4639,
+ "deployed_s_per_frame": 1.2156,
+ "harness_x_realtime_24fps": 35.1,
+ "deployed_x_realtime_24fps": 29.2,
+ "png_share_of_harness": 0.1696,
+ "dit_share_of_deployed": 0.8096,
+ "note": "deployed = harness minus PNG encoding only; the sha256 and the second pass over the stitched stream that run_deploy also does are not included here at all, so the real harness overhead in those runs is larger than png_share suggests"
+}
+
+                          harness   deployed
+wall s / clip              181.52     150.73
+s / frame                  1.4639     1.2156
+x realtime @24fps            35.1       29.2
+
+DiT is 81.0% of the deployed path; PNG was 17.0% of the harness path

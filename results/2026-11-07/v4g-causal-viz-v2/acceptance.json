@@ -1,0 +1,88 @@
+{
+  "generation_exit_code": 0,
+  "finished_utc": "2026-11-07T09:19:45Z",
+  "remote_acceptance_utc": "2026-11-07T09:24:15.317474+00:00",
+  "ffprobe_exit_code": 0,
+  "complete_decode_command": "ffmpeg -v error -xerror -threads 2 -i ORIGINAL.mp4 -f null -",
+  "complete_decode_exit_code": 0,
+  "complete_decode_stderr": "",
+  "codec": "mpeg4",
+  "width": 2888,
+  "height": 1160,
+  "fps": "24/1",
+  "metadata_frames": 120,
+  "decoded_frames": 120,
+  "duration_seconds": 5.0,
+  "bytes": 24514258,
+  "sha256": "e86051f5d059690fd02685e254ddd17d42f23c12b98e04e6ea01fa1f25318404",
+  "teacher_restored_verified": true,
+  "preview_local_sha_verified": true,
+  "local_original_video_verified": true,
+  "browser_h264_pending": false,
+  "visual_review": "Frame060 and a contact sheet sampled from H.264 frames0,60,119 inspected. Six panels rendered; the late noised panel differs visibly while early sampled noised frames remain similar. Only sampled frames reviewed, not a continuous temporal or perceptual-quality benchmark.",
+  "local_media": {
+    "checked_at_utc": "2026-11-07T09:40:24.535145+00:00",
+    "original_matches_remote": true,
+    "transcode_codec": "libx264",
+    "crf": 18,
+    "pixel_format": "yuv420p",
+    "movflags": "+faststart",
+    "same_frame_count": 120,
+    "transcode_is_lossy": true,
+    "checks": {
+      "causal_stream_test_VIDGEN5S_0086441.mp4": {
+        "bytes": 24514258,
+        "sha256": "e86051f5d059690fd02685e254ddd17d42f23c12b98e04e6ea01fa1f25318404",
+        "full_decode_exit_code": 0,
+        "decoded_frames": 120,
+        "stderr": ""
+      },
+      "v4g_causal_comparison_0086441_h264.mp4": {
+        "bytes": 8878588,
+        "sha256": "9f49191ea0bebc375580b6b6d0e41d133c63e93b9341b106507156d42fc1fda4",
+        "full_decode_exit_code": 0,
+        "decoded_frames": 120,
+        "stderr": ""
+      }
+    },
+    "sampled_video_frame_indices": [
+      0,
+      60,
+      119
+    ]
+  },
+  "local_probe": {
+    "causal_stream_test_VIDGEN5S_0086441.mp4": {
+      "ffmpeg_version": "7.1 built with Apple clang version 13.1.6 (clang-1316.0.21.2.5)",
+      "codec": "mpeg4",
+      "pix_fmt": "yuv420p",
+      "fps": 24.0,
+      "source_size": [
+        2888,
+        1160
+      ],
+      "size": [
+        2888,
+        1160
+      ],
+      "rotate": 0,
+      "duration": 5.0
+    },
+    "v4g_causal_comparison_0086441_h264.mp4": {
+      "ffmpeg_version": "7.1 built with Apple clang version 13.1.6 (clang-1316.0.21.2.5)",
+      "codec": "h264",
+      "pix_fmt": "yuv420p(progressive)",
+      "fps": 24.0,
+      "source_size": [
+        2888,
+        1160
+      ],
+      "size": [
+        2888,
+        1160
+      ],
+      "rotate": 0,
+      "duration": 5.0
+    }
+  }
+}

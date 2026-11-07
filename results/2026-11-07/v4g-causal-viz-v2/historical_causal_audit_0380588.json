@@ -1,0 +1,137 @@
+{
+ "threshold": 0.01,
+ "gates": {
+  "future_cut_every_k": {
+   "num_cuts": 36,
+   "all_exact_zero": false,
+   "worst": {
+    "k": 33,
+    "max_abs": 0.0013664960861206055
+   },
+   "passed": true
+  },
+  "prefix_consistency": {
+   "prefixes": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    36,
+    37
+   ],
+   "worst": {
+    "k": 21,
+    "max_abs": 0.0012944936752319336
+   },
+   "passed": true
+  },
+  "input_tail_swap": {
+   "shared_frames": 20,
+   "native_max_abs": 0.000980079174041748,
+   "stream_max_abs": 0.0005652904510498047,
+   "passed": true
+  },
+  "streaming_67": {
+   "max_abs": 0.0009966790676116943,
+   "passed": true,
+   "per_frame_max_abs_top5": [
+    0.000997,
+    0.000976,
+    0.000904,
+    0.000813,
+    0.000799
+   ],
+   "frame_argmax": 56,
+   "state": {
+    "processed_latent_frames": 67,
+    "cached_convolutions": 62,
+    "cache_bytes": 1756385280,
+    "cache_temporal_lengths": {
+     "conv_in": 2,
+     "in_blocks.0.in_layers.2": 2,
+     "in_blocks.0.out_layers.2": 2,
+     "in_blocks.1.dwconv": 4,
+     "in_blocks.2.in_layers.2": 2,
+     "in_blocks.2.out_layers.2": 2,
+     "in_blocks.3.in_layers.2": 2,
+     "in_blocks.3.out_layers.2": 2,
+     "in_blocks.4.dwconv": 4,
+     "in_blocks.5.in_layers.2": 2,
+     "in_blocks.5.out_layers.2": 2,
+     "in_blocks.6.in_layers.2": 2,
+     "in_blocks.6.out_layers.2": 2,
+     "in_blocks.7.dwconv": 4,
+     "in_blocks.8.in_layers.2": 2,
+     "in_blocks.8.out_layers.2": 2,
+     "in_blocks.9.in_layers.2": 2,
+     "in_blocks.9.out_layers.2": 2,
+     "in_blocks.10.dwconv": 4,
+     "in_blocks.11.in_layers.2": 2,
+     "in_blocks.11.out_layers.2": 2,
+     "in_blocks.12.in_layers.2": 2,
+     "in_blocks.12.out_layers.2": 2,
+     "in_blocks.13.dwconv": 4,
+     "in_blocks.14.in_layers.2": 2,
+     "in_blocks.14.out_layers.2": 2,
+     "in_blocks.15.in_layers.2": 2,
+     "in_blocks.15.out_layers.2": 2,
+     "in_blocks.16.dwconv": 4,
+     "in_blocks.17.in_layers.2": 2,
+     "in_blocks.17.out_layers.2": 2,
+     "out_blocks.0.in_layers.2": 2,
+     "out_blocks.0.out_layers.2": 2,
+     "out_blocks.1.dwconv": 4,
+     "out_blocks.2.in_layers.2": 2,
+     "out_blocks.2.out_layers.2": 2,
+     "out_blocks.3.in_layers.2": 2,
+     "out_blocks.3.out_layers.2": 2,
+     "out_blocks.4.dwconv": 4,
+     "out_blocks.5.in_layers.2": 2,
+     "out_blocks.5.out_layers.2": 2,
+     "out_blocks.6.in_layers.2": 2,
+     "out_blocks.6.out_layers.2": 2,
+     "out_blocks.7.dwconv": 4,
+     "out_blocks.8.in_layers.2": 2,
+     "out_blocks.8.out_layers.2": 2,
+     "out_blocks.9.in_layers.2": 2,
+     "out_blocks.9.out_layers.2": 2,
+     "out_blocks.10.dwconv": 4,
+     "out_blocks.11.in_layers.2": 2,
+     "out_blocks.11.out_layers.2": 2,
+     "out_blocks.12.in_layers.2": 2,
+     "out_blocks.12.out_layers.2": 2,
+     "out_blocks.13.dwconv": 4,
+     "out_blocks.14.in_layers.2": 2,
+     "out_blocks.14.out_layers.2": 2,
+     "out_blocks.15.in_layers.2": 2,
+     "out_blocks.15.out_layers.2": 2,
+     "out_blocks.16.dwconv": 4,
+     "out_blocks.17.in_layers.2": 2,
+     "out_blocks.17.out_layers.2": 2,
+     "conv_out": 2
+    }
+   },
+   "max_cache_temporal_len": 4,
+   "cache_len_ok": true
+  },
+  "stream_determinism": {
+   "prefix_37_of_67_vs_37_max_abs": 0.0006110668182373047,
+   "rerun_max_abs": 0.0012227296829223633,
+   "passed": true
+  },
+  "state_machine": {
+   "reset_clears_cache": true,
+   "signature_mismatch_raises": true,
+   "frames_zero_after_reset": true,
+   "passed": true
+  }
+ },
+ "notes": [],
+ "holdout": "VIDGEN5S_0380588",
+ "T": 37,
+ "all_passed": true
+}

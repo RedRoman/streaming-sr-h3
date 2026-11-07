@@ -1,6 +1,15 @@
 # Method-2：因果 latent upsampler 自蒸馏（独立方案，进行中）
 
-**日期**：2026-11-05 ｜ **机器**：ModelArts 32193（昇腾 910B3，npu:6）｜ **状态**：v1 完成并评测（负结果已保留），v2 训练中
+## 最新阶段：2026-11-07 v4g 因果可视化
+
+[修正后的 v2 对比视频、指标与验收说明](results/2026-11-07/v4g-causal-viz-v2/README.md)：120 帧、24 fps、5 秒，teacher 权重已恢复核验，视频完整解码通过。37 latent 可视化与历史合成 67 latent 审计分别标注，尚无真实 226 帧端到端视频验收。本轮演示从 HR 合成 LR，与下方旧方案的天然 LR 配对设定不同。
+
+[视频 Release](https://github.com/RedRoman/streaming-sr-h3/releases/tag/v4g-causal-viz-20261107-v2) · [复现代码与环境](code/v4g_causal_viz/README.md)
+
+以下保留 2026-11-05 的 Method-2 阶段记录；其中“进行中”表示当时状态。
+
+
+**日期**：2026-11-05 ｜ **硬件**：昇腾 910B3 ｜ **状态**：v1 完成并评测（负结果已保留），v2 训练中
 
 独立于对齐-过去权重改造（用户的 method-1）的平行方案：从头训一个因果 student，
 蒸馏冻结的 Open-H3 双向 latent upsampler（teacher）的输出，不需要 GT 配对。
@@ -31,8 +40,8 @@
 - `results/videos/` — 3 个训练 clip 的 teacher/student/reference 对比 mp4（v1）
 - `logs/` — 训练与评测原始日志
 
-## 已知环境要点（32193）
-- `ASCEND_OPP_PATH=/cache/hanbin/ascend_private/cann-8.5.2/opp` 必需（系统 opp 损坏）。
-- vendored diffusers：`/home/ma-user/workspace/zzjrua/vdn-minimax-h3/diffusers/src`（AutoencoderKLMiniMaxH3），其 dependency_versions_table.py 的 peft 已补丁 0.17→0.14。
+## 已知环境要点（历史运行）
+- 需要将 `ASCEND_OPP_PATH` 设置为有效的 CANN 8.5.2 OPP 目录；原运行环境使用单独安装的 OPP。
+- vendored diffusers：`<VENDORED_DIFFUSERS>/src`（AutoencoderKLMiniMaxH3），其 dependency_versions_table.py 的 peft 已补丁 0.17→0.14。
 - H3 VAE decode 必须先 `vae.disable_tiling()`（T<5 块触发 torch.cat 空列表 bug）；T=5 窗口 decode+fwd ≈1s。
 - LPIPS 需 per-image (N,3,H,W)；DWTForward 不接受 5D。

@@ -1,0 +1,200 @@
+{
+  "schema": "v4g-causal-stream-v2-reviewed-1",
+  "sample_id": "VIDGEN5S_0086441",
+  "identity": {
+    "sample_id": "VIDGEN5S_0086441",
+    "source": {
+      "path": "VIDGEN5S_0086441.mp4",
+      "size": 1123808,
+      "sha256": "f41b74863ab2b487585933d19cae263141e16fed201efbbe7f9602edd59092f3"
+    },
+    "checkpoint": {
+      "path": "v4g_final.pt",
+      "size": 1381240931,
+      "sha256": "049b4a8f0ae594b397f0543775a6ccfaccb24ce3c260990fda9c8ab0d9bffe33"
+    },
+    "upscaler": {
+      "path": "minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors",
+      "size": 690592992,
+      "sha256": "4f57821f5837f32f7142b67d815606dbd7550f194e5c769f7d6c3f83b146a5e6"
+    },
+    "vae": {
+      "path": "vae",
+      "config": {
+        "path": "config.json",
+        "size": 2011,
+        "sha256": "78f67deec3d63aae807f2bfe7154bc1e26f6372cb20b63265fcbae1b62bb5745"
+      },
+      "weight_files_metadata": [
+        {
+          "path": "diffusion_pytorch_model-00001-of-00003.safetensors",
+          "size": 5061033024,
+          "mtime_ns": 1789395523627718661
+        },
+        {
+          "path": "diffusion_pytorch_model-00002-of-00003.safetensors",
+          "size": 4955986528,
+          "mtime_ns": 1789395258666493758
+        },
+        {
+          "path": "diffusion_pytorch_model-00003-of-00003.safetensors",
+          "size": 398539336,
+          "mtime_ns": 1789389307982849191
+        }
+      ],
+      "verification_scope": "config SHA256 + resolved paths + weight size/mtime; VAE weight contents are not hashed"
+    },
+    "processing": {
+      "encode_seed": 42,
+      "noise_seed": 20261107,
+      "noise_std": 3.0,
+      "cut_latent": 19,
+      "draft_shape": [
+        24,
+        37,
+        44,
+        80
+      ],
+      "latent_shape": [
+        24,
+        37,
+        68,
+        120
+      ],
+      "rgb_shape": [
+        120,
+        1088,
+        1920,
+        3
+      ],
+      "decoded_frames_before_crop": 124,
+      "kept_frames": 120,
+      "fps": 24.0,
+      "error_axis": "display-only nearest resampling 37->120; not verified VAE pointwise alignment"
+    }
+  },
+  "producer_script": {
+    "path": "viz_v4g_causal_stream_v2.py",
+    "size": 21197,
+    "sha256": "6241d34510e641e2c8736397fc02605f64030d689e2f291e9c567ea2cff6b8da"
+  },
+  "latent_shapes": {
+    "stream": [
+      24,
+      37,
+      68,
+      120
+    ],
+    "full": [
+      24,
+      37,
+      68,
+      120
+    ],
+    "teacher": [
+      24,
+      37,
+      68,
+      120
+    ],
+    "noised": [
+      24,
+      37,
+      68,
+      120
+    ],
+    "reference": [
+      24,
+      37,
+      68,
+      120
+    ]
+  },
+  "fingerprints": {
+    "teacher_sd_sha256": "68210b78441a86f445525e622b601e08c5c6545815fc5dfa2b6639ed9ca96ae7",
+    "teacher_restored_verified": true,
+    "v4g_ckpt_sha256_after_load": "21d93c5482260a7b57831010d61d91a740fa3c8f0b61aed88d5958274885dc52"
+  },
+  "cache_sha256": "1fd46f314a4c9aab7555d14fe008ddbc26b43dfff6c5d1a98d920dab4ae4d6d7",
+  "decoded": {
+    "stream": {
+      "path": "decoded/stream.npy",
+      "sha256": "b42838743f7beb5d66d82a356a0053de8fb9b696b93c06f9abc51446b8bb253b",
+      "dtype": "uint8",
+      "shape": [
+        120,
+        1088,
+        1920,
+        3
+      ]
+    },
+    "full": {
+      "path": "decoded/full.npy",
+      "sha256": "f948eda0442cacb93ee6cf4bb6d053cc5a18dd76e21bdfb198e532449f194293",
+      "dtype": "uint8",
+      "shape": [
+        120,
+        1088,
+        1920,
+        3
+      ]
+    },
+    "teacher": {
+      "path": "decoded/teacher.npy",
+      "sha256": "914882e431f113635b47d24afa7116eb2eb452ec679e214a4b38c6ed822d031b",
+      "dtype": "uint8",
+      "shape": [
+        120,
+        1088,
+        1920,
+        3
+      ]
+    },
+    "noised": {
+      "path": "decoded/noised.npy",
+      "sha256": "572a76f05fc760b5622cdc382df7d2b18669cc6edd096ef407a89391f0553164",
+      "dtype": "uint8",
+      "shape": [
+        120,
+        1088,
+        1920,
+        3
+      ]
+    },
+    "reference": {
+      "path": "decoded/reference.npy",
+      "sha256": "df5de7d36770f1b2438278420982f530073a36ea8dfa2c9fdc89be6232fb7f3f",
+      "dtype": "uint8",
+      "shape": [
+        120,
+        1088,
+        1920,
+        3
+      ]
+    }
+  },
+  "stages": {
+    "inference": "complete",
+    "decoded": [
+      "full",
+      "noised",
+      "reference",
+      "stream",
+      "teacher"
+    ],
+    "assembly": "complete"
+  },
+  "outputs": {
+    "video": {
+      "path": "causal_stream_test_VIDGEN5S_0086441.mp4",
+      "size": 24514258,
+      "sha256": "e86051f5d059690fd02685e254ddd17d42f23c12b98e04e6ea01fa1f25318404"
+    },
+    "preview": {
+      "path": "frame060.png",
+      "size": 3013041,
+      "sha256": "9e5fd64f4f3975fe0a49106fd21f151f406a1641f26d9ea51d2a365016dcef15"
+    }
+  },
+  "publication_note": "Sanitized evidence copy: private absolute paths replaced with basenames. Hashes and shapes unchanged. Do not use this publication copy for cache resume."
+}

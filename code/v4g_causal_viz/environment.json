@@ -1,0 +1,34 @@
+{
+  "observed_runtime": {
+    "python": "3.12.0",
+    "architecture": "aarch64",
+    "torch": "2.7.1",
+    "torch_npu": "2.7.1.post2",
+    "numpy": "1.26.4",
+    "Pillow": "11.3.0",
+    "safetensors": "0.8.0",
+    "einops": "0.8.0",
+    "typing_extensions": "4.16.0"
+  },
+  "diffusers": {
+    "installed_distribution_metadata_version": "0.33.1",
+    "actual_import_source": "vendored source selected through PYTHONPATH",
+    "origin": "https://github.com/huggingface/diffusers.git",
+    "commit": "19b759a898647cc6de60a2093b2fc86ffebabe36",
+    "dirty_file": "src/diffusers/dependency_versions_table.py",
+    "patch": "peft>=0.17.0 -> peft>=0.14.0",
+    "stock_distribution_reproduction_verified": false
+  },
+  "additional_requirements": [
+    "Ascend driver and matching CANN runtime",
+    "FFmpeg with fps-filter statistics and libx264 or MPEG-4 encoder",
+    "locally available H3 VAE, original teacher weights, v4g checkpoint and source video"
+  ],
+  "unrecorded_or_unverified": [
+    "exact Ascend driver and complete CANN package inventory",
+    "exact FFmpeg build",
+    "full Python transitive environment",
+    "full VAE weight-content hashes",
+    "upstream node source commit"
+  ]
+}

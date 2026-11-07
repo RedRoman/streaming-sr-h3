@@ -1,0 +1,33 @@
+{
+  "public_copy_checks": {
+    "py_compile": {
+      "status": "passed",
+      "files": [
+        "experiment/audit_v4g_full.py",
+        "experiment/causal_upscaler.py",
+        "experiment/data_utils.py",
+        "experiment/prepare_data.py",
+        "experiment/prepare_upscaler_5s_pairs.py",
+        "experiment/prepare_upscaler_prod_pairs.py",
+        "experiment/supervisor_smoke_viz_v2.py",
+        "experiment/train_upscaler_trial.py",
+        "experiment/viz_v4g_causal_stream_v2.py",
+        "patches/apply_diffusers_peft_metadata_patch.py",
+        "upstream/open_h3/upscaler.py",
+        "upstream/open_h3/upscaler_node.py"
+      ]
+    },
+    "bash_n": {
+      "status": "passed",
+      "file": "runs/launch_viz_v2.sh"
+    },
+    "private_host_and_absolute_path_pattern_scan": {
+      "status": "passed",
+      "finding_count": 0
+    }
+  },
+  "public_copy_real_model_or_NPU_execution": false,
+  "public_copy_cpu_smoke_execution": "not rerun here; public copies received syntax/path checks only",
+  "executed_source_cpu_smoke": "passed earlier on original execution sources; synthetic fake decoder/writer, not model evaluation",
+  "scope": "Publishing path configuration only; no training or model launch"
+}

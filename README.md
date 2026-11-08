@@ -1,13 +1,22 @@
 # Method-2：因果 latent upsampler 自蒸馏（独立方案，进行中）
 
-## 最新阶段：2026-11-07 v4g 因果可视化
+## 最新阶段：2026-11-08 真实 226 帧 / 67-latent 全长评价与视频交付
+
+[完整进展与验收说明](results/2026-11-08/v4g-full226/README.md) · [分析：单就 upscaler 本身，是否已是正式管线中已确定的可交付流式因果 upsampler](results/2026-11-08/v4g-full226/ANALYSIS_UPSCALER_STATUS.md) · [视频 Release](https://github.com/RedRoman/streaming-sr-h3/releases/tag/v4g-full226-20261108) · [脱敏 manifest](results/2026-11-08/v4g-full226/manifest.public.json)
+
+本轮补上了 v2 缺的真实生产长度：不再用 37 帧真实 + 反转 30 帧的合成 67-latent，而是从真实 345 帧源取连续 226 帧，编码为 67 latent，六门因果审计在真实全长序列上重跑全部通过（`all_passed = true`，阈值 0.01）；五路信号各整段 VAE 解码 226 帧不裁剪；六面板视频 226 帧、24 fps、9.4167 秒，服务器 MPEG-4 与本地 H.264 副本各自全帧解码 226 帧、exit 0。原始 teacher 权重指纹恢复已核验。
+
+结论分两层：**单就 upscaler 模块本身**，它已是不偷看未来、状态有界、可逐 chunk 流式调用且与整段前向一致的因果上采样算子，机制这一层已确定；**但「正式管线中已确定的可交付组件」仍不是**，因为还没接入自强迫 DMD 生成链做在线逐段联调、没有留出效用评测证明相对原始双向 teacher 的收益、也没有接口与时间 / 延迟 / 显存契约。见上面的分析文档。
+
+边界：整段 VAE 编解码是离线批处理，不是在线流式 VAE 链路，也不代表实时性能；LR 是 HR 合成下采样退化，没有真实 GT，不给 PSNR / SSIM；teacher 不是 GT；未做人工实际检视，不声称看过视频。A/B 训练双臂未启动，冻结审阅包未改动，v2 的 120 帧视频已发布在 `1f513c6`，本轮不重复生成或发布该内容。
+
+以下保留 2026-11-07 的 v2 可视化阶段记录，以及 2026-11-05 的 Method-2 阶段记录；其中「进行中」表示当时状态。
+
+## 2026-11-07 阶段：v4g 因果可视化（已发布 v2）
 
 [修正后的 v2 对比视频、指标与验收说明](results/2026-11-07/v4g-causal-viz-v2/README.md)：120 帧、24 fps、5 秒，teacher 权重已恢复核验，视频完整解码通过。37 latent 可视化与历史合成 67 latent 审计分别标注，尚无真实 226 帧端到端视频验收。本轮演示从 HR 合成 LR，与下方旧方案的天然 LR 配对设定不同。
 
 [视频 Release](https://github.com/RedRoman/streaming-sr-h3/releases/tag/v4g-causal-viz-20261107-v2) · [复现代码与环境](code/v4g_causal_viz/README.md)
-
-以下保留 2026-11-05 的 Method-2 阶段记录；其中“进行中”表示当时状态。
-
 
 **日期**：2026-11-05 ｜ **硬件**：昇腾 910B3 ｜ **状态**：v1 完成并评测（负结果已保留），v2 训练中
 

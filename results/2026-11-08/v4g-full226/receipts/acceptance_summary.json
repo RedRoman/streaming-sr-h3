@@ -1,0 +1,199 @@
+{
+  "schema": "v4g-full226-delivery-acceptance-v1",
+  "generated_from": "downloaded raw receipts; no hand-entered measurements",
+  "status": "completed_full_226_frame_evaluation_and_video",
+  "attempt": "full226_20261108_v1",
+  "checkpoint": {
+    "bytes": 1381240931,
+    "sha256": "049b4a8f0ae594b397f0543775a6ccfaccb24ce3c260990fda9c8ab0d9bffe33"
+  },
+  "geometry": {
+    "real_pixel_frames": 226,
+    "latent_frames": 67,
+    "released_decoded_frames": 226,
+    "draft_shape": [
+      24,
+      67,
+      44,
+      80
+    ],
+    "reference_shape": [
+      24,
+      67,
+      68,
+      120
+    ],
+    "fps": 24,
+    "exact_duration_seconds": 9.416666666666666
+  },
+  "evaluation": {
+    "all_passed": true,
+    "threshold": 0.01,
+    "gates": {
+      "future_cut_every_k": true,
+      "prefix_consistency": true,
+      "input_tail_swap": true,
+      "streaming_real67": true,
+      "stream_determinism": true,
+      "state_machine": true
+    },
+    "primary_metric": {
+      "name": "full 67-latent (226-frame) v4g-vs-original-teacher macro MSE",
+      "value": 0.06744341552257538,
+      "note": "teacher is the restored original bidirectional upscaler, NOT ground truth; no PSNR/SSIM is reported"
+    },
+    "stream_vs_teacher_macro_mse": 0.06744343787431717,
+    "noised_vs_teacher_macro_mse": 0.8419111371040344,
+    "stream_vs_full_max_abs": 0.0006000250577926636,
+    "stream_vs_full_mean_abs": 2.7877129468834028e-05,
+    "noised_past_prefix_max_abs": 0.0,
+    "teacher_restored_verified": true,
+    "teacher_sd_sha256": "68210b78441a86f445525e622b601e08c5c6545815fc5dfa2b6639ed9ca96ae7"
+  },
+  "whole_vae_decode": {
+    "decoded_frames": 226,
+    "signals": [
+      "stream",
+      "full",
+      "teacher",
+      "noised",
+      "reference"
+    ],
+    "time_crop": "none (all 226 frames kept)"
+  },
+  "pixel_diagnostics": {
+    "unit": "0-255 RGB MAE",
+    "no_psnr_ssim": true,
+    "reference": "VAE decode of VAE-encoded lanczos-upscaled HR latent; NOT ground truth",
+    "stream_vs_full_mean_mae": 0.0036848712625260284,
+    "stream_vs_reference_mean_mae": 5.350527158904099,
+    "full_vs_reference_mean_mae": 5.350473621374365,
+    "teacher_vs_reference_mean_mae": 4.514606004845476
+  },
+  "video": {
+    "remote_original": "full226_comparison_226f.mp4",
+    "remote_audit": {
+      "schema": "full226-video-audit-v1",
+      "passed": true,
+      "ffprobe_nb_frames": "226",
+      "decoded_frames": 226,
+      "expected_frames": 226,
+      "fps": 24,
+      "exact_duration_seconds": 9.416666666666666,
+      "ffprobe_duration": "9.416667",
+      "width": 2888,
+      "height": 1160,
+      "codec_name": "mpeg4",
+      "encoder": "mpeg4 q=2 (no libx264 on host)",
+      "full_decode_exit_code": 0,
+      "full_decode_stderr": "",
+      "sha256": "eeca414351c1986e80beea59a582f3be618250fb4b3616fa0be5facf96056ba5",
+      "bytes": 44486319,
+      "assemble_seconds": 83.848,
+      "panels": [
+        "stream",
+        "full",
+        "teacher",
+        "noised",
+        "error",
+        "reference"
+      ],
+      "caveats": [
+        "no pixel cut line: pointwise VAE temporal mapping unverified",
+        "error panel time axis is display-only approximate resampling 67->226",
+        "no human visual inspection is claimed"
+      ]
+    },
+    "h264_copy": "v4g_full226_comparison_h264.mp4",
+    "local_acceptance": {
+      "checked_at_utc": "2026-11-08T12:12:37.254057+00:00",
+      "schema": "v4g-full226-local-media-acceptance-v1",
+      "expected_frames": 226,
+      "transcode_is_lossy": true,
+      "codecs": {
+        "original": "mpeg4 q=2 (host ffmpeg 4.2)",
+        "browser": "libx264 crf18"
+      },
+      "checks": {
+        "full226_comparison_226f.mp4": {
+          "bytes": 44486319,
+          "sha256": "eeca414351c1986e80beea59a582f3be618250fb4b3616fa0be5facf96056ba5",
+          "full_decode": {
+            "exit_code": 0,
+            "decoded_frames": 226,
+            "stderr": ""
+          }
+        },
+        "v4g_full226_comparison_h264.mp4": {
+          "bytes": 17713744,
+          "sha256": "c2df9466232cfc201a95340272df6a439f0971fc21bb1dd00cf63748c2a8a811",
+          "full_decode": {
+            "exit_code": 0,
+            "decoded_frames": 226,
+            "stderr": ""
+          }
+        }
+      },
+      "transcode_exit_code": 0,
+      "sampled_video_frame_indices": [
+        0,
+        113,
+        225
+      ],
+      "no_human_visual_inspection_claimed": true
+    }
+  },
+  "timings_seconds": {
+    "stage_sum": 1654.205,
+    "wall": 1660.479,
+    "by_stage": [
+      {
+        "stage": "strict_reader",
+        "seconds": 26.991
+      },
+      {
+        "stage": "vae_encode",
+        "seconds": 266.775
+      },
+      {
+        "stage": "latent_eval_67_real",
+        "seconds": 345.546
+      },
+      {
+        "stage": "whole_vae_decode_226",
+        "seconds": 880.006
+      },
+      {
+        "stage": "pixel_diagnostics",
+        "seconds": 49.034
+      },
+      {
+        "stage": "video_226f",
+        "seconds": 85.853
+      }
+    ],
+    "scope": "offline batch whole-VAE encode/decode; NOT real-time throughput"
+  },
+  "boundaries": [
+    "real 226 consecutive frames, NOT the 37+reversed-30 synthetic extension",
+    "whole-VAE offline batch encode/decode, NOT an online streaming VAE chain",
+    "no true HR ground truth; no PSNR/SSIM; pixel MAE is diagnostic only",
+    "no real-time throughput or latency claim",
+    "no human visual inspection of the video is claimed",
+    "frozen it1 reviewed package untouched; no training, no A/B arms",
+    "not a GitHub publication; v2 release 1f513c6 not duplicated"
+  ],
+  "local_delivery_notes": {
+    "remote_SHA256SUMS_txt_covers": "all 28 files in the remote attempt dir",
+    "locally_verified_files": 20,
+    "intentionally_not_downloaded": [
+      "decoded/*.npy (5 x 1.4 GB uint8 RGB caches)",
+      "latents226.pt (262 MB)",
+      "pair226.pt (75 MB)",
+      "launch.json"
+    ],
+    "reason": "large intermediate arrays kept on the shared host; not part of the playable delivery",
+    "local_SHA256SUMS": "covers the files actually delivered locally and verifies 17/17 OK"
+  },
+  "_publication_note": "redacted public copy: private host paths, host id, device id, usernames and local absolute paths removed; all measured numbers unchanged"
+}

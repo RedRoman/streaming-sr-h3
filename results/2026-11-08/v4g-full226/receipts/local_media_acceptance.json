@@ -1,0 +1,38 @@
+{
+  "checked_at_utc": "2026-11-08T12:12:37.254057+00:00",
+  "schema": "v4g-full226-local-media-acceptance-v1",
+  "expected_frames": 226,
+  "transcode_is_lossy": true,
+  "codecs": {
+    "original": "mpeg4 q=2 (host ffmpeg 4.2)",
+    "browser": "libx264 crf18"
+  },
+  "checks": {
+    "full226_comparison_226f.mp4": {
+      "bytes": 44486319,
+      "sha256": "eeca414351c1986e80beea59a582f3be618250fb4b3616fa0be5facf96056ba5",
+      "full_decode": {
+        "exit_code": 0,
+        "decoded_frames": 226,
+        "stderr": ""
+      }
+    },
+    "v4g_full226_comparison_h264.mp4": {
+      "bytes": 17713744,
+      "sha256": "c2df9466232cfc201a95340272df6a439f0971fc21bb1dd00cf63748c2a8a811",
+      "full_decode": {
+        "exit_code": 0,
+        "decoded_frames": 226,
+        "stderr": ""
+      }
+    }
+  },
+  "transcode_exit_code": 0,
+  "sampled_video_frame_indices": [
+    0,
+    113,
+    225
+  ],
+  "no_human_visual_inspection_claimed": true,
+  "_publication_note": "redacted public copy: private host paths, host id, device id, usernames and local absolute paths removed; all measured numbers unchanged"
+}

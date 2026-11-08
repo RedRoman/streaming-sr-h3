@@ -1,0 +1,70 @@
+{
+  "schema": "real-226-frame-provenance-v1",
+  "ffprobe": {
+    "codec_name": "h264",
+    "width": 1344,
+    "height": 768,
+    "r_frame_rate": "24/1",
+    "avg_frame_rate": "24/1",
+    "duration": "14.375000",
+    "nb_frames": "345"
+  },
+  "count": {
+    "fps_filter": {
+      "input_frames": 345,
+      "output_frames": 345,
+      "dropped_frames": 0,
+      "duplicated_frames": 0
+    },
+    "counted_output_frames": 345,
+    "returncode": 0,
+    "no_tpad": true,
+    "no_loop": true,
+    "no_setpts_slowdown": true
+  },
+  "lr_reader": {
+    "filter": "fps=24,scale=1920:1088:force_original_aspect_ratio=increase:flags=lanczos,crop=1920:1088,scale=1280:704:flags=area",
+    "requested_frames": 226,
+    "received_bytes": 610959360,
+    "expected_bytes": 610959360,
+    "exact_226_frames": true,
+    "fps_filter": {
+      "input_frames": 228,
+      "output_frames": 227,
+      "dropped_frames": 1,
+      "duplicated_frames": 0
+    },
+    "output_sync": "passthrough",
+    "external_tpad": false,
+    "external_loop": false,
+    "setpts_slowdown": false,
+    "returncode": 0
+  },
+  "hr_reader": {
+    "filter": "fps=24,scale=1920:1088:force_original_aspect_ratio=increase:flags=lanczos,crop=1920:1088",
+    "requested_frames": 226,
+    "received_bytes": 1416314880,
+    "expected_bytes": 1416314880,
+    "exact_226_frames": true,
+    "fps_filter": {
+      "input_frames": 228,
+      "output_frames": 227,
+      "dropped_frames": 1,
+      "duplicated_frames": 0
+    },
+    "output_sync": "passthrough",
+    "external_tpad": false,
+    "external_loop": false,
+    "setpts_slowdown": false,
+    "returncode": 0
+  },
+  "lr_frame_sha256_first": "2d63432796362674cafff9c6a2d17bb63124d4e935343a25da68ec8a5bc5fa7e",
+  "lr_frame_sha256_mid": "1a27122b0cd9b166bacc8a017ec68f2b53d6548c8eb4a42fb3ad1e30fdb728fd",
+  "lr_frame_sha256_last": "6fc6f7191a452f537c8157b64a0edff60964acfbf8ec74ee88eb18b34193886f",
+  "distinct_lr_frames": 226,
+  "palindrome_matches": 0,
+  "lr_rgb_sha256": "48b4b1173bf5991e517b33561606bdf8aef127c830f51aadee25cfe37a181238",
+  "hr_rgb_sha256": "c2d43e7c6527da407f64b5920860de353b4b1e175bf8055372a819b3ded4140f",
+  "construction": "first 226 consecutive real frames; no padding, no loop, no reversal",
+  "_publication_note": "redacted public copy: private host paths, host id, device id, usernames and local absolute paths removed; all measured numbers unchanged"
+}

@@ -195,7 +195,7 @@ def _quota(job):
     within 4% of InfVSR. A per-block scalar quota (Stage 3) cannot act on that, because flat sky and brick
     wall occur inside the same block. This gate is per pixel and reads only the observation, so it ships.
     """
-    name, src, dst, ckpt, s0, p, sharp, gain, ema = job
+    name, src, dst, ckpt, s0, p, sharp, gain, ema, keep_range = job
     torch.set_num_threads(4)
     from range_branch import RangeBranch
     st = torch.load(ckpt, map_location='cpu')
@@ -231,7 +231,17 @@ def _quota(job):
             est = _unsharp(res_ema[t] if res_ema is not None
                            else rb(stack.permute(0, 3, 1, 2)[None])[0].permute(1, 2, 0), sharp)
             guide = up(est, hw).clamp(0, 1)
-            _, nn = split(load(f))
+            rr, nn = split(load(f))
+            if keep_range:
+                # The gate was written to rebuild the frame as U(R_phi(y)) + gated null, which replaces
+                # the range component of the sampled output with one that never went through the DiT or
+                # the innerDC projection. Measured on six clips the substitution keeps the direction
+                # (cos 0.9970 against 0.9971) but loses energy (0.9878 against 1.0003, and 0.9449
+                # against 0.9872 on the worst), and that loss cannot be recovered by any gain on the
+                # null term. With keep_range the sampled range is kept untouched and the gate only
+                # modulates the generated component, which makes w=1 the identity -- the condition a
+                # gain sweep needs in order to measure the gain rather than the substitution.
+                guide = rr
             w = (_local_std(guide) / s0).clamp(0, 1)
             if p != 1.0:
                 w = w ** p
@@ -246,7 +256,7 @@ def _quota(job):
             n += 1
     (dst / name / 'stream_result.json').write_text(json.dumps(
         {'clip': name, 'op': 'quota', 'src': str(src), 'ckpt': str(ckpt), 's0': s0, 'p': p,
-         'sharp': sharp, 'gain': gain, 'res_ema_alpha': ema,
+         'sharp': sharp, 'gain': gain, 'res_ema_alpha': ema, 'keep_range': keep_range,
          'gate': 'local std of U(R_phi(y)), 8x8 window', 'frames': n}, indent=1))
     return name, n
 
@@ -435,6 +445,10 @@ def main():
     p.add_argument('--p', type=float, default=1.0)
     p.add_argument('--sharp', type=float, default=0.0, help='unsharp alpha on R_phi(y); see _unsharp')
     p.add_argument('--gain', type=float, default=1.0, help='multiplier on the admitted detail')
+    p.add_argument('--keep-range', action='store_true',
+                   help='keep the sampled output range component instead of rebuilding it from '
+                        'U(R_phi(y)). Without this the gate silently swaps in a range that never saw '
+                        'the innerDC projection, so a gain sweep measures that swap as well as the gain.')
     p.add_argument('--ema', type=float, default=1.0,
                    help='causal EMA on the correction R_phi(y)-y; 1.0 is the current per-frame behaviour')
     p.add_argument('--ckpt', type=Path, default=ROOT / 'results/range_branch/k1.pt')
@@ -450,7 +464,8 @@ def main():
             for name, n in pool.imap_unordered(_rangesub, jobs):
                 print(json.dumps({'rangesub': a.tag, 'clip': name, 'frames': n}), flush=True)
     elif a.cmd == 'quota':
-        jobs = [(n, a.src, OUT / a.tag, a.ckpt, a.s0, a.p, a.sharp, a.gain, a.ema) for n in names]
+        jobs = [(n, a.src, OUT / a.tag, a.ckpt, a.s0, a.p, a.sharp, a.gain, a.ema, a.keep_range)
+                for n in names]
         with Pool(a.procs) as pool:
             for name, n in pool.imap_unordered(_quota, jobs):
                 print(json.dumps({'quota': a.tag, 'clip': name, 'frames': n}), flush=True)

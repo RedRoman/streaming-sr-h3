@@ -209,7 +209,8 @@ class H3:
         return {'kind': 'image', 'latent_h': th // 16, 'latent_w': tw // 16, 'latent': z}
 
     def sample(self, guide, mode, low=None, hw=None, log=None, seed=SEED, context=None, refs=None, noise=None,
-               quota=None, audio_target=None, audio_strength=1.0, audio_init='zeros'):
+               quota=None, audio_target=None, audio_strength=1.0, audio_init='zeros',
+               warm_start=None, dc_project=False):
         """mode: 'base' (unadapted 49-step with LR guide) or 'innerdc' (post-CFG z0 += E(P25(D z0)) - E(D z0) at POINTS)."""
         import comfy.nested_tensor
         import comfy.sample
@@ -243,7 +244,24 @@ class H3:
             a0 = torch.zeros(1, 32, 2, audio_t)
         else:
             raise SystemExit('audio_init must be zeros or randn, got %r' % (audio_init,))
-        latent = comfy.nested_tensor.NestedTensor((torch.zeros(1, 24, T, h16, w16), a0))
+        # The video latent the sampler starts from. Zeros means "generate everything from noise", and
+        # that is what has always been used -- after which innerDC projects the range component away and
+        # replaces it with R_phi(y). So the model spends its capacity rebuilding a component we already
+        # know and then has it discarded.
+        #
+        # warm_start supplies that component up front instead. The sampler mixes the start as
+        # sigma*noise + (1-sigma)*latent_image, so the content only survives if the schedule begins
+        # below 1.0 -- at sigma=1.0 it is multiplied by exactly zero, which is why the audio_init flag
+        # measured as a no-op. A schedule like [0.5, 0] gives the start half the weight and needs one
+        # step instead of two, which is the point: sampling is 68% of compute and the step count is the
+        # only lever on it that does not need a new module.
+        v0 = torch.zeros(1, 24, T, h16, w16)
+        if warm_start is not None:
+            v0 = warm_start.to(dtype=v0.dtype)
+            if tuple(v0.shape) != (1, 24, T, h16, w16):
+                raise SystemExit('warm_start latent is %s, expected %s'
+                                 % (tuple(v0.shape), (1, 24, T, h16, w16)))
+        latent = comfy.nested_tensor.NestedTensor((v0, a0))
         _, shapes = self.cu.pack_latents(list(latent.unbind()))
         events, state = [], {'calls': 0, 'hooks': 0}
 
@@ -318,11 +336,15 @@ class H3:
             z0, audio = self.cu.unpack_latents(args['denoised'], shapes)
             rgb = self.decode(z0)
             assert rgb.shape == (frames, hw[0], hw[1], 3) and torch.isfinite(rgb).all()
-            zbase = self.encode(rgb)
             projected, residual = op.project(rgb.permute(0, 3, 1, 2).to(self.dev), low_dev, iterations=25)
             zc = self.encode(projected.permute(0, 2, 3, 1).cpu())
-            delta = (zc - zbase).to(device=z0.device, dtype=z0.dtype)
-            assert delta.shape == z0.shape and torch.isfinite(delta).all()
+            if dc_project:
+                zbase = delta = None
+            else:
+                zbase = self.encode(rgb)
+                delta = (zc - zbase).to(device=z0.device, dtype=z0.dtype)
+                assert delta.shape == z0.shape and torch.isfinite(delta).all()
+            assert zc.shape == z0.shape and torch.isfinite(zc).all()
             # innerDC for the audio stream, which until now was unpacked and repacked untouched.
             # The video side computes a correction by leaving the latent, enforcing the observation
             # constraint where the operator is exactly defined, and coming back. Audio has no pixel-space
@@ -347,8 +369,21 @@ class H3:
                     tgt = (torch.cat([tgt, tgt[..., -1:].expand(*tgt.shape[:-1], n - tgt.shape[-1])], -1)
                            if tgt.shape[-1] < n else tgt[..., :n])
                 audio = audio + audio_strength * (tgt - audio)
-            packed, _ = self.cu.pack_latents([z0 + delta, audio])
-            ev = {'index': index, 'sigma': float(args['sigma'].flatten()[0]), 'delta_rms': float(delta.float().square().mean().sqrt()),
+            # dc_project: hand back the manifold projection of z0 plus the consistency correction,
+            # i.e. zbase + delta, instead of z0 + delta. Since delta = zc - zbase that collapses to zc
+            # exactly, so this branch needs ONE encode where the default needs two -- the default keeps
+            # z0 and adds only the difference, which is why it has to form zbase as a reference point.
+            # Measured: encode is 2.365 s and decode 1.165 s per 22-frame block, against a mean sampling
+            # time of 8.89 s with exactly one correction event, so dropping an encode is 27% of sampling.
+            # Motivation: decode(encode(.)) was measured to improve every temporal metric at a near-zero
+            # fidelity cost (flicker better on 59/69 clips, warp 68/69, PSNR -0.017, LPIPS +0.003 median,
+            # results/deploy/judge_m0.json), which says z0 carries content off the VAE manifold that the
+            # projection removes. The default path never applies that projection to z0 itself.
+            z_out = zc.to(device=z0.device, dtype=z0.dtype) if dc_project else z0 + delta
+            packed, _ = self.cu.pack_latents([z_out, audio])
+            ev = {'index': index, 'sigma': float(args['sigma'].flatten()[0]), 'dc_project': bool(dc_project),
+                  'delta_rms': (None if delta is None else float(delta.float().square().mean().sqrt())),
+                  'z0_to_zc_rms': float((zc.to(z0.device, z0.dtype) - z0).float().square().mean().sqrt()),
                   'projected_lr_rmse_max': float(residual.max()), 'hook_seconds': time.perf_counter() - begin}
             events.append(ev)
             if log:

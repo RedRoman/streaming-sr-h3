@@ -1,0 +1,120 @@
+{"tag": "omni_mtf_dfull_s1", "seed": 1, "scales": ["2", "4", "8", "deblur", "denoise"], "use_sev": false, "crop": 48, "cond": "mtf", "cdim": 17, "k": 3, "holdout_scales": [], "params": 2044899, "train_items": {"2": 10183, "4": 10351, "8": 10331, "deblur": 10351, "denoise": 10351}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "holdout_items": {}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:331: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev), c.to(dev)), g.to(dev))
+{"tag": "omni_onehot_dfull_s1", "seed": 1, "scales": ["2", "4", "8", "deblur", "denoise"], "use_sev": false, "crop": 48, "cond": "onehot", "cdim": 6, "k": 3, "holdout_scales": [], "params": 2019555, "train_items": {"2": 10183, "4": 10351, "8": 10331, "deblur": 10351, "denoise": 10351}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "holdout_items": {}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:331: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev), c.to(dev)), g.to(dev))
+{"tag": "omni_mtf_dfull_s0", "seed": 0, "scales": ["2", "4", "8", "deblur", "denoise"], "use_sev": false, "crop": 48, "cond": "mtf", "cdim": 17, "k": 3, "holdout_scales": [], "params": 2044899, "train_items": {"2": 10183, "4": 10351, "8": 10331, "deblur": 10351, "denoise": 10351}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "holdout_items": {}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:331: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev), c.to(dev)), g.to(dev))
+{"tag": "omni_onehot_dfull_s0", "seed": 0, "scales": ["2", "4", "8", "deblur", "denoise"], "use_sev": false, "crop": 48, "cond": "onehot", "cdim": 6, "k": 3, "holdout_scales": [], "params": 2019555, "train_items": {"2": 10183, "4": 10351, "8": 10331, "deblur": 10351, "denoise": 10351}, "val_items": {"2": 24, "4": 24, "8": 24, "deblur": 24, "denoise": 24}, "holdout_items": {}, "single_scale_reference": {"2": 2.269, "4": 2.526, "8": 1.925}}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:331: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  loss = F.l1_loss(model(x.to(dev), c.to(dev)), g.to(dev))
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:338: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 3000, "loss": 0.01430688425898552, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 33.91927538977729, "gain_dB": 2.306453572379219, "vs_single": 0.03745357237921887}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.23940822813246, "gain_dB": 1.5660670598348005, "vs_single": -0.9599329401651993}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 30.93511258231269, "gain_dB": 2.5579520066579207, "vs_single": 0.6329520066579206}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 40.92022101084391, "gain_dB": 5.800034655465019, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.330027394824555, "gain_dB": 4.796138789918686, "vs_single": null}}, "sec": 377.5}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:338: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 3000, "loss": 0.01699201948940754, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.040445460213554, "gain_dB": 2.427623642815483, "vs_single": 0.15862364281548302}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.34345314237807, "gain_dB": 1.670111974080406, "vs_single": -0.8558880259195938}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 30.9145540661282, "gain_dB": 2.5373934904734305, "vs_single": 0.6123934904734305}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.17648988299899, "gain_dB": 6.056303527620102, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.383469661076866, "gain_dB": 4.849581056170997, "vs_single": null}}, "sec": 377.3}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:338: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 3000, "loss": 0.014248657040297985, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 33.98876661724515, "gain_dB": 2.375944799847076, "vs_single": 0.10694479984707606}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.20431799358792, "gain_dB": 1.53097682529026, "vs_single": -0.9950231747097398}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 30.859198967615765, "gain_dB": 2.4820383919609945, "vs_single": 0.5570383919609945}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.34199984868368, "gain_dB": 6.221813493304786, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.35409588283963, "gain_dB": 4.820207277933761, "vs_single": null}}, "sec": 388.6}
+/cache/zihaohe/streaming_sr0/code/omni_stage1.py:338: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  e = {'iter': it, 'loss': float(loss), 'val': ev, 'sec': round(time.perf_counter() - t0, 1)}
+{"iter": 3000, "loss": 0.016961626708507538, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.08149033122592, "gain_dB": 2.4686685138278506, "vs_single": 0.19966851382785045}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.34408476617601, "gain_dB": 1.6707435978783494, "vs_single": -0.8552564021216504}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 30.979840808444553, "gain_dB": 2.6026802327897833, "vs_single": 0.6776802327897833}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.50069793065389, "gain_dB": 6.380511575275001, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.39295328987969, "gain_dB": 4.8590646849738235, "vs_single": null}}, "sec": 375.0}
+{"iter": 6000, "loss": 0.014354059472680092, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.3571535481347, "gain_dB": 2.7443317307366257, "vs_single": 0.4753317307366256}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.637343962987266, "gain_dB": 1.9640027946896055, "vs_single": -0.5619972053103943}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.209724982579548, "gain_dB": 2.832564406924778, "vs_single": 0.9075644069247779}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.771526389651825, "gain_dB": 6.651340034272934, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.93662619590759, "gain_dB": 5.402737591001724, "vs_single": null}}, "sec": 757.8}
+{"iter": 6000, "loss": 0.01245683990418911, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.346655236350166, "gain_dB": 2.733833418952095, "vs_single": 0.46483341895209485}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.61764579349094, "gain_dB": 1.9443046251932756, "vs_single": -0.5816953748067242}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.255586703618366, "gain_dB": 2.8784261279635963, "vs_single": 0.9534261279635963}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.88738828235202, "gain_dB": 6.767201926973129, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.87629911634657, "gain_dB": 5.342410511440704, "vs_single": null}}, "sec": 764.4}
+{"iter": 6000, "loss": 0.014248932711780071, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.31033995416429, "gain_dB": 2.69751813676622, "vs_single": 0.4285181367662201}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.65551421377394, "gain_dB": 1.98217304547628, "vs_single": -0.5438269545237198}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.20833894941542, "gain_dB": 2.8311783737606504, "vs_single": 0.9061783737606504}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.02913162443373, "gain_dB": 6.90894526905484, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 34.97897948159112, "gain_dB": 5.445090876685249, "vs_single": null}}, "sec": 782.7}
+{"iter": 6000, "loss": 0.0125152338296175, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.327811029222275, "gain_dB": 2.7149892118242036, "vs_single": 0.4459892118242035}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.63560514979892, "gain_dB": 1.962263981501259, "vs_single": -0.5637360184987408}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.224404705895317, "gain_dB": 2.847244130240547, "vs_single": 0.9222441302405471}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 41.986318058437774, "gain_dB": 6.866131703058883, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.00169083807204, "gain_dB": 5.467802233166168, "vs_single": null}}, "sec": 755.1}
+{"iter": 9000, "loss": 0.014581084251403809, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.47666856977675, "gain_dB": 2.8638467523786773, "vs_single": 0.5948467523786771}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.73818797535367, "gain_dB": 2.064846807056007, "vs_single": -0.4611531929439927}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.31324953503079, "gain_dB": 2.9360889593760184, "vs_single": 1.0110889593760184}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.14942158593072, "gain_dB": 7.029235230551826, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.21758151054382, "gain_dB": 5.683692905637955, "vs_single": null}}, "sec": 1138.3}
+{"iter": 9000, "loss": 0.01389177143573761, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.41221443812052, "gain_dB": 2.7993926207224504, "vs_single": 0.5303926207224503}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.762293895085655, "gain_dB": 2.088952726787994, "vs_single": -0.43704727321200565}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.347566260231865, "gain_dB": 2.970405684577095, "vs_single": 1.045405684577095}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.22830396228366, "gain_dB": 7.10811760690477, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.195659240086876, "gain_dB": 5.661770635181007, "vs_single": null}}, "sec": 1151.7}
+{"iter": 9000, "loss": 0.01389029249548912, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.42142250802782, "gain_dB": 2.8086006906297456, "vs_single": 0.5396006906297455}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.78214814927843, "gain_dB": 2.1088069809807664, "vs_single": -0.41719301901923345}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.3617648018731, "gain_dB": 2.9846042262183303, "vs_single": 1.0596042262183303}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.256368001302086, "gain_dB": 7.136181645923195, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.23328653971354, "gain_dB": 5.699397934807671, "vs_single": null}}, "sec": 1135.4}
+{"iter": 9000, "loss": 0.014512133784592152, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.43549736340841, "gain_dB": 2.8226755460103377, "vs_single": 0.5536755460103375}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.730563190248276, "gain_dB": 2.057222021950615, "vs_single": -0.4687779780493848}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.29075484805637, "gain_dB": 2.9135942724015997, "vs_single": 0.9885942724015997}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.27791076236301, "gain_dB": 7.157724406984116, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.24855928950839, "gain_dB": 5.714670684602524, "vs_single": null}}, "sec": 1180.9}
+{"iter": 12000, "loss": 0.012330359779298306, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.56626484129164, "gain_dB": 2.95344302389357, "vs_single": 0.6844430238935697}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.84778361850314, "gain_dB": 2.1744424502054827, "vs_single": -0.35155754979451714}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.404274225234985, "gain_dB": 3.0271136495802153, "vs_single": 1.1021136495802153}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.31613561842177, "gain_dB": 7.195949263042877, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.33631730079651, "gain_dB": 5.80242869589064, "vs_single": null}}, "sec": 1514.0}
+{
+ "tag": "omni_mtf_dfull_s1",
+ "cond": "mtf",
+ "k": 3,
+ "gain": {
+  "2": 2.953,
+  "4": 2.174,
+  "8": 3.027,
+  "deblur": 7.196,
+  "denoise": 5.802
+ },
+ "vs_single": {
+  "2": 0.684,
+  "4": -0.352,
+  "8": 1.102,
+  "deblur": null,
+  "denoise": null
+ },
+ "ALL_NONNEGATIVE": true
+}
+{"iter": 12000, "loss": 0.014448295347392559, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.56433969073825, "gain_dB": 2.9515178733401797, "vs_single": 0.6825178733401795}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.873907036251495, "gain_dB": 2.2005658679538342, "vs_single": -0.32543413204616556}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.41170162624783, "gain_dB": 3.0345410505930595, "vs_single": 1.1095410505930594}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.37675714492798, "gain_dB": 7.256570789549087, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.35481749640571, "gain_dB": 5.82092889149984, "vs_single": null}}, "sec": 1534.7}
+{
+ "tag": "omni_mtf_dfull_s0",
+ "cond": "mtf",
+ "k": 3,
+ "gain": {
+  "2": 2.952,
+  "4": 2.201,
+  "8": 3.035,
+  "deblur": 7.257,
+  "denoise": 5.821
+ },
+ "vs_single": {
+  "2": 0.683,
+  "4": -0.325,
+  "8": 1.11,
+  "deblur": null,
+  "denoise": null
+ },
+ "ALL_NONNEGATIVE": true
+}
+{"iter": 12000, "loss": 0.014393361285328865, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.564826514985825, "gain_dB": 2.9520046975877534, "vs_single": 0.6830046975877533}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.88271302647061, "gain_dB": 2.2093718581729505, "vs_single": -0.31662814182704935}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.42789885732863, "gain_dB": 3.0507382816738584, "vs_single": 1.1257382816738584}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.42000722885132, "gain_dB": 7.299820873472427, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.37991290622287, "gain_dB": 5.8460243013170015, "vs_single": null}}, "sec": 1512.8}
+{
+ "tag": "omni_onehot_dfull_s0",
+ "cond": "onehot",
+ "k": 3,
+ "gain": {
+  "2": 2.952,
+  "4": 2.209,
+  "8": 3.051,
+  "deblur": 7.3,
+  "denoise": 5.846
+ },
+ "vs_single": {
+  "2": 0.683,
+  "4": -0.317,
+  "8": 1.126,
+  "deblur": null,
+  "denoise": null
+ },
+ "ALL_NONNEGATIVE": true
+}
+{"iter": 12000, "loss": 0.012356759048998356, "val": {"2": {"n": 72, "base": 31.61282181739807, "psnr": 34.561319536632965, "gain_dB": 2.9484977192348936, "vs_single": 0.6794977192348934}, "4": {"n": 72, "base": 30.67334116829766, "psnr": 32.851540115144516, "gain_dB": 2.178198946846855, "vs_single": -0.3478010531531446}, "8": {"n": 72, "base": 28.37716057565477, "psnr": 31.378299448225235, "gain_dB": 3.001138872570465, "vs_single": 1.0761388725704648}, "deblur": {"n": 72, "base": 35.12018635537889, "psnr": 42.421655125088165, "gain_dB": 7.301468769709274, "vs_single": null}, "denoise": {"n": 72, "base": 29.53388860490587, "psnr": 35.34093761444092, "gain_dB": 5.807049009535049, "vs_single": null}}, "sec": 1575.9}
+{
+ "tag": "omni_onehot_dfull_s1",
+ "cond": "onehot",
+ "k": 3,
+ "gain": {
+  "2": 2.948,
+  "4": 2.178,
+  "8": 3.001,
+  "deblur": 7.301,
+  "denoise": 5.807
+ },
+ "vs_single": {
+  "2": 0.679,
+  "4": -0.348,
+  "8": 1.076,
+  "deblur": null,
+  "denoise": null
+ },
+ "ALL_NONNEGATIVE": true
+}

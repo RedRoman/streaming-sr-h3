@@ -1,0 +1,102 @@
+{
+ "eval_set": "data/real_eval/realvsr",
+ "clips": [
+  "293",
+  "374",
+  "157",
+  "472"
+ ],
+ "arms": [
+  "LR (bicubic)",
+  "FlashVSR+",
+  "ours",
+  "GT"
+ ],
+ "ordered_by": "ours"
+}
+/cache/zihaohe/streaming_sr0/code/make_video_real.py:55: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(img).permute(2, 0, 1)[None].float() / 255
+{"clip": "293", "sheet": "full", "frames": 50, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/293_full.mp4", "MB": 7.8}
+{"clip": "293", "sheet": "zoom", "frames": 50, "canvas": [256, 1024], "crop_yx": [16, 432], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/293_zoom.mp4", "MB": 1.6}
+{"clip": "374", "sheet": "full", "frames": 50, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/374_full.mp4", "MB": 6.1}
+{"clip": "374", "sheet": "zoom", "frames": 50, "canvas": [256, 1024], "crop_yx": [0, 576], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/374_zoom.mp4", "MB": 0.8}
+{"clip": "157", "sheet": "full", "frames": 50, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/157_full.mp4", "MB": 5.2}
+{"clip": "157", "sheet": "zoom", "frames": 50, "canvas": [256, 1024], "crop_yx": [224, 576], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/157_zoom.mp4", "MB": 0.8}
+{"clip": "472", "sheet": "full", "frames": 50, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/472_full.mp4", "MB": 8.9}
+{"clip": "472", "sheet": "zoom", "frames": 50, "canvas": [256, 1024], "crop_yx": [224, 144], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr/realvsr/472_zoom.mp4", "MB": 1.6}
+{
+ "eval_set": "data/real_eval/mvsr4x",
+ "clips": [
+  "003",
+  "065",
+  "075",
+  "106"
+ ],
+ "arms": [
+  "LR (bicubic)",
+  "FlashVSR+",
+  "ours",
+  "GT"
+ ],
+ "ordered_by": "manifest order"
+}
+/cache/zihaohe/streaming_sr0/code/make_video_real.py:55: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(img).permute(2, 0, 1)[None].float() / 255
+{"clip": "003", "sheet": "full", "frames": 90, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/003_full.mp4", "MB": 3.0}
+{"clip": "003", "sheet": "zoom", "frames": 90, "canvas": [256, 1024], "crop_yx": [224, 208], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/003_zoom.mp4", "MB": 0.5}
+{"clip": "065", "sheet": "full", "frames": 90, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/065_full.mp4", "MB": 4.4}
+{"clip": "065", "sheet": "zoom", "frames": 90, "canvas": [256, 1024], "crop_yx": [0, 336], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/065_zoom.mp4", "MB": 0.9}
+{"clip": "075", "sheet": "full", "frames": 90, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/075_full.mp4", "MB": 2.9}
+{"clip": "075", "sheet": "zoom", "frames": 90, "canvas": [256, 1024], "crop_yx": [0, 576], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/075_zoom.mp4", "MB": 0.5}
+{"clip": "106", "sheet": "full", "frames": 90, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/106_full.mp4", "MB": 3.6}
+{"clip": "106", "sheet": "zoom", "frames": 90, "canvas": [256, 1024], "crop_yx": [224, 0], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x/mvsr4x/106_zoom.mp4", "MB": 0.7}
+{
+ "eval_set": "data/real_eval/videolq",
+ "clips": [
+  "000",
+  "001",
+  "002",
+  "003"
+ ],
+ "arms": [
+  "LR (bicubic)",
+  "ours"
+ ],
+ "ordered_by": "manifest order"
+}
+/cache/zihaohe/streaming_sr0/code/make_video_real.py:38: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  lr = torch.from_numpy(load(D_ / name / 'lr' / f'{t:06d}.png')).float().permute(2, 0, 1)[None] / 255
+{"clip": "000", "sheet": "full", "frames": 90, "canvas": [480, 1664], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/000_full.mp4", "MB": 2.3}
+{"clip": "000", "sheet": "zoom", "frames": 90, "canvas": [256, 512], "crop_yx": [16, 48], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/000_zoom.mp4", "MB": 0.5}
+{"clip": "001", "sheet": "full", "frames": 90, "canvas": [480, 1664], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/001_full.mp4", "MB": 3.6}
+{"clip": "001", "sheet": "zoom", "frames": 90, "canvas": [256, 512], "crop_yx": [16, 544], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/001_zoom.mp4", "MB": 0.6}
+{"clip": "002", "sheet": "full", "frames": 90, "canvas": [480, 1664], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/002_full.mp4", "MB": 3.5}
+{"clip": "002", "sheet": "zoom", "frames": 90, "canvas": [256, 512], "crop_yx": [224, 112], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/002_zoom.mp4", "MB": 0.7}
+{"clip": "003", "sheet": "full", "frames": 90, "canvas": [480, 1664], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/003_full.mp4", "MB": 4.7}
+{"clip": "003", "sheet": "zoom", "frames": 90, "canvas": [256, 512], "crop_yx": [112, 256], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq/videolq/003_zoom.mp4", "MB": 0.9}
+{
+ "eval_set": "data/real_eval/heldout",
+ "clips": [
+  "24cmo2fEQo8",
+  "66B46E_hrrk",
+  "4Wu5YyU1j28",
+  "9L3EMXLufVg"
+ ],
+ "arms": [
+  "LR (bicubic)",
+  "FlashVSR+",
+  "ours",
+  "GT"
+ ],
+ "ordered_by": "shipped_2step"
+}
+/cache/zihaohe/streaming_sr0/code/make_video_real.py:55: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(img).permute(2, 0, 1)[None].float() / 255
+{"clip": "24cmo2fEQo8", "sheet": "full", "frames": 124, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/24cmo2fEQo8_full.mp4", "MB": 2.0}
+{"clip": "24cmo2fEQo8", "sheet": "zoom", "frames": 124, "canvas": [256, 1024], "crop_yx": [0, 96], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/24cmo2fEQo8_zoom.mp4", "MB": 0.5}
+{"clip": "66B46E_hrrk", "sheet": "full", "frames": 124, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/66B46E_hrrk_full.mp4", "MB": 3.7}
+{"clip": "66B46E_hrrk", "sheet": "zoom", "frames": 124, "canvas": [256, 1024], "crop_yx": [0, 176], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/66B46E_hrrk_zoom.mp4", "MB": 0.6}
+{"clip": "4Wu5YyU1j28", "sheet": "full", "frames": 124, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/4Wu5YyU1j28_full.mp4", "MB": 11.7}
+{"clip": "4Wu5YyU1j28", "sheet": "zoom", "frames": 124, "canvas": [256, 1024], "crop_yx": [224, 112], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/4Wu5YyU1j28_zoom.mp4", "MB": 2.6}
+{"clip": "9L3EMXLufVg", "sheet": "full", "frames": 124, "canvas": [480, 3328], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/9L3EMXLufVg_full.mp4", "MB": 6.6}
+{"clip": "9L3EMXLufVg", "sheet": "zoom", "frames": 124, "canvas": [256, 1024], "crop_yx": [176, 128], "out": "/cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout/heldout/9L3EMXLufVg_zoom.mp4", "MB": 1.0}

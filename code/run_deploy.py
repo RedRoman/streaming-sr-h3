@@ -44,6 +44,15 @@ _CLAIM = _claim_device_early()
 D_ = ROOT / os.environ.get('EVAL_SET', 'data/real_eval/const')
 OUT = ROOT / 'results/deploy_runs'
 H, W = 480, 832
+# The resolution the DiT actually runs at, separately from the resolution we deliver.
+# MiniMax's own model card puts H3-Base at a 768px SHORT SIDE (about 1366x768 at 16:9), and its 2K path
+# is in-context regeneration from that 768p result rather than a super-resolution pass. Every number in
+# this project was produced with a 480px short side -- 38% below the base setting and therefore outside
+# the geometry the weights were trained and distilled for, which is a candidate explanation for the
+# generated component being weak (null energy 0.544 of the truth at a cosine of 0.4876).
+# GEN_SHORT lets the sampler run at the native short side and the result be resampled down to the
+# delivery geometry, so the comparison stays on the same 832x480 ground truth as everything else.
+GEN_SHORT = int(os.environ.get('GEN_SHORT', '0'))      # 0 = deliver-resolution sampling, as before
 # The same lightx2v 8-step turbo delta is merged regardless of how many points the schedule is evaluated
 # on: it is a weight edit, not a schedule. turbo_sigmas(n, 12) then picks n points off the shift-12 family,
 # so n=1 gives [1.0, 0.0] -- the single jump a distilled student is trained for.
@@ -54,7 +63,7 @@ def load_png(p):
     return torch.from_numpy(np.asarray(Image.open(p).convert('RGB')).copy()).float() / 255
 
 
-def range_estimate(lr, ckpt, dev=None, op=None):
+def range_estimate(lr, ckpt, dev=None, op=None, mtf_vec=None):
     """R_phi(y) for every frame, [T,3,h,w]. K=1, so frame t only ever sees frame t (causal by construction).
 
     Runs on the accelerator and batches the frames. Both matter: the estimate was previously computed on
@@ -104,7 +113,19 @@ def range_estimate(lr, ckpt, dev=None, op=None):
         cfg.setdefault('cdim', COND_DIM[mode])
         rb = OmniRange(**cfg).eval(); rb.load_state_dict(st['state'])
         if mode == 'mtf':
-            vec = mtf_cond(key, 0.0, False)
+            # mtf_vec lets the caller supply a descriptor MEASURED on the data instead of one computed
+            # from an assumed operator. On real capture there is no analytic D, so the only honest way
+            # to ask whether the conditioning can use the true operator is to hand it the measurement.
+            # The two differ in convention as well as in operator -- a synthetic x4 pair measured on
+            # natural images sits L2 1.02 away from operator_mtf(4)'s white-noise probe -- so the
+            # experiment needs a same-convention x4 control, which is why this takes a raw vector
+            # rather than a flag.
+            vec = list(mtf_vec) if mtf_vec is not None else mtf_cond(key, 0.0, False)
+            if len(vec) == COND_DIM['mtf'] - 1:
+                vec = vec + [0.0]                     # 16 bands measured, severity slot unused
+            if len(vec) != COND_DIM['mtf']:
+                raise SystemExit('mtf descriptor must have %d or %d entries, got %d'
+                                 % (COND_DIM['mtf'] - 1, COND_DIM['mtf'], len(vec)))
         else:
             vec = [0.0] * (len(OPS) + 1)
             vec[OPS.index(key)] = 1.0
@@ -165,9 +186,38 @@ def main():
                          'A regression that shrinks smoothly to zero as this goes to 0 means the '
                          'direction is simply wrong for our input; a minimum at some s < 1 would mean '
                          'the scale assumption was wrong.')
+    ap.add_argument('--warm-start', action='store_true',
+                    help='start the video latent from the encoded R_phi(y) instead of zeros. The range '
+                         'component is determined by the observation and innerDC replaces it anyway, so '
+                         'generating it from noise first is wasted capacity. Requires --sigma-start '
+                         'below 1.0, since the sampler weights the start by (1-sigma) and at 1.0 the '
+                         'content is multiplied by zero.')
+    ap.add_argument('--sigma-start', type=float, default=0.0,
+                    help='0 = the stock turbo schedule. Otherwise the schedule is linspace(this, 0, '
+                         'turbo_steps+1) through the shift-12 map, so a smaller value means fewer steps '
+                         'of work left to do from a warm start.')
+    ap.add_argument('--mtf-source', default='op', choices=['op', 'measured', 'control'],
+                    help="where an mtf-conditioned estimator gets its descriptor. 'op' computes it from "
+                         "--op on a white-noise probe, the standard path. 'measured' reads "
+                         "assumed_operator.measured_radial_mtf from each clip's meta.json, i.e. the "
+                         "transfer function of the degradation that is actually present. 'control' reads "
+                         "synthetic_x4_control_mtf, which is a synthetic x4 pair measured the SAME way "
+                         "on the same frames -- the arm that separates a convention difference from an "
+                         "operator difference.")
     ap.add_argument('--op', default=None,
                     help='operator one-hot for a multi-operator estimator, e.g. 4, 8, deblur. '
                          'Ignored by the single-operator RangeBranch checkpoints.')
+    ap.add_argument('--dc-project', action='store_true',
+                    help='at the innerDC point hand back encode(project(decode(z0))) rather than '
+                         'z0 + [encode(project(decode(z0))) - encode(decode(z0))]. The second form '
+                         'keeps z0 and adds only the observation correction; the first also replaces '
+                         'z0 by its VAE-manifold projection, and because the two encodes cancel it '
+                         'costs one encode instead of two -- 2.365 s off a 8.89 s sampling budget.')
+    ap.add_argument('--dump-latent', action='store_true',
+                    help='write the sampler output latent per block. The mapper line needs the DiT\'s own\n'
+                         'latent, not encode(decode(latent)): the round trip costs cosine 0.937 on the null\n'
+                         'band (null_roundtrip.py), so training a latent-space map on re-encoded PNGs would\n'
+                         'fit that round-trip error as well as the signal. 1.05 MB per 22-frame block.')
     ap.add_argument('--turbo-steps', type=int, default=0, help='0 = stock 49 steps')
     ap.add_argument('--quota-s0', type=float, default=0.0,
                     help='>0 enables the in-sampling spatial detail quota; gate = clip(localstd(U(R_phi y))/s0,0,1)')
@@ -223,7 +273,17 @@ def main():
         # frozen snapshot is taken after any merge, so the audit tracks the weights actually used
         h3.frozen = [(n, v, v._version) for n, v in model.named_parameters()
                      if not (n.endswith('.lora_a') or n.endswith('.lora_b'))]
-        h3_comfy.SIGMAS = TB.turbo_sigmas(a.turbo_steps, 12.0)
+        if a.sigma_start > 0:
+            # Direct sigmas, NOT routed through the shift-12 map. That map exists to spend steps in the
+            # high-noise region, so feeding it 0.5 returns 0.923 and the warm start keeps only 8% of its
+            # weight -- the flow mixes the start as (1-sigma)*start, so the shift defeats the whole
+            # point. Leaving the distilled family is a real cost and is stated: the turbo LoRA was
+            # trained on shift-12 points, so these sigmas are off its training distribution. That is the
+            # trade this experiment measures.
+            import torch as _th
+            h3_comfy.SIGMAS = _th.linspace(a.sigma_start, 0, a.turbo_steps + 1)
+        else:
+            h3_comfy.SIGMAS = TB.turbo_sigmas(a.turbo_steps, 12.0)
     else:
         h3 = H3(load_dit=True, dit='fl2va', lora_path=a.lora, lora_rank=a.lora_rank)
         if a.merge_lora:
@@ -240,7 +300,17 @@ def main():
             continue
         T = json.loads((D_ / name / 'meta.json').read_text())['frames']
         lr = torch.stack([load_png(D_ / name / 'lr' / f'{t:06d}.png') for t in range(T)]).permute(0, 3, 1, 2)
-        est = range_estimate(lr, a.rphi, dev=h3.dev, op=a.op) if 'rphi' in (a.dc, a.guide) else None
+        mvec = None
+        if a.mtf_source != 'op':
+            field = {'measured': 'measured_radial_mtf', 'control': 'synthetic_x4_control_mtf'}[a.mtf_source]
+            ao = json.loads((D_ / name / 'meta.json').read_text()).get('assumed_operator') or {}
+            mvec = ao.get(field)
+            if mvec is None:
+                raise SystemExit('clip %s has no assumed_operator.%s; only eval sets prepared with a '
+                                 'measured descriptor support --mtf-source %s'
+                                 % (name, field, a.mtf_source))
+        est = (range_estimate(lr, a.rphi, dev=h3.dev, op=a.op, mtf_vec=mvec)
+               if 'rphi' in (a.dc, a.guide) else None)
         gsrc = est if a.guide == 'rphi' else lr
         dsrc = est if a.dc == 'rphi' else lr
         # Activity gate for the in-sampling quota, from the deployable range estimate only.
@@ -258,21 +328,51 @@ def main():
         for b in blocks:
             k, (s, e) = b['k'], b['range']
             torch.npu.reset_peak_memory_stats(); sync(); t0 = time.perf_counter()
-            guide = h3.encode_guide(gsrc[s:e], [H, W])
+            # sampling geometry: the native short side when GEN_SHORT is set, otherwise the
+            # delivery geometry. Both stay a multiple of 16 so the VAE grid is exact.
+            if GEN_SHORT:
+                # 32, not 16: the VAE is 16x spatial and patchify_video then takes 2x2 latent patches,
+                # so the latent grid must be even in both axes. Aligning only to 16 produced a latent
+                # width of 83 and reshape refused it. At 768 this lands on 1344x768, which is the
+                # geometry MiniMax's own samples use.
+                gh = GEN_SHORT - GEN_SHORT % 32
+                gw = int(round(gh * W / H / 32)) * 32
+            else:
+                gh, gw = H, W
+            guide = h3.encode_guide(gsrc[s:e], [gh, gw])
             t_g = time.perf_counter() - t0
             mode = 'base' if a.dc == 'none' else 'innerdc'
             q = None
             if act is not None:
                 q = {'gate': act[s:e][None], 's0': a.quota_s0, 'p': a.quota_p}
-            sampled, rec = h3.sample(guide, mode, low=dsrc[s:e], hw=[H, W], seed=a.seed, quota=q)
+            ws = None
+            if a.warm_start:
+                # encode the estimate we would have projected onto, and hand it to the sampler as the
+                # starting point rather than as a correction applied three times later
+                ws = h3.encode(torch.nn.functional.interpolate(
+                    est[s:e], size=(gh, gw), mode='bicubic', align_corners=False,
+                    antialias=True).clamp(0, 1).permute(0, 2, 3, 1))
+            sampled, rec = h3.sample(guide, mode, low=dsrc[s:e], hw=[gh, gw], seed=a.seed, quota=q,
+                                     warm_start=ws, dc_project=a.dc_project)
+            if a.dump_latent:
+                from safetensors.torch import save_file
+                zd = base / 'latent'; zd.mkdir(parents=True, exist_ok=True)
+                save_file({'z': sampled['video'][0].float().cpu().contiguous()},
+                          str(zd / f'block{k:03d}.safetensors'))
             t1 = time.perf_counter()
             px = h3.decode(sampled['video']); sync()
+            if GEN_SHORT:
+                # back to the delivery geometry; antialiased so the downsample does not alias the
+                # detail the higher-resolution pass just produced
+                px = torch.nn.functional.interpolate(
+                    px.permute(0, 3, 1, 2), size=(H, W), mode='bicubic',
+                    align_corners=False, antialias=True).clamp(0, 1).permute(0, 2, 3, 1)
             t_d = time.perf_counter() - t1
             # Sub-step timers. `total_s` is measured after the PNG writes, so guide + sample + decode has
             # never summed to it: about 11 s of a 32.1 s block was unaccounted for and the gap was being
             # guessed at. These name the rest instead.
             t2 = time.perf_counter()
-            assert px.shape == (e - s, H, W, 3) and torch.isfinite(px).all()
+            assert px.shape == (e - s, H, W, 3) and torch.isfinite(px).all()   # after any resample
             t_fin = time.perf_counter() - t2
             t2 = time.perf_counter()
             u8 = to_u8(px)

@@ -1,0 +1,24 @@
+{
+ "date": "2026-11-03",
+ "decision": "the block-handover fusion is part of the delivery path",
+ "what_it_is": "cosine cross-fade over the 5-frame overlap between adjacent 22-frame blocks, applied to frames run_deploy already writes to block{k:03d}/ and previously discarded",
+ "why": {
+  "handover_jump_before": 0.9936,
+  "handover_jump_after": 0.3701,
+  "reduction_pct": 62.8,
+  "inside_block_before": 0.3177,
+  "inside_block_after": 0.2837,
+  "ratio_handover_to_interior_before": 3.13,
+  "ratio_after": 1.3,
+  "flashvsr_plus_ratio": 0.67,
+  "clips_improved": "76/77",
+  "image_quality_cost": {
+   "lpips": -0.0001,
+   "psnr_dB": 0.03
+  },
+  "reading": "the jump was ours, not a cost of streaming: a published streaming baseline is smoother at its handovers than inside its blocks"
+ },
+ "not_a_contribution": "this is the standard overlap-blend. The variant that would have been ours -- fuse only the generated component, take the observed component from one block, which the range/null decomposition permits and which Morphe's finding that naive blending blurs suggests should matter -- measured identically (LPIPS +0.0000, handover jump +0.0003). The hypothesis is retired.",
+ "cost": "post-processing only, no resampling; about 30 CPU-minutes for 77 clips",
+ "entry_point": "code/make_delivery.sh, or code/seam_fuse.py directly"
+}

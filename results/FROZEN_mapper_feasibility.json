@@ -1,0 +1,350 @@
+{
+ "question": "is there a latent-space map that improves the generated detail? (mapper feasibility)",
+ "answer": "no for a latent-target objective, and the experiment shows why in a way that disqualifies the whole class: the latent-domain statistics all IMPROVED while the picture got clearly worse.",
+ "step1_decoder_can_emit_detail_only": {
+  "result": "yes",
+  "file": "results/deploy/null_roundtrip.json",
+  "numbers": "round-tripping the true null component n = x - U(Dx) through the frozen VAE returns it at cosine 0.9155, energy ratio 1.023, PSNR 31.93 dB; round-tripping a natural image and taking its null band gives cosine 0.937 / 33.73 dB. Detail-only costs 1.8 dB more than natural, so the decoder output manifold is not the obstacle.",
+  "latency_note": "a mapper replaces the input of the decode that already happens, so it adds no decode. An earlier note in this project put the cost at +8.2% for an extra decoder forward; that was wrong -- the decode count is unchanged and only the mapper forward is new."
+ },
+ "step2_latent_map": {
+  "design": "one 24->24 3x3 convolution with bias (5208 parameters), closed-form ridge solution, fit on 20 clips / 1,528,800 latent sites, applied to the 76 remaining clips of heldout. Target encode(GT). Arms orig / rt = decode(encode(orig)) / map, and the map has to beat rt because at deployment it would consume the sampler latent with no round trip.",
+  "medians": {
+   "orig": {
+    "psnr": 25.2502,
+    "lpips": 0.1561,
+    "null_energy": 0.6048,
+    "null_cos": 0.4501,
+    "p8.flicker": 0.8624,
+    "p8.terr_null": 0.3933,
+    "p8.warp": 1.1307
+   },
+   "rt": {
+    "psnr": 25.2277,
+    "lpips": 0.1615,
+    "null_energy": 0.5749,
+    "null_cos": 0.4569,
+    "p8.flicker": 0.7714,
+    "p8.terr_null": 0.3511,
+    "p8.warp": 1.0708
+   },
+   "map": {
+    "psnr": 23.6148,
+    "lpips": 0.2211,
+    "null_energy": 0.4629,
+    "null_cos": 0.3181,
+    "p8.flicker": 0.8427,
+    "p8.terr_null": 0.4924,
+    "p8.warp": 1.0988
+   }
+  },
+  "map_vs_rt": {
+   "psnr": {
+    "mean": -1.4821894810471385,
+    "ci95": [
+     -1.7172918013934066,
+     -1.2587940307899375
+    ],
+    "median": -1.1669255057644712,
+    "a_better": 75,
+    "n": 76
+   },
+   "lpips": {
+    "mean": 0.05476617421994982,
+    "ci95": [
+     0.046146548224016065,
+     0.06355889203642091
+    ],
+    "median": 0.05589652410708368,
+    "a_better": 4,
+    "n": 76
+   },
+   "psnr_gtrange": {
+    "mean": -0.7754160650502934,
+    "ci95": [
+     -0.9930528365614733,
+     -0.553753789098148
+    ],
+    "median": -0.7026708031861251,
+    "a_better": 62,
+    "n": 76
+   },
+   "lpips_gtrange": {
+    "mean": 0.040471633591626185,
+    "ci95": [
+     0.03249591047327575,
+     0.04869181508514357
+    ],
+    "median": 0.039070101687684655,
+    "a_better": 6,
+    "n": 76
+   },
+   "null_energy": {
+    "mean": -6964587452.786771,
+    "ci95": [
+     -21384711006.48121,
+     490948648.2387297
+    ],
+    "median": -0.1279760585166514,
+    "a_better": 55,
+    "n": 76
+   },
+   "null_cos": {
+    "mean": -0.1206938281715051,
+    "ci95": [
+     -0.13575154652929708,
+     -0.10564452134052484
+    ],
+    "median": -0.11214173538610339,
+    "a_better": 74,
+    "n": 76
+   },
+   "p8.flicker": {
+    "mean": 52.03750751998674,
+    "ci95": [
+     5.981650099320068,
+     122.07745688073466
+    ],
+    "median": 0.06855450230029458,
+    "a_better": 28,
+    "n": 69
+   },
+   "p8.warp": {
+    "mean": 8.384071660169326,
+    "ci95": [
+     1.2154658009908037,
+     18.463698522497968
+    ],
+    "median": 0.02547770695963747,
+    "a_better": 31,
+    "n": 69
+   },
+   "p8.warp_range": {
+    "mean": 4.443750664681351,
+    "ci95": [
+     0.5271869768824983,
+     10.175570713361491
+    ],
+    "median": -0.035926761084034364,
+    "a_better": 39,
+    "n": 69
+   },
+   "p8.warp_null": {
+    "mean": 7.387427111689424,
+    "ci95": [
+     1.5154014099343063,
+     15.622670457338936
+    ],
+    "median": 0.1585875030353453,
+    "a_better": 11,
+    "n": 69
+   },
+   "p8.terr_null": {
+    "mean": 0.3613640644554845,
+    "ci95": [
+     0.24229267724413903,
+     0.5084206172711191
+    ],
+    "median": 0.13313916269908077,
+    "a_better": 3,
+    "n": 69
+   },
+   "p8.terr_range": {
+    "mean": 0.31435916331973746,
+    "ci95": [
+     0.1733914914922958,
+     0.5155891322092707
+    ],
+    "median": 0.07805941640981473,
+    "a_better": 3,
+    "n": 69
+   },
+   "seam.terr_null": {
+    "mean": 0.4917555291642403,
+    "ci95": [
+     0.3136753348591504,
+     0.6910526524820633
+    ],
+    "median": 0.2492150912682214,
+    "a_better": 14,
+    "n": 67
+   },
+   "seam.flicker": {
+    "mean": 12.129149520772405,
+    "ci95": [
+     -36.5379166167496,
+     64.62782208047841
+    ],
+    "median": 0.12322497060095106,
+    "a_better": 28,
+    "n": 67
+   },
+   "seam.warp": {
+    "mean": 4.587532273380309,
+    "ci95": [
+     0.5699678816862895,
+     11.33935758471615
+    ],
+    "median": 0.11268420348438646,
+    "a_better": 23,
+    "n": 67
+   }
+  },
+  "rt_vs_orig": {
+   "psnr": {
+    "mean": -0.029919928793794254,
+    "ci95": [
+     -0.09506567576941491,
+     0.048940635210068896
+    ],
+    "median": -0.017071292762814494,
+    "a_better": 44,
+    "n": 76
+   },
+   "lpips": {
+    "mean": 0.002306031449357891,
+    "ci95": [
+     0.00034275508283530457,
+     0.004001569854436263
+    ],
+    "median": 0.0029884877149015665,
+    "a_better": 20,
+    "n": 76
+   },
+   "psnr_gtrange": {
+    "mean": 0.03869533162888471,
+    "ci95": [
+     -0.01187837414462635,
+     0.09727346602112867
+    ],
+    "median": 0.03670400843104282,
+    "a_better": 28,
+    "n": 76
+   },
+   "lpips_gtrange": {
+    "mean": 0.00012002851063950153,
+    "ci95": [
+     -0.0017267363874632475,
+     0.0016484727442757704
+    ],
+    "median": 0.0009454420069232583,
+    "a_better": 33,
+    "n": 76
+   },
+   "null_energy": {
+    "mean": -34829106081.706535,
+    "ci95": [
+     -104163422881.71074,
+     -0.014863259492497156
+    ],
+    "median": -0.0138054215349257,
+    "a_better": 53,
+    "n": 76
+   },
+   "null_cos": {
+    "mean": 0.0006686061326610414,
+    "ci95": [
+     -0.0019887564482479847,
+     0.0032785530143500134
+    ],
+    "median": 0.001068606972694397,
+    "a_better": 35,
+    "n": 76
+   },
+   "p8.flicker": {
+    "mean": -19.52227096021547,
+    "ci95": [
+     -42.55513071727229,
+     -1.5151228146944025
+    ],
+    "median": -0.08276533685259702,
+    "a_better": 59,
+    "n": 69
+   },
+   "p8.warp": {
+    "mean": -4.527965157522197,
+    "ci95": [
+     -10.161367591830118,
+     -0.5459175468520504
+    ],
+    "median": -0.04835619092423182,
+    "a_better": 68,
+    "n": 69
+   },
+   "p8.warp_range": {
+    "mean": -2.568180798396851,
+    "ci95": [
+     -5.660049078237405,
+     -0.3341781073384653
+    ],
+    "median": -0.027156145454012792,
+    "a_better": 66,
+    "n": 69
+   },
+   "p8.warp_null": {
+    "mean": -3.801576305108863,
+    "ci95": [
+     -8.176606213636456,
+     -0.6434938741166204
+    ],
+    "median": -0.11818192918107262,
+    "a_better": 68,
+    "n": 69
+   },
+   "p8.terr_null": {
+    "mean": -0.04995014777013826,
+    "ci95": [
+     -0.06976410813353542,
+     -0.034785410627164344
+    ],
+    "median": -0.02456290610552969,
+    "a_better": 64,
+    "n": 69
+   },
+   "p8.terr_range": {
+    "mean": -0.0037599140763466127,
+    "ci95": [
+     -0.010896700470032548,
+     0.0036956850547427036
+    ],
+    "median": -0.0034247951390398157,
+    "a_better": 51,
+    "n": 69
+   },
+   "seam.terr_null": {
+    "mean": -0.05127671006430999,
+    "ci95": [
+     -0.07910889499010626,
+     -0.026323520513139433
+    ],
+    "median": -0.0234947947319597,
+    "a_better": 48,
+    "n": 67
+   },
+   "seam.flicker": {
+    "mean": -0.27541493769931086,
+    "ci95": [
+     -10.104750525367542,
+     10.137328982460785
+    ],
+    "median": -0.03528205498852566,
+    "a_better": 46,
+    "n": 67
+   },
+   "seam.warp": {
+    "mean": -1.3645702977523422,
+    "ci95": [
+     -3.6820434797751687,
+     -0.06836228841403923
+    ],
+    "median": -0.016451781668672227,
+    "a_better": 52,
+    "n": 67
+   }
+  },
+  "verdict": "rejected. Against the round-trip control the map costs PSNR 1.167 dB (worse on 75/76), LPIPS +0.0559 (better on 4/76), pixel null cosine 0.112 (worse on 74/76), and pixel null energy 0.575 -> 0.463.",
+  "why_it_is_a_class_verdict": {},
+  "side_finding_vae_roundtrip_smooths_time": "rt vs orig is nearly free in fidelity (PSNR -0.017, LPIPS +0.003 median) and IMPROVES every temporal metric: flicker -0.083 (better on 59/69), p8.terr_null -0.025 (64/69), warp -0.048 (68/69). The VAE prior removes temporally inconsistent latent content. Not shippable as a step -- an extra encode plus decode is about +35% on an 8.7 s block -- but it says the sampler latent carries temporal inconsistency that a projection onto the VAE manifold removes.",
+  "what_would_reopen_the_line": "pixel-supervised training of the mapper, i.e. backward through the frozen 2.42B decoder. The user asked for exactly that (\"output also has to be aligned\") before this ran, and the result above is the evidence for it. The prior is now poor: the proxy that a latent-target mapper optimises moved the wrong way on the deliverable in the same run."
+ }
+}

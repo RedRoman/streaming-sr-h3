@@ -1,0 +1,397 @@
+{
+ "question": "do one-step sampling and gain 1.3 enter the shipped config?",
+ "answer": "no to both",
+ "set": "data/real_eval/heldout, 96 clips, 124 frames each, every 8th frame",
+ "judge": "results/deploy/judge_new_config.json",
+ "reproducibility_check": "step2 was re-sampled from scratch and is bit-identical to the shipped t4_plain2 on every metric, so the arm differences below are the interventions and not run-to-run noise.",
+ "medians": {
+  "shipped_2step": {
+   "psnr": 25.5714,
+   "lpips": 0.149,
+   "null_energy": 0.6109,
+   "null_cos": 0.4812,
+   "p8.flicker": 0.8502,
+   "p8.terr_null": 0.4203,
+   "seam.terr_null": 1.0738,
+   "p8.warp": 1.0874
+  },
+  "step2": {
+   "psnr": 25.5714,
+   "lpips": 0.149,
+   "null_energy": 0.6109,
+   "null_cos": 0.4812,
+   "p8.flicker": 0.8502,
+   "p8.terr_null": 0.4203,
+   "seam.terr_null": 1.0738,
+   "p8.warp": 1.0874
+  },
+  "step1": {
+   "psnr": 25.2528,
+   "lpips": 0.1599,
+   "null_energy": 0.6016,
+   "null_cos": 0.461,
+   "p8.flicker": 0.833,
+   "p8.terr_null": 0.4357,
+   "seam.terr_null": 1.1764,
+   "p8.warp": 1.0976
+  },
+  "step2_g13": {
+   "psnr": 24.7227,
+   "lpips": 0.1549,
+   "null_energy": 0.94,
+   "null_cos": 0.4763,
+   "p8.flicker": 1.3857,
+   "p8.terr_null": 0.5994,
+   "seam.terr_null": 1.5189,
+   "p8.warp": 1.1424
+  },
+  "step1_g13": {
+   "psnr": 24.534,
+   "lpips": 0.1569,
+   "null_energy": 0.9123,
+   "null_cos": 0.4542,
+   "p8.flicker": 1.3226,
+   "p8.terr_null": 0.6091,
+   "seam.terr_null": 1.6024,
+   "p8.warp": 1.1474
+  },
+  "flashvsr_plus": {
+   "psnr": 23.8534,
+   "lpips": 0.1762,
+   "null_energy": 0.8504,
+   "null_cos": 0.397,
+   "p8.flicker": 1.1649,
+   "p8.terr_null": 0.5504,
+   "seam.terr_null": 0.4873,
+   "p8.warp": 1.0581
+  },
+  "bicubic": {
+   "psnr": 24.2372,
+   "lpips": 0.4336,
+   "null_energy": 0.047,
+   "null_cos": 0.265,
+   "p8.flicker": 0.052,
+   "p8.terr_null": 0.3926,
+   "seam.terr_null": 0.4254,
+   "p8.warp": 0.9515
+  }
+ },
+ "one_step": {
+  "verdict": "rejected",
+  "cost": "LPIPS +0.0109 median (0.1490 -> 0.1599), better on only 28/96 clips; PSNR -0.32 dB; null_cos 0.4812 -> 0.4610; temporal worse on every band (p8.terr_null +0.0144, seam.terr_null +0.0390, warp +0.0103 median, each worse on ~4/5 of clips)",
+  "benefit": "sampling 8.69 s -> ~4.4 s per 22-frame block, about 34% of end-to-end time",
+  "correction": "an earlier read on a subset put one step and two steps inside the noise floor (LPIPS 0.2459 vs 0.2466). On all 96 clips the direction is consistent, not noise: the subset was too small and the per-clip sign count (28/96) settles it.",
+  "paired": {
+   "psnr": {
+    "mean": -0.11546885299026377,
+    "ci95": [
+     -0.16122320367053336,
+     -0.06826478029073475
+    ],
+    "median": -0.09995696249233532,
+    "a_better": 76,
+    "n": 96
+   },
+   "lpips": {
+    "mean": 0.002645752888126444,
+    "ci95": [
+     0.0014636388488560267,
+     0.0038545532989706717
+    ],
+    "median": 0.002478217240422964,
+    "a_better": 28,
+    "n": 96
+   },
+   "psnr_gtrange": {
+    "mean": -0.0671713028993514,
+    "ci95": [
+     -0.123455115025009,
+     -0.006011828703300436
+    ],
+    "median": -0.06688893614928304,
+    "a_better": 70,
+    "n": 96
+   },
+   "lpips_gtrange": {
+    "mean": 0.0018450209193741813,
+    "ci95": [
+     0.0005398092899332704,
+     0.0031152268600446397
+    ],
+    "median": 0.0019899661253361955,
+    "a_better": 29,
+    "n": 96
+   },
+   "null_energy": {
+    "mean": -13305318781.357,
+    "ci95": [
+     -39760946466.675064,
+     -0.023840031674937295
+    ],
+    "median": -0.015710181556642056,
+    "a_better": 61,
+    "n": 96
+   },
+   "null_cos": {
+    "mean": -0.011008382809507111,
+    "ci95": [
+     -0.01650777447824415,
+     -0.005365770738348868
+    ],
+    "median": -0.012376259081065655,
+    "a_better": 78,
+    "n": 96
+   },
+   "p8.flicker": {
+    "mean": 7.795630841333468,
+    "ci95": [
+     1.5875850591971932,
+     17.686654931551693
+    ],
+    "median": 0.0041743728637960165,
+    "a_better": 41,
+    "n": 88
+   },
+   "p8.warp": {
+    "mean": 0.9887946188273218,
+    "ci95": [
+     0.2537311444102781,
+     2.123531536933079
+    ],
+    "median": 0.010343065335852442,
+    "a_better": 29,
+    "n": 88
+   },
+   "p8.warp_range": {
+    "mean": 0.5575908102416238,
+    "ci95": [
+     0.1548687617045518,
+     1.1207078831157407
+    ],
+    "median": 0.00588662358472547,
+    "a_better": 28,
+    "n": 88
+   },
+   "p8.warp_null": {
+    "mean": 0.8799911195508504,
+    "ci95": [
+     0.2492101683354653,
+     1.868127553227201
+    ],
+    "median": 0.013502098205228852,
+    "a_better": 35,
+    "n": 88
+   },
+   "p8.terr_null": {
+    "mean": 0.032620127219674395,
+    "ci95": [
+     0.021598510748625302,
+     0.04522929055953096
+    ],
+    "median": 0.014360721479533822,
+    "a_better": 16,
+    "n": 88
+   },
+   "p8.terr_range": {
+    "mean": 0.020524268236946547,
+    "ci95": [
+     0.01147256405031226,
+     0.031878511798662634
+    ],
+    "median": 0.01064889710278294,
+    "a_better": 11,
+    "n": 88
+   },
+   "seam.terr_null": {
+    "mean": 0.07016895040845615,
+    "ci95": [
+     0.04813914123683493,
+     0.09410015789034884
+    ],
+    "median": 0.03902000510909903,
+    "a_better": 21,
+    "n": 86
+   },
+   "seam.flicker": {
+    "mean": 24.92543119087709,
+    "ci95": [
+     6.896366797150591,
+     49.27908401232552
+    ],
+    "median": 0.01541030538670661,
+    "a_better": 41,
+    "n": 86
+   },
+   "seam.warp": {
+    "mean": 1.6908119745135795,
+    "ci95": [
+     0.5727304627898674,
+     3.441128333366826
+    ],
+    "median": 0.01718445593251472,
+    "a_better": 18,
+    "n": 86
+   }
+  }
+ },
+ "gain_1_3": {
+  "verdict": "rejected",
+  "cost": "PSNR -0.47 dB median (worse on 94/96); null_cos -0.0055 (worse on 92/96); temporal much worse and uniformly so -- p8.flicker +0.4951, p8.terr_null +0.1225, seam.terr_null +0.4397, warp +0.0813 median, with 0-1 clips out of 88 improving",
+  "benefit": "null energy 0.611 -> 0.940 of the truth, i.e. past FlashVSR+ (0.850); LPIPS -0.0003 median, which is a coin flip (49/96)",
+  "reading": "the knob buys detail amplitude and pays for it in temporal stability. Flicker is visible and LPIPS does not see it, so the metric that moved favourably is the one that cannot judge the cost. Not shipped.",
+  "paired": {
+   "psnr": {
+    "mean": -0.5385743381059354,
+    "ci95": [
+     -0.613645895226172,
+     -0.4664347517542509
+    ],
+    "median": -0.46753997722588814,
+    "a_better": 94,
+    "n": 96
+   },
+   "lpips": {
+    "mean": -0.0010681551569436583,
+    "ci95": [
+     -0.0034097270574364735,
+     0.0012124351269158294
+    ],
+    "median": -0.00030001717095728964,
+    "a_better": 49,
+    "n": 96
+   },
+   "psnr_gtrange": {
+    "mean": -0.7460793345478397,
+    "ci95": [
+     -0.8423862884503929,
+     -0.6530192528140856
+    ],
+    "median": -0.6795715737192225,
+    "a_better": 93,
+    "n": 96
+   },
+   "lpips_gtrange": {
+    "mean": 0.004004425575315329,
+    "ci95": [
+     0.0016728203992325333,
+     0.006274074950209444
+    ],
+    "median": 0.0038202041760087013,
+    "a_better": 29,
+    "n": 96
+   },
+   "null_energy": {
+    "mean": 230911447.00956273,
+    "ci95": [
+     -398933759.6752504,
+     1168322304.3007205
+    ],
+    "median": 0.3040522029623389,
+    "a_better": 4,
+    "n": 96
+   },
+   "null_cos": {
+    "mean": -0.00531536196496063,
+    "ci95": [
+     -0.006012105793088551,
+     -0.004627108638351274
+    ],
+    "median": -0.005468035116791725,
+    "a_better": 92,
+    "n": 96
+   },
+   "p8.flicker": {
+    "mean": 30.483387613119433,
+    "ci95": [
+     5.958963782285902,
+     62.36280721042226
+    ],
+    "median": 0.49509652393311077,
+    "a_better": 0,
+    "n": 88
+   },
+   "p8.warp": {
+    "mean": 2.842348242469116,
+    "ci95": [
+     0.6037140830542843,
+     6.1353661753047755
+    ],
+    "median": 0.08128946947913346,
+    "a_better": 0,
+    "n": 88
+   },
+   "p8.warp_range": {
+    "mean": 0.2003054839281961,
+    "ci95": [
+     0.04398211151791129,
+     0.42144050509351333
+    ],
+    "median": 0.009511429495898449,
+    "a_better": 2,
+    "n": 88
+   },
+   "p8.warp_null": {
+    "mean": 3.0885110638956017,
+    "ci95": [
+     0.9529678439904716,
+     6.149664698650668
+    ],
+    "median": 0.243349173325193,
+    "a_better": 0,
+    "n": 88
+   },
+   "p8.terr_null": {
+    "mean": 0.22694403226796142,
+    "ci95": [
+     0.1749996903433186,
+     0.2874935343997379
+    ],
+    "median": 0.1224556780812236,
+    "a_better": 1,
+    "n": 88
+   },
+   "p8.terr_range": {
+    "mean": 0.010627324823749134,
+    "ci95": [
+     0.0067547000081951995,
+     0.015887776572129867
+    ],
+    "median": 0.0038278260632296224,
+    "a_better": 3,
+    "n": 88
+   },
+   "seam.terr_null": {
+    "mean": 0.5650845353255841,
+    "ci95": [
+     0.4633166014398057,
+     0.676119420695176
+    ],
+    "median": 0.4396549484226852,
+    "a_better": 0,
+    "n": 86
+   },
+   "seam.flicker": {
+    "mean": 111.39609460823107,
+    "ci95": [
+     29.05613438556683,
+     230.05169083188977
+    ],
+    "median": 1.1247952437555329,
+    "a_better": 0,
+    "n": 86
+   },
+   "seam.warp": {
+    "mean": 5.4881680394174674,
+    "ci95": [
+     0.9730911875795558,
+     13.932119629798542
+    ],
+    "median": 0.12269696168444999,
+    "a_better": 0,
+    "n": 86
+   }
+  }
+ },
+ "shipped_config_unchanged": "--dc rphi --guide y --rphi range_branch/r5_k3.pt --turbo-steps 2 --merge-lora, gain 1.0, plus the handover cross-fade (seam_fuse.py)",
+ "caveat": "means of null_energy, flicker and warp in the paired blocks are destroyed by near-static clips whose GT denominator is ~0 (one clip contributes -1.3e10 to a null_energy mean). Medians and per-clip sign counts are the usable statistics and are what the verdicts above rest on."
+}

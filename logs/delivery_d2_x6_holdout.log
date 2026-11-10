@@ -1,0 +1,27 @@
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+{
+ "eval_set": "data/real_eval/heldout_s6",
+ "clips": [
+  "HsL4sGuLkv0",
+  "Gz8RlHf3Czs"
+ ],
+ "arms": [
+  "LR (bicubic x6)",
+  "ours, x6 never trained",
+  "ground truth"
+ ],
+ "ordered_by": "mtf_s6"
+}
+/cache/zihaohe/streaming_sr0/code/make_video_real.py:55: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(img).permute(2, 0, 1)[None].float() / 255
+{"clip": "HsL4sGuLkv0", "sheet": "full", "frames": 124, "canvas": [480, 2496], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/delivery/heldout_s6/HsL4sGuLkv0_full.mp4", "MB": 0.6}
+{"clip": "HsL4sGuLkv0", "sheet": "zoom", "frames": 124, "canvas": [256, 768], "crop_yx": [176, 96], "out": "/cache/zihaohe/streaming_sr0/results/delivery/heldout_s6/HsL4sGuLkv0_zoom.mp4", "MB": 0.2}
+{"clip": "Gz8RlHf3Czs", "sheet": "full", "frames": 124, "canvas": [480, 2496], "crop_yx": null, "out": "/cache/zihaohe/streaming_sr0/results/delivery/heldout_s6/Gz8RlHf3Czs_full.mp4", "MB": 2.3}
+{"clip": "Gz8RlHf3Czs", "sheet": "zoom", "frames": 124, "canvas": [256, 768], "crop_yx": [224, 0], "out": "/cache/zihaohe/streaming_sr0/results/delivery/heldout_s6/Gz8RlHf3Czs_zoom.mp4", "MB": 0.3}

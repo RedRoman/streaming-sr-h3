@@ -118,8 +118,9 @@
    "checkable_before_deployment": "compute the descriptor from the operator alone, take its distance to the trained set and read the nearest neighbours; no image is involved, so this stays inside the non-blind setting"
   },
   "what_this_means_for_the_claim": {
-   "do_not_write": "MTF handles arbitrary unseen operators (sigma 0.5-0.9 refutes it)",
-   "do_write": "a one-hot cannot represent an operator outside its vocabulary at all -- x6 and x3 raise SystemExit rather than scoring badly -- while an MTF runs and delivers +2.09 dB and +7.59 dB there, PROVIDED the descriptor is bracketed by trained operators of the same behavioural family. The proviso is part of the contribution, not a caveat on it, because it is decidable from the operator alone."
+   "where_mtf_demonstrably_helps": "at the R_phi level on operators outside the vocabulary: x6 +2.088 dB and x3 +7.586 dB where a one-hot raises SystemExit, and 52.0%% of the bicubic LPIPS gap filled at the pixel level on x6 against 53.0%% for a trained x4",
+   "where_it_does_not": "at deployment. Three independent measurements agree: mis-conditioning with the wrong operator costs +0.0009 LPIPS, mtf-vs-onehot is +0.0008, and swapping an assumed descriptor for a measured one is -0.0007. The innerDC projection onto R_phi(y) and the DiT prior absorb the difference.",
+   "honest_framing": "MTF conditioning buys REPRESENTABILITY, not accuracy. It makes operators runnable that a one-hot cannot express, and that is checkable before deployment from the operator alone. It does not make the delivered video measurably better on operators either signal can express."
   },
   "sources": {
    "omni_mtf_k3": "present",
@@ -136,6 +137,72 @@
    "all conditioning comparisons are at 590 training windows per operator; the 3000-window sweep is running and the 10351-window point is not done",
    "the x6 and x3 numbers are R_phi-level PSNR; the pixel-level x6 table is being judged separately on data/real_eval/heldout_s6",
    "x3 has only 22 training windows available in its pair set, so its val n is 6 -- the +7.586 dB is indicative, not a measurement at the same weight as x6"
-  ]
+  ],
+  "does_the_descriptor_matter_at_deployment": {
+   "question": "On real degradation, does feeding the MEASURED transfer function instead of the assumed x4 one change anything? Same checkpoint (omni_mtf_k3), same clips, only the descriptor differs.",
+   "why_three_arms": "op uses operator_mtf(4) on a white-noise probe; control uses a synthetic x4 pair measured on the same natural frames; measured uses the real lens measured the same way. control exists because the same x4 operator differs by L2 1.02 between the two conventions -- without it, a measured-vs-op gap is unattributable.",
+   "arms": {
+    "bicubic": {
+     "lpips": 0.5282,
+     "psnr": 22.4023,
+     "null_cos": 0.0806
+    },
+    "uncond_r5k3": {
+     "lpips": 0.4078,
+     "psnr": 21.5651,
+     "null_cos": 0.1177
+    },
+    "mtf_op": {
+     "lpips": 0.4105,
+     "psnr": 21.706,
+     "null_cos": 0.1168
+    },
+    "mtf_control": {
+     "lpips": 0.4156,
+     "psnr": 21.8037,
+     "null_cos": 0.1153
+    },
+    "mtf_measured": {
+     "lpips": 0.4149,
+     "psnr": 21.7685,
+     "null_cos": 0.115
+    },
+    "infvsr": {
+     "lpips": 0.3526,
+     "psnr": 21.2272,
+     "null_cos": 0.1159
+    },
+    "flashvsr_plus": {
+     "lpips": 0.3603,
+     "psnr": 20.504,
+     "null_cos": 0.1166
+    }
+   },
+   "decomposition": {
+    "convention_alone_control_minus_op": {
+     "delta": 0.0051,
+     "sd": 0.0053,
+     "better_on": "4/15"
+    },
+    "operator_alone_measured_minus_control": {
+     "delta": -0.0007,
+     "sd": 0.0029,
+     "better_on": "7/15"
+    },
+    "both_measured_minus_op": {
+     "delta": 0.0044,
+     "sd": 0.0065,
+     "better_on": "4/15"
+    }
+   },
+   "result": "the operator effect is -0.0007 LPIPS with sd 0.0029 and wins on 7 of 15 clips, i.e. nothing. The convention effect is +0.0051, seven times larger. Replacing an assumed descriptor with the measured one -- an L2 of 0.53-0.92 apart -- does not change the output.",
+   "retracts": "the pre-registered prediction that conditioning would FAIL here because the measured MTF is non-monotone. It does not fail; it does not act at all. The prediction was also untestable as first run, because that run used r5_k3, whose cfg has desc:false.",
+   "and_the_control_earned_its_place": "with only op and measured, the +0.0044 total would have been reported as evidence that the operator assumption is wrong. Almost all of it is the measurement convention. This is the same error shape as reading psnr_gtrange on a set whose operator is not x4 bicubic.",
+   "unconditioned_arm_is_best_here": {
+    "uncond_r5k3": 0.4078,
+    "best_mtf_arm": 0.4105,
+    "reading": "on real degradation the single-operator estimator with no descriptor at all edges out every conditioned arm, which is consistent with the shipped configuration"
+   }
+  }
  }
 }

@@ -1,0 +1,93 @@
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 107, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 58, in main
+    model = InfVSR(W / 'InfVSR.ckpt', B / 'diffsynth_wan/config.json', W / 'Wan2.1_VAE.pth',
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/temp/zihaohe_stage/baselines/InfVSR-main/diffsynth_wan/pipeline.py", line 27, in __init__
+    self.dit.eval().requires_grad_(False).to(device=self.device, dtype=self.dtype)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 78, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 76, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/cuda/__init__.py", line 417, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+[ERROR] 2026-11-03-02:07:38 (PID:2366406, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 107, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 58, in main
+    model = InfVSR(W / 'InfVSR.ckpt', B / 'diffsynth_wan/config.json', W / 'Wan2.1_VAE.pth',
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/temp/zihaohe_stage/baselines/InfVSR-main/diffsynth_wan/pipeline.py", line 27, in __init__
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 107, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 58, in main
+    model = InfVSR(W / 'InfVSR.ckpt', B / 'diffsynth_wan/config.json', W / 'Wan2.1_VAE.pth',
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/temp/zihaohe_stage/baselines/InfVSR-main/diffsynth_wan/pipeline.py", line 27, in __init__
+    self.dit.eval().requires_grad_(False).to(device=self.device, dtype=self.dtype)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 78, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    self.dit.eval().requires_grad_(False).to(device=self.device, dtype=self.dtype)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 78, in to
+    param_applied = fn(param)
+    return self._apply(convert)
+                    ^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 76, in convert
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/cuda/__init__.py", line 417, in _lazy_init
+    module._apply(fn)
+    raise AssertionError("Torch not compiled with CUDA enabled")
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+AssertionError: Torch not compiled with CUDA enabled
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 76, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/cuda/__init__.py", line 417, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+[ERROR] 2026-11-03-02:07:39 (PID:2366387, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+[ERROR] 2026-11-03-02:07:39 (PID:2366126, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+Traceback (most recent call last):
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 107, in <module>
+    main()
+  File "/cache/zihaohe/streaming_sr0/code/baseline_infvsr.py", line 58, in main
+    model = InfVSR(W / 'InfVSR.ckpt', B / 'diffsynth_wan/config.json', W / 'Wan2.1_VAE.pth',
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/temp/zihaohe_stage/baselines/InfVSR-main/diffsynth_wan/pipeline.py", line 27, in __init__
+    self.dit.eval().requires_grad_(False).to(device=self.device, dtype=self.dtype)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 78, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu/utils/_module.py", line 76, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/cuda/__init__.py", line 417, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+[ERROR] 2026-11-03-02:07:39 (PID:2366431, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+infvsr_mvsr4x: 0

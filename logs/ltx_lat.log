@@ -1,0 +1,76 @@
+{"state_dict": {"encoder": {"missing": 0, "unexpected": 0, "missing_sample": [], "unexpected_sample": []}, "decoder": {"missing": 0, "unexpected": 0, "missing_sample": [], "unexpected_sample": []}}}
+/cache/zihaohe/streaming_sr0/code/ltx_roundtrip.py:108: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  v = img.permute(3, 0, 1, 2)[None].to(device=dev, dtype=dt) * 2 - 1
+{"clip": "1jyM3quZ0h0", "gt": {"energy_ratio": 0.9654, "cos": 0.9747, "psnr": 29.2505, "frame_psnr": 28.7525, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}, "n05": {"energy_ratio": 0.874, "cos": 0.9614, "psnr": 27.4073, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}}
+{"clip": "1lF4g89LKmc", "gt": {"energy_ratio": 1.0168, "cos": 0.9655, "psnr": 36.1067, "frame_psnr": 35.0883, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}, "n05": {"energy_ratio": 1.0276, "cos": 0.9279, "psnr": 32.8819, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}}
+{"clip": "1xRoPmw1yCY", "gt": {"energy_ratio": 1.0129, "cos": 0.9511, "psnr": 37.4015, "frame_psnr": 36.8032, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}, "n05": {"energy_ratio": 1.0225, "cos": 0.9307, "psnr": 35.8603, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}}
+{"clip": "24cmo2fEQo8", "gt": {"energy_ratio": 0.9782, "cos": 0.9005, "psnr": 35.6595, "frame_psnr": 35.0581, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}, "n05": {"energy_ratio": 1.0254, "cos": 0.8944, "psnr": 35.2952, "latent_shape": [1, 128, 3, 15, 26], "frames_out": 17}}
+{
+ "ltx2": {
+  "gt": {
+   "energy_ratio": 0.9933,
+   "cos": 0.948,
+   "psnr": 34.6045,
+   "frame_psnr": 33.9255
+  },
+  "n05": {
+   "energy_ratio": 0.9874,
+   "cos": 0.9286,
+   "psnr": 32.8612
+  }
+ },
+ "h3": {
+  "gt": {
+   "energy_ratio": 0.9861499642035725,
+   "cos": 0.9370337469046686,
+   "psnr": 33.73058518060983,
+   "frame_psnr": 32.546913146972656
+  },
+  "n05": {
+   "energy_ratio": 1.0229394735685342,
+   "cos": 0.9155087944797452,
+   "psnr": 31.925926503974477,
+   "encode_clip_fraction": 0.005391438998913145
+  },
+  "n05x2": {
+   "energy_ratio": 0.7928343143340835,
+   "cos": 0.8996604224588619,
+   "psnr": 30.90689034815081,
+   "encode_clip_fraction": 0.03110913952696137
+  }
+ }
+}
+{
+ "ltx_encode_25f_min_mean_s": [
+  0.208,
+  0.213
+ ],
+ "ltx_latent_shape": [
+  1,
+  128,
+  4,
+  15,
+  26
+ ],
+ "ltx_decode_25f_min_mean_s": [
+  0.218,
+  0.225
+ ],
+ "ltx_peak_GB": 2.7,
+ "h3_encode_22f_min_mean_s": [
+  2.365,
+  2.374
+ ],
+ "h3_latent_shape": [
+  1,
+  24,
+  7,
+  30,
+  52
+ ],
+ "h3_decode_22f_min_mean_s": [
+  1.165,
+  1.167
+ ],
+ "context": "H3 decode measured 1.05 s inside a 17.3 s / 22-frame block in the shipped run, of which sampling is 8.69 s. Any added per-frame cost here lands on top of that."
+}

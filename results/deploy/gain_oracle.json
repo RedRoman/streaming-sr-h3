@@ -1,0 +1,37 @@
+{
+ "shipped": {
+  "null_psnr": 28.8617,
+  "null_cos": 0.4841,
+  "null_energy_ratio": 0.7225,
+  "null_energy_ratio_n": 1520
+ },
+ "oracle_global": {
+  "null_psnr": 30.1008,
+  "null_cos": 0.4841,
+  "null_energy_ratio": 0.2872,
+  "null_energy_ratio_n": 1520,
+  "g_mean": 0.6133
+ },
+ "oracle_site": {
+  "null_psnr": 30.7925,
+  "null_cos": 0.5918,
+  "null_energy_ratio": 0.388,
+  "null_energy_ratio_n": 1520,
+  "g_mean": 0.2962,
+  "g_median": 0.224
+ },
+ "oracle_site_band": {
+  "null_psnr": 31.1079,
+  "null_cos": 0.628,
+  "null_energy_ratio": 0.3668,
+  "null_energy_ratio_n": 1520
+ },
+ "g_spread": {
+  "g_p10": -0.224,
+  "g_p50": 0.224,
+  "g_p90": 0.9501
+ },
+ "_note": "oracle_* use the ground truth to pick the gain, so they are ceilings no learned predictor can exceed. If oracle_site_band is close to shipped, the axis has no room.",
+ "_clips": 96,
+ "_frames": 1536
+}

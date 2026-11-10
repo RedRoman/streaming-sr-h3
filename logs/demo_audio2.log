@@ -1,0 +1,14 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:157: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = x.to(dev)
+[W1103 22:22:58.237478419 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{"arm": "degraded", "mel": 82.2, "lsd": 49.919, "sisdr": -34.62, "sec": 97.4}
+{"arm": "restored", "mel": 5.329, "lsd": 14.923, "sisdr": -20.78, "sec": 88.0}
+{"video_max_abs_diff": 0.0, "video_mean_abs_diff": 0.0, "bit_identical": true}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_input_degraded.mp4", "MB": 0.33, "tag": "input_degraded", "mel": 17.189}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_ours_restored.mp4", "MB": 0.32, "tag": "ours_restored", "mel": 5.329}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_reference.mp4", "MB": 0.33, "tag": "reference", "mel": 2.594}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_degraded.mp4", "MB": 0.32, "arm": "degraded", "mel": 82.2, "lsd": 49.919, "sisdr": -34.62}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_restored.mp4", "MB": 0.33, "arm": "restored", "mel": 5.329, "lsd": 14.923, "sisdr": -20.78}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_video_invariance.mp4", "MB": 0.26, "arm": "invariance_triptych"}
+
+wrote 3 files to /cache/zihaohe/streaming_sr0/results/demo

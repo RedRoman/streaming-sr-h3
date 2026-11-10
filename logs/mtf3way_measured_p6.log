@@ -1,0 +1,6 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:148: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = x.to(dev)
+[W1103 13:55:01.964706688 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{"done": "158", "tag": "mv_mtf_measured", "sec": 101.6, "sample_s_mean": 10.0, "phases_whole_clip": {"guide_s": 16.35, "sample_s": 49.93, "decode_s": 5.3, "isfinite_s": 0.1, "to_u8_s": 1.78, "png_write_s": 27.92, "total_s": 101.57, "rest_s": 0.19, "stream_write_s": 23.19}}
+{"done": "466", "tag": "mv_mtf_measured", "sec": 85.8, "sample_s_mean": 8.7, "phases_whole_clip": {"guide_s": 12.9, "sample_s": 43.66, "decode_s": 5.29, "isfinite_s": 0.09, "to_u8_s": 1.83, "png_write_s": 21.91, "total_s": 85.8, "rest_s": 0.12, "stream_write_s": 17.94}}
+{"tag": "mv_mtf_measured", "shard": 6, "finished": true}

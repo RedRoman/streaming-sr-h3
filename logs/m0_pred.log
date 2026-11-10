@@ -1,0 +1,20 @@
+/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py:668: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  clip_x = x[:, :, i * self.clip_length:(i + 1) * self.clip_length, :, :].to(device)
+{"clip": "4aN_Vvn1lBY", "cos_detail": 0.9091, "energy_ratio_detail": 0.7944, "cos_detail_mapped": 0.9306, "energy_ratio_detail_mapped": 0.6264, "r2_full": 0.7766, "r2_detail": 0.8462}
+{"clip": "66B46E_hrrk", "cos_detail": 0.8241, "energy_ratio_detail": 0.7128, "cos_detail_mapped": 0.9003, "energy_ratio_detail_mapped": 0.6166, "r2_full": 0.7349, "r2_detail": 0.7972}
+{"clip": "69tcopJWwrY", "cos_detail": 0.8706, "energy_ratio_detail": 0.8125, "cos_detail_mapped": 0.9152, "energy_ratio_detail_mapped": 0.6794, "r2_full": 0.799, "r2_detail": 0.8284}
+{"clip": "6Si3eGkmmy8", "cos_detail": 0.8679, "energy_ratio_detail": 0.88, "cos_detail_mapped": 0.9023, "energy_ratio_detail_mapped": 0.7205, "r2_full": 0.8095, "r2_detail": 0.806}
+{"clip": "6WX4cEj7sTc", "cos_detail": 0.8684, "energy_ratio_detail": 1.0684, "cos_detail_mapped": 0.8982, "energy_ratio_detail_mapped": 0.9497, "r2_full": 0.8036, "r2_detail": 0.7534}
+{"clip": "6kQcdo770RM", "cos_detail": 0.8338, "energy_ratio_detail": 1.1554, "cos_detail_mapped": 0.8627, "energy_ratio_detail_mapped": 0.9685, "r2_full": 0.8018, "r2_detail": 0.6861}
+{"clip": "6m4k0yEqvsw", "cos_detail": 0.8486, "energy_ratio_detail": 1.124, "cos_detail_mapped": 0.8752, "energy_ratio_detail_mapped": 0.9323, "r2_full": 0.8188, "r2_detail": 0.7156}
+{"clip": "6zprs4dvSC8", "cos_detail": 0.8615, "energy_ratio_detail": 1.148, "cos_detail_mapped": 0.8835, "energy_ratio_detail_mapped": 0.9661, "r2_full": 0.8382, "r2_detail": 0.7339}
+{
+ "cos_detail": 0.8615,
+ "energy_ratio_detail": 1.148,
+ "cos_detail_mapped": 0.8835,
+ "energy_ratio_detail_mapped": 0.9661,
+ "r2_full": 0.8382,
+ "r2_detail": 0.7339,
+ "blocks": 56,
+ "reading": "cos_detail is how aligned our generated detail is with the truth IN LATENT SPACE; energy_ratio_detail_mapped below energy_ratio_detail is the shrinkage that makes the map lose. r2_detail is the fraction of the truth's detail variance a site-local linear map can explain from our latent."
+}

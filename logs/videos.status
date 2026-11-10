@@ -1,0 +1,9 @@
+fuse fused_heldout exit=0 2026-11-05 00:03:43
+fuse fused_realvsr exit=0 2026-11-05 00:06:10
+fuse fused_mvsr4x exit=0 2026-11-05 00:07:49
+fuse fused_videolq exit=0 2026-11-05 00:11:34
+vid --eval-set data/real_eval/realvsr --clips 4 --cols 4 --crop 256 --arm LR (bicubic)=bicubic --arm FlashVSR+=/cache/zihaohe/streaming_sr0/results/baseline_flashvsr_plus_realvsr --arm ours=/cache/zihaohe/streaming_sr0/results/deploy/fused_realvsr --arm GT=gt --judge /cache/zihaohe/streaming_sr0/results/deploy/judge_realvsr.json --ref ours --out /cache/zihaohe/streaming_sr0/results/videos_20261105/1_realvsr exit=0
+vid --eval-set data/real_eval/mvsr4x --clips 4 --cols 4 --crop 256 --arm LR (bicubic)=bicubic --arm FlashVSR+=/cache/zihaohe/streaming_sr0/results/baseline_flashvsr_plus_mvsr4x --arm ours=/cache/zihaohe/streaming_sr0/results/deploy/fused_mvsr4x --arm GT=gt --out /cache/zihaohe/streaming_sr0/results/videos_20261105/2_mvsr4x exit=0
+vid --eval-set data/real_eval/videolq --clips 4 --cols 2 --crop 256 --arm LR (bicubic)=bicubic --arm ours=/cache/zihaohe/streaming_sr0/results/deploy/fused_videolq --out /cache/zihaohe/streaming_sr0/results/videos_20261105/3_videolq exit=0
+vid --eval-set data/real_eval/heldout --clips 4 --cols 4 --crop 256 --arm LR (bicubic)=bicubic --arm FlashVSR+=/cache/zihaohe/streaming_sr0/results/baseline_flashvsr_plus --arm ours=/cache/zihaohe/streaming_sr0/results/deploy/fused_heldout --arm GT=gt --judge /cache/zihaohe/streaming_sr0/results/deploy/judge_new_config.json --ref shipped_2step --out /cache/zihaohe/streaming_sr0/results/videos_20261105/4_heldout exit=0
+videos done 2026-11-05 00:19:59

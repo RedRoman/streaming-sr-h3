@@ -1,0 +1,65 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+{"clip": "1jyM3quZ0h0", "frames": 16}
+{"clip": "1lF4g89LKmc", "frames": 32}
+{"clip": "1xRoPmw1yCY", "frames": 48}
+{"clip": "24cmo2fEQo8", "frames": 64}
+{"clip": "259QGi4PNAc", "frames": 80}
+{"clip": "25TiEJB46Qg", "frames": 96}
+{"clip": "266IiZnynyA", "frames": 112}
+{"clip": "277uoZ9cmB0", "frames": 128}
+{"clip": "2AeLh_rUavc", "frames": 144}
+{"clip": "2Cb9U8poEEI", "frames": 160}
+{"clip": "43dQMHGLDHU", "frames": 176}
+{"clip": "4BVEb9P1YxQ", "frames": 192}
+{"clip": "4EUkGpiq_Kc", "frames": 208}
+{"clip": "4GlH0-KhInI", "frames": 224}
+{"clip": "4N_pgE-uYYA", "frames": 240}
+{"clip": "4PYNzqXudtk", "frames": 256}
+{"clip": "4QDyavpkq1w", "frames": 272}
+{"clip": "4Ua6i_VDYU4", "frames": 288}
+{"clip": "4Wu5YyU1j28", "frames": 304}
+{"clip": "4ZTPDmqaXok", "frames": 320}
+{"clip": "4aN_Vvn1lBY", "frames": 336}
+{"clip": "66B46E_hrrk", "frames": 352}
+{"clip": "69tcopJWwrY", "frames": 368}
+{"clip": "6Si3eGkmmy8", "frames": 384}
+{
+ "shipped": {
+  "null_psnr": 27.302,
+  "null_cos": 0.4825,
+  "null_energy_ratio": Infinity
+ },
+ "oracle_global": {
+  "null_psnr": 28.0198,
+  "null_cos": 0.4825,
+  "null_energy_ratio": NaN,
+  "g_mean": 0.646
+ },
+ "oracle_site": {
+  "null_psnr": 28.6664,
+  "null_cos": 0.59,
+  "null_energy_ratio": NaN,
+  "g_mean": 0.2843,
+  "g_median": 0.2165
+ },
+ "oracle_site_band": {
+  "null_psnr": 28.9261,
+  "null_cos": 0.6228,
+  "null_energy_ratio": NaN
+ },
+ "g_spread": {
+  "g_p10": -0.3373,
+  "g_p50": 0.2165,
+  "g_p90": 1.0236
+ },
+ "_note": "oracle_* use the ground truth to pick the gain, so they are ceilings no learned predictor can exceed. If oracle_site_band is close to shipped, the axis has no room.",
+ "_clips": 24,
+ "_frames": 384
+}

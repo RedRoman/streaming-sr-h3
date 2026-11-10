@@ -1,0 +1,342 @@
+{
+ "set": "RealVSR ICCV21 test split as an eval set: 50 sequences x 50 frames, 512x1024 rotated to landscape, 832x480 window, LR = LQ downsampled x4. See prepare_realvsr.py.",
+ "what_this_set_does_and_does_not_test": "the package is natively x2 and its LQ is already resampled to the GT geometry, so taking LR = LQ/4 puts a synthetic x4 on top of the real degradation. Measured: the LQ loses 25.8 dB through a 1/4 round trip (so the x4 does discard real content) while the degraded MTF sits only 0.03-0.11 in L2 from a synthetic x4 control measured the same way -- inside the 0.21 that generalised fine. This set therefore stresses real CONTENT much more than it stresses real DEGRADATION. mvsr4x remains the harder operator test.",
+ "medians": {
+  "ours": {
+   "psnr": 21.086,
+   "lpips": 0.2057,
+   "null_energy": 0.5899,
+   "null_cos": 0.4639,
+   "p8.flicker": 0.5373,
+   "p8.terr_null": 8.6679,
+   "p8.warp": 0.9458
+  },
+  "flashvsr_plus": {
+   "psnr": 20.3356,
+   "lpips": 0.2263,
+   "null_energy": 0.5177,
+   "null_cos": 0.3386,
+   "p8.flicker": 0.4142,
+   "p8.terr_null": 10.8396,
+   "p8.warp": 0.8327
+  },
+  "bicubic": {
+   "psnr": 20.7788,
+   "lpips": 0.4708,
+   "null_energy": 0.1045,
+   "null_cos": 0.2353,
+   "p8.flicker": 0.0821,
+   "p8.terr_null": 10.5723,
+   "p8.warp": 0.8454
+  }
+ },
+ "ours_vs_flashvsr_plus": {
+  "psnr": {
+   "mean": 0.8167851274590612,
+   "ci95": [
+    0.6642317502005652,
+    0.9721289537004378
+   ],
+   "median": 0.7388941493140315,
+   "a_better": 4,
+   "n": 50
+  },
+  "lpips": {
+   "mean": -0.021107789618628362,
+   "ci95": [
+    -0.026186322632644858,
+    -0.015410719212676793
+   ],
+   "median": -0.024786266897405915,
+   "a_better": 43,
+   "n": 50
+  },
+  "psnr_gtrange": {
+   "mean": 0.7292475494950159,
+   "ci95": [
+    0.585088218602941,
+    0.8883107136104248
+   ],
+   "median": 0.5805797794001961,
+   "a_better": 2,
+   "n": 50
+  },
+  "lpips_gtrange": {
+   "mean": -0.023284006587096628,
+   "ci95": [
+    -0.028520930547267207,
+    -0.017525832589715722
+   ],
+   "median": -0.02551682932036263,
+   "a_better": 47,
+   "n": 50
+  },
+  "null_energy": {
+   "mean": 0.0260330735359873,
+   "ci95": [
+    -0.017415864180241325,
+    0.06482201810819761
+   ],
+   "median": 0.05565736549241207,
+   "a_better": 13,
+   "n": 50
+  },
+  "null_cos": {
+   "mean": 0.10791395181656949,
+   "ci95": [
+    0.09218879665377813,
+    0.1240773178120809
+   ],
+   "median": 0.09726250597408842,
+   "a_better": 1,
+   "n": 50
+  },
+  "p8.flicker": {
+   "mean": 0.08888893588890708,
+   "ci95": [
+    0.049759554026644934,
+    0.12462787933699009
+   ],
+   "median": 0.11789978476404991,
+   "a_better": 8,
+   "n": 50
+  },
+  "p8.warp": {
+   "mean": 0.10975586360209343,
+   "ci95": [
+    0.09411872980245689,
+    0.12504645371279005
+   ],
+   "median": 0.10694180220223543,
+   "a_better": 1,
+   "n": 50
+  },
+  "p8.warp_range": {
+   "mean": 0.13378424339844627,
+   "ci95": [
+    0.11836129410854236,
+    0.14951751426131277
+   ],
+   "median": 0.1297262401393442,
+   "a_better": 0,
+   "n": 50
+  },
+  "p8.warp_null": {
+   "mean": 0.039513803748126845,
+   "ci95": [
+    0.013793390214869848,
+    0.06361349288087177
+   ],
+   "median": 0.062379589710132466,
+   "a_better": 14,
+   "n": 50
+  },
+  "p8.terr_null": {
+   "mean": -1.5554881791883546,
+   "ci95": [
+    -1.9482799889665328,
+    -1.202360361945466
+   ],
+   "median": -1.2730120132411165,
+   "a_better": 47,
+   "n": 50
+  },
+  "p8.terr_range": {
+   "mean": -0.42472418946480106,
+   "ci95": [
+    -0.5635023978440066,
+    -0.2813123386632861
+   ],
+   "median": -0.41091221958465346,
+   "a_better": 48,
+   "n": 50
+  },
+  "seam.terr_null": {
+   "mean": -1.0764779662713408,
+   "ci95": [
+    -1.4916755019221455,
+    -0.6875481007155031
+   ],
+   "median": -1.000759715680033,
+   "a_better": 40,
+   "n": 50
+  },
+  "seam.flicker": {
+   "mean": 0.15380154407069796,
+   "ci95": [
+    0.10332452015776522,
+    0.20089566047690613
+   ],
+   "median": 0.15115252161946402,
+   "a_better": 6,
+   "n": 50
+  },
+  "seam.warp": {
+   "mean": 0.15010866824573188,
+   "ci95": [
+    0.13001375790909725,
+    0.17007989524088066
+   ],
+   "median": 0.14336674342770228,
+   "a_better": 1,
+   "n": 50
+  }
+ },
+ "ours_vs_bicubic": {
+  "psnr": {
+   "mean": 0.22489202029065106,
+   "ci95": [
+    0.07776119636638648,
+    0.3736088597654681
+   ],
+   "median": 0.19600276941138262,
+   "a_better": 15,
+   "n": 50
+  },
+  "lpips": {
+   "mean": -0.2610318844233241,
+   "ci95": [
+    -0.2773615804325257,
+    -0.24391319381552082
+   ],
+   "median": -0.26747316760676254,
+   "a_better": 50,
+   "n": 50
+  },
+  "psnr_gtrange": {
+   "mean": 0.3106076632605174,
+   "ci95": [
+    0.09352212866772931,
+    0.5273926659058782
+   ],
+   "median": 0.30298727886426136,
+   "a_better": 19,
+   "n": 50
+  },
+  "lpips_gtrange": {
+   "mean": -0.258929827192,
+   "ci95": [
+    -0.2754429424782948,
+    -0.2418307132976396
+   ],
+   "median": -0.26628232534442625,
+   "a_better": 50,
+   "n": 50
+  },
+  "null_energy": {
+   "mean": 0.5005201869670833,
+   "ci95": [
+    0.45669613828643085,
+    0.547213301152257
+   ],
+   "median": 0.47947217417614796,
+   "a_better": 0,
+   "n": 50
+  },
+  "null_cos": {
+   "mean": 0.20799352688448772,
+   "ci95": [
+    0.18220689773133822,
+    0.23368588507175445
+   ],
+   "median": 0.21695207591567717,
+   "a_better": 0,
+   "n": 50
+  },
+  "p8.flicker": {
+   "mean": 0.4643347455644682,
+   "ci95": [
+    0.42024496998709726,
+    0.5121627316202462
+   ],
+   "median": 0.45995167126980446,
+   "a_better": 0,
+   "n": 50
+  },
+  "p8.warp": {
+   "mean": 0.08674889688097938,
+   "ci95": [
+    0.076009681113405,
+    0.09779293379474682
+   ],
+   "median": 0.08069390194062576,
+   "a_better": 0,
+   "n": 50
+  },
+  "p8.warp_range": {
+   "mean": -0.043516451633250845,
+   "ci95": [
+    -0.05677943505465636,
+    -0.030387000970110857
+   ],
+   "median": -0.03636966064574615,
+   "a_better": 39,
+   "n": 50
+  },
+  "p8.warp_null": {
+   "mean": 0.44810424488186784,
+   "ci95": [
+    0.4276560373905708,
+    0.4693894769538316
+   ],
+   "median": 0.4486521204165894,
+   "a_better": 0,
+   "n": 50
+  },
+  "p8.terr_null": {
+   "mean": -0.5540679729477102,
+   "ci95": [
+    -1.0345574587658377,
+    -0.09810937912802065
+   ],
+   "median": -0.2948241058870089,
+   "a_better": 29,
+   "n": 50
+  },
+  "p8.terr_range": {
+   "mean": -0.31383279908498346,
+   "ci95": [
+    -0.39359459911013667,
+    -0.23644859799190143
+   ],
+   "median": -0.30753294205559145,
+   "a_better": 46,
+   "n": 50
+  },
+  "seam.terr_null": {
+   "mean": -0.2985070290742442,
+   "ci95": [
+    -0.8072198826121166,
+    0.17978270305320612
+   ],
+   "median": 0.02653466071933508,
+   "a_better": 24,
+   "n": 50
+  },
+  "seam.flicker": {
+   "mean": 0.5035731649707694,
+   "ci95": [
+    0.4531935320063683,
+    0.5586246052911187
+   ],
+   "median": 0.490079264814428,
+   "a_better": 0,
+   "n": 50
+  },
+  "seam.warp": {
+   "mean": 0.10649561498909835,
+   "ci95": [
+    0.08499211947748674,
+    0.1298879437920359
+   ],
+   "median": 0.09392834437441688,
+   "a_better": 1,
+   "n": 50
+  }
+ },
+ "readings": [
+  "we win on fidelity and on detail direction: PSNR +0.739 dB median (better on 46/50), LPIPS -0.0248 (43/50), null cosine +0.097 (49/50), and p8.terr_null -1.273 (47/50).",
+  "we lose on flicker: 0.537 against 0.414, worse on 42/50, the same direction as on heldout.",
+  "this set corrects a generalisation drawn from mvsr4x. There, all three generative arms scored BELOW bicubic in PSNR (ours -0.84). Here ours is ABOVE bicubic (+0.196 dB median, better on 35/50) and FlashVSR+ is below it (-0.443), so \"generative restoration loses to bicubic on real degradation\" is specific to mvsr4x, where bicubic is close to a no-op because the LQ already carries only ~1/4 of the resolution. It is not a general property of real degradation."
+ ]
+}

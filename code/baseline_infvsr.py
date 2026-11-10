@@ -26,7 +26,11 @@ ROOT = Path('/cache/zihaohe/streaming_sr0')
 B = Path('/temp/zihaohe_stage/baselines/InfVSR-main')
 W = Path('/temp/zihaohe_stage/weights/infvsr')
 D_ = ROOT / os.environ.get('EVAL_SET', 'data/real_eval/const')
-OUT = ROOT / 'results/baseline_infvsr'
+# Suffix so a second eval set cannot land in the directory built for the first. FlashVSR+ already
+# had this; InfVSR did not, and a smoke run on MVSR4x wrote clip 003 straight into the heldout
+# baseline tree. judge looks clips up by name so nothing was overwritten, but one directory
+# holding two input scales is exactly the mistake that made an earlier x6 table meaningless.
+OUT = ROOT / ('results/baseline_infvsr' + os.environ.get('INFVSR_OUT_SUFFIX', ''))
 FIRST, REST = 9, 12                       # diffsynth_wan.video.frame_batches
 
 

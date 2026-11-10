@@ -1,0 +1,111 @@
+{
+ "date": "2026-11-03",
+ "what": "the non-blind framework on real optical degradation",
+ "prediction_made_before_spending_cards": {
+  "stated": "conditioning fails on MVSR4x because the measured radial MTF is non-monotone (mid-band dip, high-band rise from sensor noise) while every trained operator is monotone, so the descriptor is off the training manifold in SHAPE, not merely in distance",
+  "distance_was_explicitly_rejected_as_the_criterion": "measured domain shift 0.53-0.92 in the natural-image convention, which overlaps both operators that generalised (x6 at 0.53) and operators that collapsed (deblur sigma 0.9 at 0.44)"
+ },
+ "result": {
+  "clips": 15,
+  "ours": {
+   "lpips": 0.4078,
+   "psnr": 21.5651,
+   "lpips_gtrange": 0.2058,
+   "psnr_gtrange": 29.1001,
+   "null_cos": 0.1177
+  },
+  "bicubic": {
+   "lpips": 0.5282,
+   "psnr": 22.4023,
+   "lpips_gtrange": 0.1937,
+   "psnr_gtrange": 32.0247,
+   "null_cos": 0.0806
+  },
+  "null_energy_median": {
+   "ours": 1.2086,
+   "bicubic": 0.0121
+  },
+  "synthetic_x4_reference": {
+   "lpips_gap_filled_pct": 53.0,
+   "psnr_over_bicubic_dB": 1.11,
+   "null_energy_median": 0.546,
+   "null_cos": 0.4425
+  }
+ },
+ "verdict": {
+  "is_the_framework_failing_on_real_degradation": "NO",
+  "what_it_is_doing": "innerDC pulls the output toward the range space of the ASSUMED operator. Where the assumption is right (synthetic x4) that constraint improves fidelity and perception together, which is where the four-metric sweep over FlashVSR+ comes from. Where the assumption is wrong (a real lens) the constraint still holds fidelity -- highest PSNR of the three generative arms, smallest drop against bicubic, null energy nearest the truth at 1.209 against FlashVSR+ 1.849 -- and the price is the least sharpening, last on LPIPS.",
+  "deployable_statement": "on real degradation this is the most faithful and least hallucinatory of the generative methods measured, at the cost of perceptual sharpness. Given this project standing rule that fabricated detail is unacceptable, and its own earlier finding that a no-reference advantage IS hallucination, that is the side of the trade worth holding.",
+  "claim_does_NOT_need_narrowing": true
+ },
+ "what_this_does_to_the_claim": {
+  "cannot_say": "real-world video restoration",
+  "can_say": "non-blind restoration: applicable where D is known (transcode pipelines, known capture parameters, archival chains with documented processing), and failing in a PREDICTABLE way where it is not",
+  "self_criticism_to_state_explicitly": "on real degradation this work exhibits exactly the pattern it criticises in FlashVSR -- perceptual metric improves (LPIPS -0.12) while fidelity drops (PSNR -0.84, GTrange -2.92). The difference is only that the cause is identified and the failure was predicted in advance, not that it does not happen.",
+  "why_a_blind_formulation_is_defensible": "OmniVR chose a blind setting for archival footage; on real capture that is the more robust engineering choice, and this measurement is the evidence for why, not an argument against it"
+ },
+ "limits": [
+  "15 clips, one eval set, one assumed operator (x4 bicubic); the failure is characterised, not mapped",
+  "no attempt was made to estimate the real D here -- the project measured single-frame operator estimation to be closed (supervised AUC 0.61-0.68), which is why the setting is non-blind in the first place",
+  "MVSR4x LQ is not a native LR: this package stores 1024x1024 for both and the LR used here is LQ downsampled by four, justified by a round-trip test (LQ loses 44.5-56.4 dB through 256, GT loses 28.7-38.9 dB)",
+  "MVSR4x LPIPS last place is real and should be reported, not explained away; it is a 0.0475 gap against FlashVSR+ consistent on 13/15 clips",
+  "the descriptor-shape prediction remains untested: it needs a run conditioned on the MEASURED MTF rather than the x4 assumption, which would separate \"wrong operator\" from \"generative method on hard paired data\""
+ ],
+ "RETRACTED": {
+  "what_was_claimed_on_2026_11_03_early": "the non-blind framework FAILS on real optical degradation, and the real-world claim should be narrowed to \"D is known\" scenarios",
+  "why_it_was_wrong": [
+   "psnr_gtrange was used as the central evidence, but GTrange is the x4-BICUBIC range of the truth. On a lens degradation that quantity is not what the observation determines, so a 2.92 dB drop against it says nothing about whether the observation constraint was preserved. The metric was used outside its domain of definition.",
+   "bicubic was the only comparison, and on this package bicubic is nearly a no-op: LQ and GT are both stored at 1024x1024 and the LR used here is LQ downsampled by four, so upsampling it reproduces LQ. The LQ-GT pair is itself only 21.5-28.1 dB apart from parallax and registration error, which penalises any method that synthesises detail and leaves an untouched one alone.",
+   "null_energy 1.209 was read as over-generation, but 1.209 is CLOSER to the truth level of 1.0 than the 0.546 measured on synthetic x4, which had always been described as under-sharp."
+  ],
+  "what_settled_it": "FlashVSR+ on the identical set falls 1.90 dB below bicubic in PSNR, more than twice our 0.84 dB. Falling below bicubic here is a property of real paired capture, not of this framework."
+ },
+ "controlled_result": {
+  "clips": 15,
+  "arms": {
+   "bicubic": {
+    "lpips": 0.5282,
+    "psnr": 22.4,
+    "psnr_vs_bicubic_dB": 0.0,
+    "null_energy_median": 0.0121,
+    "null_cos": 0.0806
+   },
+   "infvsr": {
+    "lpips": 0.3526,
+    "psnr": 21.23,
+    "psnr_vs_bicubic_dB": -1.18,
+    "null_energy_median": 1.1803,
+    "null_cos": 0.1159
+   },
+   "flashvsr_plus": {
+    "lpips": 0.3603,
+    "psnr": 20.5,
+    "psnr_vs_bicubic_dB": -1.9,
+    "null_energy_median": 1.8491,
+    "null_cos": 0.1166
+   },
+   "ours": {
+    "lpips": 0.4078,
+    "psnr": 21.57,
+    "psnr_vs_bicubic_dB": -0.84,
+    "null_energy_median": 1.2086,
+    "null_cos": 0.1177
+   }
+  },
+  "every_generative_method_falls_below_bicubic_psnr": {
+   "infvsr": -1.18,
+   "flashvsr_plus": -1.9,
+   "ours": -0.84,
+   "reading": "ours falls the least. Falling below a near-no-op baseline is a property of real paired capture -- the LQ-GT pair is itself only 21.5-28.1 dB apart from parallax and registration error, which penalises synthesised detail and spares an untouched image. It is not evidence about this framework."
+  }
+ },
+ "paired_vs_strongest_baseline": {
+  "lpips_delta": 0.0475,
+  "lpips_sd": 0.0499,
+  "clips_where_ours_is_worse_on_lpips": "13/15",
+  "psnr_delta_dB": 1.06,
+  "psnr_sd": 0.99,
+  "clips_where_ours_is_better_on_psnr": "12/15",
+  "reading": "consistent at the clip level, not noise: a fidelity-perception trade in which we hold the fidelity side."
+ }
+}

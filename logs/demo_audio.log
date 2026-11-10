@@ -1,0 +1,11 @@
+/cache/zihaohe/streaming_sr0/code/run_deploy.py:157: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  x = x.to(dev)
+[W1103 20:14:01.354859460 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_linalg_solve_ex.result' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+{"arm": "degraded", "mel": 82.2, "lsd": 49.919, "sisdr": -34.62, "sec": 98.4}
+{"arm": "restored", "mel": 5.329, "lsd": 14.923, "sisdr": -20.78, "sec": 88.7}
+{"video_max_abs_diff": 0.0, "video_mean_abs_diff": 0.0, "bit_identical": true}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_degraded.mp4", "MB": 0.32, "arm": "degraded", "mel": 82.2, "lsd": 49.919, "sisdr": -34.62}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_audio_restored.mp4", "MB": 0.33, "arm": "restored", "mel": 5.329, "lsd": 14.923, "sisdr": -20.78}
+{"file": "/cache/zihaohe/streaming_sr0/results/demo/N-IvW6J2e80_video_identical.mp4", "MB": 0.03, "arm": "difference"}
+
+wrote 3 files to /cache/zihaohe/streaming_sr0/results/demo

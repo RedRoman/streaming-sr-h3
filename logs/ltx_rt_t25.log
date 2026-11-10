@@ -1,0 +1,42 @@
+{"state_dict": {"encoder": {"missing": 0, "unexpected": 0, "missing_sample": [], "unexpected_sample": []}, "decoder": {"missing": 0, "unexpected": 0, "missing_sample": [], "unexpected_sample": []}}}
+/cache/zihaohe/streaming_sr0/code/ltx_roundtrip.py:108: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  v = img.permute(3, 0, 1, 2)[None].to(device=dev, dtype=dt) * 2 - 1
+{"clip": "1jyM3quZ0h0", "gt": {"energy_ratio": 0.9751, "cos": 0.9827, "psnr": 30.878, "frame_psnr": 30.5356, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}, "n05": {"energy_ratio": 0.8883, "cos": 0.9751, "psnr": 29.2208, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}}
+{"clip": "1lF4g89LKmc", "gt": {"energy_ratio": 1.0114, "cos": 0.9661, "psnr": 36.2865, "frame_psnr": 35.2868, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}, "n05": {"energy_ratio": 1.0213, "cos": 0.9286, "psnr": 33.0252, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}}
+{"clip": "1xRoPmw1yCY", "gt": {"energy_ratio": 1.0065, "cos": 0.9422, "psnr": 36.7294, "frame_psnr": 36.0965, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}, "n05": {"energy_ratio": 1.0151, "cos": 0.9191, "psnr": 35.2465, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}}
+{"clip": "24cmo2fEQo8", "gt": {"energy_ratio": 0.996, "cos": 0.9325, "psnr": 37.3032, "frame_psnr": 36.9526, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}, "n05": {"energy_ratio": 1.0372, "cos": 0.9334, "psnr": 37.2632, "latent_shape": [1, 128, 4, 15, 26], "frames_out": 25}}
+{
+ "ltx2": {
+  "gt": {
+   "energy_ratio": 0.9972,
+   "cos": 0.9559,
+   "psnr": 35.2993,
+   "frame_psnr": 34.7179
+  },
+  "n05": {
+   "energy_ratio": 0.9905,
+   "cos": 0.939,
+   "psnr": 33.6889
+  }
+ },
+ "h3": {
+  "gt": {
+   "energy_ratio": 0.9861499642035725,
+   "cos": 0.9370337469046686,
+   "psnr": 33.73058518060983,
+   "frame_psnr": 32.546913146972656
+  },
+  "n05": {
+   "energy_ratio": 1.0229394735685342,
+   "cos": 0.9155087944797452,
+   "psnr": 31.925926503974477,
+   "encode_clip_fraction": 0.005391438998913145
+  },
+  "n05x2": {
+   "energy_ratio": 0.7928343143340835,
+   "cos": 0.8996604224588619,
+   "psnr": 30.90689034815081,
+   "encode_clip_fraction": 0.03110913952696137
+  }
+ }
+}

@@ -15,7 +15,7 @@
 
 训练保留独立 FP32 LoRA 参数。推理严格验证 checkpoint 来源后，将新增 LoRA 的增量在 FP32 中合并并转回底座精度，再移除 wrapper，避免 Comfy partial offload 将 LoRA 留在 CPU。该推理合并存在 BF16 舍入，不承诺与未合并训练前向逐元素相同；真实 RGB 开发评估按实际部署形态进行。
 
-采用原生三步 sigma 网格 `[0.909375, 6/7, 2/3, 0]` 和显式 draft warm start。这里是现有 ComfyUI FL2VA 后端的组件迁移，仍使用原视频 VAE、缓存的中性文本上下文和噪声音频分支。**没有完成上游 Diffusers 数值对齐，也不是 Open-H3 官方完整管线复现。**
+采用原生三步 sigma 网格 `[0.909375, 6/7, 2/3, 0]` 和显式 draft warm start。这里是现有 ComfyUI FL2VA 后端的组件迁移，仍使用原视频 VAE、缓存的中性文本上下文；本轮推理报告记录 `audio_init=zeros`。**没有完成上游 Diffusers 数值对齐，也不是 Open-H3 官方完整管线复现。**
 
 [Open-H3 上游说明](https://nvlabs.github.io/Sana/Open-H3-Regenerate-2K/) 的完整路径包含 latent upscaler、refiner/Turbo/Sharp、特定音频初始化与可选 fast VAE。当前首轮 draft 明确为 `E(U(LR))`，没有冒充 pretrained latent upscaler；Sharp 暂不加入，以便独立判断其纹理和真实性影响。fast noncausal VAE 也不直接替换，否则已有 latent、质量和流式延迟会同时改变。
 
@@ -55,6 +55,8 @@ python3 -u code/takeover_queue.py configs/openh3_20261111/pilot_queue.json
 实际30794运行的计划是 `configs/openh3_20261111/pilot_queue_30794.json`，tmux session `openh3-pilot-20261111`。2026-11-11 11:13（Asia/Singapore）已启动第1步；训练与RGB预检、tiny CPU contract均退出0。真实H3执行结果以运行日志为准，不能把已启动记为通过。
 
 11:22 更新：第1步真实NPU训练 smoke 已通过。37,273,600个新增参数、200个LoRA模块；零初始化输出误差0、finite非零梯度、B更新、底座冻结、checkpoint清空重载输出误差0均通过。峰值分配41.142 GB；这只是2×8×8 latent裁剪的一步工程检查。证据为 `results/takeover_20261111/h3_npu_train_smoke_30794.jsonl`。队列继续执行独立进程重载推理；300步pilot和质量比较尚待完成。
+
+11:35 更新：第2步也已通过，独立进程重载新LoRA、三步采样、VAE解码成功，输出5帧128×128 RGB。证据为 `results/takeover_20261111/h3_npu_reload_smoke_30794.json`。队列11:31进入第3步8来源pretrained RGB基线，300步训练及配对质量比较仍待完成。11:34重新检查：31051卡6/7、32193卡4/7健康且无NPU进程，每卡约60.7 GiB显存可用；30794卡6由本项目使用，卡7留给既有队列。空闲状态只是检查时快照。
 
 只读检查使用 `--inspect-only`。单个计划只允许一个队列进程；已经 running/failed/completed 的目录不能无意重跑。查看 `runs/openh3_pilot_20261111/queue_status.json` 与对应 logs。全部实验完成后停止，不会循环训练。
 

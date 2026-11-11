@@ -3,6 +3,7 @@
   "status": "standalone_rgb_prototype_npu_smoke_passed_three_arm_pilot_running",
   "date": "2026-11-11",
   "priority": "R_phi fidelity and temporal restoration, separately attributable from H3 LoRA",
+  "benchmark_and_hypothesis_plan": "configs/openh3_20261111/omni_benchmark_plan_20261111.json",
   "starting_point": "K3 causal FiLM residual CNN family; matched new RGB baseline, not reuse of a historical R_phi checkpoint",
   "data": {
     "materialized_manifest_dir": "results/takeover_20261111/materialized",
@@ -35,7 +36,7 @@
   ],
   "consistency_contract": {
     "physical_operator_vs_canonical_anchor": "distinct interfaces and provenance",
-    "default": "uncertainty-weighted soft constraint",
+    "default": "fixed-strength soft constraint as control; learned action-risk gating is an unimplemented candidate, not implied by prediction-error variance",
     "hard_projection": "only an explicitly validated compatible noiseless known-operator control",
     "compression": "no claimed fixed linear nullspace",
     "final_acceptance_space": "decoded original-resolution RGB"

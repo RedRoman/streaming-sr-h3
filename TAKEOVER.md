@@ -29,7 +29,7 @@
 
 另有同一 clean target 的 SR、deblur、denoise、compression 四任务计划：非 SR 任务保持分辨率，模糊只施加到观测，目标保持原视频帧。原视频是高质量记录的代理参考，并非保证无损的理想真值。manifest、实际 materialization 和 VAE encoding 是不同状态；只有生成产物并核验后才能提升状态。
 
-四任务 materialization 已在31984完成：40个target、160个observations，共200个NPZ、2,205,237,727 bytes。已独立核验文件与像素SHA、22帧长度、SR/native尺寸、四任务共用target及来源互斥。文件在 `datasets/omni_pilot_v1/`，小型证据在 `results/takeover_20261111/materialized/` 与 `cpu_materialization_validation.json`。尚未做这批数据的 VAE encoding，多任务训练未启动。
+四任务 materialization 已在31984完成：40个target、160个observations，共200个NPZ、2,205,237,727 bytes。已独立核验文件与像素SHA、22帧长度、SR/native尺寸、四任务共用target及来源互斥。文件在 `datasets/omni_pilot_v1/`，小型证据在 `results/takeover_20261111/materialized/` 与 `cpu_materialization_validation.json`。这批数据尚未做 VAE encoding；13:41起已用于不依赖VAE的独立RGB R_phi训练。
 
 **目前没有新的 frozen test。** 这 8 个来源是开发集，不能用于泛化结论。进入论文/发布结论前须增加从未用于训练、模型选择或退化调参的来源，包含真实退化与未见组合。
 
@@ -78,7 +78,7 @@ python3 -u code/takeover_queue.py configs/openh3_20261111/pilot_queue.json
 
 ## R_phi 主线调整（2026-11-11）
 
-本节是明确的下一阶段方案，尚未实现或启动。以 `configs/openh3_20261111/rphi_v2_plan.json` 区分设计状态和已完成实验；SR LoRA pilot只提供预训练组件与训练基础设施的对照。
+本节区分整体目标与下面已落地的第一阶段。以 `configs/openh3_20261111/rphi_v2_plan.json` 区分设计状态和已完成实验；SR LoRA pilot只提供预训练组件与训练基础设施的对照。
 
 旧R_phi有可保留的证据：历史77视频对照将innerDC目标从raw LR换为预测R_phi后，LPIPS为0.32458→0.22334、PSNR为23.8829→25.3180（`results/FROZEN.json`）。但这是旧底座、旧数据上的收益，不可直接转移给Open-H3。K3对低分辨率干净目标的realistic增益+3.2501 dB，pure bicubic输入却由58.1724降至44.5718 dB（`results/range_branch/r5_k3.json`）；需优先解决轻退化保护。
 
@@ -95,5 +95,29 @@ python3 -u code/takeover_queue.py configs/openh3_20261111/pilot_queue.json
 5. 加入有明确顺序及逐帧参数的混合/时变退化，并建立新冻结测试集。只有分任务原RGB保真、时序、干净输入保护和跨来源结果齐全，才能决定是否扩大模型或训练。
 
 验收安排相应以R_phi独立恢复、R_phi与冻结/适配H3的因素对照为主；Sharp、额外LoRA和latent upscaler消融不得替代这些实验。此前四任务时间为条件目标，不能解释为已启动R_phi训练。
+
+### 13:35 开始执行独立 RGB 原型
+
+新增 `rphi_data.py`、`rphi_model.py`、`train_rphi.py`、`eval_rphi.py` 和 `compare_rphi.py`。200个NPZ及物化receipt/manifest共246个文件已从31984校验迁入30794。最终47项CPU单测全部通过。真实NPU小步训练与整帧评估队列在13:37完成：RGB/anchor/variance/condition重载误差均为0，四任务480×832全帧chunk检查通过，本地LPIPS权重成功载入。证据为 `results/takeover_20261111/rphi_smoke_*`，只证明工程运行正确，不能解释成质量收益。
+
+三组1000步计划 `rphi_pilot_queue_30794.json` 已在13:41由 tmux `rphi-pilot-20261111` 启动于30794卡6，输出 `runs/rphi_20261111_pilot/`。首臂known前325步约0.41秒/步、训练峰值分配1.112GB；训练后自动进行完整8来源/32任务样本评估，再顺序运行两个blind臂和配对比较。三臂实际完成状态及收益仍须读最终产物，不把队列启动等同验收通过。
+
+三组为known（公开task/scale）、blind（只读三帧观测）、blind_confidence（同一blind恢复器+误差方差校准）。共享主干在相同seed下逐tensor相同，训练crop序列和预算相同。SR先把观测映射到目标HR网格，native三任务保留原网格；全部对原始RGB参考监督。25%期望比例的identity/near-clean控制在线生成，独立汇报损伤，不能混进普通任务成绩。
+
+本阶段输出是RGB预测、由它确定性下采样得到的canonical Q4 anchor、以及局部log-variance。**尚未实现独立物理range head，也未将软约束接入H3或训练有状态时序模型。** 不确定度头读detach后的特征和误差，使用独立优化器；其作用是测量校准，按设计不应改变blind分支的RGB训练轨迹。将比较最终fidelity权重hash，不把第三组相同RGB成绩冒充结构提升。known臂使用同一FiLM残差结构家族的新RGB骨干，当前ch64/8blocks；它不是历史ch96/12blocks checkpoint的直接重用或数值复现。
+
+训练使用RGB Charbonnier、边缘L1和相对几何对齐输入的identity guard。最后一个checkpoint用于开发评估，不按开发集挑选最好checkpoint。评估覆盖32个来源/任务样本，报告各任务原RGB PSNR/MAE/本地LPIPS、时序误差、干净输入保护、置信度校准与来源配对比较；8个来源仍是开发集，不能支持未见域泛化结论。原始源视频的hash由31984物化证据提供，30794严格重验当前NPZ文件、像素和metadata绑定，未声称重新读取源视频。
+
+独立代码复核发现的限制：当前blind编码器在卷积前池化至最多64×64，96×96训练crop与480×832整帧评估的缩放比例不同，会把噪声/模糊的尺度泛化混入known/blind差值。本轮保留固定实现并如实报告，后续候选改为先在原像素尺度卷积再汇聚；不得据此轮结果断言盲恢复能力上限。当前三臂lr/warmup/优化器默认一致，但v1合同未保存这些字段，后续版本需补齐。比较程序未自动拒绝不同flow模式，验收另行核对每臂flow模式与有效支撑，不能只看 `complete=true`。
+
+H3接入也需单独验证：现有49步设计的innerDC落点映射到3步采样后全部落在最后一步，修正后没有后续DiT融合；native HR若直接送BicubicConsistency会成为全帧identity投影。下一步先固定冻结H3和raw warm start，比较raw/R_phi guide，再在相同解码RGB上做显式post-decode soft anchor；SR使用canonical Q4，native任务使用完整RGB软融合。该后处理不是物理观测的精确逆投影，置信度尚未用于权重。
+
+为上述下一阶段新增四个隔离模块，未修改已固定hash的pilot runtime：`rphi_condition_v2.py`（原像素尺度条件特征，尚未训练）、`rphi_soft_anchor.py`（CPU解码后软锚点）、`export_rphi_guides.py`（全部22帧float32输出及来源/权重/像素hash）、`audit_rphi_results.py`（光流支撑、LPIPS、chunk和三臂匹配审计）。最终75项CPU测试通过。soft anchor还在合成480×832数据上通过四任务数值检查：alpha=0保持原tensor，alpha=0.25且不clip时锚点残差约为原来的0.75；会分别记录clip与dtype舍入导致的残差。该合成检查不是H3质量结果。
+
+known臂1000步于13:48:48完成，训练/验证/保存共402.89秒，重载误差0。按约19秒/任务样本的实际整帧评估速度，三臂完整开发结果的条件预计为当日14:30–15:00（Asia/Singapore）；卡可用状态改变或验证失败会使队列停止，此时间不覆盖后续H3或冻结测试验收。
+
+13:59更新：known臂完整8来源/32任务评估完成，结果归档为 `results/takeover_20261111/rphi_known_1000_metrics.json`。相对bicubic/identity输入，SR、deblur、denoise、compression的PSNR平均变化分别为+0.0355、+0.0855、+8.6177、+0.0875 dB，LPIPS变化分别为−0.000703、−0.000864、−0.291926、−0.000176。四任务PSNR均8/8来源改善，但实际收益主要集中在去噪；SR光流对齐误差略增6.35e−6，不得宣称所有时序指标都改善。denoise标签下identity MAE为0.003053，near-clean PSNR相对直接输入下降2.4625 dB，仍有轻退化损伤。不能据此宣称omni完成或将弱去模糊/去压缩增益包装为强恢复。队列已进入blind训练。
+
+另启动 `rphi-completion-audit-20261111`，执行一次有90分钟超时的 `audit_rphi_queue_completion.py`。它只等待上述有限队列完成，再在CPU运行严格结果审计，写 `runs/rphi_20261111_pilot/audit.json` 和独立 `audit_status.json` 后退出；上游失败则停止。该依赖步骤不使用NPU、不新增训练、不修改上游状态、不发送通知。其失败/超时/异常状态处理已在本地验证，上游状态与结果保持不变。
 
 2026-11-11 接管时 31984 的 8 张卡均有既存训练进程。CPU 测试通过不代表实际 H3 smoke 或 pilot 已完成；以队列状态和运行产物为准。

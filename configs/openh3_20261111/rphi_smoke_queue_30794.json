@@ -1,0 +1,87 @@
+{
+  "schema": "openh3.takeover_queue.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "cards": [
+    6
+  ],
+  "min_free_mb": 50000,
+  "lock_dir": "/cache/zihaohe/.npu-reservations",
+  "status": "runs/rphi_20261111_smoke/queue_status.json",
+  "scope": "Finite standalone four-task R_phi RGB experiment; no H3 integration, learned physical range head or soft DC claimed. Stop on failure.",
+  "steps": [
+    {
+      "name": "01_train_smoke",
+      "argv": [
+        "venv/bin/python",
+        "code/train_rphi.py",
+        "--train-manifest",
+        "datasets/omni_pilot_v1/train_materialized.jsonl",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--seed",
+        "20261111",
+        "--variant",
+        "blind_confidence",
+        "--steps",
+        "2",
+        "--batch",
+        "4",
+        "--crop",
+        "32",
+        "--ch",
+        "8",
+        "--blocks",
+        "1",
+        "--val-batches",
+        "1",
+        "--out",
+        "runs/rphi_20261111_smoke/train"
+      ],
+      "log": "runs/rphi_20261111_smoke/logs/train.log"
+    },
+    {
+      "name": "02_eval_smoke",
+      "argv": [
+        "venv/bin/python",
+        "code/eval_rphi.py",
+        "--checkpoint",
+        "runs/rphi_20261111_smoke/train/checkpoint_step000002.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--max-sources",
+        "1",
+        "--frame-stride",
+        "11",
+        "--out",
+        "runs/rphi_20261111_smoke/eval"
+      ],
+      "log": "runs/rphi_20261111_smoke/logs/eval.log"
+    }
+  ],
+  "environment": {
+    "H3_BASE_ENV": "/cache/yunfeng/envs/minimax-h3-npu",
+    "PYTHONPATH": "/cache/zihaohe/omni_openh3_20261111/code"
+  },
+  "implementation_sha256": {
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "b7d2d8a8c110ab31d443f1bf5c2d1f3b34db1c8ed1dd5d559b5d029369e40e63",
+    "code/train_rphi.py": "aa6cc0b31fcff91b41a41ae1d36fc62ee7cb62e20a7410fa958cd3e62db7e837",
+    "code/eval_rphi.py": "505a8cb869992165d6cd8abd5ff52aae0653b1b7d86dd9da6b5cdb821676e642",
+    "code/compare_rphi.py": "0abc081c8f07610ad4929182c305d4c50b03ed431329843add52009041c7bd09",
+    "code/restoration_metrics.py": "ad3b12b3bd63e5567fc921d9cf87102c83c400d8277e34b2c480125d8277d671",
+    "code/takeover_queue.py": "1ee1cca8081759e87b937dac1045a0060312924c1af508435afc87a399bd6a74",
+    "code/run_takeover_command.sh": "d9b5211f2a1e5d4a3ada37c47e0f3d845605c815ba9091be5610027a4b0cbffb",
+    "env.sh": "c68c3ebbc4eb1aec6fcafcc8209cbfe0018254a72c2e6052fd155d7e049d5a3a"
+  },
+  "required_json_values": [
+    {
+      "path": "/cache/haoyi/video_sample/cvpr27/res/all_models/checks/qwen_prompt_v3_review_20261103/h3_pulse3_early10_fixed30_20261104/SCHEME3_REVIEW_HOLD.json",
+      "key": "no_new_scheme3_executions",
+      "value": true
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "script_sha256": "73ef66d9df49a171060be6bc07d03fd62128b234c7d51657223c2265a1c74c02",
+  "scope": "local CPU failure-path checks; real completion invokes the separately tested audit",
+  "results": [
+    {
+      "case": "upstream_failure",
+      "returncode": 2,
+      "state": "failed",
+      "reason": "upstream queue failed",
+      "upstream_unchanged": true,
+      "audit_not_created": true
+    },
+    {
+      "case": "timeout",
+      "returncode": 2,
+      "state": "failed",
+      "reason": "bounded wait expired",
+      "upstream_unchanged": true,
+      "audit_not_created": true
+    },
+    {
+      "case": "unknown_state",
+      "returncode": 1,
+      "state": "failed",
+      "reason": "ValueError: unexpected upstream state: unexpected",
+      "upstream_unchanged": true,
+      "audit_not_created": true
+    }
+  ]
+}

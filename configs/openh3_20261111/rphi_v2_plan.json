@@ -1,17 +1,26 @@
 {
   "schema": "openh3.rphi_research_plan.v1",
-  "status": "planned_not_implemented_or_launched",
+  "status": "standalone_rgb_prototype_npu_smoke_passed_three_arm_pilot_running",
   "date": "2026-11-11",
   "priority": "R_phi fidelity and temporal restoration, separately attributable from H3 LoRA",
-  "starting_point": "K3 causal FiLM residual CNN; old architecture retrained on the same new data as control",
+  "starting_point": "K3 causal FiLM residual CNN family; matched new RGB baseline, not reuse of a historical R_phi checkpoint",
   "data": {
     "materialized_manifest_dir": "results/takeover_20261111/materialized",
     "train_sources": 32,
     "dev_sources": 8,
-    "tasks": ["sr", "deblur", "denoise", "compression"],
+    "tasks": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
     "target": "shared original-recording RGB proxy, not pristine GT",
     "requires_vae_for_standalone_rphi": false,
-    "missing": ["identity and near-clean controls", "ordered mixed degradations", "time-varying degradations", "new frozen test sources"]
+    "missing": [
+      "ordered mixed degradations",
+      "time-varying degradations",
+      "new frozen test sources"
+    ]
   },
   "output_contract": {
     "range_pred": "explicitly named clean observation-domain or canonical anchor; never silently interchangeable with sharp RGB",
@@ -21,7 +30,7 @@
     "native_observation": "retained as an independent conditioning input, not discarded by the low-resolution anchor"
   },
   "condition_arms": [
-    "known operator: controlled non-blind baseline",
+    "public task/scale condition: controlled non-blind baseline; no oracle severity or physical-operator parameters",
     "observations only plus known output geometry: learned continuous condition, no GT severity or hidden degradation metadata at inference"
   ],
   "consistency_contract": {
@@ -32,12 +41,99 @@
     "final_acceptance_space": "decoded original-resolution RGB"
   },
   "stages": [
-    {"id": "R0", "status": "pending", "work": "RGB loader, shared target checks, standalone old-architecture baseline and clean-input guard"},
-    {"id": "R1", "status": "pending", "work": "separate range/RGB outputs; observation-derived conditions and calibrated uncertainty ablations"},
-    {"id": "R2", "status": "pending", "work": "K3 versus causal state, reset/chunking tests and motion/occlusion-aware temporal evaluation"},
-    {"id": "R3", "status": "pending", "work": "frozen H3 with raw / old R_phi / new R_phi guides and soft consistency toggled; include R_phi-only"},
-    {"id": "R4", "status": "pending", "work": "train LoRA on the same chosen R_phi conditions; compare matched frozen/adapted H3"},
-    {"id": "R5", "status": "pending", "work": "mixed and time-varying degradations, new frozen-source evaluation"}
+    {
+      "id": "R0",
+      "status": "cpu_and_npu_smoke_passed_matched_pilot_running",
+      "work": "RGB loader, shared target checks, matched K3 FiLM baseline and clean-input guard"
+    },
+    {
+      "id": "R1",
+      "status": "observation_condition_and_calibration_implemented_pilot_running",
+      "work": "separate range/RGB outputs; observation-derived conditions and calibrated uncertainty ablations"
+    },
+    {
+      "id": "R2",
+      "status": "pending",
+      "work": "K3 versus causal state, reset/chunking tests and motion/occlusion-aware temporal evaluation"
+    },
+    {
+      "id": "R3",
+      "status": "pending",
+      "work": "frozen H3 with raw / old R_phi / new R_phi guides and soft consistency toggled; include R_phi-only"
+    },
+    {
+      "id": "R4",
+      "status": "pending",
+      "work": "train LoRA on the same chosen R_phi conditions; compare matched frozen/adapted H3"
+    },
+    {
+      "id": "R5",
+      "status": "pending",
+      "work": "mixed and time-varying degradations, new frozen-source evaluation"
+    }
   ],
-  "promotion_rule": "Complete matched controls and per-task fidelity, temporal, clean-input and uncertainty reports before claiming gains; small dev results are not omni generalization evidence"
+  "promotion_rule": "Complete matched controls and per-task fidelity, temporal, clean-input and uncertainty reports before claiming gains; small dev results are not omni generalization evidence",
+  "implementation": {
+    "files": [
+      "code/rphi_data.py",
+      "code/rphi_model.py",
+      "code/train_rphi.py",
+      "code/eval_rphi.py",
+      "code/compare_rphi.py"
+    ],
+    "cpu_tests_passed": 75,
+    "npu_host": "30794",
+    "npu_card": 6,
+    "smoke_queue": "configs/openh3_20261111/rphi_smoke_queue_30794.json",
+    "pilot_queue": "configs/openh3_20261111/rphi_pilot_queue_30794.json",
+    "pilot_launched": true,
+    "implemented_outputs": {
+      "rgb": "unclamped HR RGB residual prediction",
+      "anchor": "derived canonical Q4(rgb); not an independently supervised range head or physical observation operator",
+      "log_variance": "calibration-only head on detached features/errors; separate optimizer"
+    },
+    "arms": [
+      "known",
+      "blind",
+      "blind_confidence"
+    ],
+    "pilot_steps_per_arm": 1000,
+    "identity_and_near_clean": "generated online with reproducible seeds and explicit separate evaluation controls",
+    "not_implemented": [
+      "independent physical range head",
+      "uncertainty-driven soft consistency",
+      "H3 conditioning integration",
+      "stateful temporal model"
+    ],
+    "pilot_started_at": "2026-11-11T13:41:11+08:00",
+    "smoke_completed_at": "2026-11-11T13:37:17+08:00",
+    "pilot_tmux_session": "rphi-pilot-20261111",
+    "pilot_output": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_20261111_pilot",
+    "limitations": [
+      "v1 blind observation pre-pooling changes pixel scale between crop training and full-frame evaluation; preserve as prototype, prepare native-scale encoder candidate",
+      "v1 training contract omits optimizer hyperparameters; current queue uses identical defaults",
+      "v1 comparison needs additional flow-mode/support audit before temporal comparisons"
+    ],
+    "isolated_modules": {
+      "code/rphi_condition_v2.py": "native-pixel feature extraction candidate; CPU tested, not trained or wired into v1",
+      "code/rphi_soft_anchor.py": "post-decode canonical/fidelity soft anchor; CPU and synthetic 480p checks passed, not used in pilot/H3",
+      "code/export_rphi_guides.py": "full-frame observation-only float32 export with provenance; tiny CPU tests passed, actual pilot output not exported yet",
+      "code/audit_rphi_results.py": "strict post-hoc comparison audit; quality requires manual review"
+    },
+    "completed_pilot_arms": [
+      "known"
+    ],
+    "completion_audit": "code/audit_rphi_queue_completion.py waits once for finite queue completion; writes audit.json then exits, no notifications or NPU use",
+    "known_development_result": {
+      "scope": "8 development sources; standalone conditioned RGB, not H3 or frozen-test",
+      "psnr_gain_db": {
+        "sr": 0.03553136269198909,
+        "deblur": 0.08550232995052287,
+        "denoise": 8.61773900928781,
+        "compression": 0.08754146221708048
+      },
+      "near_clean_denoise_psnr_delta_db": -2.4624555660490426,
+      "evidence": "results/takeover_20261111/rphi_known_1000_metrics.json"
+    }
+  }
 }

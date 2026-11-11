@@ -1,0 +1,36 @@
+{
+  "state": "running",
+  "card": 6,
+  "step": "03_blind_train",
+  "completed": [
+    "01_known_train",
+    "02_known_eval"
+  ],
+  "argv": [
+    "venv/bin/python",
+    "code/train_rphi.py",
+    "--train-manifest",
+    "datasets/omni_pilot_v1/train_materialized.jsonl",
+    "--dev-manifest",
+    "datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--device",
+    "npu:0",
+    "--seed",
+    "20261111",
+    "--variant",
+    "blind",
+    "--steps",
+    "1000",
+    "--batch",
+    "16",
+    "--crop",
+    "96",
+    "--ch",
+    "64",
+    "--blocks",
+    "8",
+    "--out",
+    "runs/rphi_20261111_pilot/blind/train"
+  ],
+  "updated_at_utc": "2026-11-11T05:59:23.982181+00:00"
+}

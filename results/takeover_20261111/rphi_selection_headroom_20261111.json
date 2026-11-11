@@ -1,0 +1,275 @@
+{
+  "schema": "rphi.existing_candidate_selection_headroom.v1",
+  "date": "2026-11-11",
+  "status": "completed_cpu_diagnostic_only",
+  "metrics_path": "results/takeover_20261111/rphi_stage2_first_pair/native_g05/eval/metrics.json",
+  "metrics_sha256": "be0d2a0e9ccc96afbca8db89621a7a3d7717f1a772eb7571bf24455852f463bc",
+  "checkpoint_sha256": "ad2645294eb08a6174ee18177472383eccbce7fa7a1c8f81fd5e9fa733bee0a8",
+  "formula": "For each source-task clip, choose the larger of existing mean-frame model PSNR and input PSNR. Average paired differences equally across the eight sources. LPIPS uses that same PSNR-selected clip policy.",
+  "limitations": [
+    "GT-dependent oracle; not deployable",
+    "Only two existing whole-clip candidates, not a bound on patch selection, H3 or future restorers",
+    "Eight development sources and stride4; not independent test or adjacent-frame temporal proof",
+    "Native_g05 is analyzed, not selected as the accepted stage2 candidate"
+  ],
+  "per_task": {
+    "compression": {
+      "source_count": 8,
+      "always_restore_psnr_delta_db": -0.01818559703192424,
+      "oracle_psnr_delta_db": 0.06648543582001931,
+      "oracle_minus_always_db": 0.08467103285194355,
+      "oracle_restore_count": 5,
+      "psnr_oracle_lpips_delta": -0.00032878967855746533
+    },
+    "deblur": {
+      "source_count": 8,
+      "always_restore_psnr_delta_db": 0.21118489355498715,
+      "oracle_psnr_delta_db": 0.21118489355498715,
+      "oracle_minus_always_db": 0.0,
+      "oracle_restore_count": 8,
+      "psnr_oracle_lpips_delta": -0.0025622089548657323
+    },
+    "denoise": {
+      "source_count": 8,
+      "always_restore_psnr_delta_db": 9.743817789177491,
+      "oracle_psnr_delta_db": 9.743817789177491,
+      "oracle_minus_always_db": 0.0,
+      "oracle_restore_count": 8,
+      "psnr_oracle_lpips_delta": -0.37529111669088405
+    },
+    "sr": {
+      "source_count": 8,
+      "always_restore_psnr_delta_db": 0.11927286627426081,
+      "oracle_psnr_delta_db": 0.11927286627426081,
+      "oracle_minus_always_db": 0.0,
+      "oracle_restore_count": 8,
+      "psnr_oracle_lpips_delta": -0.0023362828263392057
+    }
+  },
+  "per_sample": [
+    {
+      "source_id": "NPCSVxYpK3k",
+      "task": "compression",
+      "sample_id": "rphi-251e6470abc45f6abbed2fd82fbb0bd10bad3259fcc8d272561f21c498da1fd3",
+      "restore_psnr_delta_db": -0.2352231929830637,
+      "psnr_oracle_choice": "input"
+    },
+    {
+      "source_id": "MjfCH89sBzs",
+      "task": "compression",
+      "sample_id": "rphi-1c44906f5fa0f8870dbe86b0ae9b39be908aa8f0afca67739f4430b5a1349b56",
+      "restore_psnr_delta_db": 0.15547357189947064,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "GcdzBmlxyN0",
+      "task": "compression",
+      "sample_id": "rphi-143c4cf24598a1f77c34c7ba5d8f301cb93365ee0d56610edfb0790a224cfb43",
+      "restore_psnr_delta_db": 0.10446863361274694,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "74ZtTQKeQoU",
+      "task": "compression",
+      "sample_id": "rphi-953d9a62647a2466f01f033f9293daab44dff9db84f5612e6ba3de2793dc5fd4",
+      "restore_psnr_delta_db": 0.10422831765512797,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6rJrrfRO3cA",
+      "task": "compression",
+      "sample_id": "rphi-6606be09be438e11060bb692193542fc72ff1caae0fd08c0f1f14551a9f62329",
+      "restore_psnr_delta_db": -0.10921487365803983,
+      "psnr_oracle_choice": "input"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "task": "compression",
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "restore_psnr_delta_db": 0.1039351980168206,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "KR4M9nGv2is",
+      "task": "compression",
+      "sample_id": "rphi-f19162b3a6445a5b07f5a2798ccf511936d07bfcab41a7a46f622b2a13ba6f1f",
+      "restore_psnr_delta_db": 0.06377776537598834,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "EBmROluwLkc",
+      "task": "compression",
+      "sample_id": "rphi-ac25de27760defcade0c10e664d6bd0e7f7bf9f5a5e8f73dc80e1fe5a49e724b",
+      "restore_psnr_delta_db": -0.33293019617444486,
+      "psnr_oracle_choice": "input"
+    },
+    {
+      "source_id": "NPCSVxYpK3k",
+      "task": "deblur",
+      "sample_id": "rphi-b779dcdd710ee4577b389a7a6443a4894fee94abe786381a1c978449aeb770c3",
+      "restore_psnr_delta_db": 0.10418819345797203,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "MjfCH89sBzs",
+      "task": "deblur",
+      "sample_id": "rphi-2a8916308eb3a2cbe162b1c3893041d79d2025c50480657924ba975cb30e2e38",
+      "restore_psnr_delta_db": 0.16986070655636354,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "GcdzBmlxyN0",
+      "task": "deblur",
+      "sample_id": "rphi-dd239f6d79e55fc6a0425f6c8310c83e95f53f7765de300ccf75f79cc379772d",
+      "restore_psnr_delta_db": 0.1984491297176838,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "74ZtTQKeQoU",
+      "task": "deblur",
+      "sample_id": "rphi-5a6da4d5f384f6f8bfd5b8a81fbf7db22aa00001a33f4ed93769a1a05ddea02f",
+      "restore_psnr_delta_db": 0.33511535743042487,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6rJrrfRO3cA",
+      "task": "deblur",
+      "sample_id": "rphi-110516f8c822eddfea4b6f929508d335667ce1c21d3ca4ee87d585f1597548ec",
+      "restore_psnr_delta_db": 0.17489622248118053,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "task": "deblur",
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "restore_psnr_delta_db": 0.31255484588685434,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "KR4M9nGv2is",
+      "task": "deblur",
+      "sample_id": "rphi-aba9e104572ab107293d179e582b3548ca2321bf35eefb968420d27544ea8ae6",
+      "restore_psnr_delta_db": 0.183709550252658,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "EBmROluwLkc",
+      "task": "deblur",
+      "sample_id": "rphi-34566397d3f296eff56f7f0550b00c4befe82099d80a1095ed58934159003249",
+      "restore_psnr_delta_db": 0.2107051426567601,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "NPCSVxYpK3k",
+      "task": "denoise",
+      "sample_id": "rphi-7122dc1ca881cee3ba03adcbafe354dd0347331fb167ace5b2dbf28e7739512a",
+      "restore_psnr_delta_db": 3.2215462710681493,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "MjfCH89sBzs",
+      "task": "denoise",
+      "sample_id": "rphi-889f677b405e54d64504d165c0188bd8783760a07fff1d69fb0eb1340305f33b",
+      "restore_psnr_delta_db": 12.303242265599547,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "GcdzBmlxyN0",
+      "task": "denoise",
+      "sample_id": "rphi-d702a24f81f314942e3a5ff365797570738b20b9357c0c501a93283e223c8129",
+      "restore_psnr_delta_db": 10.902251075968486,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "74ZtTQKeQoU",
+      "task": "denoise",
+      "sample_id": "rphi-d3ff294caabe14f9353b565fdca7043dd759c666467a894140df4ba2ab6c97ed",
+      "restore_psnr_delta_db": 11.084589970051468,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6rJrrfRO3cA",
+      "task": "denoise",
+      "sample_id": "rphi-91014be0c689d99e91cb2dd544b15d15a93c078721cf457a496d0725702a9423",
+      "restore_psnr_delta_db": 10.507980257256694,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "task": "denoise",
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "restore_psnr_delta_db": 12.329763908983363,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "KR4M9nGv2is",
+      "task": "denoise",
+      "sample_id": "rphi-6617019d62d3d7abc04a0388713da3f6ddbe2f2fefdde1b2858b96a3ec1d586a",
+      "restore_psnr_delta_db": 11.320938360758952,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "EBmROluwLkc",
+      "task": "denoise",
+      "sample_id": "rphi-bb98abb053d61d11bd2f6376b511409881249815f06702a9d47b833de86087dc",
+      "restore_psnr_delta_db": 6.280230203733268,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "NPCSVxYpK3k",
+      "task": "sr",
+      "sample_id": "rphi-2abe484c849057f988dfdf592e734eff9e7bc10c70596e3a25258ccd138627a8",
+      "restore_psnr_delta_db": 0.07470841109129012,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "MjfCH89sBzs",
+      "task": "sr",
+      "sample_id": "rphi-316884995e926a02b873732b6f2426368efe2d69c1b99375a20a88d073bf06b6",
+      "restore_psnr_delta_db": 0.1611135478689647,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "GcdzBmlxyN0",
+      "task": "sr",
+      "sample_id": "rphi-82b293621fca2201f053f2e3fdd936badb2757634ffc72a907e0a454a9927748",
+      "restore_psnr_delta_db": 0.10911398449104937,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "74ZtTQKeQoU",
+      "task": "sr",
+      "sample_id": "rphi-301b17f9506fd70925887e2ad88ab010647b21ca155c8111014da5b0e06526ed",
+      "restore_psnr_delta_db": 0.1388716310779472,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6rJrrfRO3cA",
+      "task": "sr",
+      "sample_id": "rphi-79da436d403412a90403fb9da13cec8483e0f8ddd10e997e9f9a14f76020da54",
+      "restore_psnr_delta_db": 0.10619497891022434,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "task": "sr",
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "restore_psnr_delta_db": 0.1350517245612508,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "KR4M9nGv2is",
+      "task": "sr",
+      "sample_id": "rphi-cf7211f8edfadeb7372787d6af29d6d05f157550684d7af833953c8b2d5a1b25",
+      "restore_psnr_delta_db": 0.10487738645645805,
+      "psnr_oracle_choice": "rphi"
+    },
+    {
+      "source_id": "EBmROluwLkc",
+      "task": "sr",
+      "sample_id": "rphi-1b1209c9b7a9586757cc2141b35c7e45cdb3c05c10ffc50daffd8d9865bce6cb",
+      "restore_psnr_delta_db": 0.12425126573690193,
+      "psnr_oracle_choice": "rphi"
+    }
+  ]
+}

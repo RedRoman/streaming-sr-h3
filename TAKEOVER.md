@@ -173,3 +173,13 @@ FaverNet `14769f22685f4850c5e203d493c99ad2eba5b68b`、AverNet `c4eb019f71fe6a2cc
 31984只读库存发现1068个原始候选视频，778个ID未匹配到已枚举训练/验证/评估清单，但全部已有harvest元数据记录，不能视作未被看过。46个通过旧video sharp heuristic而仅因audio门槛被淘汰，是video-only校准/test资格审计的优先候选；不等于已合格或pristine GT。32个确定性抽样完成源SHA与首中尾解码检查，独立calibration/test当前获批数量仍为0。详见混合时变数据plan与inventory；先审计46来源历史/去重/质量和源组，再CPU物化小试验，不把现8dev改名为冻结测试。
 
 前两臂独立配对审计已通过：仅encoder为声明差异，源/记录/输入像素哈希、初始fidelity、基准指标和LPIPS一致，384项flow支撑记录检查通过，chunk差全0；未归档baseline像素与flow mask，不能声称对它们逐像素独立重验。native−legacy的SR/deblur/denoise/compression PSNR为−0.01173/−0.01833/−0.15423/−0.01354 dB，LPIPS为+0.000565/+0.000574/+0.001546/−0.00000304。去噪6/8来源比legacy好但均值为负、置信区间跨0，保留来源异质性。最差去压缩来源 `EBmROluwLkc` 的native相对输入−0.33293 dB、相对legacy−0.06433 dB。报告 `results/takeover_20261111/rphi_stage2_first_pair_review.json`，不代替全矩阵及冻结校准验收。
+
+### 17:34 创新性复核与并行假设收紧
+
+用户询问当前创新性及其他并行设计。定向原论文核对发现直接重合：VetoNet（2026-10预印本，https://arxiv.org/abs/2610.21335）已有冻结恢复/生成候选、局部反事实相对收益和风险拒绝；LaverNet（https://arxiv.org/abs/2512.16313）已有all-in-one视频选择性传播，TURTLE已有因果历史路由。因此原H1降为控制基线，通用H2门控不能直接作为主创新。已同步修正benchmark plan，并补LaverNet/TURTLE文献与机制对照；没有确认LaverNet可运行官方资产。
+
+`configs/openh3_20261111/parallel_research_plan_20261111.json` 记录两个方法假设和一个低成本诊断，均尚未实现/开训：P1用当前帧恢复损失的有/无历史差监督历史边际效用，比较同容量普通gate、真实效用与打乱效用，需先验证缺失历史干预不会制造分布外假标签；P2交换噪声与压缩顺序，先验证oracle顺序信息有恢复价值，再做blind小头，不能把顺序感知本身称为新颖；P3复用待生成的固定H3全22帧float缓存，正交分解G−R残差，判定是否存在可保留的正确细节，再决定生成接口及LoRA。频带融合本身也已有先例。阶段预算、依赖、失败条件及公平对照均写入计划；现有stage2 runtime/队列未修改，也未额外启动NPU任务。
+
+当前Rphi本来只读原始K3观测，没有生成回灌bug；未来保持该接口属于约束，不冒充新贡献。退化改变不能简单等于清空历史，突然变噪时此前清楚帧可能更有用。源级数据、stride1/长片段、clean保护、连续损伤与恢复延迟必须一并评估，现32train/8dev不能支持泛化或风险认证。
+
+新增CPU诊断 `results/takeover_20261111/rphi_selection_headroom_20261111.json`，使用已归档native_g05指标（metrics SHA be0d2a0e9ccc96afbca8db89621a7a3d7717f1a772eb7571bf24455852f463bc）：8个压缩dev来源中，整段GT-PSNR oracle在input/Rphi二选一时，相对input仅+0.06649dB，always-Rphi为−0.01819dB，oracle额外+0.08467dB，选择恢复5/8。它仅是这两个已有整段候选的诊断，不是patch门控/H3/未来模型的上界，也不能部署或替代全矩阵验收。

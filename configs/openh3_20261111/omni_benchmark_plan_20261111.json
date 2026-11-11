@@ -5,12 +5,19 @@
   "scope": "Single-checkpoint blind video restoration for SR, native deblur, denoise and compression; target geometry remains an explicit input. No claim to every possible degradation or audiovisual restoration.",
   "evidence": {
     "current_stage": "standalone R_phi RGB pilot and separate raw-guide H3 LoRA pilot; combined system not validated",
-    "known_rphi_dev_psnr_gain_db": {"sr": 0.035531, "deblur": 0.085502, "denoise": 8.617739, "compression": 0.087541},
+    "known_rphi_dev_psnr_gain_db": {
+      "sr": 0.035531,
+      "deblur": 0.085502,
+      "denoise": 8.617739,
+      "compression": 0.087541
+    },
     "known_rphi_denoise_label_near_clean_psnr_delta_db": -2.462456,
     "known_result": "results/takeover_20261111/rphi_known_1000_metrics.json",
     "historical_predicted_range_on_flashvsr_plus_lpips_delta": 0.01322,
     "historical_result": "results/FROZEN.json",
-    "interpretation": "Denoising gains dominate this small development set. Neither universal restoration nor universal benefit from a predicted anchor is established."
+    "interpretation": "Denoising gains dominate this small development set. Neither universal restoration nor universal benefit from a predicted anchor is established.",
+    "latest_matched_stage2_review": "results/takeover_20261111/rphi_stage2_first_pair_review.json",
+    "latest_interpretation": "First two 3000-step arms do not support a native-encoder gain; neither has positive mean compression PSNR versus input. Earlier known-1000 results remain historical, not current candidate acceptance."
   },
   "baseline_registry": [
     {
@@ -19,7 +26,7 @@
       "role": "native same-resolution denoise, deblur and compression; unknown time-varying degradation",
       "repository": "https://github.com/XLearning-SCU/2026-IJCV-FaverNet",
       "paper": "https://doi.org/10.1007/s11263-026-02977-y",
-      "availability": "official code, test entry point and weight links verified; download and inference not validated",
+      "availability": "Official source and Common/SPyNet weights downloaded with hashes and backed up on31984; lossless adapter CPU tests/input preflight passed; strict weight load and real model inference not validated.",
       "constraints": "bidirectional offline; Common and Weather use separate checkpoints; no native x4 SR evidence; MMCV deformable convolution and CUDA paths require Ascend audit"
     },
     {
@@ -28,7 +35,7 @@
       "role": "native unknown/time-varying multi-degradation baseline",
       "repository": "https://github.com/XLearning-SCU/2024-NeurIPS-AverNet",
       "paper": "https://papers.nips.cc/paper/2024/hash/e635a25e49e73adc51f76aef462ff2f8-Abstract-Conference.html",
-      "availability": "official code, weight links and degradation synthesis verified; execution not validated",
+      "availability": "Official source and model/SPyNet weights downloaded with hashes and backed up on31984; lossless adapter CPU tests/input preflight passed; strict weight load and real model inference not validated.",
       "constraints": "bidirectional offline; resizing blur is not an LR-to-HR x4 SR protocol"
     },
     {
@@ -74,43 +81,119 @@
       "paper": "https://arxiv.org/abs/2501.02269",
       "availability": "official executable code and weights not located in this audit",
       "constraints": "task prompts and future-frame window; five tasks include x4 SR and compression but not deblur; separate information conditions from blind inference"
+    },
+    {
+      "method": "LaverNet",
+      "priority": 1,
+      "role": "directly related all-in-one selective temporal propagation literature and mechanism comparison",
+      "paper": "https://arxiv.org/abs/2512.16313",
+      "availability": "Primary paper reviewed; official executable code and weights not verified",
+      "constraints": "Do not label a locally implemented SPM-like ablation an official reproduced LaverNet result."
+    },
+    {
+      "method": "TURTLE",
+      "priority": 2,
+      "role": "causal history retrieval/alignment/routing prior art and temporal protocol reference",
+      "paper": "https://arxiv.org/abs/2410.03936",
+      "availability": "Primary paper reviewed; local execution not validated",
+      "constraints": "Do not assume one released checkpoint is blind all-in-one across all tasks."
     }
   ],
   "evaluation_contract": {
     "splits": "disjoint source recordings for train, risk calibration, development and untouched frozen test; no dev-selected main-test checkpoint",
-    "tracks": ["official pretrained zero-shot", "matched-data adaptation with declared trainable parameters and budget"],
+    "tracks": [
+      "official pretrained zero-shot",
+      "matched-data adaptation with declared trainable parameters and budget"
+    ],
     "input_output": "identical decoded RGB hashes, resolution, scale, frame selection, border and metric range; lossless output or a shared codec control",
     "temporal_access": "report past/future frames and first-output delay; label offline baselines and compare quality/latency without pretending future budgets match",
-    "data_gaps": ["motion blur beyond isotropic Gaussian", "real sensor noise", "ordered mixed degradation", "smooth and abrupt time variation", "repeated codec degradation", "long video and scene changes", "held-out real-world sources"],
-    "metrics": ["per-task RGB PSNR and LPIPS", "masked flow-aligned and detail temporal error", "clean/near-clean damage", "transition error and recovery latency", "source-paired uncertainty intervals", "first-frame and steady-state latency including R_phi and VAE", "peak memory, model size and failure coverage"],
+    "data_gaps": [
+      "motion blur beyond isotropic Gaussian",
+      "real sensor noise",
+      "ordered mixed degradation",
+      "smooth and abrupt time variation",
+      "repeated codec degradation",
+      "long video and scene changes",
+      "held-out real-world sources"
+    ],
+    "metrics": [
+      "per-task RGB PSNR and LPIPS",
+      "masked flow-aligned and detail temporal error",
+      "clean/near-clean damage",
+      "transition error and recovery latency",
+      "source-paired uncertainty intervals",
+      "first-frame and steady-state latency including R_phi and VAE",
+      "peak memory, model size and failure coverage"
+    ],
     "specialists": "include task-specific strong baselines where claiming task-level SOTA; choose only after the public dataset/protocol is fixed"
   },
   "hypotheses": [
     {
       "id": "H1_action_risk",
-      "status": "proposed_not_implemented",
+      "status": "proposed_control_not_primary_novelty",
       "claim_to_test": "Observation-conditioned relative risk can reduce harmful restoration changes at matched restoration coverage while retaining gains on unknown mixed degradations.",
       "mechanism": "Predict candidate-versus-base error change on detached fixed candidates; independently calibrate on held-out sources. Current R_phi error variance is not this action risk and is not raw-observation noise variance.",
       "mvp": "freeze R_phi; compare geometry-aligned input versus R_phi before adding a fixed H3 candidate",
-      "controls": ["always restore", "development-selected fixed mixing strengths", "prediction-variance gating", "learned relative-risk gating", "shuffled risk maps", "oracle action selection for diagnosis only"],
-      "failure": "Reject the claim if gains come only from almost never restoring, fail at matched coverage, disappear against fixed mixing, or survive risk-map shuffling unchanged."
+      "controls": [
+        "always restore",
+        "development-selected fixed mixing strengths",
+        "prediction-variance gating",
+        "learned relative-risk gating",
+        "shuffled risk maps",
+        "oracle action selection for diagnosis only"
+      ],
+      "failure": "Reject the claim if gains come only from almost never restoring, fail at matched coverage, disappear against fixed mixing, or survive risk-map shuffling unchanged.",
+      "novelty_revision": "VetoNet 2026-10 directly covers frozen candidates, counterfactual relative utility and risk-based local override. Keep as control, match coverage and actual edit magnitude.",
+      "prior_art": [
+        "https://arxiv.org/abs/2610.21335",
+        "https://arxiv.org/abs/2609.03475"
+      ]
     },
     {
       "id": "H2_history_validity",
-      "status": "proposed_not_implemented",
+      "status": "generic_gate_superseded_by_P1_hypothesis",
       "claim_to_test": "Observation-driven history validity can reduce transition artifacts without sacrificing useful temporal evidence in stable regions.",
       "mechanism": "start with K3; score whether each past observation remains relevant; distinguish scene/motion changes from degradation changes; do not treat generated pixels as independent new observations",
-      "controls": ["K1", "fixed K3", "fixed temporal decay", "learned history validity", "shuffled history", "no reset", "oracle degradation-change reset for diagnosis only"],
-      "failure": "Reject the claim if gains arise from ignoring all history or only detecting cuts, or if stable-segment quality and temporal benefit disappear."
+      "controls": [
+        "K1",
+        "fixed K3",
+        "fixed temporal decay",
+        "learned history validity",
+        "shuffled history",
+        "no reset",
+        "oracle degradation-change reset for diagnosis only"
+      ],
+      "failure": "Reject the claim if gains arise from ignoring all history or only detecting cuts, or if stable-segment quality and temporal benefit disappear.",
+      "novelty_revision": "Generic temporal gate overlaps LaverNet/TURTLE. Test current-query history marginal utility supervision using matched-capacity and shuffled-label arms; see parallel research plan P1.",
+      "prior_art": [
+        "https://arxiv.org/abs/2512.16313",
+        "https://arxiv.org/abs/2410.03936"
+      ]
     }
   ],
   "h3_integration_gate": {
-    "controls": ["R_phi only", "fixed H3 raw guide", "fixed H3 R_phi guide", "matched post-decode fixed soft anchor", "candidate learned action-risk control", "matched-guide LoRA after frozen controls"],
+    "controls": [
+      "R_phi only",
+      "fixed H3 raw guide",
+      "fixed H3 R_phi guide",
+      "matched post-decode fixed soft anchor",
+      "candidate learned action-risk control",
+      "matched-guide LoRA after frozen controls"
+    ],
     "three_step_dc": "legacy sampling events collapse to the final step; a future inner-step mechanism must beat post-decode correction at matched DiT and VAE budgets and be evaluated after final decode",
     "native_task_constraint": "A=I hard projection to raw input restores degradation; projection to R_phi fixes the whole output to R_phi. Use explicitly named finite-strength fidelity anchors; canonical Q4 is not a known physical observation operator.",
     "causality": "verify whole-pipeline prefix invariance or declare bounded block lookahead; causal R_phi alone does not establish causal H3",
     "component_parity": "separately compare official pretrained latent upscaler and current pixel-upsample draft; match all selected pretrained components before attributing improvements to architecture"
   },
-  "novelty_policy": "These are falsifiable research hypotheses, not established novel contributions. LoRA, FiLM, uncertainty heads, soft guidance, temporal gating and restoration-then-generation are existing techniques. Additional targeted prior-art review is required before any first/SOTA claim.",
-  "execution_order": ["finish and audit the unchanged three-arm pilot", "freeze benchmark protocols and repair FlashVSR+ RGB transport", "validate native FaverNet/AverNet execution", "test H1 on standalone R_phi with clean and mixed cases", "test H2 under isolated degradation transitions", "integrate fixed H3 and only then matched-guide LoRA", "evaluate untouched external test sources"]
+  "novelty_policy": "Targeted review on2026-11-11 found direct prior art for H1 and generic H2. Neither is a main novelty claim. See parallel_research_plan_20261111.json for narrowed falsifiable hypotheses and controls; no first/SOTA claim is established.",
+  "execution_order": [
+    "finish and audit the unchanged stage2 matrix",
+    "repair fair RGB transport and validate native baselines",
+    "prepare P1 temporal utility and P2 paired-order pilot data and contracts",
+    "run fixed H3 guide/anchor controls after candidate gate; reuse cache for P3 residual diagnosis",
+    "bounded matched-capacity P1/P2 screens; action-risk remains a control",
+    "train matched-guide LoRA only after a useful frozen interface is identified",
+    "evaluate untouched source groups"
+  ],
+  "novelty_review": "configs/openh3_20261111/parallel_research_plan_20261111.json"
 }

@@ -1,0 +1,31 @@
+{
+  "schema": "openh3.checkpoint_options_snapshot_patch.v1",
+  "status": "frozen_CPU_verified_NPU_not_tested",
+  "date": "2026-11-11",
+  "prior_trajectory_sha256": "805781046838c8ea29eff893c83484c3765e7da8be2f68c74168297ee0385cdd",
+  "source_sha256": {
+    "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/tests/test_openh3_train_trajectory.py": "f9e05c4cadff196e0da0c7ef511321ee21db73e30252dc092df01d1534f61287"
+  },
+  "cpu_receipt_sha256": "5ced1e11845f2f6e105a82358660efd3eb07006652dc7f79ef964ee473b527eb",
+  "cpu_tool_output_sha256": "6ad373e18cc2b116d34e3b6b6db093276557ca65fef4e3c37269652334bfaaaf",
+  "finding": {
+    "module_lines": "code/openh3_train_trajectory.py prior192-197",
+    "pinned_comfy_model_lines": "comfy/ldm/minimax/model.py760 and770",
+    "mechanism": "shared transformer_options.block_index is mutated after each block call; copying only inside recompute captures the later value",
+    "measured_original_NPU_numerical_impact": "not established; default unpatched attention may not consume block_index",
+    "fix": "snapshot the top-level transformer_options at wrapper entry and copy that snapshot separately for each original invocation",
+    "scope": "reviewed no-hooks/no-custom-options trajectory; does not promise arbitrary recursively mutable plugin options"
+  },
+  "tests": {
+    "executed": 10,
+    "passed": 10,
+    "skipped": 0,
+    "new_regression": "Two blocks share options, change block_index and use it within nonlinear activation; assert exact output, input-gradient and parameter-gradient parity and replay indices [[0,0],[1,1]]",
+    "NPU_calls": 0
+  },
+  "old_runtime_snapshots_modified": false,
+  "real_H3_zero_adapter_parity": "pending separate strict probe",
+  "main_plan_modified": false
+}

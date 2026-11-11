@@ -1,0 +1,42 @@
+{
+  "schema": "openh3.latent_probe_preparation_receipt.v1",
+  "created_at_utc": "2026-11-11T15:17:41.495884+00:00",
+  "host": "huawei-modelarts-30794",
+  "CPU_tests": {
+    "passed": 13,
+    "skipped": 0,
+    "seconds": 3.318,
+    "log_sha256": "db51c9ef2579ad9a2bdec060b7f9bcb00c193cf1b706f1dd92a1a2d176a7175e"
+  },
+  "CPU_environment": {
+    "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+    "torch": "2.10.0+cpu",
+    "numpy": "2.5.4",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "torch_npu_imported": false
+  },
+  "inspection": {
+    "asset_bytes_sha_verified": false,
+    "assets_size_only_verified": true,
+    "contract_sha256": "c23698f469c2f2962adf1006f8a8dcefcac0b689a0e4abc87782ff82620c79cb",
+    "inspection_only": true,
+    "planned": {
+      "RGB_loss_calls": 0,
+      "VAE_calls": 0,
+      "backward_calls": 1,
+      "candidate_NFE": 3,
+      "optimizer_steps": 0,
+      "reference_NFE": 3
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "runtime_files_verified": 1177
+  },
+  "NPU_started_by_preparation": false,
+  "probe_sha256": "4dee97bc24f923329449e98bef20872868d1549b45f3e4342b131fe156b45775",
+  "test_sha256": "a06856f58d1fe83f2fbcdee4c9da174963e679357eea18b9a24d527c6567640e",
+  "trajectory_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+  "queue_sha256": "dc4b2de0dc8c9bbae98f5557e5cd3599c2f51be4b10411ed65215d60ed8f26d1",
+  "execution_contract_sha256": "c23698f469c2f2962adf1006f8a8dcefcac0b689a0e4abc87782ff82620c79cb",
+  "pending_gate": "fresh root admission followed by real H3 numerical and gradient execution; CPU tests do not prove real H3/NPU parity",
+  "old_runtime_mutated": false
+}

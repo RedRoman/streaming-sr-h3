@@ -1,0 +1,79 @@
+{
+  "schema": "openh3.cpu_finalizer_b_launch_receipt.v1",
+  "host_id": "huawei-modelarts-30794",
+  "session": "h3-terminal-finalize-20261111b",
+  "launches": 1,
+  "remote_status": {
+    "schema": "openh3.latent_cpu_finalizer.v2",
+    "state": "waiting_for_terminal",
+    "pid": 915514,
+    "started_at_utc": "2026-11-11T15:44:30.637309+00:00",
+    "run": "/cache/zihaohe/omni_openh3_20261111/runs/h3_trajectory_probe_20261111b",
+    "wait_limit_seconds": 2400,
+    "poll_seconds": 30,
+    "audit_timeout_seconds": 180,
+    "audit_invocations": 0,
+    "NPU_calls": 0,
+    "model_job_interventions": 0,
+    "complete": false,
+    "error": null,
+    "admission": {
+      "schema": "openh3.latent_finalizer_admission.v1",
+      "run": "runs/h3_trajectory_probe_20261111b",
+      "prep": "preparation/h3_trajectory_probe_20261111b",
+      "out": "runs/h3_trajectory_probe_20261111b_finalize",
+      "auditor_sha256": "58fb08a5e09262561ca99746ef1bf3aae8986672d1bff30bc3595b476c69b2a7",
+      "finalizer_sha256": "f742f0dbc3a8df8c98c6260300bca28dcce69bcab3ce432b9d4b35f9d6a4deb8",
+      "probe_sha256": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+      "trajectory_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+      "execution_contract_sha256": "2dd8ac7bbd007035d76325f946a2e3abe5a68e47517216ce294cd345a40c590b",
+      "queue_sha256": "adb02c39376958194be672e4ccc98ea1d4e365651a43798d8757c60d8f477096"
+    },
+    "admission_sha256": "e16a35bd2d57c6e7243c6227f49d3faa7a25a140033d02358a9e8c664dcfba2f",
+    "updated_at_utc": "2026-11-11T15:44:30.639850+00:00",
+    "elapsed_seconds": 0.002560203894972801,
+    "polls": 1,
+    "wait_seconds": 0.00009279046207666397,
+    "last_queue_observation": {
+      "record": {
+        "state": "running",
+        "card": 6,
+        "step": "latent_trajectory_exact_parity_then_backward",
+        "completed": [],
+        "argv": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=30s",
+          "1800s",
+          "venv/bin/python",
+          "preparation/h3_trajectory_probe_20261111b/code/check_h3_trajectory_grad.py",
+          "--pretrained-manifest",
+          "configs/openh3_20261111/refiner_turbo_30794.json",
+          "--execution-contract",
+          "preparation/h3_trajectory_probe_20261111b/execution_contract.json",
+          "--out",
+          "runs/h3_trajectory_probe_20261111b/eval",
+          "--execute"
+        ],
+        "updated_at_utc": "2026-11-11T15:42:07.032493+00:00"
+      },
+      "sha256": "e33498c704cd26ed2a6aa2733ee6e3ebff640c964dcbb098c33ea46f3897f444"
+    }
+  },
+  "remote_cpu_tests": {
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 5.3891343073919415,
+    "torch_imported": false,
+    "torch_npu_imported": false,
+    "NPU_calls": 0,
+    "actual_admission_pins_verified": true,
+    "receipt": "preparation/h3_trajectory_terminal_finalize_20261111b/remote_cpu_receipt.json"
+  },
+  "archive_when_terminal": "/cache/zihaohe/omni_openh3_20261111/runs/h3_trajectory_probe_20261111b_finalize/evidence.tar.gz",
+  "remote_output": "/cache/zihaohe/omni_openh3_20261111/runs/h3_trajectory_probe_20261111b_finalize",
+  "download_performed": false,
+  "producer_runtime_modified": false
+}

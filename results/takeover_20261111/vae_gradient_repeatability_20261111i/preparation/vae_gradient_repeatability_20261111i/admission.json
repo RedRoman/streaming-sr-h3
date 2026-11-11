@@ -1,0 +1,42 @@
+{
+  "utc": "2026-11-11T15:16:09.047566+00:00",
+  "queue_sha256": "f868daf326b472137752fd5cfb81c5f082713aaf2f8d303e485635cc07bc3a3c",
+  "pins": 1185,
+  "bad_pins": [],
+  "bad_guards": [],
+  "card6": {
+    "health": "OK",
+    "pids": [],
+    "used_mb": 3424,
+    "total_mb": 65536,
+    "utilization": 0
+  },
+  "lock_available": true,
+  "status_absent": true,
+  "cpu_validation": {
+    "schema": "openh3.vae_repeatability_cpu_validation.v1",
+    "complete": true,
+    "tests_passed": 8,
+    "torch": "2.10.0+cpu",
+    "device": "cpu",
+    "latent_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "latent_dtype": "torch.float32",
+    "seed101_input_sha256": "1b53b9ebdc3358b5a5c89a639e9aac04e0b769cde9bccff71d57d4cb6e1c3ed4",
+    "torch_npu_imported": false,
+    "files_sha256": {
+      "code/probe_vae_gradient_repeatability.py": "6bb57838279749a838b2e45e1dd9288273c99adb0e85ce8420101165635658a2",
+      "code/compare_vae_gradient_repeatability.py": "8b76f3504c47bc6ce831d312208e708f44bd60ef8c3176c2c4f58f731c165f9e",
+      "code/tests/test_vae_gradient_repeatability.py": "0a10fc77bde893cfb9d5a5df742b3184d186f89f86de4ea2fb6ac8c10be1da12"
+    },
+    "test_log": "test_actual_elementwise_error_support_sign_and_signed_zero (test_vae_gradient_repeatability.EvidenceTests.test_actual_elementwise_error_support_sign_and_signed_zero) ... ok\ntest_contract_runtime_weight_and_forward_mismatches_fail (test_vae_gradient_repeatability.EvidenceTests.test_contract_runtime_weight_and_forward_mismatches_fail) ... ok\ntest_exact_a1_a2_admit_and_paired_is_bound_to_them (test_vae_gradient_repeatability.EvidenceTests.test_exact_a1_a2_admit_and_paired_is_bound_to_them) ... ok\ntest_incomplete_checkpoint_bypass_and_empty_gates_rejected (test_vae_gradient_repeatability.EvidenceTests.test_incomplete_checkpoint_bypass_and_empty_gates_rejected) ... ok\ntest_nonexact_gradient_cannot_admit_even_if_flag_is_forged (test_vae_gradient_repeatability.EvidenceTests.test_nonexact_gradient_cannot_admit_even_if_flag_is_forged) ... ok\ntest_saved_array_corruption_and_overwrite_are_rejected (test_vae_gradient_repeatability.EvidenceTests.test_saved_array_corruption_and_overwrite_are_rejected) ... ok\ntest_unscale_relation_and_distinct_process_receipts_required (test_vae_gradient_repeatability.EvidenceTests.test_unscale_relation_and_distinct_process_receipts_required) ... ok\ntest_actual_backward_single_and_paired_clear_leaf_gradient (test_vae_gradient_repeatability.TinyAutogradTests.test_actual_backward_single_and_paired_clear_leaf_gradient) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 3.100s\n\nOK\n",
+    "model_loaded": false,
+    "NPU_calls": 0
+  },
+  "passed": true
+}

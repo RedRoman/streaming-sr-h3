@@ -189,10 +189,19 @@ def _checkpoint_modules(blocks, enabled, active, math_context=None):
                 if not torch.is_grad_enabled():
                     return _original(*inputs, **kwargs)
 
+                # MiniMax reuses one options dict and updates block_index as it
+                # walks the blocks. Snapshot it NOW, not when backward invokes
+                # recompute after that dict has reached the final block. Make
+                # a fresh copy of this snapshot for every invocation as the
+                # block/attention implementation may mutate its local options.
+                saved_kwargs = dict(kwargs)
+                if "transformer_options" in saved_kwargs:
+                    saved_kwargs["transformer_options"] = dict(saved_kwargs["transformer_options"])
+
                 def recompute(*args):
                     if not state["active"] or not active():
                         raise RuntimeError("backward must remain inside the trajectory session")
-                    copied = dict(kwargs)
+                    copied = dict(saved_kwargs)
                     if "transformer_options" in copied:
                         copied["transformer_options"] = dict(copied["transformer_options"])
                     return _original(*args, **copied)

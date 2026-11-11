@@ -1,0 +1,186 @@
+{
+  "schema": "openh3.vae_gradient_repeatability_comparison.v1",
+  "observations_complete": true,
+  "a1_a2_exact": false,
+  "allow_paired_history": false,
+  "complete": false,
+  "a1": {
+    "root": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/vae_gradient_repeatability_20261111i/runs/vae_gradient_repeatability_20261111i/A1",
+    "report_sha256": "5f66b3de428561b8e83c020680816283da267967ce44315bdb467db1aa51e2a6"
+  },
+  "a2": {
+    "root": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/vae_gradient_repeatability_20261111i/runs/vae_gradient_repeatability_20261111i/A2",
+    "report_sha256": "fc2b2b6462faf250079be2ef1598140127d29d96a5e9708e67795697679369c4"
+  },
+  "common_contract": {
+    "implementation_sha256": {
+      "probe_vae_gradient_repeatability.py": "6bb57838279749a838b2e45e1dd9288273c99adb0e85ce8420101165635658a2",
+      "compare_vae_gradient_repeatability.py": "8b76f3504c47bc6ce831d312208e708f44bd60ef8c3176c2c4f58f731c165f9e",
+      "check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+      "vae_checkpoint_context.py": "cdbdf29d7211885aa1ba4c0518c9b767cc2dd5f52aecde0b77cde229e2463eb6",
+      "h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+      "run_vae_roundtrip_diagnostic.py": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811",
+      "openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa",
+      "eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+      "export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+      "export_rphi_guides_stage2.py": "f52212f0126985112e0be403992d067bcb3bc6486d18a19534124d9c8904dace",
+      "lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+      "openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+      "pixel_consistency.py": "253c4bbbc3e4bd35ff73596b34d1784131042359678fd0a7666638f34a15c509",
+      "restoration_metrics.py": "ad3b12b3bd63e5567fc921d9cf87102c83c400d8277e34b2c480125d8277d671",
+      "rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+      "rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "rphi_h3_controls.py": "ca515675deda019e885bd24c218c7c2fbce7f9749a5f029d764e3562f9c1b8de",
+      "rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "rphi_soft_anchor.py": "1605fa75ea4819351e549611c85feb499ba9029bd5029b3e92cec00c6ef53f31",
+      "run_fixed_h3_rphi.py": "05383516e55d395f161337df26568d34e7d6add1092786db640f9c8aaa33630d"
+    },
+    "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "seed": 101,
+    "input_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "input_dtype": "float32",
+    "input_array_sha256": "1b53b9ebdc3358b5a5c89a639e9aac04e0b769cde9bccff71d57d4cb6e1c3ed4",
+    "RGB_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "expected_seed101_input_sha256": "1b53b9ebdc3358b5a5c89a639e9aac04e0b769cde9bccff71d57d4cb6e1c3ed4",
+    "input_generation": "CPU torch.Generator seed101 float32 randn, identical path in all modes",
+    "loss_scale": 1024.0,
+    "target": "torch float32 linspace(.2,.8,832)[None,None,:,None], broadcast to THWC",
+    "loss": "CPU float32 mean((as_returned_internal_clipped_decoder_RGB-target)**2)",
+    "grad_rope_mode": "ascend_native",
+    "checkpoint_blocks": 36,
+    "use_reentrant": false,
+    "forward_atol": 0.0002,
+    "forward_rtol": 0.0001,
+    "optimizer_steps": 0,
+    "H3_denoiser_calls": 0,
+    "scope": "synthetic VAE input-gradient repeatability only; no restoration or joint H3 acceptance"
+  },
+  "runtime_before": {
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post2",
+    "deterministic_algorithms": false,
+    "deterministic_warn_only": false,
+    "native_deterministic_level_read_only_private_getter": 0,
+    "matmul_allow_hf32": false,
+    "conv_allow_hf32": false,
+    "jit_compile_false": true,
+    "mm_bmm_format_nd": true,
+    "vae_dtype": "torch.float16",
+    "device": "npu:0",
+    "environment": {
+      "ASCEND_RT_VISIBLE_DEVICES": "6",
+      "ASCEND_HOME_PATH": "/cache/yunfeng/envs/minimax-h3-npu/Ascend/cann-9.0.1",
+      "CANN": "/cache/yunfeng/envs/minimax-h3-npu/Ascend/cann-9.0.1",
+      "ASCEND_OPP_PATH": "/cache/yunfeng/envs/minimax-h3-npu/Ascend/cann-9.0.1/opp"
+    },
+    "imported_source": {
+      "comfy.ldm.minimax.vae": {
+        "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py",
+        "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe"
+      },
+      "comfy.ldm.modules.attention": {
+        "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/modules/attention.py",
+        "sha256": "26ae302355066b7fe5363840268c73d937e33ec40341a0458ca8aa97493b5274"
+      },
+      "comfy.ops": {
+        "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ops.py",
+        "sha256": "a0b8c7f32a146b383a795363bef35e480ffa84b5b3e9c9503f323b1446876f45"
+      },
+      "comfy.model_management": {
+        "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/model_management.py",
+        "sha256": "045ab96003386a43e647c8ab96f22fbf3be6c577e2fc578ea31c6faa22facbd5"
+      },
+      "comfy_kitchen.backends.ascend.rope": {
+        "path": "/cache/zihaohe/streaming_sr0/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/rope.py",
+        "sha256": "8fe40b99144d04f14c308683324ff49b24eccdbe8c8510059cdc6fd9451b2873"
+      }
+    }
+  },
+  "frozen_before": {
+    "sha256": "b2ccc0d4ac695109336bf739fd7fc3aa3efd1725301211c32f2938ff36e29fd6",
+    "parameter_count": 559
+  },
+  "cross_process_forward_hashes_equal": true,
+  "a1_a2": {
+    "input": {
+      "finite": true,
+      "exact_equal": true,
+      "equal_coordinates": 262080,
+      "different_coordinates": 0,
+      "max_abs_elementwise_difference": 0.0,
+      "l2_difference_float64": 0.0,
+      "relative_l2_to_left": 0.0,
+      "relative_l2_to_left_zero_norm": false,
+      "cosine_similarity": 1.0,
+      "cosine_zero_norm": false,
+      "support": {
+        "left_nonzero": 262080,
+        "right_nonzero": 262080,
+        "intersection": 262080,
+        "union": 262080,
+        "left_only": 0,
+        "right_only": 0
+      },
+      "opposite_sign_on_common_nonzero": 0,
+      "signed_zero_difference": 0
+    },
+    "scaled_raw": {
+      "finite": true,
+      "exact_equal": false,
+      "equal_coordinates": 26932,
+      "different_coordinates": 235148,
+      "max_abs_elementwise_difference": 3.814697265625e-05,
+      "l2_difference_float64": 0.0014972908776624408,
+      "relative_l2_to_left": 0.0019251850805516895,
+      "relative_l2_to_left_zero_norm": false,
+      "cosine_similarity": 0.9999981468306298,
+      "cosine_zero_norm": false,
+      "support": {
+        "left_nonzero": 262055,
+        "right_nonzero": 262046,
+        "intersection": 262022,
+        "union": 262079,
+        "left_only": 33,
+        "right_only": 24
+      },
+      "opposite_sign_on_common_nonzero": 256,
+      "signed_zero_difference": 0
+    },
+    "scaled_unscaled": {
+      "finite": true,
+      "exact_equal": false,
+      "equal_coordinates": 26932,
+      "different_coordinates": 235148,
+      "max_abs_elementwise_difference": 3.725290298461914e-08,
+      "l2_difference_float64": 1.4621981227172274e-06,
+      "relative_l2_to_left": 0.0019251850805516895,
+      "relative_l2_to_left_zero_norm": false,
+      "cosine_similarity": 0.9999981468306298,
+      "cosine_zero_norm": false,
+      "support": {
+        "left_nonzero": 262055,
+        "right_nonzero": 262046,
+        "intersection": 262022,
+        "union": 262079,
+        "left_only": 33,
+        "right_only": 24
+      },
+      "opposite_sign_on_common_nonzero": 256,
+      "signed_zero_difference": 0
+    }
+  },
+  "criterion": "Exact bytes/hashes; descriptive errors never create a tolerance",
+  "b": null
+}

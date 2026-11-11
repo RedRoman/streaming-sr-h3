@@ -1,0 +1,54 @@
+{
+  "schema": "openh3.latent_probe_preparation_receipt.v2",
+  "created_at_utc": "2026-11-11T15:39:34.749690+00:00",
+  "host": "huawei-modelarts-30794",
+  "CPU_tests": {
+    "passed": 20,
+    "skipped": 0,
+    "seconds": 3.379,
+    "log_sha256": "8d753a20242a8280ad228f485c27ee9a4b6820e23d7ea35487d213fc08c4a83b"
+  },
+  "inspection": {
+    "asset_bytes_sha_verified": false,
+    "assets_size_only_verified": true,
+    "contract_sha256": "2dd8ac7bbd007035d76325f946a2e3abe5a68e47517216ce294cd345a40c590b",
+    "inspection_only": true,
+    "planned": {
+      "RGB_loss_calls": 0,
+      "VAE_calls": 0,
+      "backward_calls": 1,
+      "candidate_NFE": 3,
+      "optimizer_steps": 0,
+      "reference_NFE": 3
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "runtime_files_verified": 1179
+  },
+  "light_import": {
+    "passed": true,
+    "source_modules": 47,
+    "synthetic_namespaces": [
+      "torch.ops",
+      "torch.classes"
+    ],
+    "namespace_package_source_counts": {
+      "comfy_kitchen.backends": 25
+    },
+    "receipt_sha256": "ecd762527bf2083f72ecc4c9049e03bc2d38b9d0b333395ae460d9632258a539",
+    "torch_npu_imported": true,
+    "scope": "CPU import validation; kitchen indirectly imports torch_npu. No device tensor/model/40GB asset load/NPU forward."
+  },
+  "pre_freeze_findings": [
+    "torch.ops/classes inherited pseudo __file__ values, real torch definition source now pinned",
+    "Additional light import exposed genuine PEP420 comfy_kitchen.backends namespace package; final classifier binds every one of its25Python files. Prior pre-namespace light import failed before model work."
+  ],
+  "probe_sha256": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+  "test_sha256": "b5ef188811f3f47d30efd605051c2208ca4f95b7fc16185d5c37a4faad2a7391",
+  "trajectory_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+  "queue_sha256": "adb02c39376958194be672e4ccc98ea1d4e365651a43798d8757c60d8f477096",
+  "execution_contract_sha256": "2dd8ac7bbd007035d76325f946a2e3abe5a68e47517216ce294cd345a40c590b",
+  "NPU_launch_by_this_agent": false,
+  "old_a_runtime_modified": false,
+  "numerical_math_budget_tolerance_changed": false,
+  "pending": "fresh root admission and real H3 small latent-only probe; CPU acceptance is not real-model numerical acceptance"
+}

@@ -1,0 +1,150 @@
+{
+  "at_utc": "2026-11-11T15:00:17.491147+00:00",
+  "host": "30794",
+  "stage2": {
+    "smoke_queue_status": {
+      "sha256": "6fef647c7e068d6f22b5af18c65a4ab594fe8a22068d9d1bdd9d4b5b015f8365",
+      "record": {
+        "state": "completed",
+        "card": 6,
+        "completed": [
+          "smoke_native_train",
+          "smoke_calibration_fit",
+          "smoke_native_eval",
+          "smoke_calibration_eval"
+        ],
+        "updated_at_utc": "2026-11-11T08:41:01.099094+00:00"
+      }
+    },
+    "native_queue_status": {
+      "sha256": "50e378d9e922f068e5ed668ac2b65cf9448ea7384309b27802915a0c4f51a807",
+      "record": {
+        "state": "completed",
+        "card": 6,
+        "completed": [
+          "native_g05_train",
+          "native_g05_eval",
+          "frozen_confidence_fit",
+          "frozen_confidence_eval"
+        ],
+        "updated_at_utc": "2026-11-11T09:38:10.527013+00:00"
+      }
+    },
+    "controls_queue_status": {
+      "sha256": "e76bbf119a9011bb00991d945fc088d6ce65709321035fbb6fa75482f02b0336",
+      "record": {
+        "state": "completed",
+        "card": 1,
+        "completed": [
+          "legacy_g05_train",
+          "legacy_g05_eval",
+          "native_g20_train",
+          "native_g20_eval"
+        ],
+        "updated_at_utc": "2026-11-11T09:46:13.678183+00:00"
+      }
+    },
+    "finalize_status": {
+      "sha256": "0cb1fdac6f3268fd7bd3b33495d0aafc6c6e20e308e02bc28426eae74875dada",
+      "record": {
+        "state": "completed",
+        "updated_at_utc": "2026-11-11T09:46:25.567483+00:00",
+        "quality_verdict": "requires_review",
+        "audit": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/audit.json",
+        "archive": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/evidence.tar.gz",
+        "records": 56
+      }
+    }
+  },
+  "devices": {
+    "0": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3430,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "1": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3426,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "2": {
+      "health": "OK",
+      "pids": [
+        2227801
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "3": {
+      "health": "OK",
+      "pids": [
+        2227803
+      ],
+      "used_mb": 38053,
+      "total_mb": 65536,
+      "utilization": 77
+    },
+    "4": {
+      "health": "OK",
+      "pids": [
+        2227913
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "5": {
+      "health": "OK",
+      "pids": [
+        2227915
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "6": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3424,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "7": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3419,
+      "total_mb": 65536,
+      "utilization": 0
+    }
+  },
+  "vae_decode_grad_scaled_fullres_20261111h": {
+    "sha256": "c4d6aec6f5848f23e2b03ec87fef98ae9e63440142f8cc69cbed7fb18ea1b785",
+    "record": {
+      "state": "failed",
+      "card": 6,
+      "step": "vae_decode_input_gradient_smoke",
+      "completed": [],
+      "returncode": 1,
+      "log": "/cache/zihaohe/omni_openh3_20261111/runs/vae_decode_grad_scaled_fullres_20261111h/logs/gradient.log",
+      "updated_at_utc": "2026-11-11T14:33:03.475129+00:00"
+    }
+  },
+  "rphi_train_controls_legacy_smoke_20261111a": {
+    "sha256": "31a525fe794ccaa241961495083178f0510ea8ea2224b61d82d4ca8ab44eca0a",
+    "record": {
+      "state": "completed",
+      "card": 6,
+      "completed": [
+        "export_one_train_source_identity_nearclean_rgb_controls"
+      ],
+      "updated_at_utc": "2026-11-11T14:41:45.203978+00:00"
+    }
+  },
+  "card6_lock_available": true,
+  "card6_eligible_at_snapshot": true
+}

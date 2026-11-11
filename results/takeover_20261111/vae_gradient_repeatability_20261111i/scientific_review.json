@@ -1,0 +1,184 @@
+{
+  "schema": "openh3.vae_repeatability_scientific_review.v1",
+  "observations_verified": true,
+  "strict_repeatability_passed": false,
+  "B_executed": false,
+  "archive_sha256": "144e293137bee4dafdc7a07a9020b3c14850a61293f27cc59610e5eddc4973d2",
+  "archive_local_array_validation": "results/takeover_20261111/vae_gradient_repeatability_20261111i/local_verification.json",
+  "run": "runs/vae_gradient_repeatability_20261111i",
+  "source": "synthetic_seed101_no_dataset",
+  "A1_A2": [
+    {
+      "label": "A1",
+      "seconds": 65.52311279810965,
+      "forwards": 2,
+      "backwards": 1,
+      "complete": true,
+      "forward_bitwise_equal": true,
+      "forward_max_abs_difference": 0.0,
+      "frozen": {
+        "before": {
+          "sha256": "b2ccc0d4ac695109336bf739fd7fc3aa3efd1725301211c32f2938ff36e29fd6",
+          "parameter_count": 559
+        },
+        "after": {
+          "sha256": "b2ccc0d4ac695109336bf739fd7fc3aa3efd1725301211c32f2938ff36e29fd6",
+          "parameter_count": 559
+        },
+        "versions_unchanged": true
+      },
+      "memory": {
+        "peak_allocated_bytes": 9804621312,
+        "peak_reserved_bytes": 10815012864
+      },
+      "gradient_statistics": {
+        "scaled_raw": {
+          "shape": [
+            1,
+            24,
+            7,
+            30,
+            52
+          ],
+          "dtype": "float32",
+          "elements": 262080,
+          "finite_count": 262080,
+          "nan_count": 0,
+          "inf_count": 0,
+          "nonzero_count": 262055,
+          "zero_count": 25,
+          "l2_float64": 0.7777386666810084,
+          "max_abs": 0.0180511474609375,
+          "min_nonzero_abs": 5.960464477539063e-08,
+          "array_sha256": "382706bd9f12bb0cd847f6bbd52fdfc85facdc9649b463d8b72e98c6e7a1b480"
+        },
+        "scaled_unscaled": {
+          "shape": [
+            1,
+            24,
+            7,
+            30,
+            52
+          ],
+          "dtype": "float32",
+          "elements": 262080,
+          "finite_count": 262080,
+          "nan_count": 0,
+          "inf_count": 0,
+          "nonzero_count": 262055,
+          "zero_count": 25,
+          "l2_float64": 0.0007595104166806723,
+          "max_abs": 1.7628073692321777e-05,
+          "min_nonzero_abs": 5.820766091346741e-11,
+          "array_sha256": "317d15fafceccc8dd277fe6ba522cebed1429831ada2e0311d984cab78d5380d"
+        }
+      }
+    },
+    {
+      "label": "A2",
+      "seconds": 67.98197303339839,
+      "forwards": 2,
+      "backwards": 1,
+      "complete": true,
+      "forward_bitwise_equal": true,
+      "forward_max_abs_difference": 0.0,
+      "frozen": {
+        "before": {
+          "sha256": "b2ccc0d4ac695109336bf739fd7fc3aa3efd1725301211c32f2938ff36e29fd6",
+          "parameter_count": 559
+        },
+        "after": {
+          "sha256": "b2ccc0d4ac695109336bf739fd7fc3aa3efd1725301211c32f2938ff36e29fd6",
+          "parameter_count": 559
+        },
+        "versions_unchanged": true
+      },
+      "memory": {
+        "peak_allocated_bytes": 9804621312,
+        "peak_reserved_bytes": 10815012864
+      },
+      "gradient_statistics": {
+        "scaled_raw": {
+          "shape": [
+            1,
+            24,
+            7,
+            30,
+            52
+          ],
+          "dtype": "float32",
+          "elements": 262080,
+          "finite_count": 262080,
+          "nan_count": 0,
+          "inf_count": 0,
+          "nonzero_count": 262046,
+          "zero_count": 34,
+          "l2_float64": 0.7777384019532912,
+          "max_abs": 0.018035888671875,
+          "min_nonzero_abs": 5.960464477539063e-08,
+          "array_sha256": "e36c5a53f0fe32f687a19a5d96a8b12a9c659d958481f34419545338e0aa428c"
+        },
+        "scaled_unscaled": {
+          "shape": [
+            1,
+            24,
+            7,
+            30,
+            52
+          ],
+          "dtype": "float32",
+          "elements": 262080,
+          "finite_count": 262080,
+          "nan_count": 0,
+          "inf_count": 0,
+          "nonzero_count": 262046,
+          "zero_count": 34,
+          "l2_float64": 0.000759510158157511,
+          "max_abs": 1.761317253112793e-05,
+          "min_nonzero_abs": 5.820766091346741e-11,
+          "array_sha256": "78ea127ee3b90779f9f830a3bdba66939e54880d58c586914134f0a2a831c053"
+        }
+      }
+    }
+  ],
+  "cross_process_forward_hashes_equal": true,
+  "unscaled_gradient_comparison": {
+    "finite": true,
+    "exact_equal": false,
+    "equal_coordinates": 26932,
+    "different_coordinates": 235148,
+    "max_abs_elementwise_difference": 3.725290298461914e-08,
+    "l2_difference_float64": 1.4621981227172274e-06,
+    "relative_l2_to_left": 0.0019251850805516895,
+    "relative_l2_to_left_zero_norm": false,
+    "cosine_similarity": 0.9999981468306298,
+    "cosine_zero_norm": false,
+    "support": {
+      "left_nonzero": 262055,
+      "right_nonzero": 262046,
+      "intersection": 262022,
+      "union": 262079,
+      "left_only": 33,
+      "right_only": 24
+    },
+    "opposite_sign_on_common_nonzero": 256,
+    "signed_zero_difference": 0
+  },
+  "opposite_sign_energy": {
+    "opposite_sign_common_nonzero_count": 256,
+    "A1_squared_gradient_energy_fraction": 1.7789956789259814e-09,
+    "A2_squared_gradient_energy_fraction": 1.9325053245275307e-09,
+    "max_abs_A1_flipped": 9.371433407068253e-09,
+    "max_abs_A2_flipped": 1.0652001947164536e-08
+  },
+  "interpretation": [
+    "Two fresh identical single-backward processes both complete with finite nonzero gradients and frozen state; backward is not bitwise reproducible under observed flags.",
+    "This breaks the assumption needed to attribute old g/h SHA difference solely to retained-graph history. Paired-history B was correctly skipped.",
+    "Strict repeatability remains failed; no changed tolerance or claim of exact gradient validity. Small relative errors/high cosine do not alone establish optimizer or LoRA stability.",
+    "Signs differ on coordinates carrying little squared-gradient energy; coordinate fraction is not error magnitude. Adam can rescale small coordinates so this is descriptive only."
+  ],
+  "next": "Separate predeclared seed102 fixed-step latent directional/descent validation, maximum8 forwards3 backwards, no tuning; then actual adapter/RGB optimizer gate.",
+  "training_steps": 0,
+  "full_H3_acceptance": false,
+  "quality_or_omni_claim": false
+}

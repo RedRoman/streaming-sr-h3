@@ -1,0 +1,20 @@
+{
+  "schema": "openh3.runtime_source_audit_correction.v1",
+  "a_probe_sha256": "4dee97bc24f923329449e98bef20872868d1549b45f3e4342b131fe156b45775",
+  "b_probe_sha256": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+  "a_failed_phase": "initial runtime source audit before reference, 0 NFE",
+  "root_cause": "getattr(ModuleType subclass, __file__) returned inherited class attribute _ops.py or _classes.py; resolve() incorrectly made a root-local source path. torch.ops/classes are operator/class namespace objects, not source modules.",
+  "actual_torch_definitions": {
+    "/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_ops.py": "0e4ad0eb427cbdcc707f86eb3949b49f3ae9d19aa73e23745d31ca34e3c928a7",
+    "/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_classes.py": "0db3dc302e28fd085065ea2883ce33fa4af406b9fd1439f2a431f053e9a764b9"
+  },
+  "definition_lines": {
+    "torch._ops._Ops": 1380,
+    "torch._classes._Classes": 19
+  },
+  "new_behavior": "Exact type identity checked against the real defining module class; no fabricated dynamic getattr; real defining source must exist and match pin. Real source missing __file__, missing file, altered SHA still fails.",
+  "inference_or_math_changed": false,
+  "geometry_budget_tolerance_changed": false,
+  "old_a_snapshot_changed": false,
+  "PEP420_namespace_handling": "Exact NamespaceLoader+originNone+matching declared paths; every actual directory .py must match pinned hash. No empty or missing namespace directory admitted."
+}

@@ -1,0 +1,17 @@
+[:huawei-modelarts-30794 exit=0]
+--- stdout ---
+{"negative_control": "previous wrapper semantics restored in CPU process memory only", "tests": 1, "failures": 1, "errors": 0, "expected_failure_observed": true, "NPU_calls": 0, "torch_npu_imported": false}
+test_shared_options_are_frozen_at_each_block_call (test_openh3_train_trajectory.CheckpointSnapshotTests.test_shared_options_are_frozen_at_each_block_call) ... FAIL
+
+======================================================================
+FAIL: test_shared_options_are_frozen_at_each_block_call (test_openh3_train_trajectory.CheckpointSnapshotTests.test_shared_options_are_frozen_at_each_block_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_checkpoint_options_snapshot_20261111/code/tests/test_openh3_train_trajectory.py", line 400, in test_shared_options_are_frozen_at_each_block_call
+    self.assertTrue(torch.equal(actual[1], expected[1]))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 2.974s
+
+FAILED (failures=1)

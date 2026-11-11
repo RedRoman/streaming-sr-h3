@@ -1,0 +1,32 @@
+{
+  "schema": "rphi.train_control_cached_RGB_damage.review.v1",
+  "complete": true,
+  "report_sha256": "03ceaca6adf24d33335f67c54e5bfae8e071ddfd34a797f78377ee9332f3fbd1",
+  "archive_sha256": "e97a052de6d181a1bd7499ffa918656972ab3cc83fc4140078e0d0eae85a3346",
+  "role": "train",
+  "unique_source_count": 1,
+  "source_id": "2BdYaGuVAKo",
+  "identity_task_labels_share_one_pixel_case": true,
+  "identity_rphi_psnr": 50.255240602504024,
+  "identity_rphi_mse": 9.861993906923771e-06,
+  "identity_rphi_mae": 0.0014569985924392165,
+  "identity_input_perfect_frames": 22,
+  "perfect_PSNR_120_is_metric_cap_not_finite_error": true,
+  "near_clean_rphi_minus_input_PSNR_range_dB": [
+    -0.5413167713603073,
+    -0.5372087029034986
+  ],
+  "near_clean_all_four_MSE_damage_positive": true,
+  "clipping_reduces_MSE_all_controls": true,
+  "interpretation": "Fixed legacy reference edits this clean training clip and damages four near-clean variants relative to their inputs. Clipping reduces error relative to unbounded output but does not eliminate near-clean damage. Clean protection remains a necessary training objective/control.",
+  "LPIPS_measured": false,
+  "temporal_measured": false,
+  "new_model_forward_calls": 0,
+  "training_steps": 0,
+  "quality_acceptance": false,
+  "generalization_claim": false,
+  "source_video_bytes_rehashed": false,
+  "pixel_and_cache_file_hashes_verified_on_30794": true,
+  "large_RGB_arrays_downloaded": false,
+  "next": "Do not rescore this cached audit; include clean and near-clean preservation in matched finite training and evaluate held-out sources separately."
+}

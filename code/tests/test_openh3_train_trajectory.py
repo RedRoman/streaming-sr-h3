@@ -357,5 +357,52 @@ class TrajectoryTests(unittest.TestCase):
                 old["video"].sum().backward()
 
 
+@unittest.skipUnless(torch is not None, "requires Torch CPU only")
+class CheckpointSnapshotTests(unittest.TestCase):
+    def test_shared_options_are_frozen_at_each_block_call(self):
+        class OptionBlock(torch.nn.Module):
+            def __init__(self, weight):
+                super().__init__()
+                self.weight = torch.nn.Parameter(torch.tensor(weight, dtype=torch.float64))
+                self.seen_indices = []
+
+            def forward(self, value, transformer_options=None):
+                index = transformer_options["block_index"]
+                self.seen_indices.append(index)
+                # The option influences a saved activation, so a stale index
+                # produces incorrect gradients even if forward parity holds.
+                result = (value * self.weight * (index + 1)).sin()
+                transformer_options["block_index"] = -1000
+                return result
+
+        blocks = [OptionBlock(.7), OptionBlock(.9)]
+        source = torch.tensor([.2, -.4, .6], dtype=torch.float64)
+
+        def run(checkpointed):
+            value = source.clone().requires_grad_()
+            leaf = value
+            shared_options = {"block_index": 0}
+            with trajectory._checkpoint_modules(blocks, checkpointed, lambda: True):
+                for index, block in enumerate(blocks):
+                    shared_options["block_index"] = index
+                    value = block(value, transformer_options=shared_options)
+                # Models may reuse the dict for later blocks or later NFE.
+                shared_options["block_index"] = 49
+                value.square().sum().backward()
+            return value.detach(), leaf.grad.clone(), [b.weight.grad.clone() for b in blocks]
+
+        expected = run(False)
+        for block in blocks:
+            block.weight.grad = None
+            block.seen_indices.clear()
+        actual = run(True)
+        self.assertTrue(torch.equal(actual[0], expected[0]))
+        self.assertTrue(torch.equal(actual[1], expected[1]))
+        for found, wanted in zip(actual[2], expected[2]):
+            self.assertTrue(torch.equal(found, wanted))
+        self.assertEqual([b.seen_indices for b in blocks], [[0, 0], [1, 1]])
+        self.assertTrue(all("forward" not in b.__dict__ for b in blocks))
+
+
 if __name__ == "__main__":
     unittest.main()

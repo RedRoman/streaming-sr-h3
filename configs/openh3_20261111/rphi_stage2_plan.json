@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-11T14:51:44.218745+00:00",
-    "stage": "Stage2/native6/cached12/traincontrols8 completed_and_audited;fullVAE scaledgradient demonstrated but single_vs_paired SHAfailed;realH3 and boundedrepeatability next;newLoRAtraining0",
+    "at_utc": "2026-11-11T15:43:42.094668+00:00",
+    "stage": "VAE_i_locally_audited_exact_failure_B_skipped;H3a_failed_evidence_audited;H3b_live;descent_CPU_only_prepared;newLoRA0",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,10 +269,47 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun stage2/native/cached/ordinary/traincontrols or finished VAE probes.",
-      "Implement saved-observation repeatability A1/A2 then conditionalB; retain failed h exact gate.",
-      "Implement real H3 minimal latent-only probe per frozen contract independently; no unverified training launch.",
-      "Prepare VAE(R)/complete train source data and clean protection, then finite matched LoRA experiment."
-    ]
+      "Inspect actual H3 b queue and CPU finalizer; never restart healthy or terminal producer. Download a single small terminal archive when ready.",
+      "Preserve VAE i exact failure and B skipped; actual local arrays verified. Separate seed102 fixed-step descent is prepared and CPU-tested but no NPU queue/admission yet.",
+      "After H3/decoder numerical evidence, separately admit joint RGB adapter backward/save-reload/fullres memory; no guide-matched training until all gates.",
+      "Do not rerun old stage2/native/compensation/train-export results. Retain clean/nearclean negative findings and broaden source-isolated evidence before omni claims."
+    ],
+    "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
+    "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
+    "VAE_repeatability_archive_sha256": "144e293137bee4dafdc7a07a9020b3c14850a61293f27cc59610e5eddc4973d2",
+    "H3_actual_probe_run": "runs/h3_trajectory_probe_20261111b",
+    "H3_actual_probe_state": "running_load_and_verify_assets",
+    "H3_checkpoint_options_fix": "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json",
+    "train_control_RGB_damage_review": "results/takeover_20261111/train_control_rgb_damage_20261111/scientific_review.json",
+    "H3_actual_probe_session": "h3-trajectory-probe-20261111b",
+    "H3_actual_probe_preparation": "preparation/h3_trajectory_probe_20261111b",
+    "H3_actual_probe_admission_at_utc": "2026-11-11T15:41:45.095485+00:00",
+    "H3_failed_a_evidence": "results/takeover_20261111/h3_trajectory_probe_20261111a_failed/local_verification.json",
+    "VAE_repeatability_local_verification": "results/takeover_20261111/vae_gradient_repeatability_20261111i/local_verification.json",
+    "VAE_repeatability_scientific_review": "results/takeover_20261111/vae_gradient_repeatability_20261111i/scientific_review.json",
+    "VAE_descent_preparation": "preparation/vae_latent_descent_20261111_v1",
+    "VAE_descent_CPU_receipt": "results/takeover_20261111/vae_latent_descent_preparation_20261111/receipt.json",
+    "VAE_descent_NPU_launched": false,
+    "H3_CPU_finalizer": {
+      "run": "runs/h3_trajectory_probe_20261111b_finalize",
+      "prep": "preparation/h3_trajectory_terminal_finalize_20261111b",
+      "session": "h3-terminal-finalize-20261111b",
+      "pid": 915514,
+      "started_at_utc": "2026-11-11T15:44:30.637+00:00",
+      "state": "waiting_for_terminal",
+      "max_wait_seconds": 2400,
+      "poll_seconds": 30,
+      "CPU_tests_passed": 21,
+      "config_sha256": "e16a35bd2d57c6e7243c6227f49d3faa7a25a140033d02358a9e8c664dcfba2f",
+      "NPU_calls": 0,
+      "audit_invocations_at_launch": 0
+    },
+    "backup_31984": {
+      "path": "preparation/followup_20261111_2345",
+      "files": 263,
+      "archive_sha256": "1dd3d36bbfcc58bd0339b48aee163be583a8c9884621b7ccfeaa3f884f66e4ed",
+      "verified_at_utc": "2026-11-11T15:46:03.425602+00:00",
+      "scope": "snapshot before finalizer/next j metadata; later delta required"
+    }
   }
 }

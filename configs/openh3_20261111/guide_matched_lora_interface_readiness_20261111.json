@@ -1,7 +1,7 @@
 {
   "schema": "openh3.guide_matched_lora_interface_readiness.v1",
   "created_at_utc": "2026-11-11T12:43:42.704981+00:00",
-  "status": "cached_screen_completed_checkpointed_VAE_and_full_trajectory_admission_in_progress",
+  "status": "VAE_gradient_variability_characterized;H3b_real_probe_running;matched_training_not_admitted",
   "purpose": "Prepare an adaptation objective that is evaluated on original RGB references and exactly matches the selected output interface; do not continue the historical latent-only run unchanged.",
   "code_sha256": {
     "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
@@ -109,9 +109,9 @@
   "launch_ready": false,
   "blocking_prerequisites": [
     "VAE(R) cache and complete matched source-level training dataset; single-source ordinary+clean controls caches accepted",
-    "VAE scaled gradient repeatability characterization and actual joint model memory acceptance",
-    "real H3 full trajectory and adapter gradient acceptance",
-    "zero-adapter real output and nonzero unmerged save/reload parity; separately quantify BF16 merge bias"
+    "Independent bounded VAE local optimization validity and actual joint model memory; preserve strict repeatability negative",
+    "real H3 full trajectory zero-adapter parity and adapter gradient acceptance after source-audit repair",
+    "nonzero unmerged save/reload parity; separately quantify BF16 merge bias"
   ],
   "gradient_path_static_audit": {
     "path": "results/takeover_20261111/lora_gradient_path_static_audit_20261111.json",
@@ -157,7 +157,7 @@
       "scope": "zero-churn recurrence same forward/RNG/NFE, joint packed video/audio; no actual H3 adapter or decode backward"
     },
     "VAE_decode_gradient": {
-      "state": "fullres_scaled_gradient_exists_but_strict_single_vs_paired_reproducibility_failed",
+      "state": "fresh_single_backward_A1_A2_both_finite_frozen_forward_exact_gradient_not_bitwise_reproducible",
       "attempts": [
         {
           "run": "runs/vae_decode_grad_smoke_20261111a",
@@ -287,7 +287,7 @@
         "optimizer_steps": 0,
         "spatial_geometry": "128x128 small or480x832 full explicitly recorded per attempt"
       },
-      "next": "Bounded repeatability A1/A2: identical fresh-process scaled-single probes save actual gradient arrays, latent/forward/frozen/runtime facts before deciding. Only if A1/A2 exact agree add paired-history B; no new tolerance or training admission. Independent realH3 latent-only probe can proceed.",
+      "next": "Separate seed102 fixed three-step latent descent prepared with 6 CPU tests; no NPU admission/queue yet. Exact repeatability i failed and B is skipped.",
       "checkpoint_probe": {
         "run": "runs/vae_decode_grad_checkpoint_smoke_20261111e",
         "state": "completed_and_audited",
@@ -315,7 +315,34 @@
         "evidence": "results/takeover_20261111/vae_decode_grad_loss_scale_pair_20261111g_completed/audit.json"
       },
       "repeatability_review": "results/takeover_20261111/vae_decode_grad_scaled_fullres_20261111h_failed/scientific_review.json",
-      "source_review": "results/takeover_20261111/vae_gradient_repeatability_source_review_20261111.json"
+      "source_review": "results/takeover_20261111/vae_gradient_repeatability_source_review_20261111.json",
+      "fresh_repeatability_i": {
+        "run": "runs/vae_gradient_repeatability_20261111i",
+        "completed_observations": 2,
+        "actual_forwards": 4,
+        "actual_backwards": 2,
+        "strict_gradient_repeatability": false,
+        "paired_history_B_executed": false,
+        "cross_process_forward_hashes_equal": true,
+        "relative_L2_difference": 0.0019251850805516895,
+        "cosine_similarity": 0.9999981468306298,
+        "unscaled_max_abs_difference": 3.725290298461914e-08,
+        "claim": "Current configuration is not bitwise gradient repeatable. This does not establish invalid optimization or a particular kernel cause.",
+        "next_validation": "separate predeclared seed102 fixed-step latent descent, no retroactive tolerance",
+        "local_verification": "results/takeover_20261111/vae_gradient_repeatability_20261111i/local_verification.json",
+        "scientific_review": "results/takeover_20261111/vae_gradient_repeatability_20261111i/scientific_review.json"
+      },
+      "bounded_descent_preparation": {
+        "path": "preparation/vae_latent_descent_20261111_v1",
+        "receipt": "results/takeover_20261111/vae_latent_descent_preparation_20261111/receipt.json",
+        "cpu_tests_passed": 6,
+        "seed": 102,
+        "max_forwards": 8,
+        "max_backwards": 3,
+        "RMS_step": 0.001,
+        "NPU_launched": false,
+        "training_steps": 0
+      }
     },
     "train_control_export": {
       "entry": "code/export_rphi_train_controls.py",
@@ -343,8 +370,8 @@
     },
     "full_H3_trajectory": {
       "entry": "code/openh3_train_trajectory.py",
-      "entry_sha256": "805781046838c8ea29eff893c83484c3765e7da8be2f68c74168297ee0385cdd",
-      "cpu_tests_passed": 9,
+      "entry_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+      "cpu_tests_passed": 10,
       "actual_reference_bodies": [
         "comfy.sample.prepare_noise_inner",
         "comfy.sample.prepare_noise",
@@ -361,8 +388,39 @@
         "CFG1 denoiser callback",
         "patcher/wrapper infrastructure"
       ],
-      "state": "CPU_contract_passed_real_H3_pending",
-      "evidence": "results/takeover_20261111/openh3_trajectory_preparation_20261111/receipt.json"
+      "state": "CPU_contract_and_mutable_options_regression_passed_real_H3_b_running",
+      "evidence": "results/takeover_20261111/openh3_trajectory_preparation_20261111/receipt.json",
+      "checkpoint_options_fix": "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json"
+    },
+    "H3_actual_probe": {
+      "run": "runs/h3_trajectory_probe_20261111a",
+      "terminal_state": "failed",
+      "at_utc": "2026-11-11T15:27:26.214329+00:00",
+      "actual_reference_NFE": 0,
+      "actual_candidate_NFE": 0,
+      "actual_backwards": 0,
+      "cause": "Runtime source auditor resolves inherited torch.ops pseudo __file__ into missing project _ops.py; not a numerical or memory result.",
+      "repair": "b frozen20 CPU tests and real Torch/Kitchen light imports passed; independent b running; old a terminal failure retained",
+      "failed_evidence": "results/takeover_20261111/h3_trajectory_probe_20261111a_failed/local_verification.json"
+    },
+    "train_controls_RGB_damage": {
+      "review": "results/takeover_20261111/train_control_rgb_damage_20261111/scientific_review.json",
+      "sources": 1,
+      "role": "train",
+      "near_clean_PSNR_change_dB": [
+        -0.5413167713603073,
+        -0.5372087029034986
+      ],
+      "quality_acceptance": false
+    },
+    "H3_actual_probe_b": {
+      "run": "runs/h3_trajectory_probe_20261111b",
+      "state": "running_load_and_verify_assets",
+      "session": "h3-trajectory-probe-20261111b",
+      "admission_at_utc": "2026-11-11T15:41:45.095485+00:00",
+      "prep": "preparation/h3_trajectory_probe_20261111b",
+      "scope": "tiny 5frame128x128 latent-only; exact zero-adapter final video/audio then1backward; noVAE/noRGB/nooptimizer",
+      "actual_results_available": false
     }
   },
   "cached_interface_screen": {

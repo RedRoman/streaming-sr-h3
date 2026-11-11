@@ -1,0 +1,204 @@
+{
+  "schema": "openh3.minimum_full_trajectory_probe_contract.v1",
+  "status": "prepared_not_launch_ready",
+  "prepared_date": "2026-11-11",
+  "purpose": "Numerical and gradient engineering acceptance of the complete deployed three-step joint video/audio trajectory; not restoration training or a quality experiment.",
+  "execution": {
+    "host_candidate": "huawei-modelarts-30794",
+    "execution_script_implemented": false,
+    "queue_created": false,
+    "automatic_launch": false,
+    "NPU_launch_authorized_by_this_file": false,
+    "proposed_wall_time_cap_seconds": 1800,
+    "cap_is_not_a_completion_time_estimate": true,
+    "required_before_launch": [
+      "Review and CPU-test a separate bounded probe entry point against this contract",
+      "Create a new immutable complete runtime snapshot, not just the new entry point; verify all local modules, actual imported Comfy and kitchen dependencies, assets and this contract",
+      "Fresh generic-queue admission on the assigned single card, no foreign PID, at least 60000 MB free, existing shared lock and 15-second second check",
+      "Use a new run directory, owned process group and timeout; do not alter prior pinned files, queues or outputs"
+    ],
+    "failure_policy": "Stop at the first failed gate; retain the partial report. No OOM retry, geometry reduction, threshold relaxation, scheduler change or alternate math within this run."
+  },
+  "pretrained": {
+    "manifest": "configs/openh3_20261111/refiner_turbo_30794.json",
+    "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "recipe": "refiner-turbo-comfy",
+    "verified_asset_roles": ["base", "vae", "context", "refiner", "turbo"],
+    "required_verification": "read_manifest(verify=True), actual bytes/SHA of all bound components, recorded pretrained fingerprint",
+    "constructor": "H3(pretrained_manifest=the_bound_manifest, sigma_schedule=NATIVE_SIGMAS, adaptation_path=None, lora_path=None)",
+    "base_dtype": "torch.bfloat16",
+    "pretrained_merge": "Existing verified refiner plus Turbo FP32 accumulation and one base-storage cast across 208 linears: 50 DiT blocks and two token-refiner blocks",
+    "text": "Existing bound neutral restore context, not a new text encoder invocation",
+    "components_not_added": ["Sharp", "latent upscaler", "fast VAE", "old stage1 LoRA", "old Turbo"],
+    "vae_scope": "The existing H3 constructor loads the bound VAE object, but this first probe must never encode/decode or move VAE weights onto NPU solely for the objective. No VAE gradient is exercised."
+  },
+  "inputs": {
+    "role": "synthetic_engineering_probe_no_dataset_or_target_pixels",
+    "batch": 1,
+    "latent_shape": [1, 24, 2, 8, 8],
+    "corresponding_RGB_geometry": [5, 128, 128, 3],
+    "audio_initial_shape": [1, 32, 2, 8],
+    "dtype": "torch.float32",
+    "cache_device": "cpu",
+    "guide_requires_grad": false,
+    "raw_draft_requires_grad": false,
+    "synthetic_input_recipe": "Generate distinct guide and raw-draft tensors in the declared normalized latent shape from a CPU torch.Generator seeded 101, drawing guide first and raw draft second with torch.randn(float32). Freeze and reuse these exact tensors in both arms. These synthetic tensors are not claimed to be VAE encodings of RGB observations.",
+    "sampling_seed": 101,
+    "audio_init": "zeros",
+    "noise_recipe": "Actual comfy.sample.prepare_noise on NestedTensor(video raw draft, audio initial latent), seed 101: one CPU generator, video draw first, audio draw second. Do not substitute NPU RNG or independent per-stream generators.",
+    "required_input_records": ["guide array SHA/dtype/shape", "raw-draft array SHA/dtype/shape", "packed initial-latent SHA", "packed CPU-noise SHA", "text/context file SHA", "complete seed/audio-init recipe"],
+    "same_raw_warm_start_for_both_arms": true,
+    "guide_is_not_substituted_for_raw_warm_start": true,
+    "target_used_as_model_input": false
+  },
+  "sampling": {
+    "sigmas_float64_specification": [0.909375, 0.8571428571428571, 0.6666666666666666, 0.0],
+    "sigmas_execution_dtype": "torch.float32",
+    "steps": 3,
+    "CFG": 1.0,
+    "sampler": "Euler, zero churn",
+    "mode": "base",
+    "refs": [],
+    "innerDC": false,
+    "mask": null,
+    "audio_scale": 4.0,
+    "video_shift": 12.0,
+    "audio_shift": 3.0,
+    "state": "One complete packed joint video/audio tensor updated through all three steps; audio is not reset, detached or regenerated between calls.",
+    "official_semantics_kept": [
+      "CFGGuider.inner_sample process_latent_in (including audio-scale handling and the official all-zero skip)",
+      "Official process_conds, cached context preprocessing and native keyframe guide payload",
+      "KSAMPLER noise_scaling before step one and inverse_noise_scaling after step three",
+      "Official CFG1 aggregation and BaseModel.apply_model packed denoised-x0 output",
+      "MiniMaxH3.forward sigma_a/sigma_v input carry and carried-audio velocity transform",
+      "Official process_latent_out inverse audio scaling"
+    ],
+    "only_sampler_change": "Replace no-grad sample_euler with the CPU-tested differentiable_euler recurrence; bypass H3.sample and CFGGuider outer cleanup only for the candidate arm.",
+    "not_equivalent_to": "train_stage1 independent-sigma latent MSE or an independent video-only trajectory"
+  },
+  "resident_model_contract": {
+    "static_model_patcher_required": true,
+    "model_lowvram_must_be_false": true,
+    "all_DiT_parameters_and_buffers_on_single_h3_device": true,
+    "custom_hooks_callbacks_wrappers_model_options_rejected": true,
+    "DiT_eval_mode": true,
+    "pretrained_parameters_frozen": true,
+    "HF32_matmul": false,
+    "HF32_conv": false,
+    "normal_loader_audit": "In the inspected standalone path CoreModelPatcher is ModelPatcher, with empty transformer options and empty hooks/callbacks. The dynamic reassignment occurs in Comfy main.py's aimdo startup, which H3 does not invoke. merge_pretrained writes weights directly and does not register patcher hooks.",
+    "residency_sequence": "Fresh H3 load may use the existing train_stage1 model.to(h3.dev) pattern. After the reference H3.sample, explicitly verify residency and low-VRAM state before adding live LoRA. If the reference left Comfy offload state, use the reviewed patcher.patch_model(device_to=h3.dev, lowvram_model_memory=0, load_weights=True) full-load path before injection, then revalidate all parameters/buffers. Never merely clear model_lowvram or move only LoRA tensors.",
+    "retained_graph_lifecycle": "Keep ResidentH3Trajectory context open through loss.backward; no model cleanup, unloading, parameter merge, optimizer step or parameter mutation between candidate forward and backward.",
+    "DiT_checkpoint": {"enabled": true, "blocks": 50, "use_reentrant": false, "math": "The same native_training_math eager RoPE and functional residuals used by H3.sample", "scope": "Only instance forward wrappers; restore on success and all failures"},
+    "decoder_checkpoint_in_this_probe": false,
+    "joint_decoder_future_context_requirement": "A later decoder checkpoint must use a separate native VAE math context_fn for every forward/recomputation. Do not leave ascend_native RoPE active globally over DiT backward."
+  },
+  "adaptation": {
+    "rank": 8,
+    "initialization_seed": 101,
+    "injection": "openh3_runtime.inject_adaptation on the already merged, frozen, resident verified pretrained DiT",
+    "targets": ["attn.qkv_proj", "attn.out_proj", "mlp.fc1", "mlp.fc2"],
+    "DiT_blocks": 50,
+    "adapted_linear_modules": 200,
+    "trainable_parameter_tensors": 400,
+    "token_refiner_new_adaptation": false,
+    "parameter_dtype": "torch.float32",
+    "arithmetic": "Independent FP32 LoRA branch added to the BF16 base output; no adaptation weight merge or STE",
+    "A_initialization": "Existing Kaiming initialization",
+    "B_initialization": "Exactly zero; record tensor/count/hash assertions before candidate forward",
+    "gradient_interpretation": "At B=0, A gradients can legitimately be exactly zero. Require every present adapter gradient to be finite, record missing/zero tensors explicitly, and require aggregate B gradient norm and at least one B tensor gradient to be strictly nonzero. Do not require nonzero A gradients at initialization."
+  },
+  "phases": [
+    {
+      "phase": "0_static_and_asset_preflight",
+      "forward_NFE": 0,
+      "requirements": ["Exact asset/runtime pins", "Synthetic input hashes", "Single-device admission", "Static resident patcher checks", "Frozen base parameter bytes/hash and versions recorded"]
+    },
+    {
+      "phase": "1_reference_and_zero_adapter_parity",
+      "reference": "Run existing H3.sample once, with no new adaptation, mode=base and the exact shared guide/raw warm start/seed/audio init; retain final video and audio on CPU.",
+      "candidate": "After required full-residency checks and rank8 zero-B injection, run one gradient-enabled ResidentH3Trajectory.sample with scoped DiT checkpointing. Keep its complete graph alive until phase 2.",
+      "reference_forward_NFE": 3,
+      "candidate_forward_NFE": 3,
+      "acceptance": [
+        "Exactly three joint denoiser evaluations in each arm",
+        "Identical input/noise hashes, schedule and guide/raw-warm-start roles",
+        "Final video and audio finite and same shape",
+        "torch.equal of final float32 video and audio after bringing detached copies to the same CPU device; report max_abs/relative L2 even when zero",
+        "No post-hoc tolerance relaxation: a nonzero difference stops the run before backward and requires a separate numerical investigation"
+      ],
+      "trace_boundary": "Record candidate per-step sigma and detached joint x/x0 hashes where safely observable. Baseline H3.sample does not expose a full x0 trace: do not claim per-step baseline parity unless a reviewed pass-through observer actually captured it without altering outputs."
+    },
+    {
+      "phase": "2_same_graph_latent_backward_and_freeze_audit",
+      "depends_on": "phase 1 passed; use its retained candidate graph, not an extra trajectory",
+      "additional_forward_NFE": 0,
+      "loss": "mean(video.float() ** 2) + 0.01 * mean(audio.float() ** 2), evaluated on the final normalized output latents; fixed synthetic numerical objective only",
+      "backward_calls": 1,
+      "optimizer_steps": 0,
+      "acceptance": [
+        "Finite scalar loss and finite adapter gradients",
+        "Aggregate LoRA B gradient norm > 0 and at least one nonzero B gradient; explicit per-module missing/zero gradient report",
+        "No pretrained base gradient; base parameters remain frozen with unchanged versions and byte hash",
+        "No parameter updates, merge, train checkpoint or VAE decode",
+        "Checkpoint wrappers restored and stale output backward rejected after session exit"
+      ],
+      "memory_reporting": "Synchronize at measured phase boundaries; report peak allocated/reserved bytes and the phase of any OOM. Do not infer full22 or joint-VAE feasibility from this geometry."
+    }
+  ],
+  "hard_budget": {
+    "complete_sampling_trajectories": 2,
+    "explicit_forward_NFE": 6,
+    "latent_backward_calls": 1,
+    "optimizer_steps": 0,
+    "VAE_encode_calls": 0,
+    "VAE_decode_calls": 0,
+    "RGB_loss_calls": 0,
+    "checkpoint_recompute_accounting": "Record separately; nonreentrant block recomputation consumes additional forward work and is not included in the six explicit sampling NFE. Do not label that cost zero or assume an unmeasured exact full-model NFE equivalent.",
+    "no_automatic_follow_on": true
+  },
+  "pending_separate_gates": [
+    "Real H3 zero-adapter parity and complete three-step latent backward in this minimum geometry",
+    "Real nonzero independent-branch save/reload parity, without merging weights",
+    "Explicit measurement of existing FP32 W+BA then BF16-storage merge rounding versus independent-branch inference; zero-adapter parity does not establish this",
+    "VAE checkpoint numerical/gradient validity: root reports full-resolution f completed two forwards and one backward but gradient validation failed; paired loss-scale diagnostic g remains pending. This report was supplied by root, not independently re-audited here",
+    "After separate VAE acceptance, a newly admitted same-small-geometry full trajectory -> VAE -> fixed RGB objective backward with per-recompute context isolation",
+    "22-frame/full-resolution/joint-memory and original-RGB restoration training, none of which this minimum probe accepts",
+    "Quality improvement, mixed-degradation restoration and strict causal streaming; this is a full-block engineering probe"
+  ],
+  "CPU_evidence": {
+    "receipt": "results/takeover_20261111/openh3_trajectory_preparation_20261111/receipt.json",
+    "receipt_sha256": "832066cd1ee3d9bb0c625eb96f54cc14bf4a4959b48ed3bfacb1125a1f4cb8a5",
+    "log": "results/takeover_20261111/openh3_trajectory_preparation_20261111/cpu_tests.log",
+    "log_sha256": "6372953e474cb55e9ff606ac04856b7f573d8dffdac95e93d81ade7044fe3754",
+    "passed": 9,
+    "seconds": 4.298,
+    "scope": "Actual pinned sampler function bodies executed on CPU with fake model/conditioning; not a real-H3 or NPU result",
+    "candidate_sha256": "805781046838c8ea29eff893c83484c3765e7da8be2f68c74168297ee0385cdd",
+    "tests_sha256": "7743b3c86174fcdc6f14eef2b5946ce84c062b9219fa73e8fec478cb02066a3b"
+  },
+  "source_reading_basis": {
+    "remote_Comfy_root": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "local": [
+      {"path": "code/h3_comfy.py", "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c", "lines": "87-109,136-215,243-447", "evidence": "Scoped DiT math, verified H3 construction and actual warm-start/audio/keyframe/no-grad sampling path"},
+      {"path": "code/openh3_runtime.py", "sha256": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c", "lines": "38-96,113-155", "evidence": "Pretrained merge provenance, separate zero-B adaptation and non-bit-identical BF16 inference merge"},
+      {"path": "code/lora.py", "sha256": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909", "lines": "10-90", "evidence": "Four target types, FP32 separate branch and opt-in-only token refiner"},
+      {"path": "code/train_stage1.py", "sha256": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10", "lines": "153-170", "evidence": "Existing fresh-load resident model.to(device) followed by adaptation injection; its independent-sigma loss is not this trajectory"},
+      {"path": "code/openh3_differentiable_euler.py", "sha256": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f", "evidence": "Complete joint-state Euler recurrence without detach/re-noise"},
+      {"path": "code/check_vae_decode_grad.py", "sha256": "35669c592e7252b1f382f95464430a2827cb0ea4cfa08e03eb19408930445899", "lines": "39-54", "evidence": "Scoped native VAE RoPE helper, reserved for a later independent joint probe"}
+    ],
+    "actual_Comfy": [
+      {"path": "comfy/sample.py", "sha256": "d274ed5b6abf83707b52b87d25d1716f072d5444954cf23ac0ed31a3b803ee1c", "lines": "9-37,79-90", "evidence": "CPU seeded sequential nested noise and official sample wrapper"},
+      {"path": "comfy/samplers.py", "sha256": "f2c264ca9d394612f828e3ffe167c856a278a10e1711b269f0ba65dccb66393f", "lines": "609-629,977-1008,1038-1083,1188-1285", "evidence": "CFG1, KSAMPLER noise scaling, condition processing, inner_sample and outer lifecycle"},
+      {"path": "comfy/model_base.py", "sha256": "1212947ec7c143f23fa411ef280e5f9c257b38379ccfc9298688879e1fa0777d", "lines": "210-259,2186-2265", "evidence": "BF16/timestep/packed x0 conversion, audio scale and MiniMax payload construction"},
+      {"path": "comfy/model_sampling.py", "sha256": "8afdc665272589a567792bb652389df7d4a83f69574c2b7e5b3d533d55592990", "lines": "86-102,338-357", "evidence": "CONST noise/x0 formulas and ModelSamplingAV shift ratio"},
+      {"path": "comfy/ldm/minimax/model.py", "sha256": "15f0395cf0dbe6e5c13fd859ff359eacc7761b4e15f60aa0038853985d0e599b", "lines": "174-198,604-720", "evidence": "DiT training-math dispatch and true carried-audio input/velocity transforms"},
+      {"path": "comfy/model_patcher.py", "sha256": "7edc88d9eae6a88637625d257dc73684cfc012a29446bf88e70d22e3a6be3994", "lines": "341-405,1002-1148,1331-1337,1460-1469,2205", "evidence": "Default empty hooks/static patcher, explicit full-load path and pre_run/cleanup"},
+      {"path": "comfy/sd.py", "sha256": "99ac1b53d523c2295acd036af3550d0dc07f3df7b87729380813ad8003778556", "lines": "2340-2444", "evidence": "Actual diffusion-model loader construction and cached reload configuration"},
+      {"path": "comfy/supported_models.py", "sha256": "d37a56209f83ca5edec251ead5e4c3c4ada99544dac7ef20efab17988b0ba908", "lines": "984-1005", "evidence": "MiniMax video shift12/audio shift3 and supported dtypes"},
+      {"path": "comfy/utils.py", "sha256": "9320cf5c624e96acc1d9ec92ff120ed6387a2142707f3194cb21dd0d11ac2500", "lines": "1412-1432", "evidence": "Exact packed video/audio concatenation and unpacking"},
+      {"path": "comfy/k_diffusion/sampling.py", "sha256": "cfc4221ed0bc1f84a6f5689d3ec440cad3008c2541ab8f5e2599d1a73fac74ce", "lines": "63-65,189-212", "evidence": "Official zero-churn Euler recurrence and no-grad decorator"}
+    ],
+    "additional_runtime_pins_required": ["comfy/sampler_helpers.py", "comfy/conds.py", "comfy/ops.py", "comfy/ldm/modules/attention.py", "comfy/ldm/minimax/vae.py", "actual imported comfy_kitchen dependency tree", "all sibling Python imports in the new immutable runtime"],
+    "pinning_boundary": "Reading-basis hashes identify inspected sources, not an executable complete dependency lock. A launch implementation must bind its actual imports and complete snapshot separately."
+  }
+}

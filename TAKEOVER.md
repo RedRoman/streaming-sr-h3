@@ -333,3 +333,23 @@ train clean控制导出器 `code/export_rphi_train_controls.py` SHA `b78df2c3b39
 22:48后train controls独立工程验收完成：唯一实际CPU审计91.272s、rc0，8/8NPZ文件/数组hash、配方、rawdraft、source/target/record/sidecar、causalK3、clamp关系和模型全state通过；CPU checkpoint state与NPU导出before/after一致。四identity task的输入/raw预测/clipped预测全部bitexact重复，nearclean四seed不同。最终44小文件归档165,006bytes，SHA `20b0ea9396ee0e621fe7e28cb1bf56c6adbd960c956a3916fbb2bf7a482dcf5e`，本地逐文件已核验；review `results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json` SHA `7029b2c7482933a6f7a7069d43239357356159e5cb65ee2087df6f1d33447e19`。实际导出176Rphi帧调用，VAE/H3/训练0，审计forward0。只复制小证据，未下载大NPZ。identity原始输出18.6237%分量被clamp，nearclean约7.71%；这是发生率，不是误差幅度/质量损伤率，未评分不能据此认定clean质量通过或严重损伤。
 
 下次接续：旧stage2/native六项/cached168网格/ordinary与traincontrols缓存/d-e-f-g-h probe均已终态，禁止重跑。优先实现A1/A2独立scaled-single重复性诊断并完整保存观测后判门；只有exact一致再B。可并行实现真实H3五帧128² latent-only zero-adapter→梯度门（合同已保存），不能把CPU fake tests当20B验收。之后补VAE(R)/全训练来源cache、clean保护目标和同预算有限LoRA方案。新增LoRA训练步数仍0，不用增加步数掩盖数值/接口不确定性。
+
+
+### 23:33接续记录：真实重复性负结果与H3审计器修复
+
+VAE i `runs/vae_gradient_repeatability_20261111i` 于23:19:14结束：A1/A2各2forward+1backward成功、前向跨进程SHA一致、559冻结权重/版本及runtime未变，单次peak9.131GiB。随后exact比较exit2：unscaled梯度真实maxdiff3.72529e-8、relL2 .00192518508、cos .99999814683，235148/262080坐标不同，共同非零中256符号不同。B明确未执行且不得自动启动；不是OOM/NaN或两个观测执行失败，也不能归因于paired history或某个kernel。完整6个input/gradient数组与38文件归档SHA144e293137bee4dafdc7a07a9020b3c14850a61293f27cc59610e5eddc4973d2。SFTP下载中断，后台scp会话vae-repeatability-evidence-20261111i重取中；仅在本地完整SHA+manifest通过后声明离线数组验收。
+
+H3 checkpoint共享transformer_options已在wrapper入口snapshot，CPU10/10通过，恢复旧逻辑的负对照确实使输入梯度equal失败；新source69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22。最小H3 a在23:20:07通过1178pins/freshcard6/锁/15s二检后启动，23:27:26失败：模型加载/合并后、采样前的runtime_imports误把torch.ops类级伪__file__=_ops.py当项目真实源码，实际0NFE/0backward。未出现采样数值/梯度验收结果；保持a失败并在新b快照修复实际声明字段及两个Torch namespace类型来源绑定，不能笼统忽略缺失源码。独立CPU终态finalizer正在准备，实际启动和archive以后续receipt为准。
+
+附加CPU缓存损伤审计完成：1个train源2BdYaGuVAKo、8controls、0新model/NPU/train，56.44s。identity四标签共享像素，Rphi50.2552dB/MSE9.86199e-6/MAE.001457；near-clean从input约48.51dB降至约47.97，下降.5372–.5413dB。clip相对raw输出减少MSE但未消除nearclean损伤；没有LPIPS/时域或独立泛化结果。小归档e97a052de6d181a1bd7499ffa918656972ab3cc83fc4140078e0d0eae85a3346已本地5文件验收，review在train_control_rgb_damage_20261111/scientific_review.json。新guide-matched LoRA训练仍0；下一数值协议改为独立seed102有限latent下降验证，最多8forward/3backward，固定RMS步幅.001，不回写i为通过，不自动延长。
+
+
+23:44接续：i 的后台scp已完成，归档144e2931…4973d2及38文件全部本地核验，六个实际NPY用NumPy重新计算：相对L2 .00192518508、cos .99999814683、maxdiff3.72529e-8与远端一致；256个异号坐标只占梯度平方能量约1.8–1.9e-9，但这不证明Adam稳定。原exact门失败、B跳过保留。a的一次CPU terminal审计已完成，归档fb8b98b5…13b1a3/38文件已本地核验，保持failed、0NFE/0backward。
+
+H3 b修复已冻结20/20 CPU tests：只读模块显式声明字段，精确核验torch.ops/classes真实类型与定义SHA，合法PEP420 backends路径25个.py全部绑定，真实缺失源码仍失败。23:41:45 fresh card6健康3424/65536MB、无PID/锁空闲，1180pins和guard通过；tmux h3-trajectory-probe-20261111b已启动，run runs/h3_trajectory_probe_20261111b，run_once做15s二检。23:43实际queue running/load_and_verify_assets；模型加载约7min属于先前观察，不是完成承诺。新CLI SHA68f14475…346b3、queue adb02c39…7096、execution2dd8ac7…590b。后续CPU finalizer以实际receipt为准。
+
+独立VAE seed102三步下降probe已冻结，6/6真实CPU测试通过，代码b94320cd…dc06，snapshot preparation/vae_latent_descent_20261111_v1，receipt results/takeover_20261111/vae_latent_descent_preparation_20261111/receipt.json。固定rho.001/RMS梯度、最多8forward/3backward、先central方向正且三次负方向都严格下降；同数值部署parity/frozen/checkpoint恢复等门不放松。仅准备：没有NPU queue/launch、0训练；不能把它视作对i门的追认或RGB恢复质量。
+
+23:44:30，b的CPU terminal finalizer已单次启动，PID915514/tmux h3-terminal-finalize-20261111b，prep preparation/h3_trajectory_terminal_finalize_20261111b，output runs/h3_trajectory_probe_20261111b_finalize。21/21本地及远端CPU tests通过，config e16a35bd…cba2f绑定b精确hash，PEP420完整25-source-map也验。每30秒读状态，最多2400秒、终态只审计一次；0NPU且不重启模型。23:45:39实际waiting_for_terminal，producer仍load；健康勿重启。
+
+23:46:03，本轮263个源码/小证据已备份31984 preparation/followup_20261111_2345，6,754,564bytes，SHA1dd3d36bbfcc58bd0339b48aee163be583a8c9884621b7ccfeaa3f884f66e4ed，逐文件大小与SHA全通过。后续finalizer/j元数据需增量保存。新独立seed102下降实验j开始准备唯一card7队列，23:47:17卡7健康3419/65536MB、无PID/锁空闲；这不是正式admission，启动前仍须重新核实，card6已有H3 b PID895740不得抢占。

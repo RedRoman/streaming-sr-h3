@@ -1,0 +1,450 @@
+{
+  "schema": "rphi.train_control_cached_RGB_damage.v1",
+  "complete": true,
+  "completed_at_utc": "2026-11-11T15:08:22.183939+00:00",
+  "seconds": 56.43753454834223,
+  "manifest_sha256": "3f40c6a49119f091c1bc8745e7a1fdd04e9f7671f2730b9211a7157dbc5a6943",
+  "metric_source_sha256": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+  "script_sha256": "66d08ede8e26484ce330f5ed40135cba5f8b8d26f613a53654b440797a4988ca",
+  "sources": [
+    "2BdYaGuVAKo"
+  ],
+  "samples": 8,
+  "per_sample": [
+    {
+      "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9-identity",
+      "source_id": "2BdYaGuVAKo",
+      "task": "compression",
+      "control": "identity",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "6ca023d379337551d82da1f7d8abad539e6de17e63b6bb32630e647651002958",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 120.0,
+          "psnr_from_mean_mse": 120.0,
+          "mse": 0.0,
+          "mae": 0.0,
+          "perfect_frames": 22,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 49.727986336826255,
+          "psnr_from_mean_mse": 49.54512144850729,
+          "mse": 1.1104214824598915e-05,
+          "mae": 0.0016686698976806427,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 50.255240602504024,
+          "psnr_from_mean_mse": 50.06035270126743,
+          "mse": 9.861993906923771e-06,
+          "mae": 0.0014569985924392165,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 50.255240602504024,
+        "psnr_from_mean_mse": 50.06035270126743,
+        "mse": 9.861993906923771e-06,
+        "mae": 0.0014569985924392165,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.1862371840399184,
+        "raw_min": -0.07000415772199631,
+        "raw_max": 1.0842576026916504
+      },
+      "clipping_MSE_reduction": 1.2422209176751438e-06,
+      "rphi_MSE_damage_vs_input": 9.861993906923771e-06
+    },
+    {
+      "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9-near_clean",
+      "source_id": "2BdYaGuVAKo",
+      "task": "compression",
+      "control": "near_clean",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "21376abb7fb7ac9117edcf44b35c0390af3b6f201bf9c749a7f5ae3f079b094c",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 48.512385104379064,
+          "psnr_from_mean_mse": 48.50686406405551,
+          "mse": 1.4103067794354236e-05,
+          "mae": 0.002538866504145059,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 47.727056043521834,
+          "psnr_from_mean_mse": 47.64494069018198,
+          "mse": 1.7199108291953773e-05,
+          "mae": 0.0027404521031297075,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 47.97384702525116,
+          "psnr_from_mean_mse": 47.8940957356016,
+          "mse": 1.6240164591742396e-05,
+          "mae": 0.0026071011195444005,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 48.78848168640679,
+        "psnr_from_mean_mse": 48.67375945389195,
+        "mse": 1.3571381364220425e-05,
+        "mae": 0.002250653921805556,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.07713819383741259,
+        "raw_min": -0.06926819682121277,
+        "raw_max": 1.0831199884414673
+      },
+      "clipping_MSE_reduction": 9.589437002113762e-07,
+      "rphi_MSE_damage_vs_input": 2.137096797388161e-06
+    },
+    {
+      "sample_id": "rphi-590d1473d3d36c8d0d4ebb5abf57daf4201e58c45c2e39bc252c9fa83bfbc175-identity",
+      "source_id": "2BdYaGuVAKo",
+      "task": "deblur",
+      "control": "identity",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "6ca023d379337551d82da1f7d8abad539e6de17e63b6bb32630e647651002958",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 120.0,
+          "psnr_from_mean_mse": 120.0,
+          "mse": 0.0,
+          "mae": 0.0,
+          "perfect_frames": 22,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 49.727986336826255,
+          "psnr_from_mean_mse": 49.54512144850729,
+          "mse": 1.1104214824598915e-05,
+          "mae": 0.0016686698976806427,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 50.255240602504024,
+          "psnr_from_mean_mse": 50.06035270126743,
+          "mse": 9.861993906923771e-06,
+          "mae": 0.0014569985924392165,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 50.255240602504024,
+        "psnr_from_mean_mse": 50.06035270126743,
+        "mse": 9.861993906923771e-06,
+        "mae": 0.0014569985924392165,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.1862371840399184,
+        "raw_min": -0.07000415772199631,
+        "raw_max": 1.0842576026916504
+      },
+      "clipping_MSE_reduction": 1.2422209176751438e-06,
+      "rphi_MSE_damage_vs_input": 9.861993906923771e-06
+    },
+    {
+      "sample_id": "rphi-590d1473d3d36c8d0d4ebb5abf57daf4201e58c45c2e39bc252c9fa83bfbc175-near_clean",
+      "source_id": "2BdYaGuVAKo",
+      "task": "deblur",
+      "control": "near_clean",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "37ac029da9f63e4b7453b70e9504ac08f496df1b51d260279c92a07550139e36",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 48.51292954745271,
+          "psnr_from_mean_mse": 48.5072999708721,
+          "mse": 1.4101652322795108e-05,
+          "mae": 0.0025386522578537164,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 47.728961765929334,
+          "psnr_from_mean_mse": 47.646561557484375,
+          "mse": 1.7192690464448414e-05,
+          "mae": 0.0027398294154636765,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 47.97572084454921,
+          "psnr_from_mean_mse": 47.89571982455435,
+          "mse": 1.6234092550321628e-05,
+          "mae": 0.0026064718806161308,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 48.78936256998352,
+        "psnr_from_mean_mse": 48.674014934603335,
+        "mse": 1.3570583029374058e-05,
+        "mae": 0.0022505398261497816,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.07716516881555945,
+        "raw_min": -0.06983663886785507,
+        "raw_max": 1.083369493484497
+      },
+      "clipping_MSE_reduction": 9.585979141267859e-07,
+      "rphi_MSE_damage_vs_input": 2.1324402275265204e-06
+    },
+    {
+      "sample_id": "rphi-7a864f515fb8a97b1e5873d0ca7645d3750c48a3642600439687025fe2a4e6f2-identity",
+      "source_id": "2BdYaGuVAKo",
+      "task": "denoise",
+      "control": "identity",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "6ca023d379337551d82da1f7d8abad539e6de17e63b6bb32630e647651002958",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 120.0,
+          "psnr_from_mean_mse": 120.0,
+          "mse": 0.0,
+          "mae": 0.0,
+          "perfect_frames": 22,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 49.727986336826255,
+          "psnr_from_mean_mse": 49.54512144850729,
+          "mse": 1.1104214824598915e-05,
+          "mae": 0.0016686698976806427,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 50.255240602504024,
+          "psnr_from_mean_mse": 50.06035270126743,
+          "mse": 9.861993906923771e-06,
+          "mae": 0.0014569985924392165,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 50.255240602504024,
+        "psnr_from_mean_mse": 50.06035270126743,
+        "mse": 9.861993906923771e-06,
+        "mae": 0.0014569985924392165,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.1862371840399184,
+        "raw_min": -0.07000415772199631,
+        "raw_max": 1.0842576026916504
+      },
+      "clipping_MSE_reduction": 1.2422209176751438e-06,
+      "rphi_MSE_damage_vs_input": 9.861993906923771e-06
+    },
+    {
+      "sample_id": "rphi-7a864f515fb8a97b1e5873d0ca7645d3750c48a3642600439687025fe2a4e6f2-near_clean",
+      "source_id": "2BdYaGuVAKo",
+      "task": "denoise",
+      "control": "near_clean",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "82edaee033152d40600be15c4a7009ddcd07e8232e4a8409b61fb0ce17db0d4c",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 48.51240646562997,
+          "psnr_from_mean_mse": 48.50689443031457,
+          "mse": 1.4102969184786125e-05,
+          "mae": 0.002539393639601626,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 47.72756542960569,
+          "psnr_from_mean_mse": 47.64537622203791,
+          "mse": 1.7197383567308552e-05,
+          "mae": 0.002740506444490839,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 47.97435537539509,
+          "psnr_from_mean_mse": 47.89459646345155,
+          "mse": 1.6238292259888236e-05,
+          "mae": 0.002607198700376946,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 48.78775310334652,
+        "psnr_from_mean_mse": 48.672725817925325,
+        "mse": 1.357461178458094e-05,
+        "mae": 0.0022507708017342554,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.07708659612956488,
+        "raw_min": -0.06861445307731628,
+        "raw_max": 1.0836215019226074
+      },
+      "clipping_MSE_reduction": 9.590913074203161e-07,
+      "rphi_MSE_damage_vs_input": 2.135323075102111e-06
+    },
+    {
+      "sample_id": "rphi-4df0dddbe8eac289a21de0d2a51c930f6c718827e4ae92363f664dcd4698d63d-identity",
+      "source_id": "2BdYaGuVAKo",
+      "task": "sr",
+      "control": "identity",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "6ca023d379337551d82da1f7d8abad539e6de17e63b6bb32630e647651002958",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 120.0,
+          "psnr_from_mean_mse": 120.0,
+          "mse": 0.0,
+          "mae": 0.0,
+          "perfect_frames": 22,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 49.727986336826255,
+          "psnr_from_mean_mse": 49.54512144850729,
+          "mse": 1.1104214824598915e-05,
+          "mae": 0.0016686698976806427,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 50.255240602504024,
+          "psnr_from_mean_mse": 50.06035270126743,
+          "mse": 9.861993906923771e-06,
+          "mae": 0.0014569985924392165,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 50.255240602504024,
+        "psnr_from_mean_mse": 50.06035270126743,
+        "mse": 9.861993906923771e-06,
+        "mae": 0.0014569985924392165,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.1862371840399184,
+        "raw_min": -0.07000415772199631,
+        "raw_max": 1.0842576026916504
+      },
+      "clipping_MSE_reduction": 1.2422209176751438e-06,
+      "rphi_MSE_damage_vs_input": 9.861993906923771e-06
+    },
+    {
+      "sample_id": "rphi-4df0dddbe8eac289a21de0d2a51c930f6c718827e4ae92363f664dcd4698d63d-near_clean",
+      "source_id": "2BdYaGuVAKo",
+      "task": "sr",
+      "control": "near_clean",
+      "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "cache_sha256": "f60724b1f5c0f186a42572a3b06009c4c98295304ee1bc12bc0c9ae806bdd633",
+      "scores_vs_original_RGB": {
+        "raw_draft": {
+          "psnr": 48.514431220160034,
+          "psnr_from_mean_mse": 48.50895379917496,
+          "mse": 1.4096283322562262e-05,
+          "mae": 0.0025381731787569232,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_raw_rgb": {
+          "psnr": 47.72641193339097,
+          "psnr_from_mean_mse": 47.64378930017169,
+          "mse": 1.720366867841371e-05,
+          "mae": 0.0027402722301508664,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        },
+        "rphi_rgb": {
+          "psnr": 47.97311444879973,
+          "psnr_from_mean_mse": 47.89291606685613,
+          "mse": 1.6244576486794742e-05,
+          "mae": 0.0026069098048070527,
+          "perfect_frames": 0,
+          "frames": 22,
+          "lpips": null
+        }
+      },
+      "rphi_edit_vs_input": {
+        "psnr": 48.78952976602596,
+        "psnr_from_mean_mse": 48.673716849223815,
+        "mse": 1.3571514501310441e-05,
+        "mae": 0.002250197177975734,
+        "perfect_frames": 0,
+        "frames": 22,
+        "lpips": null
+      },
+      "clipping": {
+        "component_fraction": 0.07713936996163559,
+        "raw_min": -0.06881433725357056,
+        "raw_max": 1.0842005014419556
+      },
+      "clipping_MSE_reduction": 9.590921916189685e-07,
+      "rphi_MSE_damage_vs_input": 2.1482931642324805e-06
+    }
+  ],
+  "model_forwards": 0,
+  "NPU_calls": 0,
+  "training_steps": 0,
+  "lpips_measured": false,
+  "temporal_measured": false,
+  "limits": [
+    "One existing training source; no generalization, independent test or quality acceptance.",
+    "Four identity task labels repeat identical pixels; no four-source interpretation.",
+    "Mean per-frame RGB PSNR; perfect frames capped at 120dB by existing evaluator.",
+    "No coefficient selection or training objective change from this audit."
+  ]
+}

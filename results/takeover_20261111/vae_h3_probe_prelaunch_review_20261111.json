@@ -1,0 +1,98 @@
+{
+  "schema": "openh3.vae_and_latent_probe_independent_prelaunch_review.v1",
+  "date": "2026-11-11",
+  "status": "no_remaining_source_confirmed_launch_blocker_for_the_declared_bounded_probes",
+  "scope": "Independent source/evidence review plus explicitly authorized checkpoint-options correction and isolated CPU verification. This is not an NPU result or a grant to bypass fresh root admission.",
+  "read_source_sha256": {
+    "configs/openh3_20261111/h3_trajectory_probe_contract_20261111.json": "2dc318b338c1e359bd633276481330bf43033b00118f5030536d4764efd89c1b",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/tests/test_openh3_train_trajectory.py": "f9e05c4cadff196e0da0c7ef511321ee21db73e30252dc092df01d1534f61287",
+    "code/check_h3_trajectory_grad.py": "4dee97bc24f923329449e98bef20872868d1549b45f3e4342b131fe156b45775",
+    "code/tests/test_h3_trajectory_probe.py": "a06856f58d1fe83f2fbcdee4c9da174963e679357eea18b9a24d527c6567640e",
+    "code/probe_vae_gradient_repeatability.py": "6bb57838279749a838b2e45e1dd9288273c99adb0e85ce8420101165635658a2",
+    "code/compare_vae_gradient_repeatability.py": "8b76f3504c47bc6ce831d312208e708f44bd60ef8c3176c2c4f58f731c165f9e",
+    "code/tests/test_vae_gradient_repeatability.py": "0a10fc77bde893cfb9d5a5df742b3184d186f89f86de4ea2fb6ac8c10be1da12",
+    "preparation/h3_trajectory_probe_20261111a/execution_contract.json": "c23698f469c2f2962adf1006f8a8dcefcac0b689a0e4abc87782ff82620c79cb",
+    "preparation/h3_trajectory_probe_20261111a/queue.json": "dc4b2de0dc8c9bbae98f5557e5cd3599c2f51be4b10411ed65215d60ed8f26d1",
+    "preparation/vae_gradient_repeatability_20261111i/queue.json": "f868daf326b472137752fd5cfb81c5f082713aaf2f8d303e485635cc07bc3a3c",
+    "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json": "805aea54fe16febafd135d9dfd421893d4658ad043f6b82ef1c0a16d088280c0",
+    "preparation/h3_checkpoint_options_snapshot_20261111/cpu_receipt.json": "5ced1e11845f2f6e105a82358660efd3eb07006652dc7f79ef964ee473b527eb",
+    "preparation/h3_checkpoint_options_snapshot_20261111/negative_control.json": "68f26847a9476a057689678d58cb219a3904aaec7adfab8cc7a639dfda289315",
+    "results/takeover_20261111/vae_gradient_repeatability_source_review_20261111.json": "1d6564fa58709e7423e745c4fb2065e31d5eccc5adb45bb9e3f50e16801a312a",
+    "results/takeover_20261111/vae_decode_grad_scaled_fullres_20261111h_failed/scientific_review.json": "a96a2bb71b014a85c44292bdde71de9e6e64a587afbc8bde0bf886213e25091f"
+  },
+  "blocking_findings": [],
+  "corrected_findings": [
+    {
+      "priority": "P1",
+      "topic": "Checkpoint recomputation retained mutable transformer options",
+      "evidence": "Original openh3_train_trajectory.py192-197 copied options only inside recompute; pinned Comfy minimax/model.py760 updates shared block_index before each block call at770.",
+      "fix": "Entry-time top-level options snapshot; each initial/recompute invocation gets a copy of that frozen snapshot. Current module191-207.",
+      "positive_test": "10/10 real Torch CPU tests, no skips; exact nonlinear output/input-gradient/parameter-gradient parity and replay indices [[0,0],[1,1]].",
+      "negative_control": "Restoring the previous wrapper semantics in isolated CPU process memory makes the new regression fail at input-gradient torch.equal. 1 expected failure, no source file edit.",
+      "claim_limit": "No previous real NPU numerical corruption is inferred; unpatched default attention may not consume block_index. Arbitrarily mutated nested plugin structures are outside the rejected-hook/custom-options contract."
+    },
+    {
+      "priority": "P1",
+      "topic": "H3 startup JIT/device contract",
+      "resolution": "check_h3_trajectory_grad.py344-347 imports torch_npu then sets logical device0 and jit_compile=False before H3 construction; HF32 is recorded and gated at360-373."
+    },
+    {
+      "priority": "P2",
+      "topic": "Missing adapter gradients could pass an aggregate gate",
+      "resolution": "gradient_audit rejects any missing tensor; adapter_audit establishes exactly400 FP32 rank8 tensors before inference. A zero gradient at zero B remains allowed, while aggregate B must be finite and nonzero."
+    },
+    {
+      "priority": "P2",
+      "topic": "Frozen identity across LoRA .base renaming and evidence retention",
+      "resolution": "Canonical keys strip only exact injected module prefixes; actual post-residency parameter objects/versions are captured before injection and verified immediately after injection and after backward (435-439,469+). Base byte hashes cover before reference, after residency restore and final state. Best-effort finally retains frozen/gradient evidence on failure; missing post-state is reported rather than inferred."
+    },
+    {
+      "priority": "P2",
+      "topic": "VAE checkpoint support and conditional B preflight",
+      "resolution": "compare_vae_gradient_repeatability.checkpoint_matches validates36 wrapped blocks,108 forward calls,108/216 recomputes, guards,0bypass and restored scope. B revalidates exact A1/A2 arrays/admission and compares actual runtime plus loaded weights before its first forward."
+    }
+  ],
+  "H3_protocol_checks": {
+    "zero_adapters": "LoRALinear calls the unchanged base, computes FP32 delta and casts delta to base-output dtype before add. Zero B is mathematically neutral for finite activations; actual final video AND audio torch.equal is still mandatory and is performed against a genuine no-adapter H3.sample reference, not scale0 on the same injected wrapper.",
+    "guide_and_draft": "Seed101 CPU float32 synthetic guide then distinct raw draft; raw draft supplies both warm starts. Explicit hw128x128 avoids base sample hw access failure. No GT or VAE input.",
+    "audio_noise": "Both paths use audio_init=zeros and actual official NestedTensor prepare_noise. A passthrough observer hashes initial packed video/audio and packed noise for both reference/candidate and requires exact metadata/hash identity. No independent audio RNG or per-step audio reset.",
+    "residency": "Initial static full-residency validation; reference may invoke Comfy lifecycle; full patcher restore if needed before LoRA injection, then ResidentH3Trajectory revalidates residency. Reference-to-restore byte identity is distinguished from object/version identity across loader operations.",
+    "math": "Native three-step Euler, same sigma schedule and joint audio carry; actual CFGGuider.inner_sample conditioning used. DiT eager RoPE scope stays active through backward. VAE is forbidden and must remain off NPU.",
+    "budget": "Reference3 NFE + candidate3 NFE, parity gate before same candidate graph one backward, no optimizer. All50 blocks must appear exactly3 times in each reference/candidate/recompute phase;150 checkpoint block replays are explicit extra compute, not called zero-cost.",
+    "evidence": "Both latent outputs are saved before parity verdict; candidate trace is not represented as a baseline per-step parity measurement. Actual imported Python paths/hashes gated before sampling and at exit; runtime snapshot pins corrected trajectory.",
+    "CPU_validation": "Probe author reports13/13 real CPU tests passed in3.318s; this reviewer independently executed the separate10-test trajectory suite plus old-semantics negative control. NPU parity/backward remain unmeasured by this review."
+  },
+  "VAE_protocol_checks": {
+    "A1_A2": "Two fresh same-code single-scaled-backward processes, same label-independent code path, hard pinned CPU seed101 input SHA and full [1,24,7,30,52] shape. Actual arrays and file/array hashes saved.",
+    "before_verdict": "Forward parity values, raw/unscaled gradients, frozen before/after, runtime before/after, checkpoint restore/counts and memory persist before CPU exact comparison. Output evidence uses as-returned internally clipped VAE RGB.",
+    "B_condition": "B is absent from the i queue. Only an exact A1/A2 comparison may admit a separately launched B; read admission is recomputed from source receipts/arrays. B uses unscaled retained backward, saves it, clears leaf.grad, then fixed1024 scaled backward; no optimizer.",
+    "comparison": "Reports actual elementwise Linf, L2, relative L2, cosine, sign/support/signed-zero differences from complete arrays. Descriptive errors do not establish a new tolerance.",
+    "CPU_validation": "Frozen producer receipt reports8/8 CPU tests in3.100s, including actual tiny autograd and integrity/admission rejection; source hashes reviewed here match frozen probe6bb578... and comparator8b76f3....",
+    "queue": "i queue has only A1,A2,CPUcompare with bounded600/600/60second command limits; hold/card6/fresh-reservation safeguards remain. No automatic B or fallback."
+  },
+  "old_h_failure_boundaries": [
+    "h remains strict expected-gradient SHA failure despite finite nonzero gradients and no OOM.",
+    "Its failure payload did not preserve actual source SHA, bitwise forward values or after-backward frozen fingerprint. New protocols cannot backfill those facts onto h.",
+    "g/h scalar-max difference is not an elementwise gradient error; eight fewer nonzero coordinates is not a support-location comparison.",
+    "A1/A2 mismatch diagnoses scaled-single repeatability first. Exact A1/A2 plus different B narrows graph-history/execution effects without identifying a specific native kernel."
+  ],
+  "remaining_acceptance_limits": [
+    "Fresh queue admission and remote immutable snapshot verification remain root responsibilities; this file does not launch jobs.",
+    "CPU source plumbing tests cannot establish real H3 zero-adapter numerical exactness or NPU gradients.",
+    "A successful tiny latent-only probe cannot close full22-frame DiT+VAE+LoRA joint-memory or restoration-quality gates.",
+    "Nonzero unmerged adapter save/reload parity, RGB-loss backward, and convergence/quality are later separate gates; BF16 merged inference parity must not be assumed.",
+    "VAE A1/A2 observation complete is separate from exact-repeatability acceptance. Paired-history memory is not a single-backward training memory measurement."
+  ],
+  "actions": {
+    "NPU_calls": 0,
+    "training_steps": 0,
+    "old_run_or_snapshot_edits": false,
+    "main_plan_or_TAKEOVER_edits": false,
+    "authorized_runtime_edits": [
+      "code/openh3_train_trajectory.py",
+      "code/tests/test_openh3_train_trajectory.py"
+    ],
+    "git_commits": 0
+  }
+}

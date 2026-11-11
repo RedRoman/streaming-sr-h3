@@ -1,0 +1,116 @@
+{
+  "schema": "openh3.vae_h3_probe_postfix_readonly_review.v1",
+  "date": "2026-11-11",
+  "status": "no_new_source_blockers_found",
+  "actions": {
+    "source_read_only": true,
+    "source_or_frozen_snapshot_edits": false,
+    "tests_rerun": false,
+    "NPU_calls": 0,
+    "model_loads": 0,
+    "job_launch_or_interruption": false,
+    "web_research": false
+  },
+  "scope": "Frozen VAE descent numerical protocol and live H3 b trajectory/parity/backward compatibility beyond import auditing; this is not a live-run acceptance report.",
+  "source_sha256": {
+    "code/probe_vae_latent_descent.py": "b94320cdb2c2ee112ce47e7f377813b6a34935d11428e0e707300dc0e54fdc06",
+    "code/tests/test_vae_latent_descent.py": "bbddaf33ba64f06ee89fe175214d249547d034d051f181d8081264957aa45a56",
+    "code/check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+    "code/vae_checkpoint_context.py": "cdbdf29d7211885aa1ba4c0518c9b767cc2dd5f52aecde0b77cde229e2463eb6",
+    "preparation/h3_trajectory_probe_20261111b/code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "preparation/h3_trajectory_probe_20261111b/code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "preparation/h3_trajectory_probe_20261111b/code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "preparation/h3_trajectory_probe_20261111b/code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "preparation/h3_trajectory_probe_20261111b/code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "preparation/h3_trajectory_probe_20261111b/execution_contract.json": "2dd8ac7bbd007035d76325f946a2e3abe5a68e47517216ce294cd345a40c590b"
+  },
+  "local_h3_b_sources_match_execution_contract": true,
+  "vae_descent_source_matches_prepared_snapshot": true,
+  "source_checks": [
+    {
+      "area": "VAE bounded optimization",
+      "evidence": "code/probe_vae_latent_descent.py:98-165",
+      "finding": "One deployment reference, three gradient forwards/backwards, three negative-step deployment forwards and first-step positive perturbation total at most8/3. An observed non-descending negative step raises before any further forward. Central>0 and all negative steps descend are fixed gates; magnitude error and Lplus>L0 remain descriptive."
+    },
+    {
+      "area": "VAE normalization and objective",
+      "evidence": "code/probe_vae_latent_descent.py:49-84,178-232",
+      "finding": "FP32 raw leaf gradients are divided by1024, normalized using FP64 RMS, then direction/update are FP32. Both finite-difference endpoints and loss decreases use the deployment no-grad decode; same-point direct decode is checked before backward. Actual device FP16-cast arrays are compared, so an erased update cannot be hidden by reporting only the FP32 requested step."
+    },
+    {
+      "area": "VAE evidence and restoration",
+      "evidence": "code/probe_vae_latent_descent.py:110-120,205-232,275-299; code/check_vae_decode_grad.py:23-36",
+      "finding": "Gradient arrays are saved before later directional gates; each checkpoint scope covers its backward and records restoration in finally. The outer finally records parameter fingerprints/runtime even after failure. A completed local descent would not reclassify i exact-gradient failure."
+    },
+    {
+      "area": "H3 actual joint sampling semantics",
+      "evidence": "preparation/h3_trajectory_probe_20261111b/code/check_h3_trajectory_grad.py:439-521; openh3_train_trajectory.py:96-140,379-435; actual comfy/samplers.py:1220-1238",
+      "finding": "Both paths use actual Comfy prepare_noise with the same packed raw-video/zero-audio initialization and seed. Candidate reuses official inner_sample, condition processing and latent-in/out transforms, preserving audio scaling and x0 semantics. Final video/audio strict equality is checked on the retained candidate before its single backward."
+    },
+    {
+      "area": "H3 actual LoRA call path",
+      "evidence": "preparation/h3_trajectory_probe_20261111b/code/lora.py:12-42; h3_comfy.py:89-112,433-438; actual comfy/ops.py:1018-1028 and comfy/ldm/minimax/model.py:174-211",
+      "finding": "Native math sets in_training for reference and candidate; actual DiT attention selects functional RoPE under this flag, and MLP linear_input_act calls the wrapper rather than bypassing LoRA via bare weights. LoRA exposes weight/bias and retains an FP32 branch; zero-B parity remains a real numerical gate, not an assumption."
+    },
+    {
+      "area": "H3 resident model and checkpoint compatibility",
+      "evidence": "preparation/h3_trajectory_probe_20261111b/code/check_h3_trajectory_grad.py:480-540,549-583; openh3_train_trajectory.py:192-211,285-318; actual comfy/model_patcher.py:358-380,404-405,1460-1464 and comfy/model_prefetch.py:278-283",
+      "finding": "The inspected static patcher default empty options/callback lists pass recursive emptiness checks. Reference residency restoration is compared by bytes before rebuilding object/version evidence and injecting adapters. Static empty options do not activate dynamic prefetch. Per-call transformer_options snapshots preserve block_index during recompute; all50blocks*3 forward and recompute calls are required."
+    },
+    {
+      "area": "H3 gradient and freeze gates",
+      "evidence": "preparation/h3_trajectory_probe_20261111b/code/check_h3_trajectory_grad.py:53-101,119-175,290-310,525-585",
+      "finding": "The declared400 adapter tensors are audited before execution; saved gradients must all be present and finite with aggregate B nonzero, while zero A is allowed at zero B. Frozen base fingerprints include parameters and buffers and canonicalize only the exact injected module prefixes. No optimizer or VAE decode is included."
+    }
+  ],
+  "nonblocking_reporting_boundary": {
+    "severity": "P3 clarification only",
+    "evidence": "code/check_vae_decode_grad.py:23-36",
+    "finding": "VAE parameter_fingerprint iterates named_parameters, not named_buffers. Describe its guarantee as frozen parameters/weights; do not call it verification of every model buffer/cache/state. H3 base_fingerprint separately includes named_buffers. No runtime edit requested."
+  },
+  "actual_runtime_sources_read": {
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/model.py": {
+      "sha256": "15f0395cf0dbe6e5c13fd859ff359eacc7761b4e15f60aa0038853985d0e599b",
+      "lines": [
+        "174-211",
+        "504-531",
+        "533-545",
+        "739-790"
+      ]
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/samplers.py": {
+      "sha256": "f2c264ca9d394612f828e3ffe167c856a278a10e1711b269f0ba65dccb66393f",
+      "lines": [
+        "1038-1073",
+        "1220-1274"
+      ]
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/model_patcher.py": {
+      "sha256": "7edc88d9eae6a88637625d257dc73684cfc012a29446bf88e70d22e3a6be3994",
+      "lines": [
+        "358-405",
+        "1460-1464"
+      ]
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/model_prefetch.py": {
+      "sha256": "96aa7a6946fa3383dd6d17037bdc2b910c9c1364cc335100e351ddac0ea97748",
+      "lines": [
+        "29-30",
+        "174-185",
+        "278-283"
+      ]
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ops.py": {
+      "sha256": "a0b8c7f32a146b383a795363bef35e480ffa84b5b3e9c9503f323b1446876f45",
+      "lines": [
+        "1018-1034"
+      ]
+    }
+  },
+  "pending_empirical_gates": [
+    "Real H3 zero-adapter video/audio parity and actual native backward/400-gradient/frozen/150-recompute gates remain dependent on b artifacts; no success inferred from CPU fixtures.",
+    "Small5-frame/128px-equivalent latent success would not establish full22, VAE/RGB loss, nonzero adapter reload/merge parity, or joint memory.",
+    "VAE descent at one seed/rho can support a locally useful direction only; finite differences across FP16 casts are not proof of an exact smooth derivative or general optimization stability."
+  ],
+  "recommendation": "No source-based reason found here to alter or interrupt frozen b. Keep prepared descent unlaunched until root independently reviews/admit it; preserve i strict failure."
+}

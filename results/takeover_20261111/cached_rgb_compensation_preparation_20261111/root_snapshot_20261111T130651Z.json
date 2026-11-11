@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-11-11T13:06:51.365163+00:00",
+  "process_alive": true,
+  "process_status": [
+    "State:\tR (running)",
+    "VmHWM:\t 3186656 kB",
+    "VmRSS:\t 1793680 kB",
+    "Cpus_allowed_list:\t8,11"
+  ],
+  "log_tail": "-h3-npu/lib/python3.12/site-packages/lpips/trainer.py:9: UserWarning: A NumPy version >=1.22.4 and <2.3.0 is required for this version of SciPy (detected version 2.5.4)\n  from scipy.ndimage import zoom\n/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n  warnings.warn(\n/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n  warnings.warn(msg)\n{\"done\": 1, \"total\": 12, \"sample_id\": \"rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3\", \"seconds\": 310.4286413779482}\n",
+  "failures": [],
+  "eval/partial_metrics.json": {
+    "complete": false,
+    "scored_samples": 1,
+    "sample_seconds": [
+      310.4286413779482
+    ],
+    "last_cpu_observation": [
+      {
+        "phase": "after_sample_1",
+        "torch_npu_in_sys_modules": false,
+        "NPU_initialized": false,
+        "H3_imported": false,
+        "scope": "point-in-time module/backend observation, not continuous import tracing"
+      }
+    ]
+  }
+}

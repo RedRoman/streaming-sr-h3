@@ -1,0 +1,133 @@
+{
+  "schema": "openh3.cached_rgb_compensation_launch_receipt.v1",
+  "status": "running_input_validation_before_grid",
+  "last_observed_at_utc": "2026-11-11T12:58:47.383685+00:00",
+  "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
+  "host": "huawei-modelarts-30794",
+  "session": "cached-rgb-comp-20261111a",
+  "worker_pid": 3994024,
+  "process_group": 3994023,
+  "new_scoring_launch_count": 1,
+  "no_new_NPU_or_H3_tasks": true,
+  "local_archive_sha256": "f35bf1a899109c14d97ce6005a0ef26779f5c94f4c3b48d112a0731c666f2bb1",
+  "verified_archive_members": 11,
+  "code_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
+  "test_sha256": "55b7f71d83c4833c5e3ea60280362656f800216aa32ca006b09d55e936457562",
+  "tests_passed": 7,
+  "inspection_receipt_sha256": "e183b821d7e635bc7af0220e26f634d380f8139ccf66eb86d7a5c2db3bb46961",
+  "inspection_contract_sha256": "ce1d402f5dde4b987f458a8c97295c00f15c001623b0e95fbbc43a75e6956c03",
+  "inspection_samples_verified": 12,
+  "preflight_seconds": 208.76688041351736,
+  "execution_guard": "timeout --signal=TERM --kill-after=30s 7200s python /cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/launch_cpu_grid.py /cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/launch_config.json",
+  "full_worker_command_argv": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/code/diagnose_cached_rgb_compensation.py",
+    "--ordinary-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+    "--ordinary-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+    "--controls-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+    "--controls-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+    "--dev-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--vae-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/vae_roundtrip_legacy_smoke_20261111b/eval/metrics.json",
+    "--threads",
+    "2",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/eval"
+  ],
+  "resource_admission": {
+    "schema": "openh3.cached_compensation_cpu_launch.v1",
+    "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
+    "worker_pid_preserved_by_exec": 3994024,
+    "owned_process_group": 3994023,
+    "config_sha256": "68f3640b3436f4339f3274434d45943a16aa548d5fa42ed35d2723499c8298df",
+    "launcher_sha256": "595d78cde4c7e33061e1de7f426ed301cce949634c6b6b0565ed6e65cf185fd0",
+    "runtime_manifest_sha256": "96e3550464878bc062e1bd697943a04210a79ec85a46a5acf928df7c2d78fbf1",
+    "inspection_receipt_sha256": "e183b821d7e635bc7af0220e26f634d380f8139ccf66eb86d7a5c2db3bb46961",
+    "mem_available_kib": 1468524712,
+    "loadavg": [
+      16.15,
+      16.27,
+      16.16
+    ],
+    "cpu_affinity": [
+      8,
+      11
+    ],
+    "selected_cpu_busy_fraction_prior_second": {
+      "8": 0.0,
+      "11": 0.0
+    },
+    "affinity_is_not_an_exclusive_cpu_reservation": true,
+    "nice": 10,
+    "rlimit_as_bytes": [
+      25769803776,
+      25769803776
+    ],
+    "max_compute_threads": 2,
+    "torch_interop_threads": 1,
+    "timeout_seconds": 7200,
+    "kill_after_seconds": 30,
+    "timeout_scope": "external GNU timeout own process group in dedicated tmux session",
+    "argv": [
+      "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/code/diagnose_cached_rgb_compensation.py",
+      "--ordinary-metrics",
+      "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+      "--ordinary-guides",
+      "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+      "--controls-metrics",
+      "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+      "--controls-guides",
+      "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+      "--dev-manifest",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+      "--pretrained-manifest",
+      "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+      "--vae-metrics",
+      "/cache/zihaohe/omni_openh3_20261111/runs/vae_roundtrip_legacy_smoke_20261111b/eval/metrics.json",
+      "--threads",
+      "2",
+      "--out",
+      "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/eval"
+    ],
+    "reuse_partial": null,
+    "new_run": true
+  },
+  "observed_runtime_limits": {
+    "status": {
+      "Name": "python",
+      "State": "R (running)",
+      "VmHWM": "883860 kB",
+      "VmRSS": "619328 kB",
+      "Threads": "3",
+      "Cpus_allowed_list": "8,11"
+    },
+    "limits": [
+      "Max address space         25769803776          25769803776          bytes     "
+    ],
+    "environment_allowlist": {
+      "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "NUMEXPR_NUM_THREADS": "2"
+    }
+  },
+  "remote_output": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/eval",
+  "remote_log": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/grid.log",
+  "not_yet_verified": [
+    "LPIPS/flow grid endpoints on actual inputs are enforced during scoring; no completed sample claimed at launch.",
+    "No quality conclusion or deployment beta selected."
+  ],
+  "preparation_failures": [
+    "Initial inline preflight wrapper failed before computation at env.sh sourcing.",
+    "Second preflight wrapper exited before computation because the NPU environment requires an explicit device; successful third wrapper uses explicit CPU environment without sourcing env.sh."
+  ],
+  "old_run_runtime_modified": false
+}

@@ -2,7 +2,7 @@
   "schema": "openh3.native_baseline_readiness.v1",
   "date": "2026-11-11",
   "recorded_at_utc": "2026-11-11T09:11:15.460437+00:00",
-  "status": "official_CPU_models_verified_bounded_one_source_quality_queue_running",
+  "status": "two_Faver_native_results_audited_queue_running",
   "plan_reference": "configs/openh3_20261111/omni_benchmark_plan_20261111.json",
   "plan_sha256": "6a1fc49beb70542097ea25665bf0e66668b4fe4252ef4da75c35d0d86175dcc6",
   "execution_boundary": {
@@ -32,7 +32,7 @@
         "models/spynet.py": "746f2378800afa51cd246a736f5aab8c20f6f14085ff9619645588a481f11756"
       },
       "method": "FaverNet TUDCommon",
-      "readiness": "strict_load_and_synthetic_CPU_forward_verified_native_quality_pending",
+      "readiness": "official_strict_CPU_load_and_synthetic_forward_verified_Faver_two_native_results_audited_Aver_quality_pending",
       "license_evidence": {
         "file": "LICENSE",
         "declaration": "MIT"
@@ -46,7 +46,7 @@
         "av": "15.1.0"
       },
       "official_entrypoint": "python test.py --checkpoint pretrained_models/FaverNet_TUDCommon.pth --dataroot-lq LQ --dataroot-gt GT --output-dir results/frames",
-      "checkpoint_loader": "raw state_dict; torch load on CPU with weights_only=True and strict load in prepared adapter; runtime pending",
+      "checkpoint_loader": "raw state_dict; torch load on CPU with weights_only=True and strict load in prepared adapter; strict CPU load verified; see latest_execution for exact receipts",
       "input_output": {
         "input": "[B,T,3,H,W] float RGB [0,1]",
         "output": "same shape, residual addition to input; official metrics clamp[0,1]",
@@ -85,7 +85,7 @@
         "options/test/test_AverNet_DAVIS_T6.yml": "767cf6e0ec1fe1b26ee348050c3853f638b4fd7199cef66c239c50811b83e57b"
       },
       "method": "AverNet",
-      "readiness": "strict_load_and_synthetic_CPU_forward_verified_native_quality_pending",
+      "readiness": "official_strict_CPU_load_and_synthetic_forward_verified_Faver_two_native_results_audited_Aver_quality_pending",
       "license_evidence": {
         "file": "setup.py:161,168",
         "declaration": "Apache-2.0 package metadata; no standalone LICENSE found in pinned tree"
@@ -98,7 +98,7 @@
         "setup": "requirements.txt then setup.py develop; README requirement.txt is a filename typo"
       },
       "official_entrypoint": "python basicsr/test.py -opt options/test/test_AverNet_DAVIS_T6.yml",
-      "checkpoint_loader": "checkpoint params key; SPyNet symbols present in static archive scan; adapter requires strict full-state load with spynet_pretrained=None; runtime pending",
+      "checkpoint_loader": "checkpoint params key; SPyNet symbols present in static archive scan; adapter requires strict full-state load with spynet_pretrained=None; strict CPU load verified; see latest_execution for exact receipts",
       "input_output": {
         "input": "[B,T,3,H,W] float RGB [0,1]",
         "output": "same shape, residual addition to input; prepared metrics transport uses clamp[0,1] float32",
@@ -205,7 +205,7 @@
   "prepared_adapter": {
     "path": "third_party/native_video_baselines_20261111/run_lossless_rgb.py",
     "sha256": "8cc2ca41e6ef1c723f0c86c5e279de32e2df5574d2fa656d58cecb3a7d23c80d",
-    "status": "lossless_transport_preflight_passed_separate_CPU_model_probe_passed_full_quality_runner_pending",
+    "status": "lossless_transport_and_CPU_model_execution_verified_frozen_quality_queue_running",
     "accepted_tasks": [
       "denoise",
       "deblur",
@@ -278,13 +278,14 @@
   "claims_allowed_now": [
     "Official public sources and exact commits were acquired.",
     "Three official-linked weights were downloaded, hashed and stored outside main git tracking.",
-    "Prepared lossless input preflight passes for both methods."
+    "Prepared lossless input preflight passes for both methods.",
+    "Both official model architectures completed strict CPU load and synthetic forward.",
+    "FaverNet completed audited native deblur and denoise quality inference on one historical dev source, with paired input metrics and stated temporal access differences."
   ],
   "claims_not_supported_now": [
-    "Either model ran successfully.",
     "Either model is fully compatible with Ascend.",
     "Either model is a native x4 SR or streaming baseline.",
-    "Any quality/speed ranking or SOTA reproduction."
+    "Multi-source quality/speed ranking or SOTA reproduction."
   ],
   "latest_execution": {
     "summary": "preparation/native_baselines_cpu_20261111/evidence/summary.json",
@@ -440,15 +441,23 @@
       "started_at_local": "2026-11-11T20:17:12+08:00",
       "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
       "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
-      "latest_snapshot": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/partial_snapshot.json",
-      "last_verified_local": "2026-11-11T20:18:49+08:00",
-      "last_verified_current": "favernet/deblur/infer",
-      "completed_forwards": 0,
+      "latest_snapshot": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/queue_status.json",
+      "last_verified_local": "2026-11-11T20:58:50.786991+08:00",
+      "last_verified_current": "favernet/compression/infer",
+      "completed_forwards": 2,
       "maximum_forwards": 6,
-      "model_quality_results_available": false,
-      "NPU_used": false,
+      "model_quality_results_available": true,
       "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
-      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity."
+      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity.",
+      "latest_audit": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/audit.json",
+      "latest_audit_sha256": "108926c79854f7599e3c47b06869497bc287ce3da4a567f8538ad2de73f3f92d",
+      "completed_quality_evaluations": 2,
+      "new_result": "favernet/denoise",
+      "execution_device": "cpu",
+      "runtime_import_caveat": "MMCV indirectly imported torch_npu/queried davinci_manager. Historical hardcoded torch_npu_imported=false is not whole-process proof. Model/input/output execute on CPU.",
+      "eta_current_basis": "first2Faver inference processes ~910/911s, first metrics82s; Aver unmeasured",
+      "eta_illustrative_local": "2026-11-11 ~22:00; revise after actual Aver first clip",
+      "model_inference_device": "cpu"
     }
   },
   "plan_sha256_scope": "Historical initial preparation plan; current plan evolves and is separately versioned in git."

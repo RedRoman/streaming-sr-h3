@@ -1,0 +1,372 @@
+{
+  "schema": "openh3.lora_gradient_path_static_audit.v1",
+  "created_at_utc": "2026-11-11T12:55:13.826307+00:00",
+  "status": "static_review_only_actual_backward_and_memory_acceptance_pending",
+  "scope": {
+    "local_worktree": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111",
+    "remote_host_id": "huawei-modelarts-30794",
+    "actual_comfyroot": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "comfyroot_resolution_evidence": {
+      "local_path": "configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json",
+      "lines": [
+        12
+      ],
+      "value": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI"
+    },
+    "pinned_h3_wrapper": "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/code/h3_comfy.py",
+    "method": "Read-only local and remote source inspection and SHA-256 calculation; no torch import or execution of project/model code.",
+    "runtime_modified": false,
+    "forward_executed": false,
+    "backward_executed": false,
+    "npu_used": false,
+    "gradient_values_verified": false,
+    "nonzero_adapter_gradient_verified": false,
+    "peak_memory_measured": false,
+    "full_trajectory_training_verified": false
+  },
+  "file_evidence": {
+    "remote": [
+      {
+        "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/sd.py",
+        "sha256": "99ac1b53d523c2295acd036af3550d0dc07f3df7b87729380813ad8003778556",
+        "line_count": 2498,
+        "reviewed_ranges": [
+          [
+            1264,
+            1275
+          ],
+          [
+            1288,
+            1306
+          ]
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+        "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe",
+        "line_count": 837,
+        "reviewed_ranges": [
+          [
+            307,
+            315
+          ],
+          [
+            505,
+            508
+          ],
+          [
+            647,
+            655
+          ],
+          [
+            729,
+            736
+          ],
+          [
+            747,
+            758
+          ],
+          [
+            818,
+            837
+          ]
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ops.py",
+        "sha256": "a0b8c7f32a146b383a795363bef35e480ffa84b5b3e9c9503f323b1446876f45",
+        "line_count": 1877,
+        "reviewed_ranges": [
+          [
+            1018,
+            1028
+          ]
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/model_management.py",
+        "sha256": "045ab96003386a43e647c8ab96f22fbf3be6c577e2fc578ea31c6faa22facbd5",
+        "line_count": 2208,
+        "reviewed_ranges": [
+          [
+            67,
+            67
+          ]
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/code/h3_comfy.py",
+        "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+        "line_count": 457,
+        "reviewed_ranges": [
+          [
+            24,
+            25
+          ],
+          [
+            86,
+            109
+          ],
+          [
+            229,
+            232
+          ],
+          [
+            435,
+            438
+          ]
+        ]
+      }
+    ],
+    "local": [
+      {
+        "path": "code/train_stage1.py",
+        "sha256": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
+        "reviewed_ranges": [
+          [
+            26,
+            34
+          ],
+          [
+            186,
+            204
+          ],
+          [
+            206,
+            249
+          ],
+          [
+            329,
+            336
+          ]
+        ]
+      },
+      {
+        "path": "code/h3_comfy.py",
+        "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+        "reviewed_ranges": []
+      },
+      {
+        "path": "code/export_rphi_guides.py",
+        "sha256": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+        "reviewed_ranges": [
+          [
+            98,
+            102
+          ],
+          [
+            122,
+            133
+          ]
+        ]
+      },
+      {
+        "path": "configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json",
+        "sha256": "a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648",
+        "reviewed_ranges": [
+          [
+            7,
+            13
+          ]
+        ]
+      },
+      {
+        "path": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json",
+        "sha256": "cfc0a9efde83ecc1a71ca08511c98bc25f5b92cc903ba5463d1d54a705982746",
+        "reviewed_ranges": []
+      }
+    ],
+    "note": "Hashes identify bytes read at observed_at_utc; they do not assert immutable future state or verify a historical execution. The local readiness file is the reviewed version and may subsequently receive the parent's update."
+  },
+  "verified_old_trainer_findings": [
+    {
+      "finding": "The optional LPIPS target is the decoded target latent, not the original RGB reference.",
+      "path": "code/train_stage1.py",
+      "lines": [
+        206,
+        217,
+        218,
+        219,
+        220,
+        221
+      ],
+      "detail": "Prediction uses direct comfy.sd.VAE.decode with ambient autograd; only target decoding is explicitly under torch.no_grad. VAE parameters are frozen at line 190. The old optional LPIPS path therefore cannot be declared globally detached from static inspection."
+    },
+    {
+      "finding": "Pretrained Open-H3 adaptation optimizes warm-start x0 latent MSE from an independently sampled draft/noise state at the selected sigma, not the deployed final three-step RGB trajectory.",
+      "path": "code/train_stage1.py",
+      "lines": [
+        224,
+        228,
+        240,
+        241,
+        329,
+        331,
+        332,
+        333,
+        336
+      ],
+      "detail": "Each update constructs xt=(1-s)*draft+s*eps; x0_hat=xt-s*v. native_training_math wraps both forward and loss.backward."
+    },
+    {
+      "finding": "Training audio is random noise scaled by sigma and then time-shift carry.",
+      "path": "code/train_stage1.py",
+      "lines": [
+        26,
+        31,
+        32,
+        33,
+        231,
+        235
+      ],
+      "detail": "Do not infer a deployment mismatch from zero initial audio latent-image versus random noise labels alone; actual packed model tensors and schedule need comparison."
+    },
+    {
+      "finding": "The existing guide exporter validates the development contract and labels exports development-only.",
+      "path": "code/export_rphi_guides.py",
+      "lines": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        122,
+        126,
+        133
+      ],
+      "detail": "A new training role requires its own source validation/cache; this audit does not authorize training on development records."
+    }
+  ],
+  "gradient_path_findings": [
+    {
+      "severity": "implementation_blocker_if_reused",
+      "component": "H3Backbone.decode",
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/code/h3_comfy.py",
+      "lines": [
+        229,
+        230,
+        231
+      ],
+      "finding": "The wrapper has an unconditional @torch.no_grad decorator. Calling it directly for trainable RGB supervision removes the decoder autograd path."
+    },
+    {
+      "severity": "implementation_blocker_if_reused",
+      "component": "H3Backbone.sample",
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/code/h3_comfy.py",
+      "lines": [
+        435,
+        436,
+        437,
+        438
+      ],
+      "finding": "The sampling invocation is explicitly inside torch.no_grad. Reusing this full-trajectory wrapper cannot implement the proposed differentiable three-step training."
+    },
+    {
+      "severity": "static_semantics",
+      "component": "native_training_math",
+      "path": "code/h3_comfy.py",
+      "lines": [
+        86,
+        87,
+        93,
+        102,
+        103,
+        104,
+        105,
+        106,
+        109
+      ],
+      "finding": "Sets comfy.model_management.in_training=True and replaces eager rope/DiT residual implementations, then restores them. It does not call torch.enable_grad or override an enclosing no_grad/inference_mode."
+    },
+    {
+      "severity": "static_eligibility_only",
+      "component": "Direct Comfy VAE decoding",
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/sd.py",
+      "lines": [
+        1264,
+        1271,
+        1290,
+        1292,
+        1296,
+        1298,
+        1300,
+        1304
+      ],
+      "finding": "The directly inspected VAE.decode method does not itself apply no_grad/inference_mode/detach. It calls the first-stage decoder, including its preallocated chunked-output route. This is distinct from the H3Backbone.decode wrapper."
+    },
+    {
+      "severity": "static_eligibility_only",
+      "component": "MiniMax decoder",
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "lines": [
+        729,
+        765,
+        818,
+        822,
+        831,
+        835,
+        837
+      ],
+      "finding": "decode and decode_temporal do not themselves apply no_grad/inference_mode/detach. No static global autograd suppression was found in these methods. This does not prove successful backward through all called kernels or mutations."
+    },
+    {
+      "severity": "static_eligibility_only",
+      "component": "Training math support",
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ops.py",
+      "lines": [
+        1018,
+        1023,
+        1027,
+        1028
+      ],
+      "finding": "linear_input_act takes the eager input-activation/linear/residual route when model_management.in_training is true. MiniMax VAE attention at vae.py:309-315 selects non-inplace rope when gradients are enabled; native_training_math replaces that rope implementation with the eager function."
+    }
+  ],
+  "static_boundaries": [
+    {
+      "component": "Internal pixel clamp",
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "lines": [
+        505,
+        507,
+        508
+      ],
+      "finding": "The decoder finalizes pixels into [0,1] with clamp_. Saturated values have zero local derivative outside the clamp interval; this is not a global no_grad boundary. Removing or relocating the clamp would change the declared deployed output and needs a separate experiment."
+    },
+    {
+      "component": "Spatial/temporal output buffer writes",
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "lines": [
+        652,
+        654,
+        735,
+        752,
+        755,
+        756,
+        835
+      ],
+      "finding": "Preallocated canvases and copy_ writes are present. Their presence alone neither proves detached output nor verifies successful backward. Exact-shape backward must check CopySlices/version-counter behavior, dtype/device copies, and finite gradients."
+    },
+    {
+      "component": "Frozen VAE and device copies",
+      "path": "code/train_stage1.py",
+      "lines": [
+        190,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        217,
+        220
+      ],
+      "finding": "requires_grad_(False) freezes VAE parameters without intrinsically preventing gradients with respect to latent inputs. .to/.cpu copies likewise do not inherently detach. Existing code pins the VAE to reduce backward/offload hazards, but this audit does not verify actual memory capacity or offload behavior."
+    },
+    {
+      "component": "Runtime acceptance still required",
+      "finding": "A new differentiable trainer must validate finite nonzero LoRA gradients through the exact decoder and full deployed trajectory, frozen-base/VAE/Rphi parameter hashes and gradients, zero-LoRA inference parity, save/reload, and measured peak memory. No such experiment was run for this audit."
+    }
+  ],
+  "conclusion": "The readiness claims about the old objective are supported. The direct Comfy VAE path has static conditions compatible with autograd, but existing H3 decode and sampler wrappers explicitly disable it. Neither numerical gradient validity nor memory feasibility has been demonstrated by this read-only audit."
+}

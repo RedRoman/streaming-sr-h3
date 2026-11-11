@@ -4,7 +4,7 @@
   "status": "VAE_failure_mode_audited_native_quality_smoke_running",
   "scope": "Single-checkpoint blind video restoration for SR, native deblur, denoise and compression; target geometry remains an explicit input. No claim to every possible degradation or audiovisual restoration.",
   "evidence": {
-    "current_stage": "Stage2,fixed H3 ordinary/control,scalar grid,VAE diagnostic complete and independently audited. Native FaverNet/AverNet CPU one-source quality smoke launched20:17SG; no quality result yet. Cached RGB-preserving interface screen next; LoRA not yet retrained.",
+    "current_stage": "Stage2,fixed H3 ordinary/control,scalar grid,VAE diagnostic complete. First Faver deblur and denoise native quality results audited; rest of6-case queue running. CPU cached RGB compensation grid launched20:57:58SG; no new LoRA training yet.",
     "known_rphi_dev_psnr_gain_db": {
       "sr": 0.035531,
       "deblur": 0.085502,
@@ -31,15 +31,90 @@
       "started_at_local": "2026-11-11T20:17:12+08:00",
       "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
       "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
-      "latest_snapshot": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/partial_snapshot.json",
-      "last_verified_local": "2026-11-11T20:18:49+08:00",
-      "last_verified_current": "favernet/deblur/infer",
-      "completed_forwards": 0,
+      "latest_snapshot": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/queue_status.json",
+      "last_verified_local": "2026-11-11T20:58:50.786991+08:00",
+      "last_verified_current": "favernet/compression/infer",
+      "completed_forwards": 2,
       "maximum_forwards": 6,
-      "model_quality_results_available": false,
-      "NPU_used": false,
+      "model_quality_results_available": true,
       "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
-      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity."
+      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity.",
+      "latest_audit": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/audit.json",
+      "latest_audit_sha256": "108926c79854f7599e3c47b06869497bc287ce3da4a567f8538ad2de73f3f92d",
+      "completed_quality_evaluations": 2,
+      "new_result": "favernet/denoise",
+      "execution_device": "cpu",
+      "runtime_import_caveat": "MMCV indirectly imported torch_npu/queried davinci_manager. Historical hardcoded torch_npu_imported=false is not whole-process proof. Model/input/output execute on CPU.",
+      "eta_current_basis": "first2Faver inference processes ~910/911s, first metrics82s; Aver unmeasured",
+      "eta_illustrative_local": "2026-11-11 ~22:00; revise after actual Aver first clip",
+      "model_inference_device": "cpu"
+    },
+    "native_first_result": {
+      "audit": "results/takeover_20261111/native_quality_heartbeat_20261111T1240Z/audit.json",
+      "favernet_deblur_minus_rphi": {
+        "psnr": 2.607071504886342,
+        "lpips": -0.04246236705644564,
+        "flow_aligned_rgb_error_change_mae": 0.0005426346767871152,
+        "unwarped_rgb_error_change_mae": -0.0013722530400374234
+      },
+      "interpretation": "Spatial PSNR/LPIPS improve on one source; flow-aligned error-change worsens versus Rphi-only. Offline22 versus causalK3 differs; end-to-end H3 is also an offline22 block."
+    },
+    "native_second_result": {
+      "audit": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/audit.json",
+      "favernet_denoise_minus_rphi": {
+        "psnr": 4.023769142535471,
+        "lpips": -0.08421745041215961,
+        "flow_aligned_rgb_error_change_mae": -0.008137162375663008
+      },
+      "favernet_denoise_minus_h3_rphi_anchor": {
+        "psnr": 5.503835096481772,
+        "lpips": -0.03032469300722534,
+        "flow_aligned_rgb_error_change_mae": -0.003524934961682275
+      },
+      "interpretation": "All three reported spatial/perceptual/flow-error-change metrics improve on this one source. Offline22 differs from causalK3; full H3 reference also offline22 but different compute. No multi-source or SOTA claim."
+    },
+    "cached_compensation": {
+      "host": "30794",
+      "status": "running_one_of12_scored",
+      "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
+      "session": "cached-rgb-comp-20261111a",
+      "worker_pid": 3994024,
+      "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
+      "last_observed_at_utc": "2026-11-11T13:06:51.365163+00:00",
+      "launch_receipt": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/launch_receipt.json",
+      "launch_receipt_sha256": "e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160",
+      "implementation_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
+      "tests_passed": 7,
+      "real_input_inspection_samples": 12,
+      "completed_scored_samples": 1,
+      "maximum_samples": 12,
+      "beta_grid": [
+        0,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "new_H3_calls": 0,
+      "training_steps": 0,
+      "limits": {
+        "logical_cpu_affinity": [
+          8,
+          11
+        ],
+        "configured_compute_threads": 2,
+        "actual_OS_threads_at_snapshot": 6,
+        "nice": 10,
+        "address_space_gib": 24,
+        "owned_process_group_timeout_seconds": 7200,
+        "terminate_grace_seconds": 30
+      },
+      "next": "Read grid.log, eval/partial_metrics.json, eval/metrics.json and fresh failure files; inspect actual owned process/session. No automatic relaunch or same-directory resume. Download a small result evidence archive when complete, audit all endpoints/common-flow/caches and clean controls before any quality conclusion.",
+      "latest_snapshot": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/root_snapshot_20261111T130651Z.json",
+      "first_sample_seconds": 310.4286413779482,
+      "eta_rough_local": "Around22:00SG if remaining samples have similar cost; common flow is reused, actual remaining sample rates unmeasured; owned2h deadline22:57:58SG is a budget ceiling, not a completion guarantee."
     }
   },
   "baseline_registry": [

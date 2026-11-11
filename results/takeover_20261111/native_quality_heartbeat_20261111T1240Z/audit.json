@@ -1,0 +1,255 @@
+{
+  "schema": "native_quality_heartbeat_audit_v1",
+  "recorded_at": "2026-11-11T20:42:30.605862+08:00",
+  "queue": {
+    "status": "running",
+    "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+    "pid": 562210,
+    "started_unix": 1794399432.0524,
+    "jobs": [
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 910.415660360828,
+        "peak_owned_rss_bytes": 5070385152,
+        "pid": 562211
+      },
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.033278089948,
+        "peak_owned_rss_bytes": 1987461120,
+        "pid": 569598
+      }
+    ],
+    "completed_forwards": 1,
+    "failed_models": [],
+    "current": {
+      "method": "favernet",
+      "task": "denoise",
+      "stage": "infer"
+    }
+  },
+  "active_progress": {
+    "pid": 569928,
+    "elapsed_seconds": 510.23192610032856,
+    "peak_owned_rss_bytes": 5013082112,
+    "wall_limit_seconds": 1800,
+    "rss_limit_bytes": 25769803776
+  },
+  "owned_active_process": {
+    "Name": "python",
+    "State": "R (running)",
+    "Pid": "569928",
+    "PPid": "562210",
+    "VmRSS": "4914060 kB",
+    "Threads": "4"
+  },
+  "active_npu_device_fd_targets": [
+    "/dev/davinci_manager",
+    "/dev/davinci_manager",
+    "/dev/davinci_manager"
+  ],
+  "locked_files_match": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/run_quality_smoke.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/source_lock.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_smoke_plan.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_input_cross_host.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/ordinary_h3_reference_metrics.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/eval_rphi.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/restoration_metrics.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/run_lossless_rgb.py": true
+  },
+  "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+  "completed_verified": {
+    "method": "favernet",
+    "task": "deblur",
+    "frames": 22,
+    "resolution": [
+      480,
+      832
+    ],
+    "source_id": "6UZVovkR3IU",
+    "prediction_file_sha256": "777b1122bdc0bc0d67537ff289837d40f2b44821cd6fc4af183efc2eb292b3b4",
+    "rgb_sha256": "7efcd167e7668bb142cf27bb15fbf1769bbcdf6ecd1dd6cbb0fa43e853556b48",
+    "raw_rgb_sha256": "6d54b3d6562e90b41d13235cc47fc14dff5506a53df107af5d18cba93f129d07",
+    "dtype": "float32",
+    "finite": true,
+    "raw_clamp_exact": true,
+    "checkpoint_strict_load": true,
+    "device": "cpu",
+    "metrics": {
+      "psnr": 34.49857168159924,
+      "psnr_from_mean_mse": 34.3231025561544,
+      "mse": 0.0003695640725925001,
+      "mae": 0.008554651660492489,
+      "perfect_frames": 0,
+      "frames": 22,
+      "lpips": 0.0589685147120194
+    },
+    "temporal": {
+      "pairs": 21,
+      "unwarped_rgb_error_change_mae": 0.0077225197559905555,
+      "flow_aligned_rgb_error_change_mae": 0.0038385894149541855,
+      "valid_coverage": 0.9037229805784494,
+      "valid_pairs": 21
+    },
+    "reference_input_gate_all_differences_exact_zero": true,
+    "lpips": {
+      "available": true,
+      "network": "alex",
+      "device": "cpu",
+      "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+      "weights_path": "/cache/zihaohe/omni_openh3_20261111/torch_home/hub/checkpoints/alexnet-owt-7be5be79.pth",
+      "downloads": false
+    },
+    "metric_gate": {
+      "passed": true,
+      "versions": {
+        "torch": "2.10.0",
+        "torchvision": "0.25.0",
+        "numpy": "2.5.4",
+        "opencv-python": null,
+        "opencv-python-headless": "4.11.0.86",
+        "lpips": "0.1.4"
+      },
+      "opencv_runtime": "4.11.0",
+      "torch_npu_imported": false,
+      "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+      "lpips_linear_sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0",
+      "downloads": false
+    }
+  },
+  "comparisons": {
+    "input": {
+      "reference": {
+        "psnr": 31.573651258587777,
+        "lpips": 0.10675193030725826,
+        "flow_aligned_rgb_error_change_mae": 0.00333702248255057,
+        "unwarped_rgb_error_change_mae": 0.009273510104567917
+      },
+      "favernet_minus_reference": {
+        "psnr": 2.9249204230114607,
+        "lpips": -0.047783415595238854,
+        "flow_aligned_rgb_error_change_mae": 0.0005015669324036154,
+        "unwarped_rgb_error_change_mae": -0.0015509903485773618
+      }
+    },
+    "rphi_only": {
+      "reference": {
+        "psnr": 31.891500176712896,
+        "lpips": 0.10143088176846504,
+        "flow_aligned_rgb_error_change_mae": 0.0032959547381670702,
+        "unwarped_rgb_error_change_mae": 0.009094772796027979
+      },
+      "favernet_minus_reference": {
+        "psnr": 2.607071504886342,
+        "lpips": -0.04246236705644564,
+        "flow_aligned_rgb_error_change_mae": 0.0005426346767871152,
+        "unwarped_rgb_error_change_mae": -0.0013722530400374234
+      }
+    },
+    "h3_raw": {
+      "reference": {
+        "psnr": 29.765263443432286,
+        "lpips": 0.0873370458456603,
+        "flow_aligned_rgb_error_change_mae": 0.007766542401874349,
+        "unwarped_rgb_error_change_mae": 0.013307082017844874
+      },
+      "favernet_minus_reference": {
+        "psnr": 4.733308238166952,
+        "lpips": -0.028368531133640892,
+        "flow_aligned_rgb_error_change_mae": -0.003927952986920164,
+        "unwarped_rgb_error_change_mae": -0.005584562261854319
+      }
+    },
+    "h3_raw_anchor": {
+      "reference": {
+        "psnr": 30.602942011454342,
+        "lpips": 0.09237345985390923,
+        "flow_aligned_rgb_error_change_mae": 0.006305827027452844,
+        "unwarped_rgb_error_change_mae": 0.011867925054633164
+      },
+      "favernet_minus_reference": {
+        "psnr": 3.8956296701448956,
+        "lpips": -0.033404945141889825,
+        "flow_aligned_rgb_error_change_mae": -0.0024672376124986583,
+        "unwarped_rgb_error_change_mae": -0.0041454052986426085
+      }
+    },
+    "h3_rphi": {
+      "reference": {
+        "psnr": 30.021038004033723,
+        "lpips": 0.08105460588227618,
+        "flow_aligned_rgb_error_change_mae": 0.007906459892789522,
+        "unwarped_rgb_error_change_mae": 0.013281719850972394
+      },
+      "favernet_minus_reference": {
+        "psnr": 4.477533677565514,
+        "lpips": -0.022086091170256783,
+        "flow_aligned_rgb_error_change_mae": -0.004067870477835337,
+        "unwarped_rgb_error_change_mae": -0.005559200094981839
+      }
+    },
+    "h3_rphi_anchor": {
+      "reference": {
+        "psnr": 30.822392568923203,
+        "lpips": 0.08735927736217325,
+        "flow_aligned_rgb_error_change_mae": 0.006405056299020846,
+        "unwarped_rgb_error_change_mae": 0.011824174901744193
+      },
+      "favernet_minus_reference": {
+        "psnr": 3.676179112676035,
+        "lpips": -0.028390762650153847,
+        "flow_aligned_rgb_error_change_mae": -0.002566466884066661,
+        "unwarped_rgb_error_change_mae": -0.0041016551457536375
+      }
+    }
+  },
+  "timing": {
+    "favernet_measured_inference_process_seconds": 910.415660360828,
+    "favernet_measured_model_forward_seconds": 879.3451388822868,
+    "favernet_measured_metrics_seconds": 82.033278089948,
+    "favernet_measured_end_to_end_seconds": 992.448938450776,
+    "favernet_three_tasks_if_same_speed_seconds": 2977.346815352328,
+    "avernet_real_clip_measured": false,
+    "all_six_if_same_favernet_speed_minutes": 99.2448938450776,
+    "illustrative_aver_adjusted_total_minutes": 105.49564253335168,
+    "illustrative_aver_adjustment": "Aver/Faver previous synthetic time ratio; not an observed480p rate",
+    "illustrative_finish_if_ratio_holds": "2026-11-11T22:02:41.790952+08:00",
+    "must_update_after_avernet_first_real_clip": true
+  },
+  "limitations": [
+    "Single historical development source, not frozen test or multi-source quality conclusion",
+    "FaverNet uses full22-frame bidirectional context; R_phi-only reference uses causalK3; full H3 reference also uses22-frame block but different compute",
+    "GT-proxy Farneback error-change is not itself a complete flicker/perceptual temporal metric",
+    "Prior reference stored no flow-tensor hash; recomputed input quality/pairs/coverage match exactly, not claimed prior tensor bitwise validation"
+  ],
+  "torch_npu_metadata_audit": {
+    "log_contains_torch_npu_collect_env_warning": true,
+    "original_inference_binding_torch_npu_imported_false_is": "pre-import/hardcoded field, not proof of no later indirect module import",
+    "original_receipts_preserved": true,
+    "verified_execution_device_from_adapter_receipt": "cpu",
+    "cpu_model_input_and_output_path": "adapter constructs CPU tensor, moves fullmodel tocpu, validatesnumpy output; official MMCV extension CPU build",
+    "warning_does_not_prove_npu_inference": true,
+    "active_driver_fds_observed": [
+      "/dev/davinci_manager",
+      "/dev/davinci_manager",
+      "/dev/davinci_manager"
+    ],
+    "scope": "No new NPU query or allocation performed by this audit; no claim based solely on absence of warning/fds"
+  },
+  "actions": {
+    "healthy_queue_untouched": true,
+    "runtime_files_unchanged": true,
+    "completed_inference_not_repeated": true,
+    "new_model_forwards": 0
+  },
+  "quality_verdict": "requires_review_tradeoff_spatial_gain_temporal_cost"
+}

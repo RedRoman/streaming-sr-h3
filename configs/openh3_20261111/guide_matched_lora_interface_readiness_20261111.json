@@ -1,0 +1,126 @@
+{
+  "schema": "openh3.guide_matched_lora_interface_readiness.v1",
+  "created_at_utc": "2026-11-11T12:43:42.704981+00:00",
+  "status": "implementation_contract_prepared_not_training_configuration_not_launched",
+  "purpose": "Prepare an adaptation objective that is evaluated on original RGB references and exactly matches the selected output interface; do not continue the historical latent-only run unchanged.",
+  "code_sha256": {
+    "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/export_rphi_guides_stage2.py": "f52212f0126985112e0be403992d067bcb3bc6486d18a19534124d9c8904dace",
+    "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c"
+  },
+  "verified_current_implementation": [
+    {
+      "path": "code/train_stage1.py",
+      "lines": [
+        206,
+        219,
+        223,
+        249
+      ],
+      "finding": "Optional perceptual loss compares decoded predicted x0 to decoded target latent. It does not compare to the original RGB reference. Open-H3 main objective is warm-start x0 latent MSE.",
+      "implication": "This objective does not directly penalize the original-RGB reconstruction discrepancy measured by the VAE diagnostic; it is not proof of an irreducible VAE quality bound."
+    },
+    {
+      "path": "code/train_stage1.py",
+      "lines": [
+        227,
+        231,
+        325,
+        332
+      ],
+      "finding": "Each training sigma independently mixes draft and Gaussian noise; deployed three-step sampling traverses its previous model states.",
+      "implication": "Record this as an adaptation approximation. A new full-trajectory objective needs forward/backward and memory acceptance, not an assertion that the old loss equals final deployed RGB training."
+    },
+    {
+      "path": "code/export_rphi_guides.py",
+      "lines": [
+        92,
+        96,
+        122,
+        139
+      ],
+      "finding": "Current exporter verifies development contract and labels output development-only.",
+      "implication": "Do not pass training records through a dev contract or train on current development guides; implement explicit train-role source validation and a separate immutable cache."
+    },
+    {
+      "path": "code/train_stage1.py",
+      "lines": [
+        31,
+        147,
+        231
+      ],
+      "finding": "Training explicitly carries sigma-scaled random audio. Current inference uses zero audio latent-image plus sampler noise.",
+      "implication": "Do not infer a mismatch merely from zeros versus randn labels; verify actual model stream tensors at the declared schedule before changing audio."
+    }
+  ],
+  "frozen_assets": {
+    "manifest": "configs/openh3_20261111/refiner_turbo_30794.json",
+    "rphi_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "candidate": "legacy_g05 final3000",
+    "scope": "fixed reference candidate, not quality-approved omni restorer"
+  },
+  "dependency": "Complete and audit the predeclared cached compensation grid first; this contract does not authorize an automatic blind training extension.",
+  "candidate_matched_comparison": {
+    "status": "proposed_for_implementation_after_interface_screen",
+    "arms": [
+      "direct RGB output from adapted H3",
+      "Rphi RGB plus adapted H3 output minus frozen VAE(Rphi)"
+    ],
+    "common": [
+      "same pretrained base/refiner/Turbo and frozen VAE/Rphi",
+      "same zero-initialized LoRA target modules/rank/tensor SHA",
+      "same train sources, crop/window schedule, controls and seeds",
+      "same raw draft warm start and Rphi guide",
+      "same three-step schedule and denoiser-forward budget",
+      "same original-RGB loss and optimizer budget",
+      "same final-step checkpoint and complete development evaluation"
+    ],
+    "output_semantics": "G is the original internally-clipped decoder return; compensation adds G - stop_gradient(VAE(R)) to R before the final RGB clamp. Any move to pre-internal-clamp G is a separate experiment.",
+    "beta": "A training coefficient must be frozen before launch and reported for both fixed and adapted interface controls; the one-source dev grid must not choose the deployment coefficient.",
+    "reference_loss": "Use original clean-recording-proxy RGB. Specify identical RGB distortion and LPIPS terms for both learned arms before launch; decoded GT is at most an auxiliary reference.",
+    "controls": [
+      "Rphi-only",
+      "fixed H3 direct",
+      "fixed H3 compensation with the same declared beta",
+      "existing native/Q4 soft-anchor reported as a distinct inference policy"
+    ],
+    "quality_requirements": [
+      "clean and near-clean edit magnitude and damage relative to input and Rphi",
+      "all native tasks including negative compression examples",
+      "same-source paired PSNR/LPIPS and stride1 flow",
+      "report full inference cost including Rphi,VAE(R),H3 and losses; do not report only LoRA step time"
+    ],
+    "limits": "No new novelty, causal streaming, source-disjoint generalization or improvement claim follows from RGB residual wiring or LoRA alone."
+  },
+  "implementation_admission": [
+    "Create an explicit train cache with original RGB target, raw draft, frozen Rphi guide and VAE(R), source/record/pixel/weight/code SHA; assert train/dev source separation.",
+    "Store train controls explicitly; target pixels may supervise the loss but never guide the inference model or choose crops at evaluation.",
+    "Implement a separate training-mode trajectory and direct VAE decode path; do not call the unconditional no_grad H3Backbone.decode/sample wrappers. Retain exact deployed numerical semantics and check saturation/chunk-copy gradients with a real backward smoke.",
+    "One-step differentiability smoke: finite nonzero adapter gradients through exact deployed decode/interface, frozen base/VAE/Rphi parameter hashes preserved, no gradients on them.",
+    "Zero-LoRA deployed full-trajectory output reproduces frozen reference for identical seed/guide/draft; test direct and compensated output separately.",
+    "Save/reload adapter and recompute output parity; inspect peak memory and measured wall time before freezing the finite matched training budget.",
+    "Separate new snapshot/run/config from completed legacy trainer and running baseline/compensation jobs; no shared code mutation."
+  ],
+  "training_steps_completed_for_this_contract": 0,
+  "launch_ready": false,
+  "blocking_prerequisites": [
+    "cached-interface quality screen pending",
+    "train-role matched guide/cache implementation and materialization pending",
+    "original-RGB differentiable trajectory/interface trainer pending",
+    "measured NPU memory/gradient/parity smoke pending"
+  ],
+  "gradient_path_static_audit": {
+    "path": "results/takeover_20261111/lora_gradient_path_static_audit_20261111.json",
+    "sha256": "2778c5a20620efcc737c13bb02b22a1076d8c7d208ed396314b65c726b1a342e",
+    "status": "static_only_no_forward_no_backward_no_memory_measurement",
+    "remote_Comfy_root": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "findings": [
+      "H3Backbone.decode uses unconditional torch.no_grad at h3_comfy.py:229; the full sampler also uses torch.no_grad at :435. Setting native_training_math/in_training does not re-enable autograd.",
+      "The historical trainer calls comfy.sd.VAE.decode directly. That path and MiniMax decoder contain no observed no_grad/inference_mode/detach, so historical LPIPS gradients cannot be declared blocked from wrapper inspection.",
+      "The direct decoder retains internal clamp and chunk copy_ operations. Actual finite nonzero adapter gradients, NPU operators, full trajectory memory and frozen parameter verification remain untested."
+    ]
+  }
+}

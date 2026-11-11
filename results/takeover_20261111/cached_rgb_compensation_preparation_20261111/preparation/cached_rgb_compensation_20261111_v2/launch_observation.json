@@ -1,0 +1,56 @@
+{
+  "schema": "openh3.cached_compensation_launch_observation.v1",
+  "checked_at_utc": "2026-11-11T12:58:47.383685+00:00",
+  "session": "cached-rgb-comp-20261111a",
+  "tmux_active": true,
+  "worker_pid": 3994024,
+  "process_group": 3994023,
+  "cmdline": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/code/diagnose_cached_rgb_compensation.py",
+    "--ordinary-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+    "--ordinary-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+    "--controls-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+    "--controls-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+    "--dev-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--vae-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/vae_roundtrip_legacy_smoke_20261111b/eval/metrics.json",
+    "--threads",
+    "2",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/eval"
+  ],
+  "proc_status": {
+    "Name": "python",
+    "State": "R (running)",
+    "VmHWM": "883860 kB",
+    "VmRSS": "619328 kB",
+    "Threads": "3",
+    "Cpus_allowed_list": "8,11"
+  },
+  "limits": [
+    "Max address space         25769803776          25769803776          bytes     "
+  ],
+  "environment_allowlist": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2"
+  },
+  "new_scoring_launch_count": 1,
+  "stage": "worker_running_input_validation_before_grid",
+  "full_grid_completed": false,
+  "H3_calls": 0,
+  "NFE": 0,
+  "train_steps": 0,
+  "launch_admission_sha256": "810f6634f2a36f0586dfd9a4ca30d9914c89e5e47d1e6170763c7c7852198f0f",
+  "guard_command": "timeout --signal=TERM --kill-after=30s 7200s python /cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/launch_cpu_grid.py /cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/launch_config.json"
+}

@@ -1,0 +1,314 @@
+{
+  "schema": "native_quality_incremental_audit.v1",
+  "recorded_at_utc": "2026-11-11T12:58:50.786991+00:00",
+  "host_id": "huawei-modelarts-31984",
+  "method": "favernet",
+  "task": "denoise",
+  "source_id": "6UZVovkR3IU",
+  "prior_evidence_directory": "results/takeover_20261111/native_quality_heartbeat_20261111T1240Z",
+  "queue_snapshot": {
+    "status": "running",
+    "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+    "pid": 562210,
+    "started_unix": 1794399432.0524,
+    "jobs": [
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 910.415660360828,
+        "peak_owned_rss_bytes": 5070385152,
+        "pid": 562211
+      },
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.033278089948,
+        "peak_owned_rss_bytes": 1987461120,
+        "pid": 569598
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 911.4128956813365,
+        "peak_owned_rss_bytes": 5069074432,
+        "pid": 569928
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 81.036406760104,
+        "peak_owned_rss_bytes": 2425516032,
+        "pid": 577741
+      }
+    ],
+    "completed_forwards": 2,
+    "failed_models": [],
+    "current": {
+      "method": "favernet",
+      "task": "compression",
+      "stage": "infer"
+    }
+  },
+  "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+  "locked_files_match": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/run_quality_smoke.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/source_lock.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_smoke_plan.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_input_cross_host.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/ordinary_h3_reference_metrics.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/eval_rphi.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/restoration_metrics.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/run_lossless_rgb.py": true
+  },
+  "official_source_files_match": {
+    "data/__init__.py": true,
+    "data/transforms.py": true,
+    "data/utils.py": true,
+    "data/video_testset.py": true,
+    "data/video_tud_train.py": true,
+    "models/__init__.py": true,
+    "models/favernet.py": true,
+    "models/spynet.py": true,
+    "models/utils.py": true,
+    "scripts/generate_meta_info.py": true,
+    "test.py": true,
+    "train.py": true
+  },
+  "official_checkpoint_sha256": "c16e5658a639810bb17dc4bc131a631bde6491f9fb5a790c8952dfa16ccdc7b8",
+  "input_validation": {
+    "observation": {
+      "npz_sha256": "37e17f613fc63a5ce59df00e11463776a48f5db3aa7ae2e6573c8dcdd6a22adb",
+      "pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "uint8"
+    },
+    "target": {
+      "npz_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "uint8"
+    }
+  },
+  "record_equals_admission": true,
+  "reference_file_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "prediction_validation": {
+    "remote_path": "/cache/zihaohe/omni_openh3_20261111/runs/native_favernet_6UZVovkR3IU_smoke_20261111a/denoise/prediction/restored_float32.npz",
+    "file_sha256": "7db0c86a12c86942b8be1e53f53dc3923567cef5f4b9c06ef4051f2929f444bc",
+    "rgb_sha256": "4cb0d96cb2487c9520cf92b260fc8a3b30efd793dc34cfa85077a8c87afb017b",
+    "raw_rgb_sha256": "8a824a14db40f7e5137b48436568e4ccad978d65e6c403602b2a876a2d0818d3",
+    "dtype": "float32",
+    "shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "finite": true,
+    "raw_clamp_exact": true,
+    "gt_read_by_inference": false,
+    "device": "cpu",
+    "strict_checkpoint_load": true
+  },
+  "reference_input_numeric_checks": {
+    "quality.psnr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "quality.psnr_from_mean_mse": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "quality.mse": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "quality.mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "quality.perfect_frames": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "quality.frames": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "quality.lpips": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "temporal.pairs": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "temporal.unwarped_rgb_error_change_mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.flow_aligned_rgb_error_change_mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.valid_coverage": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.valid_pairs": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    }
+  },
+  "all_input_differences_exact_zero": true,
+  "model_metrics": {
+    "psnr": 39.94092509780152,
+    "psnr_from_mean_mse": 39.83360484492881,
+    "mse": 0.00010390573421680635,
+    "mae": 0.006880547280781806,
+    "perfect_frames": 0,
+    "frames": 22,
+    "lpips": 0.029445808465507897
+  },
+  "temporal_model": {
+    "pairs": 21,
+    "unwarped_rgb_error_change_mae": 0.006617332462638141,
+    "flow_aligned_rgb_error_change_mae": 0.0051830098299043515,
+    "valid_coverage": 0.9037229805784494,
+    "valid_pairs": 21
+  },
+  "comparisons": {
+    "input": {
+      "reference": {
+        "psnr": 23.527251324089693,
+        "lpips": 0.6738691465421156,
+        "flow_aligned_rgb_error_change_mae": 0.06653651701552528
+      },
+      "favernet_minus_reference": {
+        "psnr": 16.413673773711825,
+        "lpips": -0.6444233380766077,
+        "flow_aligned_rgb_error_change_mae": -0.06135350718562093
+      }
+    },
+    "rphi_only": {
+      "reference": {
+        "psnr": 35.91715595526605,
+        "lpips": 0.11366325887766751,
+        "flow_aligned_rgb_error_change_mae": 0.01332017220556736
+      },
+      "favernet_minus_reference": {
+        "psnr": 4.023769142535471,
+        "lpips": -0.08421745041215961,
+        "flow_aligned_rgb_error_change_mae": -0.008137162375663008
+      }
+    },
+    "h3_raw": {
+      "reference": {
+        "psnr": 28.9467996813744,
+        "lpips": 0.5295069190588865,
+        "flow_aligned_rgb_error_change_mae": 0.021889221898856618
+      },
+      "favernet_minus_reference": {
+        "psnr": 10.994125416427117,
+        "lpips": -0.5000611105933785,
+        "flow_aligned_rgb_error_change_mae": -0.016706212068952266
+      }
+    },
+    "h3_raw_anchor": {
+      "reference": {
+        "psnr": 31.240183114503566,
+        "lpips": 0.4167830388654362,
+        "flow_aligned_rgb_error_change_mae": 0.01699162106074038
+      },
+      "favernet_minus_reference": {
+        "psnr": 8.700741983297952,
+        "lpips": -0.38733723039992835,
+        "flow_aligned_rgb_error_change_mae": -0.011808611230836027
+      }
+    },
+    "h3_rphi": {
+      "reference": {
+        "psnr": 32.47420034301705,
+        "lpips": 0.07907249541445212,
+        "flow_aligned_rgb_error_change_mae": 0.010079785560568174
+      },
+      "favernet_minus_reference": {
+        "psnr": 7.466724754784465,
+        "lpips": -0.04962668694894422,
+        "flow_aligned_rgb_error_change_mae": -0.004896775730663823
+      }
+    },
+    "h3_rphi_anchor": {
+      "reference": {
+        "psnr": 34.437090001319746,
+        "lpips": 0.05977050147273324,
+        "flow_aligned_rgb_error_change_mae": 0.008707944791586627
+      },
+      "favernet_minus_reference": {
+        "psnr": 5.503835096481772,
+        "lpips": -0.03032469300722534,
+        "flow_aligned_rgb_error_change_mae": -0.003524934961682275
+      }
+    }
+  },
+  "timing": {
+    "model_forward_seconds": 880.6089857993647,
+    "inference_guard": {
+      "returncode": 0,
+      "guard_reason": null,
+      "seconds": 911.4128956813365,
+      "peak_owned_rss_bytes": 5069074432,
+      "pid": 569928
+    },
+    "metrics_guard": {
+      "returncode": 0,
+      "guard_reason": null,
+      "seconds": 81.036406760104,
+      "peak_owned_rss_bytes": 2425516032,
+      "pid": 577741
+    }
+  },
+  "torch_npu_metadata_boundary": {
+    "original_receipts_unchanged": true,
+    "inference_binding_false_is_not_proof_of_no_later_indirect_import": true,
+    "device_cpu_supported_by_adapter_tensor_path_and_run_receipt": true,
+    "npu_import_warning_does_not_prove_npu_inference": true,
+    "no_npu_query_or_allocation_by_this_audit": true
+  },
+  "limitations": [
+    "Single historical development source; not a frozen test or multi-source ranking.",
+    "FaverNet is offline bidirectional full22/max future21; Rphi-only is causalK3; H3 uses a22-frame block with different compute.",
+    "Prior flow tensor hash was not saved; this validates input scores,21 adjacent pairs,coverage and flow description, not bitwise prior flow tensors.",
+    "Metrics are accepted from completed guarded scoring; this audit revalidates receipts/pixels/hashes and numeric gates without rerunning model or LPIPS/flow.",
+    "Original source video was not rehashed: source identity is bound through the audited materialized snapshot and admission."
+  ],
+  "actions": {
+    "new_model_forwards": 0,
+    "scoring_rerun": false,
+    "queue_modified": false,
+    "runtime_modified": false,
+    "original_receipts_unchanged": true
+  },
+  "quality_verdict": "requires_review_single_historical_dev_source"
+}

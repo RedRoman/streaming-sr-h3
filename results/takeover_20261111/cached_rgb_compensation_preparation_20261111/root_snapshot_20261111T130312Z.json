@@ -1,0 +1,40 @@
+{
+  "host": "30794",
+  "status": "running_preflight_completed_first_sample_not_yet_committed",
+  "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
+  "session": "cached-rgb-comp-20261111a",
+  "worker_pid": 3994024,
+  "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
+  "last_observed_at_utc": "2026-11-11T13:03:12+00:00",
+  "launch_receipt": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/launch_receipt.json",
+  "launch_receipt_sha256": "e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160",
+  "implementation_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
+  "tests_passed": 7,
+  "real_input_inspection_samples": 12,
+  "completed_scored_samples": 0,
+  "maximum_samples": 12,
+  "beta_grid": [
+    0,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "new_H3_calls": 0,
+  "training_steps": 0,
+  "limits": {
+    "logical_cpu_affinity": [
+      8,
+      11
+    ],
+    "configured_compute_threads": 2,
+    "actual_OS_threads_at_snapshot": 6,
+    "nice": 10,
+    "address_space_gib": 24,
+    "owned_process_group_timeout_seconds": 7200,
+    "terminate_grace_seconds": 30
+  },
+  "next": "Read grid.log, eval/partial_metrics.json, eval/metrics.json and fresh failure files; inspect actual owned process/session. No automatic relaunch or same-directory resume. Download a small result evidence archive when complete, audit all endpoints/common-flow/caches and clean controls before any quality conclusion."
+}

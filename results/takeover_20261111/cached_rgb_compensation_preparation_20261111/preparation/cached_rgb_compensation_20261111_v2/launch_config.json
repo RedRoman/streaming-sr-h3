@@ -1,0 +1,40 @@
+{
+  "schema": "openh3.cached_compensation_launch_config.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "run": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
+  "python": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+  "runtime_manifest": "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/runtime_manifest.json",
+  "inspection_receipt": "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/inspection_receipt.json",
+  "pins": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/runtime_manifest.json": "96e3550464878bc062e1bd697943a04210a79ec85a46a5acf928df7c2d78fbf1",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/inspection_receipt.json": "e183b821d7e635bc7af0220e26f634d380f8139ccf66eb86d7a5c2db3bb46961",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/launch_cpu_grid.py": "595d78cde4c7e33061e1de7f426ed301cce949634c6b6b0565ed6e65cf185fd0"
+  },
+  "argv": [
+    "/cache/zihaohe/omni_openh3_20261111/preparation/cached_rgb_compensation_20261111_v2/code/diagnose_cached_rgb_compensation.py",
+    "--ordinary-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+    "--ordinary-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+    "--controls-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+    "--controls-guides",
+    "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+    "--dev-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--vae-metrics",
+    "/cache/zihaohe/omni_openh3_20261111/runs/vae_roundtrip_legacy_smoke_20261111b/eval/metrics.json",
+    "--threads",
+    "2",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a/eval"
+  ],
+  "limits": {
+    "logical_cpus": 2,
+    "address_space_gib": 24,
+    "timeout_seconds": 7200,
+    "kill_after_seconds": 30
+  }
+}

@@ -251,3 +251,21 @@ VAE审计最终补充：真正preclamp范围[-.1468,1.1587]，越界分量.277%�
 基线本地receipt在 `preparation/native_baselines_cpu_20261111/evidence/quality_queue/`；推理输出预计 `runs/native_favernet_6UZVovkR3IU_smoke_20261111a` 与 `runs/native_avernet_6UZVovkR3IU_smoke_20261111a`。旧plan54min总推理估算算术错误，独立eta_correction更正为约74.68min+5–15min评分，粗估21:37–21:47SG，首完整clip后修订。未修改运行锁定文件。下次先查此队列，不重启健康作业；有完成结果一次打包小证据并验收。同步可准备预声明缓存compensation脚本，仍不要盲目新增H3调用或LoRA步数。
 
 20:21:52，本轮125个代码/计划/小证据文件已备份31984 `preparation/followup_20261111_2020/files`，归档1,044,777bytes、SHA `8ce18bc05aa745c9f1133d53cf94fdd4de5f0b1240b5489db267cf91f923d3b3`，逐文件大小/SHA全过。包含controls完成、scalar结果、VAE v1失败/v2完整验收、native CPU构建/真实质量队列启动；不含大NPZ。四最终checkpoint此前已独立核验备份，勿重复传输。
+
+### 20:39回访：首个native基线质量验收，缓存RGB接口实现接续
+
+20:40–20:42核实31984 native质量队列健康，Faver/deblur推理+评分完成；小归档SHA `a8f6a479f6c5855c7a1bf2bb4074fbf4fb96fcfaea58ae7c883f2af66c88984c`，12个文件逐项校验，记录 `results/takeover_20261111/native_quality_heartbeat_20261111T1240Z/audit.json`。Faver去模糊PSNR34.4986/LPIPS.058969/flow误差变化.003839；相对Rphi-only +2.6071dB/−.042462/+ .0005426，时域指标反而更差。相对当前H3-Rphi-anchor +3.6762dB/−.028391/−.0025665。input基准质量/LPIPS/21相邻对/覆盖率与旧记录差为0。仍只有6UZVovkR3IU一源，Faver离线22帧、Rphi因果K3，全H3也用22帧块；不得据此宣称因果同预算SOTA。
+
+首clip模型forward879.35s/owned进程910.42s/评分82.03s，峰值4.72GiB。20:50:09真实状态已2/6forward完成、1/6评分完成，Faver/denoise正在metrics，未重启健康任务。按首clip实测更新粗ETA约22:00SG，Aver真实速度未知。发现MMCV间接torch_npu collect_env导入及davinci_manager FDs；旧hardcoded torch_npu_imported=false只表示早期检查，不能证明全程未导入。实际模型/输入/输出仍CPU，新audit限定元数据边界，原锁定runner/receipt不变。
+
+新增 `guide_matched_lora_interface_readiness_20261111.json`：旧train_stage1可选感知loss是decode(predicted latent)对decode(GT latent)，没有直接对原RGB GT；新的训练不能以该loss下降代替原RGB保护。训练集guide exporter当前仍dev专用，新的明确train角色缓存、原RGB损失、实际部署轨迹/解码梯度、零LoRA与重载parity、冻结权重/显存smoke均须具体完成。该合同未开训，不把静态审计当梯度验证。当前优先执行预声明缓存补偿与同beta scalar的全PSNR/LPIPS/stride1对照，0H3调用。
+
+20:56静态梯度审计完成：实际30794 Comfy直接VAE.decode路径未见no_grad/inference_mode/detach，但H3Backbone.decode(:229)及完整sample(:435)关闭梯度，native_training_math的in_training标志不会重新启用autograd。旧trainer直接调用Comfy VAE，因此不能误判旧LPIPS全无梯度；新完整轨迹trainer须另建可微路径并通过真实backward、内部clamp/chunk-copy、冻结权重与显存验收。证据 `lora_gradient_path_static_audit_20261111.json`，本次0forward/0backward。
+
+20:57:58，缓存RGB接口诊断已在30794新run `runs/cached_rgb_compensation_legacy_20261111a` 启动一次，tmux `cached-rgb-comp-20261111a`、worker3994024/PGID3994023。7/7测试及12/12真实缓存预检（208.77s）通过；实现SHA `8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89`，receipt SHA `e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160`。独立snapshot v2固定23个Python文件、两份LPIPS权重；CPU affinity8/11、nice10、24GiB地址空间限额、7200s+30s owned组超时。21:03:12真实进程R、RSS约1.91GiB，执行内再次12/12缓存校验已通过，partial存在但0/12样本提交；尚无质量结论。全部固定beta和scalar对照、真实stride1 flow共同支撑、pre/postclamp及clean/near-clean均要验收。只查实际log/partial/metrics/failure；健康勿重启，禁止原目录resume。0新H3/NFE/训练。
+
+Faver去噪增量审计完成：39.940925dB/.029445808LPIPS/flow .005183010；对Rphi-only +4.023769dB/−.08421745/−.008137162，对H3-Rphi-anchor +5.503835dB/−.030324693/−.003524935。输入12项数值配对差全0，远端实际NPZ像素/文件/finite/clamp及官方源码/权重/锁定合同通过；11份小归档SHA `c446b05f6aada6731b58e3c282d8bc45a11198fb7fb7f339fe4e441b2819b2c1`。当前2/6推理及评分完成，compression推理中；仅一历史开发源，离线22帧预算限制保留。
+
+来源审计完成：46候选+290历史片段，共336完整文件SHA/1008稀疏帧，407.97s，0精确重复，现40源SHA全匹配。5对近似命中涉及2候选；6X5vLMqdKZo与历史QGd3hjZBFEI在额外6帧联系表中确认共享彩色音符/波形静态画面，保留内容分组疑点；Jz4wLRDTF54四对仅共同黑帧，不能当同视频证明。其余44也未获独立/干净资格，新增calibration/test仍0。原视频不删除、清单不变。证据和视觉review在 `calibration_candidates_source_identity_*` 与 `source_pair_contact_20261111/`；下一步按source-group、96帧可读性和目标质量继续资格审查。
+
+21:06:19，本轮71个代码/计划/小证据已备份31984 `preparation/followup_20261111_2105/files`，归档498,773bytes、SHA `afd05448752b1614c1633a5917188a9cf16ae9e2d95e86d9eaee4b31dfa8fb4f`，全部文件大小/SHA通过。21:06:51补查缓存补偿仍R，1/12样本评分已提交、首样本310.43s、无failure；样本后H3未导入/NPU未初始化为时点观察。首样本完整端点门槛通过才会提交，完整质量结论仍待全12。粗估22:00SG前后完成，2h硬上限22:57:58仅为预算停止时间，不是保证完成时间。

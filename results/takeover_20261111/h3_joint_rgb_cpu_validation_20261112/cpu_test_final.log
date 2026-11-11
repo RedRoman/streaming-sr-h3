@@ -1,0 +1,24 @@
+test_exception_restores_checkpoint_math_and_patcher (test_h3_joint_rgb_probe.JointPathTests.test_exception_restores_checkpoint_math_and_patcher) ... {"phase": "candidate", "elapsed_seconds": 0.13205776549875736, "max_rss_KiB_linux": 239688, "rss": {"VmHWM": "239688 kB", "VmRSS": "239688 kB"}}
+{"phase": "candidate_decode", "elapsed_seconds": 3.114906681701541, "max_rss_KiB_linux": 349772, "rss": {"VmHWM": "349772 kB", "VmRSS": "349772 kB"}}
+ok
+test_real_torch_same_graph_two_decodes_single_RGB_backward (test_h3_joint_rgb_probe.JointPathTests.test_real_torch_same_graph_two_decodes_single_RGB_backward) ... {"phase": "reference", "elapsed_seconds": 0.12428381387144327, "max_rss_KiB_linux": 357432, "rss": {"VmHWM": "357432 kB", "VmRSS": "355756 kB"}}
+{"phase": "reference_decode", "elapsed_seconds": 0.12904923036694527, "max_rss_KiB_linux": 357432, "rss": {"VmHWM": "357432 kB", "VmRSS": "355756 kB"}}
+{"phase": "candidate", "elapsed_seconds": 0.13195858616381884, "max_rss_KiB_linux": 357432, "rss": {"VmHWM": "357432 kB", "VmRSS": "355756 kB"}}
+{"phase": "candidate_decode", "elapsed_seconds": 0.1429171934723854, "max_rss_KiB_linux": 357432, "rss": {"VmHWM": "357432 kB", "VmRSS": "355904 kB"}}
+{"phase": "backward", "elapsed_seconds": 0.16575404163450003, "max_rss_KiB_linux": 357432, "rss": {"VmHWM": "357432 kB", "VmRSS": "355904 kB"}}
+ok
+test_actual_fixed_target_and_roundtrip_records (test_h3_joint_rgb_probe.ProbeHelpers.test_actual_fixed_target_and_roundtrip_records) ... {"actual_torch_target_sha256": "10efb5fae35949846d1853d3f2a5812f03b09c15ba0884f62e8e349170c1fef7", "shape": [1, 1, 128, 1], "torch": "2.10.0+cpu", "numpy": "2.5.4"}
+ok
+test_candidate_reference_tolerance_direction_is_asymmetric (test_h3_joint_rgb_probe.ProbeHelpers.test_candidate_reference_tolerance_direction_is_asymmetric) ... ok
+test_fail_fast_video_or_audio_parity_before_any_backward (test_h3_joint_rgb_probe.ProbeHelpers.test_fail_fast_video_or_audio_parity_before_any_backward) ... ok
+test_guard_preserves_native_tiling_and_restores_on_error (test_h3_joint_rgb_probe.ProbeHelpers.test_guard_preserves_native_tiling_and_restores_on_error) ... {"phase": "reference_decode", "elapsed_seconds": 0.00048516038805246353, "max_rss_KiB_linux": 359488, "rss": {"VmHWM": "359488 kB", "VmRSS": "359488 kB"}}
+ok
+test_missing_gradient_is_failure_zero_A_allowed (test_h3_joint_rgb_probe.ProbeHelpers.test_missing_gradient_is_failure_zero_A_allowed) ... ok
+test_parameter_and_nonpersistent_buffer_identity_version_bytes (test_h3_joint_rgb_probe.ProbeHelpers.test_parameter_and_nonpersistent_buffer_identity_version_bytes) ... ok
+test_rgb_failure_saves_pixels_and_blocks_backward (test_h3_joint_rgb_probe.ProbeHelpers.test_rgb_failure_saves_pixels_and_blocks_backward) ... ok
+test_session_entry_failure_and_bad_restoration_not_hidden (test_h3_joint_rgb_probe.ProbeHelpers.test_session_entry_failure_and_bad_restoration_not_hidden) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.386s
+
+OK

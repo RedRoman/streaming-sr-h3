@@ -1,0 +1,130 @@
+{
+  "schema": "openh3.small_joint_rgb_root_admission.v1",
+  "checked_at_utc": "2026-11-11T16:25:38.653972+00:00",
+  "approved_for_single_card_joint_rgb_probe": true,
+  "queue_sha256": "9761130ee850f689bdc4c8085d37b72fadab2331767b86aa3fb7761a6f2c6734",
+  "execution_contract_sha256": "f52d3e0164947197c1788fc53396aa478953b65d28dad56d7907aa78683e6987",
+  "producer_sha256": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+  "CPU_receipt_sha256": "5a73c7bf8c7b68d19c39d38675f3f7677409999af0ac4aef582f44129419d5bb",
+  "source_review_sha256": "5e075d58eb98ec29900d395cac2cb392e2fb49840bd2e3e55089fb63a233e081",
+  "cards": {
+    "0": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3428,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "1": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3420,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "2": {
+      "health": "OK",
+      "pids": [
+        2227801
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "3": {
+      "health": "OK",
+      "pids": [
+        2227803
+      ],
+      "used_mb": 38053,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "4": {
+      "health": "OK",
+      "pids": [
+        2227913
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "5": {
+      "health": "OK",
+      "pids": [
+        2227915
+      ],
+      "used_mb": 38055,
+      "total_mb": 65536,
+      "utilization": 100
+    },
+    "6": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3423,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "7": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3425,
+      "total_mb": 65536,
+      "utilization": 0
+    }
+  },
+  "assigned_card": 6,
+  "card_lock_available_at_check": true,
+  "implementation_pins_verified": 1259,
+  "history_guards": [
+    {
+      "path": "/cache/haoyi/video_sample/cvpr27/res/all_models/checks/qwen_prompt_v3_review_20261103/h3_pulse3_early10_fixed30_20261104/SCHEME3_REVIEW_HOLD.json",
+      "key": "no_new_scheme3_executions",
+      "value": true
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/finalize_status.json",
+      "key": "state",
+      "value": "completed"
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/h3_trajectory_probe_20261111b_finalize/terminal_audit.json",
+      "key": "complete",
+      "value": true
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_latent_descent_20261111j_audit/audit.json",
+      "key": "complete",
+      "value": true
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_gradient_repeatability_20261111i/a1_a2_comparison.json",
+      "key": "a1_a2_exact",
+      "value": false
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_gradient_repeatability_20261111i/a1_a2_comparison.json",
+      "key": "allow_paired_history",
+      "value": false
+    }
+  ],
+  "disk_free_bytes": 8616234373120,
+  "inspection": {
+    "asset_bytes_sha_verified": false,
+    "assets_size_only_verified": true,
+    "contract_sha256": "f52d3e0164947197c1788fc53396aa478953b65d28dad56d7907aa78683e6987",
+    "inspection_only": true,
+    "planned": {
+      "RGB_backward": 1,
+      "VAE_decodes": 2,
+      "explicit_NFE": 6,
+      "loss_scale": 1024.0,
+      "optimizer_steps": 0
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "runtime_files_verified": 1258,
+    "source_contract_sha256": "1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7"
+  },
+  "requires_launcher_lock_and_15s_second_idle_check": true,
+  "scope": "one small same-graph RGB backward, 0optimizer; no auto next phase"
+}

@@ -1,0 +1,367 @@
+{
+  "CPU_vs_NPU": {
+    "CPU_possible_now": [
+      "Full metadata/role/source isolation/checkpoint contract inspection",
+      "Original NPZ/file/array hash and receipt verification",
+      "Recompute ordinary raw guide bicubic and deterministic control recipes",
+      "Execute pinned resize AST on CPU and freeze actual pre/post-P SHA and quantization differences",
+      "Enumerate9unique pairs/12logical rows, storage/call upper bounds, ensure no target argument at encoder boundary",
+      "Synthetic tests for missing/hash-tampered/role-leak records, dedup alias weighting, raw-warmstart immutability, dtype/geometry/callbudget/failure receipts"
+    ],
+    "NPU_required_next": [
+      "Load only frozen native VAE/context in a fresh admitted process and verify actual imports/assets",
+      "Encode the selected existing raw and R pixels using unchanged P/E path; save actual normalized float32 latents",
+      "Decode ZR once with unchanged frozen VAE and save as-returned internal-clipped float32 RGB",
+      "Measure real encode/decode timing, memory and model-call counts, and freeze/check parameter plus buffer state"
+    ],
+    "not_established_by_cache": [
+      "Same-graphH3+VAE RGB backward",
+      "Nonzero LoRA save/reload/merge parity",
+      "Full22joint training memory or quality",
+      "Causal streaming or independent test generalization"
+    ]
+  },
+  "actual_work_this_review": {
+    "H3_calls": 0,
+    "NPU_calls": 0,
+    "VAE_calls": 0,
+    "production_code_modified": false,
+    "remote_reads": "one metadata inventory of12 NPZ files + source excerpts; no NPZ pixel reread, no large asset hash/model load",
+    "training_steps": 0
+  },
+  "available_train_assets": {
+    "all_rows_VAE_encoded": false,
+    "control_records": 8,
+    "controls_manifest": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_controls_legacy_smoke_20261111a/guides/manifest.json",
+    "controls_manifest_sha256": "3f40c6a49119f091c1bc8745e7a1fdd04e9f7671f2730b9211a7157dbc5a6943",
+    "dev_manifest": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "full_dev_records": 32,
+    "full_dev_source_count": 8,
+    "full_train_records": 128,
+    "full_train_source_count": 32,
+    "full_training_cache_complete": false,
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "identity_repetition": "Four nominal task rows share bit-identical source/window/raw/Rphi arrays; one statistical source and one numerical input. Preserve row labels and sampling weights explicitly.",
+    "near_clean": "Four task-keyed PCG64 sigma8bit1 Gaussian draws, rint ties-even/clip/uint8, native HR for every task including nominal SR. Preserve exact saved recipe/hash; do not generate fresh noise.",
+    "ordinary_manifest": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/manifest.json",
+    "ordinary_manifest_sha256": "1c73a26f1cb81157c2445fac44d33acc925256ec77343f50aa7d54f7ab9f0008",
+    "ordinary_records": 4,
+    "original_video_verification": "materialization_attestation_only; this review and future cache need not silently claim live original-video SHA rehash",
+    "remaining_train_sources_without_RGB_export": 31,
+    "role": "train",
+    "rphi_checkpoint": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+    "rphi_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "rphi_frozen_state_sha256": "bc1913d4b853ec1678d6ab6fd57faeac9c96f6d539838f5f462e6cf061d8a3f1",
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "target_file_sha256": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+    "target_key": "4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0",
+    "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz",
+    "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+    "train_dev_ID_and_SHA_overlap": 0,
+    "train_manifest": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train_materialized.jsonl",
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+  },
+  "conclusion": "Reuse the accepted one-source train RGB export. A new train-role VAE-only exporter can produce fixed raw warm-start latent, Rphi guide latent and frozen deployed VAE(Rphi) with no20B DiT or Rphi model loading. Do not reuse the dev-only diagnostic CLI or relabel its outputs.",
+  "created_at_utc": "2026-11-11T16:33:12.492247+00:00",
+  "critical_preprocessing_finding": {
+    "chain": [
+      "h3_comfy.py223-227 encode_guide_pixels -> official _resize(center)",
+      "ComfyUI/comfy_extras/nodes_minimax_h3.py67 _resize -> comfy.utils.common_upscale(lanczos)",
+      "ComfyUI/comfy/utils.py1107-1139 common_upscale has no same-size shortcut",
+      "ComfyUI/comfy/utils.py1097-1105: np.clip(255*image,0,255).astype(np.uint8), PIL.Image.resize(LANCZOS), float32 /255"
+    ],
+    "comfy_utils_sha256": "9320cf5c624e96acc1d9ec92ff120ed6387a2142707f3194cb21dd0d11ac2500",
+    "effect": "Float32 Rphi/sr-bicubic values can change at this preprocessing boundary. No claim that equal geometry bypasses quantization.",
+    "finding": "External cache is float32 lossless, but current deployed encode_guide_pixels internally quantizes through official Lanczos/PIL even when source and output sizes are identical.",
+    "mandatory_cache_semantics": "Define P as exactly this frozen deployed preprocessing. Cache Zraw=E(P(raw_draft)), ZR=E(P(rphi_rgb)), VAE_R=D(ZR) as returned internally clipped. R in compensation remains the original float32 clipped rphi_rgb, not P(R).",
+    "prohibited_silent_fix": "Do not bypass _resize or call vae.encode(float32 original) and claim matched deployment. A float-preserving guide encoder is a separate declared interface experiment with new caches and paired controls.",
+    "required_records": [
+      "original float32 input pixel SHA",
+      "actual post-_resize pre-vae.encode pixel SHA/dtype/shape",
+      "pixel difference max_abs/MSE/changed_component_count before vs after P",
+      "P source/pillow/numpy/torch versions and codeSHA"
+    ]
+  },
+  "evidence_basis": {
+    "accepted_audits": [
+      {
+        "path": "results/takeover_20261111/rphi_train_guides_legacy_smoke_completed/engineering_review.json",
+        "sha256": "d4f942b23bf37087ee6930cdb033c72bfa8657b8365b0b5c446f1c3e1a15d71e"
+      },
+      {
+        "path": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
+        "sha256": "7029b2c7482933a6f7a7069d43239357356159e5cb65ee2087df6f1d33447e19"
+      }
+    ],
+    "current_remote_metadata_check": {
+      "all12_files_exist": true,
+      "all12_sizes_equal_manifest": true,
+      "control_manifest_sha_unchanged": "3f40c6a49119f091c1bc8745e7a1fdd04e9f7671f2730b9211a7157dbc5a6943",
+      "host": "huawei-modelarts-30794",
+      "large_NPZ_file_and_pixel_SHA_recomputed_this_review": false,
+      "ordinary_manifest_sha_unchanged": "1c73a26f1cb81157c2445fac44d33acc925256ec77343f50aa7d54f7ab9f0008",
+      "prior_full_NPZ_SHA_and_pixel_validation": "Accepted engineering audits above; must reverify in future cache preflight."
+    },
+    "source_files": [
+      {
+        "functions": {
+          "_role_records": {
+            "end_line": 79,
+            "line": 52
+          },
+          "export_train_guides": {
+            "end_line": 326,
+            "line": 220
+          },
+          "predict_arrays": {
+            "end_line": 187,
+            "line": 173
+          },
+          "validate_train_contract": {
+            "end_line": 113,
+            "line": 82
+          },
+          "verify_cache": {
+            "end_line": 210,
+            "line": 190
+          }
+        },
+        "path": "code/export_rphi_train_guides.py",
+        "sha256": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f"
+      },
+      {
+        "functions": {
+          "export_train_controls": {
+            "end_line": 230,
+            "line": 123
+          },
+          "selected_records": {
+            "end_line": 60,
+            "line": 51
+          },
+          "verify_control_cache": {
+            "end_line": 120,
+            "line": 90
+          }
+        },
+        "path": "code/export_rphi_train_controls.py",
+        "sha256": "b78df2c3b39a0c47a5d4f513c95b14cad0d647b85c83d529b05b50b7f92fd503"
+      },
+      {
+        "functions": {
+          "decode_with_preclip_capture": {
+            "end_line": 155,
+            "line": 118
+          },
+          "inspect_bundle": {
+            "end_line": 115,
+            "line": 80
+          },
+          "load_vae_only": {
+            "end_line": 264,
+            "line": 244
+          },
+          "roundtrip_pair": {
+            "end_line": 185,
+            "line": 158
+          },
+          "verify_vae_binding": {
+            "end_line": 229,
+            "line": 213
+          }
+        },
+        "path": "code/run_vae_roundtrip_diagnostic.py",
+        "sha256": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811"
+      },
+      {
+        "functions": {
+          "generate_pair": {
+            "end_line": 168,
+            "line": 130
+          },
+          "validate_h3_geometry": {
+            "end_line": 127,
+            "line": 125
+          }
+        },
+        "path": "code/run_fixed_h3_rphi.py",
+        "sha256": "05383516e55d395f161337df26568d34e7d6add1092786db640f9c8aaa33630d"
+      },
+      {
+        "functions": {
+          "decode": {
+            "end_line": 232,
+            "line": 230
+          },
+          "encode_guide_pixels": {
+            "end_line": 227,
+            "line": 223
+          },
+          "official_resize": {
+            "end_line": 119,
+            "line": 112
+          }
+        },
+        "path": "code/h3_comfy.py",
+        "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c"
+      },
+      {
+        "functions": {
+          "make_near_clean": {
+            "end_line": 107,
+            "line": 96
+          },
+          "prepare_observed": {
+            "end_line": 93,
+            "line": 75
+          }
+        },
+        "path": "code/rphi_data.py",
+        "sha256": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301"
+      },
+      {
+        "path": "code/rphi_h3_controls.py",
+        "sha256": "ca515675deda019e885bd24c218c7c2fbce7f9749a5f029d764e3562f9c1b8de"
+      },
+      {
+        "path": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json",
+        "sha256": "db8cf861c4b75fbe2bc06aaf05874bcd943c0f9c6e7d153fdf44af38149848f7"
+      },
+      {
+        "path": "configs/openh3_20261111/refiner_turbo_30794.json",
+        "sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975"
+      }
+    ]
+  },
+  "identity_and_integrity_gates": [
+    "Read full32train/8dev materialized manifests and checkpoint training contract; require exact current SHA, roles, source sets and no sourceID/sourceSHA overlap using the train exporter validator.",
+    "Require ordinary4 and control8 manifestSHA, complete/train scope, checkpointSHA/model_config/frozen_stateSHA, sidecarSHA, record canonicalSHA and source/target bindings to agree. Do not pass train records through inspect_inputs(dev) or require fabricated dev/H3 metrics.",
+    "Rehash selected current NPZ files and every raw_draft/rphi_raw_rgb/rphi_rgb array; require finite float32 full22native geometry, exact clamp relation, ordinary raw CPU prepare_observed parity and each control exact recipe/input/history parity.",
+    "Recheck original target+observation current materialization NPZ fileSHA/pixelSHA/receiptSHA and source binding. Target pixels may enter CPU integrity/control reconstruction and future RGB loss only.",
+    "Bind each output to sample_id,parent/control ID,sourceID/SHA,target_key,target file/pixelSHA,recordSHA,original input manifest/NPZ/arraySHA,control recipeSHA if any,preprocessing code+post-P pixelSHA,VAE asset+runtimeSHA,dtype/layout/frame indices.",
+    "Snapshot VAE named parameters plus separately registered buffers, versions/requires_grad/grad before/after. Assert patcher is None/no frozen DiT attribute, zero Rphi/H3 sampler/NFE/backward/optimizer counts.",
+    "Count encode/decode calls, reject undeclared whole-model retry and Comfy OOM fallback; preserve native MiniMax internal tiling/temporal chunks. Save actual plan and stage call counts. Failure keeps partial receipt and valid completed outputs; no automatic retry/resize.",
+    "Save output fileSHA and array bytesSHA, finite/shape/dtype, original native latent scale; atomically mark complete only when every logical row resolves to a verified numerical object and all frozen/runtime/input gates pass."
+  ],
+  "minimal_proposed_output_contract": {
+    "RGB_inputs": {
+      "raw_draft": "Existing float32 THWC array; ordinary SR is CPU Torch bicubic AA x4, native tasks unchanged normalized; controls are normalized explicit HR controls. NOT a pretrained latent upscaler.",
+      "rphi_raw_rgb": "Before-Rphi-output-clamp diagnostic only; preserve reference/hash and clipping stats; do not substitute as encoder input.",
+      "rphi_rgb": "Existing float32 clip(rphi_raw_rgb,0,1). This is deployed guide and compensation R.",
+      "target": "Existing uint8 original-clean-proxy target NPZ remains supervision reference. Do not VAE encode target or use it to choose guide/warm start. Identity/near-clean construction is the explicitly labelled exception already recorded in controls."
+    },
+    "array_store": "Content-addressed arrays; every logical row references original source/control row and immutable numerical keys. Do not copy existing RGB/target large data.",
+    "arrays": {
+      "raw_warm_start_latent": {
+        "definition": "E(P(existing raw_draft))",
+        "dtype": "float32 as observed in accepted deployment path; hard fail on unexpected dtype",
+        "role": "one fixed raw observation warm start for BOTH direct and compensation training arms; never use ZR as draft",
+        "shape": [
+          1,
+          24,
+          7,
+          30,
+          52
+        ]
+      },
+      "rphi_guide_latent": {
+        "definition": "E(P(existing rphi_rgb))",
+        "dtype": "float32",
+        "role": "frozen guide for both arms",
+        "shape": [
+          1,
+          24,
+          7,
+          30,
+          52
+        ]
+      },
+      "vae_rphi_as_returned_internal_clipped": {
+        "definition": "D(rphi_guide_latent) via unchanged h3.decode",
+        "dtype": "float32",
+        "role": "stop-gradient compensation reference; same bound native FP16 VAE internal clamp/chunk-copy path, no extra quantization/clamp",
+        "shape": [
+          22,
+          480,
+          832,
+          3
+        ]
+      }
+    },
+    "causal_boundary": "Rphi is causal K3 with first-frame repeat; VAE/H3 use a whole22-frame temporal interface. This cache is not a proof of causal streaming.",
+    "crop_warning": "A future128px training crop must freeze a separate pixel crop+encoding contract. Cropping full-frame latent or decoded VAE(R) is not assumed equal to encoding/decoding the pixel crop.",
+    "fixed_temporal_window": "All22 original consecutive frames [0..21], same source target_key and native full480x832. No crop, temporal offset, padding-policy replacement or repeated-frame reduction.",
+    "logical_rows": 12,
+    "new_directory": "runs/train_vae_cache_legacy_smoke_20261112a (proposal only, create new and never overwrite)",
+    "no_new_target_array_copy": true
+  },
+  "ordered_next_step": [
+    {
+      "action": "Implement separate train-role cache exporter +CPU contract tests and immutable manifest using only the12 existing RGB rows; no production training changes.",
+      "step": 1
+    },
+    {
+      "action": "CPU preflight all12 rows and full32/8 source contract; pin P preprocessing outputs and18distinct input-object worklist. This can occur without NPU.",
+      "step": 2
+    },
+    {
+      "action": "After separate root resource admission, execute deterministic first ordinary manifest row (compression sample rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9): exactly2encodes+1Rdecode, zeroH3/Rphi/targetencode. Audit saved objects.",
+      "step": 3
+    },
+    {
+      "action": "If that cache smoke passes, reuse its completed objects and process only remaining16encodes+8Rdecodes in the bounded same-source cache queue. Do not repeat successful work; no automatic training launch.",
+      "step": 4
+    },
+    {
+      "action": "Only after full-sourceRGB/cache and joint-gradient/reload/fullresolution-memory gates should matched training budget/crops/loss be frozen. Keep1source cache labelled engineering only.",
+      "step": 5
+    }
+  ],
+  "reuse_and_budget": {
+    "decoded_R_plus_two_latents_uncompressed_array_bytes_after_identity_dedup": 967749120,
+    "dedup_key": [
+      "input float32 pixelSHA",
+      "P/runtime/asset semanticsSHA",
+      "shape/dtype",
+      "frozen VAE parameter identity"
+    ],
+    "dedup_policy": "Reuse exact identity numerical objects across nominal-task rows only after all row and pixel hashes validate. This is computation/storage dedup, not changing sample weights or treating identical rows as independent evidence.",
+    "full32_not_admitted": "Only1source currently cached. Other31 ordinary/control exports must be completed with explicit generalised train-controls exporter/contract before claiming full training data. Current train-controls selected_records is hardcoded to2BdYaGuVAKo.",
+    "loader_asset_verification": "read_manifest(verify=False) for complete recipe provenance then live SHA for bound VAE/context via verify_vae_binding; no need load/hash40GB DiT to execute VAE-only cache. Full asset receipt remains associated metadata.",
+    "minimal_unique_budget": {
+      "DiT_loads": 0,
+      "H3_sampler_calls": 0,
+      "NFE": 0,
+      "Rphi_model_calls": 0,
+      "backward": 0,
+      "decodes": 9,
+      "encodes": 18,
+      "optimizer": 0,
+      "raw_roundtrip_decodes": 0,
+      "target_encodes": 0
+    },
+    "not_reusable_as_cli": "Existing roundtrip diagnostic inspect_bundle demands dev manifests and prior H3 metrics, and roundtrip_pair requires prior H3 encoded latent hashes. It also stores RGB roundtrips but NOT encoded latent arrays. Reuse narrow loader/encode/decode helpers; implement a separate train-role admission/exporter.",
+    "reusable_loader": "run_vae_roundtrip_diagnostic.load_vae_only(pretrained), verify_vae_binding and scoped manifest_vae_binding; exact existing VAE+small context only. It invokes H3(load_dit=False,verify_sha=True), asserts patcherNone/no frozen DiT. Do not call H3(pretrained_manifest=...) constructor for this cache.",
+    "storage_note": "~0.90GiB numerical arrays before compression/header overhead; existing RGB/target data referenced in place. Do not promise compression ratio.",
+    "union_raw_and_R_pixels": 18,
+    "unique_input_pixels_current_metadata": {
+      "raw_draft": 9,
+      "rphi_raw_rgb": 9,
+      "rphi_rgb": 9
+    },
+    "without_dedup_budget": {
+      "decodes": 12,
+      "encodes": 24
+    }
+  },
+  "schema": "openh3.train_vae_cache_preparation_review.v1",
+  "status": "readonly_review_and_proposed_cache_contract_only_not_implemented_not_launched",
+  "training_steps_authorized_or_executed_by_this_review": 0
+}

@@ -1,0 +1,289 @@
+{
+  "schema": "openh3.nonzero_adapter_serialization_merge_probe_contract.v1",
+  "status": "prepared_not_launch_ready",
+  "prepared_at_utc": "2026-11-11T16:30:10.398433+00:00",
+  "purpose": "Bounded small synthetic numerical experiment: one plain-SGD adapter update, exact unmerged serialization/reload, then descriptive BF16 merge comparison. Not restoration training or a quality experiment.",
+  "readiness": {
+    "new_probe_implemented": false,
+    "queue_created": false,
+    "automatic_launch": false,
+    "NPU_launch_authorized_by_this_file": false,
+    "required_dependency": {
+      "run": "runs/h3_joint_rgb_probe_20261112a",
+      "acceptance_at_preparation": "not_established_by_this_contract; dispatched per root, no new result read or inferred",
+      "require_before_implementation_execution": "Actual joint producer complete plus independent terminal audit, complete source/asset/runtime evidence, forward gates, RGB-path gradients, budgets, freeze and restoration all accepted. Bind exact report/audit/archive hashes in the future execution contract. A prepared contract or CPU fixture is insufficient.",
+      "source_contract": {
+        "path": "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json",
+        "sha256": "1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7"
+      },
+      "source_review": {
+        "path": "results/takeover_20261111/h3_joint_rgb_probe_source_review_20261112.json",
+        "sha256": "5e075d58eb98ec29900d395cac2cb392e2fb49840bd2e3e55089fb63a233e081"
+      }
+    },
+    "then_required": [
+      "New separate reviewed implementation and CPU validation; complete immutable source and actual imported dependency/asset pins.",
+      "Fresh independent single-card resource/lock/15-second second-check admission and bounded owned-process timeout; no automatic continuation from joint run.",
+      "New no-overwrite run and diagnostic checkpoint names; never modify prior snapshots or completed evidence."
+    ],
+    "runtime_or_completion_prediction": null
+  },
+  "fixed_inputs_model_math": {
+    "inherit": "All bound pretrained, geometry, native sampler/audio, exact input/noise, clipping, full-residency and scoped math definitions from the pinned joint RGB contract unless explicitly changed below.",
+    "pretrained_manifest": {
+      "path": "configs/openh3_20261111/refiner_turbo_30794.json",
+      "sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975"
+    },
+    "recipe": "refiner-turbo-comfy",
+    "rank": 8,
+    "alpha": 8,
+    "adapter_scale": 1.0,
+    "targets": [
+      "attn.qkv_proj",
+      "attn.out_proj",
+      "mlp.fc1",
+      "mlp.fc2"
+    ],
+    "blocks": 50,
+    "adapted_modules": 200,
+    "parameter_tensors": 400,
+    "no_new_token_refiner_adapter": true,
+    "base_dtype": "bfloat16",
+    "adapter_dtype": "float32",
+    "VAE_dtype": "float16",
+    "video_latent_shape": [
+      1,
+      24,
+      2,
+      8,
+      8
+    ],
+    "audio_latent_shape": [
+      1,
+      32,
+      2,
+      8
+    ],
+    "RGB_shape": [
+      5,
+      128,
+      128,
+      3
+    ],
+    "seed": 101,
+    "input_recipe": "Same CPU generator: guide randn first, distinct raw warm-start second; actual Comfy joint video-then-audio noise with zeros audio initialization. Save and reuse exact bytes for all four trajectories.",
+    "sigmas": [
+      0.909375,
+      0.8571428571428571,
+      0.6666666666666666,
+      0.0
+    ],
+    "steps": 3,
+    "CFG": 1.0,
+    "mode": "base",
+    "refs": [],
+    "innerDC": false,
+    "initialization": "Verified merged pretrained base, fresh rank8 Kaiming A and exactly zero B from seed101. Do not load prior stage1 or a learned production adapter.",
+    "synthetic_target": "CPU float32 linspace(.2,.8,128)[None,None,:,None] broadcast to[5,128,128,3]; objective only, never an input/guide/warm-start.",
+    "RGB_semantics": "Native VAE as_returned_internal_clipped float32; no additional clip/quantization or preclamp claim.",
+    "runtime": "Same resident NPU, eval mode, static patcher, no low-VRAM/offload/dynamic options. Preserve native VAE internal padding/tiling; block sd OOM fallback. Retain per-recompute DiT/VAE context isolation and instance restoration.",
+    "not_added": [
+      "Sharp",
+      "latent upscaler",
+      "fast VAE",
+      "text encoder",
+      "new data",
+      "LPIPS objective",
+      "soft anchor",
+      "latent/audio auxiliary loss"
+    ]
+  },
+  "plain_SGD_definition": {
+    "purpose": "Diagnostic one-step update arithmetic and adapter persistence only; not a claim about Adam/AdamW, convergence, a useful learning rate or restoration quality.",
+    "parameter_set": "Exactly the400 declared independent FP32 A/B tensors, verified before construction.",
+    "optimizer": "torch.optim.SGD",
+    "lr": 0.0001,
+    "momentum": 0.0,
+    "dampening": 0.0,
+    "weight_decay": 0.0,
+    "nesterov": false,
+    "maximize": false,
+    "foreach": false,
+    "fused": false,
+    "backward_scale": 1024.0,
+    "unscale": "Save actual raw FP32 gradients, then divide every present gradient in FP32 by1024 exactly once before the single optimizer step. No dynamic GradScaler, clipping, gradient filling, accumulation or second backward.",
+    "update_formula": "theta_after = FP32(theta_before - 1e-4 * actual_unscaled_gradient), using declared plain SGD arithmetic.",
+    "initial_A_boundary": "At exact zero B, A gradients may be exactly zero. Record all A/B gradients. No weight decay or momentum is allowed to change A independently of this gradient.",
+    "step_count": 1,
+    "learning_rate_search": false,
+    "loss_descent_is_hard_gate": false,
+    "lr_basis": "1e-4 is the existing train_stage1 parser default (line47), adopted here as a predeclared diagnostic constant; its suitability for this RGB objective is not established."
+  },
+  "phases": [
+    {
+      "phase": "0_preflight",
+      "explicit_NFE": 0,
+      "VAE_decodes": 0,
+      "backward": 0,
+      "optimizer_steps": 0,
+      "checks": [
+        "Joint prerequisite independently accepted and evidence hashes bound.",
+        "Exact fresh model/provenance, input hashes, original base/VAE parameter and separately registered-buffer fingerprints, full resident state and restoration snapshots.",
+        "Exactly200 target modules/400 FP32 tensors; all B zero; A/B shape and scale match each actual base linear; no extra trainable tensors."
+      ]
+    },
+    {
+      "phase": "1_zero_B_same_graph_gradient",
+      "explicit_NFE": 3,
+      "VAE_decodes": 1,
+      "backward": 1,
+      "optimizer_steps": 0,
+      "operation": "One gradient-enabled complete ResidentH3Trajectory sampling and frozen VAE decode, with checkpointed50 DiT and36 VAE blocks. Use one retained graph for the RGB-only MSE multiplied by1024.",
+      "reference_boundary": "Compare zero-adapter final video/audio and RGB against the accepted joint probe saved reference on exact inputs and bound runtime: H3 strict torch.equal; VAE original allclose(candidate,reference) atol=.0002 rtol=.0001 with bitexact measurement. Reading saved reference arrays adds no model calls.",
+      "gates": [
+        "All outputs/loss finite, same geometry, graph connected.",
+        "All400 actual raw and unscaled gradients present and finite; aggregate B nonzero; retained-video gradient present finite nonzero. Do not substitute zeros for absent gradients.",
+        "DiT150 and VAE36 candidate forward block calls and corresponding150/36 recomputes, separately counted; base/VAE frozen; no stale graph/session after backward.",
+        "Save actual raw/unscaled gradients, parameter-before arrays/hashes and output arrays before any update."
+      ]
+    },
+    {
+      "phase": "2_single_update_and_save",
+      "explicit_NFE": 0,
+      "VAE_decodes": 0,
+      "backward": 0,
+      "optimizer_steps": 1,
+      "operation": "After the retained graph has completed and its contexts have exited, unscale once and run exactly one declared SGD step. Save updated unmerged adapter with provenance to a new diagnostic safetensors file.",
+      "gates": [
+        "Finite adapter values and at least one B value changed from zero; report per-tensor update RMS/norm/changed-coordinate count.",
+        "Original pretrained DiT parameters/buffers and VAE parameters/buffers unchanged; no trainable tensor outside the400 adapters.",
+        "A changes, if any, must be accounted for by its actual gradient; no hidden weight decay/momentum/reset.",
+        "Saved file contains exactly400 keys, each exact actual expected shape, FP32 dtype, finite and byte-equal to the updated live tensor."
+      ],
+      "checkpoint_role": "diagnostic_synthetic_plain_SGD_step1_not_a_restoration_checkpoint"
+    },
+    {
+      "phase": "3_updated_unmerged_inference",
+      "explicit_NFE": 3,
+      "VAE_decodes": 1,
+      "backward": 0,
+      "optimizer_steps": 0,
+      "operation": "Fresh resident session under torch.no_grad, identical official joint semantics/input/noise and frozen native decode. Keep independent FP32 adapter wrappers; do not merge or invoke H3(adaptation_path=...).",
+      "record": "Save updated-unmerged video/audio/RGB, per-layer adapter and base fingerprints, fixed synthetic loss, clipping summaries and full actual counters. Change vs zero-adapter outputs is descriptive; lack of visible BF16 output change does not justify changing lr."
+    },
+    {
+      "phase": "4_clear_and_strict_unmerged_reload",
+      "explicit_NFE": 3,
+      "VAE_decodes": 1,
+      "backward": 0,
+      "optimizer_steps": 0,
+      "operation": "Exit inference session; destroy live adaptation contents by zeroing all400 A and B tensors and verify actual zeros. Independently read and validate saved file, then check_adapter with complete expected diagnostic contract and L.load(strict=True,strict_unused=True). Keep the same base and unmerged wrappers; perform the identical no-grad inference/decode mode used in phase3.",
+      "strict_gates": [
+        "Exact400-key set, exact per-key shape (no broadcasting), FP32 dtype and all finite before load.",
+        "Exact pretrained fingerprint/rank/full diagnostic contract metadata, file SHA and updated adapter byte identity after loading.",
+        "Phase3 vs phase4 final video and audio torch.equal and returned float32 RGB torch.equal, all finite; no tolerance relaxation for this same-mode serialization comparison.",
+        "Base/VAE frozen fingerprints unchanged; all400 cleared/reloaded tensors genuinely checked; saved checkpoint not overwritten."
+      ],
+      "why_manual_reload": "H3(adaptation_path=...) automatically invokes merge_adaptation_for_inference, so it cannot serve as an unmerged serialization control."
+    },
+    {
+      "phase": "5_descriptive_BF16_merge",
+      "explicit_NFE": 3,
+      "VAE_decodes": 1,
+      "backward": 0,
+      "optimizer_steps": 0,
+      "operation": "Only after strict unmerged reload passes and all graph/session scopes exit: collect layerwise weight-rounding statistics, call the existing merge_adaptation_for_inference once, verify200 wrappers removed, and run the same no-grad resident trajectory/native decode with identical inputs.",
+      "expected_mutation": "Only the200 targeted base weight tensors may change through the declared FP32 W+scale*B@A then single BF16 cast. Biases, untargeted base parameters/registered buffers and the entire VAE stay unchanged. Freeze the newly merged model for this final inference; original-base unchanged is not falsely demanded for those declared200 writes.",
+      "structural_finite_gates": [
+        "Exactly200 merge targets, expected BF16 storage, no live adapter parameters, no unexpected mutation, finite resulting weights/outputs and valid geometry."
+      ],
+      "descriptive_only": [
+        "For each layer: delta_fp32=scale*B@A, delta_storage=float(BF16(float(W)+delta_fp32))-float(W); norms, changed-weight fraction, count nonzero ideal changes rounded to zero, rounding residual norm/relative norm with denominator-zero handling.",
+        "Updated-unmerged/reloaded vs merged video/audio/RGB max_abs, relativeL2, exact-equality flags, fixed synthetic objective and clipping/changed-pixel summaries.",
+        "Record forward differences vs the zero-adapter outputs as well, without choosing a best representation or declaring quality."
+      ],
+      "interpretation": "A tiny FP32 adapter change can be swallowed by BF16 weight rounding. Separate-branch (XA^T)B^T with delta cast/add and merged X(W+BA)^T also change multiplication association and rounding, so not all endpoint difference can be attributed only to storage quantization.",
+      "no_new_numerical_tolerance": "No bitexact equivalence or newly chosen tolerance is required between merged and unmerged arithmetic; differences are measured. Do not increase lr, repeat the update, rescale B or search steps when a change is swallowed."
+    },
+    {
+      "phase": "6_finally_and_terminal_evidence",
+      "explicit_NFE": 0,
+      "VAE_decodes": 0,
+      "backward": 0,
+      "optimizer_steps": 0,
+      "operation": "Save observed arrays/gradients/weight statistics and phase counters atomically; independently verify file/array SHA, exact shapes/dtypes and metadata. Record final parameter/buffer scopes, runtime/math/patcher/wrapper restoration and memory evidence before terminal pass/fail. Preserve partial evidence on every failure."
+    }
+  ],
+  "hard_budget": {
+    "complete_sampling_trajectories": 4,
+    "explicit_NFE_total": 12,
+    "VAE_encode_calls": 0,
+    "VAE_decode_calls": 4,
+    "autograd_backward_calls": 1,
+    "ordinary_SGD_steps": 1,
+    "training_examples": 0,
+    "independent_adapter_checkpoint_saves": 1,
+    "destructive_clear_and_reload_cycles": 1,
+    "BF16_merge_calls": 1,
+    "DiT_checkpoint_recompute_block_calls": 150,
+    "VAE_checkpoint_recompute_block_calls": 36,
+    "total_explicit_DiT_block_calls": 600,
+    "total_explicit_VAE_block_calls": 144,
+    "recompute_is_additional_work_not_explicit_NFE": true,
+    "no_retries_or_follow_on": true
+  },
+  "serialization_provenance": {
+    "expected_key_formula": "blocks.{i}.{target}.lora_{a,b}; i=0..49; target in the four declared target types.",
+    "expected_shape_formula": "A=[8,base.in_features], B=[base.out_features,8] from the verified actual module; no token_refiner tensors.",
+    "state_dict": "L.state_dict(model) serializes FP32 CPU contiguous tensors; verify actual saved tensor values independently.",
+    "load_caveat": "L.load strict/strict_unused checks key coverage only; p.copy_ can broadcast. Explicit exact shape/dtype/finite preflight is mandatory before calling it.",
+    "metadata": "adapter_metadata(pretrained_record, complete_diagnostic_contract, rank=8); complete contract includes source/asset/input/target/sigma hashes, synthetic role, one SGD update, lr1e-4 and unscale1024. check_adapter must receive that exact expected contract, not only rank.",
+    "checkpoint_publication_or_deployment": false
+  },
+  "failure_and_scope": {
+    "stop_on_first_failed_hard_gate": true,
+    "OOM_or_offload_fallback": false,
+    "automatic_retrain": false,
+    "i_repeatability": "Original i strict gradient equality remains failed; paired-history B remains skipped. No repeated-backward SHA acceptance is inferred here.",
+    "diagnostic_SGD_vs_future_training": "This probe verifies a single declared plain-SGD update and persistence/arithmetic boundaries. It does not verify Adam/AdamW state, convergence, loss reduction, useful learning rate, full-resolution capacity or any real restoration quality.",
+    "future_separate_gates": [
+      "Full22 joint-memory/backward admission",
+      "Finite matched raw-guide/Rphi-guide training with verified train-role caches and predeclared future optimizer",
+      "Independent held-out quality and control acceptance"
+    ]
+  },
+  "source_reading_evidence": {
+    "sha256": {
+      "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+      "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+      "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+      "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+      "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+      "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+      "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+      "code/check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+      "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10"
+    },
+    "lines": {
+      "code/lora.py": "12-42 FP32 independent branch and zero B;45-81 target/rank injection;126-153 save/load and broadcast caveat",
+      "code/openh3_runtime.py": "113-124 seeded independent injection;127-157 in-place BF16 merge/removal;185-197 provenance metadata validation",
+      "code/h3_comfy.py": "187-198 adaptation_path performs automatic merge;229-232 no-grad deployed decode",
+      "code/openh3_train_trajectory.py": "285-372 resident/frozen lifecycle;379-435 three-step joint sampler;437-478 decoder contexts and same-graph decode",
+      "code/check_h3_joint_rgb_grad.py": "170-250 actual gradient/scale and RGB-only objective;266-320 fallback/counter guards;352-369 restoration;488-595 real joint path and final gates",
+      "code/train_stage1.py": "47 existing lr default1e-4;365-389 existing unmerged safetensors save/clear/reload precedent, not this three-step RGB training"
+    },
+    "source_review": {
+      "path": "results/takeover_20261111/h3_joint_rgb_probe_source_review_20261112.json",
+      "sha256": "5e075d58eb98ec29900d395cac2cb392e2fb49840bd2e3e55089fb63a233e081"
+    },
+    "implementation_boundary": "These are inspected existing dependencies, not a new executable nonzero probe or complete launch pin set."
+  },
+  "actions_in_preparation": {
+    "new_contract_only": true,
+    "existing_source_or_runtime_edits": false,
+    "model_loads": 0,
+    "NPU_calls": 0,
+    "queue_created": false,
+    "remote_status_polling": false
+  }
+}

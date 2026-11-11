@@ -1,0 +1,32 @@
+test_exception_restores_checkpoint_math_and_patcher (test_h3_joint_rgb_probe.JointPathTests.test_exception_restores_checkpoint_math_and_patcher) ... {"phase": "candidate", "elapsed_seconds": 0.15681745577603579, "max_rss_KiB_linux": 236120, "rss": {"VmHWM": "236120 kB", "VmRSS": "236020 kB"}}
+{"phase": "candidate_decode", "elapsed_seconds": 3.35812923964113, "max_rss_KiB_linux": 347440, "rss": {"VmHWM": "347440 kB", "VmRSS": "347440 kB"}}
+ok
+test_real_torch_same_graph_two_decodes_single_RGB_backward (test_h3_joint_rgb_probe.JointPathTests.test_real_torch_same_graph_two_decodes_single_RGB_backward) ... {"phase": "reference", "elapsed_seconds": 0.12960575241595507, "max_rss_KiB_linux": 355348, "rss": {"VmHWM": "355348 kB", "VmRSS": "351884 kB"}}
+{"phase": "reference_decode", "elapsed_seconds": 0.134566611610353, "max_rss_KiB_linux": 355348, "rss": {"VmHWM": "355348 kB", "VmRSS": "351884 kB"}}
+{"phase": "candidate", "elapsed_seconds": 0.13746646512299776, "max_rss_KiB_linux": 355348, "rss": {"VmHWM": "355348 kB", "VmRSS": "351884 kB"}}
+{"phase": "candidate_decode", "elapsed_seconds": 0.15034056641161442, "max_rss_KiB_linux": 355348, "rss": {"VmHWM": "355348 kB", "VmRSS": "354116 kB"}}
+{"phase": "backward", "elapsed_seconds": 0.17423218674957752, "max_rss_KiB_linux": 355348, "rss": {"VmHWM": "355348 kB", "VmRSS": "354116 kB"}}
+ok
+test_actual_fixed_target_and_roundtrip_records (test_h3_joint_rgb_probe.ProbeHelpers.test_actual_fixed_target_and_roundtrip_records) ... {"actual_torch_target_sha256": "10efb5fae35949846d1853d3f2a5812f03b09c15ba0884f62e8e349170c1fef7", "shape": [1, 1, 128, 1], "torch": "2.10.0+cpu", "numpy": "2.5.4"}
+ok
+test_candidate_reference_tolerance_direction_is_asymmetric (test_h3_joint_rgb_probe.ProbeHelpers.test_candidate_reference_tolerance_direction_is_asymmetric) ... FAIL
+test_fail_fast_video_or_audio_parity_before_any_backward (test_h3_joint_rgb_probe.ProbeHelpers.test_fail_fast_video_or_audio_parity_before_any_backward) ... ok
+test_guard_preserves_native_tiling_and_restores_on_error (test_h3_joint_rgb_probe.ProbeHelpers.test_guard_preserves_native_tiling_and_restores_on_error) ... {"phase": "reference_decode", "elapsed_seconds": 0.000529211014509201, "max_rss_KiB_linux": 357916, "rss": {"VmHWM": "357916 kB", "VmRSS": "357164 kB"}}
+ok
+test_missing_gradient_is_failure_zero_A_allowed (test_h3_joint_rgb_probe.ProbeHelpers.test_missing_gradient_is_failure_zero_A_allowed) ... ok
+test_parameter_and_nonpersistent_buffer_identity_version_bytes (test_h3_joint_rgb_probe.ProbeHelpers.test_parameter_and_nonpersistent_buffer_identity_version_bytes) ... ok
+test_rgb_failure_saves_pixels_and_blocks_backward (test_h3_joint_rgb_probe.ProbeHelpers.test_rgb_failure_saves_pixels_and_blocks_backward) ... ok
+test_session_entry_failure_and_bad_restoration_not_hidden (test_h3_joint_rgb_probe.ProbeHelpers.test_session_entry_failure_and_bad_restoration_not_hidden) ... ok
+
+======================================================================
+FAIL: test_candidate_reference_tolerance_direction_is_asymmetric (test_h3_joint_rgb_probe.ProbeHelpers.test_candidate_reference_tolerance_direction_is_asymmetric)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_joint_rgb_cpu_validation_20261112/code/tests/test_h3_joint_rgb_probe.py", line 76, in test_candidate_reference_tolerance_direction_is_asymmetric
+    self.assertTrue(torch.allclose(reference, candidate, atol=probe.ATOL, rtol=probe.RTOL))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.651s
+
+FAILED (failures=1)

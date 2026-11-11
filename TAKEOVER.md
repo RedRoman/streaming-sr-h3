@@ -364,3 +364,22 @@ VAE j独立card7，23:53:53 fresh健康3418/65536MB、无PID/锁，1214pins/17�
 新guide-matched LoRA训练仍0，两个producer和收尾均已结束，勿重启。下一步具体合同 configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json：先小尺寸同一张graph的H3+VAE原RGB反传与分块math恢复，后nonzero adapter重载/独立BF16合并舍入测量、22×480×832联合显存，再完整train cache和等预算raw-guide/Rphi-guide训练。当前两个组件峰值不能直接相加作为联合可行证明。新合同仅准备，必须实现/CPU测试/新目录与资源门后再启动。
 
 00:05终态收尾：16:03UTC实查card6/card7均健康3424/65536MB、无PID、共享锁可用；旧完成probe勿重启，新实验仍需fresh检查。新joint合同SHA1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7，仅prepared_not_implemented_not_launch_ready；6NFE/2decode/1RGB backward/0optimizer、DiT150/VAE36重算，具体原容差与留证要求已写。176个最终增量文件已备份31984 preparation/followup_20261112_0005，1,905,752bytes，SHA8ba74fafc5889d368b61f4cfc9e5c66e53833a5317284702b311b8283dbc461a，全大小/SHA通过；结合2345基包保存本轮代码/小证据。下一回访直接实现joint probe并CPU验收，勿再次停留在对b/j重复读数。
+
+
+### 2026-11-12 00:28 接续：同图 RGB 探针已启动
+
+新增独立 `code/check_h3_joint_rgb_grad.py`，SHA852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0；10/10真实Torch CPU测试、0skip，3.386s，证据 `results/takeover_20261111/h3_joint_rgb_cpu_validation_20261112/`。tiny DiT/36 tiny VAE块与官方sampler函数体覆盖同图RGB-only反传、math切换、checkpoint重算、失败恢复和实际数组留证；不是20B验收。独立源码review `h3_joint_rgb_probe_source_review_20261112.json` 已核验初始化失败/patcher恢复修复，保留原RGB容差与严格latent门。
+
+新不可变runtime `preparation/h3_joint_rgb_probe_20261112a` 已验证1258执行pins，queue1259pins；execution f52d3e0164947197c1788fc53396aa478953b65d28dad56d7907aa78683e6987，queue9761130ee850f689bdc4c8085d37b72fadab2331767b86aa3fb7761a6f2c6734。00:25:38 freshcard6健康3423/65536MB、无PID/共享锁空闲；launcher持锁15秒二检后00:26:08实际running，PID1259896、tmux h3-joint-rgb-probe-20261112a，run `runs/h3_joint_rgb_probe_20261112a`。00:28:16处于load_and_verify_assets，Rl/CPU92.8%，没有失败；健康勿重启。0/1/7当时也空闲，仅使用6，2–5他人作业不碰。
+
+固定小5×128²，reference/candidate各3NFE+1VAEdecode，同图RGB MSE×1024反传一次，0optimizer/update；DiT150/VAE36重算另计。禁止sd.VAE OOM fallback，保留原生decoder内部padding/tiling；每次decode前后核实DiT/VAE驻留/对象/版本/bytes，参数和registered buffers分开记录。1800s+30s限额不是ETA，重复全参数hash属于CPU审计工作。CPU finalizer正在绑定，实际启动以后续receipt为准。完成后一次下载小归档，独立核对RGB/target/FP16 cast/latents及远端800+2梯度数组。新guide-matched训练仍0；旧b/j、stage2/native/cache终态不重跑，i严格重复性失败及B跳过不变。
+
+00:31:00，唯一CPU finalizer已真实启动，PID1298315/tmux h3-joint-rgb-finalize-20261112a，输出 `runs/h3_joint_rgb_probe_20261112a_finalize`，当时waiting_for_terminal、audit_invocations0/NPU0。config9bdc967925c9c1496175aacc10193aa16b7ebfef64b1b2be83f8f2e0c4af34bd；本地/远端9/9 NumPy tests通过，远端0.262s，无Torch/NPU导入。30秒轮询、2400秒最多等待、终态只审计一次180秒；失败保持失败，not_launched立即终态，不重启producer。小归档包含实际RGB/target/latent/cast，800+2梯度留远端逐字节审；100files/16MiB上限。
+
+后续nonzero adapter合同草稿 `configs/openh3_20261111/h3_nonzero_adapter_probe_contract_20261112.json`，仅prepared_not_launch_ready，依赖当前joint实际成功+独立审计。固定一次plain SGD lr1e-4/FP32梯度÷1024，无momentum/decay；12NFE/4decode/1back/1update，严格400key/shape/dtype/finite与实际clear/reload未合并输出逐位。BF16merge仅描述权重舍入及不同乘法结合带来的差，不自动调lr/增加步数；不是Adam训练稳定性或质量证明。
+
+训练VAE缓存只读审查已保存 `results/takeover_20261111/train_vae_cache_preparation_review_20261112.json`（SHA9c2e2bdc64fffec33a2e08c90e36affc87edc4c14ea3bb79467166da277ffdc4）。当前1train源4ordinary+8controls清单SHA与12NPZ存在/大小匹配；未重新扫描大数组，完整像素审计引用原证据。新train-role VAE-only exporter可复用load_vae_only，先compression一条2encode+1Rdecode；内容键去重后完整单源总18encode+9decode，若首条验收成功后不重复它。部署encode_guide_pixels总经过官方Lanczos路径，内部float×255→clip→uint8/PIL→float，即使不缩放仍量化；必须记录预处理前后SHA。VAE(R)应为D(E(P(clipped R)))，补偿中的R仍原float32 clipped R。现dev roundtrip未保存latent且role不符，不直接套train。方案尚未实现/启动；当前joint无encode，不受该发现影响。
+
+00:34:12实查：joint已完成模型加载及源/预检，当前initial_resident_fingerprints，phase elapsed456.34s，进程Rl/CPU445%、RSS45,525,024KiB；阶段allocated45,610,662,400B。尚0NFE/0decode/0back，无failure，CPU finalizer等待、审计0次。正在扫描冻结参数/registered buffers，不是挂起，也不是联合反传显存验收。下次先读现有queue/partial和finalize_status，不另启。
+
+00:35:49，本轮80个源码/runtime/CPU小证据/下一关方案已备份31984 `preparation/followup_20261112_0035`，归档473,949bytes，SHAd0f1e3d6edcf673982f9e4491d581c320d0dd85bd496f04eb37e5ad62ae7ea7a，全文件大小/SHA通过；未覆盖根代码或模型资产。当前producer/CPUfinalizer健康等待后续数值结果，终态证据尚未产生；勿把备份完成当实验通过。

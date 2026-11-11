@@ -1,0 +1,15 @@
+{
+  "schema": "openh3.vae_descent_one_shot_launcher_CPU_receipt.v1",
+  "tests_passed": 4,
+  "seconds": 0.003,
+  "scope": "stdlib local mocked resource/queue tests; no real resource or process launch",
+  "command": "python3 -m unittest discover -s preparation/vae_latent_descent_20261111j -p test_run_once.py -v",
+  "launcher_sha256": "70fc14aeef79e1a3890391f9c052dc85b6b64c6edacf97b88274773416af58e7",
+  "test_sha256": "28f901996653eb15394f449bc31615a2014b150c1d0dca18b30376ff9c1f7f05",
+  "tests": [
+    "busy7 does not use idle6 or wait",
+    "second check failure stops without retry",
+    "success calls existing run_plan exactly once withcard7",
+    "bad exactqueuehash admission stops before resource read"
+  ]
+}

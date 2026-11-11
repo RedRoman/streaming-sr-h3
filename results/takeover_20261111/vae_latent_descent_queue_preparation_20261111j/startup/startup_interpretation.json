@@ -1,0 +1,32 @@
+{
+  "observed_at_utc": "2026-11-11T15:55:00.118830+00:00",
+  "actual_producer_processes": [
+    {
+      "pid": 992974,
+      "ppid": 992970,
+      "elapsed": "00:43",
+      "argv_text": "venv/bin/python preparation/vae_latent_descent_20261111j/code/probe_vae_latent_descent.py --pretrained-manifest configs/openh3_20261111/refiner_turbo_30794.json --out runs/vae_latent_descent_20261111j/eval --execute"
+    }
+  ],
+  "owned_timeout_parent": [
+    {
+      "pid": 992970,
+      "ppid": 989085,
+      "elapsed": "00:43"
+    }
+  ],
+  "queue_state": "running",
+  "producer_progress_at_single_check": {
+    "phase": "prepared",
+    "complete": false,
+    "protocol_complete": false,
+    "forward_attempts": 0,
+    "forwards_completed": 0,
+    "backward_attempts": 0,
+    "backwards_completed": 0,
+    "seconds": 0.002486373297870159,
+    "error": null
+  },
+  "process_search_caveat": "Original broad string match saved6 lines including one audit shell self-match, wrappers, timeout and one actual producer; not6model processes. This derived record selects exact producer argv prefix without another remote read.",
+  "additional_remote_polls": 0
+}

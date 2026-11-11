@@ -1,0 +1,65 @@
+{
+  "schema": "openh3.vae_descent_single_cpu_audit_invocation.v1",
+  "host_id": "huawei-modelarts-30794",
+  "invocations": 1,
+  "remote_cpu_validation": {
+    "schema": "openh3.vae_descent_cpu_audit_remote_validation.v1",
+    "utc": "2026-11-11T15:58:34.118001+00:00",
+    "tests": 5,
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 0.18859761487692595,
+    "passed": true,
+    "torch_imported": false,
+    "torch_npu_imported": false,
+    "NPU_calls": 0
+  },
+  "status": {
+    "complete": true,
+    "producer_terminal_state": "completed",
+    "audit_sha256": "43684c32ad309b59a758ebf666746cfc9d57c2aa20aa86cda26bec088c165ea2",
+    "archive": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_latent_descent_20261111j_audit/evidence.tar.gz",
+      "sha256": "1388911d632ccf185cc627bae24554df7a496275d1315251c740fd6204519225",
+      "bytes": 170846,
+      "manifest_sha256": "d62aa3ebf3d34dba63aa7dcb4ea63b2bbc980e9fb2f92f73a7202e2ab00c7298",
+      "members": 47
+    }
+  },
+  "acceptance": {
+    "complete": true,
+    "numerical_acceptance": "passed_fixed_synthetic_local_descent",
+    "errors": [],
+    "array_count": 11,
+    "exact_updates": [
+      1,
+      2,
+      3
+    ],
+    "losses": [
+      {
+        "step": 1,
+        "before": 0.11474182456731796,
+        "after": 0.11435004323720932,
+        "decrease": 0.0003917813301086426
+      },
+      {
+        "step": 2,
+        "before": 0.11435004323720932,
+        "after": 0.11395825445652008,
+        "decrease": 0.0003917887806892395
+      },
+      {
+        "step": 3,
+        "before": 0.11395825445652008,
+        "after": 0.11356590688228607,
+        "decrease": 0.0003923475742340088
+      }
+    ]
+  },
+  "download_performed": false,
+  "producer_runtime_modified": false,
+  "NPU_calls": 0,
+  "source_sha256": "e4f03750b43112cee836719ddf2cec83e72cf69f544144382c5b8aab8dd678ed"
+}

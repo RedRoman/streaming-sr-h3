@@ -1,0 +1,50 @@
+{
+  "schema": "openh3.small_joint_rgb_contract_preparation.v1",
+  "status": "prepared_not_implemented_not_launch_ready",
+  "prepared_at_utc": "2026-11-11T16:03:28.706354+00:00",
+  "contract": {
+    "path": "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json",
+    "sha256": "1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7"
+  },
+  "scope": "5x128 same-graph synthetic RGB engineering probe;6 explicit NFE+2 decoder calls+1 backward;0 optimizer",
+  "evidence_read_and_hashed": [
+    {
+      "path": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/scientific_review.json",
+      "sha256": "7be81b7514bd94b8c16d856c7e80257b6c48f0cad38021dac2827e90573ce354"
+    },
+    {
+      "path": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/local_verification.json",
+      "sha256": "79e50001930ecd1dfd71e34cfc7c97da12e689e946b61b8f1f033e16c4afaeed"
+    },
+    {
+      "path": "results/takeover_20261111/vae_latent_descent_20261111j_completed/scientific_review.json",
+      "sha256": "efc88f78d91ee2dfa23d024037d40a86669570d0a4088593dc502dc1a8eeac12"
+    },
+    {
+      "path": "results/takeover_20261111/vae_latent_descent_20261111j_completed/local_verification.json",
+      "sha256": "c7194714f1a2931078f6480bc5f0e433423bbf343a8e011624b6f73c222ac443"
+    },
+    {
+      "path": "results/takeover_20261111/vae_gradient_repeatability_20261111i/scientific_review.json",
+      "sha256": "b036bb317421f2a9f588767f937ff80862ad7dc1f988912f5dae9088ea61fb53"
+    },
+    {
+      "path": "results/takeover_20261111/vae_h3_probe_postfix_review_20261111.json",
+      "sha256": "21b70d0798f7867a18e151bb8b532852003c66ab6840ae7336a9eae15bec034d"
+    }
+  ],
+  "validation": "Local stdlib JSON parse and budget/shape assertions only; no new tests or model execution.",
+  "actions": {
+    "new_files": [
+      "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json",
+      "results/takeover_20261111/h3_joint_rgb_probe_preparation_20261111/receipt.json"
+    ],
+    "existing_runtime_or_plan_edits": false,
+    "remote_calls": 0,
+    "model_loads": 0,
+    "NPU_calls": 0,
+    "queue_created": false,
+    "launch": false
+  },
+  "followup_boundary": "Implementation/review and fresh independent admission remain required. Nonzero save/reload, BF16 merge, full22 joint memory and matched training are separate subsequent gates. i strict failure/B skip unchanged."
+}

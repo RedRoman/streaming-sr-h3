@@ -353,3 +353,14 @@ H3 b修复已冻结20/20 CPU tests：只读模块显式声明字段，精确核�
 23:44:30，b的CPU terminal finalizer已单次启动，PID915514/tmux h3-terminal-finalize-20261111b，prep preparation/h3_trajectory_terminal_finalize_20261111b，output runs/h3_trajectory_probe_20261111b_finalize。21/21本地及远端CPU tests通过，config e16a35bd…cba2f绑定b精确hash，PEP420完整25-source-map也验。每30秒读状态，最多2400秒、终态只审计一次；0NPU且不重启模型。23:45:39实际waiting_for_terminal，producer仍load；健康勿重启。
 
 23:46:03，本轮263个源码/小证据已备份31984 preparation/followup_20261111_2345，6,754,564bytes，SHA1dd3d36bbfcc58bd0339b48aee163be583a8c9884621b7ccfeaa3f884f66e4ed，逐文件大小与SHA全通过。后续finalizer/j元数据需增量保存。新独立seed102下降实验j开始准备唯一card7队列，23:47:17卡7健康3419/65536MB、无PID/锁空闲；这不是正式admission，启动前仍须重新核实，card6已有H3 b PID895740不得抢占。
+
+
+### 2026-11-12 00:02 接续：两项实际数值门通过，下一关是同图 RGB 反传
+
+H3 b于11日23:54:40 completed，CPU finalizer23:55:16一次验收通过；819,626bytes小归档88505d19483e86d396e6d58a4ce3028a5a7c4d1294b2da5395be2c63cf4e069a，45payload已本地SHA核验，实际video/audio NPZ本地逐元素相等/maxabs0。5帧128²，参考3NFE+候选3NFE、1次backward；400梯度tensor全部finite、200个B非零，B L2 .106574485；50块×3步=150次checkpoint重算，532个base参数SHA前后6550ffc8…bb261e一致，adapter未更新。peakallocated41,273,382,400bytes=38.438833GiB，744.66s含加载/多次全参数hash。独立CPU审核真实400个NPY，归档不包含梯度数组；权重SHA是锁定producer记录，不是重新加载模型。证据 h3_trajectory_probe_20261111b_completed/{local_verification,scientific_review}.json。旧a失败不改；本次无VAE/RGB/optimizer，不能称joint/full22训练显存或质量通过。
+
+VAE j独立card7，23:53:53 fresh健康3418/65536MB、无PID/锁，1214pins/17历史guard后准入，15秒二检；23:55:52 completed，89.49s，8forward/3backward。固定seed102/rho.001/scale1024，诊断loss .1147418246→.1143500432→.1139582545→.1135659069，累计下降1.02484%；首central .3924742>0，gradient dot .3854427，1.8243%幅值差仅描述。peakallocated9,805,145,600bytes=9.131753GiB，三次负更新/首正latent、raw/1024反缩放、11真实NPY file/content SHA全部CPU精确重算通过，参数版本/runtime/checkpoint门全过。170,846bytes/46payload归档1388911d632ccf185cc627bae24554df7a496275d1315251c740fd6204519225已本地核验，证据 vae_latent_descent_20261111j_completed/。没有保存RGB输出故不能称独立RGB重评分，frozen仅559 named_parameters不含全部buffers；i严格重复性失败及B跳过不变。
+
+新guide-matched LoRA训练仍0，两个producer和收尾均已结束，勿重启。下一步具体合同 configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json：先小尺寸同一张graph的H3+VAE原RGB反传与分块math恢复，后nonzero adapter重载/独立BF16合并舍入测量、22×480×832联合显存，再完整train cache和等预算raw-guide/Rphi-guide训练。当前两个组件峰值不能直接相加作为联合可行证明。新合同仅准备，必须实现/CPU测试/新目录与资源门后再启动。
+
+00:05终态收尾：16:03UTC实查card6/card7均健康3424/65536MB、无PID、共享锁可用；旧完成probe勿重启，新实验仍需fresh检查。新joint合同SHA1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7，仅prepared_not_implemented_not_launch_ready；6NFE/2decode/1RGB backward/0optimizer、DiT150/VAE36重算，具体原容差与留证要求已写。176个最终增量文件已备份31984 preparation/followup_20261112_0005，1,905,752bytes，SHA8ba74fafc5889d368b61f4cfc9e5c66e53833a5317284702b311b8283dbc461a，全大小/SHA通过；结合2345基包保存本轮代码/小证据。下一回访直接实现joint probe并CPU验收，勿再次停留在对b/j重复读数。

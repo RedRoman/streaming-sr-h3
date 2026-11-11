@@ -1,0 +1,45 @@
+{
+  "state": "completed_and_audited_fixed_synthetic_local_descent",
+  "verified_at_utc": "2026-11-11T16:00:41.945080+00:00",
+  "geometry": [
+    22,
+    480,
+    832
+  ],
+  "physical_card": 7,
+  "seed": 102,
+  "rho": 0.001,
+  "loss_scale": 1024,
+  "loss_trajectory": [
+    0.11474182456731796,
+    0.11435004323720932,
+    0.11395825445652008,
+    0.11356590688228607
+  ],
+  "relative_loss_reduction": 0.010248378823207494,
+  "first_central_difference": 0.3924742341041565,
+  "first_gradient_dot_direction": 0.38544266723396264,
+  "directional_magnitude_error_descriptive_only": 0.018242834714314874,
+  "actual_forwards": 8,
+  "actual_backwards": 3,
+  "peak_allocated_bytes": 9805145600,
+  "peak_allocated_GiB": 9.13175344467163,
+  "seconds": 89.48909920454025,
+  "gates": {
+    "protocol": true,
+    "frozen": true,
+    "runtime": true,
+    "budget": true,
+    "restoration": true
+  },
+  "frozen_scope": "559 named_parameters SHA and versions; buffers not fingerprinted",
+  "no_threshold_retuning": true,
+  "i_strict_repeatability_still_failed": true,
+  "not_established": [
+    "Gradient bitwise repeatability",
+    "Adapter/Adam optimization stability",
+    "H3+VAE same-graph backward or joint memory",
+    "Actual restoration quality or generalization"
+  ],
+  "next": "same-graph small joint H3+VAE RGB backward, then nonzero adapter reload and full-resolution joint memory; matched training still0"
+}

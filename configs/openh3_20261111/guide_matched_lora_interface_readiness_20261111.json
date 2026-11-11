@@ -1,7 +1,7 @@
 {
   "schema": "openh3.guide_matched_lora_interface_readiness.v1",
   "created_at_utc": "2026-11-11T12:43:42.704981+00:00",
-  "status": "VAE_gradient_variability_characterized;H3b_real_probe_running;matched_training_not_admitted",
+  "status": "small_H3_trajectory_and_fullres_VAE_local_descent_accepted;pending_joint_RGB_reload_fullres_memory;matched_training_not_admitted",
   "purpose": "Prepare an adaptation objective that is evaluated on original RGB references and exactly matches the selected output interface; do not continue the historical latent-only run unchanged.",
   "code_sha256": {
     "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
@@ -108,10 +108,10 @@
   "training_steps_completed_for_this_contract": 0,
   "launch_ready": false,
   "blocking_prerequisites": [
-    "VAE(R) cache and complete matched source-level training dataset; single-source ordinary+clean controls caches accepted",
-    "Independent bounded VAE local optimization validity and actual joint model memory; preserve strict repeatability negative",
-    "real H3 full trajectory zero-adapter parity and adapter gradient acceptance after source-audit repair",
-    "nonzero unmerged save/reload parity; separately quantify BF16 merge bias"
+    "Complete matched source-level training data and train-role VAE(R) cache; single-source ordinary+clean controls alone insufficient",
+    "Actual same-graph H3+VAE original RGB backward with per-recompute math/checkpoint restoration and frozen parameter checks",
+    "Nonzero unmerged adapter save/reload parity; independently measure BF16 merge bias",
+    "Actual22x480x832 joint memory/backward and a finite matched training budget; component peak memory cannot be added as proof"
   ],
   "gradient_path_static_audit": {
     "path": "results/takeover_20261111/lora_gradient_path_static_audit_20261111.json",
@@ -287,7 +287,7 @@
         "optimizer_steps": 0,
         "spatial_geometry": "128x128 small or480x832 full explicitly recorded per attempt"
       },
-      "next": "Separate seed102 fixed three-step latent descent prepared with 6 CPU tests; no NPU admission/queue yet. Exact repeatability i failed and B is skipped.",
+      "next": "Do not rerun i/j; strict repeatability remains negative, separate fixed descent passed. Next same-graph small H3+VAE original RGB backward under scoped math and checkpoint contexts.",
       "checkpoint_probe": {
         "run": "runs/vae_decode_grad_checkpoint_smoke_20261111e",
         "state": "completed_and_audited",
@@ -340,8 +340,29 @@
         "max_forwards": 8,
         "max_backwards": 3,
         "RMS_step": 0.001,
-        "NPU_launched": false,
+        "NPU_launched": true,
         "training_steps": 0
+      },
+      "bounded_descent_j": {
+        "run": "runs/vae_latent_descent_20261111j",
+        "state": "completed_and_audited_fixed_synthetic_local_descent",
+        "evidence": "results/takeover_20261111/vae_latent_descent_20261111j_completed/local_verification.json",
+        "review": "results/takeover_20261111/vae_latent_descent_20261111j_completed/scientific_review.json",
+        "actual_forwards": 8,
+        "actual_backwards": 3,
+        "loss_trajectory": [
+          0.11474182456731796,
+          0.11435004323720932,
+          0.11395825445652008,
+          0.11356590688228607
+        ],
+        "peak_allocated_GiB": 9.13175344467163,
+        "limitations": [
+          "Gradient bitwise repeatability",
+          "Adapter/Adam optimization stability",
+          "H3+VAE same-graph backward or joint memory",
+          "Actual restoration quality or generalization"
+        ]
       }
     },
     "train_control_export": {
@@ -388,9 +409,10 @@
         "CFG1 denoiser callback",
         "patcher/wrapper infrastructure"
       ],
-      "state": "CPU_contract_and_mutable_options_regression_passed_real_H3_b_running",
+      "state": "actual_small_joint_video_audio_latent_probe_passed;VAE_RGB_joint_pending",
       "evidence": "results/takeover_20261111/openh3_trajectory_preparation_20261111/receipt.json",
-      "checkpoint_options_fix": "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json"
+      "checkpoint_options_fix": "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json",
+      "actual_small_probe_review": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/scientific_review.json"
     },
     "H3_actual_probe": {
       "run": "runs/h3_trajectory_probe_20261111a",
@@ -415,17 +437,25 @@
     },
     "H3_actual_probe_b": {
       "run": "runs/h3_trajectory_probe_20261111b",
-      "state": "running_load_and_verify_assets",
+      "state": "completed_and_audited_small_latent_only",
       "session": "h3-trajectory-probe-20261111b",
       "admission_at_utc": "2026-11-11T15:41:45.095485+00:00",
       "prep": "preparation/h3_trajectory_probe_20261111b",
       "scope": "tiny 5frame128x128 latent-only; exact zero-adapter final video/audio then1backward; noVAE/noRGB/nooptimizer",
-      "actual_results_available": false
+      "actual_results_available": true,
+      "evidence": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/local_verification.json",
+      "review": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/scientific_review.json",
+      "actual_NFE": 6,
+      "actual_backwards": 1,
+      "gradient_tensors_finite": 400,
+      "B_nonzero_tensors": 200,
+      "peak_allocated_GiB": 38.43883275985718
     }
   },
   "cached_interface_screen": {
     "complete": true,
     "quality": "no_universal_gain_do_not_default_to_compensation",
     "evidence": "results/takeover_20261111/cached_rgb_compensation_completed_20261111/scientific_review.json"
-  }
+  },
+  "next_engineering_contract": "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json"
 }

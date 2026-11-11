@@ -1,0 +1,50 @@
+{
+  "verified_at_utc": "2026-11-11T15:58:26.187461+00:00",
+  "state": "completed_and_audited_small_latent_only",
+  "actual": {
+    "RGB_loss_calls": 0,
+    "VAE_calls": {},
+    "backward_attempts": 1,
+    "candidate_NFE": 3,
+    "completed_backward_calls": 1,
+    "optimizer_steps": 0,
+    "reference_NFE": 3
+  },
+  "shape_video": [
+    1,
+    24,
+    2,
+    8,
+    8
+  ],
+  "shape_audio": [
+    1,
+    32,
+    2,
+    8
+  ],
+  "zero_adapter_deployment_forward_exact": true,
+  "gradient_tensors_present_finite": 400,
+  "nonzero_B_tensors": 200,
+  "B_gradient_L2": 0.10657448483602441,
+  "A_gradient_zero_at_zero_B_expected": true,
+  "checkpoint_recomputed_block_calls": 150,
+  "frozen_parameter_SHA": "6550ffc8f1a75c7ac707a620915103d342f365bdc898214922009a303dbb261e",
+  "adapter_values_unchanged": true,
+  "peak_allocated_bytes": 41273382400,
+  "peak_allocated_GiB": 38.43883275985718,
+  "seconds": 744.6563407629728,
+  "source_failure_a_preserved": true,
+  "next": [
+    "Separate same-graph H3+VAE original RGB backward and mixed math context smoke",
+    "Nonzero adapter save/reload parity and explicitly measured BF16 merge rounding",
+    "Actual22x480x832 joint memory/backward admission",
+    "Complete train-role guide/control/VAE cache then finite matched raw-guide versus Rphi-guide LoRA budget"
+  ],
+  "not_established": [
+    "Omni restoration quality or generalization",
+    "Full-resolution or joint H3+VAE backward feasibility",
+    "Nonzero adapter deployment/reload parity",
+    "Any guide-matched LoRA training steps"
+  ]
+}

@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-11T15:43:42.094668+00:00",
-    "stage": "VAE_i_locally_audited_exact_failure_B_skipped;H3a_failed_evidence_audited;H3b_live;descent_CPU_only_prepared;newLoRA0",
+    "at_utc": "2026-11-11T16:01:56.480703+00:00",
+    "stage": "H3b_small_full_trajectory_and_VAEj_fullres_local_descent_completed_audited;VAEi_strict_repeatability_negative_retained;next_joint_RGB_probe;matched_LoRA0",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,16 +269,17 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Inspect actual H3 b queue and CPU finalizer; never restart healthy or terminal producer. Download a single small terminal archive when ready.",
-      "Preserve VAE i exact failure and B skipped; actual local arrays verified. Separate seed102 fixed-step descent is prepared and CPU-tested but no NPU queue/admission yet.",
-      "After H3/decoder numerical evidence, separately admit joint RGB adapter backward/save-reload/fullres memory; no guide-matched training until all gates.",
-      "Do not rerun old stage2/native/compensation/train-export results. Retain clean/nearclean negative findings and broaden source-isolated evidence before omni claims."
+      "Do not rerun completed H3 b, VAE j, old stage2/native/compensation/export stages; preserve i exact failure and B skipped.",
+      "Implement and CPU-test the separate predeclared small joint H3+VAE RGB backward contract. Then fresh resource/pin/lock/second-idle admission only. No training auto-admission.",
+      "Require same-graph mixed math/checkpoint restoration, original RGB loss and saved RGB/latent output evidence; parameter-only fingerprints must not be described as all buffers/state.",
+      "After small joint acceptance, test nonzero adapter save/reload and BF16 merge rounding separately, then22x480x832 joint memory/backward, then complete train-role caches and finite matched raw/Rphi-guide LoRA budget.",
+      "Broaden source-isolated quality/temporal and omni baseline comparisons only after valid training/evaluation interfaces; no omni/generalization claim from current smoke sources."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
     "VAE_repeatability_archive_sha256": "144e293137bee4dafdc7a07a9020b3c14850a61293f27cc59610e5eddc4973d2",
     "H3_actual_probe_run": "runs/h3_trajectory_probe_20261111b",
-    "H3_actual_probe_state": "running_load_and_verify_assets",
+    "H3_actual_probe_state": "completed_and_audited_small_latent_only",
     "H3_checkpoint_options_fix": "preparation/h3_checkpoint_options_snapshot_20261111/patch_receipt.json",
     "train_control_RGB_damage_review": "results/takeover_20261111/train_control_rgb_damage_20261111/scientific_review.json",
     "H3_actual_probe_session": "h3-trajectory-probe-20261111b",
@@ -289,20 +290,23 @@
     "VAE_repeatability_scientific_review": "results/takeover_20261111/vae_gradient_repeatability_20261111i/scientific_review.json",
     "VAE_descent_preparation": "preparation/vae_latent_descent_20261111_v1",
     "VAE_descent_CPU_receipt": "results/takeover_20261111/vae_latent_descent_preparation_20261111/receipt.json",
-    "VAE_descent_NPU_launched": false,
+    "VAE_descent_NPU_launched": true,
     "H3_CPU_finalizer": {
       "run": "runs/h3_trajectory_probe_20261111b_finalize",
       "prep": "preparation/h3_trajectory_terminal_finalize_20261111b",
       "session": "h3-terminal-finalize-20261111b",
       "pid": 915514,
       "started_at_utc": "2026-11-11T15:44:30.637+00:00",
-      "state": "waiting_for_terminal",
+      "state": "completed",
       "max_wait_seconds": 2400,
       "poll_seconds": 30,
       "CPU_tests_passed": 21,
       "config_sha256": "e16a35bd2d57c6e7243c6227f49d3faa7a25a140033d02358a9e8c664dcfba2f",
       "NPU_calls": 0,
-      "audit_invocations_at_launch": 0
+      "audit_invocations_at_launch": 0,
+      "completed_at_utc": "2026-11-11T15:55:16.588946+00:00",
+      "audit_invocations": 1,
+      "numerical_acceptance": "passed_small_latent_only"
     },
     "backup_31984": {
       "path": "preparation/followup_20261111_2345",
@@ -310,6 +314,26 @@
       "archive_sha256": "1dd3d36bbfcc58bd0339b48aee163be583a8c9884621b7ccfeaa3f884f66e4ed",
       "verified_at_utc": "2026-11-11T15:46:03.425602+00:00",
       "scope": "snapshot before finalizer/next j metadata; later delta required"
-    }
+    },
+    "H3_actual_probe_completed_at_utc": "2026-11-11T15:54:40.738659+00:00",
+    "H3_actual_probe_evidence": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/local_verification.json",
+    "H3_actual_probe_review": "results/takeover_20261111/h3_trajectory_probe_20261111b_completed/scientific_review.json",
+    "H3_actual_probe_archive_sha256": "88505d19483e86d396e6d58a4ce3028a5a7c4d1294b2da5395be2c63cf4e069a",
+    "VAE_descent_run": "runs/vae_latent_descent_20261111j",
+    "VAE_descent_state": "completed_and_audited_fixed_synthetic_local_descent",
+    "VAE_descent_evidence": "results/takeover_20261111/vae_latent_descent_20261111j_completed/local_verification.json",
+    "VAE_descent_review": "results/takeover_20261111/vae_latent_descent_20261111j_completed/scientific_review.json",
+    "VAE_descent_completed_at_utc": "2026-11-11T15:55:52.908036+00:00",
+    "VAE_descent_archive_sha256": "1388911d632ccf185cc627bae24554df7a496275d1315251c740fd6204519225",
+    "next_contract": "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json",
+    "guide_matched_training_steps": 0,
+    "final_delta_backup_31984": {
+      "path": "preparation/followup_20261112_0005",
+      "files": 176,
+      "archive_sha256": "8ba74fafc5889d368b61f4cfc9e5c66e53833a5317284702b311b8283dbc461a",
+      "verified": true,
+      "receipt": "results/takeover_20261111/followup_20261112_0005_backup/remote_verification.json"
+    },
+    "last_terminal_resource_snapshot": "results/takeover_20261111/heartbeat_20261111T1603Z_runtime.json"
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema": "openh3.rphi_research_plan.v1",
-  "status": "standalone_rgb_prototype_npu_smoke_passed_three_arm_pilot_running",
+  "status": "standalone_rgb_three_arm_pilot_completed_quality_not_accepted",
   "date": "2026-11-11",
   "priority": "R_phi fidelity and temporal restoration, separately attributable from H3 LoRA",
   "benchmark_and_hypothesis_plan": "configs/openh3_20261111/omni_benchmark_plan_20261111.json",
@@ -122,7 +122,9 @@
       "code/audit_rphi_results.py": "strict post-hoc comparison audit; quality requires manual review"
     },
     "completed_pilot_arms": [
-      "known"
+      "known",
+      "blind",
+      "blind_confidence"
     ],
     "completion_audit": "code/audit_rphi_queue_completion.py waits once for finite queue completion; writes audit.json then exits, no notifications or NPU use",
     "known_development_result": {
@@ -135,6 +137,13 @@
       },
       "near_clean_denoise_psnr_delta_db": -2.4624555660490426,
       "evidence": "results/takeover_20261111/rphi_known_1000_metrics.json"
-    }
+    },
+    "pilot_completed_at": "2026-11-11T14:40:07+08:00",
+    "health_report": "results/takeover_20261111/rphi_completed/health_summary.json",
+    "acceptance_issues": [
+      "blind/confidence fidelity state differs despite calibration-only design; mechanism attribution invalid pending isolation",
+      "blind compression and clean/near-clean degradation",
+      "confidence interval coverage is too broad for its nominal Gaussian interpretation"
+    ]
   }
 }

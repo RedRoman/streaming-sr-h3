@@ -1,0 +1,3469 @@
+{
+  "schema": "rphi.matched_comparison.v1",
+  "complete": true,
+  "scope": "32 training / 8 development source engineering pilot; not frozen-test omni evidence",
+  "inputs": {
+    "known": {
+      "path": "runs/rphi_20261111_pilot/known/eval/metrics.json",
+      "sha256": "ba2b38ffcfc8d3857bde4d1ce9a6f6a6527a2a76e29e24adaf01dab9f167b98f"
+    },
+    "blind": {
+      "path": "runs/rphi_20261111_pilot/blind/eval/metrics.json",
+      "sha256": "4e0b2bdedab42187e191781f783ed14625b9fb5ad27e61139620ea47f7ef3a3d"
+    },
+    "confidence": {
+      "path": "runs/rphi_20261111_pilot/blind_confidence/eval/metrics.json",
+      "sha256": "1724c253b04e7351f07ec4f1c9491ab9f6e47a555aefbb9b8a969f414e5a7dd1"
+    }
+  },
+  "blind_minus_known": {
+    "task": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 30.324815952385254,
+          "mae": 0.013225719559456957,
+          "mse": 0.001360470614401859,
+          "lpips": 0.16783723041104776
+        },
+        "baseline": {
+          "psnr": 30.27643850663204,
+          "mae": 0.013266648874869174,
+          "mse": 0.0013763764244019508,
+          "lpips": 0.16662085289135575
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": 0.048377445753215564,
+            "median_source_delta": 0.04920331128460731,
+            "ci95_source_bootstrap": [
+              0.03802787491368849,
+              0.057318972871200115
+            ],
+            "direction": "higher",
+            "model_better_sources": 8,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": -4.092931541221955e-05,
+            "median_source_delta": -3.058084203402551e-05,
+            "ci95_source_bootstrap": [
+              -6.422794905031131e-05,
+              -1.9348406769286523e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 8,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": -1.5905810000091693e-05,
+            "median_source_delta": -1.3668661036066426e-05,
+            "ci95_source_bootstrap": [
+              -2.3237741046525892e-05,
+              -8.622186963446962e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 8,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.0012163775196919867,
+            "median_source_delta": 0.0010987237716714518,
+            "ci95_source_bootstrap": [
+              0.0005338265793398034,
+              0.0019172574393451283
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 0,
+          "samples": 8,
+          "max_mse_increase": -2.1586596676334135e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.00962565655106629,
+            "baseline": 0.00964884650204503,
+            "model_minus_baseline": -2.3189950978741624e-05,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004913467030360686,
+            "baseline": 0.004915981012045678,
+            "model_minus_baseline": -2.5139816849928497e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 32.18775041444596,
+          "mae": 0.010542568420009245,
+          "mse": 0.0009809445260215675,
+          "lpips": 0.12308802269399166
+        },
+        "baseline": {
+          "psnr": 32.17167612617811,
+          "mae": 0.010448307794820979,
+          "mse": 0.0009940820899622432,
+          "lpips": 0.12008309309991697
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": 0.016074288267836856,
+            "median_source_delta": 0.045608289641227984,
+            "ci95_source_bootstrap": [
+              -0.05122446351716087,
+              0.06889364253574692
+            ],
+            "direction": "higher",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 9.426062518826767e-05,
+            "median_source_delta": 3.716944600360133e-05,
+            "ci95_source_bootstrap": [
+              -2.0694153513056354e-05,
+              0.00022213773822000823
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": -1.3137563940675936e-05,
+            "median_source_delta": -8.702360287288474e-06,
+            "ci95_source_bootstrap": [
+              -2.482058744655689e-05,
+              -1.702896329768643e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.003004929594074685,
+            "median_source_delta": 0.002370821312069893,
+            "ci95_source_bootstrap": [
+              0.001025664831589282,
+              0.005465108239635202
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 2,
+          "samples": 8,
+          "max_mse_increase": 1.466851088400081e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.006787269945102469,
+            "baseline": 0.006650122204638142,
+            "model_minus_baseline": 0.00013714774046432642,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.003248095010457952,
+            "baseline": 0.0031271681246668012,
+            "model_minus_baseline": 0.0001209268857911506,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 34.866143568014216,
+          "mae": 0.015868148839842073,
+          "mse": 0.0004373397811426456,
+          "lpips": 0.2641421599158396
+        },
+        "baseline": {
+          "psnr": 36.53978845575314,
+          "mae": 0.01278284014620895,
+          "mse": 0.0002931324879553229,
+          "lpips": 0.1643790296511725
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -1.6736448877389276,
+            "median_source_delta": -1.8107720281744584,
+            "ci95_source_bootstrap": [
+              -2.1335604049637027,
+              -1.0697636254875773
+            ],
+            "direction": "higher",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0030853086936331216,
+            "median_source_delta": 0.003273599272896878,
+            "ci95_source_bootstrap": [
+              0.002138817762410433,
+              0.003927142285486345
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 0.0001442072931873227,
+            "median_source_delta": 0.00013178052699495087,
+            "ci95_source_bootstrap": [
+              7.96864813113117e-05,
+              0.00021858489436438186
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.09976313026466717,
+            "median_source_delta": 0.11839837394654751,
+            "ci95_source_bootstrap": [
+              0.07029516009885506,
+              0.1250041917121659
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 7,
+          "samples": 8,
+          "max_mse_increase": 0.0003401812802110378
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.017724690100937985,
+            "baseline": 0.013029852245547445,
+            "model_minus_baseline": 0.004694837855390538,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.016912842507008464,
+            "baseline": 0.012294728501001374,
+            "model_minus_baseline": 0.0046181140060070885,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 41.071033392943306,
+          "mae": 0.005717575722675975,
+          "mse": 0.00010840480408692029,
+          "lpips": 0.021838509458878736
+        },
+        "baseline": {
+          "psnr": 41.46062472057114,
+          "mae": 0.005700330837662487,
+          "mse": 0.00010612102376765456,
+          "lpips": 0.017800611214245997
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.38959132762783355,
+            "median_source_delta": -0.07689347324100382,
+            "ci95_source_bootstrap": [
+              -0.9646388744092333,
+              0.07135307870438809
+            ],
+            "direction": "higher",
+            "model_better_sources": 3,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 1.7244885013488533e-05,
+            "median_source_delta": 1.5943994220182778e-05,
+            "ci95_source_bootstrap": [
+              -9.917770968961272e-05,
+              0.00014895189394002528
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.2837803192656985e-06,
+            "median_source_delta": 2.17880026549295e-06,
+            "ci95_source_bootstrap": [
+              -4.1266816706816544e-06,
+              8.557799657968387e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 3,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.004037898244632743,
+            "median_source_delta": 0.0033112817133466397,
+            "ci95_source_bootstrap": [
+              0.002085059913724763,
+              0.0064851887679348375
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 5,
+          "samples": 8,
+          "max_mse_increase": 1.7984750935350112e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.005832440415857951,
+            "baseline": 0.005960007276880281,
+            "model_minus_baseline": -0.00012756686102232946,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004663987992338292,
+            "baseline": 0.004806769856904936,
+            "model_minus_baseline": -0.00014278186456664346,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "identity": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 62.580059665773916,
+          "mae": 0.00039735335921949045,
+          "mse": 6.71147004185666e-07,
+          "lpips": 0.0001013767629558515
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -14.143790964056024,
+            "median_source_delta": -14.010288376023247,
+            "ci95_source_bootstrap": [
+              -14.996420124293902,
+              -13.240874974578588
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.001557094557029813,
+            "median_source_delta": 0.0016677781166483223,
+            "ci95_source_bootstrap": [
+              0.0010717395835656545,
+              0.002031598777349973
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.7949634244241254e-05,
+            "median_source_delta": 1.3250300906840613e-05,
+            "ci95_source_bootstrap": [
+              1.1238875098939476e-05,
+              2.6704679401186335e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005798911978075694,
+            "median_source_delta": 0.005171263494048617,
+            "ci95_source_bootstrap": [
+              0.0035322500085797517,
+              0.008562097410062582
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.4179519627095006e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.001828674074928197,
+            "baseline": 0.00032661934176238683,
+            "model_minus_baseline": 0.0015020547331658107,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383856,
+            "baseline": 0.00022815338741537515,
+            "model_minus_baseline": 0.0011887137905230104,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 62.19203632168833,
+          "mae": 0.00041988812392262356,
+          "mse": 7.322266547197275e-07,
+          "lpips": 0.0001145681778685533
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -13.755767619970424,
+            "median_source_delta": -13.616385731946025,
+            "ci95_source_bootstrap": [
+              -14.612865807434021,
+              -12.8852058383096
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.00153455979232668,
+            "median_source_delta": 0.0016432695821396249,
+            "ci95_source_bootstrap": [
+              0.0010593811327047433,
+              0.001997341885900475
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.7888554593707193e-05,
+            "median_source_delta": 1.3215223670424258e-05,
+            "ci95_source_bootstrap": [
+              1.1194424614871574e-05,
+              2.661923706254251e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005785720563162992,
+            "median_source_delta": 0.0051606243984376006,
+            "ci95_source_bootstrap": [
+              0.0035257847165813894,
+              0.008545674162197276
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.41003051063573e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281973,
+            "baseline": 0.00034320217304730074,
+            "model_minus_baseline": 0.0014854719018808967,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.00024007990296355254,
+            "model_minus_baseline": 0.0011767872749748332,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 46.27224321213099,
+          "mae": 0.003053078024272735,
+          "mse": 3.369876164353168e-05,
+          "lpips": 0.018299613358294664
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": 2.1640254895869138,
+            "median_source_delta": 3.0877233675335525,
+            "ci95_source_bootstrap": [
+              0.02318082348878381,
+              3.529647681009046
+            ],
+            "direction": "higher",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": -0.0010986301080234313,
+            "median_source_delta": -0.0013583482018279696,
+            "ci95_source_bootstrap": [
+              -0.0014766174982326183,
+              -0.0006599580780170428
+            ],
+            "direction": "lower",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": -1.5077980395104753e-05,
+            "median_source_delta": -1.6993149892301575e-05,
+            "ci95_source_bootstrap": [
+              -2.293442522698684e-05,
+              -6.528990550308925e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -0.012399324617263119,
+            "median_source_delta": -0.012872077602272233,
+            "ci95_source_bootstrap": [
+              -0.01709238224090465,
+              -0.007927881879747172
+            ],
+            "direction": "lower",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 8,
+          "max_mse_increase": 8.015797362381793e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281973,
+            "baseline": 0.0027125628370792674,
+            "model_minus_baseline": -0.0008838887621510699,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0020740635141972773,
+            "model_minus_baseline": -0.0006571963362588917,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 61.87321003506885,
+          "mae": 0.0004519093944694678,
+          "mse": 7.805205763155192e-07,
+          "lpips": 0.0001273074432882974
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -13.43694133335095,
+            "median_source_delta": -13.320404489054887,
+            "ci95_source_bootstrap": [
+              -14.260890805085419,
+              -12.642283363003369
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0015025385217798358,
+            "median_source_delta": 0.0016047107056192072,
+            "ci95_source_bootstrap": [
+              0.0010379466129863207,
+              0.001958853685306775
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.7840260672111404e-05,
+            "median_source_delta": 1.3172500303971295e-05,
+            "ci95_source_bootstrap": [
+              1.1172477104416268e-05,
+              2.6548800069485015e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.0057729812977432475,
+            "median_source_delta": 0.005151815931336993,
+            "ci95_source_bootstrap": [
+              0.0035190956248856748,
+              0.008534480949883039
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.402678356058719e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281973,
+            "baseline": 0.0003545285020484987,
+            "model_minus_baseline": 0.0014741455728796986,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0002509572709097352,
+            "model_minus_baseline": 0.0011659099070286507,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "near_clean": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.593871927571925,
+          "mae": 0.0025864391611011995,
+          "mse": 2.1060059330221415e-05,
+          "lpips": 0.005959352548719227
+        },
+        "baseline": {
+          "psnr": 49.34327534857754,
+          "mae": 0.002498259457579171,
+          "mse": 1.190132903820514e-05,
+          "lpips": 0.004767184276715852
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -1.7494034210056348,
+            "median_source_delta": -1.8159877716129529,
+            "ci95_source_bootstrap": [
+              -2.993498895425237,
+              -0.5937953069886946
+            ],
+            "direction": "higher",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 8.817970352202904e-05,
+            "median_source_delta": 9.445928616517313e-05,
+            "ci95_source_bootstrap": [
+              -0.00012648260682581204,
+              0.00029518064232897454
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 9.158730292016273e-06,
+            "median_source_delta": 7.075571351318588e-06,
+            "ci95_source_bootstrap": [
+              3.0344562695718455e-06,
+              1.7176670890656224e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.001192168272003376,
+            "median_source_delta": 0.0006141358947691815,
+            "ci95_source_bootstrap": [
+              -0.0009893268866411143,
+              0.0036631284975859055
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 6,
+          "samples": 8,
+          "max_mse_increase": 3.3385408761916276e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0026908956911606352,
+            "baseline": 0.003510633584787865,
+            "model_minus_baseline": -0.0008197378936272291,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002294782505487092,
+            "baseline": 0.0032881463062949478,
+            "model_minus_baseline": -0.000993363800807856,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.59465536703742,
+          "mae": 0.0025865458408551433,
+          "mse": 2.105947912548398e-05,
+          "lpips": 0.00596650530496845
+        },
+        "baseline": {
+          "psnr": 49.410630517831144,
+          "mae": 0.00248305708315938,
+          "mse": 1.1732525483947367e-05,
+          "lpips": 0.004768568280269391
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -1.8159751507937285,
+            "median_source_delta": -1.889036601197656,
+            "ci95_source_bootstrap": [
+              -3.0424785403703014,
+              -0.6781627719405714
+            ],
+            "direction": "higher",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.00010348875769576284,
+            "median_source_delta": 0.00011450315363721066,
+            "ci95_source_bootstrap": [
+              -0.00010872601504944981,
+              0.0003095044375193981
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 9.326953641536614e-06,
+            "median_source_delta": 7.2335283636361174e-06,
+            "ci95_source_bootstrap": [
+              3.2382810651741574e-06,
+              1.733254611127524e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.0011979370246990588,
+            "median_source_delta": 0.0006516801464992266,
+            "ci95_source_bootstrap": [
+              -0.0009951177099840904,
+              0.0036622772392850777
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 6,
+          "samples": 8,
+          "max_mse_increase": 3.3516809441968485e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.002691402214728221,
+            "baseline": 0.003482471619752491,
+            "model_minus_baseline": -0.0007910694050242701,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002294920210260898,
+            "baseline": 0.0032591970928478988,
+            "model_minus_baseline": -0.0009642768825870007,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.59416691522366,
+          "mae": 0.0025865704427948805,
+          "mse": 2.1060781199258573e-05,
+          "lpips": 0.00598231489614894
+        },
+        "baseline": {
+          "psnr": 46.047547270282664,
+          "mae": 0.003155867283731451,
+          "mse": 3.4665693230458376e-05,
+          "lpips": 0.017958332197243486
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": 1.5466196449409972,
+            "median_source_delta": 2.5891506288156876,
+            "ci95_source_bootstrap": [
+              -0.6113689059986941,
+              2.8937136476739065
+            ],
+            "direction": "higher",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": -0.0005692968409365699,
+            "median_source_delta": -0.0010481051529679284,
+            "ci95_source_bootstrap": [
+              -0.0011613084592320918,
+              0.00010837774063404878
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": -1.3604912031199797e-05,
+            "median_source_delta": -1.578437095785098e-05,
+            "ci95_source_bootstrap": [
+              -2.1765712322327624e-05,
+              -4.731191519216327e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -0.011976017301094544,
+            "median_source_delta": -0.012173963439029952,
+            "ci95_source_bootstrap": [
+              -0.016731823619314436,
+              -0.007331829311071186
+            ],
+            "direction": "lower",
+            "model_better_sources": 7,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 8,
+          "max_mse_increase": 1.0564669177684232e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.002691598285495993,
+            "baseline": 0.0030818028682092716,
+            "model_minus_baseline": -0.00039020458271327846,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002294838760280982,
+            "baseline": 0.0024451246150420046,
+            "model_minus_baseline": -0.00015028585476102298,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.59384046171909,
+          "mae": 0.0025860535588301393,
+          "mse": 2.1060935598677296e-05,
+          "lpips": 0.005966431398216324
+        },
+        "baseline": {
+          "psnr": 49.48441471161247,
+          "mae": 0.0024705822599726365,
+          "mse": 1.1555297783087763e-05,
+          "lpips": 0.004623608515733698
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -1.8905742498933842,
+            "median_source_delta": -2.0051883679454434,
+            "ci95_source_bootstrap": [
+              -3.115933208701935,
+              -0.7521780163779924
+            ],
+            "direction": "higher",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0001154712988575023,
+            "median_source_delta": 0.00011402900865559,
+            "ci95_source_bootstrap": [
+              -0.00010441584372203772,
+              0.00032753237116411236
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 9.505637815589535e-06,
+            "median_source_delta": 7.436090265008406e-06,
+            "ci95_source_bootstrap": [
+              3.4105084641482274e-06,
+              1.7478905494973918e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.0013428228824826265,
+            "median_source_delta": 0.0008238157412658131,
+            "ci95_source_bootstrap": [
+              -0.0008308556646322056,
+              0.0037890686388588287
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 6,
+          "samples": 8,
+          "max_mse_increase": 3.3648174762520746e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0026905071307105808,
+            "baseline": 0.0034489497902284857,
+            "model_minus_baseline": -0.0007584426595179046,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0022943036165088415,
+            "baseline": 0.0032254930818453433,
+            "model_minus_baseline": -0.0009311894653365017,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    }
+  },
+  "confidence_minus_blind": {
+    "task": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 30.32445362774207,
+          "mae": 0.0132257966344276,
+          "mse": 0.0013604158475185818,
+          "lpips": 0.16786173700044554
+        },
+        "baseline": {
+          "psnr": 30.324815952385254,
+          "mae": 0.013225719559456957,
+          "mse": 0.001360470614401859,
+          "lpips": 0.16783723041104776
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.0003623246431825322,
+            "median_source_delta": -0.00011854007140854605,
+            "ci95_source_bootstrap": [
+              -0.002539776950488215,
+              0.0015263691861413407
+            ],
+            "direction": "higher",
+            "model_better_sources": 3,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 7.707497064635572e-08,
+            "median_source_delta": 6.887294001405378e-07,
+            "ci95_source_bootstrap": [
+              -1.9382819380735488e-06,
+              1.7550390411909985e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": -5.4766883276889276e-08,
+            "median_source_delta": 3.356077051978662e-08,
+            "ci95_source_bootstrap": [
+              -4.2253398395124956e-07,
+              2.7207632904176387e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 3,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 2.4506589397789783e-05,
+            "median_source_delta": 3.47774475812912e-05,
+            "ci95_source_bootstrap": [
+              -2.437906417374694e-05,
+              7.070608747502573e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 3,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 5,
+          "samples": 8,
+          "max_mse_increase": 8.567709147925401e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.009624848338854894,
+            "baseline": 0.00962565655106629,
+            "model_minus_baseline": -8.082122113946669e-07,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0049134341779965675,
+            "baseline": 0.004913467030360686,
+            "model_minus_baseline": -3.285236411789897e-08,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 32.18688254107548,
+          "mae": 0.01053981051158219,
+          "mse": 0.0009810020353159634,
+          "lpips": 0.12311246634150542
+        },
+        "baseline": {
+          "psnr": 32.18775041444596,
+          "mae": 0.010542568420009245,
+          "mse": 0.0009809445260215675,
+          "lpips": 0.12308802269399166
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.0008678733704781116,
+            "median_source_delta": -0.0005421741224065357,
+            "ci95_source_bootstrap": [
+              -0.0037380558434242928,
+              0.0019444088232431376
+            ],
+            "direction": "higher",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": -2.7579084270570355e-06,
+            "median_source_delta": -3.129473652671924e-06,
+            "ci95_source_bootstrap": [
+              -5.699840318931202e-06,
+              3.28362457157564e-09
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 5.7509294395931916e-08,
+            "median_source_delta": 1.2033817345526816e-07,
+            "ci95_source_bootstrap": [
+              -3.562868600493447e-07,
+              4.7243269067880047e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 2.4443647513788108e-05,
+            "median_source_delta": -1.0160729289040993e-05,
+            "ci95_source_bootstrap": [
+              -3.237688603500641e-05,
+              8.734325917127284e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 4,
+          "samples": 8,
+          "max_mse_increase": 1.0697933069665853e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.006784139710583212,
+            "baseline": 0.006787269945102469,
+            "model_minus_baseline": -3.130234519257244e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0032454508611305497,
+            "baseline": 0.003248095010457952,
+            "model_minus_baseline": -2.644149327402155e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 34.841731439674696,
+          "mae": 0.01591129553100496,
+          "mse": 0.00043979959977232013,
+          "lpips": 0.26680548838339746
+        },
+        "baseline": {
+          "psnr": 34.866143568014216,
+          "mae": 0.015868148839842073,
+          "mse": 0.0004373397811426456,
+          "lpips": 0.2641421599158396
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.024412128339516226,
+            "median_source_delta": -0.02691407240431687,
+            "ci95_source_bootstrap": [
+              -0.03882827246114513,
+              -0.010239883201141527
+            ],
+            "direction": "higher",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 4.3146691162892635e-05,
+            "median_source_delta": 3.475724215426827e-05,
+            "ci95_source_bootstrap": [
+              1.676571845094892e-05,
+              7.09827587241481e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.4598186296745002e-06,
+            "median_source_delta": 1.3281364159873775e-06,
+            "ci95_source_bootstrap": [
+              8.304229570776347e-07,
+              4.429002344268344e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.0026633284675578245,
+            "median_source_delta": 0.003164832790692629,
+            "ci95_source_bootstrap": [
+              0.0010230923847605723,
+              0.0041413987559887205
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 7,
+          "samples": 8,
+          "max_mse_increase": 7.274119755570625e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.01779891550293052,
+            "baseline": 0.017724690100937985,
+            "model_minus_baseline": 7.422540199253499e-05,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.016985181497875604,
+            "baseline": 0.016912842507008464,
+            "model_minus_baseline": 7.233899086713858e-05,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 41.038531283659,
+          "mae": 0.005727692039174134,
+          "mse": 0.00010877048070262948,
+          "lpips": 0.021825627420791232
+        },
+        "baseline": {
+          "psnr": 41.071033392943306,
+          "mae": 0.005717575722675975,
+          "mse": 0.00010840480408692029,
+          "lpips": 0.021838509458878736
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.03250210928430697,
+            "median_source_delta": -0.013765668892034455,
+            "ci95_source_bootstrap": [
+              -0.06677654695473922,
+              -0.010448303651829033
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 1.011631649815907e-05,
+            "median_source_delta": 8.43884724754983e-06,
+            "ci95_source_bootstrap": [
+              5.297252815440864e-06,
+              1.5164706170279256e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.6567661570918864e-07,
+            "median_source_delta": 3.062407385838055e-07,
+            "ci95_source_bootstrap": [
+              2.348525886476918e-07,
+              5.078220143310308e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -1.2882038087507923e-05,
+            "median_source_delta": 9.01582340399193e-06,
+            "ci95_source_bootstrap": [
+              -6.118961237007303e-05,
+              2.4092705825749853e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 4,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 7.413290794483008e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.005837469012081254,
+            "baseline": 0.005832440415857951,
+            "model_minus_baseline": 5.028596223302558e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004666984267950624,
+            "baseline": 0.004663987992338292,
+            "model_minus_baseline": 2.99627561233241e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "identity": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.08478631194087516,
+            "median_source_delta": -0.07805381511729337,
+            "ci95_source_bootstrap": [
+              -0.13501832349194157,
+              -0.049167014106831886
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 9.611637492255138e-06,
+            "median_source_delta": 7.314818313711516e-06,
+            "ci95_source_bootstrap": [
+              5.988022140113011e-06,
+              1.4774640599749832e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.1552370180902837e-07,
+            "median_source_delta": 2.873573478132096e-07,
+            "ci95_source_bootstrap": [
+              2.0077644393079002e-07,
+              4.415903884038499e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -4.045641238311267e-05,
+            "median_source_delta": -2.495311976720904e-05,
+            "ci95_source_bootstrap": [
+              -8.310828585914947e-05,
+              -3.078371200141913e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.68822388201586e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.001828674074928197,
+            "model_minus_baseline": 5.976491394636516e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0014168671779383856,
+            "model_minus_baseline": 2.278662064725252e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.08478631194087516,
+            "median_source_delta": -0.07805381511729337,
+            "ci95_source_bootstrap": [
+              -0.13501832349194157,
+              -0.049167014106831886
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 9.611637492255138e-06,
+            "median_source_delta": 7.314818313711516e-06,
+            "ci95_source_bootstrap": [
+              5.988022140113011e-06,
+              1.4774640599749832e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.1552370180902837e-07,
+            "median_source_delta": 2.873573478132096e-07,
+            "ci95_source_bootstrap": [
+              2.0077644393079002e-07,
+              4.415903884038499e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -4.045641238311267e-05,
+            "median_source_delta": -2.495311976720904e-05,
+            "ci95_source_bootstrap": [
+              -8.310828585914947e-05,
+              -3.078371200141913e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.68822388201586e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0018286740749281973,
+            "model_minus_baseline": 5.976491394636516e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0014168671779383859,
+            "model_minus_baseline": 2.278662064725252e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.08478631194087516,
+            "median_source_delta": -0.07805381511729337,
+            "ci95_source_bootstrap": [
+              -0.13501832349194157,
+              -0.049167014106831886
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 9.611637492255138e-06,
+            "median_source_delta": 7.314818313711516e-06,
+            "ci95_source_bootstrap": [
+              5.988022140113011e-06,
+              1.4774640599749832e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.1552370180902837e-07,
+            "median_source_delta": 2.873573478132096e-07,
+            "ci95_source_bootstrap": [
+              2.0077644393079002e-07,
+              4.415903884038499e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -4.045641238311267e-05,
+            "median_source_delta": -2.495311976720904e-05,
+            "ci95_source_bootstrap": [
+              -8.310828585914947e-05,
+              -3.078371200141913e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.68822388201586e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0018286740749281973,
+            "model_minus_baseline": 5.976491394636516e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0014168671779383859,
+            "model_minus_baseline": 2.278662064725252e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.08478631194087516,
+            "median_source_delta": -0.07805381511729337,
+            "ci95_source_bootstrap": [
+              -0.13501832349194157,
+              -0.049167014106831886
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 9.611637492255138e-06,
+            "median_source_delta": 7.314818313711516e-06,
+            "ci95_source_bootstrap": [
+              5.988022140113011e-06,
+              1.4774640599749832e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.1552370180902837e-07,
+            "median_source_delta": 2.873573478132096e-07,
+            "ci95_source_bootstrap": [
+              2.0077644393079002e-07,
+              4.415903884038499e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -4.045641238311267e-05,
+            "median_source_delta": -2.495311976720904e-05,
+            "ci95_source_bootstrap": [
+              -8.310828585914947e-05,
+              -3.078371200141913e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 6,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.68822388201586e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0018286740749281973,
+            "model_minus_baseline": 5.976491394636516e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0014168671779383859,
+            "model_minus_baseline": 2.278662064725252e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "near_clean": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.532021655662334,
+          "mae": 0.0025903936561416114,
+          "mse": 2.1358254997101584e-05,
+          "lpips": 0.005940252711297945
+        },
+        "baseline": {
+          "psnr": 47.593871927571925,
+          "mae": 0.0025864391611011995,
+          "mse": 2.1060059330221415e-05,
+          "lpips": 0.005959352548719227
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.061850271909579924,
+            "median_source_delta": -0.05667888363610629,
+            "ci95_source_bootstrap": [
+              -0.09214146334159364,
+              -0.03732767411102855
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 3.954495040412088e-06,
+            "median_source_delta": 8.868741066742026e-06,
+            "ci95_source_bootstrap": [
+              -4.329151711105015e-06,
+              1.1437070720798537e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.9819566688016984e-07,
+            "median_source_delta": 2.81802721346226e-07,
+            "ci95_source_bootstrap": [
+              1.7983113137679418e-07,
+              4.2236105858135673e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -1.9099837421284214e-05,
+            "median_source_delta": -1.0535324690863382e-05,
+            "ci95_source_bootstrap": [
+              -4.088245714228801e-05,
+              4.165752519233706e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.245501777312164e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0026973571326383873,
+            "baseline": 0.0026908956911606352,
+            "model_minus_baseline": 6.461441477752174e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002298168546985835,
+            "baseline": 0.002294782505487092,
+            "model_minus_baseline": 3.3860414987429705e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.53268176780315,
+          "mae": 0.0025905740047772064,
+          "mse": 2.1358428815412484e-05,
+          "lpips": 0.005948898954860245
+        },
+        "baseline": {
+          "psnr": 47.59465536703742,
+          "mae": 0.0025865458408551433,
+          "mse": 2.105947912548398e-05,
+          "lpips": 0.00596650530496845
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.061973599234268484,
+            "median_source_delta": -0.0565759939545174,
+            "ci95_source_bootstrap": [
+              -0.09228124008945042,
+              -0.03740078997478725
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 4.028163922063365e-06,
+            "median_source_delta": 9.09812259725887e-06,
+            "ci95_source_bootstrap": [
+              -4.249968009087009e-06,
+              1.153224648479447e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.9894968992850476e-07,
+            "median_source_delta": 2.821564519460148e-07,
+            "ci95_source_bootstrap": [
+              1.8023781825960856e-07,
+              4.235867839659415e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -1.760635010820532e-05,
+            "median_source_delta": -1.0852323612198234e-05,
+            "ci95_source_bootstrap": [
+              -3.7413193846684326e-05,
+              6.125046638768639e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.260682929296445e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0026978403683635766,
+            "baseline": 0.002691402214728221,
+            "model_minus_baseline": 6.4381536353557616e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002298284418066032,
+            "baseline": 0.002294920210260898,
+            "model_minus_baseline": 3.364207805134405e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.5320506645397,
+          "mae": 0.0025906294516497403,
+          "mse": 2.13595078061472e-05,
+          "lpips": 0.005962895176101785
+        },
+        "baseline": {
+          "psnr": 47.59416691522366,
+          "mae": 0.0025865704427948805,
+          "mse": 2.1060781199258573e-05,
+          "lpips": 0.00598231489614894
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.062116250683961205,
+            "median_source_delta": -0.057326678094987926,
+            "ci95_source_bootstrap": [
+              -0.09256094951765444,
+              -0.03738849140158873
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 4.059008854859686e-06,
+            "median_source_delta": 8.864865193221457e-06,
+            "ci95_source_bootstrap": [
+              -4.232229513883304e-06,
+              1.1552548538535435e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.9872660688863005e-07,
+            "median_source_delta": 2.8285204352981156e-07,
+            "ci95_source_bootstrap": [
+              1.8002321011112293e-07,
+              4.2299531784799086e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -1.9419720047153343e-05,
+            "median_source_delta": -9.06822970137011e-06,
+            "ci95_source_bootstrap": [
+              -4.0346750635459304e-05,
+              -9.601935744285855e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.266321230259207e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.002698157213036987,
+            "baseline": 0.002691598285495993,
+            "model_minus_baseline": 6.558927540993218e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.002298252622131258,
+            "baseline": 0.002294838760280982,
+            "model_minus_baseline": 3.4138618502764647e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 47.53190701243267,
+          "mae": 0.0025901254375171314,
+          "mse": 2.1359672554572218e-05,
+          "lpips": 0.0059477211301176185
+        },
+        "baseline": {
+          "psnr": 47.59384046171909,
+          "mae": 0.0025860535588301393,
+          "mse": 2.1060935598677296e-05,
+          "lpips": 0.005966431398216324
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.061933449286425635,
+            "median_source_delta": -0.056807719795010314,
+            "ci95_source_bootstrap": [
+              -0.09223625237027393,
+              -0.037347955633666045
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 4.0718786869926285e-06,
+            "median_source_delta": 9.03707988292291e-06,
+            "ci95_source_bootstrap": [
+              -4.204157976307943e-06,
+              1.1540584639597096e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 2,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 2.9873695589491943e-07,
+            "median_source_delta": 2.819421557635616e-07,
+            "ci95_source_bootstrap": [
+              1.8039250870242058e-07,
+              4.2327361653838864e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": -1.8710268098705713e-05,
+            "median_source_delta": -1.0269044044737834e-05,
+            "ci95_source_bootstrap": [
+              -4.007936355871318e-05,
+              9.749370898742523e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 5,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 6.256713284447575e-07
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0026970456737598954,
+            "baseline": 0.0026905071307105808,
+            "model_minus_baseline": 6.538543049314525e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0022977136803092437,
+            "baseline": 0.0022943036165088415,
+            "model_minus_baseline": 3.4100638004020507e-06,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    }
+  },
+  "fidelity_weights_identical_blind_and_confidence": false,
+  "interpretation": "confidence head is calibration-only and is not expected to improve RGB without a separately tested downstream rule",
+  "identity_controls": {
+    "known": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 62.580059665773916,
+          "mae": 0.00039735335921949045,
+          "mse": 6.71147004185666e-07,
+          "lpips": 0.0001013767629558515
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -57.419940334226084,
+            "median_source_delta": -57.494537049948725,
+            "ci95_source_bootstrap": [
+              -59.045001137721314,
+              -55.529130796292165
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.00039735335921949045,
+            "median_source_delta": 0.00044833598739446655,
+            "ci95_source_bootstrap": [
+              0.00027263618150587997,
+              0.00051924261906425
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 6.711470041856661e-07,
+            "median_source_delta": 5.789407618723574e-07,
+            "ci95_source_bootstrap": [
+              4.6812693753263735e-07,
+              8.713536640415759e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.00010137676295585152,
+            "median_source_delta": 0.00010433228392988289,
+            "ci95_source_bootstrap": [
+              6.61536730885833e-05,
+              0.00013865888449042047
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 1.123890451964678e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.00032661934176238683,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.00032661934176238683,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.00022815338741537515,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.00022815338741537515,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 62.19203632168833,
+          "mae": 0.00041988812392262356,
+          "mse": 7.322266547197275e-07,
+          "lpips": 0.0001145681778685533
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -57.80796367831168,
+            "median_source_delta": -57.87157114998068,
+            "ci95_source_bootstrap": [
+              -59.43716080987654,
+              -55.95195328030778
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.00041988812392262356,
+            "median_source_delta": 0.00047284452190316407,
+            "ci95_source_bootstrap": [
+              0.0002863152310462593,
+              0.0005499449756949182
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 7.322266547197275e-07,
+            "median_source_delta": 6.227552767317641e-07,
+            "ci95_source_bootstrap": [
+              5.026734172544182e-07,
+              9.598948890484087e-07
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.00011456817786855329,
+            "median_source_delta": 0.00011497137954089946,
+            "ci95_source_bootstrap": [
+              7.362313545726807e-05,
+              0.00015835181393223738
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 1.266485935042151e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.00034320217304730074,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.00034320217304730074,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.00024007990296355254,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.00024007990296355254,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 46.27224321213099,
+          "mae": 0.003053078024272735,
+          "mse": 3.369876164353168e-05,
+          "lpips": 0.018299613358294664
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -73.72775678786901,
+            "median_source_delta": -74.51016568644944,
+            "ci95_source_bootstrap": [
+              -76.27113431141532,
+              -70.62858487204164
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.003053078024272735,
+            "median_source_delta": 0.0034744623058707586,
+            "ci95_source_bootstrap": [
+              0.0019910058882995144,
+              0.0040009528486586775
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 3.369876164353167e-05,
+            "median_source_delta": 2.893821563401018e-05,
+            "ci95_source_bootstrap": [
+              2.0218934645363012e-05,
+              4.9351798487277494e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.018299613358294664,
+            "median_source_delta": 0.017613525968044996,
+            "ci95_source_bootstrap": [
+              0.01144595453282212,
+              0.02560982777019186
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 7.597246206008153e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0027125628370792674,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0027125628370792674,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0020740635141972773,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0020740635141972773,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 61.87321003506885,
+          "mae": 0.0004519093944694678,
+          "mse": 7.805205763155192e-07,
+          "lpips": 0.0001273074432882974
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -58.12678996493115,
+            "median_source_delta": -58.14277592990051,
+            "ci95_source_bootstrap": [
+              -59.71027522004231,
+              -56.383396818622785
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.00045190939446946785,
+            "median_source_delta": 0.0005114033984235815,
+            "ci95_source_bootstrap": [
+              0.00031021240232467724,
+              0.0005893988025717575
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 7.805205763155192e-07,
+            "median_source_delta": 6.601665529652087e-07,
+            "ci95_source_bootstrap": [
+              5.334810570517428e-07,
+              1.0286040242046766e-06
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.00012730744328829738,
+            "median_source_delta": 0.00012377984664150668,
+            "ci95_source_bootstrap": [
+              8.150530869599494e-05,
+              0.00017649572794198315
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 1.3875311508873655e-06
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0003545285020484987,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0003545285020484987,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0002509572709097352,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0002509572709097352,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "blind": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.5637312982821,
+            "median_source_delta": -70.93777397340672,
+            "ci95_source_bootstrap": [
+              -73.43339076665912,
+              -69.8114114268695
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0019544479162493036,
+            "median_source_delta": 0.002116114104042789,
+            "ci95_source_bootstrap": [
+              0.001341582384906817,
+              0.0025463830331523005
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.862078124842692e-05,
+            "median_source_delta": 1.3740240794861248e-05,
+            "ci95_source_bootstrap": [
+              1.1717594967268239e-05,
+              2.7456992333497057e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005900288741031545,
+            "median_source_delta": 0.0052755957779785,
+            "ci95_source_bootstrap": [
+              0.00358651663176109,
+              0.008696159171010246
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.515552456728118e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281975,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018286740749281975,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0014168671779383859,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.5637312982821,
+            "median_source_delta": -70.93777397340672,
+            "ci95_source_bootstrap": [
+              -73.43339076665912,
+              -69.8114114268695
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0019544479162493036,
+            "median_source_delta": 0.002116114104042789,
+            "ci95_source_bootstrap": [
+              0.001341582384906817,
+              0.0025463830331523005
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.862078124842692e-05,
+            "median_source_delta": 1.3740240794861248e-05,
+            "ci95_source_bootstrap": [
+              1.1717594967268239e-05,
+              2.7456992333497057e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005900288741031545,
+            "median_source_delta": 0.0052755957779785,
+            "ci95_source_bootstrap": [
+              0.00358651663176109,
+              0.008696159171010246
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.515552456728118e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281975,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018286740749281975,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0014168671779383859,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.5637312982821,
+            "median_source_delta": -70.93777397340672,
+            "ci95_source_bootstrap": [
+              -73.43339076665912,
+              -69.8114114268695
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0019544479162493036,
+            "median_source_delta": 0.002116114104042789,
+            "ci95_source_bootstrap": [
+              0.001341582384906817,
+              0.0025463830331523005
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.862078124842692e-05,
+            "median_source_delta": 1.3740240794861248e-05,
+            "ci95_source_bootstrap": [
+              1.1717594967268239e-05,
+              2.7456992333497057e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005900288741031545,
+            "median_source_delta": 0.0052755957779785,
+            "ci95_source_bootstrap": [
+              0.00358651663176109,
+              0.008696159171010246
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.515552456728118e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281975,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018286740749281975,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0014168671779383859,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.4362687017179,
+          "mae": 0.0019544479162493036,
+          "mse": 1.8620781248426918e-05,
+          "lpips": 0.005900288741031545
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.5637312982821,
+            "median_source_delta": -70.93777397340672,
+            "ci95_source_bootstrap": [
+              -73.43339076665912,
+              -69.8114114268695
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.0019544479162493036,
+            "median_source_delta": 0.002116114104042789,
+            "ci95_source_bootstrap": [
+              0.001341582384906817,
+              0.0025463830331523005
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.862078124842692e-05,
+            "median_source_delta": 1.3740240794861248e-05,
+            "ci95_source_bootstrap": [
+              1.1717594967268239e-05,
+              2.7456992333497057e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005900288741031545,
+            "median_source_delta": 0.0052755957779785,
+            "ci95_source_bootstrap": [
+              0.00358651663176109,
+              0.008696159171010246
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.515552456728118e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018286740749281975,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018286740749281975,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0014168671779383859,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0014168671779383859,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "sr": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.64851761022297,
+            "median_source_delta": -70.99319892529049,
+            "ci95_source_bootstrap": [
+              -73.50777785702574,
+              -69.90105517493464
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.001964059553741559,
+            "median_source_delta": 0.0021234289223565003,
+            "ci95_source_bootstrap": [
+              0.0013486783099989448,
+              0.002557348245651785
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.893630495023595e-05,
+            "median_source_delta": 1.3958178689750973e-05,
+            "ci95_source_bootstrap": [
+              1.203843984684826e-05,
+              2.775810020843441e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005859832328648433,
+            "median_source_delta": 0.005270849564112723,
+            "ci95_source_bootstrap": [
+              0.0035712289739952517,
+              0.008614082098593673
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.5505098751223655e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018346505663228338,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.001419145840003111,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.64851761022297,
+            "median_source_delta": -70.99319892529049,
+            "ci95_source_bootstrap": [
+              -73.50777785702574,
+              -69.90105517493464
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.001964059553741559,
+            "median_source_delta": 0.0021234289223565003,
+            "ci95_source_bootstrap": [
+              0.0013486783099989448,
+              0.002557348245651785
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.893630495023595e-05,
+            "median_source_delta": 1.3958178689750973e-05,
+            "ci95_source_bootstrap": [
+              1.203843984684826e-05,
+              2.775810020843441e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005859832328648433,
+            "median_source_delta": 0.005270849564112723,
+            "ci95_source_bootstrap": [
+              0.0035712289739952517,
+              0.008614082098593673
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.5505098751223655e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018346505663228338,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.001419145840003111,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.64851761022297,
+            "median_source_delta": -70.99319892529049,
+            "ci95_source_bootstrap": [
+              -73.50777785702574,
+              -69.90105517493464
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.001964059553741559,
+            "median_source_delta": 0.0021234289223565003,
+            "ci95_source_bootstrap": [
+              0.0013486783099989448,
+              0.002557348245651785
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.893630495023595e-05,
+            "median_source_delta": 1.3958178689750973e-05,
+            "ci95_source_bootstrap": [
+              1.203843984684826e-05,
+              2.775810020843441e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005859832328648433,
+            "median_source_delta": 0.005270849564112723,
+            "ci95_source_bootstrap": [
+              0.0035712289739952517,
+              0.008614082098593673
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.5505098751223655e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018346505663228338,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.001419145840003111,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 8,
+        "samples": 8,
+        "model": {
+          "psnr": 48.35148238977702,
+          "mae": 0.001964059553741559,
+          "mse": 1.8936304950235948e-05,
+          "lpips": 0.005859832328648433
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -71.64851761022297,
+            "median_source_delta": -70.99319892529049,
+            "ci95_source_bootstrap": [
+              -73.50777785702574,
+              -69.90105517493464
+            ],
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mae": {
+            "mean": 0.001964059553741559,
+            "median_source_delta": 0.0021234289223565003,
+            "ci95_source_bootstrap": [
+              0.0013486783099989448,
+              0.002557348245651785
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "mse": {
+            "mean": 1.893630495023595e-05,
+            "median_source_delta": 1.3958178689750973e-05,
+            "ci95_source_bootstrap": [
+              1.203843984684826e-05,
+              2.775810020843441e-05
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          },
+          "lpips": {
+            "mean": 0.005859832328648433,
+            "median_source_delta": 0.005270849564112723,
+            "ci95_source_bootstrap": [
+              0.0035712289739952517,
+              0.008614082098593673
+            ],
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 8
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 8,
+          "samples": 8,
+          "max_mse_increase": 4.5505098751223655e-05
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.0018346505663228338,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.0018346505663228338,
+            "n_sources": 8,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.001419145840003111,
+            "baseline": 0.0,
+            "model_minus_baseline": 0.001419145840003111,
+            "n_sources": 8,
+            "direction": "lower"
+          }
+        }
+      }
+    }
+  },
+  "confidence_calibration": {
+    "sr": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 19169280,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 19169280,
+          "predicted_variance": 0.0019587777196764505,
+          "empirical_mse": 0.0013606827657143916,
+          "predicted_rms_sigma": 0.04425808084041208,
+          "empirical_rmse": 0.036887433710064345,
+          "coverage_1sigma": 0.9211439866286337,
+          "coverage_1_96sigma": 0.9606324981080632
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0005980949539620588,
+      "gaussian_nll_without_constant": -2.7678669550096755,
+      "coverage_1sigma": 0.9211439866286337,
+      "coverage_1_96sigma": 0.9606324981080632,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "deblur": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 19169280,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 19169280,
+          "predicted_variance": 0.0019587761288513135,
+          "empirical_mse": 0.0009810286571283733,
+          "predicted_rms_sigma": 0.04425806286826518,
+          "empirical_rmse": 0.03132137699923765,
+          "coverage_1sigma": 0.9368799280237403,
+          "coverage_1_96sigma": 0.9691454939013342
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0009777474717229402,
+      "gaussian_nll_without_constant": -2.8653644168170005,
+      "coverage_1sigma": 0.9368799280237403,
+      "coverage_1_96sigma": 0.9691454939013342,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "denoise": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 19169280,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 19168204,
+          "predicted_variance": 0.0019546469612928686,
+          "empirical_mse": 0.00044043249550427426,
+          "predicted_rms_sigma": 0.04421138949742327,
+          "empirical_rmse": 0.02098648363838674,
+          "coverage_1sigma": 0.955959375920154,
+          "coverage_1_96sigma": 0.9987579778818829
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 1076,
+          "predicted_variance": 0.0025174331175108295,
+          "empirical_mse": 0.0006446433087380062,
+          "predicted_rms_sigma": 0.05017402831655865,
+          "empirical_rmse": 0.02538982687491205,
+          "coverage_1sigma": 0.955080545229244,
+          "coverage_1_96sigma": 0.9987608426270137
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0015142345931522226,
+      "gaussian_nll_without_constant": -3.0059897661680264,
+      "coverage_1sigma": 0.9559593265900893,
+      "coverage_1_96sigma": 0.9987579780426854,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "compression": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 19169280,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 19169280,
+          "predicted_variance": 0.0019583824020192758,
+          "empirical_mse": 0.00010975716015298712,
+          "predicted_rms_sigma": 0.04425361456445423,
+          "empirical_rmse": 0.010476505149761877,
+          "coverage_1sigma": 0.9923884117366153,
+          "coverage_1_96sigma": 0.9990963492977749
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0018486252418662887,
+      "gaussian_nll_without_constant": -3.089656141129842,
+      "coverage_1sigma": 0.9923884117366153,
+      "coverage_1_96sigma": 0.9990963492977749,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    }
+  }
+}

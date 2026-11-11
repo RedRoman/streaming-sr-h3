@@ -1,0 +1,1706 @@
+{
+  "schema": "rphi.health_snapshot.v1",
+  "observed_at_utc": "2026-11-11T08:04:21Z",
+  "queue": {
+    "state": "completed",
+    "card": 6,
+    "completed": [
+      "01_known_train",
+      "02_known_eval",
+      "03_blind_train",
+      "04_blind_eval",
+      "05_blind_confidence_train",
+      "06_blind_confidence_eval",
+      "07_matched_comparison"
+    ],
+    "updated_at_utc": "2026-11-11T06:40:07.944034+00:00"
+  },
+  "execution_health": "normal_completed",
+  "quality_acceptance": "not_accepted",
+  "active_project_training_at_check": false,
+  "npu_6_health_at_check": "OK",
+  "training": {
+    "known": {
+      "completed_steps": 1000,
+      "first5_logged_batch_mean_loss": 0.015139418467879296,
+      "last5_logged_batch_mean_loss": 0.01245028618723154,
+      "logged_loss_and_gradients_finite": true,
+      "peak_allocated_gb": 1.111827968,
+      "checkpoint_reload_max_abs": {
+        "rgb": 0.0,
+        "anchor": 0.0,
+        "condition_code": 0.0
+      },
+      "training_validation_save_seconds": 402.8896039063111
+    },
+    "blind": {
+      "completed_steps": 1000,
+      "first5_logged_batch_mean_loss": 0.015139095671474933,
+      "last5_logged_batch_mean_loss": 0.013113955408334732,
+      "logged_loss_and_gradients_finite": true,
+      "peak_allocated_gb": 1.118951424,
+      "checkpoint_reload_max_abs": {
+        "rgb": 0.0,
+        "anchor": 0.0,
+        "condition_code": 0.0
+      },
+      "training_validation_save_seconds": 415.9248208478093
+    },
+    "blind_confidence": {
+      "completed_steps": 1000,
+      "first5_logged_batch_mean_loss": 0.015139085613191128,
+      "last5_logged_batch_mean_loss": 0.013132214918732643,
+      "logged_loss_and_gradients_finite": true,
+      "peak_allocated_gb": 1.195662336,
+      "checkpoint_reload_max_abs": {
+        "rgb": 0.0,
+        "anchor": 0.0,
+        "log_variance": 0.0,
+        "condition_code": 0.0
+      },
+      "training_validation_save_seconds": 413.6804337017238
+    }
+  },
+  "quality_by_arm": {
+    "known": {
+      "task": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 30.27643850663204,
+            "mae": 0.013266648874869174,
+            "mse": 0.0013763764244019508,
+            "lpips": 0.16662085289135575
+          },
+          "baseline": {
+            "psnr": 30.240907143940053,
+            "mae": 0.013312840311841663,
+            "mse": 0.0013874660084914267,
+            "lpips": 0.1673236511802922
+          },
+          "model_minus_baseline": {
+            "psnr": 0.03553136269198909,
+            "mae": -4.619143697248712e-05,
+            "mse": -1.1089584089476189e-05,
+            "lpips": -0.0007027982889364192
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.00964884650204503,
+              "baseline": 0.009683855037469422,
+              "model_minus_baseline": -3.5008535424390996e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0049159810120456785,
+              "baseline": 0.00490962728224531,
+              "model_minus_baseline": 6.353729800368056e-06,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -1.3504115588248403e-06
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 32.17167612617811,
+            "mae": 0.010448307794820979,
+            "mse": 0.0009940820899622432,
+            "lpips": 0.12008309309991697
+          },
+          "baseline": {
+            "psnr": 32.08617379622759,
+            "mae": 0.010518243909877477,
+            "mse": 0.0010103896342464765,
+            "lpips": 0.12094739824533464
+          },
+          "model_minus_baseline": {
+            "psnr": 0.08550232995052287,
+            "mae": -6.99361150564979e-05,
+            "mse": -1.6307544284233072e-05,
+            "lpips": -0.0008643051454176494
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.006650122204638142,
+              "baseline": 0.006702425786689231,
+              "model_minus_baseline": -5.230358205108778e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0031271681246668012,
+              "baseline": 0.0031345619717626505,
+              "model_minus_baseline": -7.393847095849146e-06,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -2.5509598358385574e-06
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 36.53978845575314,
+            "mae": 0.01278284014620895,
+            "mse": 0.0002931324879553229,
+            "lpips": 0.1643790296511725
+          },
+          "baseline": {
+            "psnr": 27.92204944646533,
+            "mae": 0.033432261277121594,
+            "mse": 0.0023127380675959015,
+            "lpips": 0.456305470628043
+          },
+          "model_minus_baseline": {
+            "psnr": 8.61773900928781,
+            "mae": -0.02064942113091265,
+            "mse": -0.0020196055796405784,
+            "lpips": -0.29192644097687054
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.013029852245547445,
+              "baseline": 0.047225106359124636,
+              "model_minus_baseline": -0.034195254113577184,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.012294728501001374,
+              "baseline": 0.04390319411177188,
+              "model_minus_baseline": -0.031608465610770506,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -0.00019343702856070369
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 41.46062472057114,
+            "mae": 0.005700330837662487,
+            "mse": 0.00010612102376765456,
+            "lpips": 0.017800611214245997
+          },
+          "baseline": {
+            "psnr": 41.37308325835406,
+            "mae": 0.005705940859491307,
+            "mse": 0.00010776474443607385,
+            "lpips": 0.01797649055720285
+          },
+          "model_minus_baseline": {
+            "psnr": 0.08754146221708048,
+            "mae": -5.610021828818696e-06,
+            "mse": -1.6437206684192653e-06,
+            "lpips": -0.00017587934295685626
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.005960007276880281,
+              "baseline": 0.0059805445002820996,
+              "model_minus_baseline": -2.05372234018194e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.004806769856904936,
+              "baseline": 0.004833535147145085,
+              "model_minus_baseline": -2.6765290240149547e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -1.0948640437942835e-06
+          }
+        }
+      },
+      "identity": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 62.580059665773916,
+            "mae": 0.00039735335921949045,
+            "mse": 6.71147004185666e-07,
+            "lpips": 0.0001013767629558515
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -57.419940334226084,
+            "mae": 0.00039735335921949045,
+            "mse": 6.711470041856661e-07,
+            "lpips": 0.00010137676295585152
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.00032661934176238683,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.00032661934176238683,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.00022815338741537515,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.00022815338741537515,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 1.123890451964678e-06
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 62.19203632168833,
+            "mae": 0.00041988812392262356,
+            "mse": 7.322266547197275e-07,
+            "lpips": 0.0001145681778685533
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -57.80796367831168,
+            "mae": 0.00041988812392262356,
+            "mse": 7.322266547197275e-07,
+            "lpips": 0.00011456817786855329
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.00034320217304730074,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.00034320217304730074,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.00024007990296355254,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.00024007990296355254,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 1.2664859350421509e-06
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 46.27224321213099,
+            "mae": 0.003053078024272735,
+            "mse": 3.369876164353168e-05,
+            "lpips": 0.018299613358294664
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -73.72775678786901,
+            "mae": 0.003053078024272735,
+            "mse": 3.369876164353167e-05,
+            "lpips": 0.018299613358294664
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0027125628370792674,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0027125628370792674,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0020740635141972773,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0020740635141972773,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 7.597246206008155e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 61.87321003506885,
+            "mae": 0.0004519093944694678,
+            "mse": 7.805205763155192e-07,
+            "lpips": 0.0001273074432882974
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -58.12678996493115,
+            "mae": 0.00045190939446946785,
+            "mse": 7.805205763155192e-07,
+            "lpips": 0.00012730744328829738
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0003545285020484987,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0003545285020484987,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0002509572709097352,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0002509572709097352,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 1.3875311508873655e-06
+          }
+        }
+      },
+      "near_clean": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 49.34327534857754,
+            "mae": 0.002498259457579171,
+            "mse": 1.190132903820514e-05,
+            "lpips": 0.004767184276715852
+          },
+          "baseline": {
+            "psnr": 48.50912153529302,
+            "mae": 0.002597134995154902,
+            "mse": 1.4419045418702392e-05,
+            "lpips": 0.0055343991989502675
+          },
+          "model_minus_baseline": {
+            "psnr": 0.8341538132845265,
+            "mae": -9.887553757573198e-05,
+            "mse": -2.517716380497251e-06,
+            "lpips": -0.000767214922234416
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0035106335847878644,
+              "baseline": 0.0038422849454178096,
+              "model_minus_baseline": -0.0003316513606299455,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.003288146306294948,
+              "baseline": 0.003656084748217836,
+              "model_minus_baseline": -0.0003679384419228881,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -1.1582208374573684e-06
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 49.410630517831144,
+            "mae": 0.00248305708315938,
+            "mse": 1.1732525483947367e-05,
+            "lpips": 0.004768568280269391
+          },
+          "baseline": {
+            "psnr": 48.510146645801385,
+            "mae": 0.0025968975503060598,
+            "mse": 1.4416911404347826e-05,
+            "lpips": 0.005585127655649559
+          },
+          "model_minus_baseline": {
+            "psnr": 0.9004838720297546,
+            "mae": -0.00011384046714667983,
+            "mse": -2.6843859204004605e-06,
+            "lpips": -0.0008165593753801661
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.003482471619752491,
+              "baseline": 0.003841777514859709,
+              "model_minus_baseline": -0.0003593058951072177,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0032591970928478988,
+              "baseline": 0.003656171727925539,
+              "model_minus_baseline": -0.00039697463507764046,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -1.2591243226583033e-06
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 46.047547270282664,
+            "mae": 0.003155867283731451,
+            "mse": 3.4665693230458376e-05,
+            "lpips": 0.017958332197243486
+          },
+          "baseline": {
+            "psnr": 48.51000283633171,
+            "mae": 0.002597026774127709,
+            "mse": 1.4417155025721589e-05,
+            "lpips": 0.005562906493044769
+          },
+          "model_minus_baseline": {
+            "psnr": -2.4624555660490426,
+            "mae": 0.0005588405096037413,
+            "mse": 2.024853820473678e-05,
+            "lpips": 0.012395425704198715
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.003081802868209272,
+              "baseline": 0.003841763113313523,
+              "model_minus_baseline": -0.0007599602451042511,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0024451246150420046,
+              "baseline": 0.0036557452869601546,
+              "model_minus_baseline": -0.00121062067191815,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 7,
+            "samples": 8,
+            "max_mse_increase": 6.041813165713878e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 49.48441471161247,
+            "mae": 0.0024705822599726365,
+            "mse": 1.1555297783087763e-05,
+            "lpips": 0.004623608515733698
+          },
+          "baseline": {
+            "psnr": 48.51057810160608,
+            "mae": 0.0025966120997423037,
+            "mse": 1.4415301548091966e-05,
+            "lpips": 0.005570419190917163
+          },
+          "model_minus_baseline": {
+            "psnr": 0.973836610006396,
+            "mae": -0.0001260298397696674,
+            "mse": -2.8600037650042027e-06,
+            "lpips": -0.0009468106751834662
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0034489497902284857,
+              "baseline": 0.0038417772705403885,
+              "model_minus_baseline": -0.0003928274803119028,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0032254930818453433,
+              "baseline": 0.003655579837504774,
+              "model_minus_baseline": -0.0004300867556594311,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -1.5644733917220725e-06
+          }
+        }
+      }
+    },
+    "blind": {
+      "task": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 30.324815952385254,
+            "mae": 0.013225719559456957,
+            "mse": 0.001360470614401859,
+            "lpips": 0.16783723041104776
+          },
+          "baseline": {
+            "psnr": 30.240907143940053,
+            "mae": 0.013312840311841663,
+            "mse": 0.0013874660084914267,
+            "lpips": 0.1673236511802922
+          },
+          "model_minus_baseline": {
+            "psnr": 0.08390880844520465,
+            "mae": -8.712075238470667e-05,
+            "mse": -2.6995394089567882e-05,
+            "lpips": 0.0005135792307555676
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.00962565655106629,
+              "baseline": 0.009683855037469422,
+              "model_minus_baseline": -5.8198486403132616e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.004913467030360686,
+              "baseline": 0.00490962728224531,
+              "model_minus_baseline": 3.839748115375206e-06,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -3.5090712264582537e-06
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 32.18775041444596,
+            "mae": 0.010542568420009245,
+            "mse": 0.0009809445260215675,
+            "lpips": 0.12308802269399166
+          },
+          "baseline": {
+            "psnr": 32.08617379622759,
+            "mae": 0.010518243909877477,
+            "mse": 0.0010103896342464765,
+            "lpips": 0.12094739824533464
+          },
+          "model_minus_baseline": {
+            "psnr": 0.10157661821835973,
+            "mae": 2.4324510131769773e-05,
+            "mse": -2.944510822490901e-05,
+            "lpips": 0.002140624448657036
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.006787269945102469,
+              "baseline": 0.006702425786689231,
+              "model_minus_baseline": 8.484415841323862e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.003248095010457952,
+              "baseline": 0.0031345619717626505,
+              "model_minus_baseline": 0.00011353303869530145,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 1,
+            "samples": 8,
+            "max_mse_increase": 8.06743558169268e-06
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 34.866143568014216,
+            "mae": 0.015868148839842073,
+            "mse": 0.0004373397811426456,
+            "lpips": 0.2641421599158396
+          },
+          "baseline": {
+            "psnr": 27.92204944646533,
+            "mae": 0.033432261277121594,
+            "mse": 0.0023127380675959015,
+            "lpips": 0.456305470628043
+          },
+          "model_minus_baseline": {
+            "psnr": 6.944094121548883,
+            "mae": -0.017564112437279525,
+            "mse": -0.0018753982864532556,
+            "lpips": -0.19216331071220338
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.017724690100937985,
+              "baseline": 0.047225106359124636,
+              "model_minus_baseline": -0.029500416258186647,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.01691284250700846,
+              "baseline": 0.04390319411177188,
+              "model_minus_baseline": -0.02699035160476342,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -0.00014182703751151096
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 41.071033392943306,
+            "mae": 0.005717575722675975,
+            "mse": 0.00010840480408692029,
+            "lpips": 0.021838509458878736
+          },
+          "baseline": {
+            "psnr": 41.37308325835406,
+            "mae": 0.005705940859491307,
+            "mse": 0.00010776474443607385,
+            "lpips": 0.01797649055720285
+          },
+          "model_minus_baseline": {
+            "psnr": -0.30204986541075307,
+            "mae": 1.1634863184669837e-05,
+            "mse": 6.400596508464332e-07,
+            "lpips": 0.003862018901675887
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.005832440415857952,
+              "baseline": 0.0059805445002820996,
+              "model_minus_baseline": -0.00014810408442414885,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.004663987992338292,
+              "baseline": 0.004833535147145085,
+              "model_minus_baseline": -0.000169547154806793,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 1.6100317735500655e-05
+          }
+        }
+      },
+      "identity": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.4362687017179,
+            "mae": 0.0019544479162493036,
+            "mse": 1.8620781248426918e-05,
+            "lpips": 0.005900288741031545
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.5637312982821,
+            "mae": 0.0019544479162493036,
+            "mse": 1.862078124842692e-05,
+            "lpips": 0.005900288741031545
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018286740749281975,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018286740749281975,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0014168671779383859,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0014168671779383859,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.515552456728118e-05
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.4362687017179,
+            "mae": 0.0019544479162493036,
+            "mse": 1.8620781248426918e-05,
+            "lpips": 0.005900288741031545
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.5637312982821,
+            "mae": 0.0019544479162493036,
+            "mse": 1.862078124842692e-05,
+            "lpips": 0.005900288741031545
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018286740749281975,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018286740749281975,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0014168671779383859,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0014168671779383859,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.515552456728118e-05
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.4362687017179,
+            "mae": 0.0019544479162493036,
+            "mse": 1.8620781248426918e-05,
+            "lpips": 0.005900288741031545
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.5637312982821,
+            "mae": 0.0019544479162493036,
+            "mse": 1.862078124842692e-05,
+            "lpips": 0.005900288741031545
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018286740749281975,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018286740749281975,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0014168671779383859,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0014168671779383859,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.515552456728118e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.4362687017179,
+            "mae": 0.0019544479162493036,
+            "mse": 1.8620781248426918e-05,
+            "lpips": 0.005900288741031545
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.5637312982821,
+            "mae": 0.0019544479162493036,
+            "mse": 1.862078124842692e-05,
+            "lpips": 0.005900288741031545
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018286740749281975,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018286740749281975,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0014168671779383859,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0014168671779383859,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.515552456728118e-05
+          }
+        }
+      },
+      "near_clean": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.593871927571925,
+            "mae": 0.0025864391611011995,
+            "mse": 2.1060059330221415e-05,
+            "lpips": 0.005959352548719227
+          },
+          "baseline": {
+            "psnr": 48.50912153529302,
+            "mae": 0.002597134995154902,
+            "mse": 1.4419045418702392e-05,
+            "lpips": 0.0055343991989502675
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9152496077211083,
+            "mae": -1.0695834053702939e-05,
+            "mse": 6.6410139115190234e-06,
+            "lpips": 0.00042495334976895994
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0026908956911606352,
+              "baseline": 0.0038422849454178096,
+              "model_minus_baseline": -0.0011513892542571748,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002294782505487092,
+              "baseline": 0.003656084748217836,
+              "model_minus_baseline": -0.001361302242730744,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.081369012254302e-05
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.59465536703742,
+            "mae": 0.0025865458408551433,
+            "mse": 2.105947912548398e-05,
+            "lpips": 0.00596650530496845
+          },
+          "baseline": {
+            "psnr": 48.510146645801385,
+            "mae": 0.0025968975503060598,
+            "mse": 1.4416911404347826e-05,
+            "lpips": 0.005585127655649559
+          },
+          "model_minus_baseline": {
+            "psnr": -0.915491278763974,
+            "mae": -1.0351709450916982e-05,
+            "mse": 6.642567721136153e-06,
+            "lpips": 0.0003813776493188925
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.002691402214728221,
+              "baseline": 0.003841777514859709,
+              "model_minus_baseline": -0.0011503753001314877,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002294920210260898,
+              "baseline": 0.003656171727925539,
+              "model_minus_baseline": -0.0013612515176646411,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.083897981617632e-05
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.59416691522366,
+            "mae": 0.0025865704427948805,
+            "mse": 2.1060781199258573e-05,
+            "lpips": 0.00598231489614894
+          },
+          "baseline": {
+            "psnr": 48.51000283633171,
+            "mae": 0.002597026774127709,
+            "mse": 1.4417155025721589e-05,
+            "lpips": 0.005562906493044769
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9158359211080453,
+            "mae": -1.0456331332828601e-05,
+            "mse": 6.643626173536984e-06,
+            "lpips": 0.00041940840310417094
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0026915982854959935,
+              "baseline": 0.003841763113313523,
+              "model_minus_baseline": -0.0011501648278175295,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002294838760280982,
+              "baseline": 0.0036557452869601546,
+              "model_minus_baseline": -0.001360906526679173,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.085395690201502e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.59384046171909,
+            "mae": 0.0025860535588301393,
+            "mse": 2.1060935598677296e-05,
+            "lpips": 0.005966431398216324
+          },
+          "baseline": {
+            "psnr": 48.51057810160608,
+            "mae": 0.0025966120997423037,
+            "mse": 1.4415301548091966e-05,
+            "lpips": 0.005570419190917163
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9167376398869882,
+            "mae": -1.0558540912165105e-05,
+            "mse": 6.645634050585332e-06,
+            "lpips": 0.0003960122072991603
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.002690507130710581,
+              "baseline": 0.0038417772705403885,
+              "model_minus_baseline": -0.0011512701398298073,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0022943036165088415,
+              "baseline": 0.003655579837504774,
+              "model_minus_baseline": -0.0013612762209959327,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.085024852855572e-05
+          }
+        }
+      }
+    },
+    "confidence": {
+      "task": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 30.32445362774207,
+            "mae": 0.0132257966344276,
+            "mse": 0.0013604158475185818,
+            "lpips": 0.16786173700044554
+          },
+          "baseline": {
+            "psnr": 30.240907143940053,
+            "mae": 0.013312840311841663,
+            "mse": 0.0013874660084914267,
+            "lpips": 0.1673236511802922
+          },
+          "model_minus_baseline": {
+            "psnr": 0.08354648380202212,
+            "mae": -8.704367741406031e-05,
+            "mse": -2.705016097284477e-05,
+            "lpips": 0.0005380858201533573
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.009624848338854894,
+              "baseline": 0.009683855037469422,
+              "model_minus_baseline": -5.900669861452728e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0049134341779965675,
+              "baseline": 0.00490962728224531,
+              "model_minus_baseline": 3.806895751257307e-06,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -3.289487108903169e-06
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 32.18688254107548,
+            "mae": 0.01053981051158219,
+            "mse": 0.0009810020353159634,
+            "lpips": 0.12311246634150542
+          },
+          "baseline": {
+            "psnr": 32.08617379622759,
+            "mae": 0.010518243909877477,
+            "mse": 0.0010103896342464765,
+            "lpips": 0.12094739824533464
+          },
+          "model_minus_baseline": {
+            "psnr": 0.10070874484788161,
+            "mae": 2.1566601704712737e-05,
+            "mse": -2.9387598930513076e-05,
+            "lpips": 0.002165068096170824
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.006784139710583212,
+              "baseline": 0.006702425786689231,
+              "model_minus_baseline": 8.171392389398139e-05,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0032454508611305497,
+              "baseline": 0.0031345619717626505,
+              "model_minus_baseline": 0.0001108888893678993,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 1,
+            "samples": 8,
+            "max_mse_increase": 8.04631844597163e-06
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 34.841731439674696,
+            "mae": 0.01591129553100496,
+            "mse": 0.00043979959977232013,
+            "lpips": 0.26680548838339746
+          },
+          "baseline": {
+            "psnr": 27.92204944646533,
+            "mae": 0.033432261277121594,
+            "mse": 0.0023127380675959015,
+            "lpips": 0.456305470628043
+          },
+          "model_minus_baseline": {
+            "psnr": 6.919681993209367,
+            "mae": -0.017520965746116633,
+            "mse": -0.0018729384678235813,
+            "lpips": -0.18949998224464557
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.01779891550293052,
+              "baseline": 0.047225106359124636,
+              "model_minus_baseline": -0.029426190856194114,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0169851814978756,
+              "baseline": 0.04390319411177188,
+              "model_minus_baseline": -0.02691801261389628,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 0,
+            "samples": 8,
+            "max_mse_increase": -0.00014195704460253733
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 41.038531283659,
+            "mae": 0.005727692039174134,
+            "mse": 0.00010877048070262948,
+            "lpips": 0.021825627420791232
+          },
+          "baseline": {
+            "psnr": 41.37308325835406,
+            "mae": 0.005705940859491307,
+            "mse": 0.00010776474443607385,
+            "lpips": 0.01797649055720285
+          },
+          "model_minus_baseline": {
+            "psnr": -0.33455197469506004,
+            "mae": 2.1751179682828907e-05,
+            "mse": 1.0057362665556219e-06,
+            "lpips": 0.003849136863588379
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.005837469012081254,
+              "baseline": 0.0059805445002820996,
+              "model_minus_baseline": -0.0001430754882008463,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.004666984267950624,
+              "baseline": 0.004833535147145085,
+              "model_minus_baseline": -0.00016655087919446057,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 1.6580705021009896e-05
+          }
+        }
+      },
+      "identity": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.35148238977702,
+            "mae": 0.001964059553741559,
+            "mse": 1.8936304950235948e-05,
+            "lpips": 0.005859832328648433
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.64851761022297,
+            "mae": 0.001964059553741559,
+            "mse": 1.893630495023595e-05,
+            "lpips": 0.005859832328648433
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018346505663228338,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018346505663228338,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.001419145840003111,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.001419145840003111,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.550509875122366e-05
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.35148238977702,
+            "mae": 0.001964059553741559,
+            "mse": 1.8936304950235948e-05,
+            "lpips": 0.005859832328648433
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.64851761022297,
+            "mae": 0.001964059553741559,
+            "mse": 1.893630495023595e-05,
+            "lpips": 0.005859832328648433
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018346505663228338,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018346505663228338,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.001419145840003111,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.001419145840003111,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.550509875122366e-05
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.35148238977702,
+            "mae": 0.001964059553741559,
+            "mse": 1.8936304950235948e-05,
+            "lpips": 0.005859832328648433
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.64851761022297,
+            "mae": 0.001964059553741559,
+            "mse": 1.893630495023595e-05,
+            "lpips": 0.005859832328648433
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018346505663228338,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018346505663228338,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.001419145840003111,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.001419145840003111,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.550509875122366e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 48.35148238977702,
+            "mae": 0.001964059553741559,
+            "mse": 1.8936304950235948e-05,
+            "lpips": 0.005859832328648433
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "mae": 0.0,
+            "mse": 0.0,
+            "lpips": 0.0
+          },
+          "model_minus_baseline": {
+            "psnr": -71.64851761022297,
+            "mae": 0.001964059553741559,
+            "mse": 1.893630495023595e-05,
+            "lpips": 0.005859832328648433
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0018346505663228338,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.0018346505663228338,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.001419145840003111,
+              "baseline": 0.0,
+              "model_minus_baseline": 0.001419145840003111,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 8,
+            "samples": 8,
+            "max_mse_increase": 4.550509875122366e-05
+          }
+        }
+      },
+      "near_clean": {
+        "sr": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.532021655662334,
+            "mae": 0.0025903936561416114,
+            "mse": 2.1358254997101584e-05,
+            "lpips": 0.005940252711297945
+          },
+          "baseline": {
+            "psnr": 48.50912153529302,
+            "mae": 0.002597134995154902,
+            "mse": 1.4419045418702392e-05,
+            "lpips": 0.0055343991989502675
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9770998796306882,
+            "mae": -6.741339013290851e-06,
+            "mse": 6.939209578399193e-06,
+            "lpips": 0.00040585351234767586
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0026973571326383873,
+              "baseline": 0.0038422849454178096,
+              "model_minus_baseline": -0.0011449278127794226,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002298168546985835,
+              "baseline": 0.003656084748217836,
+              "model_minus_baseline": -0.0013579162012320011,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.1185616543552574e-05
+          }
+        },
+        "deblur": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.53268176780315,
+            "mae": 0.0025905740047772064,
+            "mse": 2.1358428815412484e-05,
+            "lpips": 0.005948898954860245
+          },
+          "baseline": {
+            "psnr": 48.510146645801385,
+            "mae": 0.0025968975503060598,
+            "mse": 1.4416911404347826e-05,
+            "lpips": 0.005585127655649559
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9774648779982424,
+            "mae": -6.3235455288536174e-06,
+            "mse": 6.941517411064658e-06,
+            "lpips": 0.0003637712992106873
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.0026978403683635766,
+              "baseline": 0.003841777514859709,
+              "model_minus_baseline": -0.001143937146496132,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002298284418066032,
+              "baseline": 0.003656171727925539,
+              "model_minus_baseline": -0.0013578873098595069,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.121366967210931e-05
+          }
+        },
+        "denoise": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.5320506645397,
+            "mae": 0.0025906294516497403,
+            "mse": 2.13595078061472e-05,
+            "lpips": 0.005962895176101785
+          },
+          "baseline": {
+            "psnr": 48.51000283633171,
+            "mae": 0.002597026774127709,
+            "mse": 1.4417155025721589e-05,
+            "lpips": 0.005562906493044769
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9779521717920066,
+            "mae": -6.397322477968916e-06,
+            "mse": 6.942352780425615e-06,
+            "lpips": 0.0003999886830570175
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.002698157213036987,
+              "baseline": 0.003841763113313523,
+              "model_minus_baseline": -0.0011436059002765363,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.002298252622131258,
+              "baseline": 0.0036557452869601546,
+              "model_minus_baseline": -0.0013574926648288964,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.122356466332639e-05
+          }
+        },
+        "compression": {
+          "sources": 8,
+          "samples": 8,
+          "model": {
+            "psnr": 47.53190701243267,
+            "mae": 0.0025901254375171314,
+            "mse": 2.1359672554572218e-05,
+            "lpips": 0.0059477211301176185
+          },
+          "baseline": {
+            "psnr": 48.51057810160608,
+            "mae": 0.0025966120997423037,
+            "mse": 1.4415301548091966e-05,
+            "lpips": 0.005570419190917163
+          },
+          "model_minus_baseline": {
+            "psnr": -0.9786710891734138,
+            "mae": -6.486662225172477e-06,
+            "mse": 6.944371006480251e-06,
+            "lpips": 0.00037730193920045463
+          },
+          "temporal": {
+            "unwarped_rgb_error_change_mae": {
+              "model": 0.002697045673759896,
+              "baseline": 0.0038417772705403885,
+              "model_minus_baseline": -0.0011447315967804928,
+              "n_sources": 8,
+              "direction": "lower"
+            },
+            "flow_aligned_rgb_error_change_mae": {
+              "model": 0.0022977136803092437,
+              "baseline": 0.003655579837504774,
+              "model_minus_baseline": -0.0013578661571955308,
+              "n_sources": 8,
+              "direction": "lower"
+            }
+          },
+          "damage": {
+            "threshold_mse": 1e-12,
+            "damaged_samples": 5,
+            "samples": 8,
+            "max_mse_increase": 3.122362879181283e-05
+          }
+        }
+      }
+    }
+  },
+  "fidelity_state_check": {
+    "identical": false,
+    "sha256": {
+      "blind": "484c74a71d6700a659f9aa58bf4a75c5ee1e534b4be81cadc70b79290adb5690",
+      "confidence": "8579e46b99ac01e5e4be010eca316ded3c374474ae15639d3da0ae420b3f77ee"
+    },
+    "status": "requires_investigation",
+    "meaning": "Calibration-only confidence is expected to preserve fidelity weights; hash equality alone is not quality acceptance."
+  },
+  "limitations": [
+    "8 development sources, not untouched test",
+    "absolute error variance does not establish beneficial-action risk",
+    "blind encoder pre-pooling changes pixel scale between crop training and full-frame inference"
+  ],
+  "next_priorities": [
+    "freeze one blind checkpoint and train calibration separately to enforce identical fidelity weights",
+    "correct native-scale blind condition extraction and evaluate compression/clean damage",
+    "validate calibration before downstream confidence gating"
+  ],
+  "independent_cpu_checkpoint_comparison": {
+    "source": "read-only collaborator inspection of remote saved checkpoints; NPU not initialized",
+    "matching": [
+      "training arguments except variant/output",
+      "training contract",
+      "initial backbone SHA",
+      "implementation SHA"
+    ],
+    "step250_fidelity_relative_l2": 0.03286689,
+    "step1000_fidelity_relative_l2": 0.06935274,
+    "step1000_max_abs": 0.0433484,
+    "cause": "unresolved; static code review found no confidence-to-fidelity gradient path"
+  }
+}

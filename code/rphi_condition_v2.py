@@ -1,4 +1,4 @@
-"""Untrained native-scale conditioning candidate; not connected to RphiModel.
+"""Native-scale conditioning candidate, opt-in through RphiModel.
 
 This module preserves the v1 observation encoder's parameter layout while
 removing its observation-level 64-pixel pooling. Fixed-stride convolutions now
@@ -15,7 +15,7 @@ import torch
 from torch import nn
 
 
-CANDIDATE_STATUS = "untrained_candidate_not_integrated"
+CANDIDATE_STATUS = "integrated_opt_in_quality_unverified"
 
 
 class NativeObservationEncoder(nn.Module):

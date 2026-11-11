@@ -141,3 +141,19 @@ FlashVSR+保留在SR和效率比较中。native去噪/去模糊/去压缩优先F
 blind四任务PSNR相对输入变化为SR +0.0839、deblur +0.1016、denoise +6.9441、compression -0.3020 dB；SR/deblur/compression的LPIPS均变差。near-clean平均PSNR下降约0.916 dB，5/8来源受损。confidence恢复结果接近blind但不能解释为有效结构收益；其1σ覆盖率92.1%–99.2%，偏离高斯名义68.3%，不能直接用作已校准的门控。
 
 审计发现blind与confidence的fidelity SHA不同。独立CPU检查确认：250步主干相对L2差3.2867%，1000步6.9353%，后者max_abs 0.0433484；不是仅SHA字符串不同。两臂训练参数（除variant/out）、合同、初始主干SHA、代码SHA相同。静态检查未发现confidence梯度进入fidelity参数，后端数值差异尚是候选原因，未确认。下一版应从同一个冻结blind checkpoint单独拟合校准头，直接保证恢复器相同；同时修正blind原像素尺度条件编码并优先验收去压缩/轻退化损伤。本次仅审计归档，没有重启或新增训练。
+
+### 第二阶段接续（2026-11-11）
+
+用户要求继续训练并指出有限试验结束后没有及时接续。原队列按1000步×三臂预定预算正常退出；上一阶段未接后续验收回访，现补齐。`rphi_stage2_plan.json` 记录本轮完整预算，三个3000步恢复器为legacy_g05、native_g05、native_g20；分别隔离编码器像素尺度和guard权重，其他数据/seed/crop/网络/优化器/控制样本比例相同。旧1000步结果保留，不能把不同训练预算的差异归因为结构。
+
+`RphiModel` 新增可选native编码器，旧checkpoint默认legacy；训练合同补录AdamW/LR schedule/确定性设置，保存初始完整fidelity SHA。新的 `calibrate_rphi.py` 只从一个固定blind checkpoint复制并冻结恢复器，单独拟合1500步置信度头，每次保存验证完整fidelity SHA与固定训练probe输出；这属于训练集上的不确定度拟合，不冒称独立留出校准。`eval_rphi.py` 增加校准来源链的元数据记录，指标含义不变。
+
+两条正式队列安排为：native_g05训练/评估→冻结校准/评估；legacy_g05训练/评估→native_g20训练/评估。最多并行两张卡，实际选卡通过健康/空闲/锁及二次检查；不终止其他进程。所有正式步骤须先通过独立native训练/冻结校准/整帧评估smoke。各组最终checkpoint评估32个任务样本、stride4筛查；后续候选需要stride1相邻帧及长视频验证。单独CPU依赖步骤 `finalize_rphi_stage2.py` 最多等3小时，自动审计并打包 `evidence.tar.gz`；运行成功仍不等于质量通过。
+
+16:36，部署包SHA `bc5e5002c610ee5ae97c4d67aa563fb1e8a42bac3f819301d4949d4fe0881593` 的33文件在30794逐项校验通过；107项Rphi CPU测试通过，耗时12.188秒。测试使用CPU张量，torch_npu可能初始化运行时，未声称完全不初始化设备。16:37启动NPU smoke tmux `rphi-stage2-smoke-20261111`；正式训练状态须读实际队列，不以配置文件存在充当启动。
+
+本线程已创建20分钟一次的验收与接续回访 `omni-r`（Omni Rφ 训练验收与接续）。它读取真实状态，不重启健康任务；无变化时安静，完成/失败/重要结论时再报告，并依项目计划推进下一阶段。后续先审计本轮的去压缩、轻退化保护和校准，再进入固定H3的guide/soft-anchor因素对照及匹配guide的LoRA；统一恢复基线、混合/时变数据和冻结来源测试按研究计划并行准备。
+
+16:41:01，四步NPU smoke全部通过：冻结校准前后fidelity SHA相同，固定probe的RGB/anchor/code差全0，重载logvar等输出差全0；两个模型的四任务480×832评估与chunk检查通过，全部task/identity/near-clean RGB指标差为0。启动证据与107项测试日志已按归档SHA `186446683552a634581c7e10237c8c3ee461edbb9b287a800b65da6bdfd6e004` 验证下载到 `results/takeover_20261111/rphi_stage2_start_evidence/`。同一代码部署包也已在31984保存并核验SHA。
+
+16:42:04 native正式队列在30794卡6开始，16:42:08 controls队列在卡1开始，CPU finalizer已等待两队列；tmux分别 `rphi-stage2-native-20261111`、`rphi-stage2-controls-20261111`、`rphi-stage2-finalize-20261111`。16:44:03实际检查，native_g05与legacy_g05均150/3000步，loss与梯度有限，初始完整fidelity SHA均为 `fd2a51b3de4023c87cdba25af5fc66cb4907d78ca482c52a69f028d9afec78e2`，25步约10.25/10.07秒，峰值分配1.127/1.119GB。两卡健康OK。按当前速度预计首组完整开发评估17:15–17:30，三组及冻结校准完整验收17:50–18:20（Asia/Singapore）；这是卡资源与验证持续正常时的估计，不包括后续H3/混合退化验收。

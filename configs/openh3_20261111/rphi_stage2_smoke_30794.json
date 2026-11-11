@@ -1,0 +1,142 @@
+{
+  "schema": "openh3.takeover_queue.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "min_free_mb": 50000,
+  "lock_dir": "/cache/zihaohe/.npu-reservations",
+  "environment": {
+    "H3_BASE_ENV": "/cache/yunfeng/envs/minimax-h3-npu",
+    "PYTHONPATH": "/cache/zihaohe/omni_openh3_20261111/code"
+  },
+  "required_json_values": [
+    {
+      "path": "/cache/haoyi/video_sample/cvpr27/res/all_models/checks/qwen_prompt_v3_review_20261103/h3_pulse3_early10_fixed30_20261104/SCHEME3_REVIEW_HOLD.json",
+      "key": "no_new_scheme3_executions",
+      "value": true
+    }
+  ],
+  "cards": [
+    6,
+    1,
+    7
+  ],
+  "status": "runs/rphi_stage2_20261111/smoke_queue_status.json",
+  "scope": "Finite stage-2 development ablations, with training followed by evaluation; no new H3 training or omni-quality claim.",
+  "steps": [
+    {
+      "name": "smoke_native_train",
+      "argv": [
+        "venv/bin/python",
+        "code/train_rphi.py",
+        "--train-manifest",
+        "datasets/omni_pilot_v1/train_materialized.jsonl",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--seed",
+        "20261111",
+        "--variant",
+        "blind",
+        "--observation-encoder",
+        "native",
+        "--steps",
+        "2",
+        "--batch",
+        "4",
+        "--crop",
+        "32",
+        "--ch",
+        "8",
+        "--blocks",
+        "1",
+        "--guard-weight",
+        "0.5",
+        "--out",
+        "runs/rphi_stage2_20261111/smoke_native/train",
+        "--val-batches",
+        "1"
+      ],
+      "log": "runs/rphi_stage2_20261111/logs/smoke_native_train.log"
+    },
+    {
+      "name": "smoke_calibration_fit",
+      "argv": [
+        "venv/bin/python",
+        "code/calibrate_rphi.py",
+        "--checkpoint",
+        "runs/rphi_stage2_20261111/smoke_native/train/checkpoint_step000002.pt",
+        "--train-manifest",
+        "datasets/omni_pilot_v1/train_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--steps",
+        "2",
+        "--batch",
+        "4",
+        "--crop",
+        "32",
+        "--lr",
+        "0.001",
+        "--out",
+        "runs/rphi_stage2_20261111/smoke_calibration/train"
+      ],
+      "log": "runs/rphi_stage2_20261111/logs/smoke_calibration_fit.log"
+    },
+    {
+      "name": "smoke_native_eval",
+      "argv": [
+        "venv/bin/python",
+        "code/eval_rphi.py",
+        "--checkpoint",
+        "runs/rphi_stage2_20261111/smoke_native/train/checkpoint_step000002.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--frame-stride",
+        "11",
+        "--out",
+        "runs/rphi_stage2_20261111/smoke_native/eval",
+        "--max-sources",
+        "1"
+      ],
+      "log": "runs/rphi_stage2_20261111/logs/smoke_native_eval.log"
+    },
+    {
+      "name": "smoke_calibration_eval",
+      "argv": [
+        "venv/bin/python",
+        "code/eval_rphi.py",
+        "--checkpoint",
+        "runs/rphi_stage2_20261111/smoke_calibration/train/checkpoint_calibration_step000002.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--frame-stride",
+        "11",
+        "--out",
+        "runs/rphi_stage2_20261111/smoke_calibration/eval",
+        "--max-sources",
+        "1"
+      ],
+      "log": "runs/rphi_stage2_20261111/logs/smoke_calibration_eval.log"
+    }
+  ],
+  "implementation_sha256": {
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "code/calibrate_rphi.py": "f5b72152b67867265129be90e54e7534bae90b45f6a3f992783a673d2fb622a7",
+    "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "code/compare_rphi.py": "0abc081c8f07610ad4929182c305d4c50b03ed431329843add52009041c7bd09",
+    "code/audit_rphi_results.py": "7ea15f1623beea7f87cfd89e3af8cb871e0b58af58642071b7ab4fc5609b5d75",
+    "code/audit_rphi_stage2.py": "5d81d936d2529a07b486b8cdcb61e8027ebc13c9b42de6e5126cab74647c5816",
+    "code/finalize_rphi_stage2.py": "c872878a13fbc3a9ad22a82720d64d244172788cb7de2b38495de50f9d51ab1d",
+    "code/restoration_metrics.py": "ad3b12b3bd63e5567fc921d9cf87102c83c400d8277e34b2c480125d8277d671",
+    "code/takeover_queue.py": "1ee1cca8081759e87b937dac1045a0060312924c1af508435afc87a399bd6a74",
+    "code/run_takeover_command.sh": "d9b5211f2a1e5d4a3ada37c47e0f3d845605c815ba9091be5610027a4b0cbffb",
+    "env.sh": "c68c3ebbc4eb1aec6fcafcc8209cbfe0018254a72c2e6052fd155d7e049d5a3a"
+  }
+}

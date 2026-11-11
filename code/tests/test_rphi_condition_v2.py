@@ -44,7 +44,7 @@ class NativeObservationEncoderTests(unittest.TestCase):
         broken.pop("net.0.weight")
         with self.assertRaises(RuntimeError):
             candidate.load_state_dict(broken, strict=True)
-        self.assertEqual(CANDIDATE_STATUS, "untrained_candidate_not_integrated")
+        self.assertEqual(CANDIDATE_STATUS, "integrated_opt_in_quality_unverified")
 
     def test_native_resolution_output_is_bounded_and_sample_independent(self):
         model = NativeObservationEncoder().eval()

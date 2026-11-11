@@ -1,0 +1,148 @@
+R_phi stage 2 independent review — 2026-11-11
+Scope: read-only audit of the existing data/model/evaluator/queue and completed
+v1 pilot. This review does not change or start any runtime, training or queue.
+
+Decision
+Proceed with three matched blind 3000-step runs: legacy/guard=0.5,
+native/guard=0.5, native/guard=2.0, and separately fit confidence on the fixed
+native/guard=0.5 checkpoint. This isolates the encoder at guard=0.5 and the
+guard weight within native v2. Comparing archived v1/1000 to v2/3000 alone does
+NOT isolate the encoder change. The encoder-by-guard interaction remains
+unestimated because there is no legacy/guard=2.0 arm.
+
+Minimum matrix
+A0 / legacy_g05: legacy blind, guard 0.5, 3000 steps.
+A / native_g05: native-pixel blind, guard 0.5, 3000 steps.
+B / native_g20: identical to A except guard 2.0, 3000 steps.
+C / frozen_confidence: freeze native_g05 (source file SHA and fidelity
+   state SHA fixed before calibration); train confidence parameters only, with
+   no RGB optimizer or backbone updates. This is calibration, not a third RGB
+   restoration training arm. Use only training sources for fitting the head.
+Common A/B settings: seed 20261111; batch 16; crop 96; K=3; ch=64; blocks=8;
+AdamW lr=1e-4, betas=(0.9,0.999), weight_decay=0; warmup=50; same 3000-step cosine
+schedule to 0.2*lr; edge=0.1; identity=0.125; near-clean=0.125; same data hashes,
+step-addressed RNG, model initialization, precision/backend, and checkpoint rule.
+Record the full initialization SHA (backbone AND blind encoder), optimizer and
+schedule, encoder version, implementation hashes and output paths in the run
+contract. Keep both terminal step-3000 checkpoints; do not select different
+best steps from each arm and call the result matched.
+
+What clean/near-clean and guard currently mean
+code/rphi_data.py:341-406 samples four equal task slots, then independently draws
+control with probabilities 12.5% identity, 12.5% near-clean, 75% actual task.
+These are probabilities, not exactly 2+2 examples per batch. At 3000*16 updates,
+the expectation is 36000 actual-task crops, 6000 identity, 6000 near-clean;
+approximately 9000 actual-task crops per task. Logged control_counts currently
+cover the logged batches only, not an exact total exposure census.
+Near-clean uses PCG64 Gaussian sigma=1 in uint8 units, rint/clip/uint8; history
+padding repeats the same first noisy frame. Identity/near-clean retain nominal
+task labels for known models; blind ignores all such metadata (data:96-107,
+375-400; model:155-162). For blind, repeated identity controls across nominal
+tasks are duplicate evidence, not four independent validation populations.
+train_rphi.py:57-69 computes guard = mean_b relu(MAE(pred_b,target_b) -
+MAE(current_guide_b,target_b)) across ALL samples. It is not restricted to clean
+examples and is neither a local no-harm constraint nor a guarantee on MSE/PSNR.
+Increasing guard may discourage beneficial corrections whose L1 does not improve;
+it does not establish clean safety. Keep fractions and loss definition fixed in
+A/B; changing clean sampling, loss form and guard together would confound results.
+
+Measured weaknesses and checks that distinguish possible causes
+Evidence: results/takeover_20261111/rphi_completed/*_eval_metrics.json.
+1. v1 blind compression: mean source delta PSNR -0.30205 dB, 5/8 sources have
+   worse MSE; worst NPCSVxYpK3k -2.0032 dB. Baseline mean per-frame PSNR is already
+   41.373 dB. Mean correction energy 1.6936044e-5 plus cross term -1.6295985e-5
+   yields net MSE +6.4006e-7: the correction is not sufficiently aligned with
+   the actual error. Known correction energy is 7.4346e-7 (about 23x smaller).
+   Diagnose A/B with the EXISTING error_attribution() fields, sourcewise MSE,
+   clean controls and clipping fraction; do not just report pooled PSNR.
+2. v1 blind near-clean loses about 0.916 dB. Identity MAE is 0.00195445
+   (0.4984/255). High-level temporal error-change improves even when near-clean
+   fidelity worsens, so temporal smoothing alone must never pass acceptance.
+3. v1 blind encoder pools a 96x96 training crop to 64x64 but a 480x832 eval frame
+   to 64x64 before the same feature extractor (model:96-104). Native v2 removes
+   this pixel-scale mismatch (condition_v2:44-68); its final globally pooled code
+   can STILL change with content/extent. Measure identical crop vs full-frame
+   code/output on held dev examples; do not assert complete scale invariance.
+4. Deblur is weak in known too (+0.08550 dB; blind +0.10158 dB), so blind condition
+   extraction is not the sole demonstrated cause. Blind deblur correction energy
+   is only 2.3523e-6 against baseline MSE 1.0104e-3. Possible under-training,
+   conservative optimization and spatially unaligned K3 context remain hypotheses.
+   The model stacks three frames through convolutions, without optical-flow or
+   deformable alignment. Inspect per-source motion/edge examples and fixed crop
+   validation curves; do not change architecture during this guard experiment.
+5. Materialized v1 has only one constant isotropic Gaussian blur severity and one
+   H264 CRF per source/window; no real motion blur, ordered mixtures, severity
+   changes or new frozen test. CRF is NOT sufficient to explain damage: CRF=21
+   sources include both gains and losses. Stratification is descriptive with n=8.
+
+Evaluation and timing contract
+Train manifest: 128 task rows, 32 unique source IDs and 32 source hashes.
+Dev manifest: 32 task rows, 8 unique sources. Each has one 22-frame, 24 fps,
+480x832 original-recording RGB proxy. Independent sample size is 8 sources,
+not 32 task rows, hundreds of frames or millions of pixels. Dev material spans
+about 7.33 seconds total (8*22/24); enough for a diagnostic pilot, insufficient
+for claims of omni generalization, scene cuts, long video, drift or robustness.
+Keep source separation and materialization receipt/file/pixel hashes enforced.
+The existing evaluator correctly preserves consecutive causal history even when
+scoring strided frames (eval:296-333), uses common GT-derived flow/masks, and
+aggregates windows within source then equal source weights (eval:401-410).
+Current stride=4 only scores [0,4,8,12,16,20], hence five FOUR-frame-gap temporal
+pairs. The authorized first screening uses stride=4 for all three arms and the
+frozen head on ALL 8 sources/32 rows, identity and near-clean, same LPIPS/flow.
+This is not adjacent-frame flicker acceptance. A selected candidate and its
+relevant comparison must later use stride=1, all 22 frames, for that claim.
+Report flow valid coverage and non-null valid pairs; no silent missing LPIPS or
+flow fallback may be compared as if the same metric. A stride-4 early diagnostic
+may be retained but is not adjacent-frame flicker validation.
+Verify C's restored RGB agrees with its source checkpoint under the same batch,
+input, backend and dtype, and fidelity state SHA is exactly unchanged. Its NLL,
+coverage, variance/error bins and controls must use RAW unclamped errors; quality
+still uses the common clipped RGB metric contract. Compare calibration to a
+training-fitted constant-variance baseline, not just to the old joint-trained
+head. Do not use confidence for restoration gating or softDC in this round.
+
+Observed v1 times: blind train/validation/save 415.9 s per 1000 steps; full dev
+stride-4 eval 657.1 s (known 607.9 s, confidence 790.7 s). A rough planning scale
+is ~21 min per 3000-step train and ~40 min per stride-1 plain eval, before native
+encoder overhead; benchmark one short native/full-frame case before promising
+an ETA. Two full arms plus calibration/evaluation can exceed the old 5400-second
+completion waiter. Set a finite stage-specific budget from the measured smoke
+and expected rows; timeout is an incomplete run, never success.
+
+Stop / continue / promotion rules
+Immediate technical stop for the affected queue only: nonfinite losses/gradients
+or output, data/hash/split mismatch, reload mismatch, missing required tasks,
+incompatible encoder checkpoint reconstruction, invalid evaluation support, or
+any changed fidelity tensor during calibration. Preserve failure.json/logs and
+last complete checkpoint; no auto-retry over existing paths and no killing
+unrelated processes. Unless there is a predeclared catastrophic safety condition,
+finish the fixed A/B budget rather than stopping one arm on noisier proxy quality.
+At completion, publish sourcewise model-vs-input and B-vs-A deltas, restoration
+AND controls AND temporal results. Candidate selection must prioritize fixing
+compression/clean harm without sacrificing the useful denoise gain; a pooled
+four-task mean dominated by denoise is not acceptance. Proposed conservative H3
+promotion gate: no task has worse source-mean MSE than its input baseline;
+near-clean source-mean MSE does not increase; worst-source losses and absolute
+identity MAE/MSE meet an explicitly predeclared application tolerance; no temporal
+or perceptual regression is hidden by a fidelity average. Set those tolerances
+BEFORE seeing stage-2 results. If neither arm passes, keep both as diagnostic
+checkpoints and investigate per-task gradients/data/temporal alignment next;
+do not automatically train longer, add more losses, or couple confidence/H3.
+With only 8 dev sources, paired source bootstrap/win counts are descriptive;
+promising gains still require a fresh frozen-source set and another seed before
+claiming structural superiority. These are development promotion rules, not an
+assertion that current evidence meets them.
+
+Queue completion and archive
+takeover_queue.py:65-104 already stops its finite plan on nonzero child exit,
+checks reviewed implementation hashes, rechecks idle card at step boundaries,
+uses exclusive new logs and never kills other jobs. Keep new run/status paths.
+After EACH arm, queue explicit checkpoint evaluation; finish with the dedicated
+code/audit_rphi_stage2.py and evidence archive containing contracts, args, code/data/
+checkpoint SHA, logs, eval metrics/examples, state-invariance checks and status.
+Do not reuse audit_rphi_queue_completion.py unchanged: lines 61-65 hardcode the
+old known/blind/blind_confidence directory layout and old three-arm comparator.
+It also defaults to 5400 s. It would not validate the two-guard + frozen-head
+matrix. A failed arm should block its dependants only; independent queues may
+continue, and no other user's job/card is touched. Completion means all required
+eval/archive checks passed, not merely that training reached 3000 updates.

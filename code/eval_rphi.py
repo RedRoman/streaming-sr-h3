@@ -393,6 +393,11 @@ def main():
     args.out.mkdir(parents=True, exist_ok=False)
     result = {"schema": SCHEMA, "complete": False, "checkpoint_sha256": checkpoint_sha,
               "fidelity_state_sha256": checkpoint.get("fidelity_state_sha256"),
+              "initial_fidelity_sha256": checkpoint.get("initial_fidelity_sha256"),
+              "source_checkpoint_sha256": checkpoint.get("source_checkpoint_sha256"),
+              "calibration_contract": checkpoint.get("calibration_contract"),
+              "calibration_step": checkpoint.get("calibration_step"),
+              "fidelity_invariance": checkpoint.get("fidelity_invariance"),
               "initial_backbone_sha256": contract.get("initial_backbone_sha256"),
               "checkpoint_step": checkpoint.get("step"), "model_config": config, "training_contract": contract,
               "dev_manifest_sha256": sha_file(args.dev_manifest), "device": args.device,

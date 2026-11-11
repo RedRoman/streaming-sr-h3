@@ -13,6 +13,11 @@ Known conditions contain only four task indicators in KNOWN_TASKS order,
 log2(spatial_scale)/3, and a known-condition mask. Neither severity nor target
 statistics belong in this vector. Blind variants ignore the condition argument
 entirely and infer a 16-dimensional code from the supplied observations.
+
+The observation encoder defaults to ``legacy`` for old checkpoint compatibility.
+``native`` extracts fixed-stride features before global pooling, avoiding the
+legacy encoder's observation-level resize. This option affects blind variants
+only; known conditioning continues to use the same public-condition MLP.
 """
 from collections.abc import Mapping
 
@@ -112,7 +117,8 @@ class RphiModel(nn.Module):
     with identical observation-encoder tensors. ``model_config`` can be passed
     verbatim to RphiModel for strict checkpoint reconstruction.
     """
-    def __init__(self, variant="known", k=3, ch=64, blocks=8, condition_dim=6):
+    def __init__(self, variant="known", k=3, ch=64, blocks=8, condition_dim=6,
+                 observation_encoder="legacy"):
         super().__init__()
         if variant not in ("known", "blind", "blind_confidence"):
             raise ValueError("variant must be known, blind, or blind_confidence")
@@ -122,9 +128,12 @@ class RphiModel(nn.Module):
             raise ValueError("ch and blocks must be positive integers")
         if condition_dim != 6:
             raise ValueError("known condition has exactly six public fields")
+        if observation_encoder not in ("legacy", "native"):
+            raise ValueError("observation_encoder must be legacy or native")
         self.variant, self.k = variant, k
         self.model_config = {"variant": variant, "k": k, "ch": ch,
-                             "blocks": blocks, "condition_dim": condition_dim}
+                             "blocks": blocks, "condition_dim": condition_dim,
+                             "observation_encoder": observation_encoder}
 
         # Do not move branch initialization above this: the matched experiment
         # relies on the same seed producing the same shared parameter values.
@@ -133,8 +142,11 @@ class RphiModel(nn.Module):
             self.condition_encoder = nn.Sequential(
                 nn.Linear(condition_dim, 32), nn.SiLU(),
                 nn.Linear(32, CODE_DIM), nn.Tanh())
-        else:
+        elif observation_encoder == "legacy":
             self.condition_encoder = _ObservationEncoder(k)
+        else:
+            from rphi_condition_v2 import NativeObservationEncoder
+            self.condition_encoder = NativeObservationEncoder(k=k, code_dim=CODE_DIM)
 
         self.confidence_head = None
         if variant == "blind_confidence":

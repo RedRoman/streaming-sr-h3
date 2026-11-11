@@ -1,0 +1,147 @@
+{
+  "schema": "rphi.stage2_plan.v1",
+  "status": "smoke_passed_two_formal_queues_started",
+  "date": "2026-11-11",
+  "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111",
+  "host": "30794",
+  "maximum_concurrent_training_cards": 2,
+  "purpose": "Repair native-scale blind conditioning and isolate clean-protection strength, while fitting uncertainty on an exactly frozen restoration checkpoint.",
+  "arms": {
+    "legacy_g05": {
+      "encoder": "legacy",
+      "guard_weight": 0.5,
+      "steps": 3000
+    },
+    "native_g05": {
+      "encoder": "native",
+      "guard_weight": 0.5,
+      "steps": 3000
+    },
+    "native_g20": {
+      "encoder": "native",
+      "guard_weight": 2.0,
+      "steps": 3000
+    },
+    "frozen_confidence": {
+      "source": "native_g05 final step3000",
+      "trainable": "confidence_head only",
+      "steps": 1500,
+      "lr": 0.001
+    }
+  },
+  "shared_fidelity_settings": {
+    "seed": 20261111,
+    "batch": 16,
+    "crop": 96,
+    "channels": 64,
+    "blocks": 8,
+    "k": 3,
+    "lr": 0.0001,
+    "warmup_steps": 50,
+    "identity_fraction": 0.125,
+    "near_clean_fraction": 0.125,
+    "edge_weight": 0.1,
+    "train_sources": 32,
+    "dev_sources": 8,
+    "selection": "final checkpoint; no best-dev selection"
+  },
+  "comparisons": [
+    {
+      "a": "native_g05",
+      "b": "legacy_g05",
+      "factor": "observation pixel scale before condition feature extraction"
+    },
+    {
+      "a": "native_g20",
+      "b": "native_g05",
+      "factor": "guard_weight only"
+    },
+    {
+      "a": "frozen_confidence",
+      "b": "native_g05",
+      "factor": "calibration only, fidelity state must be identical"
+    }
+  ],
+  "execution": {
+    "smoke": "rphi_stage2_smoke_30794.json",
+    "native_queue": "rphi_stage2_native_30794.json",
+    "controls_queue": "rphi_stage2_controls_30794.json",
+    "finalizer": "code/finalize_rphi_stage2.py",
+    "finalizer_wait_seconds": 10800,
+    "automatic_steps": "train then per-arm evaluation; separate CPU dependency audit and evidence archive"
+  },
+  "evaluation": {
+    "frame_stride": 4,
+    "samples_per_arm": 32,
+    "source_weighting": "equal source weights",
+    "controls": [
+      "identity",
+      "near_clean"
+    ],
+    "metrics": [
+      "RGB PSNR",
+      "LPIPS",
+      "masked flow-aligned error change",
+      "damage per source",
+      "calibration diagnostics"
+    ],
+    "limitations": [
+      "stride4 is not adjacent-frame flicker evaluation",
+      "8 development sources are not frozen generalization evidence",
+      "fitting uncertainty on training sources is not independent calibration"
+    ],
+    "next_temporal_evaluation": "chosen candidate and matched baseline at stride1, plus source-disjoint longer clips"
+  },
+  "admission": [
+    "CPU model/data/calibration/audit tests pass",
+    "NPU native-model train/reload smoke passes",
+    "frozen calibration preserves fidelity SHA and actual RGB output",
+    "full-resolution smoke eval succeeds",
+    "idle healthy card is checked twice and no existing job is killed"
+  ],
+  "followup": [
+    "inspect completed stage2 evidence and failure cases; do not stop solely because finite budget ended",
+    "advance to fixed H3 raw-guide/R_phi-guide and fixed-soft-anchor controls with R_phi-only reference when fidelity behavior is understood",
+    "train guide-matched LoRA only after fixed H3 controls",
+    "prepare mixed/time-varying data and source-disjoint calibration/test",
+    "run FaverNet/AverNet native-task baselines with documented future-frame access"
+  ],
+  "eta_basis": "previous ~0.4 s/fidelity step and ~11 min/32-sample stride4 evaluation; revise using measured stage2 timing, not a promised completion deadline",
+  "cpu_tests_passed": 107,
+  "automation": {
+    "id": "omni-r",
+    "name": "Omni R\u03c6 \u8bad\u7ec3\u9a8c\u6536\u4e0e\u63a5\u7eed",
+    "interval_minutes": 20,
+    "status": "ACTIVE"
+  },
+  "smoke_tmux": "rphi-stage2-smoke-20261111",
+  "smoke_completed_at": "2026-11-11T16:41:01+08:00",
+  "formal_started_at": "2026-11-11T16:42:04+08:00",
+  "actual_cards": {
+    "native_queue": 6,
+    "controls_queue": 1
+  },
+  "tmux_sessions": [
+    "rphi-stage2-native-20261111",
+    "rphi-stage2-controls-20261111",
+    "rphi-stage2-finalize-20261111"
+  ],
+  "smoke_fidelity_hash_equal": true,
+  "smoke_max_rgb_metric_abs_difference": 0.0,
+  "code_bundle_backup_31984_sha256": "bc5e5002c610ee5ae97c4d67aa563fb1e8a42bac3f819301d4949d4fe0881593",
+  "last_verified_training": {
+    "at": "2026-11-11T16:44:03+08:00",
+    "native_g05_step": 150,
+    "legacy_g05_step": 150,
+    "initial_fidelity_sha256_equal": true,
+    "finite_loss_and_gradients": true,
+    "seconds_per_25_steps": {
+      "native_g05": 10.2526828069,
+      "legacy_g05": 10.069682572
+    }
+  },
+  "conditional_eta_singapore": {
+    "first_complete_arm": "2026-11-11 17:15\u201317:30",
+    "matrix_and_frozen_calibration": "2026-11-11 17:50\u201318:20"
+  }
+}

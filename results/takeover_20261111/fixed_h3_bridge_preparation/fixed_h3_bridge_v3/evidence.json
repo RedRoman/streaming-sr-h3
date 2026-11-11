@@ -1,0 +1,117 @@
+{
+  "at_utc": "2026-11-11T09:12:24Z",
+  "state": "cpu_preparation_passed",
+  "cpu_tests": 10,
+  "real_export": {
+    "checkpoint_scope": "previous two-step engineering smoke only",
+    "sources": 1,
+    "tasks": 4,
+    "frames_per_task": 22,
+    "height": 480,
+    "width": 832,
+    "device": "cpu",
+    "manifest_sha256": "b1e564b03eb0fe1e34155d164c0b6871d34da050106e997480c4af091b114c50"
+  },
+  "h3_vae_executed": false,
+  "quality_claim": false,
+  "stage2_status": {
+    "native_queue_status.json": {
+      "state": "running",
+      "card": 6,
+      "step": "native_g05_eval",
+      "completed": [
+        "native_g05_train"
+      ],
+      "argv": [
+        "venv/bin/python",
+        "code/eval_rphi.py",
+        "--checkpoint",
+        "runs/rphi_stage2_20261111/native_g05/train/checkpoint_step003000.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--frame-stride",
+        "4",
+        "--out",
+        "runs/rphi_stage2_20261111/native_g05/eval"
+      ],
+      "updated_at_utc": "2026-11-11T09:03:43.757837+00:00"
+    },
+    "controls_queue_status.json": {
+      "state": "running",
+      "card": 1,
+      "step": "legacy_g05_eval",
+      "completed": [
+        "legacy_g05_train"
+      ],
+      "argv": [
+        "venv/bin/python",
+        "code/eval_rphi.py",
+        "--checkpoint",
+        "runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--device",
+        "npu:0",
+        "--frame-stride",
+        "4",
+        "--out",
+        "runs/rphi_stage2_20261111/legacy_g05/eval"
+      ],
+      "updated_at_utc": "2026-11-11T09:03:10.930307+00:00"
+    },
+    "finalize_status.json": {
+      "state": "waiting",
+      "updated_at_utc": "2026-11-11T09:03:54.561926+00:00",
+      "upstream": {
+        "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/native_queue_status.json": {
+          "state": "running",
+          "card": 6,
+          "step": "native_g05_eval",
+          "completed": [
+            "native_g05_train"
+          ],
+          "argv": [
+            "venv/bin/python",
+            "code/eval_rphi.py",
+            "--checkpoint",
+            "runs/rphi_stage2_20261111/native_g05/train/checkpoint_step003000.pt",
+            "--dev-manifest",
+            "datasets/omni_pilot_v1/dev_materialized.jsonl",
+            "--device",
+            "npu:0",
+            "--frame-stride",
+            "4",
+            "--out",
+            "runs/rphi_stage2_20261111/native_g05/eval"
+          ],
+          "updated_at_utc": "2026-11-11T09:03:43.757837+00:00"
+        },
+        "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/controls_queue_status.json": {
+          "state": "running",
+          "card": 1,
+          "step": "legacy_g05_eval",
+          "completed": [
+            "legacy_g05_train"
+          ],
+          "argv": [
+            "venv/bin/python",
+            "code/eval_rphi.py",
+            "--checkpoint",
+            "runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+            "--dev-manifest",
+            "datasets/omni_pilot_v1/dev_materialized.jsonl",
+            "--device",
+            "npu:0",
+            "--frame-stride",
+            "4",
+            "--out",
+            "runs/rphi_stage2_20261111/legacy_g05/eval"
+          ],
+          "updated_at_utc": "2026-11-11T09:03:10.930307+00:00"
+        }
+      }
+    }
+  }
+}

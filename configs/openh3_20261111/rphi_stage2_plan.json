@@ -1,6 +1,6 @@
 {
   "schema": "rphi.stage2_plan.v1",
-  "status": "smoke_passed_two_formal_queues_started",
+  "status": "first_two_arms_evaluated_remaining_training_and_calibration_running",
   "date": "2026-11-11",
   "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111",
   "host": "30794",
@@ -110,7 +110,7 @@
   "cpu_tests_passed": 107,
   "automation": {
     "id": "omni-r",
-    "name": "Omni R\u03c6 \u8bad\u7ec3\u9a8c\u6536\u4e0e\u63a5\u7eed",
+    "name": "Omni Rφ 训练验收与接续",
     "interval_minutes": 20,
     "status": "ACTIVE"
   },
@@ -141,7 +141,22 @@
     }
   },
   "conditional_eta_singapore": {
-    "first_complete_arm": "2026-11-11 17:15\u201317:30",
-    "matrix_and_frozen_calibration": "2026-11-11 17:50\u201318:20"
+    "first_complete_arm": "2026-11-11 17:15–17:30",
+    "matrix_and_frozen_calibration": "2026-11-11 17:50–18:20"
+  },
+  "first_pair_evidence": {
+    "local_directory": "results/takeover_20261111/rphi_stage2_first_pair",
+    "archive_sha256": "6fc0a3ea2c53ccc9087146b47c4104bca716a3138fb335ec5c9603c870745ff7",
+    "completed": [
+      "legacy_g05 train/eval",
+      "native_g05 train/eval"
+    ],
+    "next_queue_steps": [
+      "native_g20_train",
+      "frozen_confidence_fit"
+    ],
+    "full_matrix_audit": "pending",
+    "candidate_selected": false,
+    "initial_quality_read": "native encoder does not improve mean PSNR over legacy at matched budget; compression gain remains negative for both; await guard arm and calibration invariance audit"
   }
 }

@@ -157,3 +157,19 @@ blind四任务PSNR相对输入变化为SR +0.0839、deblur +0.1016、denoise +6.
 16:41:01，四步NPU smoke全部通过：冻结校准前后fidelity SHA相同，固定probe的RGB/anchor/code差全0，重载logvar等输出差全0；两个模型的四任务480×832评估与chunk检查通过，全部task/identity/near-clean RGB指标差为0。启动证据与107项测试日志已按归档SHA `186446683552a634581c7e10237c8c3ee461edbb9b287a800b65da6bdfd6e004` 验证下载到 `results/takeover_20261111/rphi_stage2_start_evidence/`。同一代码部署包也已在31984保存并核验SHA。
 
 16:42:04 native正式队列在30794卡6开始，16:42:08 controls队列在卡1开始，CPU finalizer已等待两队列；tmux分别 `rphi-stage2-native-20261111`、`rphi-stage2-controls-20261111`、`rphi-stage2-finalize-20261111`。16:44:03实际检查，native_g05与legacy_g05均150/3000步，loss与梯度有限，初始完整fidelity SHA均为 `fd2a51b3de4023c87cdba25af5fc66cb4907d78ca482c52a69f028d9afec78e2`，25步约10.25/10.07秒，峰值分配1.127/1.119GB。两卡健康OK。按当前速度预计首组完整开发评估17:15–17:30，三组及冻结校准完整验收17:50–18:20（Asia/Singapore）；这是卡资源与验证持续正常时的估计，不包括后续H3/混合退化验收。
+
+### 17:20 回访：前两臂完成并自动接续，下一阶段入口和基线资产已准备
+
+legacy_g05 与 native_g05 的3000步训练分别于17:03前后完成，完整8来源/32任务评估于本次回访内完成；两条队列已自动进入 native_g20_train 与 frozen_confidence_fit，CPU finalizer仍等待全矩阵。原始双臂指标/训练日志/状态一次打包下载并核验，归档SHA `6fc0a3ea2c53ccc9087146b47c4104bca716a3138fb335ec5c9603c870745ff7`，本地目录 `results/takeover_20261111/rphi_stage2_first_pair/`。这不是四臂最终审计，未选定进入H3的候选。
+
+初步完整任务指标（相对输入）为：legacy/native 的SR PSNR +0.1310/+0.1193 dB，deblur +0.2295/+0.2112，denoise +9.8981/+9.7438，compression −0.0046/−0.0182；LPIPS分别 −0.002901/−0.002336、−0.003137/−0.002562、−0.376838/−0.375291、−0.000143/−0.000146。原像素编码的质量假设目前未获支持，不因结构更换就默认采用native。两者near-clean平均改善约1.42/1.40 dB，但native仍有2/8来源损伤；clean identity的MAE为0.000988/0.001003，8/8出现非零损伤，不能声称无损保护。identity的输入误差为0，其PSNR被封顶120 dB，应以MAE/MSE理解损伤。stride4仍不是相邻帧flicker证明；冻结校准尚未完成，不报告覆盖率或完整fidelity一致性结论。
+
+独立新增 `export_rphi_guides_stage2.py`、`run_fixed_h3_rphi.py` 和测试，未修改运行中锁定的训练代码。新入口验证最终checkpoint、blind K3连续历史、原始源/观测像素/导出文件绑定及native编码器代码SHA，统一float32指标。两次H3采样保持相同raw warm-start/seed/weights，仅换raw/Rphi conditioning；两份解码结果复用固定alpha=0.25软锚点，与input/Rphi-only组成六臂。SR采用canonical Q4，native采用RGB软融合，无innerDC、无confidence gating、无新LoRA。每任务2次sampler调用/6次denoiser评估；全32任务是64次sampler/192 NFE。主评估默认stride1，全22帧块处理不称严格因果。
+
+隔离30794 `preparation/fixed_h3_bridge_v3` 的最终10项CPU测试通过；v2实际用此前tiny两步checkpoint完成1来源×4任务×22帧480×832的CPU导出，v3严格输入检查通过。这是数据桥接验证，没有执行H3/VAE。小证据归档SHA `6587bff0d108b0b4f2b68686b21541fecb4a0001711b90ae2126189b93a2e1af`，本地 `results/takeover_20261111/fixed_h3_bridge_preparation/`。执行计划在 `fixed_h3_rphi_plan_20261111.json`：等stage2验收、选可解释候选、空闲卡预约与二次检查、真实1来源H3 smoke后再扩全量。当前导出仅ordinary dev tasks；clean/near-clean H3控制与训练集guide导出仍须另实现，不能拿当前入口直接宣称clean保护或启动guide-matched LoRA。
+
+FaverNet `14769f22685f4850c5e203d493c99ad2eba5b68b`、AverNet `c4eb019f71fe6a2ccb6807dca92451fd8d8b8cd3` 官方源码、两模型与SPyNet共223,811,280 bytes权重已实际下载。无损RGB adapter的4项NumPy测试及两个input-only preflight通过；未完成任何模型forward/严格权重加载/Ascend parity。MMCV 2.2.0存在NPU DCN分派，不应称完全不支持；仍需隔离环境构建、算子和全模型一致性验证。代码/权重已同步31984新目录 `preparation/native_baselines_20261111`，两commit与三权重SHA核验通过；归档SHA `5ddaa8097d16ae7eadf45b13435a9093d26981aaaeea67e2d68e1329dce8c807`。基线scope为native、offline双向、zero-shot，不能充当×4 SR或严格流式同信息对照。
+
+31984只读库存发现1068个原始候选视频，778个ID未匹配到已枚举训练/验证/评估清单，但全部已有harvest元数据记录，不能视作未被看过。46个通过旧video sharp heuristic而仅因audio门槛被淘汰，是video-only校准/test资格审计的优先候选；不等于已合格或pristine GT。32个确定性抽样完成源SHA与首中尾解码检查，独立calibration/test当前获批数量仍为0。详见混合时变数据plan与inventory；先审计46来源历史/去重/质量和源组，再CPU物化小试验，不把现8dev改名为冻结测试。
+
+前两臂独立配对审计已通过：仅encoder为声明差异，源/记录/输入像素哈希、初始fidelity、基准指标和LPIPS一致，384项flow支撑记录检查通过，chunk差全0；未归档baseline像素与flow mask，不能声称对它们逐像素独立重验。native−legacy的SR/deblur/denoise/compression PSNR为−0.01173/−0.01833/−0.15423/−0.01354 dB，LPIPS为+0.000565/+0.000574/+0.001546/−0.00000304。去噪6/8来源比legacy好但均值为负、置信区间跨0，保留来源异质性。最差去压缩来源 `EBmROluwLkc` 的native相对输入−0.33293 dB、相对legacy−0.06433 dB。报告 `results/takeover_20261111/rphi_stage2_first_pair_review.json`，不代替全矩阵及冻结校准验收。

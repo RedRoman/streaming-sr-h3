@@ -1,0 +1,33 @@
+{
+  "schema": "openh3.native_baseline.lossless_rgb.v1",
+  "method": "avernet",
+  "status": "input_preflight_complete_inference_not_run",
+  "task": "denoise",
+  "source_commit": "c4eb019f71fe6a2ccb6807dca92451fd8d8b8cd3",
+  "checkpoint_sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+  "runner_sha256": "8cc2ca41e6ef1c723f0c86c5e279de32e2df5574d2fa656d58cecb3a7d23c80d",
+  "input_npz_sha256": "f0c77b3b3edcd4611d08506cda83bdc12dd5defe49562f9c4a3bbc70e8f287e8",
+  "input_pixel_sha256": "db6cda43db8f3e80b47ca1dd9bd6929573fe0f88e7c5bee7afc72c5bba55954f",
+  "input_shape": [
+    2,
+    256,
+    264,
+    3
+  ],
+  "input_color": "RGB",
+  "input_range": "uint8 / 255 -> float32 [0,1]",
+  "temporal_access": "offline_bidirectional_entire_supplied_clip",
+  "maximum_future_frames": 1,
+  "spatial_padding": {
+    "mode": "official_tail_flip",
+    "multiple": 8
+  },
+  "resizing": false,
+  "tiling": false,
+  "test_time_augmentation": false,
+  "gt_read": false,
+  "device": "cpu",
+  "checkpoint_strict_load": null,
+  "evaluation_metrics": null,
+  "quality_verdict": "requires_review"
+}

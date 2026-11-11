@@ -1,0 +1,40 @@
+{
+  "state": "running",
+  "card": 1,
+  "step": "native_g20_train",
+  "completed": [
+    "legacy_g05_train",
+    "legacy_g05_eval"
+  ],
+  "argv": [
+    "venv/bin/python",
+    "code/train_rphi.py",
+    "--train-manifest",
+    "datasets/omni_pilot_v1/train_materialized.jsonl",
+    "--dev-manifest",
+    "datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--device",
+    "npu:0",
+    "--seed",
+    "20261111",
+    "--variant",
+    "blind",
+    "--observation-encoder",
+    "native",
+    "--steps",
+    "3000",
+    "--batch",
+    "16",
+    "--crop",
+    "96",
+    "--ch",
+    "64",
+    "--blocks",
+    "8",
+    "--guard-weight",
+    "2.0",
+    "--out",
+    "runs/rphi_stage2_20261111/native_g20/train"
+  ],
+  "updated_at_utc": "2026-11-11T09:13:40.998559+00:00"
+}

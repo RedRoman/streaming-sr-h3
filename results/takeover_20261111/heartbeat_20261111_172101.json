@@ -1,0 +1,73 @@
+{
+  "at_utc": "2026-11-11T09:21:01Z",
+  "states": {
+    "native_queue_status.json": {
+      "state": "running",
+      "step": "frozen_confidence_fit",
+      "completed": [
+        "native_g05_train",
+        "native_g05_eval"
+      ],
+      "updated_at_utc": "2026-11-11T09:15:02.070127+00:00"
+    },
+    "controls_queue_status.json": {
+      "state": "running",
+      "step": "native_g20_train",
+      "completed": [
+        "legacy_g05_train",
+        "legacy_g05_eval"
+      ],
+      "updated_at_utc": "2026-11-11T09:13:40.998559+00:00"
+    },
+    "finalize_status.json": {
+      "state": "waiting",
+      "updated_at_utc": "2026-11-11T09:15:24.575205+00:00"
+    }
+  },
+  "latest_training": {
+    "native_g20": {
+      "last": {
+        "event": "train",
+        "step": 925,
+        "loss": 0.009622810408473015,
+        "components": {
+          "charbonnier": 0.00866093672811985,
+          "edge_l1": 0.007154286839067936,
+          "identity_guard": 0.0001232225331477821
+        },
+        "calibration_nll": null,
+        "grad_norm": 0.20322509109973907,
+        "lr": 0.00008385469434154007,
+        "seconds_since_last_log": 9.481178325600922,
+        "elapsed_steps": 25,
+        "peak_gb": 1.126947328,
+        "control_counts": [
+          12,
+          2,
+          2
+        ],
+        "utc": "2026-11-11T09:20:53.261084+00:00"
+      },
+      "log_age_seconds": 8.6
+    },
+    "frozen_confidence": {
+      "last": {
+        "event": "calibration_train",
+        "step": 775,
+        "gaussian_nll_without_constant": -2.786142110824585,
+        "grad_norm": 0.9295158982276917,
+        "lr": 0.0006000000000000001,
+        "elapsed_steps": 25,
+        "seconds_since_last_log": 10.237536917440593,
+        "control_counts": [
+          10,
+          1,
+          5
+        ],
+        "utc": "2026-11-11T09:20:57.557224+00:00"
+      },
+      "log_age_seconds": 4.3
+    }
+  },
+  "recent_errors": {}
+}

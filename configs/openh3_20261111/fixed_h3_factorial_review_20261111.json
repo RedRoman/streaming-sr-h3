@@ -1,0 +1,298 @@
+{
+  "schema": "openh3.fixed_h3_factorial_review.v1",
+  "date": "2026-11-11",
+  "review_type": "independent static code audit; no accelerator execution or runtime changes",
+  "status": "all reported static-review findings resolved; parent-owned CPU mock tests, real tiny-checkpoint export and separately scheduled full-block H3 smoke remain validation gates",
+  "audit_snapshot_sha256": {
+    "code/run_fixed_h3_rphi.py": "05383516e55d395f161337df26568d34e7d6add1092786db640f9c8aaa33630d",
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/rphi_soft_anchor.py": "1605fa75ea4819351e549611c85feb499ba9029bd5029b3e92cec00c6ef53f31",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "configs/openh3_20261111/refiner_turbo_30794.json": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "code/export_rphi_guides_stage2.py": "f52212f0126985112e0be403992d067bcb3bc6486d18a19534124d9c8904dace",
+    "code/tests/test_fixed_h3_rphi.py": "f79a06b8302a1ee661eb23a12ca8a1ba8627e12b88e2d18ff0b2089938a5ec17"
+  },
+  "primary_question": "With generator weights and the raw-observation warm start fixed, does an R_phi conditioning guide improve restoration, and does a predeclared fixed post-decode fidelity anchor add value?",
+  "fixed_recipe": {
+    "manifest": "configs/openh3_20261111/refiner_turbo_30794.json",
+    "components": [
+      "refiner",
+      "turbo"
+    ],
+    "adaptation": null,
+    "port_scope": "ComfyUI Open-H3 port; native Diffusers equivalence unverified",
+    "sigma_schedule": [
+      0.909375,
+      0.8571428571428571,
+      0.6666666666666666,
+      0.0
+    ],
+    "sampler": "Euler",
+    "cfg": 1.0,
+    "denoiser_evaluations_per_h3_call": 3,
+    "seed": 101,
+    "audio_initialization": "zeros in both arms; audio output not scored",
+    "warm_start": "one VAE encoding of prepared raw HR RGB, cloned unchanged for both H3 calls",
+    "guide_factor": [
+      "encoded raw HR observation",
+      "encoded clipped float32 R_phi RGB"
+    ],
+    "innerdc": false,
+    "quota": null,
+    "pretrained_latent_upsampler": false,
+    "new_lora_training": false
+  },
+  "arms": [
+    {
+      "name": "input",
+      "purpose": "shared raw HR observation reference",
+      "h3_calls": 0
+    },
+    {
+      "name": "rphi_only",
+      "purpose": "same exported clipped float32 R_phi RGB reference",
+      "h3_calls": 0
+    },
+    {
+      "name": "h3_raw",
+      "conditioning": "raw",
+      "warm_start": "raw",
+      "alpha": 0.0
+    },
+    {
+      "name": "h3_rphi",
+      "conditioning": "rphi",
+      "warm_start": "raw",
+      "alpha": 0.0
+    },
+    {
+      "name": "h3_raw_anchor",
+      "conditioning": "raw",
+      "warm_start": "raw",
+      "alpha": 0.25,
+      "reuses": "h3_raw raw decoded pixels"
+    },
+    {
+      "name": "h3_rphi_anchor",
+      "conditioning": "rphi",
+      "warm_start": "raw",
+      "alpha": 0.25,
+      "reuses": "h3_rphi raw decoded pixels"
+    }
+  ],
+  "anchor_contract": {
+    "source": "same clipped R_phi prediction in both guide arms",
+    "native_tasks": "x + alpha * (r - x), full RGB fidelity blend",
+    "sr": "x + alpha * Q4_right_inverse(Q4(r) - Q4(x)), canonical bicubic antialias Q4",
+    "physical_observation_consistency_claimed": false,
+    "confidence_used": false,
+    "stage": "after final H3 decode, without VAE re-encoding",
+    "clipping": "apply correction to raw decoded H3 RGB, then clip; unanchored H3 metrics also clip; no RGB8 quantization",
+    "clipping_residuals": "soft-anchor report includes preclip, postclip and dtype-rounding canonical/fidelity residuals",
+    "alpha_policy": "one declared alpha=0.25; no dev-set grid search or per-sample choice",
+    "endpoint_warning": "alpha=1 native collapses to R_phi-only; it cannot establish H3 benefit. SR alpha=1 retains the H3 canonical-null component before clipping."
+  },
+  "geometry_and_temporal_contract": {
+    "tasks": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "expected_development_sources": 8,
+    "expected_task_samples": 32,
+    "rgb_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "sr_observation_shape": [
+      22,
+      120,
+      208,
+      3
+    ],
+    "native_observation_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "guide_preparation": "rphi_data.prepare_observed; exact x4 bicubic antialias upsample only for SR, native tasks remain at their observation geometry",
+    "vae_latent_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "spatial_admission": "HR dimensions divisible by 32, because H3 patchification requires an even latent spatial grid",
+    "rphi_context": "all 22 predictions, consecutive t-2,t-1,t histories with first-frame repetition",
+    "h3_context": "full 22-frame block supplied to VAE and H3; no verified end-to-end frame-causal contract",
+    "metric_frame_stride": 1,
+    "temporal_metric": "same adjacent-frame RGB error-change and masked GT-proxy-flow support for every arm",
+    "strict_streaming_claimed": false,
+    "controls_included": [],
+    "clean_protection_claimed": false
+  },
+  "data_and_metric_contract": {
+    "sample_join": [
+      "sample_id",
+      "source_id",
+      "source_sha256",
+      "target_key",
+      "task",
+      "split",
+      "record_sha256",
+      "observation_pixel_sha256",
+      "target_pixel_sha256"
+    ],
+    "input_files": "materialization receipt + NPZ file + pixel hashes; export NPZ array hashes and provenance sidecar hashes",
+    "target_usage": "geometry/integrity validation and metrics only; no target values enter raw preparation, exported guide, VAE, warm start, conditioning or anchor",
+    "guide_semantics": "exported rgb float32 THWC clipped [0,1]; raw_rgb retained for separate diagnostics; no uint8 or video intermediate",
+    "metrics": "eval_rphi.rgb_metrics and temporal_metrics on float32 clipped predictions and original uint8 recording proxy /255",
+    "lpips": "same locally loaded network/weights and CPU execution across all arms",
+    "aggregation": "matched per-source differences, equal source weights, separately by task",
+    "scope": "8 development sources, not an untouched generalization test",
+    "failure_policy": "fresh output directory, partial/failure evidence allowed, complete=true only after all selected samples succeed"
+  },
+  "legacy_gaps_now_addressed_by_new_adapter": [
+    {
+      "issue": "Legacy H3 pilot only loads Stage7 w0 x4 SR safetensors and hr/lr/dx NPZ, not four-task RGB exports",
+      "evidence": "code/run_openh3_pilot_eval.py:19-52",
+      "resolution": "run_fixed_h3_rphi.inspect_inputs and generate_pair read verified RGB and VAE-encode both guide sources"
+    },
+    {
+      "issue": "Legacy pilot changes conditioning and draft together",
+      "evidence": "code/run_openh3_pilot_eval.py:152-154",
+      "resolution": "run_fixed_h3_rphi.py:135-138 fixes raw draft in both calls"
+    },
+    {
+      "issue": "Legacy H3 pilot quantizes predictions and uses a different bicubic baseline, unlike R_phi metrics",
+      "evidence": "code/run_openh3_pilot_eval.py:158-166; code/eval_rphi.py:407-415",
+      "resolution": "new adapter uses prepare_observed and common float32 eval_rphi metrics for all six arms"
+    },
+    {
+      "issue": "Export and soft-anchor modules alone do not connect RGB to H3 latents",
+      "evidence": "code/export_rphi_guides.py:8-11; code/rphi_soft_anchor.py:1-13",
+      "resolution": "run_fixed_h3_rphi.py:126-147 uses existing H3.encode_guide_pixels/sample/decode public interfaces"
+    }
+  ],
+  "remaining_findings_at_audited_snapshot": [],
+  "three_step_innerdc_boundary": {
+    "evidence": [
+      "code/h3_comfy.py:37",
+      "code/h3_comfy.py:259-261",
+      "code/h3_comfy.py:375-426"
+    ],
+    "legacy_points": [
+      28,
+      45,
+      48
+    ],
+    "mapped_three_step_points_zero_based": [
+      2
+    ],
+    "meaning": "Legacy innerDC reduces to a final-step denoised-latent correction; it is not three separate corrections on a three-step schedule",
+    "vae_limitation": "Projection residual is measured before VAE encoding; the final decoded RGB is not guaranteed to retain it",
+    "native_identity_warning": "If a native physical identity operator is used with hard projection, the projection replaces all RGB with its supplied target; this is not a null-only refinement",
+    "decision": "Keep this first factorial in base mode with post-decode soft anchoring; any later innerDC study needs a VAE-roundtrip-only control and final decoded residual measurements"
+  },
+  "minimum_acceptance_before_full_run": [
+    "CPU fixture export: source/input/guide/file/provenance mutations, early checkpoint, invalid histories and unsupported geometry must fail before H3 construction",
+    "Fake H3: exactly two sample calls, equal raw warm-start bytes and seeds, differing only conditioning, no target pixels, no guide/draft mutation",
+    "Soft-anchor controls: alpha=0 identity, chosen alpha=0.25 finite outputs, native interpolation and SR canonical residual including clipping tested",
+    "Six-arm metric fixture: identical generated arrays score identically; common frame list and source weighting; R_phi-only reference preserved",
+    "Real scheduled smoke: complete one source with all four tasks, 22-frame encode/decode and three denoiser evaluations per call; verify actual schedule/seed/mode/audio/warm-start records",
+    "Only after smoke, evaluate all 8 sources/32 task samples; require 64 H3 calls and 192 denoiser evaluations, with soft anchors using no extra generator calls"
+  ],
+  "resource_notes": {
+    "vae_guide_encodes_for_full_set": 64,
+    "h3_calls_for_full_set": 64,
+    "h3_output_decodes_for_full_set": 64,
+    "additional_vae_roundtrips_for_anchors": 0,
+    "uncompressed_cached_decoded_float32_bytes": 6747586560,
+    "runtime_estimate": "Do not extrapolate tiny latent smoke; measure one real 22x480x832 source including VAE/CPU metrics/serialization",
+    "execution_authorized_by_this_review": false
+  },
+  "prior_audit_snapshot_sha256": {
+    "code/run_fixed_h3_rphi.py": "4af6f3c907118d426555d0111e7a18dfd706fb917c250cd2db695f51ed1db572",
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/rphi_soft_anchor.py": "1605fa75ea4819351e549611c85feb499ba9029bd5029b3e92cec00c6ef53f31",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "configs/openh3_20261111/refiner_turbo_30794.json": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975"
+  },
+  "resolved_findings_at_second_review": [
+    {
+      "issue": "final checkpoint, blind K3 and causal history admission",
+      "status": "resolved_in_static_review",
+      "evidence": "code/run_fixed_h3_rphi.py:53-64,98-99; code/export_rphi_guides_stage2.py:16-30",
+      "resolution": "Final training step, blind K3 variant and every consecutive causal history are checked. Wrapper matches rphi_model/rphi_data/native encoder source hashes to checkpoint before export and rechecks after export."
+    },
+    {
+      "issue": "H3 spatial patchify geometry",
+      "status": "resolved_in_static_review",
+      "evidence": "code/run_fixed_h3_rphi.py:135-137",
+      "resolution": "generate_pair now requires dimensions divisible by 32. Remaining early-inspection concern is listed separately."
+    },
+    {
+      "issue": "native encoder export provenance",
+      "status": "resolved_in_static_review",
+      "evidence": "code/export_rphi_guides_stage2.py:22-29,51-70; code/run_fixed_h3_rphi.py:58-64",
+      "resolution": "New wrapper binds native encoder source hash to training checkpoint and publishes stage2_export_proof; runner requires this proof."
+    },
+    {
+      "issue": "sampler versus denoiser evaluation counts",
+      "status": "resolved_in_static_review",
+      "evidence": "code/run_fixed_h3_rphi.py:162-164,200-203",
+      "resolution": "Records two h3_sample_calls and six denoiser_evaluations per sample; full inspection reports corresponding totals."
+    },
+    {
+      "issue": "fixed factorial and R_phi-only paired summaries",
+      "status": "resolved_in_static_review",
+      "evidence": "code/run_fixed_h3_rphi.py:251-258",
+      "resolution": "Adds h3_rphi_anchor-vs-h3_raw_anchor, h3_rphi-vs-rphi_only and h3_rphi_anchor-vs-rphi_only without additional H3 generation."
+    }
+  ],
+  "validation_this_review": {
+    "json_parse": true,
+    "execution": "static reads only; no torch import, NPU call or deployment",
+    "cpu_mock_or_real_export_tests": "parent is running latest ten CPU tests and actual tiny-checkpoint one-source four-task export; not asserted passed by this static review",
+    "new_tests_inspected": [
+      "failed post-export publication must leave complete=false",
+      "supported and unsupported H3 geometry",
+      "fixed raw draft and common seed",
+      "guide/draft mutation rejection"
+    ]
+  },
+  "second_audit_snapshot_sha256": {
+    "code/run_fixed_h3_rphi.py": "6183ac209571b23f7b211cc9182952a02a5aed1ba0d92e658e673803de4eeb6b",
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/rphi_soft_anchor.py": "1605fa75ea4819351e549611c85feb499ba9029bd5029b3e92cec00c6ef53f31",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "configs/openh3_20261111/refiner_turbo_30794.json": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "code/export_rphi_guides_stage2.py": "9ce031ef3701ac8a7f7211181fff359077d44d68c8405e9ef241d783ea4c8e53"
+  },
+  "resolved_findings_at_final_review": [
+    {
+      "issue": "failure publication",
+      "status": "resolved_in_static_review",
+      "evidence": "code/export_rphi_guides_stage2.py:60-83; code/tests/test_fixed_h3_rphi.py:153-171",
+      "resolution": "Preserves base receipt separately, publishes consumer manifest only after stage2 verification, and replaces consumer manifest with complete=false plus stage2_failure.json on handled export/post-export failure. Regression test covers checkpoint-proof mismatch after base export."
+    },
+    {
+      "issue": "early CPU geometry admission",
+      "status": "resolved_in_static_review",
+      "evidence": "code/run_fixed_h3_rphi.py:125-127,189-191; code/tests/test_fixed_h3_rphi.py:119-121",
+      "resolution": "main validates every selected export geometry immediately after input inspection and before pretrained asset inspection/H3 construction; generate_pair retains the same check. Generic inspect_inputs can still inspect smaller CPU export fixtures without admitting them to H3 execution."
+    }
+  ],
+  "parent_validation_followup": {
+    "at_utc": "2026-11-11T09:12:24Z",
+    "cpu_tests_passed": 10,
+    "real_tiny_checkpoint_cpu_export": "passed: 1 source, all 4 tasks, all 22 frames, 480x832; final bridge inspect passed",
+    "evidence": "results/takeover_20261111/fixed_h3_bridge_preparation/fixed_h3_bridge_v3/evidence.json",
+    "actual_h3_vae_smoke": "pending; no execution or quality claim"
+  }
+}

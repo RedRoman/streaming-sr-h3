@@ -1,0 +1,309 @@
+{
+  "schema": "openh3.native_baseline_readiness.v1",
+  "date": "2026-11-11",
+  "recorded_at_utc": "2026-11-11T09:11:15.460437+00:00",
+  "status": "prepared_sources_weights_and_transport_only",
+  "plan_reference": "configs/openh3_20261111/omni_benchmark_plan_20261111.json",
+  "plan_sha256": "6a1fc49beb70542097ea25665bf0e66668b4fe4252ef4da75c35d0d86175dcc6",
+  "execution_boundary": {
+    "work_performed": "local files, public network reads/downloads, pure NumPy tests and static compilation",
+    "remote_commands_executed": false,
+    "npu_or_gpu_execution": false,
+    "model_inference_completed": false,
+    "dependencies_installed": false,
+    "active_runtime_modified": false
+  },
+  "sources": [
+    {
+      "official_repository": "https://github.com/XLearning-SCU/2026-IJCV-FaverNet",
+      "local_checkout": "third_party/native_video_baselines_20261111/FaverNet",
+      "acquisition": "GitHub connector verified repository/README/commit; git clone then detached checkout",
+      "commit": "14769f22685f4850c5e203d493c99ad2eba5b68b",
+      "tree": "c6b21f1d85aa8467a4608e67912de5178bfc4600",
+      "commit_date": "2026-08-10T09:03:07+08:00",
+      "tracked_changes": "",
+      "file_sha256": {
+        "README.md": "d7cdffabdf7282d1bd2d7ef0859c94641ca3892d26b77cd8bc38e0caf1911770",
+        "LICENSE": "19490f562cd5a50d39666ff5dd92c2bdad0fed702782b40171e2c8d17a288bbe",
+        "requirements.txt": "1e63cd1022105f7636ed444fccff34e52e1ef0396030fadba65f3d3c4d60abe4",
+        "test.py": "79606656d1bea24bdf7847f47d8659a4b6172d50bf544888b52b372086c2ede3",
+        "models/favernet.py": "88bd7d0f3867f260ae6946584545da1cd1c3c7a3724f9f762ef578e73bf33e86",
+        "models/spynet.py": "746f2378800afa51cd246a736f5aab8c20f6f14085ff9619645588a481f11756"
+      },
+      "method": "FaverNet TUDCommon",
+      "readiness": "source_and_weights_ready_inference_not_validated",
+      "license_evidence": {
+        "file": "LICENSE",
+        "declaration": "MIT"
+      },
+      "official_environment": {
+        "python": "3.9 per README",
+        "torch": "2.8.0",
+        "torchvision": "0.23.0",
+        "mmcv": "2.2.0 compiled ops",
+        "pyiqa": "0.1.15.post2",
+        "av": "15.1.0"
+      },
+      "official_entrypoint": "python test.py --checkpoint pretrained_models/FaverNet_TUDCommon.pth --dataroot-lq LQ --dataroot-gt GT --output-dir results/frames",
+      "checkpoint_loader": "raw state_dict; torch load on CPU with weights_only=True and strict load in prepared adapter; runtime pending",
+      "input_output": {
+        "input": "[B,T,3,H,W] float RGB [0,1]",
+        "output": "same shape, residual addition to input; official metrics clamp[0,1]",
+        "minimum_frames": 2,
+        "padding": "official right/bottom tail-flip to multiple 4, crop output to original H,W",
+        "temporal": "backward + forward propagation over entire supplied clip",
+        "scale": "native same-resolution; no x4 LR-to-HR path",
+        "test_time_augmentation": false
+      },
+      "source_anchors": {
+        "weights": "README.md:34-46",
+        "official_test": "test.py:28-43,77-100,132-153",
+        "same_geometry": "models/favernet.py:252-269",
+        "future_access": "models/favernet.py:297-299,396-406",
+        "fft": "models/favernet.py:159-176",
+        "dcn": "models/favernet.py:7,415-462",
+        "cuda_cache": "models/favernet.py:306-341,355-378"
+      },
+      "scope": "Common only; Weather is a separate released checkpoint and is not acquired or covered here"
+    },
+    {
+      "official_repository": "https://github.com/XLearning-SCU/2024-NeurIPS-AverNet",
+      "local_checkout": "third_party/native_video_baselines_20261111/AverNet",
+      "acquisition": "GitHub connector verified repository/README/commit; git clone then detached checkout",
+      "commit": "c4eb019f71fe6a2ccb6807dca92451fd8d8b8cd3",
+      "tree": "ca07966cf8cfa324f49394100bf18128a3e887d5",
+      "commit_date": "2024-10-29T21:23:54+08:00",
+      "tracked_changes": "",
+      "file_sha256": {
+        "README.md": "6fe8d0211454a496a01d1da9c3bf98dfa4a5222bff5595b8afc3497fecaab7ca",
+        "requirements.txt": "86ebcc063fa812917ae888a37e5dad828279e8d4d498c8c900494e4b7f49a022",
+        "setup.py": "832e8e453320c5b0f389c20c0b1f2e4dd306a7ba2e0a47f12ccc69590586b7ea",
+        "basicsr/archs/avernet_arch.py": "7235c5e5455a338fb07ae2c8e44bc8542305dc5457780a5e4c6cb55bf5b9dbfb",
+        "basicsr/archs/spynet_arch.py": "bc8b5bb12e152b54a11f59989088edf9fd5936b19a5de248f6a4096ec66375d3",
+        "basicsr/models/video_recurrent_model.py": "a405648c0016d815c5a99197859eba733fd3201498d2d316f21f6e4a1f151e17",
+        "options/test/test_AverNet_DAVIS_T6.yml": "767cf6e0ec1fe1b26ee348050c3853f638b4fd7199cef66c239c50811b83e57b"
+      },
+      "method": "AverNet",
+      "readiness": "source_and_weights_ready_inference_not_validated",
+      "license_evidence": {
+        "file": "setup.py:161,168",
+        "declaration": "Apache-2.0 package metadata; no standalone LICENSE found in pinned tree"
+      },
+      "official_environment": {
+        "torch": "2.3.1",
+        "torchvision": "unpinned",
+        "mmcv": "unpinned compiled ops",
+        "av": "12.1.0",
+        "setup": "requirements.txt then setup.py develop; README requirement.txt is a filename typo"
+      },
+      "official_entrypoint": "python basicsr/test.py -opt options/test/test_AverNet_DAVIS_T6.yml",
+      "checkpoint_loader": "checkpoint params key; SPyNet symbols present in static archive scan; adapter requires strict full-state load with spynet_pretrained=None; runtime pending",
+      "input_output": {
+        "input": "[B,T,3,H,W] float RGB [0,1]",
+        "output": "same shape, residual addition to input; prepared metrics transport uses clamp[0,1] float32",
+        "minimum_native_hw": [
+          256,
+          256
+        ],
+        "minimum_hw_reason": "forward downsamples by 0.25 and asserts flow input >=64 in each dimension",
+        "padding": "official full-clip path tail-flip to multiple 8, then crop original H,W",
+        "temporal": "backward_1, forward_1, backward_2, forward_2, with future keyframe access",
+        "scale": "official test scale=1; no native x4 SR",
+        "test_time_augmentation": false
+      },
+      "source_anchors": {
+        "weights": "README.md:35-41",
+        "official_config": "options/test/test_AverNet_DAVIS_T6.yml:1-38",
+        "same_geometry": "basicsr/archs/avernet_arch.py:146-173",
+        "min_shape_and_future_access": "basicsr/archs/avernet_arch.py:176-255",
+        "padding": "basicsr/models/video_recurrent_model.py:237-251",
+        "dcn": "basicsr/archs/avernet_arch.py:9-10,348",
+        "cpu_eval_caveat": "basicsr/models/video_recurrent_model.py:89 (validation metrics allocate CUDA; prepared direct-model runner avoids framework validation)",
+        "package_setup": "basicsr/__init__.py:1-8; setup.py:67-85,144"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "filename": "FaverNet_TUDCommon.pth",
+      "local_path": "third_party/native_video_baselines_20261111/weights/FaverNet_TUDCommon.pth",
+      "official_source_url": "https://www.dropbox.com/scl/fi/zi974n4r8rycs6unwh3qi/FaverNet_TUDCommon.pth?rlkey=y7wvfupdoa7ks5logess4wvvv&st=h5uo6oz2&dl=0",
+      "source_reference": "FaverNet pinned README.md:36",
+      "bytes": 52511325,
+      "sha256": "c16e5658a639810bb17dc4bc131a631bde6491f9fb5a790c8952dfa16ccdc7b8",
+      "download_status": "downloaded_http_200",
+      "verification": "local SHA256 pins exact acquired bytes; no separately published full SHA256 found",
+      "format": "PyTorch zip archive; CRC pass, pickletools only, no unpickle",
+      "git_ignored": true
+    },
+    {
+      "filename": "AverNet_final.pth",
+      "local_path": "third_party/native_video_baselines_20261111/weights/AverNet_final.pth",
+      "official_source_url": "https://drive.google.com/file/d/1ojT0_A8opPE49UURsYaUNPrmUq9G_mty/view",
+      "source_reference": "AverNet pinned README.md:37 official folder 1S0h4wKGPm4pugx94gs1r3aLDzS06vGt3; public folder page maps this file ID to filename/165529244 bytes",
+      "bytes": 165529244,
+      "sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+      "download_status": "downloaded_http_200",
+      "verification": "local SHA256 pins exact acquired bytes; no separately published full SHA256 found",
+      "format": "PyTorch zip archive; CRC pass, pickletools only, no unpickle",
+      "git_ignored": true
+    },
+    {
+      "filename": "spynet_sintel_final-3d2a1287.pth",
+      "local_path": "third_party/native_video_baselines_20261111/weights/spynet_sintel_final-3d2a1287.pth",
+      "official_source_url": "https://drive.google.com/file/d/1kOm9APxfL8j_kUIS6zEv4hdcp9-db1ta/view?usp=drive_link",
+      "source_reference": "FaverNet pinned README SPyNet link and AverNet official release flownet folder 1-pl3MI6eXaok2WTFWArRkCitRZa9lQhp",
+      "bytes": 5770711,
+      "sha256": "3d2a1287666aa71752ebaedc06999212886ef476f77d691a1b0006107088e714",
+      "download_status": "downloaded_http_200",
+      "verification": "local SHA256 pins exact acquired bytes; no separately published full SHA256 found",
+      "format": "legacy non-zip PyTorch checkpoint; not deserialized; acquired SHA prefix matches filename",
+      "git_ignored": true
+    }
+  ],
+  "total_asset_bytes": 223811280,
+  "ascend_audit": {
+    "overall_status": "unvalidated_not_known_impossible",
+    "mmcv_reference": {
+      "repository": "https://github.com/open-mmlab/mmcv",
+      "tag": "v2.2.0",
+      "commit": "3a5fb4b96ab1b241e7379adf7c326ef6edef6515",
+      "source_url": "https://github.com/open-mmlab/mmcv/blob/3a5fb4b96ab1b241e7379adf7c326ef6edef6515/mmcv/ops/modulated_deform_conv.py",
+      "local_reference": "third_party/native_video_baselines_20261111/download_evidence/mmcv_v2.2.0_modulated_deform_conv.py",
+      "sha256": "b12ec86d229c0a192ddfc4267d95f9675b1e15c1b0920d956fa76b3a82f4f841",
+      "evidence": "lines 40-80 implement NPU offset sorting and torch_npu.npu_deformable_conv2d; lines 140-143 dispatch by input device; lines 17-19 still load compiled mmcv._ext at import"
+    },
+    "blockers": [
+      {
+        "id": "environment",
+        "status": "not_tested",
+        "detail": "Neither local Python torch nor compiled mmcv ops are available. Official torch versions differ between the two projects; use isolated environments and freeze a working version set, not the active H3/R_phi venv."
+      },
+      {
+        "id": "npu_deform_conv",
+        "status": "official_dispatch_exists_runtime_parity_pending",
+        "detail": "Compile/import MMCV against chosen torch/torch_npu/CANN versions and test actual 3x3, groups=1, deform_groups=24, offsets/mask including boundaries against CPU/CUDA. Do not replace DCN with ordinary convolution."
+      },
+      {
+        "id": "npu_fft_grid",
+        "status": "not_tested",
+        "detail": "Both require flow warping/grid_sample; FaverNet additionally computes complex torch.fft.fft2 then roll/abs. Validate supported dtype/layout and outputs with actual target shapes."
+      },
+      {
+        "id": "long_sequence_cache",
+        "status": "source_incompatible_paths_identified",
+        "detail": "FaverNet switches CPU cache on T>100 regardless of device then calls .cuda(); AverNet uses .cuda() only in its is_cuda cache branch, leaving NPU cache disabled. First adapter rejects >100 frames. No long-video or memory claim yet."
+      },
+      {
+        "id": "entrypoints",
+        "status": "adapter_prepared_not_executed",
+        "detail": "FaverNet test auto-selects CUDA or CPU, no NPU selector. AverNet framework validation allocates CUDA metrics even with CPU config; direct model adapter avoids this wrapper. Ascend remains a separate explicitly tested adapter task."
+      }
+    ]
+  },
+  "prepared_adapter": {
+    "path": "third_party/native_video_baselines_20261111/run_lossless_rgb.py",
+    "sha256": "8cc2ca41e6ef1c723f0c86c5e279de32e2df5574d2fa656d58cecb3a7d23c80d",
+    "status": "draft_static_and_input_preflight_passed_model_forward_not_run",
+    "accepted_tasks": [
+      "denoise",
+      "deblur",
+      "compression",
+      "identity",
+      "near_clean"
+    ],
+    "scope": "native zero-shot official checkpoint; no x4 SR, no matching-data finetune",
+    "input": "NPZ frames uint8 RGB THWC plus required expected observation pixel SHA256; extra archive entries not loaded",
+    "source_lock": "exact commit plus clean tracked files",
+    "checkpoint_lock": "exact acquired SHA256; safe weights_only load and strict=True required during execution",
+    "output": "lossless NPZ rgb_raw and rgb float32 THWC; rgb clamp[0,1]; no codec or uint8 quantization",
+    "temporal": "entire supplied clip; bidirectional offline; no frame stride in model input/output; evaluation stride applied downstream",
+    "geometry": "H,W>=256, T=2..100; no resize/crop besides official pad-and-crop",
+    "device_support_in_this_draft": [
+      "cpu",
+      "cuda:<index>"
+    ],
+    "metrics": "not implemented in adapter; use identical shared RGB/LPIPS/temporal metric and source selection, separate controls",
+    "no_overwrite": true,
+    "usage": "python third_party/native_video_baselines_20261111/run_lossless_rgb.py --method favernet --input-npz /absolute/observation.npz --expected-pixel-sha256 MANIFEST_OBSERVATION_PIXEL_SHA256 --task denoise --device cpu --inspect-only --out /new/preflight_output",
+    "inference_usage": "In a separate prepared baseline environment, same command without --inspect-only and a new --out; --method avernet selects the second locked model. cuda:0 is optional after CUDA runtime setup."
+  },
+  "validation": {
+    "unit_tests": {
+      "command": "python3 -m unittest discover -s third_party/native_video_baselines_20261111 -p 'test_lossless_rgb.py' -v",
+      "passed": 4,
+      "scope": "lossless RGB preservation/observation-only read/hash rejection/dtype-layout/geometry limits; no torch import"
+    },
+    "py_compile": "passed for runner and tests",
+    "input_only_smoke": {
+      "favernet": {
+        "path": "third_party/native_video_baselines_20261111/preflight_runs/favernet_input_only/run.json",
+        "sha256": "e7ed0b73defac45f3fe665952b80a1b750b6689bd221df830cf4d02802a631a3",
+        "status": "input_preflight_complete_inference_not_run",
+        "synthetic_shape": [
+          2,
+          256,
+          264,
+          3
+        ]
+      },
+      "avernet": {
+        "path": "third_party/native_video_baselines_20261111/preflight_runs/avernet_input_only/run.json",
+        "sha256": "accb90e02bcf0c7f6a4cfda26eacf9875cb5d18ff7bc8358911027b03ad346a9",
+        "status": "input_preflight_complete_inference_not_run",
+        "synthetic_shape": [
+          2,
+          256,
+          264,
+          3
+        ]
+      }
+    },
+    "not_run": [
+      "torch checkpoint deserialization and strict state load",
+      "model forward on any device",
+      "official-test-path parity",
+      "NPU operator/model parity",
+      "shared dev metric evaluation",
+      "external benchmark or paper-score reproduction"
+    ]
+  },
+  "next_actions_ordered": [
+    {
+      "step": 1,
+      "action": "Use an isolated baseline environment; obtain compatible torch/torchvision/MMCV compiled ops and AverNet package setup; record package/build versions. Do not modify running model environments.",
+      "pass_condition": "imports and CPU DCN operator check succeed without network asset fallback"
+    },
+    {
+      "step": 2,
+      "action": "Run each pinned model on the same 2-3 frame native observation with supplied pixel SHA; then the selected complete dev clip using prepared lossless runner.",
+      "pass_condition": "strict checkpoint load, correct finite full-resolution output, no model/input modification; preserve new output SHA and run record"
+    },
+    {
+      "step": 3,
+      "action": "Compare prepared runner with official full-clip test outputs before uint8 save on identical RGB, padding, weights and device.",
+      "pass_condition": "predeclare tight numerical tolerances; investigate any mismatches before benchmark use"
+    },
+    {
+      "step": 4,
+      "action": "If Ascend is needed, create a new isolated adapter/env and validate official MMCV NPU DCN, FFT/warping and whole-model output against the frozen CPU/CUDA reference; rerun under actual clip shapes.",
+      "pass_condition": "document numerical error plus runtime/device changes; no silent CPU fallback or approximate operator substitution"
+    },
+    {
+      "step": 5,
+      "action": "Run native deblur/denoise/compression and clean controls with identical decoded observations, sources, frame indices, output range and shared metrics. Report offline future access and separate zero-shot track.",
+      "pass_condition": "source-paired quality and temporal evidence; no SOTA or streaming claim from readiness"
+    }
+  ],
+  "claims_allowed_now": [
+    "Official public sources and exact commits were acquired.",
+    "Three official-linked weights were downloaded, hashed and stored outside main git tracking.",
+    "Prepared lossless input preflight passes for both methods."
+  ],
+  "claims_not_supported_now": [
+    "Either model ran successfully.",
+    "Either model is fully compatible with Ascend.",
+    "Either model is a native x4 SR or streaming baseline.",
+    "Any quality/speed ranking or SOTA reproduction."
+  ]
+}

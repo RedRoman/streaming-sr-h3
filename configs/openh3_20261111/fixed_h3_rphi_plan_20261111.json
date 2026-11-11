@@ -1,0 +1,71 @@
+{
+  "schema": "openh3.fixed_rphi_guides.plan.v1",
+  "status": "cpu_prepared_real_h3_unrun_candidate_not_selected",
+  "date": "2026-11-11",
+  "source_manifest": "datasets/omni_pilot_v1/dev_materialized.jsonl",
+  "candidate_selection": "Wait for stage2 full audit and source-paired quality/clean-protection/compression review. Preserve failed hypotheses. No automatic best-dev checkpoint search.",
+  "candidate_checkpoint": null,
+  "entrypoints": {
+    "export": "code/export_rphi_guides_stage2.py",
+    "fixed_h3": "code/run_fixed_h3_rphi.py"
+  },
+  "contract": {
+    "frozen_pretrained": "configs/openh3_20261111/refiner_turbo_30794.json",
+    "seed": 101,
+    "sampler": "3-step base mode, zero audio initialization, same raw encoded warm-start in both calls",
+    "changed_factor": "raw versus R_phi conditioning guide only",
+    "soft_anchor_alpha": 0.25,
+    "soft_anchor_source": "clipped R_phi RGB; canonical Q4 for SR; full RGB native",
+    "anchor_timing": "post decode on cached identical H3 samples",
+    "confidence_used": false,
+    "lora_used": false,
+    "metrics": "same float32 clipped RGB PSNR/LPIPS and masked flow support for every arm, no video codec or output quantization",
+    "frame_stride": 1,
+    "future_budget": "full 22-frame H3 block; not strictly causal"
+  },
+  "arms": [
+    "input",
+    "rphi_only",
+    "h3_raw",
+    "h3_rphi",
+    "h3_raw_anchor",
+    "h3_rphi_anchor"
+  ],
+  "scope": {
+    "smoke_sources": 1,
+    "smoke_task_samples": 4,
+    "full_dev_sources": 8,
+    "full_task_samples": 32,
+    "sample_calls_per_item": 2,
+    "denoiser_evaluations_per_item": 6,
+    "full_sample_calls": 64,
+    "full_denoiser_evaluations": 192,
+    "estimated_full_decoded_cache_bytes": 6747586560,
+    "clean_controls_in_current_export": false,
+    "source_disjoint_test": false
+  },
+  "validated": {
+    "cpu_tests": 10,
+    "tiny_checkpoint_actual_cpu_export": "1 source x 4 tasks x all 22 frames at 480x832; original two-step smoke model, no quality claim",
+    "guide_input_provenance_inspection": true,
+    "H3_VAE_execution": false,
+    "evidence_archive_sha256": "6587bff0d108b0b4f2b68686b21541fecb4a0001711b90ae2126189b93a2e1af",
+    "isolated_remote_preparation": "preparation/fixed_h3_bridge_v3",
+    "code_bundle_sha256": "9e6cc5837acd3c53df13331d9e15de1b7bc3aca2ed455b56ecc5630dbe97c51a"
+  },
+  "required_before_run": [
+    "Review stage2 evidence and select an interpretable candidate (or record no candidate accepted).",
+    "Create fresh queue and output paths, pin all inference dependencies; admission requires healthy/no process/free memory/lock and second idle check.",
+    "Export candidate guides with strict wrapper; input-only inspect must pass.",
+    "Run one-source four-task real H3 engineering smoke, verify 22-frame geometry, actual timing, fixed warm-start and sample records.",
+    "Only then full 8-source ordinary-task experiment with fixed alpha and no best-alpha selection."
+  ],
+  "remaining_for_research_acceptance": [
+    "Implement separate identity/near-clean guide exports and same H3 controls; ordinary tasks cannot establish clean protection.",
+    "Record real long-video/future-frame latency and drift separately from 22-frame adjacent metrics.",
+    "Build train-guide exporter with training-source contract before guide-matched LoRA; the current exporter intentionally accepts dev only.",
+    "Mixed/time-varying/source-disjoint calibration and frozen test remain separate gates."
+  ],
+  "automatic_launch": false,
+  "automatic_launch_reason": "Stage2 outcome and real H3 engineering admission are not complete; user has already authorized necessary execution once these evidence prerequisites pass."
+}

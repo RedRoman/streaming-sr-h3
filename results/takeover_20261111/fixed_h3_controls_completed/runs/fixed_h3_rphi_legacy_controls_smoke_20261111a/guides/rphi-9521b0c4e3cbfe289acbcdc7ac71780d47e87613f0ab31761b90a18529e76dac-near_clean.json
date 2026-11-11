@@ -1,0 +1,214 @@
+{
+  "source_id": "6UZVovkR3IU",
+  "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+  "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+  "task": "sr",
+  "split": "dev",
+  "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+  "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+  "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean",
+  "parent_sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+  "control": "near_clean",
+  "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+  "control_recipe": {
+    "control": "near_clean",
+    "reference": "clean_original_recording",
+    "reference_derived_control": true,
+    "ordinary_observation_used": false,
+    "seed": 7388689528909731713,
+    "sigma_8bit": 1.0,
+    "implementation": "rphi_data.make_near_clean: PCG64 float32 Gaussian, rint ties-even, clip, uint8",
+    "geometry": "native HR control input for every task label; no SR downsample",
+    "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+  },
+  "control_input_pixel_sha256": "54f8dda3757990d92fa71038a199ba01e8762677fce99bf5c5b7d6a66cab74cd",
+  "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+  "original_observation_file_sha256": "c467b6b518f5b3d63bb55173599b74b6f96df6457002832dcd9efff66cb28e1c",
+  "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "checkpoint_step": 3000,
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "condition_mode": "observations_only",
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "frame_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "history_indices": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      4,
+      5,
+      6
+    ],
+    [
+      5,
+      6,
+      7
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      8,
+      9,
+      10
+    ],
+    [
+      9,
+      10,
+      11
+    ],
+    [
+      10,
+      11,
+      12
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      12,
+      13,
+      14
+    ],
+    [
+      13,
+      14,
+      15
+    ],
+    [
+      14,
+      15,
+      16
+    ],
+    [
+      15,
+      16,
+      17
+    ],
+    [
+      16,
+      17,
+      18
+    ],
+    [
+      17,
+      18,
+      19
+    ],
+    [
+      18,
+      19,
+      20
+    ],
+    [
+      19,
+      20,
+      21
+    ]
+  ],
+  "guide_npz": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean.npz",
+  "guide_file_sha256": "280289fd0b845aab402592286b5400344da61413a703b5e543d4e6f771b7abb3",
+  "arrays": {
+    "input_rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "57208b5e66545266b464e22dd20724e1d436126f16b6c58d0ded018023381af3"
+    },
+    "rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "61a5feab27bb84b85b96112f174b7e4af72a5f4a2d30161dc18bce812283c4f9"
+    },
+    "raw_rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "29eb36bd9e9fb583f661937b536c181406bab569bdd5ced0e201cd5188b21ea2"
+    }
+  },
+  "clipping": {
+    "component_fraction": 0.007191923744658119,
+    "raw_min": -0.016933050006628036,
+    "raw_max": 1.0256602764129639
+  }
+}

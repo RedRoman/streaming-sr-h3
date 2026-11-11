@@ -1,0 +1,74 @@
+{
+  "schema": "openh3.vae_diagnostic_admission.v2",
+  "complete": true,
+  "allow_one_source_vae_diagnostic": true,
+  "reason": "Completed one-source H3 ordinary/controls show loss; isolate exact VAE representation path before any further generation or training.",
+  "ordinary_engineering_review_sha256": "c5ad79a77468f460af4c38d79d9d354cc79bcc7d3667f196da36a65a4e270f34",
+  "controls_engineering_review_sha256": "c837e2b9bec57707619c63ab347b32c4356ba9a01597c2d18a2bf38763d5c0e2",
+  "ordinary_metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "controls_metrics_sha256": "7f00ecc860d38d21f7e84a2929e56f0aa4b63954eb0b5ebc0b6add0b069bceaf",
+  "cpu_tests_receipt_sha256": "d9a884cc30896d1e5fadfa9058c8df383e03941ab2f800c7e8a344276847794f",
+  "cpu_inspection_receipt_sha256": "55e08faea82765fdb0fa4f787fcbe141497e33ec300ccb2185f0b5089441450b",
+  "cpu_tests_passed": 7,
+  "cpu_inputs_verified": true,
+  "scope": {
+    "source_ids": [
+      "6UZVovkR3IU"
+    ],
+    "ordinary_items": 4,
+    "control_items": 8,
+    "maximum_VAE_roundtrips": 24,
+    "H3_sampler_calls": 0,
+    "NFE": 0,
+    "frame_stride": 1,
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ]
+  },
+  "hard_gates": [
+    "Input float32 RGB hashes exactly match previous H3 calls.",
+    "Each normalized encoded latent hash exactly matches previous H3 guide latent.",
+    "Captured pre-internal-clamp RGB clamp reproduces unmodified H3.decode bit-exactly.",
+    "Frozen VAE parameters and input reference hashes unchanged."
+  ],
+  "cache": "Both guide paths: pre_internal_clamp and as_returned_internal_clipped float32, <=5.1GB uncompressed for12 pairs.",
+  "no_compensation_implemented": true,
+  "full_dev_automatic_launch": false,
+  "raw_lpips_domain_caveat": "Pre-clamp RGB may leave [0,1]; clipped metrics are directly comparable to prior H3.",
+  "v2_cpu_validation_receipt_sha256": "d7809c31ebb49cf1741194c0013c85966058f4fd714ec4d6d482a20c2d054a99",
+  "v1_failure_archive_sha256": "555afe50a4e938aedadad0a7779a3a1e955befa348fbd6433aef358c155d1990",
+  "root_cause_sha256": "69fb6c9e5dd8927f352aec85403c1ad037034994132cc481e0371675b693ee93",
+  "fix": "New isolated module temporarily binds manifest VAE/context paths only after bytes/actualSHA verification against frozen identities; finally restores defaults.",
+  "input_inspection_note": "Inputs unchanged from v1 successful CPU full inspection; actual v2 main repeats strict inspection before weights load.",
+  "actual_loader_binding_checked": {
+    "schema": "openh3.vae_v2_binding_cpu_verification.v1",
+    "complete": true,
+    "tests_passed": 7,
+    "test_log": "test_capture_mismatch_and_exception_restore_hook (test_vae_roundtrip_diagnostic.RoundtripTests.test_capture_mismatch_and_exception_restore_hook) ... ok\ntest_metric_target_does_not_enter_roundtrip (test_vae_roundtrip_diagnostic.RoundtripTests.test_metric_target_does_not_enter_roundtrip) ... ok\ntest_reference_latent_mismatch_stops_before_decode (test_vae_roundtrip_diagnostic.RoundtripTests.test_reference_latent_mismatch_stops_before_decode) ... ok\ntest_two_guide_paths_capture_unclipped_and_preserve_original_return (test_vae_roundtrip_diagnostic.RoundtripTests.test_two_guide_paths_capture_unclipped_and_preserve_original_return) ... ok\ntest_existing_output_rejected_before_inspection (test_vae_roundtrip_diagnostic.StaticContractTests.test_existing_output_rejected_before_inspection) ... ok\ntest_incomplete_references_fail_closed (test_vae_roundtrip_diagnostic.StaticContractTests.test_incomplete_references_fail_closed) ... ok\ntest_manifest_components_bind_when_isolated_defaults_are_missing_and_restore (test_vae_roundtrip_diagnostic.StaticContractTests.test_manifest_components_bind_when_isolated_defaults_are_missing_and_restore) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 10.240s\n\nOK\n",
+    "imported_h3_module": "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v2/code/h3_comfy.py",
+    "verified_components": {
+      "vae": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+        "bytes": 5207808496,
+        "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+        "original_default": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+        "original_default_exists": false,
+        "same_resolved_default_path": false
+      },
+      "context": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+        "bytes": 299557,
+        "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+        "original_default": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+        "original_default_exists": false,
+        "same_resolved_default_path": false
+      }
+    },
+    "module_defaults_restored": true,
+    "npu_initialized": false,
+    "weights_loaded": false
+  }
+}

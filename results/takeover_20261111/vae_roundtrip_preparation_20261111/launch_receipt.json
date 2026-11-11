@@ -1,0 +1,119 @@
+{
+  "schema": "openh3.vae_diagnostic_launch_receipt.v1",
+  "host": "huawei-modelarts-30794",
+  "launch_count": 1,
+  "session": "vae-roundtrip-20261111a",
+  "queue_path": "configs/openh3_20261111/vae_roundtrip_legacy_smoke_queue_30794.json",
+  "queue_sha256": "6d46b057edce3b2da60b0a93b53cc433aa49a05276642aafdab364d3e320762a",
+  "runtime_path": "preparation/vae_roundtrip_runtime_20261111_v1",
+  "runtime_manifest_sha256": "8c74bbd0d9657078a30ade1def7c24527a0a8dc2cdc95e6db78b879ebffafb49",
+  "run_path": "runs/vae_roundtrip_legacy_smoke_20261111a",
+  "card": 6,
+  "stable_seconds": 15,
+  "min_free_mb": 60000,
+  "lock_dir": "/cache/zihaohe/.npu-reservations",
+  "preflight": {
+    "schema": "openh3.vae_launch_preflight.v1",
+    "complete": true,
+    "checked_at_utc": "2026-11-11T11:10:52.087272+00:00",
+    "queue_sha256": "6d46b057edce3b2da60b0a93b53cc433aa49a05276642aafdab364d3e320762a",
+    "verified_pin_count": 1077,
+    "admission_checks": 10,
+    "card": 6,
+    "device": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3424,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "card_idle": true,
+    "lock_available": true,
+    "new_run_absent": true,
+    "initializes_NPU": false
+  },
+  "initial_running_snapshot": {
+    "checked_at_utc": "2026-11-11T11:11:52.012265+00:00",
+    "session": "vae-roundtrip-20261111a",
+    "tmux_exists": true,
+    "status": {
+      "state": "running",
+      "card": 6,
+      "step": "paired_vae_roundtrip_diagnostic",
+      "completed": [],
+      "argv": [
+        "venv/bin/python",
+        "preparation/vae_roundtrip_runtime_20261111_v1/code/run_vae_roundtrip_diagnostic.py",
+        "--ordinary-metrics",
+        "runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+        "--ordinary-guides",
+        "runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+        "--controls-metrics",
+        "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+        "--controls-guides",
+        "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--pretrained-manifest",
+        "configs/openh3_20261111/refiner_turbo_30794.json",
+        "--out",
+        "runs/vae_roundtrip_legacy_smoke_20261111a/eval"
+      ],
+      "updated_at_utc": "2026-11-11T11:11:25.372112+00:00"
+    },
+    "processes": [
+      "3315315   15474 bash -c (cd /cache/zihaohe/omni_openh3_20261111 && exec python code/takeover_queue.py configs/openh3_20261111/vae_roundtrip_legacy_smoke_queue_30794.json --stable-seconds 15 --poll-seconds 120); echo EXIT_CODE:$? >> ~/.mcp_bg_vae-roundtrip-20261111a.log",
+      "3315316 3315315 python code/takeover_queue.py configs/openh3_20261111/vae_roundtrip_legacy_smoke_queue_30794.json --stable-seconds 15 --poll-seconds 120",
+      "3317970 3315316 venv/bin/python preparation/vae_roundtrip_runtime_20261111_v1/code/run_vae_roundtrip_diagnostic.py --ordinary-metrics runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json --ordinary-guides runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json --controls-metrics runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json --controls-guides runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json --dev-manifest datasets/omni_pilot_v1/dev_materialized.jsonl --pretrained-manifest configs/openh3_20261111/refiner_turbo_30794.json --out runs/vae_roundtrip_legacy_smoke_20261111a/eval"
+    ],
+    "logs": {
+      "vae.log": []
+    }
+  },
+  "validation": {
+    "cpu_tests_passed": 6,
+    "real_input_inspection_passed": true,
+    "inspection_seconds": 89.1971789393574,
+    "code_sha256": "7b8f425ade842e129c3ed00c9678cac3ef4e63214c2ff0a8480d8685f725a7fd",
+    "test_sha256": "21c81508c9cdd089c9c49d3ac6b9c42bd138420daa162b25ab03f25163310566"
+  },
+  "workload": {
+    "sources": 1,
+    "source_ids": [
+      "6UZVovkR3IU"
+    ],
+    "ordinary_pairs": 4,
+    "control_pairs": 8,
+    "maximum_vae_roundtrips": 24,
+    "H3_sampler_calls": 0,
+    "NFE": 0,
+    "frame_stride": 1,
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "DiT_loaded": false,
+    "LoRA_training": false
+  },
+  "raw_output_semantics": {
+    "pre_internal_clamp": "VAE RGB after original pixel_std/mean, before internal clamp; collected with instance-local observer, original method return preserved",
+    "as_returned_internal_clipped": "Unmodified H3.decode output; hard bit-exact clamp parity check",
+    "cache": "Both float32 arrays for both raw-input and Rphi-guide routes; max5.1GB uncompressed",
+    "raw_lpips_caveat": "Pre-clamp LPIPS may be outside expected input range; clipped metric directly matches old H3 protocol"
+  },
+  "hard_gates": [
+    "Exact float32 input hash matches old H3 guide.",
+    "Exact native encoded latent hash matches old H3 guide latent.",
+    "Captured true pre-internal-clamp RGB clamp equals original H3.decode result.",
+    "VAE weights immutable; no target enters roundtrip_pair."
+  ],
+  "constraints": {
+    "old_runtime_or_outputs_modified": false,
+    "automatic_expansion": false,
+    "compensation_candidate_implemented": false,
+    "whole_pipeline_causality_claimed": false
+  },
+  "result_status": "Started bounded diagnostic; no roundtrip completion or VAE bottleneck attribution yet."
+}

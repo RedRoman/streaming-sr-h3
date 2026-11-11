@@ -213,3 +213,41 @@ P1实现合同 `history_utility_contract_20261111.json` 已记录缺失历史教
 18:18:32更新：上述controls新队列已在30794卡6启动，tmux `fixed-h3-controls-20261111a`，queue PID2974442、首次export PID2977996；真实status为running/export_identity_nearclean_guides。启动前1045个完整pins及7项admission均通过，卡6无进程、healthy、空闲62112MB、锁可取，并由generic queue完成15秒二次空闲检查。新queue SHA `a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648`；launch_receipt已本地归档。下次优先查此run的queue_status与结果，健康则不重启，完成后一次归档审计；同时核验后台checkpoint备份，不重跑stage2或ordinary smoke。
 
 ordinary完成证据、controls启动凭据和最新计划共13项已另备份31984 `preparation/h3_complete_controls_launch_backup_20261111`，归档170,718 bytes、SHA `f29314c3fb388393a06ed9c500486488a35fef7017b42d307fb0dd4caddffd68`，远端逐文件SHA验证通过；此包不含checkpoint权重。
+
+### 18:54回访：clean/near-clean完成，表示与生成误差需拆开定位
+
+controls于18:47:55完成8/8样本，仍只有6UZVovkR3IU一个独立来源。21份JSON/log小归档SHA `0f21435f4da4c3e9bb833ca2ed132845af2e08e703099af0e4343ed298659cad`，metrics SHA `7f00ecc860d38d21f7e84a2929e56f0aa4b63954eb0b5ebc0b6add0b069bceaf`；本地 `fixed_h3_controls_completed/` 已一次下载和独立审计。24项配对协议检查通过，四identity标签的输入/guide/两路生成hash各只有1个，不能按四源计；near-clean四个task-keyed噪声draw也仍是一源。
+
+质量负结果明确：identity Rphi-only MAE/LPIPS为.00114454/.00155075，最终native H3-Rphi anchor为.01148615/.02120403；identity输入误差为0，PSNR封顶120不用于量化巨大跌幅。near-clean Rphi-only约50.426dB/.00306 LPIPS，最终native anchor约35.477dB/.02041；四H3臂相对输入和Rphi-only均损伤。最后native-anchor的clipping比例为0并不排除VAE内部clipping：新源码审查发现Comfy VAE `_finalize_pixels` 本身已clamp，旧decoded所谓raw只是as-returned RGB，不能当真正pre-clamp。独立报告 `fixed_h3_controls_review_20261111.json` 保留该限定。暂不扩全8源或直接加训LoRA。
+
+接续两项有限诊断：一是独立VAE-only入口，原样复用H3(load_dit=False)编码/解码路径，same source ordinary4+controls8、最多24roundtrip、0采样/NFE；逐路latent SHA必须匹配已有H3记录，并在本进程VAE实例捕获真正pre-internal-clamp值，硬验clamp后与原返回一致。新6项CPU测试已通过，真实输入inspect/queue准备中。二是CPU复用既有缓存做固定t=[0,.05,.10,.25,.5,.75,1]的R+t(G_R−R)，仅MSE/PSNR/MAE及解析GT pooled-MSE oracle初筛，不冒充LPIPS/时序或部署模型；t=.75须复现native alpha.25 anchor。二者均不改旧runtime或输出。
+
+19:06:57，四个阶段二最终checkpoint已完整备份31984 `runs/rphi_stage2_20261111_backup_30794_v2`，归档及四文件SHA全通过，原始30794文件保留。此前后台scp退出255；采用经SHA验证的已有前缀+分块尾部重组解决，23,051,299-byte归档SHA仍为 `ada3b570063461a31f777f2525eb44e4e5a6cc45793027ac3ad0fe8396f1c1ef`。原partial归档不等于已验证归档，不再重复传输。凭据 `stage2_checkpoint_backup_verified_31984.json` 与progress.complete=true已记录。
+
+19:11:25，VAE-only队列已真实running，30794卡6、tmux `vae-roundtrip-20261111a`、queue PID3315316/worker3317970；新run `runs/vae_roundtrip_legacy_smoke_20261111a`。1077 pins、10项admission、健康/无进程/锁及15秒二次检查通过；真实12对输入CPU inspect89.20s通过。新入口6CPU tests通过、未加载DiT、0sampler/NFE；此刻尚无结果，不归因VAE瓶颈。下次先查此queue_status/eval/partial_metrics或failure，不重复启动。
+
+CPU scalar mix已完成12/12、205.57s，固定7点和33项端点/anchor复现均过。记录 `fixed_h3_residual_mix_diagnostic_20261111.json` SHA `7cf8ecf967665658bad89ef64a1f228b475debfece788b030ebd29e288af00f5`、review SHA `2368adabe157814de5ac5512764a5e3bf1f0a10b7845cea5bb6231884ddf3e3d`。GT pooled-MSE oracle t为compression .0630/deblur .1057/denoise .2733/SR .2907，identity0、near-clean .00329–.00383；不能部署或当学到的方法。固定t=.05普通四任务PSNR都升，但identity相对Rphi-only下降2.191dB，near-clean下降约.48–.50dB。所有额外blend clamp为0（凸组合的预期），不排除VAE内部clamp；尚无网格LPIPS/temporal结论。P3正交频带干预仍未执行，不能用此scalar screen冒称完成。
+
+后续决策不要求冻结H3先赢全部任务：VAE误差大则先用既有缓存检验预声明的表示误差补偿/保留RGB接口；采样新增误差为主则明确修正目标和同预算对照，再做有限guide-matched LoRA。保留Rphi-only、clean/near-clean与失败样本，不在单源GT网格上选最终部署系数。
+
+19:16检查发现首个VAE run在19:13:06于加载前失败，0样本，错误为default loader与manifest不匹配；不得把此前running快照当当前健康，也不得据失败产物归因。已交由新v2 snapshot/run修复路径/组件绑定，保留v1失败证据；严格hash、latent与clamp门槛不放松。
+
+FaverNet/AverNet官方CPU前向已取得实证。31984新隔离venv内官方MMCV2.2.0（commit3a5fb4b...）77源CPU扩展编译通过，24 deform_groups/非零offset/变化mask对torchvision CPU参考max_abs0。Faver strict532keys/13,082,751参数/62SPyNet keys，Aver strict354keys/41,347,560参数/62SPyNet keys，missing/unexpected均空；同一B1T2C3 256²随机输入完整float32 CPU前向分别10.425/11.857s且有限。Aver官方包入口缺pyiqa失败保留，成功路径是显式architecture_only导入，仅避开训练侧包初始化、原网络/官方算子未改。无NPU使用、无共享venv写入；尚无恢复质量或CUDA/Ascend等价结论。完整小凭据 `preparation/native_baselines_cpu_20261111/evidence/summary.json`；原始大源码/编译缓存不入git。下一步只针对同源6UZVovkR3IU×三个native任务做双机hash预检与480×832×22帧完整离线质量合同，不把T2随机tensor通过当质量基线完成。
+
+19:23:33，VAE v2已一次启动：`runs/vae_roundtrip_legacy_smoke_20261111b`，tmux `vae-roundtrip-20261111b`，卡6、queue3397131/worker3399834。根因为新checkout默认VAE/context路径不存在，既有manifest正确指向streaming_sr0共享资产；实际大小及SHA完全匹配。新代码仅加载时绑定已验证组件路径并finally恢复，7CPU测试与真实模块绑定检查通过，1103pins/11admission及15秒二次检查通过，未放松历史latent/finalizer门槛。v1失败0样本归档保留；下一回访只查v2真实状态，勿重启v1。另预声明缓存补偿R+beta(G_R−V_R)的固定7点协议，仍未实现/执行；只有VAE完整通过后才能据此评估接口，不能把候选构造当创新或训练结果。
+
+### 20:15验收：VAE往返重建损失已确认，下一项改为保留RGB的缓存接口诊断
+
+VAE v2于19:43:11完成12/12，19:23:33启动、全流程19m38s（含CPU评分/压缩写cache）；24路encode+decode局部计时合计96.56s。一次下载10份小证据，archive SHA `10dba2752a61a7b88fea28b2fd826bb0e0763fb95d8ede721c341af51584d96a`、metrics SHA `731db2daf2a500397a0204fca473d2f74b884f21271f88fa7dda8d27bf82cf5a`。`results/takeover_20261111/vae_roundtrip_v2_completed/scientific_review.json` 已独立审计24/24输入/latent SHA、24/24真实preclamp再clamp与原decode bit-exact、12/12 input/Rphi质量和时域参考配对、全22帧/21有效flow pairs、相同LPIPS，559个VAE参数版本未变。0采样/NFE、无训练。未独立下载重读大NPZ，不将生产端数组哈希核验说成离线全像素复验。
+
+PSNR按Rphi→VAE(R)内部clipped→H3-Rphi→旧native alpha.25 anchor：compression40.476→35.442→32.672→34.794；deblur31.892→31.272→30.021→30.822；denoise35.917→34.537→32.474→34.437。SR27.757→27.773→27.213→27.700，最后为不同Q4anchor。identity55.684→36.015→32.637→35.096(native)/33.862(SR)；near-clean Rphi约50.426，VAE约35.964，H3约33.034。VAE不是逐指标全害：deblur/denoise LPIPS改善、SR PSNR略升；仅一开发来源。VAE真preclamp与旧H3 as-returned严格分开，不能把raw LPIPS的越界输入当标准质量主表。
+
+该结果支持先验证保留Rphi RGB、叠加生成残差的接口。H3的raw warm start与直接decode Rphi latent不同，MSE差不能当独立可加因果贡献或不可突破VAE下界。下一步按fixed_h3_rphi_plan内预声明R+beta(G_R−V_R)固定7点及同beta scalar控制，CPU复用现有缓存、0新H3；仍未实施/执行，无部署beta、无LoRA训练完成声明。不要重跑VAE或stage2。Faver/Aver完整同源native任务CPU质量队列正冻结runner与评分一致性门槛，实际启动以随后receipt为准。
+
+VAE审计最终补充：真正preclamp范围[-.1468,1.1587]，越界分量.277%–.806%；内部clamp只令PSNR提升.0012–.0333dB，不能解释主要损失。最终scientific_review SHA `408006a895a7b2feda1b863711fe78a6e5468ff7354377fc46cbe1e60c100105`。
+
+20:17:12，FaverNet/AverNet完整native质量smoke已在31984 CPU实际启动，tmux `native-quality-smoke-20261111`，supervisor562210；`preparation/native_quality_smoke_20261111_v1/queue_status.json` 为当前状态。20:18:49检查为Faver/deblur/infer、0/6完成、90秒峰值4.14GiB，无失败。每clip1800s/24GiB，只处理owned进程组；两个模型各同源3任务、22帧480×832完整offline、最多未来21帧，不读GT推理、不占NPU。admission SHA `0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0`，runner SHA `3fe3227d31a8870122e4dfbec96aa6a469e0569bc05c491deb8001644a290028`。独立metrics环境版本/函数/LPIPS权重gate通过，短timeout/RSS/normal三测试通过；独立review提出的新input基准质量/temporal数值配对gate已补。旧flow像素mask未归档，仅能核验数值支撑描述，不冒称像素级复验。
+
+基线本地receipt在 `preparation/native_baselines_cpu_20261111/evidence/quality_queue/`；推理输出预计 `runs/native_favernet_6UZVovkR3IU_smoke_20261111a` 与 `runs/native_avernet_6UZVovkR3IU_smoke_20261111a`。旧plan54min总推理估算算术错误，独立eta_correction更正为约74.68min+5–15min评分，粗估21:37–21:47SG，首完整clip后修订。未修改运行锁定文件。下次先查此队列，不重启健康作业；有完成结果一次打包小证据并验收。同步可准备预声明缓存compensation脚本，仍不要盲目新增H3调用或LoRA步数。
+
+20:21:52，本轮125个代码/计划/小证据文件已备份31984 `preparation/followup_20261111_2020/files`，归档1,044,777bytes、SHA `8ce18bc05aa745c9f1133d53cf94fdd4de5f0b1240b5489db267cf91f923d3b3`，逐文件大小/SHA全过。包含controls完成、scalar结果、VAE v1失败/v2完整验收、native CPU构建/真实质量队列启动；不含大NPZ。四最终checkpoint此前已独立核验备份，勿重复传输。

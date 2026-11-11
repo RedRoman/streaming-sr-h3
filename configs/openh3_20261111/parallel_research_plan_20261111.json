@@ -1,7 +1,7 @@
 {
   "schema": "openh3.parallel_research_plan.v1",
   "date": "2026-11-11",
-  "status": "proposed_not_implemented_not_launched",
+  "status": "P1_P2_untrained_scalar_and_VAE_diagnostics_complete_RGB_preserving_screen_next",
   "purpose": "Revise novelty claims after targeted primary-paper review; define bounded parallel experiments without changing pinned stage2 runtime.",
   "assessment": {
     "current": "Useful integration and experimental infrastructure; no demonstrated distinct method contribution or omni generalization yet.",
@@ -171,12 +171,13 @@
       ],
       "next_if_positive": "Design and train a guide-matched residual interface/LoRA for the useful component; compare against ordinary matched-guide LoRA with equal budget.",
       "depends_on": [
-        "stage2 candidate audit",
-        "real H3/VAE smoke",
-        "fixed raw-guide/R_phi-guide float32 output cache; one-source ordinary cache now available",
-        "clean/near-clean H3 control implementation before protection claims"
+        "stage2 candidate audit completed",
+        "real H3/VAE smoke completed",
+        "ordinary and clean/near-clean fixed H3 float32 caches now available for one source",
+        "VAE-only diagnostic to distinguish representation loss from added generation error"
       ],
-      "preparation_status": "One-source ordinary H3 float caches now exist; compression is a strong negative case. Clean/near-clean H3 remains next. P3 decomposition itself is not implemented or evaluated."
+      "preparation_status": "One-source ordinary/control H3 caches, scalar grid and VAE-only diagnostics complete. Strong VAE reconstruction loss in clean/near-clean/compression; fixed cached compensation next. Orthogonal-band experiment remains unrun.",
+      "scalar_precursor_review": "results/takeover_20261111/fixed_h3_residual_mix_review_20261111.json"
     }
   ],
   "action_risk_control": {
@@ -193,10 +194,10 @@
     "existing_diagnostic": "results/takeover_20261111/rphi_selection_headroom_20261111.json"
   },
   "next_actions": [
-    "Finish unchanged stage2 audit; keep native encoder negative result.",
-    "Prepare P1 history-removal/label contract and ordered temporal CPU data; P2 synthesis can run independently.",
-    "Continue native FaverNet/AverNet runtime preparation and add LaverNet/TURTLE as directly relevant literature/mechanism controls; do not claim unavailable implementations are runnable.",
-    "Generate fixed H3 cache after its existing gate, then P3 CPU screening.",
-    "Run bounded P1/P2 screens only after prerequisites; select one supported central mechanism before more expensive guide-matched LoRA."
+    "Stage2 independent audit complete; retain negative native-encoder result and legacy reference without claiming omni quality acceptance.",
+    "P1 teacher/removal/label contract prepared; ordered temporal data and P2 source-paired CPU synthesis remain pending.",
+    "FaverNet/AverNet official CPU synthetic forwards and input-only preflight passed; execute bounded same-source native quality smoke with explicit offline access and matched metric environment.",
+    "Ordinary/control fixed H3 caches and scalar residual precursor complete; VAE diagnostic completed and reviewed; run predeclared cached compensation screen before new generator sampling or LoRA.",
+    "Run bounded P1/P2 screens only after prerequisites; select a supported central mechanism before expensive guide-matched LoRA."
   ]
 }

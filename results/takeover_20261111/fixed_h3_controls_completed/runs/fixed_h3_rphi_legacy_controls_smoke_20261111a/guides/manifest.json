@@ -1,0 +1,1994 @@
+{
+  "schema": "rphi.h3_control_export.v1",
+  "complete": true,
+  "controls": [
+    "identity",
+    "near_clean"
+  ],
+  "condition_mode": "observations_only",
+  "split": "dev",
+  "ordinary_tasks_included": false,
+  "scope": "control_engineering_subset",
+  "checkpoint": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+  "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "checkpoint_step": 3000,
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "model_schema": "rphi.canonical_rgb.v1",
+  "training_contract": {
+    "schema": "rphi.training_contract.v1",
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "train_source_ids": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "4bXb6GLm6zg",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "75UH33tO0Bo",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "DtgdD48804M",
+      "E_W73B44qOk",
+      "Gf6owJ8AY2E",
+      "H2pTKitY56w",
+      "HOsBXlQHWdE",
+      "HU9sbY3A1bo",
+      "JLyjEE1UKaU",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "JnbfAFodjZg",
+      "Kc0bCgT5P04",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q0-CI3XJvxw",
+      "Q975D6bpK_c",
+      "SJ-_0uGIL1c",
+      "VPp9ArDokWY"
+    ],
+    "train_source_sha256": [
+      "046f806a886ce145113c8008bb05d7aac220a244c6732cf4588febfcdd2128f0",
+      "0c5cd9b83eb2a791f307b1e620e2b9ef647536e994d72c3174abf95225165d46",
+      "141a8d5061804e39eae68c9a1b5556e60ffcd20388570f121b1a2299395a1801",
+      "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f",
+      "1a84cbf1b5080ade2e9652490823494a9a0869639f22bcda20cd26b53054773e",
+      "1acb0d03f85c15d2a98e8b8c0a2eb7502c75c1c494b0be190dbf96778fde06f9",
+      "2e2fdbc2dd151f4db19d83f3c618f2ca63a2bc184dd2fc950b8d4f336a091673",
+      "3a6ae69227924cdcb2ead52acf0f11cd094125dc7f9791485f8ef1af11404230",
+      "3ba7ac5e307be4a19a961150126a2ab5d2baa63a768a058a1a1c1ee21c8fcfb1",
+      "51c07a02ddd3ebe97dc3938a9cfa47ee5803a5e2f21e1724c7f2326ff7dfc530",
+      "528467e02fc259a1965fbd3036da85797eb35f1e2e970bacf9a0abe3b25b4bad",
+      "7704eea2ee4f311a29a1eedba84f2d2475b8ac9374896cad5c36cf1d24de0c32",
+      "77ecfddda8b9591b83e2aaed31ea6d8ceb4d4eb428ad9d35fae0dce0123179ce",
+      "80045af82f111282ede681e52f2afc7b2261575e3ca1225234bb9581f55e4ad1",
+      "84bc4c6400a8692a54b60811d7dcc5d3995a5ac58b2f2fb0240ab05a27ef04ed",
+      "944e1d3cf3f4db7a2ad37e898562243966c96716c0dd5256729ad2d024bdf5f1",
+      "ab0e2dcbd29861bd2a04b078bc5fc567b199218df13b9ad1ff7a0efec5b3dff7",
+      "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "b9c21383b06241c7deb486b96c35123baf50ebffb06e3df8907c6909eb7a4c8b",
+      "be96bc2d913f8429fb2060d00f4156d177b38e8e8688700097cb8e9daaac4bd0",
+      "bfed7427204cea9f5a7a84ff908e327c714c815c3a96282d36da08b04b7204cc",
+      "c671925f6231590b131b1efc94a6514778baa79c1165b518cc8864586e5ac10a",
+      "d0f51330782d6928e78bc5de2a9b4e251d27c93661d18a53fc82ed5acb6987ba",
+      "d4600b5b4c9609251539ac45c58aff31789eef2b1465f572cc275b0df1617b2a",
+      "d77fcd631a825f4ee46a3d1f294ca9580563c5a6929aaab0c182320a003bd016",
+      "daa90f52b75a71d9ded5ef0c9cd47ada37fb8e904096f4b90ad7047686cec935",
+      "dda7753e9ae9fcef00b92445eae7ae695338d1f0cc2d13adfdfca0feab21cded",
+      "e271d063cbd18f5f404a780725c1950e58f60325159427f5c0c3277e2f2437e8",
+      "e84bab5f4f2855676e18b94ddf7b78f6c9fde1eecf360d71fba89b3a5eb73512",
+      "e9af8f9ad9efd82387d9634dce2b60e27ffcef089430395451f0e9c858306d8f",
+      "ec35a1ed3acf6d935bbb0b294adf5bd9c544908d99c95f317d3d21a7f9632718",
+      "fdc47208eb97518887999ce59d18cc45891600fed09cce5c356bb3fa3a08b31d"
+    ],
+    "dev_source_ids": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "KR4M9nGv2is",
+      "MjfCH89sBzs",
+      "NPCSVxYpK3k"
+    ],
+    "task_order": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "target": "clean_original_recording",
+    "target_limit": "screened original recording is a clean-reference proxy, not pristine GT",
+    "source_verification": "original source SHA was verified at materialization; this run re-verifies NPZ content/provenance",
+    "guide_geometry": "SR: float Torch bicubic antialias to HR; native tasks: unchanged RGB",
+    "anchor": "Q4(rgb), canonical Torch bicubic antialias, NOT the physical observation operator",
+    "k": 3,
+    "crop": 96,
+    "seed": 20261111,
+    "observation_encoder": "legacy",
+    "observation_encoder_scope": "blind variants only; known always uses public-condition MLP",
+    "steps": 3000,
+    "batch_size": 16,
+    "optimizer": {
+      "class": "torch.optim.AdamW",
+      "base_lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "confidence": "same settings in a separate optimizer when head is present",
+      "gradient_clipping": {
+        "max_norm": 1.0,
+        "norm_type": 2.0,
+        "error_if_nonfinite": true,
+        "groups": "fidelity and confidence separately"
+      }
+    },
+    "lr_schedule": {
+      "name": "linear_warmup_then_cosine_floor",
+      "warmup_steps": 50,
+      "total_steps": 3000,
+      "minimum_multiplier": 0.2,
+      "warmup": "min(1, step / max(1, warmup_steps))",
+      "decay": "0.2 + 0.4 * (1 + cos(pi * max(0, step-warmup_steps) / max(1, total_steps-warmup_steps)))",
+      "application": "base_lr * warmup * decay; same schedule for both optimizers"
+    },
+    "determinism": {
+      "requested": "inherit",
+      "runtime": {
+        "requested": "inherit",
+        "torch_deterministic_algorithms": false,
+        "torch_deterministic_warn_only": false,
+        "float32_matmul_precision": "highest",
+        "cpu_threads": 8,
+        "device": "npu:0",
+        "torch_version": "2.10.0+cpu",
+        "torch_npu_version": "2.10.0.post2",
+        "environment": {
+          "HCCL_DETERMINISTIC": null,
+          "ASCEND_LAUNCH_BLOCKING": null
+        },
+        "npu": {
+          "jit_compile": false,
+          "matmul_allow_hf32": false,
+          "conv_allow_hf32": false
+        },
+        "bitwise_reproducibility_claimed": false
+      },
+      "seed_policy": "Python/NumPy/Torch seeded before CPU model initialization; NPU seeded when used",
+      "bitwise_reproducibility_claimed": false
+    },
+    "sampling": "step-addressed PCG64, balanced task slots; identical for every arm",
+    "identity_fraction": 0.125,
+    "near_clean_fraction": 0.125,
+    "near_clean": "data module fixed low Gaussian sigma recipe; source frames stay in original split",
+    "loss": {
+      "rgb": "Charbonnier eps=0.001",
+      "edge_l1_weight": 0.1,
+      "identity_guard_weight": 0.5,
+      "confidence_nll_weight": 1.0,
+      "confidence": "detached error Gaussian NLL; separate optimizer; no fidelity reweighting"
+    },
+    "evaluation": "final checkpoint, all dev tasks, original RGB; training crop validation is diagnostic only",
+    "rphi_scope": "standalone canonical RGB prototype; no H3 integration, soft DC or recurrent state yet",
+    "initial_backbone_sha256": "2f54f6913177ec1f64a08659ece8d6b4486785a7fd6f908491ff19a8cb921a81"
+  },
+  "checkpoint_implementation_sha256": {
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9"
+  },
+  "stage2_export_proof": {
+    "inference_implementation_verified": true,
+    "implementation_sha256": {
+      "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301"
+    },
+    "fidelity_state_sha256": "70bfaee578a59764c5d4ad0404a9aa9d02cd6a543df71694c8a4a0ef484a31f0",
+    "source_checkpoint_sha256": null,
+    "calibration_contract": null,
+    "calibration_step": null,
+    "fidelity_invariance": null,
+    "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617"
+  },
+  "implementation_sha256": {
+    "code/rphi_h3_controls.py": "ca515675deda019e885bd24c218c7c2fbce7f9749a5f029d764e3562f9c1b8de",
+    "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/export_rphi_guides_stage2.py": "f52212f0126985112e0be403992d067bcb3bc6486d18a19534124d9c8904dace",
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/run_fixed_h3_rphi.py": "05383516e55d395f161337df26568d34e7d6add1092786db640f9c8aaa33630d",
+    "code/openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa"
+  },
+  "dev_manifest": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "source_ids": [
+    "6UZVovkR3IU"
+  ],
+  "available_sources": 8,
+  "frame_batch": 1,
+  "device": "npu:0",
+  "identity_repetition": "same source/target under four task labels; never count these as independent sources",
+  "near_clean_repetition": "four deterministic task-keyed noise draws per source/target; source remains statistical unit",
+  "rgb_semantics": "float32 THWC rgb=clip(raw_rgb,0,1); input_rgb=uint8 control input/255; no output quantization",
+  "log_variance_semantics": "optional isotropic per-channel log variance for raw_rgb; calibration only",
+  "dataset_provenance": {
+    "schema": "openh3.materialized_omni_pilot.v1",
+    "manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "original_source_verification": "materialization_attestation_only",
+    "current_npz_verification": "receipt_file_and_pixel_sha256",
+    "target_semantics": "shared clean original-recording RGB reference proxy",
+    "task_order": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "condition": "public onehot4 + log2(nominal scale)/3 + known_mask",
+    "control_condition": "retain nominal task/scale; control label is not a model condition",
+    "near_clean_sigma_8bit": 1.0,
+    "sr_input_preparation": {
+      "implementation": "torch.nn.functional.interpolate",
+      "mode": "bicubic",
+      "align_corners": false,
+      "antialias": true,
+      "range": "float32 [0,1], clamped after resize",
+      "role": "HR input guide; not the physical forward operator"
+    }
+  },
+  "per_sample": [
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "compression",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-identity",
+      "parent_sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "control": "identity",
+      "record_sha256": "fb5057fa4537572d347bbaae6b327d649eda3d45b33027ca549f756b9c434f88",
+      "control_recipe": {
+        "control": "identity",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": null,
+        "sigma_8bit": 0.0,
+        "implementation": "identity uint8 copy",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "e98c4eb4c3e2c33abe51cfce5f62197133adb06e04500aa130e422cf457934e3",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-identity.npz",
+      "guide_file_sha256": "5bdd6ce1f4fefd2710864ad7836a462ef236ddef12fa5e049adbaaf51a6bc087",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "e1602058d490e511095f4071408edd9d748e587b45edc617c605678fbc44f61f"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "84c97688b959e06d14f211469972673ab20023e90c3e7bb1c01a8ec90dc06245"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "dd9b8b7c0397d7d971aa7f643353ec6e7b2fd35ff9a7fe0944a69302f926eba4"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.009961127197455323,
+        "raw_min": -0.01704052835702896,
+        "raw_max": 1.027143955230713
+      },
+      "provenance_json": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-identity.json",
+      "provenance_file_sha256": "34b4abe06bcbcfe724ea1c5a44c003d5730fda27ed1333cef6fa2de92a8f0fce"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "compression",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-near_clean",
+      "parent_sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "control": "near_clean",
+      "record_sha256": "fb5057fa4537572d347bbaae6b327d649eda3d45b33027ca549f756b9c434f88",
+      "control_recipe": {
+        "control": "near_clean",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": 3192222159304101944,
+        "sigma_8bit": 1.0,
+        "implementation": "rphi_data.make_near_clean: PCG64 float32 Gaussian, rint ties-even, clip, uint8",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "6abf95ab01955d723ef74c17aa6597d0e8dad8ac623d05f917fec0bbaed3904e",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "e98c4eb4c3e2c33abe51cfce5f62197133adb06e04500aa130e422cf457934e3",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-near_clean.npz",
+      "guide_file_sha256": "a001ac59298edda86fade76f37a158a3de8354a8c31527f804695e6852e6316c",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "df53df3bf6647e185c227a6b31762c974cf63e391e6745aace92b356da98df36"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "1db2b53d542239f4c9e38e66769c1020c8bab373d1d4a92e63488913cf526200"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "ccb91db8ac35710d85a66e0281cec508471ea175f7126d8406d167058fa1e8d4"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.007184639362373737,
+        "raw_min": -0.01762704737484455,
+        "raw_max": 1.0257631540298462
+      },
+      "provenance_json": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-near_clean.json",
+      "provenance_file_sha256": "4807e6121bf83eb882c01a0d529cf9b0f55d1bac03553828af3542d28f67f779"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "deblur",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-identity",
+      "parent_sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "control": "identity",
+      "record_sha256": "4f12e481b792eb46fe7a27066a2a7bf33b4776f406c4153f59d5bd5ad66d5754",
+      "control_recipe": {
+        "control": "identity",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": null,
+        "sigma_8bit": 0.0,
+        "implementation": "identity uint8 copy",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "82fee0f9fcca222aafc1d373c475ccffbf0175046b51f16814dec160da066cfa",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-identity.npz",
+      "guide_file_sha256": "5bdd6ce1f4fefd2710864ad7836a462ef236ddef12fa5e049adbaaf51a6bc087",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "e1602058d490e511095f4071408edd9d748e587b45edc617c605678fbc44f61f"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "84c97688b959e06d14f211469972673ab20023e90c3e7bb1c01a8ec90dc06245"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "dd9b8b7c0397d7d971aa7f643353ec6e7b2fd35ff9a7fe0944a69302f926eba4"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.009961127197455323,
+        "raw_min": -0.01704052835702896,
+        "raw_max": 1.027143955230713
+      },
+      "provenance_json": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-identity.json",
+      "provenance_file_sha256": "e93fbcf84bb9d7c2016740dc7eb8ffb2edd5c431ac1602db4c8e7aae4a7fbe80"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "deblur",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-near_clean",
+      "parent_sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "control": "near_clean",
+      "record_sha256": "4f12e481b792eb46fe7a27066a2a7bf33b4776f406c4153f59d5bd5ad66d5754",
+      "control_recipe": {
+        "control": "near_clean",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": 1967346480974128519,
+        "sigma_8bit": 1.0,
+        "implementation": "rphi_data.make_near_clean: PCG64 float32 Gaussian, rint ties-even, clip, uint8",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "eb28bd585970fe485865bce05d7f12e6942e0c4182bb3f1eb98552be8d0a88ee",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "82fee0f9fcca222aafc1d373c475ccffbf0175046b51f16814dec160da066cfa",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-near_clean.npz",
+      "guide_file_sha256": "136e9522a6e9b2ad6f741f2e18ec8e550cf57694ca508aa2b4511b241f4d0be1",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "1420b5f3979e8820db91c7c26e2700d87a90962d098b1152eac60a34d37c082a"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "26ba602aa98015af3c2a814a058492acd8eebdcb5d59e8a61edb9ec22ba241ed"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "f17db037ae92bf8dfd011c38b504ee2df9d1620d6f79735265a9b9d057eb9480"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.007180238381410256,
+        "raw_min": -0.017145993188023567,
+        "raw_max": 1.025123119354248
+      },
+      "provenance_json": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-near_clean.json",
+      "provenance_file_sha256": "ffeb4b52e826295daa4a845af88fb270379d2c81046d73c0b010742a3b5b850a"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "denoise",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-identity",
+      "parent_sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "control": "identity",
+      "record_sha256": "e549b761886f530e8d93585b63a86e405774381afc1cdee0cb6700f7e55f878a",
+      "control_recipe": {
+        "control": "identity",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": null,
+        "sigma_8bit": 0.0,
+        "implementation": "identity uint8 copy",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "37e17f613fc63a5ce59df00e11463776a48f5db3aa7ae2e6573c8dcdd6a22adb",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-identity.npz",
+      "guide_file_sha256": "5bdd6ce1f4fefd2710864ad7836a462ef236ddef12fa5e049adbaaf51a6bc087",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "e1602058d490e511095f4071408edd9d748e587b45edc617c605678fbc44f61f"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "84c97688b959e06d14f211469972673ab20023e90c3e7bb1c01a8ec90dc06245"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "dd9b8b7c0397d7d971aa7f643353ec6e7b2fd35ff9a7fe0944a69302f926eba4"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.009961127197455323,
+        "raw_min": -0.01704052835702896,
+        "raw_max": 1.027143955230713
+      },
+      "provenance_json": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-identity.json",
+      "provenance_file_sha256": "0727e7f925cd1c2b4790b6b73f1a7cdf14e422d62908142c9b9ce142283d3a63"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "denoise",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-near_clean",
+      "parent_sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "control": "near_clean",
+      "record_sha256": "e549b761886f530e8d93585b63a86e405774381afc1cdee0cb6700f7e55f878a",
+      "control_recipe": {
+        "control": "near_clean",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": 1585384664942526951,
+        "sigma_8bit": 1.0,
+        "implementation": "rphi_data.make_near_clean: PCG64 float32 Gaussian, rint ties-even, clip, uint8",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "eff75344dcea4785028e82cb58e63a1afc7ba83980f82531999ce3ec664ddbda",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "37e17f613fc63a5ce59df00e11463776a48f5db3aa7ae2e6573c8dcdd6a22adb",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-near_clean.npz",
+      "guide_file_sha256": "4388dd45ac2efb010749a0dc98c25ced4b5f6f713242f511cc3e30fd4c200a9f",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "4cfc281346a1a391d9cea4378ab8ef8649f3d6ce357f311d47b717fad30c9de2"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "b750a34030f8cff017d128a380dd4961ec5023d08321b9ade8ad738c9deefa9a"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "bbd356c5ff522415c1835edfcee01a96c4f9c59003c5165c4f3a9fd117ded9c0"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.007195490056818182,
+        "raw_min": -0.01677168719470501,
+        "raw_max": 1.025681495666504
+      },
+      "provenance_json": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-near_clean.json",
+      "provenance_file_sha256": "5b12cb07c42d437b34c628c907d7965c00ba3b4f41ca314d8fd3813806f6b296"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "sr",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity",
+      "parent_sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "control": "identity",
+      "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+      "control_recipe": {
+        "control": "identity",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": null,
+        "sigma_8bit": 0.0,
+        "implementation": "identity uint8 copy",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "c467b6b518f5b3d63bb55173599b74b6f96df6457002832dcd9efff66cb28e1c",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity.npz",
+      "guide_file_sha256": "5bdd6ce1f4fefd2710864ad7836a462ef236ddef12fa5e049adbaaf51a6bc087",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "e1602058d490e511095f4071408edd9d748e587b45edc617c605678fbc44f61f"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "84c97688b959e06d14f211469972673ab20023e90c3e7bb1c01a8ec90dc06245"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "dd9b8b7c0397d7d971aa7f643353ec6e7b2fd35ff9a7fe0944a69302f926eba4"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.009961127197455323,
+        "raw_min": -0.01704052835702896,
+        "raw_max": 1.027143955230713
+      },
+      "provenance_json": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity.json",
+      "provenance_file_sha256": "a647a815135aa5ff206c16b35d8add85f1a4ab261180c19bf462a863efbca7c0"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "sr",
+      "split": "dev",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean",
+      "parent_sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "control": "near_clean",
+      "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+      "control_recipe": {
+        "control": "near_clean",
+        "reference": "clean_original_recording",
+        "reference_derived_control": true,
+        "ordinary_observation_used": false,
+        "seed": 7388689528909731713,
+        "sigma_8bit": 1.0,
+        "implementation": "rphi_data.make_near_clean: PCG64 float32 Gaussian, rint ties-even, clip, uint8",
+        "geometry": "native HR control input for every task label; no SR downsample",
+        "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+      },
+      "control_input_pixel_sha256": "54f8dda3757990d92fa71038a199ba01e8762677fce99bf5c5b7d6a66cab74cd",
+      "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "original_observation_file_sha256": "c467b6b518f5b3d63bb55173599b74b6f96df6457002832dcd9efff66cb28e1c",
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "checkpoint_step": 3000,
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      },
+      "condition_mode": "observations_only",
+      "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "history_indices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          11
+        ],
+        [
+          10,
+          11,
+          12
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          13,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          16
+        ],
+        [
+          15,
+          16,
+          17
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          17,
+          18,
+          19
+        ],
+        [
+          18,
+          19,
+          20
+        ],
+        [
+          19,
+          20,
+          21
+        ]
+      ],
+      "guide_npz": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean.npz",
+      "guide_file_sha256": "280289fd0b845aab402592286b5400344da61413a703b5e543d4e6f771b7abb3",
+      "arrays": {
+        "input_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "57208b5e66545266b464e22dd20724e1d436126f16b6c58d0ded018023381af3"
+        },
+        "rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "61a5feab27bb84b85b96112f174b7e4af72a5f4a2d30161dc18bce812283c4f9"
+        },
+        "raw_rgb": {
+          "shape": [
+            22,
+            480,
+            832,
+            3
+          ],
+          "dtype": "float32",
+          "array_sha256": "29eb36bd9e9fb583f661937b536c181406bab569bdd5ced0e201cd5188b21ea2"
+        }
+      },
+      "clipping": {
+        "component_fraction": 0.007191923744658119,
+        "raw_min": -0.016933050006628036,
+        "raw_max": 1.0256602764129639
+      },
+      "provenance_json": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean.json",
+      "provenance_file_sha256": "4862c835b48d18cf5090709953303f168d4ede31e56e06892ef2daa87fbb4e20"
+    }
+  ],
+  "samples": 8,
+  "materialization_receipt_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/complete.json": "bb1e78a89620ac07f517024893c5f778700c569870477dabb9896e9758417c7a"
+  }
+}

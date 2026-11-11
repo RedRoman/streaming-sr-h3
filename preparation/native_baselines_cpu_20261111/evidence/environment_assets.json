@@ -1,0 +1,61 @@
+{
+  "schema": "native_cpu_environment_assets_v1",
+  "host": "huawei-modelarts-31984",
+  "isolated_prefix": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv",
+  "torch_path": "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/__init__.py",
+  "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+  "platform": "Linux-4.19.90-vhulk2211.3.0.h1543.eulerosv2r10.aarch64-aarch64-with-glibc2.34",
+  "npu_autoload_disabled": true,
+  "packages": {
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "numpy": "2.5.4",
+    "mmengine": "0.10.7",
+    "mmcv": null,
+    "ninja": "1.13.0",
+    "setuptools": "80.10.2",
+    "opencv-python": "5.0.0.93",
+    "addict": "2.4.0",
+    "yapf": "0.43.0"
+  },
+  "assets": {
+    "FaverNet_TUDCommon.pth": {
+      "sha256": "c16e5658a639810bb17dc4bc131a631bde6491f9fb5a790c8952dfa16ccdc7b8",
+      "bytes": 52511325,
+      "state_keys": 532,
+      "wrapper": "raw_state_dict",
+      "spynet_keys": 62,
+      "tensor_elements": 13082757,
+      "state_payload_deserialized_only_not_model_strict_load": true
+    },
+    "AverNet_final.pth": {
+      "sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+      "bytes": 165529244,
+      "state_keys": 354,
+      "wrapper": "params",
+      "spynet_keys": 62,
+      "tensor_elements": 41347566,
+      "state_payload_deserialized_only_not_model_strict_load": true
+    },
+    "spynet_sintel_final-3d2a1287.pth": {
+      "sha256": "3d2a1287666aa71752ebaedc06999212886ef476f77d691a1b0006107088e714",
+      "bytes": 5770711,
+      "state_keys": 60,
+      "wrapper": "params",
+      "spynet_keys": 0,
+      "tensor_elements": 1440300,
+      "state_payload_deserialized_only_not_model_strict_load": true
+    }
+  },
+  "source_trees": {
+    "FaverNet": {
+      "sha256": "d248b456a319dbd72e1e74125587123ecbb3a8e43ea66d8bb3637ccdf93a05ab",
+      "python_files_matched": 12
+    },
+    "AverNet": {
+      "sha256": "d5039363b6335c824c354251cc170e743b4dfab1114a6a822a09e4f519653b37",
+      "python_files_matched": 38
+    }
+  },
+  "compiler": "g++ (GCC) 10.3.1"
+}

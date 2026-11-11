@@ -1,6 +1,6 @@
 {
   "schema": "openh3.checkpoint_backup_progress.v1",
-  "complete": false,
+  "complete": true,
   "source_host": "30794",
   "target_host": "31984",
   "source_archive": "/cache/zihaohe/omni_openh3_20261111/preparation/stage2_final_checkpoints_backup_20261111/checkpoints.tar.gz",
@@ -8,21 +8,32 @@
   "expected_archive_sha256": "ada3b570063461a31f777f2525eb44e4e5a6cc45793027ac3ad0fe8396f1c1ef",
   "local_archive": "tmp/stage2_checkpoints_20261111.tar.gz",
   "background_download_session": "omni-stage2-checkpoints-download-20261111",
-  "phase": "background_scp_download_in_progress",
+  "phase": "completed_verified_on31984",
   "foreground_failure": "Tool returned after300s while SFTP continued briefly; JS was stopped before extraction. Subsequent lsof showed no writer before starting this background transfer. Do not treat tool timeout as cancel confirmation.",
   "invalid_partial_target_archive": "/cache/zihaohe/omni_openh3_20261111/preparation/stage2_final_checkpoints_backup_20261111.tar.gz",
   "invalid_partial_target_bytes_observed": 12794880,
-  "target_checkpoint_extraction_verified": false,
+  "target_checkpoint_extraction_verified": true,
   "next": [
-    "Read transfer_status for the named background session; do not duplicate a healthy transfer.",
-    "After completion verify exact local size and archive SHA; never upload unverified/truncated bytes.",
-    "Use ssh_upload_bg to a new target archive path, wait for completion, verify remote archive SHA, then extract to a new checkpoint backup directory and verify all four receipt hashes.",
-    "Record completed backup evidence only after all four checksums agree."
+    "Backup is complete. Do not repeat transfer. Original partial archives are not the verified archive."
   ],
   "original_checkpoints_on_30794_preserved": true,
   "small_code_plan_evidence_backup_31984_verified": {
     "files": 18,
     "archive_sha256": "5e7dd51858135dffa055458ee0f5e33b2fd1c2e6ac2dce160048615cc06e683d",
     "target": "preparation/followup_20261111_1800"
-  }
+  },
+  "failed_background_download_exit": 255,
+  "verified_local_archive": "tmp/stage2_checkpoints_verified_20261111.tar.gz",
+  "local_archive_sha256_verified": true,
+  "local_checkpoint_hashes_verified": 4,
+  "remote_prefix_bytes_verified": 12794880,
+  "remote_prefix_sha256": "bba72cfb27688ae24418912f26e9a400eec8179ed635ca5bef1c6b0fe0f441a6",
+  "upload_parts_directory": "/cache/zihaohe/omni_openh3_20261111/preparation/stage2_checkpoint_upload_parts_v2",
+  "upload_parts": 11,
+  "upload_max_part_bytes": 1000000,
+  "verified_at_utc": "2026-11-11T11:06:57.446968+00:00",
+  "target_directory": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111_backup_30794_v2",
+  "target_archive": "/cache/zihaohe/omni_openh3_20261111/preparation/stage2_checkpoint_upload_parts_v2/verified_checkpoints.tar.gz",
+  "verification_receipt": "results/takeover_20261111/stage2_checkpoint_backup_verified_31984.json",
+  "checkpoint_hashes_verified": 4
 }

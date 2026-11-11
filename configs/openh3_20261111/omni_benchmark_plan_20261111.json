@@ -1,10 +1,10 @@
 {
   "schema": "openh3.omni_benchmark_research_plan.v1",
   "date": "2026-11-11",
-  "status": "reviewed_plan_not_executed",
+  "status": "VAE_failure_mode_audited_native_quality_smoke_running",
   "scope": "Single-checkpoint blind video restoration for SR, native deblur, denoise and compression; target geometry remains an explicit input. No claim to every possible degradation or audiovisual restoration.",
   "evidence": {
-    "current_stage": "standalone R_phi RGB pilot and separate raw-guide H3 LoRA pilot; combined system not validated",
+    "current_stage": "Stage2,fixed H3 ordinary/control,scalar grid,VAE diagnostic complete and independently audited. Native FaverNet/AverNet CPU one-source quality smoke launched20:17SG; no quality result yet. Cached RGB-preserving interface screen next; LoRA not yet retrained.",
     "known_rphi_dev_psnr_gain_db": {
       "sr": 0.035531,
       "deblur": 0.085502,
@@ -16,8 +16,31 @@
     "historical_predicted_range_on_flashvsr_plus_lpips_delta": 0.01322,
     "historical_result": "results/FROZEN.json",
     "interpretation": "Denoising gains dominate this small development set. Neither universal restoration nor universal benefit from a predicted anchor is established.",
-    "latest_matched_stage2_review": "results/takeover_20261111/rphi_stage2_first_pair_review.json",
-    "latest_interpretation": "First two 3000-step arms do not support a native-encoder gain; neither has positive mean compression PSNR versus input. Earlier known-1000 results remain historical, not current candidate acceptance."
+    "latest_matched_stage2_review": "results/takeover_20261111/rphi_stage2_scientific_review_v2.json",
+    "latest_interpretation": "Legacy retained as frozen reference; native encoding and strong guard lack overall gain. Fixed H3 trades distortion for perception and harms clean controls; one source cannot establish omni quality. Diagnose the interface before corrective LoRA.",
+    "latest_fixed_H3_controls_review": "results/takeover_20261111/fixed_h3_controls_review_20261111.json",
+    "native_CPU_forward_summary": "preparation/native_baselines_cpu_20261111/evidence/summary.json",
+    "VAE_completed_evidence": "results/takeover_20261111/vae_roundtrip_v2_completed",
+    "latest_VAE_review": "results/takeover_20261111/vae_roundtrip_v2_completed/scientific_review.json",
+    "VAE_paired_read": "Clean Rphi55.6837dB -> VAE(Rphi)36.0147dB; compression40.4759 ->35.4416. H3(Rphi) has larger MSE than VAE(Rphi), but fixed raw warm start differs from direct Rphi-latent decoding; no diffusion-only causal decomposition or irreducible lower bound claimed.",
+    "native_quality_queue": {
+      "host": "31984",
+      "status": "running",
+      "queue_status": "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/queue_status.json",
+      "tmux": "native-quality-smoke-20261111",
+      "started_at_local": "2026-11-11T20:17:12+08:00",
+      "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
+      "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
+      "latest_snapshot": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/partial_snapshot.json",
+      "last_verified_local": "2026-11-11T20:18:49+08:00",
+      "last_verified_current": "favernet/deblur/infer",
+      "completed_forwards": 0,
+      "maximum_forwards": 6,
+      "model_quality_results_available": false,
+      "NPU_used": false,
+      "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
+      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity."
+    }
   },
   "baseline_registry": [
     {
@@ -26,7 +49,7 @@
       "role": "native same-resolution denoise, deblur and compression; unknown time-varying degradation",
       "repository": "https://github.com/XLearning-SCU/2026-IJCV-FaverNet",
       "paper": "https://doi.org/10.1007/s11263-026-02977-y",
-      "availability": "Official source and Common/SPyNet weights downloaded with hashes and backed up on31984; lossless adapter CPU tests/input preflight passed; strict weight load and real model inference not validated.",
+      "availability": "Official source and weights locked; isolated31984 official MMCV CPU DCN numerical check, strict532-key load and actualT2 256x256 CPU forward passed. Restoration-quality, Ascend and CUDA validation remain pending.",
       "constraints": "bidirectional offline; Common and Weather use separate checkpoints; no native x4 SR evidence; MMCV deformable convolution and CUDA paths require Ascend audit"
     },
     {
@@ -35,7 +58,7 @@
       "role": "native unknown/time-varying multi-degradation baseline",
       "repository": "https://github.com/XLearning-SCU/2024-NeurIPS-AverNet",
       "paper": "https://papers.nips.cc/paper/2024/hash/e635a25e49e73adc51f76aef462ff2f8-Abstract-Conference.html",
-      "availability": "Official source and model/SPyNet weights downloaded with hashes and backed up on31984; lossless adapter CPU tests/input preflight passed; strict weight load and real model inference not validated.",
+      "availability": "Official source and weights locked; isolated31984 official MMCV CPU DCN, strict354-key load and actualT2 256x256 CPU forward passed through explicit architecture-only import; official package entry fails missing pyiqa. Quality/Ascend/CUDA validation remain pending.",
       "constraints": "bidirectional offline; resizing blur is not an LR-to-HR x4 SR protocol"
     },
     {
@@ -187,12 +210,12 @@
   },
   "novelty_policy": "Targeted review on2026-11-11 found direct prior art for H1 and generic H2. Neither is a main novelty claim. See parallel_research_plan_20261111.json for narrowed falsifiable hypotheses and controls; no first/SOTA claim is established.",
   "execution_order": [
-    "finish and audit the unchanged stage2 matrix",
+    "preserve the completed stage2 audit and negative results",
     "repair fair RGB transport and validate native baselines",
     "prepare P1 temporal utility and P2 paired-order pilot data and contracts",
-    "run fixed H3 guide/anchor controls after candidate gate; reuse cache for P3 residual diagnosis",
+    "Completed fixed H3 controls and scalar precursor; audit VAE evidence then execute predeclared cached compensation/interface screen, retaining all clean/near-clean negative results.",
     "bounded matched-capacity P1/P2 screens; action-risk remains a control",
-    "train matched-guide LoRA only after a useful frozen interface is identified",
+    "define bounded guide-matched corrective LoRA after interface failure modes and matched controls are specified; frozen H3 need not already win everywhere",
     "evaluate untouched source groups"
   ],
   "novelty_review": "configs/openh3_20261111/parallel_research_plan_20261111.json"

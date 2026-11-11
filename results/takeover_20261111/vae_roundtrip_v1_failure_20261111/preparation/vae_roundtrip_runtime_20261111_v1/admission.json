@@ -1,0 +1,41 @@
+{
+  "schema": "openh3.vae_diagnostic_admission.v1",
+  "complete": true,
+  "allow_one_source_vae_diagnostic": true,
+  "reason": "Completed one-source H3 ordinary/controls show loss; isolate exact VAE representation path before any further generation or training.",
+  "ordinary_engineering_review_sha256": "c5ad79a77468f460af4c38d79d9d354cc79bcc7d3667f196da36a65a4e270f34",
+  "controls_engineering_review_sha256": "c837e2b9bec57707619c63ab347b32c4356ba9a01597c2d18a2bf38763d5c0e2",
+  "ordinary_metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "controls_metrics_sha256": "7f00ecc860d38d21f7e84a2929e56f0aa4b63954eb0b5ebc0b6add0b069bceaf",
+  "cpu_tests_receipt_sha256": "d9a884cc30896d1e5fadfa9058c8df383e03941ab2f800c7e8a344276847794f",
+  "cpu_inspection_receipt_sha256": "55e08faea82765fdb0fa4f787fcbe141497e33ec300ccb2185f0b5089441450b",
+  "cpu_tests_passed": 6,
+  "cpu_inputs_verified": true,
+  "scope": {
+    "source_ids": [
+      "6UZVovkR3IU"
+    ],
+    "ordinary_items": 4,
+    "control_items": 8,
+    "maximum_VAE_roundtrips": 24,
+    "H3_sampler_calls": 0,
+    "NFE": 0,
+    "frame_stride": 1,
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ]
+  },
+  "hard_gates": [
+    "Input float32 RGB hashes exactly match previous H3 calls.",
+    "Each normalized encoded latent hash exactly matches previous H3 guide latent.",
+    "Captured pre-internal-clamp RGB clamp reproduces unmodified H3.decode bit-exactly.",
+    "Frozen VAE parameters and input reference hashes unchanged."
+  ],
+  "cache": "Both guide paths: pre_internal_clamp and as_returned_internal_clipped float32, <=5.1GB uncompressed for12 pairs.",
+  "no_compensation_implemented": true,
+  "full_dev_automatic_launch": false,
+  "raw_lpips_domain_caveat": "Pre-clamp RGB may leave [0,1]; clipped metrics are directly comparable to prior H3."
+}

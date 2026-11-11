@@ -1,0 +1,172 @@
+{
+  "schema": "openh3.controls_engineering_review.v1",
+  "complete": true,
+  "engineering_passed": true,
+  "quality_conclusion": "independent result review required; successful engineering execution is not quality acceptance",
+  "queue_completed_at_utc": "2026-11-11T10:47:55.912683+00:00",
+  "archive_sha256": "0f21435f4da4c3e9bb833ca2ed132845af2e08e703099af0e4343ed298659cad",
+  "archive_files_verified": 21,
+  "metrics_sha256": "7f00ecc860d38d21f7e84a2929e56f0aa4b63954eb0b5ebc0b6add0b069bceaf",
+  "guide_manifest_sha256": "54e7188ecfbdc2ecf3501874fff617ea200e8d728f7dfaefcdf9d1b2b485e2a6",
+  "queue_sha256": "a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648",
+  "checkpoint": {
+    "step": 3000,
+    "sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "model_config": {
+      "variant": "blind",
+      "k": 3,
+      "ch": 64,
+      "blocks": 8,
+      "condition_dim": 6,
+      "observation_encoder": "legacy"
+    }
+  },
+  "source_ids": [
+    "6UZVovkR3IU"
+  ],
+  "samples": 8,
+  "unique_sources": 1,
+  "controls": [
+    "identity",
+    "near_clean"
+  ],
+  "ordinary_tasks_included": false,
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "float32_unquantized_guides_verified_against_sampling_hashes": true,
+  "frame_stride": 1,
+  "temporal_pairs_per_arm": 21,
+  "flow_support_counts_and_coverage_match_within_sample": true,
+  "fixed_raw_warm_start_per_pair": true,
+  "seed": 101,
+  "sigma_schedule": [
+    0.909375,
+    0.8571428571428571,
+    0.6666666666666666,
+    0.0
+  ],
+  "h3_sample_calls": 16,
+  "denoiser_evaluations": 48,
+  "refiner_turbo_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+  "no_sampler_inner_dc_or_adaptation": true,
+  "post_decode_anchor_alpha": 0.25,
+  "anchor_policy": "original task label: canonical Q4 for sr, full RGB otherwise; control input remains native HR",
+  "local_lpips_available": true,
+  "frozen_base_versions_unchanged": true,
+  "full_K3_causal_export_history_verified": true,
+  "task_keyed_nearclean_recipe_seed_verified": true,
+  "controls_repetition": {
+    "identity": {
+      "rows": 4,
+      "unique_sources": 1,
+      "unique_control_inputs": 1,
+      "unique_rphi_guides": 1,
+      "unique_raw_decoded_output_hashes": 1,
+      "unique_rphi_decoded_output_hashes": 1
+    },
+    "near_clean": {
+      "rows": 4,
+      "unique_sources": 1,
+      "unique_control_inputs": 4,
+      "unique_rphi_guides": 4,
+      "unique_raw_decoded_output_hashes": 4,
+      "unique_rphi_decoded_output_hashes": 4
+    }
+  },
+  "per_sample_contract_checks": [
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-identity",
+      "control": "identity",
+      "task": "compression",
+      "control_seed": null,
+      "matched_raw_warm_start_sha256": "00717d45fd750fc82c8a176edade57806d4382414cb7c16eba9e3dbe84d4dec6",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-near_clean",
+      "control": "near_clean",
+      "task": "compression",
+      "control_seed": 3192222159304101944,
+      "matched_raw_warm_start_sha256": "0a7f83c25d091401c6ebf47cbbd30461952f4c6fbc3523816808f32de9efe7bc",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-identity",
+      "control": "identity",
+      "task": "deblur",
+      "control_seed": null,
+      "matched_raw_warm_start_sha256": "00717d45fd750fc82c8a176edade57806d4382414cb7c16eba9e3dbe84d4dec6",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-near_clean",
+      "control": "near_clean",
+      "task": "deblur",
+      "control_seed": 1967346480974128519,
+      "matched_raw_warm_start_sha256": "b91c93e06268c6adc1a2ea2bfcd67e43989b149fdb76ebdcadb3995ce8534389",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-identity",
+      "control": "identity",
+      "task": "denoise",
+      "control_seed": null,
+      "matched_raw_warm_start_sha256": "00717d45fd750fc82c8a176edade57806d4382414cb7c16eba9e3dbe84d4dec6",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-near_clean",
+      "control": "near_clean",
+      "task": "denoise",
+      "control_seed": 1585384664942526951,
+      "matched_raw_warm_start_sha256": "38b623ee366d066f789bca880b80396ae91f1e0e1f03b44c823588f3383bb075",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity",
+      "control": "identity",
+      "task": "sr",
+      "control_seed": null,
+      "matched_raw_warm_start_sha256": "00717d45fd750fc82c8a176edade57806d4382414cb7c16eba9e3dbe84d4dec6",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean",
+      "control": "near_clean",
+      "task": "sr",
+      "control_seed": 7388689528909731713,
+      "matched_raw_warm_start_sha256": "4e9b49ce6158b651491043099dd509fae7165f7b302a14b612b185f0c3300567",
+      "frames": 22,
+      "temporal_pairs": 21,
+      "flow_valid_coverage": 0.9037229805784494
+    }
+  ],
+  "source_weighting": "One source only. Four identity labels repeat identical input, guide and generated output hashes; do not count them as independent sources. Four near-clean draws are task-keyed noise on the same source and also are not independent sources.",
+  "identity_metric_note": "Identity input PSNR is capped at 120 dB; interpret MAE/MSE, not the huge negative PSNR delta.",
+  "limitations": [
+    "Original recording is the clean proxy, not guaranteed pristine ground truth.",
+    "H3/VAE full22 blocks do not establish end-to-end causality.",
+    "SR-labelled control inputs stay native HR; task-specific SR Q4 anchors differ from native full-RGB anchors.",
+    "No NPZ/cache downloaded: export/input/decoded SHA and geometry assertions are producer evidence, not independent full-array rereading in this audit.",
+    "Flow masks were not downloaded; only declared pair counts and valid coverage equality were checked.",
+    "One-source engineering subset does not support full-dev improvement claims or independent-source confidence intervals."
+  ]
+}

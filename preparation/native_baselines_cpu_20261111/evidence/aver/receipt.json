@@ -1,0 +1,55 @@
+{
+  "schema": "official_native_cpu_execution_v1",
+  "baseline": "aver",
+  "scope": "synthetic_cpu_smoke_not_quality_benchmark_or_npu_validation",
+  "operator_fallback": false,
+  "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+  "executable": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/bin/python",
+  "prefix": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv",
+  "stage": "official_model_import_and_strict_load",
+  "versions": {
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "numpy": "2.5.4",
+    "mmcv": "2.2.0",
+    "mmengine": "0.10.7",
+    "ninja": "1.13.0",
+    "setuptools": "80.10.2"
+  },
+  "torch_npu_imported": false,
+  "mmcv_path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/lib/python3.12/site-packages/mmcv/__init__.py",
+  "mmcv_extension_path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/lib/python3.12/site-packages/mmcv/_ext.cpython-312-aarch64-linux-gnu.so",
+  "mmcv_extension_sha256": "3ba6b474e3a26fa0f812b222d7998460fd2ed755990dc76c1343eb3bd8d1318b",
+  "dcn": {
+    "device": "cpu",
+    "shape": [
+      1,
+      8,
+      7,
+      8
+    ],
+    "finite": true,
+    "max_abs_vs_torchvision": 0.0,
+    "atol": 2e-05,
+    "rtol": 2e-05,
+    "deform_groups": 24,
+    "nonzero_offsets": true,
+    "nonconstant_masks": true
+  },
+  "source_lock": {
+    "python_files_verified": 38,
+    "tree_sha256": "d5039363b6335c824c354251cc170e743b4dfab1114a6a822a09e4f519653b37"
+  },
+  "checkpoint": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/weights/AverNet_final.pth",
+    "sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+    "bytes": 165529244
+  },
+  "aver_import_mode": "official_package",
+  "status": "failed",
+  "error": {
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pyiqa'",
+    "traceback": "Traceback (most recent call last):\n  File \"/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/verify_official_cpu.py\", line 123, in main\n    from basicsr.archs.avernet_arch import AverNet\n  File \"/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/AverNet/basicsr/__init__.py\", line 2, in <module>\n    from .data import *\n  File \"/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/AverNet/basicsr/data/__init__.py\", line 22, in <module>\n    _dataset_modules = [importlib.import_module(f'basicsr.data.{file_name}') for file_name in dataset_filenames]\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/AverNet/basicsr/data/video_test_dataset.py\", line 6, in <module>\n    from basicsr.data.data_util import duf_downsample, generate_frame_indices, read_img_seq, read_img_seq_iqa\n  File \"/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/AverNet/basicsr/data/data_util.py\", line 9, in <module>\n    from pyiqa.utils.img_util import imread2tensor\nModuleNotFoundError: No module named 'pyiqa'\n"
+  }
+}

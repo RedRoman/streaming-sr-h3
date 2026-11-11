@@ -1,0 +1,17 @@
+/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/lpips/trainer.py:9: UserWarning: A NumPy version >=1.22.4 and <2.3.0 is required for this version of SciPy (detected version 2.5.4)
+  from scipy.ndimage import zoom
+/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v1/code/run_vae_roundtrip_diagnostic.py", line 306, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v1/code/run_vae_roundtrip_diagnostic.py", line 269, in main
+    h3 = load_vae_only(pretrained)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v1/code/run_vae_roundtrip_diagnostic.py", line 219, in load_vae_only
+    raise ValueError("VAE-only default loader does not match prior pretrained manifest")
+ValueError: VAE-only default loader does not match prior pretrained manifest
+[ERROR] 2026-11-11-19:13:04 (PID:3317970, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

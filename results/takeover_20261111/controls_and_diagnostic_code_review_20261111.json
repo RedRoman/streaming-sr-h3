@@ -1,0 +1,22 @@
+{
+  "schema": "openh3.followup_independent_readonly_review.v1",
+  "at_utc": "2026-11-11T11:22:58.595046+00:00",
+  "reviewer": "audit_evidence agent",
+  "files": {
+    "code/run_vae_roundtrip_diagnostic.py": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811",
+    "results/takeover_20261111/fixed_h3_controls_review_20261111.json": "959f49a21cdbbeba43a7bc88869e90c60ace2a6305d22e2ac00ba56ec438ec57",
+    "results/takeover_20261111/fixed_h3_residual_mix_review_20261111.json": "2368adabe157814de5ac5512764a5e3bf1f0a10b7845cea5bb6231884ddf3e3d"
+  },
+  "blocking_findings": [],
+  "checks": [
+    "Near-clean t=.05: -0.481 to -0.496 dB relative to Rphi-only, but +2.114 to +2.129 dB relative to input; references not conflated.",
+    "native t=.75 reproduces alpha.25 anchor; SR Q4 policy not equated with scalar mix.",
+    "Existing G is internally clamped VAE output; zero extra blend clamp does not rule out internal clipping.",
+    "VAE manifest binding verifies identity/actual bytes/SHA and restores module globals after normal or exceptional constructor exit.",
+    "Preclamp observer preserves original finalizer and restores instance hook; exact clamp parity and prior latent SHA required."
+  ],
+  "limits": [
+    "Read-only code/record review, not independent download of large NPZ arrays.",
+    "No full diagnostic or quality execution success claimed by this review."
+  ]
+}

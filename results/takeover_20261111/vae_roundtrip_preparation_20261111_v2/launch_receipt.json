@@ -1,0 +1,120 @@
+{
+  "schema": "openh3.vae_diagnostic_v2_launch_receipt.v1",
+  "host": "huawei-modelarts-30794",
+  "new_run_launch_count": 1,
+  "session": "vae-roundtrip-20261111b",
+  "card": 6,
+  "queue_path": "configs/openh3_20261111/vae_roundtrip_legacy_smoke_v2_queue_30794.json",
+  "queue_sha256": "df74ff9f1f9afc1483c6b7131ff3f96861737c971e60ead441f225132bcd95fd",
+  "runtime": "preparation/vae_roundtrip_runtime_20261111_v2",
+  "runtime_manifest_sha256": "ae934a0a7ba6e7cefa779fb91e8e6b3f83b28c9d1ff446fcd9068c79fc694c9d",
+  "run": "runs/vae_roundtrip_legacy_smoke_20261111b",
+  "stable_seconds": 15,
+  "min_free_mb": 60000,
+  "lock_dir": "/cache/zihaohe/.npu-reservations",
+  "preflight": {
+    "schema": "openh3.vae_v2_launch_preflight.v1",
+    "complete": true,
+    "checked_at_utc": "2026-11-11T11:23:02.804498+00:00",
+    "queue_sha256": "df74ff9f1f9afc1483c6b7131ff3f96861737c971e60ead441f225132bcd95fd",
+    "verified_pin_count": 1103,
+    "admission_checks": 11,
+    "card": 6,
+    "device": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3425,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "card_idle": true,
+    "lock_available": true,
+    "new_run_absent": true,
+    "old_v1_preserved": true
+  },
+  "initial_status": {
+    "checked_at_utc": "2026-11-11T11:23:57.942067+00:00",
+    "session": "vae-roundtrip-20261111b",
+    "tmux_exists": true,
+    "status": {
+      "state": "running",
+      "card": 6,
+      "step": "paired_vae_roundtrip_diagnostic",
+      "completed": [],
+      "argv": [
+        "venv/bin/python",
+        "preparation/vae_roundtrip_runtime_20261111_v2/code/run_vae_roundtrip_diagnostic.py",
+        "--ordinary-metrics",
+        "runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+        "--ordinary-guides",
+        "runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json",
+        "--controls-metrics",
+        "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json",
+        "--controls-guides",
+        "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--pretrained-manifest",
+        "configs/openh3_20261111/refiner_turbo_30794.json",
+        "--out",
+        "runs/vae_roundtrip_legacy_smoke_20261111b/eval"
+      ],
+      "updated_at_utc": "2026-11-11T11:23:33.627400+00:00"
+    },
+    "processes": [
+      "3397130   15474 bash -c (cd /cache/zihaohe/omni_openh3_20261111 && exec python code/takeover_queue.py configs/openh3_20261111/vae_roundtrip_legacy_smoke_v2_queue_30794.json --stable-seconds 15 --poll-seconds 120); echo EXIT_CODE:$? >> ~/.mcp_bg_vae-roundtrip-20261111b.log",
+      "3397131 3397130 python code/takeover_queue.py configs/openh3_20261111/vae_roundtrip_legacy_smoke_v2_queue_30794.json --stable-seconds 15 --poll-seconds 120",
+      "3399834 3397131 venv/bin/python preparation/vae_roundtrip_runtime_20261111_v2/code/run_vae_roundtrip_diagnostic.py --ordinary-metrics runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json --ordinary-guides runs/fixed_h3_rphi_legacy_smoke_20261111a/guides/manifest.json --controls-metrics runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/eval/metrics.json --controls-guides runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides/manifest.json --dev-manifest datasets/omni_pilot_v1/dev_materialized.jsonl --pretrained-manifest configs/openh3_20261111/refiner_turbo_30794.json --out runs/vae_roundtrip_legacy_smoke_20261111b/eval"
+    ],
+    "logs": {
+      "vae.log": []
+    }
+  },
+  "validation": {
+    "schema": "openh3.vae_v2_binding_cpu_verification.v1",
+    "complete": true,
+    "tests_passed": 7,
+    "test_log": "test_capture_mismatch_and_exception_restore_hook (test_vae_roundtrip_diagnostic.RoundtripTests.test_capture_mismatch_and_exception_restore_hook) ... ok\ntest_metric_target_does_not_enter_roundtrip (test_vae_roundtrip_diagnostic.RoundtripTests.test_metric_target_does_not_enter_roundtrip) ... ok\ntest_reference_latent_mismatch_stops_before_decode (test_vae_roundtrip_diagnostic.RoundtripTests.test_reference_latent_mismatch_stops_before_decode) ... ok\ntest_two_guide_paths_capture_unclipped_and_preserve_original_return (test_vae_roundtrip_diagnostic.RoundtripTests.test_two_guide_paths_capture_unclipped_and_preserve_original_return) ... ok\ntest_existing_output_rejected_before_inspection (test_vae_roundtrip_diagnostic.StaticContractTests.test_existing_output_rejected_before_inspection) ... ok\ntest_incomplete_references_fail_closed (test_vae_roundtrip_diagnostic.StaticContractTests.test_incomplete_references_fail_closed) ... ok\ntest_manifest_components_bind_when_isolated_defaults_are_missing_and_restore (test_vae_roundtrip_diagnostic.StaticContractTests.test_manifest_components_bind_when_isolated_defaults_are_missing_and_restore) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 10.240s\n\nOK\n",
+    "imported_h3_module": "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v2/code/h3_comfy.py",
+    "verified_components": {
+      "vae": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+        "bytes": 5207808496,
+        "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+        "original_default": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+        "original_default_exists": false,
+        "same_resolved_default_path": false
+      },
+      "context": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+        "bytes": 299557,
+        "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+        "original_default": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+        "original_default_exists": false,
+        "same_resolved_default_path": false
+      }
+    },
+    "module_defaults_restored": true,
+    "npu_initialized": false,
+    "weights_loaded": false
+  },
+  "code_sha256": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811",
+  "test_sha256": "86a32a28c5131e2e5e4724a2d173d5ffe0cf500cfb955781bda06a696d44bd16",
+  "prior_failure": {
+    "run": "runs/vae_roundtrip_legacy_smoke_20261111a",
+    "completed_samples": 0,
+    "archive_sha256": "555afe50a4e938aedadad0a7779a3a1e955befa348fbd6433aef358c155d1990",
+    "root_cause_sha256": "69fb6c9e5dd8927f352aec85403c1ad037034994132cc481e0371675b693ee93",
+    "preserved": true
+  },
+  "scope": {
+    "sources": 1,
+    "sample_pairs": 12,
+    "maximum_vae_roundtrips": 24,
+    "H3_sampler_calls": 0,
+    "NFE": 0,
+    "no_compensation": true,
+    "no_training": true
+  },
+  "result": "Running input verification; no completed real VAE measurements claimed."
+}

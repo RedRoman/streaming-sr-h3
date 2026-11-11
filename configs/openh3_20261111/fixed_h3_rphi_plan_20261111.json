@@ -1,6 +1,6 @@
 {
   "schema": "openh3.fixed_rphi_guides.plan.v1",
-  "status": "ordinary_smoke_completed_real_H3_controls_queue_running",
+  "status": "controls_scalar_mix_VAE_completed_RGB_preserving_interface_diagnostic_next",
   "date": "2026-11-11",
   "source_manifest": "datasets/omni_pilot_v1/dev_materialized.jsonl",
   "candidate_selection": "Stage2 full audit passed. Retain legacy_g05 as the stronger original reference; native encoder and guard2 show no overall advantage. Compression and near-clean negative cases remain. See scientific_review_v2; no omni acceptance.",
@@ -70,7 +70,7 @@
     "Mixed/time-varying/source-disjoint calibration and frozen test remain separate gates."
   ],
   "automatic_launch": false,
-  "automatic_launch_reason": "One-source real H3 completed; compression has a large quality regression. Run one-source clean/near-clean controls first, then review whether to extend the fixed ordinary comparison. No LoRA launch or full-dev auto-extension.",
+  "automatic_launch_reason": "Controls show significant damage on clean/near-clean source. VAE-only localization and cached residual diagnostics precede further ordinary expansion or guide-matched LoRA.",
   "candidate_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
   "actual_smoke": {
     "queue": "configs/openh3_20261111/fixed_h3_legacy_smoke_queue_30794.json",
@@ -91,7 +91,7 @@
   },
   "control_entrypoint": {
     "path": "code/rphi_h3_controls.py",
-    "status": "CPU_tests_and_actual_export_inspect_passed_real_H3_control_queue_running",
+    "status": "real_H3_controls_complete_engineering_pass_quality_failed_on_one_source",
     "evidence": "results/takeover_20261111/followup_20261111_1755",
     "isolated_remote": "preparation/fixed_h3_controls_20261111_v1",
     "cpu_export_session": "h3-controls-cpu-20261111",
@@ -121,7 +121,7 @@
     "h3_calls": 16,
     "denoiser_evaluations": 48,
     "run": "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a",
-    "status": "running_export_identity_nearclean_guides",
+    "status": "completed_8_of_8",
     "fixed_alpha": 0.25,
     "seed": 101,
     "frame_stride": 1,
@@ -135,6 +135,137 @@
     "implementation_pins": 1045,
     "admission_conditions": 7,
     "launch_receipt": "results/takeover_20261111/fixed_h3_controls_preparation_20261111/launch_receipt.json",
-    "automatic_full_dev": false
-  }
+    "automatic_full_dev": false,
+    "completed_at_utc": "2026-11-11T10:47:55.912683+00:00",
+    "metrics_sha256": "7f00ecc860d38d21f7e84a2929e56f0aa4b63954eb0b5ebc0b6add0b069bceaf",
+    "scientific_review": "results/takeover_20261111/fixed_h3_controls_review_20261111.json"
+  },
+  "diagnostic_followup": {
+    "scope": "same one source, ordinary4 plus controls8; not generalization",
+    "vae_only": {
+      "maximum_roundtrips": 24,
+      "sample_calls": 0,
+      "NFE": 0,
+      "hard_condition": "same frozen VAE and exact existing encoded latent SHA; captured pre-internal-clamp output must reproduce as-returned decoder output after clamp",
+      "raw_semantics": "Existing H3 decoded caches are already internally clamped by VAE. New diagnostic records true pre-internal-clamp and as-returned RGB separately.",
+      "status": "completed_and_independently_audited",
+      "queue": "configs/openh3_20261111/vae_roundtrip_legacy_smoke_v2_queue_30794.json",
+      "queue_sha256": "df74ff9f1f9afc1483c6b7131ff3f96861737c971e60ead441f225132bcd95fd",
+      "run": "runs/vae_roundtrip_legacy_smoke_20261111b",
+      "tmux": "vae-roundtrip-20261111b",
+      "card": 6,
+      "started_at_utc": "2026-11-11T11:23:33.627400+00:00",
+      "pins": 1103,
+      "cpu_tests_passed": 7,
+      "launch_receipt": "results/takeover_20261111/vae_roundtrip_preparation_20261111_v2/launch_receipt.json",
+      "launch_receipt_sha256": "5d677c05d99bce91cc8b59b1371c924ea2fde45d54f53be99d0da7a8d1587190",
+      "runtime": "preparation/vae_roundtrip_runtime_20261111_v2",
+      "previous_failure_preserved": true,
+      "completed_at_utc": "2026-11-11T11:43:11.488778+00:00",
+      "evidence": "results/takeover_20261111/vae_roundtrip_v2_completed",
+      "archive_sha256": "10dba2752a61a7b88fea28b2fd826bb0e0763fb95d8ede721c341af51584d96a",
+      "metrics_sha256": "731db2daf2a500397a0204fca473d2f74b884f21271f88fa7dda8d27bf82cf5a",
+      "scientific_review": "results/takeover_20261111/vae_roundtrip_v2_completed/scientific_review.json",
+      "scientific_review_sha256": "408006a895a7b2feda1b863711fe78a6e5468ff7354377fc46cbe1e60c100105",
+      "engineering_pass": true,
+      "quality_gate_passed": false,
+      "latent_and_clamp_pairs_verified": 24
+    },
+    "residual_mix": {
+      "status": "completed_12_of_12",
+      "train_steps": 0,
+      "sample_calls": 0,
+      "grid_t": [
+        0,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "method": "R+t(G_R-R); G_R is as returned after internal VAE clamp",
+      "oracle": "GT-pooled-MSE analytic coefficient for diagnosis only; not deployed or claimed as learned model",
+      "acceptance_limit": "MSE/PSNR/MAE screen does not replace LPIPS or temporal testing",
+      "result": "results/takeover_20261111/fixed_h3_residual_mix_diagnostic_20261111.json",
+      "review": "results/takeover_20261111/fixed_h3_residual_mix_review_20261111.json",
+      "code": "code/diagnose_rphi_residual_mix.py",
+      "cpu_tests_passed": 4,
+      "reproduction_checks_passed": 33,
+      "selected_t": null,
+      "finding": "Fixed t=.05 improves four ordinary PSNR examples but damages identity and near-clean relative to Rphi-only; oracle coefficients are GT diagnostics only."
+    },
+    "prior_failed_vae_v1": {
+      "status": "failed_before_weight_load_0_samples",
+      "maximum_roundtrips": 24,
+      "sample_calls": 0,
+      "NFE": 0,
+      "hard_condition": "same frozen VAE and exact existing encoded latent SHA; captured pre-internal-clamp output must reproduce as-returned decoder output after clamp",
+      "raw_semantics": "Existing H3 decoded caches are already internally clamped by VAE. New diagnostic records true pre-internal-clamp and as-returned RGB separately.",
+      "queue": "configs/openh3_20261111/vae_roundtrip_legacy_smoke_queue_30794.json",
+      "queue_sha256": "6d46b057edce3b2da60b0a93b53cc433aa49a05276642aafdab364d3e320762a",
+      "run": "runs/vae_roundtrip_legacy_smoke_20261111a",
+      "tmux": "vae-roundtrip-20261111a",
+      "card": 6,
+      "started_at_utc": "2026-11-11T11:11:25.372112+00:00",
+      "pins": 1077,
+      "launch_receipt": "results/takeover_20261111/vae_roundtrip_preparation_20261111/launch_receipt.json",
+      "failure": {
+        "at_local": "2026-11-11T19:13:06+08:00",
+        "root_cause": "Default VAE/context paths under new checkout do not exist; prior H3 used manifest paths under streaming_sr0. Manifest VAE bytes/SHA match frozen loader.",
+        "evidence": "results/takeover_20261111/vae_roundtrip_v1_failure_20261111",
+        "repair": "New isolated v2 binds verified manifest component paths only during original H3 constructor and restores globals in finally; no hash or latent/clamp gates removed.",
+        "superseding_run": "runs/vae_roundtrip_legacy_smoke_20261111b"
+      }
+    }
+  },
+  "after_vae_decision": [
+    "Audit all24 latent SHA and internal-clamp parity checks; failed parity means no mechanism attribution.",
+    "If VAE roundtrip accounts for substantial fidelity loss, test a predeclared cached residual-compensation family against scalar mixing before an RGB-preserving interface or LoRA. No new H3 sampling is needed for the first check.",
+    "If generation adds the main error beyond VAE, define a bounded guide-matched corrective LoRA screen with Rphi-only and clean/near-clean controls; do not simply increase unchanged training steps.",
+    "A corrected interface may be trained after failure modes and matched controls are specified; frozen H3 need not already win on all tasks. No unbounded automatic training is authorized by this plan."
+  ],
+  "conditional_cached_compensation_protocol": {
+    "status": "predeclared_not_implemented_not_executed",
+    "gate": "VAE diagnostic now completed and all24input/latent/finalizer and12baseline checks passed. Execute fixed cached family next; all coefficients remain development diagnostics, no deploy selection.",
+    "family": "clip(R + beta * (G_R - V_R),0,1)",
+    "definitions": {
+      "R": "exact frozen Rphi float32 RGB guide",
+      "G_R": "existing fixed H3 Rphi-conditioned as-returned internally-clipped RGB",
+      "V_R": "VAE roundtrip of exact same Rphi guide, as-returned internally-clipped RGB"
+    },
+    "beta_grid": [
+      0,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "controls": [
+      "Rphi-only",
+      "Existing R+beta*(G_R-R) at identical fixed beta values",
+      "Existing H3-Rphi and fixed native/Q4 anchor"
+    ],
+    "inputs": "same12 ordinary/control records from one historical development source; repeated identity labels not independent sources",
+    "new_H3_calls": 0,
+    "train_steps": 0,
+    "metrics": [
+      "same RGB frame-mean PSNR/MSE/MAE",
+      "same pretrained LPIPS",
+      "stride1 flow metrics with exact common support",
+      "pre/post-final-blend clipping and changed-pixel statistics"
+    ],
+    "integrity": [
+      "input/target/guide/candidate file and pixel SHA match prior records",
+      "VAE candidate guide latent SHA equals prior H3 conditioning latent SHA",
+      "beta0 reproduces Rphi metrics; existing scalar endpoints reproduce prior metrics",
+      "No target access in candidate construction"
+    ],
+    "interpretation": "Counterfactual cached interface diagnostic, not new trained method. Fixed raw H3 warm-start remains unchanged; subtracting VAE(R) does not isolate a pure sampler effect or establish causal attribution.",
+    "selection": "Report all coefficients and failures; no deployment coefficient selected from this one-source development grid.",
+    "next_if_supported": "Define RGB-preserving guide-matched LoRA objective and matched budget controls on training sources; clean/near-clean protection and separate source testing remain required."
+  },
+  "next_action": "Implement and run predeclared cached RGB-preserving compensation screen with existing arrays, same7coefficients and scalar controls,0H3calls; define corrective LoRA only after interface comparison."
 }

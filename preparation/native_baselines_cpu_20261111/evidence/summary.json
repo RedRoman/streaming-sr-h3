@@ -1,0 +1,233 @@
+{
+  "schema": "official_native_cpu_summary_v1",
+  "recorded_at": "2026-11-11T19:16:14.180244+08:00",
+  "host": "huawei-modelarts-31984",
+  "workspace": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1",
+  "status": "cpu_model_execution_verified_with_aver_explicit_import_adapter",
+  "mmcv": {
+    "version": "2.2.0",
+    "official_commit": "3a5fb4b96ab1b241e7379adf7c326ef6edef6515",
+    "source_archive_sha256": "09b8b06556603cd9e0fedb14bad742edf012c2a378d3c0bc54b6ed66443dc7ee",
+    "source_modified": false,
+    "extension_sha256": "3ba6b474e3a26fa0f812b222d7998460fd2ed755990dc76c1343eb3bd8d1318b",
+    "build": "CPU_only_original_77_source_extension",
+    "initial_build_exit": 124,
+    "initial_build_timeout_seconds": 280,
+    "ninja_resume_exit": 0,
+    "ninja_resume_timeout_seconds": 600,
+    "ninja_resume_started": "2026-11-11T19:07:03+08:00",
+    "ninja_resume_finished": "2026-11-11T19:13:02+08:00",
+    "max_jobs": 4
+  },
+  "operator_validation": {
+    "device": "cpu",
+    "shape": [
+      1,
+      8,
+      7,
+      8
+    ],
+    "finite": true,
+    "max_abs_vs_torchvision": 0.0,
+    "atol": 2e-05,
+    "rtol": 2e-05,
+    "deform_groups": 24,
+    "nonzero_offsets": true,
+    "nonconstant_masks": true
+  },
+  "models": {
+    "faver": {
+      "status": "passed_cpu_synthetic_only",
+      "receipt": "faver/receipt.json",
+      "strict_load": {
+        "passed": true,
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "state_keys": 532,
+        "parameters": 13082751,
+        "spynet_keys": 62
+      },
+      "forward": {
+        "passed": true,
+        "device": "cpu",
+        "dtype": "torch.float32",
+        "input_shape": [
+          1,
+          2,
+          3,
+          256,
+          256
+        ],
+        "output_shape": [
+          1,
+          2,
+          3,
+          256,
+          256
+        ],
+        "seconds": 10.424999870359898,
+        "finite": true,
+        "input_pixel_sha256": "869077081d4d109f0f6ba3cfea69b83e58ee613b06a1391ff26781c67d9a30a8",
+        "output_pixel_sha256": "ab57da492f998851cdb69bc0265dc9fbbad4d1e4ca1061110f25af0bc3b5c1cd",
+        "output_min": 0.13026784360408783,
+        "output_max": 0.8567292094230652,
+        "mean_abs_change_from_input": 0.2186688929796219,
+        "threads": 1,
+        "inference_mode": true,
+        "padding": "none_dimensions_native_divisible_by_8",
+        "future_context": "official_bidirectional_full_clip"
+      },
+      "error": null,
+      "aver_import_mode": null,
+      "checkpoint_sha256": "c16e5658a639810bb17dc4bc131a631bde6491f9fb5a790c8952dfa16ccdc7b8"
+    },
+    "aver": {
+      "status": "failed",
+      "receipt": "aver/receipt.json",
+      "strict_load": null,
+      "forward": null,
+      "error": "No module named 'pyiqa'",
+      "aver_import_mode": "official_package",
+      "checkpoint_sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec"
+    },
+    "aver_architecture_only": {
+      "status": "passed_cpu_synthetic_only",
+      "receipt": "aver_architecture_only/receipt.json",
+      "strict_load": {
+        "passed": true,
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "state_keys": 354,
+        "parameters": 41347560,
+        "spynet_keys": 62
+      },
+      "forward": {
+        "passed": true,
+        "device": "cpu",
+        "dtype": "torch.float32",
+        "input_shape": [
+          1,
+          2,
+          3,
+          256,
+          256
+        ],
+        "output_shape": [
+          1,
+          2,
+          3,
+          256,
+          256
+        ],
+        "seconds": 11.856523010879755,
+        "finite": true,
+        "input_pixel_sha256": "869077081d4d109f0f6ba3cfea69b83e58ee613b06a1391ff26781c67d9a30a8",
+        "output_pixel_sha256": "91b001c5e75c8b301024d40e0b100496fa9489cc0fe4ecc1f8e2f2b87a12a209",
+        "output_min": 0.05041661858558655,
+        "output_max": 0.9866118431091309,
+        "mean_abs_change_from_input": 0.20409607887268066,
+        "threads": 1,
+        "inference_mode": true,
+        "padding": "none_dimensions_native_divisible_by_8",
+        "future_context": "official_bidirectional_full_clip"
+      },
+      "error": null,
+      "aver_import_mode": "architecture_only",
+      "checkpoint_sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec"
+    }
+  },
+  "runtime_versions": {
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "numpy": "2.5.4",
+    "mmcv": "2.2.0",
+    "mmengine": "0.10.7",
+    "ninja": "1.13.0",
+    "setuptools": "80.10.2"
+  },
+  "safety_scope": {
+    "shared_venv_pip_writes": false,
+    "new_isolated_venv_system_site_packages_read_only": true,
+    "npu_autoload_disabled": true,
+    "npu_tensors_allocated": false,
+    "model_cpu_threads": 1,
+    "model_probe_timeout_seconds_each": 120,
+    "official_source_files_modified": false,
+    "operator_fallback": false
+  },
+  "limits": [
+    "Synthetic T2 256x256 RGB CPU inference only; no restoration-quality benchmark",
+    "Not Ascend or CUDA verification; not a causal/streaming claim",
+    "Runtime torch2.10 differs from official published dependency pins",
+    "Aver official package startup still fails missing pyiqa; only explicit architecture_only import executes",
+    "Shared NumPy1.26.4 is retained; isolated venv NumPy2.5.4 was installed as dependency",
+    "Build/weight-deserialization receipts are not model-forward evidence"
+  ],
+  "files": {
+    "environment_assets.json": {
+      "sha256": "9861530a0eddc630f5d79e4bc9dbb782da86147d31250b923864bc74f37b7005",
+      "bytes": 2144
+    },
+    "aver.log": {
+      "sha256": "64cfe32ffbbac89a2562348cb83b2e243957c2e99cc43b917f8209de3a83d115",
+      "bytes": 4891
+    },
+    "source_lock.json": {
+      "sha256": "f78cc5fd1cb038c7481b991a43469ab55a72d99505f9be5754ccd87403a45343",
+      "bytes": 5411
+    },
+    "compile_ninja.log": {
+      "sha256": "f7f7b4c930cb9ff3c037c354db65e2da9b0b5cfc96475f4afdf00ff8f15782ca",
+      "bytes": 341090
+    },
+    "compile.log": {
+      "sha256": "03c41d583c5b8def867af17f1dcb3d982c1f49538009be66142d7e523d04192a",
+      "bytes": 116457
+    },
+    "verify_official_cpu.py": {
+      "sha256": "a4aa89c071e0cd604dcdbb034c82fdee7c7a7bb13af67ada740ce44c8b34f63e",
+      "bytes": 8471
+    },
+    "build_inner.sh": {
+      "sha256": "ad4742f54d20041294e0bb8a92943df1e387b58cd3542ae17cad3f712e885e44",
+      "bytes": 1269
+    },
+    "ninja-install.log": {
+      "sha256": "81e0677765d670633f3bd742b9dde761e8737f9745352aa0a35a527d4f51a763",
+      "bytes": 387
+    },
+    "build.log": {
+      "sha256": "65045388e55a1558d302273bc6dd3061636a61aa6f13578145751a5322d3f4ca",
+      "bytes": 10920
+    },
+    "faver.log": {
+      "sha256": "45526f963b38cc56ac84c2fbd13b04c26fc881d3855dab158806c00d5392517d",
+      "bytes": 4309
+    },
+    "compile_bounded.sh": {
+      "sha256": "4fd3cdedb323e1400c4736c12052b478fc4c2f3ca8b69f55bea8a0731d1ed03c",
+      "bytes": 710
+    },
+    "aver_architecture_only.log": {
+      "sha256": "76e1a57aa6617dd55b6e4553b2197cddb9fab3681d58f392cafceb974ad9d363",
+      "bytes": 4700
+    },
+    "compile_ninja_and_probe.sh": {
+      "sha256": "7cffec5acde600661ac19c75d265c305b56fa36b4c7e6a43dab77c5c404204fc",
+      "bytes": 1511
+    },
+    "resource_preflight.json": {
+      "sha256": "22cfc2c9a37802c6b638acf8b08dea4cd340f212412e7b30d62ee76ea5a0275d",
+      "bytes": 187
+    },
+    "build_bounded.sh": {
+      "sha256": "3b72e58849236d784afba46a2e50095c0fa77e4d10d92c5534e1feca9627718e",
+      "bytes": 304
+    }
+  },
+  "aver_architecture_only_exit_marker": {
+    "raw": "0n",
+    "exit_code_numeric_prefix": 0,
+    "note": "The background shell printf wrote literal n instead of newline; authoritative completion is passed receipt and output checks."
+  }
+}

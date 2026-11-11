@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "platform": "real_Linux_proc",
+  "checks": [
+    {
+      "name": "timeout",
+      "returncode": -15,
+      "guard_reason": "owned_process_wall_timeout",
+      "seconds": 1.2028845874592662,
+      "peak_owned_rss_bytes": 11530240,
+      "pid": 560565
+    },
+    {
+      "name": "rss",
+      "returncode": -15,
+      "guard_reason": "owned_process_rss_limit",
+      "seconds": 0.2022334048524499,
+      "peak_owned_rss_bytes": 12288,
+      "pid": 560568
+    },
+    {
+      "name": "normal",
+      "returncode": 0,
+      "guard_reason": null,
+      "seconds": 1.002422551624477,
+      "peak_owned_rss_bytes": 12288,
+      "pid": 560569
+    }
+  ]
+}

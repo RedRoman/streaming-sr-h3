@@ -1,0 +1,58 @@
+{
+  "schema": "openh3.controls_cpu_inspection_receipt.v1",
+  "verified": true,
+  "host": "huawei-modelarts-30794",
+  "checked_at_utc": "2026-11-11T10:13:22.256711+00:00",
+  "command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/code/rphi_h3_controls.py",
+    "inspect",
+    "--guide-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/fixed_h3_controls_20261111_v1/cpu_export_tiny/manifest.json",
+    "--dev-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 65.17642827797681,
+  "stderr": "",
+  "result": {
+    "verified": true,
+    "schema": "rphi.h3_control_export.v1",
+    "controls": [
+      "identity",
+      "near_clean"
+    ],
+    "samples": 8,
+    "unique_sources": 1,
+    "h3_sample_calls_budget_only": 16,
+    "denoiser_evaluations_budget_only": 48,
+    "ordinary_tasks_included": false,
+    "H3_VAE_executed": false
+  },
+  "export_manifest_sha256": "79b9615a398a0c36bb535563bacebbc994e04b2e75c0309e897d1ada80a827f0",
+  "cpu_tests": {
+    "passed": 6,
+    "skipped": 0,
+    "test_log_sha256": "366794ef3f8bf1bf2f4c3ed6ef21797e16b33d2fb2fb508d75cab4f51e7e2a9f"
+  },
+  "checkpoint_sha256": "a735194cb24256c5b09a3504d29ee828912e900ab5fe783f97064cd93ca698d6",
+  "checkpoint_step": 2,
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 8,
+    "blocks": 1,
+    "condition_dim": 6,
+    "observation_encoder": "native"
+  },
+  "scope": "engineering validation with tiny 2-step checkpoint, not production quality",
+  "source_ids": [
+    "6UZVovkR3IU"
+  ],
+  "archive_sha256": "7c4dc1e53f7eda980b054c470d9802dbf8f08bb13fb50f354b87c255f71c4602",
+  "prior_attempt": {
+    "timeout_seconds": 50,
+    "result": "subprocess timeout; no verification result; process ended before retry"
+  },
+  "training_or_H3_NPU_started_by_this_inspection": false
+}

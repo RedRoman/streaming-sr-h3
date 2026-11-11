@@ -1,0 +1,214 @@
+{
+  "source_id": "6UZVovkR3IU",
+  "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+  "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+  "task": "sr",
+  "split": "dev",
+  "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+  "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+  "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity",
+  "parent_sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+  "control": "identity",
+  "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+  "control_recipe": {
+    "control": "identity",
+    "reference": "clean_original_recording",
+    "reference_derived_control": true,
+    "ordinary_observation_used": false,
+    "seed": null,
+    "sigma_8bit": 0.0,
+    "implementation": "identity uint8 copy",
+    "geometry": "native HR control input for every task label; no SR downsample",
+    "task_label_usage": "near-clean seed and task-specific anchor policy only; blind model receives no task label"
+  },
+  "control_input_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+  "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+  "original_observation_file_sha256": "c467b6b518f5b3d63bb55173599b74b6f96df6457002832dcd9efff66cb28e1c",
+  "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "checkpoint_step": 3000,
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "condition_mode": "observations_only",
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "frame_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "history_indices": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      4,
+      5,
+      6
+    ],
+    [
+      5,
+      6,
+      7
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      8,
+      9,
+      10
+    ],
+    [
+      9,
+      10,
+      11
+    ],
+    [
+      10,
+      11,
+      12
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      12,
+      13,
+      14
+    ],
+    [
+      13,
+      14,
+      15
+    ],
+    [
+      14,
+      15,
+      16
+    ],
+    [
+      15,
+      16,
+      17
+    ],
+    [
+      16,
+      17,
+      18
+    ],
+    [
+      17,
+      18,
+      19
+    ],
+    [
+      18,
+      19,
+      20
+    ],
+    [
+      19,
+      20,
+      21
+    ]
+  ],
+  "guide_npz": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity.npz",
+  "guide_file_sha256": "5bdd6ce1f4fefd2710864ad7836a462ef236ddef12fa5e049adbaaf51a6bc087",
+  "arrays": {
+    "input_rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "e1602058d490e511095f4071408edd9d748e587b45edc617c605678fbc44f61f"
+    },
+    "rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "84c97688b959e06d14f211469972673ab20023e90c3e7bb1c01a8ec90dc06245"
+    },
+    "raw_rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "dd9b8b7c0397d7d971aa7f643353ec6e7b2fd35ff9a7fe0944a69302f926eba4"
+    }
+  },
+  "clipping": {
+    "component_fraction": 0.009961127197455323,
+    "raw_min": -0.01704052835702896,
+    "raw_max": 1.027143955230713
+  }
+}

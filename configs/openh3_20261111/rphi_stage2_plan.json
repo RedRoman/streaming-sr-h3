@@ -157,7 +157,8 @@
     ],
     "full_matrix_audit": "pending",
     "candidate_selected": false,
-    "initial_quality_read": "native encoder does not improve mean PSNR over legacy at matched budget; compression gain remains negative for both; await guard arm and calibration invariance audit"
+    "initial_quality_read": "native encoder does not improve mean PSNR over legacy at matched budget; compression gain remains negative for both; await guard arm and calibration invariance audit",
+    "historical_intermediate_snapshot": true
   },
   "completed_at_utc": "2026-11-11T09:46:25.567483+00:00",
   "full_evidence": "results/takeover_20261111/rphi_stage2_completed",
@@ -167,6 +168,32 @@
     "plan": "configs/openh3_20261111/fixed_h3_legacy_smoke_queue_30794.json",
     "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a",
     "candidate": "legacy_g05",
-    "scope": "one-source four-task fixed-H3 engineering smoke, not omni quality acceptance"
+    "scope": "one-source four-task fixed-H3 engineering smoke, not omni quality acceptance",
+    "historical_first_H3_run_now_completed": true
+  },
+  "latest_followup": {
+    "at_utc": "2026-11-11T12:18:49+00:00",
+    "stage": "Stage2,H3controls,scalar grid and VAE v2 complete/audited; native CPU quality queue running; cached RGB compensation screen next",
+    "native_quality": {
+      "host": "31984",
+      "status": "running",
+      "queue_status": "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/queue_status.json",
+      "tmux": "native-quality-smoke-20261111",
+      "started_at_local": "2026-11-11T20:17:12+08:00",
+      "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
+      "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
+      "latest_snapshot": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/partial_snapshot.json",
+      "last_verified_local": "2026-11-11T20:18:49+08:00",
+      "last_verified_current": "favernet/deblur/infer",
+      "completed_forwards": 0,
+      "maximum_forwards": 6,
+      "model_quality_results_available": false,
+      "NPU_used": false,
+      "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
+      "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity."
+    },
+    "VAE_review": "results/takeover_20261111/vae_roundtrip_v2_completed/scientific_review.json",
+    "fixed_H3_plan": "configs/openh3_20261111/fixed_h3_rphi_plan_20261111.json",
+    "checkpoint_backup_complete_31984": true
   }
 }

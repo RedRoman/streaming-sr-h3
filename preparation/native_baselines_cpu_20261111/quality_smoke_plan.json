@@ -1,0 +1,209 @@
+{
+  "schema": "native_quality_smoke_preflight_plan_v1",
+  "status": "input_hashes_verified_long_forward_not_launched",
+  "source_id": "6UZVovkR3IU",
+  "host": "huawei-modelarts-31984",
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "materialization_receipt_sha256": "bb1e78a89620ac07f517024893c5f778700c569870477dabb9896e9758417c7a",
+  "scope": {
+    "sources": 1,
+    "tasks": [
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "models": [
+      "favernet_common",
+      "avernet"
+    ],
+    "forwards": 6,
+    "frames_per_clip": 22,
+    "shape_THWC": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "frame_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "control": "task_only",
+    "split": "historical_dev_not_frozen_test",
+    "sr": false,
+    "identity_near_clean_not_in_this_budget": true
+  },
+  "inputs": {
+    "cross_host_manifest_file_equal": true,
+    "cross_host_npz_files_and_pixels_equal": true,
+    "receipt_metadata_binding_verified": true,
+    "original_source_verification": "materialization_attestation_only_not_rehashed_original_video",
+    "target": "same clean original-recording proxy, not pristine ground truth",
+    "rows": [
+      {
+        "latent_path": null,
+        "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/compression.npz",
+        "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+        "schema": "openh3.materialized_omni_pilot.v1",
+        "source_id": "6UZVovkR3IU",
+        "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+        "split": "dev",
+        "status": "materialized_not_vae_encoded",
+        "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+        "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/target.npz",
+        "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+        "task": "compression"
+      },
+      {
+        "latent_path": null,
+        "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/deblur.npz",
+        "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+        "schema": "openh3.materialized_omni_pilot.v1",
+        "source_id": "6UZVovkR3IU",
+        "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+        "split": "dev",
+        "status": "materialized_not_vae_encoded",
+        "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+        "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/target.npz",
+        "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+        "task": "deblur"
+      },
+      {
+        "latent_path": null,
+        "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/denoise.npz",
+        "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+        "schema": "openh3.materialized_omni_pilot.v1",
+        "source_id": "6UZVovkR3IU",
+        "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+        "split": "dev",
+        "status": "materialized_not_vae_encoded",
+        "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+        "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/target.npz",
+        "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+        "task": "denoise"
+      }
+    ]
+  },
+  "execution": {
+    "status": "proposed_not_launched",
+    "inference_environment": "preparation/native_baselines_cpu_20261111_v1/venv",
+    "cpu_threads": 1,
+    "inter_op_threads": 1,
+    "npu_autoload": false,
+    "maximum_concurrent_model_processes": 1,
+    "task_order": [
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "per_model_independent_run": true,
+    "run_paths": {
+      "favernet": "/cache/zihaohe/omni_openh3_20261111/runs/native_favernet_6UZVovkR3IU_smoke_20261111a",
+      "avernet": "/cache/zihaohe/omni_openh3_20261111/runs/native_avernet_6UZVovkR3IU_smoke_20261111a"
+    },
+    "read_only_adapter": "preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/run_lossless_rgb.py",
+    "adapter_mode": "normal Faver; explicit architecture-only namespace startup for Aver, no network/operator modification",
+    "adapter_preflight_receipts": "evidence/quality_input_preflight/input_preflight_summary.json",
+    "input_to_model": "observation uint8 RGB THWC /255 to float32 B,T,C,H,W; no GT or degradation parameters",
+    "padding": "official tail flip multiple4 Faver/multiple8 Aver; none actually needed for480x832",
+    "resize": false,
+    "tiling": false,
+    "temporal_chunking": false,
+    "tta": false,
+    "cache": "float32 RGB THWC rgb_raw plus clamp[0,1] rgb in lossless NPZ; retain raw and pixel/file hashes; no uint8 rounding",
+    "temporal_access": "offline bidirectional full supplied 22-frame clip",
+    "maximum_future_frames": 21,
+    "future_context_label": "future22/offline means full22-frame access; max future frames is21, not22",
+    "adapter_preflight_status": "six_input_only_preflights_passed_torch_not_imported",
+    "adapter_sha256": "8cc2ca41e6ef1c723f0c86c5e279de32e2df5574d2fa656d58cecb3a7d23c80d"
+  },
+  "budget": {
+    "synthetic_forward_seconds": {
+      "favernet": 10.424999870359898,
+      "avernet": 11.856523010879755
+    },
+    "pixel_frame_ratio": 67.03125,
+    "linear_extrapolation_seconds_per_clip": {
+      "favernet": 698.8007725600619,
+      "avernet": 794.7575580730336
+    },
+    "estimate_warning": "Rough area-times-length extrapolation, not measured480p time and not a benchmark",
+    "inference_estimate_total_minutes": 54,
+    "per_clip_wall_timeout_seconds": 1800,
+    "per_model_wall_timeout_seconds": 5400,
+    "maximum_total_inference_seconds": 10800,
+    "per_process_rss_guard_gib": 24,
+    "minimum_mem_available_before_start_gib": 32,
+    "output_uncompressed_bytes": 1265172480,
+    "metric_estimate_additional_minutes": [
+      5,
+      15
+    ],
+    "no_automatic_retries": true
+  },
+  "metrics": {
+    "status": "must_pin_separate_metric_environment_before_execution",
+    "reason": "Inference venv has OpenCV5.0; current Rphi metrics use OpenCV4.11. Do not evaluate flow in inference venv.",
+    "preferred_location": "31984 new metrics-only venv --system-site-packages reading existing base torch/lpips/OpenCV4.11 and installing only NumPy2.5.4 locally",
+    "required_versions": {
+      "torch": "2.10.0",
+      "torchvision": "0.25.0",
+      "numpy": "2.5.4",
+      "opencv-python": null,
+      "opencv-python-headless": "4.11.0.86",
+      "lpips": "0.1.4"
+    },
+    "required_function_sha256": {
+      "rgb_metrics": "13107d8e1b38bf31db2f0c2402e5df23389437d86e00c87af757a905a765c7be",
+      "error_attribution": "7b0635d94636e02ed2ab28e218a614220f217cd46ca20fad804a3790e1a4eeaa",
+      "flow_support": "cd7d8284a2f3ba3bae80614ec664d16ad19ec48b55943ff3a879ac6751012615",
+      "temporal_metrics": "ce98dd83e56c42790881b11104404509259c5c656d7df9cce92578fdb966886b",
+      "load_local_lpips": "34ee098cefc31f78b1a5cadf7f5b74d327d9e19cf85aeeee4648504f4afdda8a"
+    },
+    "restoration_metrics_sha256": "ad3b12b3bd63e5567fc921d9cf87102c83c400d8277e34b2c480125d8277d671",
+    "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "lpips_linear_sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0",
+    "downloads": false,
+    "lpips": "same pretrained AlexNet backbone and LPIPS0.1 learned linear weights, [0,1]->[-1,1], per-frame mean",
+    "rgb": "eval_rphi.rgb_metrics full RGB, no border crop; frame-mean PSNR, PSNR-from-global-MSE,MAE,MSE; clipped outputs plus raw MSE/clipped-component fraction",
+    "temporal": "frame_stride=1,21 adjacent frame pairs; exact flow_support/temporal_metrics Farneback GT-proxy forward/backward visibility mask; identical common support for all methods",
+    "gt_usage": "metrics process only; no GT-derived flow/cues enter baseline inference",
+    "raw_observation_baseline": true
+  },
+  "comparison": {
+    "rphi_stage2_archived_metrics_frame_stride": 4,
+    "stride4_metrics_not_matched_to_new_stride1": true,
+    "required_rphi_reference": "same1source3native tasks22frames, selected fixed Rphi checkpoint/cache re-scored atstride1 with same helpers/LPIPS/flow; no checkpoint reselection from this smoke",
+    "temporal_budget_not_matched": "native models offline bidirectional22frames vs causalRphiK3; report explicitly, no causal SOTA claim",
+    "quality_verdict": "requires_review_single_historical_dev_source_no_SOTA_claim"
+  },
+  "stop_rules": [
+    "input/file/pixel/receipt/source/task/shape mismatch: do not start that model run",
+    "strict checkpoint/source mismatch or nonfinite output: stop that model queue, preserve receipts",
+    "per-clip1800s wall or24GiB RSS: stop only owned model process tree; no retry, report incomplete",
+    "LPIPS/flow dependency or weight mismatch: metrics incomplete, never silently disable",
+    "first full22-frame480p clip measures actual resource/time; only proceed remaining tasks if within predeclared bounds",
+    "never alter a running NPU queue or another user's process"
+  ],
+  "next_step": "root review and freeze this budget/protocol; then materialize only runner/environment needed and launch bounded baseline runs when authorized by orchestration"
+}

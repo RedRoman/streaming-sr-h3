@@ -1,0 +1,92 @@
+{
+  "schema": "official_native_cpu_execution_v1",
+  "baseline": "aver",
+  "scope": "synthetic_cpu_smoke_not_quality_benchmark_or_npu_validation",
+  "operator_fallback": false,
+  "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+  "executable": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/bin/python",
+  "prefix": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv",
+  "stage": "complete",
+  "versions": {
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "numpy": "2.5.4",
+    "mmcv": "2.2.0",
+    "mmengine": "0.10.7",
+    "ninja": "1.13.0",
+    "setuptools": "80.10.2"
+  },
+  "torch_npu_imported": false,
+  "mmcv_path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/lib/python3.12/site-packages/mmcv/__init__.py",
+  "mmcv_extension_path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_cpu_20261111_v1/venv/lib/python3.12/site-packages/mmcv/_ext.cpython-312-aarch64-linux-gnu.so",
+  "mmcv_extension_sha256": "3ba6b474e3a26fa0f812b222d7998460fd2ed755990dc76c1343eb3bd8d1318b",
+  "dcn": {
+    "device": "cpu",
+    "shape": [
+      1,
+      8,
+      7,
+      8
+    ],
+    "finite": true,
+    "max_abs_vs_torchvision": 0.0,
+    "atol": 2e-05,
+    "rtol": 2e-05,
+    "deform_groups": 24,
+    "nonzero_offsets": true,
+    "nonconstant_masks": true
+  },
+  "source_lock": {
+    "python_files_verified": 38,
+    "tree_sha256": "d5039363b6335c824c354251cc170e743b4dfab1114a6a822a09e4f519653b37"
+  },
+  "checkpoint": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/weights/AverNet_final.pth",
+    "sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+    "bytes": 165529244
+  },
+  "aver_import_mode": "architecture_only",
+  "model_source": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/AverNet/basicsr/archs/avernet_arch.py",
+    "sha256": "7235c5e5455a338fb07ae2c8e44bc8542305dc5457780a5e4c6cb55bf5b9dbfb"
+  },
+  "strict_load": {
+    "passed": true,
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "state_keys": 354,
+    "parameters": 41347560,
+    "spynet_keys": 62
+  },
+  "forward": {
+    "passed": true,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "input_shape": [
+      1,
+      2,
+      3,
+      256,
+      256
+    ],
+    "output_shape": [
+      1,
+      2,
+      3,
+      256,
+      256
+    ],
+    "seconds": 11.856523010879755,
+    "finite": true,
+    "input_pixel_sha256": "869077081d4d109f0f6ba3cfea69b83e58ee613b06a1391ff26781c67d9a30a8",
+    "output_pixel_sha256": "91b001c5e75c8b301024d40e0b100496fa9489cc0fe4ecc1f8e2f2b87a12a209",
+    "output_min": 0.05041661858558655,
+    "output_max": 0.9866118431091309,
+    "mean_abs_change_from_input": 0.20409607887268066,
+    "threads": 1,
+    "inference_mode": true,
+    "padding": "none_dimensions_native_divisible_by_8",
+    "future_context": "official_bidirectional_full_clip"
+  },
+  "status": "passed_cpu_synthetic_only"
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "openh3.vae_v1_failure_root_cause.v1",
+  "complete": true,
+  "failed_run": "runs/vae_roundtrip_legacy_smoke_20261111a",
+  "failure_at_utc": "2026-11-11T11:13:06.739357+00:00",
+  "completed_samples": 0,
+  "archive_sha256": "555afe50a4e938aedadad0a7779a3a1e955befa348fbd6433aef358c155d1990",
+  "archive_members_verified": 8,
+  "actual_module_import_cpu_probe": {
+    "module": "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v1/code/h3_comfy.py",
+    "SSR0": "/cache/zihaohe/omni_openh3_20261111",
+    "H3_ASSET_ROOT": null,
+    "ROOT": "/cache/zihaohe/omni_openh3_20261111",
+    "ASSET_ROOT": "/cache/zihaohe/omni_openh3_20261111/assets",
+    "manifest_vae": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+    "default_vae": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+    "resolved_default_vae": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+    "default_vae_exists": false,
+    "manifest_context": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+    "default_context": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+    "resolved_default_context": "/cache/zihaohe/omni_openh3_20261111/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+    "default_context_exists": false,
+    "checks": {
+      "vae_path_equal": false,
+      "vae_sha_equal": true,
+      "vae_bytes_equal": true,
+      "context_path_equal": false
+    },
+    "manifest_vae_sha": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+    "default_vae_sha": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+    "manifest_vae_bytes": 5207808496,
+    "default_vae_bytes": 5207808496,
+    "npu_initialized": false
+  },
+  "root_cause": "The isolated project intentionally uses manifest absolute shared VAE/context paths. Its default assets/comfy_h3 paths do not exist. V1 incorrectly required default-path identity even though manifest VAE bytes and frozen SHA identity matched. SSR0/ROOT were correct; this was not a __file__ relocation bug.",
+  "fix": "In the new v2 process only, verify VAE and context record bytes plus actual SHA against frozen expected identities, temporarily bind module component paths to the verified manifest paths for H3(load_dit=False,verify_sha=True), restore defaults in finally.",
+  "old_runtime_or_outputs_modified": false,
+  "remaining_hard_gates": [
+    "exact old H3 input and latent SHA",
+    "exact captured-preclamp to original-decode clamp parity",
+    "frozen VAE parameter versions"
+  ],
+  "not_a_quality_or_weight_failure": true
+}

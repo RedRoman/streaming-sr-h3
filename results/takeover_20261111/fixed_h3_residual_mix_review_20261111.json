@@ -1,0 +1,2098 @@
+{
+  "schema": "openh3.saved_residual_mix_review.v1",
+  "complete": true,
+  "quality_verdict": "requires_review",
+  "selected_deployment_coefficient": null,
+  "evidence": {
+    "result_path": "results/takeover_20261111/fixed_h3_residual_mix_diagnostic_20261111.json",
+    "result_sha256": "7cf8ecf967665658bad89ef64a1f228b475debfece788b030ebd29e288af00f5",
+    "remote_result": "huawei-modelarts-30794:/cache/zihaohe/omni_openh3_20261111/runs/rphi_residual_mix_20261111a/metrics.json",
+    "code_path": "code/diagnose_rphi_residual_mix.py",
+    "code_sha256": "7b05bafaefb0b0e3f07dfe48d984eeee4f1125ba40b86b8065823b52d96f6730",
+    "tests_path": "code/tests/test_rphi_residual_mix.py",
+    "tests_sha256": "1d2b8beb78730246638b162b887c12a60fc2907a0244537332382e3a67247716",
+    "local_and_remote_CPU_tests_passed": 4,
+    "remote_tests_command": "PYTHONPATH=preparation/residual_mix_20261111 venv/bin/python -m unittest discover -s preparation/residual_mix_20261111 -p test_rphi_residual_mix.py -v",
+    "elapsed_CPU_run_seconds": 205.56617515347898
+  },
+  "scope": {
+    "sources": 1,
+    "source_ids": [
+      "6UZVovkR3IU"
+    ],
+    "ordinary_records": 4,
+    "controls_records": 8,
+    "frames_per_record": 22,
+    "fixed_t": [
+      0,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "new_H3_calls": 0,
+    "new_training_steps": 0,
+    "LPIPS_grid_evaluated": false,
+    "temporal_grid_evaluated": false,
+    "independence": "Identity labels repeat the same source; four near-clean draws remain one source."
+  },
+  "reproduction": {
+    "checks_passed": 33,
+    "t0_matches_Rphi_only": 12,
+    "t1_matches_as_returned_H3_Rphi": 12,
+    "t075_matches_native_alpha025_anchor": 9,
+    "SR_t075_anchor_equivalence_claimed": false,
+    "maximum_absolute_difference_by_metric": {
+      "psnr": 0.0,
+      "psnr_from_mean_mse": 0.0,
+      "mse": 0.0,
+      "mae": 3.469446951953614e-18
+    },
+    "all_grid_analytic_preclip_mse_matches_direct_within_1e_14": true
+  },
+  "clipping_scope": {
+    "G_definition": "as-returned H3 RGB, already internally clamped by Comfy VAE _finalize_pixels; not true pre-VAE-clamp pixels",
+    "all_additional_blend_clipped_component_fractions_zero": true,
+    "meaning": "R and cached G lie in[0,1], so the convex mixture adds no new clipping here; float32 output rounding is separately measured. This cannot rule out upstream internal VAE clipping harm. The preclip oracle refers only to before an additional blend clamp."
+  },
+  "interpretation": [
+    "The existing native alpha0.25 anchor retains75% of the generated residual. Reproduction establishes that the current cache and baseline pipeline are aligned; SR Q4 anchoring is a different operator.",
+    "GT pooled-MSE oracle t varies strongly: compression0.0630, deblur0.1057, denoise0.2733, SR0.2907, identity0, near-clean0.00329-0.00383. These are post-hoc diagnostic coefficients, not predictions or a deployable selection rule.",
+    "Fixed t0.05 improves mean-frame PSNR on all four ordinary examples, but worsens the repeated identity by about2.191dB and near-clean by about0.48-0.50dB relative to R_phi-only. All positive fixed-grid coefficients harm these controls relative to R_phi-only in pooled MSE and MAE. This does not mean all small mixtures are worse than the near-clean INPUT; keep both baselines visible.",
+    "Ordinary deblur at t0.05 gains PSNR while its MAE worsens. A pooled-MSE oracle also does not optimize mean-frame PSNR. Distortion metrics can disagree even before LPIPS or temporal quality is examined.",
+    "The result supports magnitude-sensitive action evaluation as a useful control diagnostic, but not an independent novelty claim, a calibrated harm certificate, a universally safe t, or omni generalization."
+  ],
+  "per_sample": [
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "source_id": "6UZVovkR3IU",
+      "control": "ordinary",
+      "task": "compression",
+      "oracle_diagnostic": {
+        "t": 0.06300055743564884,
+        "unconstrained_t": 0.06300055743564884,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.10447868511544556,
+        "pooled_mse_change_at_oracle": -2.1235482017872213e-06
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -1.997724389428949e-06,
+            "mae": 3.440257071716645e-05
+          },
+          "post_extra_clamp": {
+            "mse": 9.00048791213291e-05,
+            "mae": 0.006602282008629528,
+            "psnr": 40.47587134168869,
+            "psnr_from_mean_mse": 40.457339470269595,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0999027372107335,
+            "psnr_from_mean_mse": 0.09922782270408703,
+            "mse": -2.0331211536341346e-06,
+            "mae": -6.310697208283811e-05
+          },
+          "delta_vs_input": {
+            "mse": -4.030845543063084e-06,
+            "mae": -2.8704401365671657e-05
+          },
+          "post_extra_clamp": {
+            "mse": 8.797175796769497e-05,
+            "mae": 0.00653917503654669,
+            "psnr": 40.57577407889942,
+            "psnr_from_mean_mse": 40.55656729297368,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.06870986521692402,
+            "psnr_from_mean_mse": 0.06764904663687332,
+            "mse": -1.3911224538272439e-06,
+            "mae": -3.5735159116903094e-05
+          },
+          "delta_vs_input": {
+            "mse": -3.388846843256193e-06,
+            "mae": -1.3325883997366422e-06
+          },
+          "post_extra_clamp": {
+            "mse": 8.861375666750186e-05,
+            "mae": 0.006566546849512625,
+            "psnr": 40.54458120690561,
+            "psnr_from_mean_mse": 40.52498851690647,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.7255634646060187,
+            "psnr_from_mean_mse": -0.7345235360449749,
+            "mse": 1.6585598091060284e-05,
+            "mae": 0.0004896824848965959
+          },
+          "delta_vs_input": {
+            "mse": 1.4587873701631335e-05,
+            "mae": 0.0005240850556137624
+          },
+          "post_extra_clamp": {
+            "mse": 0.00010659047721238939,
+            "mae": 0.007091964493526124,
+            "psnr": 39.75030787708267,
+            "psnr_from_mean_mse": 39.72281593422462,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -3.1910596314525606,
+            "psnr_from_mean_mse": -3.2461116243505117,
+            "mse": 0.00010004920880827868,
+            "mae": 0.002550159710317217
+          },
+          "delta_vs_input": {
+            "mse": 9.805148441884973e-05,
+            "mae": 0.0025845622810343836
+          },
+          "post_extra_clamp": {
+            "mse": 0.0001900540879296078,
+            "mae": 0.009152441718946745,
+            "psnr": 37.28481171023613,
+            "psnr_from_mean_mse": 37.21122784591908,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -5.682176444748379,
+            "psnr_from_mean_mse": -5.777180267050461,
+            "mse": 0.0002503908321604034,
+            "mae": 0.0054308893422465145
+          },
+          "delta_vs_input": {
+            "mse": 0.0002483931077709744,
+            "mae": 0.005465291912963681
+          },
+          "post_extra_clamp": {
+            "mse": 0.00034039571128173247,
+            "mae": 0.012033171350876042,
+            "psnr": 34.79369489694031,
+            "psnr_from_mean_mse": 34.680159203219134,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -7.803685892352071,
+            "psnr_from_mean_mse": -7.920686655201102,
+            "mse": 0.00046761046832061973,
+            "mae": 0.008684020192381618
+          },
+          "delta_vs_input": {
+            "mse": 0.00046561274393119075,
+            "mae": 0.008718422763098786
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005576153474419488,
+            "mae": 0.015286302201011147,
+            "psnr": 32.67218544933662,
+            "psnr_from_mean_mse": 32.53665281506849,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "source_id": "6UZVovkR3IU",
+      "control": "ordinary",
+      "task": "deblur",
+      "oracle_diagnostic": {
+        "t": 0.10567073402803677,
+        "unconstrained_t": 0.10567073402803677,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.03677283797384234,
+        "pooled_mse_change_at_oracle": -5.342798623041048e-06
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -4.9052958003493e-05,
+            "mae": -0.0004478751415588674
+          },
+          "post_extra_clamp": {
+            "mse": 0.0006488572656224863,
+            "mae": 0.011137097635371063,
+            "psnr": 31.891500176712896,
+            "psnr_from_mean_mse": 31.878508279609797,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.026234118142895113,
+            "psnr_from_mean_mse": 0.025912269687953682,
+            "mse": -3.859893717419343e-06,
+            "mae": 3.9865505373394214e-05
+          },
+          "delta_vs_input": {
+            "mse": -5.291285172091234e-05,
+            "mae": -0.0004080096361854732
+          },
+          "post_extra_clamp": {
+            "mse": 0.000644997371905067,
+            "mae": 0.011176963140744458,
+            "psnr": 31.91773429485579,
+            "psnr_from_mean_mse": 31.90442054929775,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.03660187323487207,
+            "psnr_from_mean_mse": 0.03580473286494623,
+            "mse": -5.327412089170904e-06,
+            "mae": 0.000190042505536012
+          },
+          "delta_vs_input": {
+            "mse": -5.43803700926639e-05,
+            "mae": -0.0002578326360228554
+          },
+          "post_extra_clamp": {
+            "mse": 0.0006435298535333154,
+            "mae": 0.011327140140907075,
+            "psnr": 31.928102049947768,
+            "psnr_from_mean_mse": 31.914313012474743,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.026744387525408087,
+            "psnr_from_mean_mse": -0.030841598059083708,
+            "mse": 4.624286425582527e-06,
+            "mae": 0.0009666757549962133
+          },
+          "delta_vs_input": {
+            "mse": -4.442867157791047e-05,
+            "mae": 0.0005188006134373459
+          },
+          "post_extra_clamp": {
+            "mse": 0.0006534815520480689,
+            "mae": 0.012103773390367277,
+            "psnr": 31.864755789187488,
+            "psnr_from_mean_mse": 31.847666681550713,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.4166366219719997,
+            "psnr_from_mean_mse": -0.439239928064751,
+            "mse": 6.905796140699739e-05,
+            "mae": 0.0029797639563719815
+          },
+          "delta_vs_input": {
+            "mse": 2.000500340350439e-05,
+            "mae": 0.002531888814813114
+          },
+          "post_extra_clamp": {
+            "mse": 0.0007179152270294837,
+            "mae": 0.014116861591743045,
+            "psnr": 31.474863554740896,
+            "psnr_from_mean_mse": 31.439268351545046,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.069107607789693,
+            "psnr_from_mean_mse": -1.1324455665143098,
+            "mse": 0.00019330102553372162,
+            "mae": 0.005459126524092018
+          },
+          "delta_vs_input": {
+            "mse": 0.00014424806753022862,
+            "mae": 0.0050112513825331505
+          },
+          "post_extra_clamp": {
+            "mse": 0.0008421582911562079,
+            "mae": 0.01659622415946308,
+            "psnr": 30.822392568923203,
+            "psnr_from_mean_mse": 30.746062713095487,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.8704621726791721,
+            "psnr_from_mean_mse": -1.9908738522361737,
+            "mse": 0.0003773534784643172,
+            "mae": 0.00821598337364304
+          },
+          "delta_vs_input": {
+            "mse": 0.0003283005204608242,
+            "mae": 0.007768108232084172
+          },
+          "post_extra_clamp": {
+            "mse": 0.0010262107440868035,
+            "mae": 0.019353081009014103,
+            "psnr": 30.021038004033723,
+            "psnr_from_mean_mse": 29.887634427373623,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "source_id": "6UZVovkR3IU",
+      "control": "ordinary",
+      "task": "denoise",
+      "oracle_diagnostic": {
+        "t": 0.27328371319877026,
+        "unconstrained_t": 0.27328371319877026,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.9855980637083519,
+        "pooled_mse_change_at_oracle": -5.2009923687585915e-05
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -0.004182511825137313,
+            "mae": -0.0409521779373405
+          },
+          "post_extra_clamp": {
+            "mse": 0.00025638960246772213,
+            "mae": 0.011931790382227475,
+            "psnr": 35.91715595526605,
+            "psnr_from_mean_mse": 35.91099591019266,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.30396450889627147,
+            "psnr_from_mean_mse": 0.30322419524145516,
+            "mse": -1.729047599832026e-05,
+            "mae": -0.0004193847973570416
+          },
+          "delta_vs_input": {
+            "mse": -0.004199802301135634,
+            "mae": -0.041371562734697546
+          },
+          "post_extra_clamp": {
+            "mse": 0.00023909912646940187,
+            "mae": 0.011512405584870433,
+            "psnr": 36.22112046416232,
+            "psnr_from_mean_mse": 36.214220105434116,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.5628620022220616,
+            "psnr_from_mean_mse": 0.5615724042387953,
+            "mse": -3.109895219568923e-05,
+            "mae": -0.0007787472212902446
+          },
+          "delta_vs_input": {
+            "mse": -0.004213610777333003,
+            "mae": -0.04173092515863075
+          },
+          "post_extra_clamp": {
+            "mse": 0.0002252906502720329,
+            "mae": 0.01115304316093723,
+            "psnr": 36.48001795748811,
+            "psnr_from_mean_mse": 36.472568314431456,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.9777336610945895,
+            "psnr_from_mean_mse": 0.9766118675437454,
+            "mse": -5.163238352942241e-05,
+            "mae": -0.0014555172498957585
+          },
+          "delta_vs_input": {
+            "mse": -0.004234144208666736,
+            "mae": -0.04240769518723626
+          },
+          "post_extra_clamp": {
+            "mse": 0.00020475721893829972,
+            "mae": 0.010476273132331716,
+            "psnr": 36.894889616360636,
+            "psnr_from_mean_mse": 36.887607777736406,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.28948481412283655,
+            "psnr_from_mean_mse": 0.2837292355870389,
+            "mse": -1.6214776090271358e-05,
+            "mae": -0.0011706010045143007
+          },
+          "delta_vs_input": {
+            "mse": -0.004198726601227585,
+            "mae": -0.0421227789418548
+          },
+          "post_extra_clamp": {
+            "mse": 0.00024017482637745077,
+            "mae": 0.010761189377713174,
+            "psnr": 36.20664076938888,
+            "psnr_from_mean_mse": 36.1947251457797,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.4800659539463012,
+            "psnr_from_mean_mse": -1.5057820058107438,
+            "mse": 0.00010625282199967659,
+            "mae": 0.0006833761885715502
+          },
+          "delta_vs_input": {
+            "mse": -0.004076259003137637,
+            "mae": -0.040268801748768956
+          },
+          "post_extra_clamp": {
+            "mse": 0.0003626424244673987,
+            "mae": 0.012615166570799025,
+            "psnr": 34.437090001319746,
+            "psnr_from_mean_mse": 34.40521390438192,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -3.442955612248994,
+            "psnr_from_mean_mse": -3.486170939176894,
+            "mse": 0.0003157704108630222,
+            "mae": 0.0036041781328177824
+          },
+          "delta_vs_input": {
+            "mse": -0.0038667414142742914,
+            "mae": -0.03734799980452272
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005721600133307443,
+            "mae": 0.015535968515045257,
+            "psnr": 32.47420034301705,
+            "psnr_from_mean_mse": 32.42482497101577,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "source_id": "6UZVovkR3IU",
+      "control": "ordinary",
+      "task": "sr",
+      "oracle_diagnostic": {
+        "t": 0.29069940902408536,
+        "unconstrained_t": 0.29069940902408536,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.12839342626676853,
+        "pooled_mse_change_at_oracle": -4.8418656425072227e-05
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -5.355545186442874e-05,
+            "mae": -0.0003168313311521058
+          },
+          "post_extra_clamp": {
+            "mse": 0.0016807255655265198,
+            "mae": 0.01868661508004178,
+            "psnr": 27.75723309590143,
+            "psnr_from_mean_mse": 27.745031938225395,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.03963902266995589,
+            "psnr_from_mean_mse": 0.03951635042939827,
+            "mse": -1.522351724745079e-05,
+            "mae": -4.054489186222643e-05
+          },
+          "delta_vs_input": {
+            "mse": -6.877896911187953e-05,
+            "mae": -0.0003573762230143322
+          },
+          "post_extra_clamp": {
+            "mse": 0.001665502048279069,
+            "mae": 0.018646070188179553,
+            "psnr": 27.796872118571386,
+            "psnr_from_mean_mse": 27.784548288654793,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.07214528736462711,
+            "psnr_from_mean_mse": 0.07186296948010096,
+            "mse": -2.7582235358097982e-05,
+            "mae": 6.5846347922816906e-06
+          },
+          "delta_vs_input": {
+            "mse": -8.113768722252672e-05,
+            "mae": -0.0003102466963598241
+          },
+          "post_extra_clamp": {
+            "mse": 0.0016531433301684218,
+            "mae": 0.01869319971483406,
+            "psnr": 27.829378383266057,
+            "psnr_from_mean_mse": 27.816894907705496,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.1255166529722196,
+            "psnr_from_mean_mse": 0.12442548060820258,
+            "mse": -4.746958128827735e-05,
+            "mae": 0.0005130722564024894
+          },
+          "delta_vs_input": {
+            "mse": -0.00010102503315270609,
+            "mae": 0.00019624092525038356
+          },
+          "post_extra_clamp": {
+            "mse": 0.0016332559842382425,
+            "mae": 0.01919968733644427,
+            "psnr": 27.88274974887365,
+            "psnr_from_mean_mse": 27.869457418833598,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0656414820308413,
+            "psnr_from_mean_mse": 0.060677881174711956,
+            "mse": -2.3319140565761882e-05,
+            "mae": 0.002094740309295205
+          },
+          "delta_vs_input": {
+            "mse": -7.687459243019062e-05,
+            "mae": 0.0017779089781430994
+          },
+          "post_extra_clamp": {
+            "mse": 0.001657406424960758,
+            "mae": 0.020781355389336984,
+            "psnr": 27.82287457793227,
+            "psnr_from_mean_mse": 27.805709819400107,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.1678217306495462,
+            "psnr_from_mean_mse": -0.18328930442479674,
+            "mse": 7.245132195679007e-05,
+            "mae": 0.004202484157130516
+          },
+          "delta_vs_input": {
+            "mse": 1.8895870092361334e-05,
+            "mae": 0.0038856528259784105
+          },
+          "post_extra_clamp": {
+            "mse": 0.0017531768874833099,
+            "mae": 0.022889099237172295,
+            "psnr": 27.589411365251884,
+            "psnr_from_mean_mse": 27.5617426338006,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.5438168132830086,
+            "psnr_from_mean_mse": -0.5793274013508984,
+            "mse": 0.00023984180573795137,
+            "mae": 0.00665540960351052
+          },
+          "delta_vs_input": {
+            "mse": 0.00018628635387352263,
+            "mae": 0.0063385782723584146
+          },
+          "post_extra_clamp": {
+            "mse": 0.0019205673712644712,
+            "mae": 0.0253420246835523,
+            "psnr": 27.21341628261842,
+            "psnr_from_mean_mse": 27.165704536874497,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-identity",
+      "source_id": "6UZVovkR3IU",
+      "control": "identity",
+      "task": "compression",
+      "oracle_diagnostic": {
+        "t": 0.0,
+        "unconstrained_t": -0.007195629452772685,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0,
+        "pooled_mse_change_at_oracle": 0.0
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526
+          },
+          "post_extra_clamp": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526,
+            "psnr": 55.683713760235904,
+            "psnr_from_mean_mse": 55.68163302655533,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -2.1914555950020045,
+            "psnr_from_mean_mse": -2.2064027662644463,
+            "mse": 1.789443239346378e-06,
+            "mae": 0.0003032289050745743
+          },
+          "delta_vs_input": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727
+          },
+          "post_extra_clamp": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727,
+            "psnr": 53.4922581652339,
+            "psnr_from_mean_mse": 53.475230260290886,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -5.194052512871579,
+            "psnr_from_mean_mse": -5.253319590509399,
+            "mse": 6.357902248154261e-06,
+            "mae": 0.0008576599189694298
+          },
+          "delta_vs_input": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824
+          },
+          "post_extra_clamp": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824,
+            "psnr": 50.489661247364324,
+            "psnr_from_mean_mse": 50.42831343604593,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.511592125213745,
+            "psnr_from_mean_mse": -11.641036853571755,
+            "mse": 3.673737389232816e-05,
+            "mae": 0.0029171718489648165
+          },
+          "delta_vs_input": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969
+          },
+          "post_extra_clamp": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969,
+            "psnr": 44.17212163502216,
+            "psnr_from_mean_mse": 44.04059617298358,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.15876599334816,
+            "psnr_from_mean_mse": -17.314829866202658,
+            "mse": 0.00014295014195659042,
+            "mae": 0.006602330948238445
+          },
+          "delta_vs_input": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598
+          },
+          "post_extra_clamp": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598,
+            "psnr": 38.52494776688774,
+            "psnr_from_mean_mse": 38.366803160352674,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -20.58744808687507,
+            "psnr_from_mean_mse": -20.75129776227267,
+            "mse": 0.00031863830436292467,
+            "mae": 0.010341616558769504
+          },
+          "delta_vs_input": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657
+          },
+          "post_extra_clamp": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657,
+            "psnr": 35.09626567336083,
+            "psnr_from_mean_mse": 34.93033526428266,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -23.046268186785284,
+            "psnr_from_mean_mse": -23.213668987589436,
+            "mse": 0.00056380186093163,
+            "mae": 0.014095188473300333
+          },
+          "delta_vs_input": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485,
+            "psnr": 32.63744557345062,
+            "psnr_from_mean_mse": 32.467964038965896,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3-near_clean",
+      "source_id": "6UZVovkR3IU",
+      "control": "near_clean",
+      "task": "compression",
+      "oracle_diagnostic": {
+        "t": 0.003825737874781055,
+        "unconstrained_t": 0.003825737874781055,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0035195840045858517,
+        "pooled_mse_change_at_oracle": -7.360733467728093e-09
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -7.466750877801395e-06,
+            "mae": -0.0006177686528659014
+          },
+          "post_extra_clamp": {
+            "mse": 9.065454233985051e-06,
+            "mae": 0.002354892080150812,
+            "psnr": 50.42625444565019,
+            "psnr_from_mean_mse": 50.426104302479125,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.48066201464570213,
+            "psnr_from_mean_mse": -0.48234176358504754,
+            "mse": 1.064879339182126e-06,
+            "mae": 9.085454358619951e-05
+          },
+          "delta_vs_input": {
+            "mse": -6.401871538619269e-06,
+            "mae": -0.0005269141092797019
+          },
+          "post_extra_clamp": {
+            "mse": 1.0130333573167177e-05,
+            "mae": 0.0024457466237370116,
+            "psnr": 49.945592431004485,
+            "psnr_from_mean_mse": 49.94376253889408,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.7820340654192037,
+            "psnr_from_mean_mse": -1.796407162099925,
+            "mse": 4.6443194591724315e-06,
+            "mae": 0.000374785296724849
+          },
+          "delta_vs_input": {
+            "mse": -2.822431418628963e-06,
+            "mae": -0.00024298335614105241
+          },
+          "post_extra_clamp": {
+            "mse": 1.3709773693157483e-05,
+            "mae": 0.002729677376875661,
+            "psnr": 48.64422038023098,
+            "psnr_from_mean_mse": 48.6296971403792,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -6.326878278773449,
+            "psnr_from_mean_mse": -6.395972058747191,
+            "mse": 3.047000389012917e-05,
+            "mae": 0.0018434001025728905
+          },
+          "delta_vs_input": {
+            "mse": 2.3003253012327774e-05,
+            "mae": 0.0012256314497069891
+          },
+          "post_extra_clamp": {
+            "mse": 3.953545812411422e-05,
+            "mae": 0.004198292182723703,
+            "psnr": 44.09937616687674,
+            "psnr_from_mean_mse": 44.030132243731934,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.560008901732793,
+            "psnr_from_mean_mse": -11.660356657543993,
+            "mse": 0.00012380402581501813,
+            "mae": 0.005063546945732477
+          },
+          "delta_vs_input": {
+            "mse": 0.00011633727493721673,
+            "mae": 0.004445778292866576
+          },
+          "post_extra_clamp": {
+            "mse": 0.00013286948004900318,
+            "mae": 0.007418439025883289,
+            "psnr": 38.866245543917394,
+            "psnr_from_mean_mse": 38.76574764493513,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -14.927869480418472,
+            "psnr_from_mean_mse": -15.036097268124827,
+            "mse": 0.00028000206579375885,
+            "mae": 0.008523114651614191
+          },
+          "delta_vs_input": {
+            "mse": 0.0002725353149159575,
+            "mae": 0.00790534599874829
+          },
+          "post_extra_clamp": {
+            "mse": 0.0002890675200277439,
+            "mae": 0.010878006731765004,
+            "psnr": 35.498384965231715,
+            "psnr_from_mean_mse": 35.3900070343543,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.374729260894775,
+            "psnr_from_mean_mse": -17.485849055731336,
+            "mse": 0.0004990641232836242,
+            "mae": 0.012047461546064946
+          },
+          "delta_vs_input": {
+            "mse": 0.0004915973724058227,
+            "mae": 0.011429692893199044
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005081295775176092,
+            "mae": 0.014402353626215758,
+            "psnr": 33.05152518475541,
+            "psnr_from_mean_mse": 32.94025524674779,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-identity",
+      "source_id": "6UZVovkR3IU",
+      "control": "identity",
+      "task": "deblur",
+      "oracle_diagnostic": {
+        "t": 0.0,
+        "unconstrained_t": -0.007195629452772685,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0,
+        "pooled_mse_change_at_oracle": 0.0
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526
+          },
+          "post_extra_clamp": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526,
+            "psnr": 55.683713760235904,
+            "psnr_from_mean_mse": 55.68163302655533,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -2.1914555950020045,
+            "psnr_from_mean_mse": -2.2064027662644463,
+            "mse": 1.789443239346378e-06,
+            "mae": 0.0003032289050745743
+          },
+          "delta_vs_input": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727
+          },
+          "post_extra_clamp": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727,
+            "psnr": 53.4922581652339,
+            "psnr_from_mean_mse": 53.475230260290886,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -5.194052512871579,
+            "psnr_from_mean_mse": -5.253319590509399,
+            "mse": 6.357902248154261e-06,
+            "mae": 0.0008576599189694298
+          },
+          "delta_vs_input": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824
+          },
+          "post_extra_clamp": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824,
+            "psnr": 50.489661247364324,
+            "psnr_from_mean_mse": 50.42831343604593,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.511592125213745,
+            "psnr_from_mean_mse": -11.641036853571755,
+            "mse": 3.673737389232816e-05,
+            "mae": 0.0029171718489648165
+          },
+          "delta_vs_input": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969
+          },
+          "post_extra_clamp": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969,
+            "psnr": 44.17212163502216,
+            "psnr_from_mean_mse": 44.04059617298358,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.15876599334816,
+            "psnr_from_mean_mse": -17.314829866202658,
+            "mse": 0.00014295014195659042,
+            "mae": 0.006602330948238445
+          },
+          "delta_vs_input": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598
+          },
+          "post_extra_clamp": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598,
+            "psnr": 38.52494776688774,
+            "psnr_from_mean_mse": 38.366803160352674,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -20.58744808687507,
+            "psnr_from_mean_mse": -20.75129776227267,
+            "mse": 0.00031863830436292467,
+            "mae": 0.010341616558769504
+          },
+          "delta_vs_input": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657
+          },
+          "post_extra_clamp": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657,
+            "psnr": 35.09626567336083,
+            "psnr_from_mean_mse": 34.93033526428266,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -23.046268186785284,
+            "psnr_from_mean_mse": -23.213668987589436,
+            "mse": 0.00056380186093163,
+            "mae": 0.014095188473300333
+          },
+          "delta_vs_input": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485,
+            "psnr": 32.63744557345062,
+            "psnr_from_mean_mse": 32.467964038965896,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db-near_clean",
+      "source_id": "6UZVovkR3IU",
+      "control": "near_clean",
+      "task": "deblur",
+      "oracle_diagnostic": {
+        "t": 0.0036525837042881448,
+        "unconstrained_t": 0.0036525837042881448,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.003227232085443177,
+        "pooled_mse_change_at_oracle": -6.755904751818616e-09
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -7.464746020985201e-06,
+            "mae": -0.0006178272571333385
+          },
+          "post_extra_clamp": {
+            "mse": 9.066796855323032e-06,
+            "mae": 0.002354842253434815,
+            "psnr": 50.425622711128966,
+            "psnr_from_mean_mse": 50.42546114677103,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.4874945933100321,
+            "psnr_from_mean_mse": -0.4891810624791546,
+            "mse": 1.0810053018129966e-06,
+            "mae": 9.25879765722986e-05
+          },
+          "delta_vs_input": {
+            "mse": -6.383740719172205e-06,
+            "mae": -0.0005252392805610399
+          },
+          "post_extra_clamp": {
+            "mse": 1.0147802157136028e-05,
+            "mae": 0.0024474302300071136,
+            "psnr": 49.938128117818934,
+            "psnr_from_mean_mse": 49.93628008429187,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.797082588140519,
+            "psnr_from_mean_mse": -1.8118797742912562,
+            "mse": 4.693945474409753e-06,
+            "mae": 0.00037834341440141656
+          },
+          "delta_vs_input": {
+            "mse": -2.7708005465754486e-06,
+            "mae": -0.00023948384273192198
+          },
+          "post_extra_clamp": {
+            "mse": 1.3760742329732784e-05,
+            "mae": 0.0027331856678362316,
+            "psnr": 48.62854012298845,
+            "psnr_from_mean_mse": 48.61358137247977,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -6.352572252779851,
+            "psnr_from_mean_mse": -6.423328400473835,
+            "mse": 3.0724374633975866e-05,
+            "mae": 0.0018533291016808373
+          },
+          "delta_vs_input": {
+            "mse": 2.3259628612990663e-05,
+            "mae": 0.0012355018445474987
+          },
+          "post_extra_clamp": {
+            "mse": 3.9791171489298896e-05,
+            "mae": 0.004208171355115652,
+            "psnr": 44.073050458349115,
+            "psnr_from_mean_mse": 44.00213274629719,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.588092401006222,
+            "psnr_from_mean_mse": -11.69047396180433,
+            "mse": 0.0001247471195136486,
+            "mae": 0.005083019675432314
+          },
+          "delta_vs_input": {
+            "mse": 0.0001172823734926634,
+            "mae": 0.004465192418298975
+          },
+          "post_extra_clamp": {
+            "mse": 0.00013381391636897163,
+            "mae": 0.007437861928867129,
+            "psnr": 38.837530310122744,
+            "psnr_from_mean_mse": 38.7349871849667,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -14.956099054163438,
+            "psnr_from_mean_mse": -15.066405805424957,
+            "mse": 0.0002820682345028231,
+            "mae": 0.00855198547279765
+          },
+          "delta_vs_input": {
+            "mse": 0.00027460348848183793,
+            "mae": 0.007934158215664313
+          },
+          "post_extra_clamp": {
+            "mse": 0.00029113503135814615,
+            "mae": 0.010906827726232466,
+            "psnr": 35.46952365696553,
+            "psnr_from_mean_mse": 35.35905534134607,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.402873957892837,
+            "psnr_from_mean_mse": -17.51607798797589,
+            "mse": 0.0005026877195199549,
+            "mae": 0.012085758337344175
+          },
+          "delta_vs_input": {
+            "mse": 0.0004952229734989697,
+            "mae": 0.011467931080210839
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005117545163752779,
+            "mae": 0.014440600590778991,
+            "psnr": 33.02274875323613,
+            "psnr_from_mean_mse": 32.90938315879514,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-identity",
+      "source_id": "6UZVovkR3IU",
+      "control": "identity",
+      "task": "denoise",
+      "oracle_diagnostic": {
+        "t": 0.0,
+        "unconstrained_t": -0.007195629452772685,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0,
+        "pooled_mse_change_at_oracle": 0.0
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526
+          },
+          "post_extra_clamp": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526,
+            "psnr": 55.683713760235904,
+            "psnr_from_mean_mse": 55.68163302655533,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -2.1914555950020045,
+            "psnr_from_mean_mse": -2.2064027662644463,
+            "mse": 1.789443239346378e-06,
+            "mae": 0.0003032289050745743
+          },
+          "delta_vs_input": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727
+          },
+          "post_extra_clamp": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727,
+            "psnr": 53.4922581652339,
+            "psnr_from_mean_mse": 53.475230260290886,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -5.194052512871579,
+            "psnr_from_mean_mse": -5.253319590509399,
+            "mse": 6.357902248154261e-06,
+            "mae": 0.0008576599189694298
+          },
+          "delta_vs_input": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824
+          },
+          "post_extra_clamp": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824,
+            "psnr": 50.489661247364324,
+            "psnr_from_mean_mse": 50.42831343604593,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.511592125213745,
+            "psnr_from_mean_mse": -11.641036853571755,
+            "mse": 3.673737389232816e-05,
+            "mae": 0.0029171718489648165
+          },
+          "delta_vs_input": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969
+          },
+          "post_extra_clamp": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969,
+            "psnr": 44.17212163502216,
+            "psnr_from_mean_mse": 44.04059617298358,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.15876599334816,
+            "psnr_from_mean_mse": -17.314829866202658,
+            "mse": 0.00014295014195659042,
+            "mae": 0.006602330948238445
+          },
+          "delta_vs_input": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598
+          },
+          "post_extra_clamp": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598,
+            "psnr": 38.52494776688774,
+            "psnr_from_mean_mse": 38.366803160352674,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -20.58744808687507,
+            "psnr_from_mean_mse": -20.75129776227267,
+            "mse": 0.00031863830436292467,
+            "mae": 0.010341616558769504
+          },
+          "delta_vs_input": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657
+          },
+          "post_extra_clamp": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657,
+            "psnr": 35.09626567336083,
+            "psnr_from_mean_mse": 34.93033526428266,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -23.046268186785284,
+            "psnr_from_mean_mse": -23.213668987589436,
+            "mse": 0.00056380186093163,
+            "mae": 0.014095188473300333
+          },
+          "delta_vs_input": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485,
+            "psnr": 32.63744557345062,
+            "psnr_from_mean_mse": 32.467964038965896,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b-near_clean",
+      "source_id": "6UZVovkR3IU",
+      "control": "near_clean",
+      "task": "denoise",
+      "oracle_diagnostic": {
+        "t": 0.003291340037259725,
+        "unconstrained_t": 0.003291340037259725,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0026191584620818276,
+        "pooled_mse_change_at_oracle": -5.487828607894887e-09
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -7.468420279053281e-06,
+            "mae": -0.0006181573324556726
+          },
+          "post_extra_clamp": {
+            "mse": 9.065126208327454e-06,
+            "mae": 0.0023545136664905254,
+            "psnr": 50.42641337718328,
+            "psnr_from_mean_mse": 50.426261451042,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.49556987889329207,
+            "psnr_from_mean_mse": -0.49727633724970843,
+            "mse": 1.0997358306874168e-06,
+            "mae": 9.440027946678014e-05
+          },
+          "delta_vs_input": {
+            "mse": -6.368684448365864e-06,
+            "mae": -0.0005237570529888925
+          },
+          "post_extra_clamp": {
+            "mse": 1.016486203901487e-05,
+            "mae": 0.0024489139459573056,
+            "psnr": 49.93084349828999,
+            "psnr_from_mean_mse": 49.928985113792294,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.8093903013280581,
+            "psnr_from_mean_mse": -1.8242782361286416,
+            "mse": 4.7324143228834256e-06,
+            "mae": 0.0003820972386887251
+          },
+          "delta_vs_input": {
+            "mse": -2.7360059561698552e-06,
+            "mae": -0.0002360600937669475
+          },
+          "post_extra_clamp": {
+            "mse": 1.379754053121088e-05,
+            "mae": 0.0027366109051792506,
+            "psnr": 48.61702307585522,
+            "psnr_from_mean_mse": 48.60198321491336,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -6.364309410548529,
+            "psnr_from_mean_mse": -6.435253690754962,
+            "mse": 3.0828105913512956e-05,
+            "mae": 0.0018614433289523467
+          },
+          "delta_vs_input": {
+            "mse": 2.3359685634459677e-05,
+            "mae": 0.001243285996496674
+          },
+          "post_extra_clamp": {
+            "mse": 3.989323212184041e-05,
+            "mae": 0.004215956995442872,
+            "psnr": 44.06210396663475,
+            "psnr_from_mean_mse": 43.99100776028704,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.596054306219266,
+            "psnr_from_mean_mse": -11.698764566155525,
+            "mse": 0.0001249797788719968,
+            "mae": 0.005096018397153554
+          },
+          "delta_vs_input": {
+            "mse": 0.0001175113585929435,
+            "mae": 0.004477861064697882
+          },
+          "post_extra_clamp": {
+            "mse": 0.00013404490508032424,
+            "mae": 0.00745053206364408,
+            "psnr": 38.830359070964015,
+            "psnr_from_mean_mse": 38.72749688488648,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -14.962228092839979,
+            "psnr_from_mean_mse": -15.072947163244727,
+            "mse": 0.00028245501873286935,
+            "mae": 0.008568618219389567
+          },
+          "delta_vs_input": {
+            "mse": 0.0002749865984538161,
+            "mae": 0.007950460886933894
+          },
+          "post_extra_clamp": {
+            "mse": 0.0002915201449411968,
+            "mae": 0.010923131885880092,
+            "psnr": 35.4641852843433,
+            "psnr_from_mean_mse": 35.353314287797275,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.408001577009024,
+            "psnr_from_mean_mse": -17.521665667569813,
+            "mse": 0.0005032538255625322,
+            "mae": 0.012105780041134391
+          },
+          "delta_vs_input": {
+            "mse": 0.000495785405283479,
+            "mae": 0.011487622708678718
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005123189517708597,
+            "mae": 0.014460293707624916,
+            "psnr": 33.018411800174256,
+            "psnr_from_mean_mse": 32.90459578347219,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-identity",
+      "source_id": "6UZVovkR3IU",
+      "control": "identity",
+      "task": "sr",
+      "oracle_diagnostic": {
+        "t": 0.0,
+        "unconstrained_t": -0.007195629452772685,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.0,
+        "pooled_mse_change_at_oracle": 0.0
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526
+          },
+          "post_extra_clamp": {
+            "mse": 2.70294181752093e-06,
+            "mae": 0.0011445379931381526,
+            "psnr": 55.683713760235904,
+            "psnr_from_mean_mse": 55.68163302655533,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -2.1914555950020045,
+            "psnr_from_mean_mse": -2.2064027662644463,
+            "mse": 1.789443239346378e-06,
+            "mae": 0.0003032289050745743
+          },
+          "delta_vs_input": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727
+          },
+          "post_extra_clamp": {
+            "mse": 4.492385056867308e-06,
+            "mae": 0.001447766898212727,
+            "psnr": 53.4922581652339,
+            "psnr_from_mean_mse": 53.475230260290886,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -5.194052512871579,
+            "psnr_from_mean_mse": -5.253319590509399,
+            "mse": 6.357902248154261e-06,
+            "mae": 0.0008576599189694298
+          },
+          "delta_vs_input": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824
+          },
+          "post_extra_clamp": {
+            "mse": 9.060844065675191e-06,
+            "mae": 0.0020021979121075824,
+            "psnr": 50.489661247364324,
+            "psnr_from_mean_mse": 50.42831343604593,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.511592125213745,
+            "psnr_from_mean_mse": -11.641036853571755,
+            "mse": 3.673737389232816e-05,
+            "mae": 0.0029171718489648165
+          },
+          "delta_vs_input": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969
+          },
+          "post_extra_clamp": {
+            "mse": 3.9440315709849094e-05,
+            "mae": 0.004061709842102969,
+            "psnr": 44.17212163502216,
+            "psnr_from_mean_mse": 44.04059617298358,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.15876599334816,
+            "psnr_from_mean_mse": -17.314829866202658,
+            "mse": 0.00014295014195659042,
+            "mae": 0.006602330948238445
+          },
+          "delta_vs_input": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598
+          },
+          "post_extra_clamp": {
+            "mse": 0.00014565308377411136,
+            "mae": 0.007746868941376598,
+            "psnr": 38.52494776688774,
+            "psnr_from_mean_mse": 38.366803160352674,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -20.58744808687507,
+            "psnr_from_mean_mse": -20.75129776227267,
+            "mse": 0.00031863830436292467,
+            "mae": 0.010341616558769504
+          },
+          "delta_vs_input": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657
+          },
+          "post_extra_clamp": {
+            "mse": 0.0003213412461804456,
+            "mae": 0.011486154551907657,
+            "psnr": 35.09626567336083,
+            "psnr_from_mean_mse": 34.93033526428266,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -23.046268186785284,
+            "psnr_from_mean_mse": -23.213668987589436,
+            "mse": 0.00056380186093163,
+            "mae": 0.014095188473300333
+          },
+          "delta_vs_input": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005665048027491509,
+            "mae": 0.015239726466438485,
+            "psnr": 32.63744557345062,
+            "psnr_from_mean_mse": 32.467964038965896,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac-near_clean",
+      "source_id": "6UZVovkR3IU",
+      "control": "near_clean",
+      "task": "sr",
+      "oracle_diagnostic": {
+        "t": 0.0036196390083515447,
+        "unconstrained_t": 0.0036196390083515447,
+        "objective": "whole-clip pooled MSE before the blend additional clamp; cached G already has upstream VAE clamp; not mean-frame PSNR",
+        "psnr_change_at_oracle_not_its_optimized_objective": 0.00314786235564668,
+        "pooled_mse_change_at_oracle": -6.595320543727426e-09
+      },
+      "fixed_grid": [
+        {
+          "t": 0.0,
+          "delta_vs_Rphi_only": {
+            "psnr": 0.0,
+            "psnr_from_mean_mse": 0.0,
+            "mse": 0.0,
+            "mae": 0.0
+          },
+          "delta_vs_input": {
+            "mse": -7.455692158447894e-06,
+            "mae": -0.0006167276747883668
+          },
+          "post_extra_clamp": {
+            "mse": 9.068469962473943e-06,
+            "mae": 0.0023550247423668063,
+            "psnr": 50.42482812742833,
+            "psnr_from_mean_mse": 50.4246598117671,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.05,
+          "delta_vs_Rphi_only": {
+            "psnr": -0.4854985712891846,
+            "psnr_from_mean_mse": -0.48706927628073515,
+            "mse": 1.0762706330033677e-06,
+            "mae": 9.190681949841238e-05
+          },
+          "delta_vs_input": {
+            "mse": -6.379421525444527e-06,
+            "mae": -0.0005248208552899544
+          },
+          "post_extra_clamp": {
+            "mse": 1.014474059547731e-05,
+            "mae": 0.0024469315618652187,
+            "psnr": 49.93932955613914,
+            "psnr_from_mean_mse": 49.937590535486365,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.1,
+          "delta_vs_Rphi_only": {
+            "psnr": -1.789983938276002,
+            "psnr_from_mean_mse": -1.803886123694035,
+            "mse": 4.669502173774071e-06,
+            "mae": 0.0003772889494003894
+          },
+          "delta_vs_input": {
+            "mse": -2.786189984673823e-06,
+            "mae": -0.00023943872538797735
+          },
+          "post_extra_clamp": {
+            "mse": 1.3737972136248014e-05,
+            "mae": 0.0027323136917671957,
+            "psnr": 48.634844189152325,
+            "psnr_from_mean_mse": 48.620773688073065,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.25,
+          "delta_vs_Rphi_only": {
+            "psnr": -6.336719255998517,
+            "psnr_from_mean_mse": -6.40374225282207,
+            "mse": 3.055096195336683e-05,
+            "mae": 0.0018535200839595594
+          },
+          "delta_vs_input": {
+            "mse": 2.309526979491893e-05,
+            "mae": 0.0012367924091711926
+          },
+          "post_extra_clamp": {
+            "mse": 3.961943191584077e-05,
+            "mae": 0.004208544826326366,
+            "psnr": 44.08810887142981,
+            "psnr_from_mean_mse": 44.02091755894503,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.5,
+          "delta_vs_Rphi_only": {
+            "psnr": -11.568943907893882,
+            "psnr_from_mean_mse": -11.666258149169536,
+            "mse": 0.00012402594566545802,
+            "mae": 0.005087918946817314
+          },
+          "delta_vs_input": {
+            "mse": 0.00011657025350701013,
+            "mae": 0.004471191272028947
+          },
+          "post_extra_clamp": {
+            "mse": 0.00013309441562793197,
+            "mae": 0.007442943689184121,
+            "psnr": 38.855884219534445,
+            "psnr_from_mean_mse": 38.758401662597564,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 0.75,
+          "delta_vs_Rphi_only": {
+            "psnr": -14.936117490696766,
+            "psnr_from_mean_mse": -15.041046792793495,
+            "mse": 0.0002804249508123535,
+            "mae": 0.008560268317731465
+          },
+          "delta_vs_input": {
+            "mse": 0.00027296925865390555,
+            "mae": 0.007943540642943099
+          },
+          "post_extra_clamp": {
+            "mse": 0.0002894934207748274,
+            "mae": 0.010915293060098271,
+            "psnr": 35.48871063673156,
+            "psnr_from_mean_mse": 35.383613018973605,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        },
+        {
+          "t": 1.0,
+          "delta_vs_Rphi_only": {
+            "psnr": -17.38255676521038,
+            "psnr_from_mean_mse": -17.490271232042048,
+            "mse": 0.0004997479782217275,
+            "mae": 0.012096802370123467
+          },
+          "delta_vs_input": {
+            "mse": 0.0004922922860632797,
+            "mae": 0.0114800746953351
+          },
+          "post_extra_clamp": {
+            "mse": 0.0005088164481842015,
+            "mae": 0.014451827112490273,
+            "psnr": 33.042271362217946,
+            "psnr_from_mean_mse": 32.93438857972505,
+            "perfect_frames": 0,
+            "frames": 22
+          },
+          "additional_clip_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "next_step": "Await the separately authorized VAE-only decomposition to isolate reconstruction and additional sampling error. If further residual diagnostics are needed, predeclare a small CPU LPIPS/temporal subset and retain clean/near-clean controls; do not select a final coefficient from this single-source GT oracle/grid."
+}

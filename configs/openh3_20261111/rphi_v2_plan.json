@@ -1,0 +1,43 @@
+{
+  "schema": "openh3.rphi_research_plan.v1",
+  "status": "planned_not_implemented_or_launched",
+  "date": "2026-11-11",
+  "priority": "R_phi fidelity and temporal restoration, separately attributable from H3 LoRA",
+  "starting_point": "K3 causal FiLM residual CNN; old architecture retrained on the same new data as control",
+  "data": {
+    "materialized_manifest_dir": "results/takeover_20261111/materialized",
+    "train_sources": 32,
+    "dev_sources": 8,
+    "tasks": ["sr", "deblur", "denoise", "compression"],
+    "target": "shared original-recording RGB proxy, not pristine GT",
+    "requires_vae_for_standalone_rphi": false,
+    "missing": ["identity and near-clean controls", "ordered mixed degradations", "time-varying degradations", "new frozen test sources"]
+  },
+  "output_contract": {
+    "range_pred": "explicitly named clean observation-domain or canonical anchor; never silently interchangeable with sharp RGB",
+    "rgb_pred": "target-resolution fidelity draft supervised against the shared clean RGB proxy",
+    "uncertainty": "local prediction error uncertainty with separate calibration evaluation",
+    "context": "current and past frames only; state reset and chunk equivalence must be tested",
+    "native_observation": "retained as an independent conditioning input, not discarded by the low-resolution anchor"
+  },
+  "condition_arms": [
+    "known operator: controlled non-blind baseline",
+    "observations only plus known output geometry: learned continuous condition, no GT severity or hidden degradation metadata at inference"
+  ],
+  "consistency_contract": {
+    "physical_operator_vs_canonical_anchor": "distinct interfaces and provenance",
+    "default": "uncertainty-weighted soft constraint",
+    "hard_projection": "only an explicitly validated compatible noiseless known-operator control",
+    "compression": "no claimed fixed linear nullspace",
+    "final_acceptance_space": "decoded original-resolution RGB"
+  },
+  "stages": [
+    {"id": "R0", "status": "pending", "work": "RGB loader, shared target checks, standalone old-architecture baseline and clean-input guard"},
+    {"id": "R1", "status": "pending", "work": "separate range/RGB outputs; observation-derived conditions and calibrated uncertainty ablations"},
+    {"id": "R2", "status": "pending", "work": "K3 versus causal state, reset/chunking tests and motion/occlusion-aware temporal evaluation"},
+    {"id": "R3", "status": "pending", "work": "frozen H3 with raw / old R_phi / new R_phi guides and soft consistency toggled; include R_phi-only"},
+    {"id": "R4", "status": "pending", "work": "train LoRA on the same chosen R_phi conditions; compare matched frozen/adapted H3"},
+    {"id": "R5", "status": "pending", "work": "mixed and time-varying degradations, new frozen-source evaluation"}
+  ],
+  "promotion_rule": "Complete matched controls and per-task fidelity, temporal, clean-input and uncertainty reports before claiming gains; small dev results are not omni generalization evidence"
+}

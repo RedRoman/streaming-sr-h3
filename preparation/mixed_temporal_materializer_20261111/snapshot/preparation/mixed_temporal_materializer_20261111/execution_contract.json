@@ -1,0 +1,36 @@
+{
+  "schema": "openh3.mixed_temporal_execution_contract.v1",
+  "status": "root_confirmed_engineering_only",
+  "frame_index_zero_pad_width": 6,
+  "window_key": "canonical_target_spec_sha256",
+  "canonical_json": "sort_keys_compact_utf8_ensure_ascii_false_no_nan",
+  "rgb_conversion_before_crop": true,
+  "center_crop_rounding": "integer_floor",
+  "allow_resize": false,
+  "natural_cut_status": "unknown_engineering_only",
+  "replay_count": 2,
+  "allowed_source_ids": [
+    "2BdYaGuVAKo"
+  ],
+  "source_role": "existing_train_only",
+  "registry_contract": "bind complete train/dev manifest file SHA256 and reject source ID, full local source file SHA256 or explicit source_group_id crossing splits",
+  "timestamp_contract": "FFmpeg accurate input seek with copyts preserves source presentation PTS at showinfo@source; explicit setpts subtracts seek plus format.start_time before fps24:round=near; showinfo@target records window-relative output PTS. Preserve both actual timebases and exact command/log. An explicit trim=end_frame=96 before target showinfo prevents codec/filter look-ahead from being mistaken for exported target frames.",
+  "source_frame_count_requirement": "at least96 actual source filter frames and exactly96 RGB target outputs; metadata fps*duration is not sufficient",
+  "ffmpeg_filter_order": [
+    "format=rgb24",
+    "showinfo@source",
+    "setpts=PTS-(start_seconds+format_start_time)/TB",
+    "fps=24:round=near",
+    "trim=end_frame=96",
+    "integer_floor_center_crop_exact1",
+    "showinfo@target"
+  ],
+  "canonical_target_spec_fields": "source identity/group/split and SHA;96frames;24fps;480x832 RGB24;decimal-string centered start;format start time;explicit geometry/time-grid;canonical execution contract SHA",
+  "hash_scope": "local source segment file;target/observation uint8RGB pixels and NPZ files;canonical schedules;source registry;code/config/software;complete receipt file SHA printed separately to avoid self-reference",
+  "output_policy": "new directory only;never overwrite/resume existing NPZ/runtime;partial receipt is not completion",
+  "memory_contract": "clean uint8 read-only mmap plus one observation mmap at a time;float intermediates at frame granularity;single-thread codec;768MiB parent peak and sampled parent+owned-ffmpeg RSS guard",
+  "smoke_scope": "six profiles twice;no new training/no NPU/no46candidate use/no split changes;unknown natural cuts prevent scientific continuity acceptance",
+  "main_plan_unchanged": true,
+  "operator_contract_sha256": "3d08ba296e54fb1827d8ec81ed76f876148fca43cd88896048829cd10af8de3b",
+  "profile_recipes_sha256": "89136141dfe22cc39aeaf8ac1d3c9226aaea4292fff8f5152d5097866ee1c68b"
+}

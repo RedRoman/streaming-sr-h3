@@ -1,0 +1,43 @@
+{
+  "schema": "openh3.native_baseline.lossless_rgb.v1",
+  "method": "avernet",
+  "status": "inference_completed_metrics_not_run",
+  "task": "deblur",
+  "source_commit": "c4eb019f71fe6a2ccb6807dca92451fd8d8b8cd3",
+  "checkpoint_sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+  "runner_sha256": "8cc2ca41e6ef1c723f0c86c5e279de32e2df5574d2fa656d58cecb3a7d23c80d",
+  "input_npz_sha256": "82fee0f9fcca222aafc1d373c475ccffbf0175046b51f16814dec160da066cfa",
+  "input_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+  "input_shape": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "input_color": "RGB",
+  "input_range": "uint8 / 255 -> float32 [0,1]",
+  "temporal_access": "offline_bidirectional_entire_supplied_clip",
+  "maximum_future_frames": 21,
+  "spatial_padding": {
+    "mode": "official_tail_flip",
+    "multiple": 8
+  },
+  "resizing": false,
+  "tiling": false,
+  "test_time_augmentation": false,
+  "gt_read": false,
+  "device": "cpu",
+  "checkpoint_strict_load": true,
+  "evaluation_metrics": null,
+  "quality_verdict": "requires_review",
+  "torch_version": "2.10.0+cpu",
+  "mmcv_version": "2.2.0",
+  "one_shot_forward_seconds_not_a_benchmark": 992.3837291803211,
+  "output_npz_sha256": "562b4b0137066b43c17798a64819129d3ce66940188cd3edfcb26e0af551eef5",
+  "output_rgb_sha256": "55f5e0ee3cd5c6181a032ef14e8c642ab30e89f43e323b526328cc28f5479e55",
+  "output_raw_range": [
+    -0.005660136695951223,
+    1.0375481843948364
+  ],
+  "output_storage": "float32 RGB THWC lossless NPZ; raw plus clamp[0,1]; no uint8 rounding"
+}

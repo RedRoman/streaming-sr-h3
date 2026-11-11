@@ -2,9 +2,9 @@
   "schema": "openh3.native_baseline_readiness.v1",
   "date": "2026-11-11",
   "recorded_at_utc": "2026-11-11T09:11:15.460437+00:00",
-  "status": "two_Faver_native_results_audited_queue_running",
+  "status": "Faver3_and_Aver2_native_quality_audited_one_compression_pending",
   "plan_reference": "configs/openh3_20261111/omni_benchmark_plan_20261111.json",
-  "plan_sha256": "6a1fc49beb70542097ea25665bf0e66668b4fe4252ef4da75c35d0d86175dcc6",
+  "plan_sha256": "94552573fd218a22f226039ac872b410791778954cec510e5ae6e557106d306e",
   "execution_boundary": {
     "work_performed": "local files, public network reads/downloads, pure NumPy tests and static compilation",
     "remote_commands_executed": false,
@@ -32,7 +32,7 @@
         "models/spynet.py": "746f2378800afa51cd246a736f5aab8c20f6f14085ff9619645588a481f11756"
       },
       "method": "FaverNet TUDCommon",
-      "readiness": "official_strict_CPU_load_and_synthetic_forward_verified_Faver_two_native_results_audited_Aver_quality_pending",
+      "readiness": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
       "license_evidence": {
         "file": "LICENSE",
         "declaration": "MIT"
@@ -85,7 +85,7 @@
         "options/test/test_AverNet_DAVIS_T6.yml": "767cf6e0ec1fe1b26ee348050c3853f638b4fd7199cef66c239c50811b83e57b"
       },
       "method": "AverNet",
-      "readiness": "official_strict_CPU_load_and_synthetic_forward_verified_Faver_two_native_results_audited_Aver_quality_pending",
+      "readiness": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
       "license_evidence": {
         "file": "setup.py:161,168",
         "declaration": "Apache-2.0 package metadata; no standalone LICENSE found in pinned tree"
@@ -441,24 +441,26 @@
       "started_at_local": "2026-11-11T20:17:12+08:00",
       "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
       "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
-      "latest_snapshot": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/queue_status.json",
-      "last_verified_local": "2026-11-11T20:58:50.786991+08:00",
-      "last_verified_current": "favernet/compression/infer",
-      "completed_forwards": 2,
+      "latest_snapshot": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111/queue_status.json",
+      "last_verified_local": "2026-11-11T21:50:32.354511+08:00",
+      "last_verified_current": "avernet/compression/infer",
+      "completed_forwards": 5,
       "maximum_forwards": 6,
       "model_quality_results_available": true,
       "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
       "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity.",
-      "latest_audit": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/audit.json",
-      "latest_audit_sha256": "108926c79854f7599e3c47b06869497bc287ce3da4a567f8538ad2de73f3f92d",
-      "completed_quality_evaluations": 2,
-      "new_result": "favernet/denoise",
+      "latest_audit": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111/audit.json",
+      "latest_audit_sha256": "9518513eb6f6656bbde9f779cf6a094ee0770080e01af8b98048b9e5f99058c9",
+      "completed_quality_evaluations": 5,
+      "new_result": "Aver/denoise",
       "execution_device": "cpu",
       "runtime_import_caveat": "MMCV indirectly imported torch_npu/queried davinci_manager. Historical hardcoded torch_npu_imported=false is not whole-process proof. Model/input/output execute on CPU.",
-      "eta_current_basis": "first2Faver inference processes ~910/911s, first metrics82s; Aver unmeasured",
-      "eta_illustrative_local": "2026-11-11 ~22:00; revise after actual Aver first clip",
-      "model_inference_device": "cpu"
+      "eta_current_basis": "Faver inference910-914s; first Aver inference1025.47s + metrics82.04s; two Aver clips remaining at21:31",
+      "eta_illustrative_local": "Around22:04SG if remaining Aver clips have comparable wall time; not guaranteed",
+      "model_inference_device": "cpu",
+      "Faver_three_task_summary": "results/takeover_20261111/native_quality_compression_increment_20261111T1312Z/favernet_three_tasks_summary.json",
+      "last_verified_local_scope": "time of archived incremental audit"
     }
   },
-  "plan_sha256_scope": "Historical initial preparation plan; current plan evolves and is separately versioned in git."
+  "plan_sha256_scope": "Current planning metadata; frozen runtime plans retain their original hashes."
 }

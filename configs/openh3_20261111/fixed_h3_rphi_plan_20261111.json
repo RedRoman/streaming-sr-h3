@@ -1,6 +1,6 @@
 {
   "schema": "openh3.fixed_rphi_guides.plan.v1",
-  "status": "controls_scalar_mix_VAE_completed_RGB_preserving_interface_diagnostic_next",
+  "status": "controls_scalar_VAE_completed_cached_RGB_compensation_running_train_interface_preparation",
   "date": "2026-11-11",
   "source_manifest": "datasets/omni_pilot_v1/dev_materialized.jsonl",
   "candidate_selection": "Stage2 full audit passed. Retain legacy_g05 as the stronger original reference; native encoder and guard2 show no overall advantage. Compression and near-clean negative cases remain. See scientific_review_v2; no omni acceptance.",
@@ -269,18 +269,18 @@
     "implementation": "code/diagnose_cached_rgb_compensation.py",
     "execution": {
       "host": "30794",
-      "status": "running_one_of12_scored",
+      "status": "running_9_of12_scored",
       "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
       "session": "cached-rgb-comp-20261111a",
       "worker_pid": 3994024,
       "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
-      "last_observed_at_utc": "2026-11-11T13:06:51.365163+00:00",
+      "last_observed_at_utc": "2026-11-11T13:48:54.567054+00:00",
       "launch_receipt": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/launch_receipt.json",
       "launch_receipt_sha256": "e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160",
       "implementation_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
       "tests_passed": 7,
       "real_input_inspection_samples": 12,
-      "completed_scored_samples": 1,
+      "completed_scored_samples": 9,
       "maximum_samples": 12,
       "beta_grid": [
         0,
@@ -306,9 +306,9 @@
         "terminate_grace_seconds": 30
       },
       "next": "Read grid.log, eval/partial_metrics.json, eval/metrics.json and fresh failure files; inspect actual owned process/session. No automatic relaunch or same-directory resume. Download a small result evidence archive when complete, audit all endpoints/common-flow/caches and clean controls before any quality conclusion.",
-      "latest_snapshot": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/root_snapshot_20261111T130651Z.json",
+      "latest_snapshot": "results/takeover_20261111/heartbeat_20261111T1348Z_runtime.json",
       "first_sample_seconds": 310.4286413779482,
-      "eta_rough_local": "Around22:00SG if remaining samples have similar cost; common flow is reused, actual remaining sample rates unmeasured; owned2h deadline22:57:58SG is a budget ceiling, not a completion guarantee."
+      "eta_rough_local": "Approximately22:02SG at measured~298-310s/sample; full acceptance after complete; hard owned budget22:57:58SG"
     }
   },
   "next_action": "Audit running cached scalar versus VAE-compensation fixed grid; meanwhile finish native baseline queue and source qualification. Implement original-RGB matched LoRA only with train-role cache and actual gradient/trajectory/memory admission.",

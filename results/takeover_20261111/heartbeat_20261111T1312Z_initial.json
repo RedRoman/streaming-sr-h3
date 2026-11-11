@@ -1,0 +1,47 @@
+{
+  "observed_at_utc": "2026-11-11T13:14:20.928563+00:00",
+  "stage2": {
+    "smoke": "completed",
+    "native": "completed",
+    "controls": "completed",
+    "finalizer": "completed",
+    "finalizer_quality_verdict": "requires_review",
+    "note": "state fields separately reread after initial status-key mismatch; stages not restarted"
+  },
+  "compensation": {
+    "process_alive": true,
+    "process_status": [
+      "State:\tR (running)",
+      "VmHWM:\t 3186656 kB",
+      "VmRSS:\t 2947488 kB",
+      "Cpus_allowed_list:\t8,11"
+    ],
+    "log_tail": "hes_verified\": true}\n{\"preflight_sample\": 7, \"total\": 12, \"cache_hashes_verified\": true}\n{\"preflight_sample\": 8, \"total\": 12, \"cache_hashes_verified\": true}\n{\"preflight_sample\": 9, \"total\": 12, \"cache_hashes_verified\": true}\n{\"preflight_sample\": 10, \"total\": 12, \"cache_hashes_verified\": true}\n{\"preflight_sample\": 11, \"total\": 12, \"cache_hashes_verified\": true}\n{\"preflight_sample\": 12, \"total\": 12, \"cache_hashes_verified\": true}\n/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/lpips/trainer.py:9: UserWarning: A NumPy version >=1.22.4 and <2.3.0 is required for this version of SciPy (detected version 2.5.4)\n  from scipy.ndimage import zoom\n/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n  warnings.warn(\n/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n  warnings.warn(msg)\n{\"done\": 1, \"total\": 12, \"sample_id\": \"rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3\", \"seconds\": 310.4286413779482}\n{\"done\": 2, \"total\": 12, \"sample_id\": \"rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db\", \"seconds\": 300.8801466189325}\n",
+    "failures": [],
+    "eval/partial_metrics.json": {
+      "complete": false,
+      "samples": 2,
+      "sample_seconds": [
+        310.4286413779482,
+        300.8801466189325
+      ],
+      "source_tasks": [
+        [
+          "ordinary",
+          "compression"
+        ],
+        [
+          "ordinary",
+          "deblur"
+        ]
+      ],
+      "flow": {
+        "note": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+        "support_sha256": "6ce8697787e072ca9737d436c0e445749f3812308cd67690305672d8919b9b9b",
+        "pairs": 21,
+        "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+        "reused_across_all_arms_and_same_source_samples": true
+      }
+    }
+  }
+}

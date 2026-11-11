@@ -1,0 +1,270 @@
+{
+  "schema": "openh3.mixed_temporal_engineering_smoke_review.v1",
+  "status": "bounded_single_train_source_engineering_passed_no_quality_claim",
+  "source_id": "2BdYaGuVAKo",
+  "source_role": "existing_train",
+  "candidate46_used": false,
+  "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+  "source_group_id": "audioset-youtube:2BdYaGuVAKo",
+  "new_data_root": "/cache/zihaohe/omni_openh3_20261111/runs/mixed_temporal_single_source_smoke_20261111a",
+  "local_evidence_directory": "results/takeover_20261111/mixed_temporal_single_source_smoke_completed",
+  "archive_sha256": "622ddc3d1f42baaba91d4dca8900b34f62bbe3b9c9505e8fd31315fe9074ae4b",
+  "complete_sha256": "d21717ea89c22414434b19a29d82073cbdc9fa45dbbc0f579c16bbb07840ea02",
+  "preflight_sha256": "1a3715a1abe4ea850658f119badd73a2c95ad1015da887736c3e2e57d0645561",
+  "verification_sha256": "0bed3058f39b004aca55a6b8cfd571ac3d41c7693fa25f8549a83fe4449192c8",
+  "runtime_files": [
+    {
+      "path": "code/materialize_mixed_temporal_pilot.py",
+      "sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37"
+    },
+    {
+      "path": "code/tests/test_mixed_temporal_materializer.py",
+      "sha256": "00333283e676492fd18c45e1a516b8e447389ec63c0916f07a3ac7617b8ee35f"
+    },
+    {
+      "path": "preparation/mixed_temporal_materializer_20261111/execution_contract.json",
+      "sha256": "a601c5b599be572b140ad6dec96bf5f1caa0d4e5b7e1780c296a9bf4afe54c81"
+    },
+    {
+      "path": "preparation/mixed_temporal_materializer_20261111/preflight.py",
+      "sha256": "3b004e3b218623e985ec46158b028e7fcddbaecfbe083dcfaf5bc3458a43374c"
+    },
+    {
+      "path": "preparation/mixed_temporal_materializer_20261111/run_smoke.py",
+      "sha256": "a45849e17c9c1e6dfdfb4dfa8e027876ee1cdc6ccd5001c6aa07dba41b104f74"
+    },
+    {
+      "path": "preparation/mixed_temporal_materializer_20261111/snapshot/configs/openh3_20261111/mixed_temporal_data_plan_20261111.json",
+      "sha256": "225723939832d2fa5b29fc6edcca26958e4acfb58e6a9c5886a7e5c94d741dfe"
+    }
+  ],
+  "snapshot_files_sha256": {
+    "code/materialize_mixed_temporal_pilot.py": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37",
+    "code/tests/test_mixed_temporal_materializer.py": "00333283e676492fd18c45e1a516b8e447389ec63c0916f07a3ac7617b8ee35f",
+    "configs/openh3_20261111/mixed_temporal_data_plan_20261111.json": "225723939832d2fa5b29fc6edcca26958e4acfb58e6a9c5886a7e5c94d741dfe",
+    "preparation/mixed_temporal_materializer_20261111/execution_contract.json": "a601c5b599be572b140ad6dec96bf5f1caa0d4e5b7e1780c296a9bf4afe54c81"
+  },
+  "snapshot_plan_policy": "The frozen plan under preparation/.../snapshot must remain unchanged when the root updates the main plan status.",
+  "validation": {
+    "cpu_unittests_passed": 15,
+    "cpu_unittests_elapsed_seconds": 0.8,
+    "cpu_unittests_log_sha256": "50adbdfdf8a079beddea4a234c82eddc1c48d1a3857f267a623f7835f29f85e5",
+    "real_source_decoded_filter_frames": 122,
+    "target_frames": 96,
+    "target_shape": [
+      96,
+      480,
+      832,
+      3
+    ],
+    "target_pixel_sha256": "e69fa6f47606b3e68450bcb5c095bf36ed96a4a37f1fa7d44742b6bf9743f17d",
+    "profiles": {
+      "native_abrupt_blur_noise_h264": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "70080081a8e886acf21f5026ba6b8315d26e3441aa8997f6fc85d1c70f85424c",
+        "keyframe_indices_each_replay": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "native_smooth_blur_noise_h264": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "f6abc349ff1ae63c90a173f55ec1f9b6ef578732d912782428530e912d2ae07d",
+        "keyframe_indices_each_replay": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "native_smooth_jpeg_quality": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "f0937800db57613e9cf36bd57ef941158639cdfddea306566b9b7196e4a0a187",
+        "keyframe_indices_each_replay": [
+          [],
+          []
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "native_static_blur_noise_h264": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "b0e0c96ef9dbf7bba9647fc4838bd9cf3dc6a55cab22c02224f76ac1b2e9220a",
+        "keyframe_indices_each_replay": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "native_static_noise_blur_h264": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "b0cb0fa80d0ee346cdd8c568b4f2a5f58c3112d605a77c759f6380b87f37af03",
+        "keyframe_indices_each_replay": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "sr_smooth_blur_noise_h264": {
+        "pixel_replay_exact": true,
+        "replay_pixel_sha256": "a3b4df21c84e3a9ba60471ce57543cf652f42bdc9686e3a57c627ead727bfbb0",
+        "keyframe_indices_each_replay": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "noise_replay_exact": true,
+        "decoded_frames_each_replay": [
+          96,
+          96
+        ],
+        "shape": [
+          96,
+          120,
+          208,
+          3
+        ]
+      }
+    },
+    "all7_saved_npz_file_and_pixel_hashes_reverified": true,
+    "all6_observations_bind_same_target_and_source": true,
+    "all6_double_replay_pixel_sha_exact": true,
+    "static_order_and_native_temporal_shared_unit_noise_exact": true,
+    "h264_keyframes_each_replay": [
+      0
+    ],
+    "h264_profile_count": 5,
+    "jpeg_profile_count": 1,
+    "unexpected_frame48_codec_reset": false,
+    "source_sha_before_after_and_postverification_equal": true
+  },
+  "timing": {
+    "started_utc": "2026-11-11T13:37:06.742968+00:00",
+    "finished_utc": "2026-11-11T13:39:06.865062+00:00",
+    "launch_wall_seconds": 120.122094,
+    "materialization_seconds": 119.62942340876907,
+    "independent_saved_pixel_verification_seconds": 6.058848240412772,
+    "internal_budget_seconds": 600,
+    "outer_timeout_seconds": 630,
+    "process_exit_code": 0,
+    "automatic_retries": 0
+  },
+  "memory_and_storage": {
+    "peak_process_rss_bytes": 416108544,
+    "max_sampled_parent_plus_ffmpeg_rss_bytes": 416108544,
+    "conservative_nonconcurrent_parent_plus_child_peak_bytes": 486379520,
+    "budget_bytes": 805306368,
+    "saved_target_and6_npz_bytes": 329099876,
+    "large_npz_downloaded": false,
+    "evidence_archive_bytes": 105899
+  },
+  "timebase_caveat": {
+    "source_first_last": [
+      {
+        "index": 0,
+        "pts": 91091,
+        "pts_time_seconds": 3.03637,
+        "time_base": "1/30000"
+      },
+      {
+        "index": 121,
+        "pts": 212212,
+        "pts_time_seconds": 7.07373,
+        "time_base": "1/30000"
+      }
+    ],
+    "target_first_last": [
+      {
+        "index": 0,
+        "pts": 1,
+        "pts_time_seconds": 0.0416667,
+        "time_base": "1/24"
+      },
+      {
+        "index": 95,
+        "pts": 96,
+        "pts_time_seconds": 4.0,
+        "time_base": "1/24"
+      }
+    ],
+    "explanation": "With the frozen accurate seek and fps round=near contract, this window exports target PTS 1..96 at1/24, not0..95. All96 actual frames are retained. Observation codec timestamps reindex the same ordered96-frame sequence to0..95 at1/24. Original/window-relative PTS are preserved in the decode receipt; no global source-frame index is inferred from FPS."
+  },
+  "scientific_limits": [
+    "No R_phi/OpenH3 model calls, no training, no NPU, no source-role reassignment, and no independent calibration/test claim.",
+    "Natural scene-cut status remains unknown. Passing data/codec engineering checks does not approve this window as a continuous-content temporal restoration benchmark.",
+    "The separate two-source scene-cut control and optional segmented-codec reset control were not implemented/executed in this single-source smoke.",
+    "Smooth and abrupt schedules share unit-noise realizations but differ in severity duration/distribution; do not describe their comparison as equal difficulty or matched integrated degradation.",
+    "mixed_native is a new profile family/schema, not one of the frozen four-task one-hot conditions. A separately versioned loader/training contract is required before consuming these NPZs.",
+    "Original decoded recording is a shared reference proxy, not physically pristine radiance; no subjective target-quality review or restoration-performance acceptance occurred.",
+    "Byte replay is verified for this recorded build. The preflight additionally binds4actualx264/libavcodec/libavutil/libswscale shared-library binaries; cross-version byte identity is not promised."
+  ],
+  "next_step": "Root may review artifacts and continuity/loader requirements; do not automatically expand sources, change splits, or start training."
+}

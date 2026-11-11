@@ -1,7 +1,7 @@
 {
   "schema": "openh3.mixed_temporal_data_plan.v1",
   "date": "2026-11-11",
-  "status": "planned_not_materialized_no_training_started",
+  "status": "single_existing_train_source_engineering_materialization_passed_no_training",
   "scope": "CPU data preparation design only; no running runtime, queue, TAKEOVER, or NPU state changed.",
   "evidence": {
     "path": "results/takeover_20261111/mixed_temporal_inventory_31984_20261111.json",
@@ -4103,5 +4103,42 @@
     "low_information_black_frame_only_candidate": "Jz4wLRDTF54",
     "approved_new_sources": 0,
     "limitations": "SHA covers local segments, not full online videos. Sparse pHash and negative search do not certify independent/pristine sources. No split allocation or asset removal."
+  },
+  "materialization_followup": {
+    "status": "engineering_smoke_complete_not_scientific_acceptance",
+    "host": "31984",
+    "run": "/cache/zihaohe/omni_openh3_20261111/runs/mixed_temporal_single_source_smoke_20261111a",
+    "source_id": "2BdYaGuVAKo",
+    "source_role": "existing_train",
+    "profiles": 6,
+    "frames": 96,
+    "target_shape": [
+      96,
+      480,
+      832,
+      3
+    ],
+    "source_frames_decoded": 122,
+    "pixel_replay_equal_all_profiles": true,
+    "saved_NPZ_reloaded_and_SHA_verified": 7,
+    "H264_keyframes_all_replays": [
+      0
+    ],
+    "tests_passed": 15,
+    "seconds": 119.629,
+    "conservative_peak_memory_bytes": 486379520,
+    "memory_budget_bytes": 805306368,
+    "review": "results/takeover_20261111/mixed_temporal_smoke_review_20261111.json",
+    "frozen_execution_plan_sha256": "225723939832d2fa5b29fc6edcca26958e4acfb58e6a9c5886a7e5c94d741dfe",
+    "main_plan_metadata_update_not_runtime_change": true,
+    "target_PTS": "1..96 /24 after centered3.011s seek; first target .0416667s, last4s; codec same-order frames rebased0..95 /24",
+    "scientific_limits": [
+      "natural scene cuts unknown; no continuity cohort approval",
+      "smooth/abrupt severity occupancy differs; not matched-difficulty ablation",
+      "two-source scene cut and codec-reset controls not materialized",
+      "mixed_native needs separate versioned loader/conditioning contract",
+      "no new46candidate use or calibration/test source assignment"
+    ],
+    "next": "Implement versioned observation-only mixed_native loader and sequence contract, validate natural cuts and transition controls before any training expansion"
   }
 }

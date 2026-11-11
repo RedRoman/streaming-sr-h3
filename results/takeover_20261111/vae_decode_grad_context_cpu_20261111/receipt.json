@@ -1,0 +1,69 @@
+{
+  "schema": "openh3.vae_decode_grad_context.cpu_receipt.v1",
+  "recorded_at_utc": "2026-11-11T13:49:00.633133+00:00",
+  "status": "passed_context_restoration_only",
+  "execution": "previously_observed_local_python3_unittest_run_not_repeated_for_archival",
+  "command": "python3 -m unittest discover -s code/tests -p test_vae_decode_grad_context.py -v",
+  "test_count": 5,
+  "passed": 5,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "reported_test_seconds": 0.003,
+  "test_names": [
+    "test_ascend_replaces_only_noninplace_and_restores_in_correct_order",
+    "test_body_exception_propagates_and_restores_both_layers",
+    "test_eager_retains_native_context_choice_without_importing_ascend_function",
+    "test_import_failure_restores_outer_context_without_running_body",
+    "test_nested_context_restores_outer_ascend_choice_before_final_exit"
+  ],
+  "tested_file_sha256": {
+    "code/check_vae_decode_grad.py": "df5f6005497f50c2b4dab9a6d3b6799e5549b59d56783e440ade8630ccc267bc",
+    "code/tests/test_vae_decode_grad_context.py": "2b29caaf3a79344d204d020758f5c2d054810ebaac3ba2d08fbb530a5aea39bc"
+  },
+  "current_file_sha256_at_archival": {
+    "code/check_vae_decode_grad.py": "1a1caab01bd875d90de3263b2a9f2c93dacb26336a4f1a57c253377dcccc5c59",
+    "code/tests/test_vae_decode_grad_context.py": "2b29caaf3a79344d204d020758f5c2d054810ebaac3ba2d08fbb530a5aea39bc"
+  },
+  "current_matches_tested": false,
+  "actual_ascend_source_readonly_evidence": {
+    "host_id": "huawei-modelarts-30794",
+    "path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/rope.py",
+    "resolved_path": "/cache/zihaohe/streaming_sr0/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/rope.py",
+    "sha256": "8fe40b99144d04f14c308683324ff49b24eccdbe8c8510059cdc6fd9451b2873",
+    "line_ranges": {
+      "_rms_rope1": [
+        104,
+        117
+      ],
+      "rms_rope_split_half": [
+        191,
+        218
+      ],
+      "rms_rope_split_half_": [
+        221,
+        235
+      ]
+    },
+    "finding": "In-place wrapper calls the same non-inplace function at line232, then copy_ at233-234. Source was read as text, not imported or executed."
+  },
+  "scope": {
+    "fake_modules": true,
+    "real_torch_import": false,
+    "real_comfy_import": false,
+    "npu_calls": 0,
+    "real_decoder_forwards": 0,
+    "real_backward_calls": 0,
+    "npu_numeric_parity_verified": false,
+    "npu_gradient_verified": false,
+    "memory_acceptance": false,
+    "runtime_or_snapshot_modified": false
+  },
+  "review": "No blocker found in scoped replacement/restoration. Both success and exception paths restore the inner eager function before the outer native_training_math context restores the original deployment function. Strict forward tolerances unchanged; actual NPU numerical/backward acceptance remains pending.",
+  "tested_context_function_static_recheck": {
+    "name": "decoder_math",
+    "source_sha256": "24a4f5d2151b46034558a7b00f8dfe794240cec889e80770653898fca85226a0",
+    "current_function_matches_previously_tested_bytes": true,
+    "note": "The enclosing script changed after the five tests. Only this function byte identity was rechecked; no tests were rerun and no broader new-script acceptance is claimed."
+  }
+}

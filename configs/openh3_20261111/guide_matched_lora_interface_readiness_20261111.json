@@ -1,7 +1,7 @@
 {
   "schema": "openh3.guide_matched_lora_interface_readiness.v1",
   "created_at_utc": "2026-11-11T12:43:42.704981+00:00",
-  "status": "implementation_contract_prepared_not_training_configuration_not_launched",
+  "status": "train_RGB_subset_and_small_temporal_VAE_gradient_verified_full_H3_training_pending",
   "purpose": "Prepare an adaptation objective that is evaluated on original RGB references and exactly matches the selected output interface; do not continue the historical latent-only run unchanged.",
   "code_sha256": {
     "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
@@ -107,10 +107,11 @@
   "training_steps_completed_for_this_contract": 0,
   "launch_ready": false,
   "blocking_prerequisites": [
-    "cached-interface quality screen pending",
-    "train-role matched guide/cache implementation and materialization pending",
-    "original-RGB differentiable trajectory/interface trainer pending",
-    "measured NPU memory/gradient/parity smoke pending"
+    "complete cached-interface quality screen",
+    "explicit train controls and VAE(R) cache plus complete matched dataset",
+    "full-resolution VAE and joint model memory acceptance",
+    "original-RGB full H3 trajectory/interface trainer and adapter gradients",
+    "zero-adapter output and save/reload parity"
   ],
   "gradient_path_static_audit": {
     "path": "results/takeover_20261111/lora_gradient_path_static_audit_20261111.json",
@@ -120,7 +121,97 @@
     "findings": [
       "H3Backbone.decode uses unconditional torch.no_grad at h3_comfy.py:229; the full sampler also uses torch.no_grad at :435. Setting native_training_math/in_training does not re-enable autograd.",
       "The historical trainer calls comfy.sd.VAE.decode directly. That path and MiniMax decoder contain no observed no_grad/inference_mode/detach, so historical LPIPS gradients cannot be declared blocked from wrapper inspection.",
-      "The direct decoder retains internal clamp and chunk copy_ operations. Actual finite nonzero adapter gradients, NPU operators, full trajectory memory and frozen parameter verification remain untested."
+      "The direct decoder retains internal clamp and chunk copy_ operations. Actual finite nonzero adapter gradients, NPU operators, full trajectory memory and frozen parameter verification remain untested.",
+      "The actual Comfy sample_euler also has @torch.no_grad; the separate CPU-tested recurrence preserves differentiation but full deployed H3 integration remains pending."
     ]
+  },
+  "implementation_progress": {
+    "train_role_export": {
+      "entry": "code/export_rphi_train_guides.py",
+      "entry_sha256": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f",
+      "cpu_tests_passed": 8,
+      "actual_CPU_inspection": {
+        "train_records": 128,
+        "dev_records": 32,
+        "train_sources": 32,
+        "dev_sources": 8,
+        "overlap_id_and_SHA": 0,
+        "model_calls": 0,
+        "evidence": "results/takeover_20261111/train_role_rphi_export_preparation_20261111/"
+      },
+      "single_source_export": "runs/rphi_train_guides_legacy_smoke_20261111a",
+      "state": "completed_and_independently_audited",
+      "scope": "ordinary4 RGB only; no controls/VAE; not complete training cache",
+      "completed_at_utc": "2026-11-11T13:39:52.869579+00:00",
+      "engineering_review": "results/takeover_20261111/rphi_train_guides_legacy_smoke_completed/engineering_review.json",
+      "actual_Rphi_frame_forward_calls": 88,
+      "VAE_calls": 0,
+      "H3_calls": 0,
+      "raw_draft_cpu_recompute_bitwise_equal": true
+    },
+    "Euler_core": {
+      "entry": "code/openh3_differentiable_euler.py",
+      "entry_sha256": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+      "cpu_tests_passed": 8,
+      "evidence": "results/takeover_20261111/differentiable_euler_cpu_20261111_v1/",
+      "scope": "zero-churn recurrence same forward/RNG/NFE, joint packed video/audio; no actual H3 adapter or decode backward"
+    },
+    "VAE_decode_gradient": {
+      "state": "small5_and22frame128x128_native_math_gradient_passed",
+      "attempts": [
+        {
+          "run": "runs/vae_decode_grad_smoke_20261111a",
+          "status": "failed_before_backward",
+          "frames": 5,
+          "rope": "eager_grad_vs_original_inference",
+          "forward_maxabs": 0.002856135368347168,
+          "actual_forwards": 2,
+          "actual_backwards": 0,
+          "evidence": "results/takeover_20261111/vae_decode_grad_smoke_20261111a_failed/"
+        },
+        {
+          "run": "runs/vae_decode_grad_smoke_20261111b",
+          "status": "passed",
+          "frames": 5,
+          "rope": "ascend_native_grad",
+          "forward_maxabs": 0.0,
+          "forward_bitwise_equal": true,
+          "actual_forwards": 2,
+          "actual_backwards": 1,
+          "latent_gradient_nonzero": 3071,
+          "latent_gradient_elements": 3072,
+          "frozen_parameters_verified": 559,
+          "peak_allocated_bytes": 7101222912,
+          "evidence": "results/takeover_20261111/vae_decode_grad_smoke_20261111b_completed/local_verification.json"
+        },
+        {
+          "run": "runs/vae_decode_grad_temporal_smoke_20261111c",
+          "status": "passed",
+          "frames": 22,
+          "rope": "ascend_native_grad",
+          "forward_maxabs": 0.0,
+          "forward_bitwise_equal": true,
+          "actual_forwards": 2,
+          "actual_backwards": 1,
+          "latent_gradient_nonzero": 10705,
+          "latent_gradient_elements": 10752,
+          "frozen_parameters_verified": 559,
+          "peak_allocated_bytes": 7101253632,
+          "evidence": "results/takeover_20261111/vae_decode_grad_temporal_smoke_20261111c_completed/local_verification.json"
+        }
+      ],
+      "fixed": {
+        "spatial_shape": [
+          128,
+          128
+        ],
+        "atol": 0.0002,
+        "rtol": 0.0001,
+        "pretrained_VAE": "unchanged",
+        "H3_DiT_calls": 0,
+        "optimizer_steps": 0
+      },
+      "next": "Full-resolution decode and actual H3/LoRA full trajectory gradient/zero-adapter/reload parity and memory"
+    }
   }
 }

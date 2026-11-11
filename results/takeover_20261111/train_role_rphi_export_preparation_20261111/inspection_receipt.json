@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/train_role_rphi_export_20261111_v1/code/export_rphi_train_guides.py",
+    "--checkpoint",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+    "--train-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train_materialized.jsonl",
+    "--dev-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+    "--inspect-only"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 109.18447303771973,
+  "completed_utc": "2026-11-11T13:25:06.596244+00:00",
+  "environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "scope": "CPU full checkpoint/materialized contract inspect only; no pretrained model construction or forward/export"
+}

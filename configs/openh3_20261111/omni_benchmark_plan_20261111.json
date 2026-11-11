@@ -1,7 +1,7 @@
 {
   "schema": "openh3.omni_benchmark_research_plan.v1",
   "date": "2026-11-11",
-  "status": "VAE_failure_mode_audited_native_quality_smoke_running",
+  "status": "native5_of6_audited_cached_compensation_running_data_and_small_gradient_gates_passed",
   "scope": "Single-checkpoint blind video restoration for SR, native deblur, denoise and compression; target geometry remains an explicit input. No claim to every possible degradation or audiovisual restoration.",
   "evidence": {
     "current_stage": "Stage2,fixed H3 ordinary/control,scalar grid,VAE diagnostic complete. First Faver deblur and denoise native quality results audited; rest of6-case queue running. CPU cached RGB compensation grid launched20:57:58SG; no new LoRA training yet.",
@@ -124,7 +124,7 @@
       "role": "native same-resolution denoise, deblur and compression; unknown time-varying degradation",
       "repository": "https://github.com/XLearning-SCU/2026-IJCV-FaverNet",
       "paper": "https://doi.org/10.1007/s11263-026-02977-y",
-      "availability": "Official source and weights locked; isolated31984 official MMCV CPU DCN numerical check, strict532-key load and actualT2 256x256 CPU forward passed. Restoration-quality, Ascend and CUDA validation remain pending.",
+      "availability": "Official source/weights locked; strict CPU load and real full22-frame480x832 deblur/denoise/compression outputs independently audited on one historical dev source. Deblur/denoise spatially stronger than fixed Rphi; compression slightly worse. No generalization or matched-causal-budget claim; Ascend/CUDA equivalence untested.",
       "constraints": "bidirectional offline; Common and Weather use separate checkpoints; no native x4 SR evidence; MMCV deformable convolution and CUDA paths require Ascend audit"
     },
     {
@@ -133,7 +133,7 @@
       "role": "native unknown/time-varying multi-degradation baseline",
       "repository": "https://github.com/XLearning-SCU/2024-NeurIPS-AverNet",
       "paper": "https://papers.nips.cc/paper/2024/hash/e635a25e49e73adc51f76aef462ff2f8-Abstract-Conference.html",
-      "availability": "Official source and weights locked; isolated31984 official MMCV CPU DCN, strict354-key load and actualT2 256x256 CPU forward passed through explicit architecture-only import; official package entry fails missing pyiqa. Quality/Ascend/CUDA validation remain pending.",
+      "availability": "Official strict354-key CPU load via architecture-only import; full22-frame480x832 deblur and denoise quality audited on one historical dev source; compression remains running. Official package init missing pyiqa failure retained. No Ascend/CUDA equivalence or SOTA claim.",
       "constraints": "bidirectional offline; resizing blur is not an LR-to-HR x4 SR protocol"
     },
     {
@@ -293,5 +293,12 @@
     "define bounded guide-matched corrective LoRA after interface failure modes and matched controls are specified; frozen H3 need not already win everywhere",
     "evaluate untouched source groups"
   ],
-  "novelty_review": "configs/openh3_20261111/parallel_research_plan_20261111.json"
+  "novelty_review": "configs/openh3_20261111/parallel_research_plan_20261111.json",
+  "implementation_followup": {
+    "train_guide_export": "one_source_four_task_RGB_cache_passed",
+    "VAE_gradient": "5_and22frame128x128_native_RoPE_bitwise_forward_finite_nonzero_backward_passed;full_resolution_and_H3_pending",
+    "Euler_core": "8_CPU_tests_passed_not_full_H3_trainer",
+    "mixed_temporal": "one_train_source96frame_six_profile_double_replay_passed_engineering_only",
+    "readiness": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json"
+  }
 }

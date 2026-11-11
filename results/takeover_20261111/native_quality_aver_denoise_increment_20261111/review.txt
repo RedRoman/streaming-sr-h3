@@ -1,0 +1,6 @@
+AverNet denoise 已完成并验收：40.735929 dB / LPIPS 0.028487037 / flow-aligned error-change 0.004931596。
+相对FaverNet：PSNR +0.795004 dB、LPIPS -0.000958771、flow -0.000251414；相对Rphi-only：+4.818773 dB、-0.085176222、-0.008388576；相对H3-Rphi-anchor：+6.298839 dB、-0.031283464、-0.003776349。
+完整22帧480x832，stride1、21对相邻帧、valid coverage 0.903722981。12个 input baseline质量/时序数值差均严格为0。预测float32 NPZ与pixel SHA、finite/raw-clamp exact、输入target像素、官方source/checkpoint与metric合同全部验证。
+评分使用clamp后RGB：1.336938%分量发生clipping；raw MSE 0.0000871467450，clamped MSE 0.0000846842379，原始float输出完整保留。
+实测模型forward990.255s、guard推理1022.474s、评分82.041s。最近一次snapshot为5/6完成，Aver compression infer中。本轮未等待、未重跑forward/评分、未修改运行文件或旧归档。
+单历史dev源，不能作独立test或多源排名。Aver/Faver同offline22/maxfuture21但参数/计算不同；Rphi是causalK3，H3为22帧块且计算不同。flow不是完整感知flicker指标，prior未保存flow tensor hash，不能声称逐像素flow复验。Aver采用官方architecture-only隔离导入、原CPU算子及strict checkpoint；CPU执行由tensor/model路径及receipt支持，torch_npu_imported=false不证明后续无间接导入，warning不等于NPU推理。

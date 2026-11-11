@@ -1,0 +1,391 @@
+{
+  "schema": "favernet_three_native_tasks_paired_review.v1",
+  "created_at_utc": "2026-11-11T13:16:05.928317+00:00",
+  "status": "complete_three_tasks_single_historical_dev_source_requires_review",
+  "source_count": 1,
+  "tasks": [
+    "deblur",
+    "denoise",
+    "compression"
+  ],
+  "shared_contract": {
+    "source_id": "6UZVovkR3IU",
+    "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+    "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+    "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+    "frame_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "frame_stride": 1,
+    "metric_gate": {
+      "passed": true,
+      "versions": {
+        "torch": "2.10.0",
+        "torchvision": "0.25.0",
+        "numpy": "2.5.4",
+        "opencv-python": null,
+        "opencv-python-headless": "4.11.0.86",
+        "lpips": "0.1.4"
+      },
+      "opencv_runtime": "4.11.0",
+      "torch_npu_imported": false,
+      "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+      "lpips_linear_sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0",
+      "downloads": false
+    },
+    "lpips": {
+      "available": true,
+      "network": "alex",
+      "device": "cpu",
+      "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+      "weights_path": "/cache/zihaohe/omni_openh3_20261111/torch_home/hub/checkpoints/alexnet-owt-7be5be79.pth",
+      "downloads": false
+    },
+    "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+    "reference_file_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+    "temporal_access": "offline_bidirectional_full22_max_future21"
+  },
+  "per_task": {
+    "deblur": {
+      "evidence_path": "results/takeover_20261111/native_quality_heartbeat_20261111T1240Z/favernet_deblur/metrics.json",
+      "evidence_sha256": "169328ccaa2606a43dbc1ab95696deaf2eebbe424ad54ff92329a2d5abd899e9",
+      "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+      "favernet": {
+        "psnr": 34.49857168159924,
+        "lpips": 0.0589685147120194,
+        "flow_aligned_rgb_error_change_mae": 0.0038385894149541855,
+        "pairs": 21,
+        "valid_pairs": 21,
+        "valid_coverage": 0.9037229805784494
+      },
+      "reference_arms": {
+        "input": {
+          "psnr": 31.573651258587777,
+          "lpips": 0.10675193030725826,
+          "flow_aligned_rgb_error_change_mae": 0.00333702248255057,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "rphi_only": {
+          "psnr": 31.891500176712896,
+          "lpips": 0.10143088176846504,
+          "flow_aligned_rgb_error_change_mae": 0.0032959547381670702,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw": {
+          "psnr": 29.765263443432286,
+          "lpips": 0.0873370458456603,
+          "flow_aligned_rgb_error_change_mae": 0.007766542401874349,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw_anchor": {
+          "psnr": 30.602942011454342,
+          "lpips": 0.09237345985390923,
+          "flow_aligned_rgb_error_change_mae": 0.006305827027452844,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi": {
+          "psnr": 30.021038004033723,
+          "lpips": 0.08105460588227618,
+          "flow_aligned_rgb_error_change_mae": 0.007906459892789522,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi_anchor": {
+          "psnr": 30.822392568923203,
+          "lpips": 0.08735927736217325,
+          "flow_aligned_rgb_error_change_mae": 0.006405056299020846,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        }
+      },
+      "favernet_minus_reference": {
+        "input": {
+          "psnr": 2.9249204230114607,
+          "lpips": -0.047783415595238854,
+          "flow_aligned_rgb_error_change_mae": 0.0005015669324036154
+        },
+        "rphi_only": {
+          "psnr": 2.607071504886342,
+          "lpips": -0.04246236705644564,
+          "flow_aligned_rgb_error_change_mae": 0.0005426346767871152
+        },
+        "h3_raw": {
+          "psnr": 4.733308238166952,
+          "lpips": -0.028368531133640892,
+          "flow_aligned_rgb_error_change_mae": -0.003927952986920164
+        },
+        "h3_raw_anchor": {
+          "psnr": 3.8956296701448956,
+          "lpips": -0.033404945141889825,
+          "flow_aligned_rgb_error_change_mae": -0.0024672376124986583
+        },
+        "h3_rphi": {
+          "psnr": 4.477533677565514,
+          "lpips": -0.022086091170256783,
+          "flow_aligned_rgb_error_change_mae": -0.004067870477835337
+        },
+        "h3_rphi_anchor": {
+          "psnr": 3.676179112676035,
+          "lpips": -0.028390762650153847,
+          "flow_aligned_rgb_error_change_mae": -0.002566466884066661
+        }
+      },
+      "input_baseline_gate_all_numeric_differences_exact_zero": true,
+      "clipped_component_fraction": 0.0016118213383838384,
+      "raw_model_mse": 0.0003695677773997335
+    },
+    "denoise": {
+      "evidence_path": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/metrics.json",
+      "evidence_sha256": "39b11407cea906a16b5126217aef3f1fac41d7be1024fac5862339e21c2564a9",
+      "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "favernet": {
+        "psnr": 39.94092509780152,
+        "lpips": 0.029445808465507897,
+        "flow_aligned_rgb_error_change_mae": 0.0051830098299043515,
+        "pairs": 21,
+        "valid_pairs": 21,
+        "valid_coverage": 0.9037229805784494
+      },
+      "reference_arms": {
+        "input": {
+          "psnr": 23.527251324089693,
+          "lpips": 0.6738691465421156,
+          "flow_aligned_rgb_error_change_mae": 0.06653651701552528,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "rphi_only": {
+          "psnr": 35.91715595526605,
+          "lpips": 0.11366325887766751,
+          "flow_aligned_rgb_error_change_mae": 0.01332017220556736,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw": {
+          "psnr": 28.9467996813744,
+          "lpips": 0.5295069190588865,
+          "flow_aligned_rgb_error_change_mae": 0.021889221898856618,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw_anchor": {
+          "psnr": 31.240183114503566,
+          "lpips": 0.4167830388654362,
+          "flow_aligned_rgb_error_change_mae": 0.01699162106074038,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi": {
+          "psnr": 32.47420034301705,
+          "lpips": 0.07907249541445212,
+          "flow_aligned_rgb_error_change_mae": 0.010079785560568174,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi_anchor": {
+          "psnr": 34.437090001319746,
+          "lpips": 0.05977050147273324,
+          "flow_aligned_rgb_error_change_mae": 0.008707944791586627,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        }
+      },
+      "favernet_minus_reference": {
+        "input": {
+          "psnr": 16.413673773711825,
+          "lpips": -0.6444233380766077,
+          "flow_aligned_rgb_error_change_mae": -0.06135350718562093
+        },
+        "rphi_only": {
+          "psnr": 4.023769142535471,
+          "lpips": -0.08421745041215961,
+          "flow_aligned_rgb_error_change_mae": -0.008137162375663008
+        },
+        "h3_raw": {
+          "psnr": 10.994125416427117,
+          "lpips": -0.5000611105933785,
+          "flow_aligned_rgb_error_change_mae": -0.016706212068952266
+        },
+        "h3_raw_anchor": {
+          "psnr": 8.700741983297952,
+          "lpips": -0.38733723039992835,
+          "flow_aligned_rgb_error_change_mae": -0.011808611230836027
+        },
+        "h3_rphi": {
+          "psnr": 7.466724754784465,
+          "lpips": -0.04962668694894422,
+          "flow_aligned_rgb_error_change_mae": -0.004896775730663823
+        },
+        "h3_rphi_anchor": {
+          "psnr": 5.503835096481772,
+          "lpips": -0.03032469300722534,
+          "flow_aligned_rgb_error_change_mae": -0.003524934961682275
+        }
+      },
+      "input_baseline_gate_all_numeric_differences_exact_zero": true,
+      "clipped_component_fraction": 0.017685304062257188,
+      "raw_model_mse": 0.00010892954100115398
+    },
+    "compression": {
+      "evidence_path": "results/takeover_20261111/native_quality_compression_increment_20261111T1312Z/metrics.json",
+      "evidence_sha256": "5f7b49e01c49c40f841c86609fae5e020e68f46d5a9e964454fdd94c4c6a5194",
+      "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+      "favernet": {
+        "psnr": 40.25884287325552,
+        "lpips": 0.016030815937979656,
+        "flow_aligned_rgb_error_change_mae": 0.005244242382191476,
+        "pairs": 21,
+        "valid_pairs": 21,
+        "valid_coverage": 0.9037229805784494
+      },
+      "reference_arms": {
+        "input": {
+          "psnr": 40.38017869669521,
+          "lpips": 0.016126557549631052,
+          "flow_aligned_rgb_error_change_mae": 0.005185472002873818,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "rphi_only": {
+          "psnr": 40.47587134168869,
+          "lpips": 0.015293949029662392,
+          "flow_aligned_rgb_error_change_mae": 0.005063594784587622,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw": {
+          "psnr": 32.84481816229713,
+          "lpips": 0.03232943004166538,
+          "flow_aligned_rgb_error_change_mae": 0.008240041367354848,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_raw_anchor": {
+          "psnr": 34.968989061285576,
+          "lpips": 0.025321633808992126,
+          "flow_aligned_rgb_error_change_mae": 0.006762446480847541,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi": {
+          "psnr": 32.67218544933662,
+          "lpips": 0.03287439048290253,
+          "flow_aligned_rgb_error_change_mae": 0.008393352429959037,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        },
+        "h3_rphi_anchor": {
+          "psnr": 34.79369489694031,
+          "lpips": 0.02636154918846759,
+          "flow_aligned_rgb_error_change_mae": 0.006870322040326539,
+          "pairs": 21,
+          "valid_pairs": 21,
+          "valid_coverage": 0.9037229805784494
+        }
+      },
+      "favernet_minus_reference": {
+        "input": {
+          "psnr": -0.12133582343969351,
+          "lpips": -9.574161165139608e-05,
+          "flow_aligned_rgb_error_change_mae": 5.877037931765767e-05
+        },
+        "rphi_only": {
+          "psnr": -0.21702846843317047,
+          "lpips": 0.0007368669083172644,
+          "flow_aligned_rgb_error_change_mae": 0.00018064759760385435
+        },
+        "h3_raw": {
+          "psnr": 7.414024710958387,
+          "lpips": -0.016298614103685723,
+          "flow_aligned_rgb_error_change_mae": -0.002995798985163372
+        },
+        "h3_raw_anchor": {
+          "psnr": 5.289853811969941,
+          "lpips": -0.00929081787101247,
+          "flow_aligned_rgb_error_change_mae": -0.0015182040986560646
+        },
+        "h3_rphi": {
+          "psnr": 7.586657423918901,
+          "lpips": -0.01684357454492287,
+          "flow_aligned_rgb_error_change_mae": -0.003149110047767561
+        },
+        "h3_rphi_anchor": {
+          "psnr": 5.465147976315208,
+          "lpips": -0.010330733250487934,
+          "flow_aligned_rgb_error_change_mae": -0.0016260796581350628
+        }
+      },
+      "input_baseline_gate_all_numeric_differences_exact_zero": true,
+      "clipped_component_fraction": 0.010621008765540016,
+      "raw_model_mse": 9.484397139882593e-05
+    }
+  },
+  "aggregation": "No cross-task aggregate ranking: degradation severity differs and only one source was tested. PSNR values are mean frame PSNR, not PSNR of pooled MSE.",
+  "metric_direction": {
+    "psnr": "higher_is_better",
+    "lpips": "lower_is_better",
+    "flow_aligned_rgb_error_change_mae": "lower_is_better_but_not_complete_perceptual_flicker_measure"
+  },
+  "interpretation": [
+    "FaverNet improves PSNR and LPIPS over current Rphi-only on deblur and denoise.",
+    "Deblur has higher (worse) flow-aligned error change than Rphi-only despite the spatial gains.",
+    "Compression is slightly worse than Rphi-only on PSNR, LPIPS and flow error-change; it is also worse than input on PSNR and flow error-change.",
+    "FaverNet beats the current H3 Rphi+anchor arm on these three reported metrics in all three tasks on this single source; this is not evidence of general SOTA or matched compute."
+  ],
+  "limitations": [
+    "One historical development source 6UZVovkR3IU; no frozen independent test, confidence interval or source-level generalization claim.",
+    "FaverNet is offline bidirectional entire22 frames with maximum future21. Rphi-only is causalK3; H3 uses a22-frame block with a different compute budget.",
+    "All scores use full22 frames, stride1,21 adjacent temporal pairs, identical target and flow support statistics. Prior reference saved no flow tensor hash; bitwise prior flow identity was not verified.",
+    "Input baseline quality/LPIPS/temporal values match exactly across all three tasks; official source/checkpoint and prediction pixels were separately audited.",
+    "CPU execution is supported by adapter tensor/model path and run receipt. Original torch_npu_imported=false fields were pre-import/hardcoded and do not prove absence of later indirect torch_npu import; warning or manager handles do not prove NPU inference.",
+    "Scoring was not rerun for this review; completed immutable evidence was accepted after file/pixel/contract checks."
+  ],
+  "actions": {
+    "new_model_forwards": 0,
+    "scoring_rerun": false,
+    "running_queue_or_runtime_modified": false,
+    "prior_evidence_overwritten": false
+  }
+}

@@ -1,0 +1,4107 @@
+{
+  "schema": "openh3.mixed_temporal_data_plan.v1",
+  "date": "2026-11-11",
+  "status": "planned_not_materialized_no_training_started",
+  "scope": "CPU data preparation design only; no running runtime, queue, TAKEOVER, or NPU state changed.",
+  "evidence": {
+    "path": "results/takeover_20261111/mixed_temporal_inventory_31984_20261111.json",
+    "sha256": "9169250b571a83fa4673175e1a77ebc3e7298537fddb3163990a594346582d61",
+    "host": "huawei-modelarts-31984",
+    "original_project_root": "/cache/zihaohe/streaming_sr0"
+  },
+  "inventory_summary": {
+    "raw_mp4_files": 1068,
+    "known_stage7_sources": 290,
+    "id_unmatched_to_recorded_train_val_eval": 778,
+    "id_unmatched_after_exclusion_files_and_candidate_lists": 694,
+    "previously_harvest_metadata_recorded_for_unmatched": 778,
+    "old_video_sharp_gate_failed": 732,
+    "old_video_sharp_gate_pass_but_audio_gate_failed": 46,
+    "deterministic_candidate_files_hashed": 32,
+    "candidate_bytes_hashed": 92988577,
+    "geometry_duration_pass": 32,
+    "sparse_first_middle_last_decode_pass": 32,
+    "candidate32_old_video_sharp_gate_pass": 2,
+    "approved_independent_calibration_sources": 0,
+    "approved_frozen_test_sources": 0
+  },
+  "source_roles": {
+    "existing_train": {
+      "status": "existing_training_pool",
+      "source_count": 32,
+      "source_ids": [
+        "2BdYaGuVAKo",
+        "4EKWTiWjPTQ",
+        "4M_k01zIbVM",
+        "4OvgouW2OyA",
+        "4WlLNs_yXWQ",
+        "4bXb6GLm6zg",
+        "6X6wb0FC6Fg",
+        "6vv_w-TvcrY",
+        "75UH33tO0Bo",
+        "8ySFFOeBGEs",
+        "90wsfIQ0kHs",
+        "9eY__Y9Zl2Y",
+        "9hJigrKndKw",
+        "BYbIKQqGE2U",
+        "DtgdD48804M",
+        "E_W73B44qOk",
+        "Gf6owJ8AY2E",
+        "H2pTKitY56w",
+        "HOsBXlQHWdE",
+        "HU9sbY3A1bo",
+        "JLyjEE1UKaU",
+        "JN95P7fLJLc",
+        "JfQZeAIHg3s",
+        "JnbfAFodjZg",
+        "Kc0bCgT5P04",
+        "MB9_-kTLSbg",
+        "NYaslQ8njPc",
+        "Na-NDcdjEik",
+        "Q0-CI3XJvxw",
+        "Q975D6bpK_c",
+        "SJ-_0uGIL1c",
+        "VPp9ArDokWY"
+      ],
+      "manifest": "results/takeover_20261111/materialized/train_materialized.jsonl",
+      "manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+      "allowed": "Train data/operator engineering and later matched training; all windows remain in this source role."
+    },
+    "existing_dev": {
+      "status": "previously_used_for_model_selection_and_recipe_tuning",
+      "source_count": 8,
+      "source_ids": [
+        "6UZVovkR3IU",
+        "6rJrrfRO3cA",
+        "74ZtTQKeQoU",
+        "EBmROluwLkc",
+        "GcdzBmlxyN0",
+        "KR4M9nGv2is",
+        "MjfCH89sBzs",
+        "NPCSVxYpK3k"
+      ],
+      "manifest": "results/takeover_20261111/materialized/dev_materialized.jsonl",
+      "manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "allowed": "Development diagnostics only. This cohort is neither independent calibration nor frozen test."
+    },
+    "historical_unused_by_current_pilot": {
+      "historical_train_after_eval_exclusion": 170,
+      "historical_validation_after_eval_exclusion": 16,
+      "remaining_outside_current_pilot": {
+        "historical_train": 138,
+        "historical_validation": 8
+      },
+      "interpretation": "Counts mean available prior Stage7 train/validation sources after historic-eval ID exclusion. They do not establish unused project history, independent calibration, or fresh test eligibility."
+    },
+    "independent_calibration": {
+      "approved_source_count": 0,
+      "assigned_source_ids": [],
+      "desired_source_count": 8,
+      "status": "blocked_on_history_quality_and_source_group_audit",
+      "purpose": "Fit confidence calibration only after fixing the fidelity checkpoint and its training recipe; no training gradients to fidelity parameters."
+    },
+    "frozen_test": {
+      "approved_source_count": 0,
+      "assigned_source_ids": [],
+      "desired_source_count": 16,
+      "status": "blocked_on_history_quality_and_source_group_audit",
+      "purpose": "Lock membership, target windows, recipes and metric policy before any model score; use once for final comparison, not threshold/recipe selection."
+    },
+    "priority_source_audit_queue": {
+      "status": "metadata_candidates_only_not_clean_gt_approved_not_assigned_calibration_or_test",
+      "source_count": 46,
+      "source_ids": [
+        "1OM5619KGEI",
+        "1yRMYH8cSFM",
+        "26HLgXWF-Co",
+        "2IpapScfsT4",
+        "457KFDtoIPM",
+        "63jbksEqycQ",
+        "6X5vLMqdKZo",
+        "6XN9trtsQGo",
+        "8jjlkOmWGUo",
+        "8wMzUIkaZ-I",
+        "8z2yFtX66C4",
+        "93X6stMF9xU",
+        "977zYEqpsSE",
+        "9EsNtRXnYbE",
+        "9S9-smHVvaw",
+        "9W--1bU_zjg",
+        "9jDguGDaxm8",
+        "A1LXWbDIMVQ",
+        "BMizovbaUbc",
+        "E1AGyM0arxY",
+        "EGc41s7IIZ0",
+        "EQxjYP1hMsI",
+        "EbJxKHCk0MY",
+        "EjHB5MD-_jA",
+        "ExsNRvMVmMY",
+        "H6Y_7Ax34-g",
+        "HTLK55-Fl80",
+        "Ha1kgyD4HHI",
+        "Hob0LAu8afQ",
+        "JiU9J-oQipU",
+        "Jz4wLRDTF54",
+        "KFVIKa8jfKs",
+        "KHpF2LzWHfQ",
+        "KN82wKXaxNo",
+        "MFjPziuZZws",
+        "MRwVio7Vxp4",
+        "MS8VU468rKk",
+        "N5NGtmtnz_c",
+        "NFmqHDRAkO0",
+        "NSyqj1DXZKg",
+        "PbUyPbafFh0",
+        "PkkhCW04O9k",
+        "Py4g6GeGHjQ",
+        "Q4pQKIHhsJk",
+        "VEssqQKC0YM",
+        "VKLQO0qaUZk"
+      ],
+      "reason": "Passed old video sharpness heuristic but failed audio RMS or >8 kHz ratio gates. Video-only R_phi does not require these audio gates. This is not a claim of pristine source quality or never-trained history.",
+      "next_action": "Audit these 46 before expanding the arbitrary candidate scan; retain all prior 32 probe evidence."
+    },
+    "original_deterministic_candidate_audit": {
+      "source_count": 32,
+      "selection_seed": "mixed-temporal-candidate-audit-v1|20261111|source_id",
+      "selection": "Ascending SHA256 over seed string with the actual source_id substituted; first 32 of 694 IDs outside recorded candidate lists and exclusion files. Exact locked IDs are in evidence.candidate_selection.",
+      "status": "file_hash_and_sparse_decode_checked_not_frozen",
+      "old_video_sharp_gate_pass": 2,
+      "old_video_sharp_gate_failed": 30,
+      "interpretation": "All 32 read correctly, but only 2 passed old sharpness heuristic. Keep the locked audit queue and failures; do not relabel its membership as approved clean sources."
+    },
+    "shortage": "There are currently zero approved independent calibration or frozen-test sources. Forty-six metadata candidates may not yield the desired 8 + 16 qualifying independent source groups. If fewer than 24 qualify, acquire/document additional sources rather than relabel existing dev, historic training, or previously tuned evaluation sources.",
+    "upstream_pretraining": "Unknown overlap with foundation-model pretraining is disclosed. Required project-level exclusion concerns this repository's training, calibration, validation, evaluation and tuning history, without claiming universal pretraining non-overlap."
+  },
+  "candidate_approval_protocol": [
+    {
+      "order": 1,
+      "action": "Join all historical source IDs, original video/group identifiers, original paths and available source hashes from evidence.history_inventory, historical_evaluations, exclusion files and prior candidate manifests; record match reasons. Source-group membership overrides window-level IDs."
+    },
+    {
+      "order": 2,
+      "action": "Resolve the 46 candidates' literal-ID matches in bounded project logs/results and loader/manifest provenance. Harvest metadata is acquisition/quality filtering, not evidence of model training or model evaluation. Ambiguous model-use history prevents independent calibration/test assignment."
+    },
+    {
+      "order": 3,
+      "action": "Compute full source SHA256, exact decoded-window target SHA256, dimensions, duration, timestamps and complete 96-frame readability for candidate sources only. Existing 32 file hashes may be reused only when file size/mtime identity agrees; do not hash all 778 raw files."
+    },
+    {
+      "order": 4,
+      "action": "Review candidate reference quality and continuous-window validity using source pixels only, without looking at any restoration model scores. Reject preblur, heavy compression, extreme resampling, title-only/black/static failure windows, or clips unsuitable as a clean-reference proxy. Old band-ratio pass alone is insufficient. Record all reject reasons."
+    },
+    {
+      "order": 5,
+      "action": "Check exact hashes, sampled-frame/perceptual matches and available original video/context grouping against current train/dev, historical train/eval cohorts and other candidates. A filename prefix/shard is not a semantic source group. Put known excerpts/reuploads/near duplicates into one group and one split."
+    },
+    {
+      "order": 6,
+      "action": "Only after approval, deterministically rank eligible independent source groups with a published immutable split seed; assign first 8 to calibration and next 16 to frozen test, reserve the rest. No source/windows or connected group may cross train/calibration/dev/test."
+    },
+    {
+      "order": 7,
+      "action": "Write a locked source registry with source/group hashes, history evidence, quality verdict, split and reason. If fewer than 24 independently eligible groups remain, publish the shortage and keep frozen test empty until resolved."
+    }
+  ],
+  "target_contract": {
+    "semantic": "clean_original_recording_center_crop_reference",
+    "caveat": "The original recording can contain acquisition/compression artifacts. It is a shared clean-reference proxy, not a claim of physically pristine radiance.",
+    "frames": 96,
+    "fps": 24,
+    "target_shape_thwc": [
+      96,
+      480,
+      832,
+      3
+    ],
+    "dtype": "uint8",
+    "color": "decoded RGB24, preserve and record source color metadata and actual decoder conversion behavior",
+    "spatial_transform": "center_crop_no_resize",
+    "start_seconds": "max(0, (ffprobe_duration_s - 96/24) / 2); require enough decodable frames, not metadata duration alone",
+    "frame_selection": "Record exact ffmpeg accurate input-seek + fps=24:round=near + centered crop arguments and all decoded timestamps; exact 96-frame count required.",
+    "source_decode": "Decode once per source/window and reuse one immutable target across every profile; emit observation profiles sequentially.",
+    "native_observation_shape_thwc": [
+      96,
+      480,
+      832,
+      3
+    ],
+    "sr_observation_shape_thwc": [
+      96,
+      120,
+      208,
+      3
+    ],
+    "geometry": "The whole native clip remains HR and the whole SR clip remains x4 LR. No mid-clip geometry change.",
+    "audio": "No audio supervision is introduced. Missing/quiet/narrow-band audio does not invalidate a video-only reference.",
+    "hash_bindings": [
+      "original source file SHA256",
+      "source group ID and split registry SHA256",
+      "target specification SHA256",
+      "target pixel SHA256",
+      "target NPZ file SHA256",
+      "observation pixel SHA256",
+      "observation NPZ file SHA256",
+      "per-frame parameter schedule SHA256",
+      "materializer code/config/software receipt SHA256"
+    ]
+  },
+  "operator_contract": {
+    "GaussianBlur": {
+      "implementation": "OpenCV GaussianBlur on float32 RGB values in 0..255",
+      "sigma": "Explicit per-frame HR-pixel sigma; LR sigma would require a different named operator",
+      "kernel": "2 * ceil(3 * sigma) + 1",
+      "border": "BORDER_REFLECT_101",
+      "zero_sigma": "bypass; never let sigma=0 select an implicit OpenCV sigma"
+    },
+    "noise": {
+      "implementation": "NumPy Generator(PCG64(seed)).standard_normal(frame_shape, dtype=float32)",
+      "sigma_units": "8-bit RGB units",
+      "seed": "uint64 from first 8 bytes, big-endian, SHA256('omni-mixed-v1|' + source_sha256 + '|' + window_key + '|' + noise_stream + '|' + zero_padded_frame_index)",
+      "paired_streams": "The two static operator-order profiles use identical sampled noise arrays. Native smooth and abrupt share the same unit-noise realization at each frame; only sigma schedule differs.",
+      "identity": "Seed is a deterministic recipe identifier and must not be supplied to blind model inputs."
+    },
+    "quantization": {
+      "implementation": "np.clip(np.rint(float32_RGB),0,255).astype(np.uint8)",
+      "order": "At explicit operator boundaries only; native blur/noise ordering controls quantize once before codec. SR quantizes before Pillow resize and after LR noise; this extra boundary is disclosed.",
+      "rounding": "NumPy rint ties to even"
+    },
+    "bicubic_x4": {
+      "implementation": "Pillow Image.resize((W//4,H//4), Image.Resampling.BICUBIC) on uint8 RGB",
+      "antialias": "Pillow downsampling filter support",
+      "target_unchanged": true,
+      "not_claimed": "This is the explicit synthetic degradation recipe, not an equivalence claim with PyTorch interpolation or a physical camera operator."
+    },
+    "h264": {
+      "implementation": "PyAV libx264 encode then decode",
+      "pix_fmt": "yuv420p",
+      "preset": "medium",
+      "fps": 24,
+      "threads": 1,
+      "gop_size": 96,
+      "max_b_frames": 0,
+      "scene_cut_policy": "Disable automatic scene-cut keyframes for the primary continuous-content schedules; record actual keyframe indices in the receipt.",
+      "x264_options": {
+        "scenecut": "0"
+      },
+      "crf_scope": "Constant CRF per full clip in primary profiles. Listed per frame for a uniform parameter schema, not a per-frame encoder control.",
+      "color_conversion": "Record encoder/decoder color range/matrix and actual codec/libav build; RGB<->YUV conversion belongs to the observation degradation."
+    },
+    "jpeg": {
+      "implementation": "Pillow per-frame JPEG encode/decode",
+      "subsampling": 2,
+      "optimize": false,
+      "progressive": false,
+      "quality": "Explicit integer per-frame quality",
+      "interpretation": "Independent image coding only; not a substitute for inter-frame video compression."
+    },
+    "software_snapshot": {
+      "system_ffmpeg": "ffmpeg version 4.2 Copyright (c) 2000-2019 the FFmpeg developers",
+      "python": "3.12.14",
+      "numpy": "1.26.4",
+      "opencv": "4.11.0",
+      "pillow": "12.3.0",
+      "pyav": "18.1.0",
+      "pyav_libavcodec": [
+        62,
+        28,
+        102
+      ],
+      "pyav_libavformat": [
+        62,
+        12,
+        102
+      ],
+      "caveat": "Sparse probes used system ffmpeg 4.2. New codec observations must record their actual PyAV/libx264 build separately."
+    },
+    "version_rule": "Pin and record the actual converter environment and codec build; the system FFmpeg sparse-read probes and PyAV encoder use different libav versions. Byte reproducibility is promised only for the recorded build/settings and verified replay.",
+    "hidden_parameters": "Schedules/severity/order are logged for audit and stratified evaluation only. They are not R_phi blind model conditions.",
+    "mixed_task_schema": "mixed_native is a new data profile family, not silently mapped to one of the current four single-task one-hots. A future versioned loader must explicitly support its blind route; do not feed these profiles into today's frozen four-task runtime unchanged."
+  },
+  "profiles": [
+    {
+      "profile_id": "native_static_blur_noise_h264",
+      "task": "mixed_native",
+      "scale": 1,
+      "ordered_operators": [
+        "gaussian_blur_float_rgb",
+        "gaussian_noise_float_rgb",
+        "quantize_rint_clip_uint8",
+        "h264_roundtrip"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        }
+      ],
+      "paired_order_control": "native_static_noise_blur_h264",
+      "noise_stream": "paired_native_static",
+      "degradation_transition_frames": [],
+      "scene_cut_frames": []
+    },
+    {
+      "profile_id": "native_static_noise_blur_h264",
+      "task": "mixed_native",
+      "scale": 1,
+      "ordered_operators": [
+        "gaussian_noise_float_rgb",
+        "gaussian_blur_float_rgb",
+        "quantize_rint_clip_uint8",
+        "h264_roundtrip"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 1.2,
+          "noise_sigma_8bit": 8,
+          "h264_crf": 28
+        }
+      ],
+      "paired_order_control": "native_static_blur_noise_h264",
+      "noise_stream": "paired_native_static",
+      "degradation_transition_frames": [],
+      "scene_cut_frames": []
+    },
+    {
+      "profile_id": "native_smooth_blur_noise_h264",
+      "task": "mixed_native",
+      "scale": 1,
+      "ordered_operators": [
+        "gaussian_blur_float_rgb",
+        "gaussian_noise_float_rgb",
+        "quantize_rint_clip_uint8",
+        "h264_roundtrip"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 0.36521739,
+          "noise_sigma_8bit": 1.82608696,
+          "h264_crf": 28
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 0.43043478,
+          "noise_sigma_8bit": 2.65217391,
+          "h264_crf": 28
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 0.49565217,
+          "noise_sigma_8bit": 3.47826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 0.56086957,
+          "noise_sigma_8bit": 4.30434783,
+          "h264_crf": 28
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 0.62608696,
+          "noise_sigma_8bit": 5.13043478,
+          "h264_crf": 28
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 0.69130435,
+          "noise_sigma_8bit": 5.95652174,
+          "h264_crf": 28
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 0.75652174,
+          "noise_sigma_8bit": 6.7826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 0.82173913,
+          "noise_sigma_8bit": 7.60869565,
+          "h264_crf": 28
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 0.88695652,
+          "noise_sigma_8bit": 8.43478261,
+          "h264_crf": 28
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 0.95217391,
+          "noise_sigma_8bit": 9.26086957,
+          "h264_crf": 28
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 1.0173913,
+          "noise_sigma_8bit": 10.08695652,
+          "h264_crf": 28
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 1.0826087,
+          "noise_sigma_8bit": 10.91304348,
+          "h264_crf": 28
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 1.14782609,
+          "noise_sigma_8bit": 11.73913043,
+          "h264_crf": 28
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 1.21304348,
+          "noise_sigma_8bit": 12.56521739,
+          "h264_crf": 28
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 1.27826087,
+          "noise_sigma_8bit": 13.39130435,
+          "h264_crf": 28
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 1.34347826,
+          "noise_sigma_8bit": 14.2173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 1.40869565,
+          "noise_sigma_8bit": 15.04347826,
+          "h264_crf": 28
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 1.47391304,
+          "noise_sigma_8bit": 15.86956522,
+          "h264_crf": 28
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 1.53913043,
+          "noise_sigma_8bit": 16.69565217,
+          "h264_crf": 28
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 1.60434783,
+          "noise_sigma_8bit": 17.52173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 1.66956522,
+          "noise_sigma_8bit": 18.34782609,
+          "h264_crf": 28
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 1.73478261,
+          "noise_sigma_8bit": 19.17391304,
+          "h264_crf": 28
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1.73478261,
+          "noise_sigma_8bit": 19.17391304,
+          "h264_crf": 28
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1.66956522,
+          "noise_sigma_8bit": 18.34782609,
+          "h264_crf": 28
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1.60434783,
+          "noise_sigma_8bit": 17.52173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1.53913043,
+          "noise_sigma_8bit": 16.69565217,
+          "h264_crf": 28
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1.47391304,
+          "noise_sigma_8bit": 15.86956522,
+          "h264_crf": 28
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1.40869565,
+          "noise_sigma_8bit": 15.04347826,
+          "h264_crf": 28
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1.34347826,
+          "noise_sigma_8bit": 14.2173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1.27826087,
+          "noise_sigma_8bit": 13.39130435,
+          "h264_crf": 28
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1.21304348,
+          "noise_sigma_8bit": 12.56521739,
+          "h264_crf": 28
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1.14782609,
+          "noise_sigma_8bit": 11.73913043,
+          "h264_crf": 28
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1.0826087,
+          "noise_sigma_8bit": 10.91304348,
+          "h264_crf": 28
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1.0173913,
+          "noise_sigma_8bit": 10.08695652,
+          "h264_crf": 28
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 0.95217391,
+          "noise_sigma_8bit": 9.26086957,
+          "h264_crf": 28
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 0.88695652,
+          "noise_sigma_8bit": 8.43478261,
+          "h264_crf": 28
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 0.82173913,
+          "noise_sigma_8bit": 7.60869565,
+          "h264_crf": 28
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 0.75652174,
+          "noise_sigma_8bit": 6.7826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 0.69130435,
+          "noise_sigma_8bit": 5.95652174,
+          "h264_crf": 28
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 0.62608696,
+          "noise_sigma_8bit": 5.13043478,
+          "h264_crf": 28
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 0.56086957,
+          "noise_sigma_8bit": 4.30434783,
+          "h264_crf": 28
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 0.49565217,
+          "noise_sigma_8bit": 3.47826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 0.43043478,
+          "noise_sigma_8bit": 2.65217391,
+          "h264_crf": 28
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 0.36521739,
+          "noise_sigma_8bit": 1.82608696,
+          "h264_crf": 28
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        }
+      ],
+      "noise_stream": "native_temporal",
+      "degradation_transition_intervals_inclusive": [
+        [
+          24,
+          47
+        ],
+        [
+          72,
+          95
+        ]
+      ],
+      "scene_cut_frames": [],
+      "codec_reset_frames": []
+    },
+    {
+      "profile_id": "native_abrupt_blur_noise_h264",
+      "task": "mixed_native",
+      "scale": 1,
+      "ordered_operators": [
+        "gaussian_blur_float_rgb",
+        "gaussian_noise_float_rgb",
+        "quantize_rint_clip_uint8",
+        "h264_roundtrip"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 20,
+          "h264_crf": 28
+        }
+      ],
+      "noise_stream": "native_temporal",
+      "degradation_transition_frames": [
+        48
+      ],
+      "scene_cut_frames": [],
+      "codec_reset_frames": [],
+      "content_requirement": "A single continuous source window; flag/exclude natural content cuts from this primary transition profile."
+    },
+    {
+      "profile_id": "native_smooth_jpeg_quality",
+      "task": "mixed_native",
+      "scale": 1,
+      "ordered_operators": [
+        "gaussian_blur_float_rgb",
+        "gaussian_noise_float_rgb",
+        "quantize_rint_clip_uint8",
+        "jpeg_per_frame_roundtrip"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 92
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 90
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 87
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 85
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 82
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 79
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 77
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 74
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 72
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 69
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 66
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 64
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 61
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 58
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 56
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 53
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 51
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 48
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 45
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 43
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 40
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 38
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 35
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 38
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 40
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 43
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 45
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 48
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 51
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 53
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 56
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 58
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 61
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 64
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 66
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 69
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 72
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 74
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 77
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 79
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 82
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 85
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 87
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 90
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 92
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 1,
+          "noise_sigma_8bit": 10,
+          "jpeg_quality": 95
+        }
+      ],
+      "noise_stream": "native_jpeg",
+      "degradation_transition_intervals_inclusive": [
+        [
+          24,
+          47
+        ],
+        [
+          72,
+          95
+        ]
+      ],
+      "scene_cut_frames": [],
+      "interpretation": "Frame-independent JPEG quality changes, not temporally predictive H264 quality variation."
+    },
+    {
+      "profile_id": "sr_smooth_blur_noise_h264",
+      "task": "sr",
+      "scale": 4,
+      "ordered_operators": [
+        "gaussian_blur_float_rgb_hr",
+        "quantize_rint_clip_uint8",
+        "bicubic_downsample_x4_uint8",
+        "gaussian_noise_float_rgb_lr",
+        "quantize_rint_clip_uint8",
+        "h264_roundtrip_lr"
+      ],
+      "frame_parameters": [
+        {
+          "frame": 0,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 1,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 2,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 3,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 4,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 5,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 6,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 7,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 8,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 9,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 10,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 11,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 12,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 13,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 14,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 15,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 16,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 17,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 18,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 19,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 20,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 21,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 22,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 23,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 24,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        },
+        {
+          "frame": 25,
+          "blur_sigma_hr_px": 0.36521739,
+          "noise_sigma_8bit": 1.60869565,
+          "h264_crf": 28
+        },
+        {
+          "frame": 26,
+          "blur_sigma_hr_px": 0.43043478,
+          "noise_sigma_8bit": 2.2173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 27,
+          "blur_sigma_hr_px": 0.49565217,
+          "noise_sigma_8bit": 2.82608696,
+          "h264_crf": 28
+        },
+        {
+          "frame": 28,
+          "blur_sigma_hr_px": 0.56086957,
+          "noise_sigma_8bit": 3.43478261,
+          "h264_crf": 28
+        },
+        {
+          "frame": 29,
+          "blur_sigma_hr_px": 0.62608696,
+          "noise_sigma_8bit": 4.04347826,
+          "h264_crf": 28
+        },
+        {
+          "frame": 30,
+          "blur_sigma_hr_px": 0.69130435,
+          "noise_sigma_8bit": 4.65217391,
+          "h264_crf": 28
+        },
+        {
+          "frame": 31,
+          "blur_sigma_hr_px": 0.75652174,
+          "noise_sigma_8bit": 5.26086957,
+          "h264_crf": 28
+        },
+        {
+          "frame": 32,
+          "blur_sigma_hr_px": 0.82173913,
+          "noise_sigma_8bit": 5.86956522,
+          "h264_crf": 28
+        },
+        {
+          "frame": 33,
+          "blur_sigma_hr_px": 0.88695652,
+          "noise_sigma_8bit": 6.47826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 34,
+          "blur_sigma_hr_px": 0.95217391,
+          "noise_sigma_8bit": 7.08695652,
+          "h264_crf": 28
+        },
+        {
+          "frame": 35,
+          "blur_sigma_hr_px": 1.0173913,
+          "noise_sigma_8bit": 7.69565217,
+          "h264_crf": 28
+        },
+        {
+          "frame": 36,
+          "blur_sigma_hr_px": 1.0826087,
+          "noise_sigma_8bit": 8.30434783,
+          "h264_crf": 28
+        },
+        {
+          "frame": 37,
+          "blur_sigma_hr_px": 1.14782609,
+          "noise_sigma_8bit": 8.91304348,
+          "h264_crf": 28
+        },
+        {
+          "frame": 38,
+          "blur_sigma_hr_px": 1.21304348,
+          "noise_sigma_8bit": 9.52173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 39,
+          "blur_sigma_hr_px": 1.27826087,
+          "noise_sigma_8bit": 10.13043478,
+          "h264_crf": 28
+        },
+        {
+          "frame": 40,
+          "blur_sigma_hr_px": 1.34347826,
+          "noise_sigma_8bit": 10.73913043,
+          "h264_crf": 28
+        },
+        {
+          "frame": 41,
+          "blur_sigma_hr_px": 1.40869565,
+          "noise_sigma_8bit": 11.34782609,
+          "h264_crf": 28
+        },
+        {
+          "frame": 42,
+          "blur_sigma_hr_px": 1.47391304,
+          "noise_sigma_8bit": 11.95652174,
+          "h264_crf": 28
+        },
+        {
+          "frame": 43,
+          "blur_sigma_hr_px": 1.53913043,
+          "noise_sigma_8bit": 12.56521739,
+          "h264_crf": 28
+        },
+        {
+          "frame": 44,
+          "blur_sigma_hr_px": 1.60434783,
+          "noise_sigma_8bit": 13.17391304,
+          "h264_crf": 28
+        },
+        {
+          "frame": 45,
+          "blur_sigma_hr_px": 1.66956522,
+          "noise_sigma_8bit": 13.7826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 46,
+          "blur_sigma_hr_px": 1.73478261,
+          "noise_sigma_8bit": 14.39130435,
+          "h264_crf": 28
+        },
+        {
+          "frame": 47,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 48,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 49,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 50,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 51,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 52,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 53,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 54,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 55,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 56,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 57,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 58,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 59,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 60,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 61,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 62,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 63,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 64,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 65,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 66,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 67,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 68,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 69,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 70,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 71,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 72,
+          "blur_sigma_hr_px": 1.8,
+          "noise_sigma_8bit": 15,
+          "h264_crf": 28
+        },
+        {
+          "frame": 73,
+          "blur_sigma_hr_px": 1.73478261,
+          "noise_sigma_8bit": 14.39130435,
+          "h264_crf": 28
+        },
+        {
+          "frame": 74,
+          "blur_sigma_hr_px": 1.66956522,
+          "noise_sigma_8bit": 13.7826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 75,
+          "blur_sigma_hr_px": 1.60434783,
+          "noise_sigma_8bit": 13.17391304,
+          "h264_crf": 28
+        },
+        {
+          "frame": 76,
+          "blur_sigma_hr_px": 1.53913043,
+          "noise_sigma_8bit": 12.56521739,
+          "h264_crf": 28
+        },
+        {
+          "frame": 77,
+          "blur_sigma_hr_px": 1.47391304,
+          "noise_sigma_8bit": 11.95652174,
+          "h264_crf": 28
+        },
+        {
+          "frame": 78,
+          "blur_sigma_hr_px": 1.40869565,
+          "noise_sigma_8bit": 11.34782609,
+          "h264_crf": 28
+        },
+        {
+          "frame": 79,
+          "blur_sigma_hr_px": 1.34347826,
+          "noise_sigma_8bit": 10.73913043,
+          "h264_crf": 28
+        },
+        {
+          "frame": 80,
+          "blur_sigma_hr_px": 1.27826087,
+          "noise_sigma_8bit": 10.13043478,
+          "h264_crf": 28
+        },
+        {
+          "frame": 81,
+          "blur_sigma_hr_px": 1.21304348,
+          "noise_sigma_8bit": 9.52173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 82,
+          "blur_sigma_hr_px": 1.14782609,
+          "noise_sigma_8bit": 8.91304348,
+          "h264_crf": 28
+        },
+        {
+          "frame": 83,
+          "blur_sigma_hr_px": 1.0826087,
+          "noise_sigma_8bit": 8.30434783,
+          "h264_crf": 28
+        },
+        {
+          "frame": 84,
+          "blur_sigma_hr_px": 1.0173913,
+          "noise_sigma_8bit": 7.69565217,
+          "h264_crf": 28
+        },
+        {
+          "frame": 85,
+          "blur_sigma_hr_px": 0.95217391,
+          "noise_sigma_8bit": 7.08695652,
+          "h264_crf": 28
+        },
+        {
+          "frame": 86,
+          "blur_sigma_hr_px": 0.88695652,
+          "noise_sigma_8bit": 6.47826087,
+          "h264_crf": 28
+        },
+        {
+          "frame": 87,
+          "blur_sigma_hr_px": 0.82173913,
+          "noise_sigma_8bit": 5.86956522,
+          "h264_crf": 28
+        },
+        {
+          "frame": 88,
+          "blur_sigma_hr_px": 0.75652174,
+          "noise_sigma_8bit": 5.26086957,
+          "h264_crf": 28
+        },
+        {
+          "frame": 89,
+          "blur_sigma_hr_px": 0.69130435,
+          "noise_sigma_8bit": 4.65217391,
+          "h264_crf": 28
+        },
+        {
+          "frame": 90,
+          "blur_sigma_hr_px": 0.62608696,
+          "noise_sigma_8bit": 4.04347826,
+          "h264_crf": 28
+        },
+        {
+          "frame": 91,
+          "blur_sigma_hr_px": 0.56086957,
+          "noise_sigma_8bit": 3.43478261,
+          "h264_crf": 28
+        },
+        {
+          "frame": 92,
+          "blur_sigma_hr_px": 0.49565217,
+          "noise_sigma_8bit": 2.82608696,
+          "h264_crf": 28
+        },
+        {
+          "frame": 93,
+          "blur_sigma_hr_px": 0.43043478,
+          "noise_sigma_8bit": 2.2173913,
+          "h264_crf": 28
+        },
+        {
+          "frame": 94,
+          "blur_sigma_hr_px": 0.36521739,
+          "noise_sigma_8bit": 1.60869565,
+          "h264_crf": 28
+        },
+        {
+          "frame": 95,
+          "blur_sigma_hr_px": 0.3,
+          "noise_sigma_8bit": 1,
+          "h264_crf": 28
+        }
+      ],
+      "noise_stream": "sr_temporal_lr",
+      "degradation_transition_intervals_inclusive": [
+        [
+          24,
+          47
+        ],
+        [
+          72,
+          95
+        ]
+      ],
+      "scene_cut_frames": [],
+      "codec_reset_frames": [],
+      "observation_hw": [
+        120,
+        208
+      ],
+      "target_hw": [
+        480,
+        832
+      ]
+    }
+  ],
+  "scene_cut_control": {
+    "status": "planned_separate_diagnostic_not_confounded_with_degradation_transition",
+    "frames": 96,
+    "cut_frame": 48,
+    "composition": "48 consecutive frames from source A followed by 48 from source B; both source groups must already belong to the same split.",
+    "input_profile": "native_static_blur_noise_h264",
+    "source_provenance": "Both original file hashes, both source IDs/group IDs, both source windows and the joint target hash are mandatory.",
+    "degradation_transition_frames": [],
+    "scene_cut_frames": [
+      48
+    ],
+    "model_history": "Carry causal state by default. An optional explicit oracle-reset diagnostic is reported separately and never used as the primary blind result.",
+    "metric_policy": "Invalidate cross-cut optical-flow pair 47->48 with explicit support counts; report post-cut recovery separately from degradation-transition adaptation.",
+    "natural_cuts": "Record natural content cuts separately. Primary continuous-content profiles must use cut-free approved windows, or publish per-cut strata rather than misclassifying a scene cut as a degradation transition."
+  },
+  "optional_codec_segment_control": {
+    "enabled": false,
+    "description": "A future H264 CRF20->35 experiment encoded as independent 48-frame segments is a codec-reset confound, not a pure per-frame CRF schedule.",
+    "codec_reset_frames": [
+      48
+    ],
+    "degradation_transition_frames": [
+      48
+    ],
+    "scene_cut_frames": [],
+    "requirement": "Label segment/reset boundaries and actual keyframes separately; exclude it from the primary smooth/abrupt no-reset comparison."
+  },
+  "execution_ladder": [
+    {
+      "stage": 0,
+      "status": "completed_read_only_inventory",
+      "output": "Referenced inventory evidence; no dataset promotion."
+    },
+    {
+      "stage": 1,
+      "status": "pending",
+      "action": "Audit priority 46 metadata candidates and produce the source registry; do not assign frozen roles before approval."
+    },
+    {
+      "stage": 2,
+      "status": "pending_new_versioned_CPU_materializer",
+      "action": "Implement the new operator schema in an isolated file/config. Existing materialize_omni_pilot.py v1 supports four single tasks only and does not execute this plan."
+    },
+    {
+      "stage": 3,
+      "status": "pending_single_source_engineering_smoke",
+      "split": "train",
+      "source_ids": [
+        "2BdYaGuVAKo"
+      ],
+      "frames": 96,
+      "profiles": [
+        "native_static_blur_noise_h264",
+        "native_static_noise_blur_h264",
+        "native_smooth_blur_noise_h264",
+        "native_abrupt_blur_noise_h264",
+        "native_smooth_jpeg_quality",
+        "sr_smooth_blur_noise_h264"
+      ],
+      "checks": [
+        "Full decode exact length and timestamps",
+        "Target bytes identical across profiles",
+        "Native and SR geometry exact",
+        "Every frame has explicit parameters",
+        "Replay observations twice with identical pixel hashes",
+        "Static order controls share sampled noise arrays",
+        "No unintended H264 reset at frame48",
+        "Source/target/observation/receipt hash binding",
+        "Memory bound and process exit"
+      ]
+    },
+    {
+      "stage": 4,
+      "status": "pending_tiny_engineering_batch",
+      "train_source_ids": [
+        "2BdYaGuVAKo",
+        "4EKWTiWjPTQ"
+      ],
+      "dev_source_ids": [
+        "6UZVovkR3IU",
+        "6rJrrfRO3cA"
+      ],
+      "action": "Only after smoke, materialize 2 existing train + 2 existing dev sources with the same pinned profiles. These remain engineering train/dev, never independent calibration/test.",
+      "scene_cut_control": "At most one within-train pair and one within-dev pair; no cross-split source concatenation."
+    },
+    {
+      "stage": 5,
+      "status": "not_authorized_by_this_plan_alone",
+      "action": "Review data/operator and evaluation receipts before larger materialization or any new NPU training. Keep current stage2 runs and their recipes untouched."
+    }
+  ],
+  "resource_limits": {
+    "device": "CPU only",
+    "process_workers": 1,
+    "ffmpeg_threads": 1,
+    "opencv_threads": 1,
+    "blas_threads": 1,
+    "planned_memory_budget_mib": 768,
+    "implementation_requirement": "Keep clean uint8 once and one observation at a time; float intermediates at frame granularity. Use temp files/streaming decode rather than retaining all six RGB observation clips. Measure peak RSS in single-source smoke; stop and reduce buffering if budget exceeded.",
+    "remote_output_root_reserved": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_mixed_temporal_v1",
+    "output_root_created": false,
+    "large_scale_materialization": false
+  },
+  "evaluation_contract": {
+    "scope": "96-frame transition experiment, not a long-video drift benchmark",
+    "sampling": "All 96 frames with frame_stride=1 for candidate evaluation; stride4 results can screen cost but cannot establish adjacent-frame flicker.",
+    "pairing": "Same source/window/target and identical parameter schedule/seed for every method; aggregate per source, not as independent frames/windows.",
+    "controls": [
+      "raw observation or explicitly named SR bicubic guide",
+      "fixed fidelity checkpoint",
+      "later matched mixed-data checkpoint only after a separate training recipe review"
+    ],
+    "score_strata": [
+      "overall RGB fidelity and LPIPS",
+      "steady low/high degradation",
+      "ramp-up and ramp-down",
+      "abrupt change pre/post windows",
+      "source-wise regressions",
+      "scene-cut recovery separately"
+    ],
+    "transition_windows": {
+      "abrupt_pre_inclusive": [
+        24,
+        47
+      ],
+      "abrupt_early_post_inclusive": [
+        48,
+        55
+      ],
+      "abrupt_late_post_inclusive": [
+        56,
+        71
+      ],
+      "ramp_up_inclusive": [
+        24,
+        47
+      ],
+      "ramp_down_inclusive": [
+        72,
+        95
+      ]
+    },
+    "temporal_support": "Record evaluated adjacent pairs, valid flow pixel support, excluded content cuts and whether reported flow/warp error uses GT or prediction. A metric reduction alone does not certify flicker absence.",
+    "calibration": "Fit/calibrate only on an approved independent calibration cohort after fidelity parameters are fixed; current 8 dev cannot be renamed to fulfill this requirement.",
+    "frozen_test": "Keep empty until the 16 source-group cohort and all metric/recipe policy are locked. No fallback to any historical train/val/eval source.",
+    "training_factor_control": "Do not combine operator-order, time-varying schedule, architecture, guard weight, and confidence recipe changes into one claimed structural ablation. This plan prepares matched data controls; a separate minimal training matrix must name the one factor changed."
+  },
+  "acceptance": {
+    "current_claim": "Inventory and executable specification only",
+    "approved_new_train_sources": 0,
+    "approved_new_calibration_sources": 0,
+    "approved_new_frozen_test_sources": 0,
+    "produced_new_observation_npz": 0,
+    "success_next_step": "One existing-train-source CPU smoke satisfies all receipt/replay/geometry/length checks, while candidate source audit independently determines whether 8 calibration + 16 test groups can be locked."
+  },
+  "history_audit_followup": {
+    "report": "results/takeover_20261111/calibration_candidates_history_audit_20261111.json",
+    "sources": 46,
+    "observed_model_use_matches_in_bounded_audit": 0,
+    "candidates_all_only_matches": 6,
+    "eligible_calibration_sources": 0,
+    "eligible_test_sources": 0,
+    "caveat": "Absence in bounded history is not proof of no use. Six candidates.all matches are acquisition/quality records, not selected model-use records. For Jz4wLRDTF54 the printed audio threshold is rounded; exact audio failure cause remains unknown. Full source grouping/dedup and visual quality audit are still required."
+  },
+  "source_identity_audit_followup": {
+    "review": "results/takeover_20261111/calibration_candidates_source_identity_review_20261111.json",
+    "review_sha256": "0f33ff848735da18966bbe5c7976f4647d77400b5d02bbad0d1194c08d349ac3",
+    "full_file_hashes": 336,
+    "sparse_frames": 1008,
+    "candidate_count": 46,
+    "historical_count": 290,
+    "exact_duplicate_groups": 0,
+    "current40_recorded_source_hash_matches": 40,
+    "flagged_pairs": 5,
+    "flagged_candidates": [
+      "6X5vLMqdKZo",
+      "Jz4wLRDTF54"
+    ],
+    "strong_shared_visual_material_pair": [
+      "6X5vLMqdKZo",
+      "QGd3hjZBFEI"
+    ],
+    "low_information_black_frame_only_candidate": "Jz4wLRDTF54",
+    "approved_new_sources": 0,
+    "limitations": "SHA covers local segments, not full online videos. Sparse pHash and negative search do not certify independent/pristine sources. No split allocation or asset removal."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "at_utc": "2026-11-11T13:31:14.066885+00:00",
+  "cached_compensation": {
+    "process": "    PID     ELAPSED STAT   RSS %CPU\n3994024       33:16 RNl  1993740 154",
+    "complete": false,
+    "completed_samples": 5,
+    "total_samples": 12,
+    "failures": [],
+    "latest_samples": [
+      {
+        "task": "compression",
+        "control": null,
+        "seconds": 310.4286413779482,
+        "applicable_reproduction_checks_passed": true
+      },
+      {
+        "task": "deblur",
+        "control": null,
+        "seconds": 300.8801466189325,
+        "applicable_reproduction_checks_passed": true
+      },
+      {
+        "task": "denoise",
+        "control": null,
+        "seconds": 299.0518251089379,
+        "applicable_reproduction_checks_passed": true
+      },
+      {
+        "task": "sr",
+        "control": null,
+        "seconds": 298.75870896317065,
+        "applicable_reproduction_checks_passed": true,
+        "nonapplicable_checks": [
+          {
+            "check": "scalar_beta075_native_alpha025",
+            "reason": "SR uses canonical Q4 anchor, not scalar full-RGB mixing"
+          }
+        ]
+      },
+      {
+        "task": "compression",
+        "control": "identity",
+        "seconds": 299.6405148310587,
+        "applicable_reproduction_checks_passed": true
+      }
+    ],
+    "flow": {
+      "note": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "support_sha256": "6ce8697787e072ca9737d436c0e445749f3812308cd67690305672d8919b9b9b",
+      "pairs": 21,
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "reused_across_all_arms_and_same_source_samples": true
+    },
+    "quality_interpretation": "full12 acceptance pending; no beta selection"
+  },
+  "native_queue": {
+    "status": "running",
+    "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+    "pid": 562210,
+    "started_unix": 1794399432.0524,
+    "jobs": [
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 910.415660360828,
+        "peak_owned_rss_bytes": 5070385152,
+        "pid": 562211
+      },
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.033278089948,
+        "peak_owned_rss_bytes": 1987461120,
+        "pid": 569598
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 911.4128956813365,
+        "peak_owned_rss_bytes": 5069074432,
+        "pid": 569928
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 81.036406760104,
+        "peak_owned_rss_bytes": 2425516032,
+        "pid": 577741
+      },
+      {
+        "method": "favernet",
+        "task": "compression",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 914.4072848530486,
+        "peak_owned_rss_bytes": 5061447680,
+        "pid": 582039
+      },
+      {
+        "method": "favernet",
+        "task": "compression",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 81.03523677587509,
+        "peak_owned_rss_bytes": 2277289984,
+        "pid": 600446
+      },
+      {
+        "method": "avernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 1025.466892809607,
+        "peak_owned_rss_bytes": 3998117888,
+        "pid": 602232
+      },
+      {
+        "method": "avernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.03813028987497,
+        "peak_owned_rss_bytes": 2225463296,
+        "pid": 609103
+      }
+    ],
+    "completed_forwards": 4,
+    "failed_models": [],
+    "current": {
+      "method": "avernet",
+      "task": "denoise",
+      "stage": "infer"
+    }
+  }
+}

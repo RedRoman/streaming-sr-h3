@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-11T13:06:51.365163+00:00",
-    "stage": "Stage2 completed; native2/6 scored; cached compensation1/12 scored and healthy; source identity audit completed with2 candidates held for content/quality review.",
+    "at_utc": "2026-11-11T13:52:00+00:00",
+    "stage": "Stage2 complete; native5/6 audited and cached compensation9/12 healthy; trainRGB/mixed96 engineering and5/22frame128x128 VAE gradient gates passed; fullH3 trainer remains pending",
     "native_quality": {
       "host": "31984",
       "status": "running",
@@ -182,41 +182,43 @@
       "started_at_local": "2026-11-11T20:17:12+08:00",
       "launch_receipt": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/launch_receipt.json",
       "launch_receipt_sha256": "43db873391e0439341f6b935cd31f8bc1efa16690a4a1bec8c111884ecaf882a",
-      "latest_snapshot": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/queue_status.json",
-      "last_verified_local": "2026-11-11T20:58:50.786991+08:00",
-      "last_verified_current": "favernet/compression/infer",
-      "completed_forwards": 2,
+      "latest_snapshot": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111/queue_status.json",
+      "last_verified_local": "2026-11-11T21:50:32.354511+08:00",
+      "last_verified_current": "avernet/compression/infer",
+      "completed_forwards": 5,
       "maximum_forwards": 6,
       "model_quality_results_available": true,
       "eta_correction": "preparation/native_baselines_cpu_20261111/evidence/quality_queue/eta_correction.json",
       "next": "Inspect actual queue and per-clip infer_progress; do not relaunch a healthy queue; on complete archive small metrics/receipts once and audit paired baseline/parity.",
-      "latest_audit": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/audit.json",
-      "latest_audit_sha256": "108926c79854f7599e3c47b06869497bc287ce3da4a567f8538ad2de73f3f92d",
-      "completed_quality_evaluations": 2,
-      "new_result": "favernet/denoise",
+      "latest_audit": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111/audit.json",
+      "latest_audit_sha256": "9518513eb6f6656bbde9f779cf6a094ee0770080e01af8b98048b9e5f99058c9",
+      "completed_quality_evaluations": 5,
+      "new_result": "Aver/denoise",
       "execution_device": "cpu",
       "runtime_import_caveat": "MMCV indirectly imported torch_npu/queried davinci_manager. Historical hardcoded torch_npu_imported=false is not whole-process proof. Model/input/output execute on CPU.",
-      "eta_current_basis": "first2Faver inference processes ~910/911s, first metrics82s; Aver unmeasured",
-      "eta_illustrative_local": "2026-11-11 ~22:00; revise after actual Aver first clip",
-      "model_inference_device": "cpu"
+      "eta_current_basis": "Faver inference910-914s; first Aver inference1025.47s + metrics82.04s; two Aver clips remaining at21:31",
+      "eta_illustrative_local": "Around22:04SG if remaining Aver clips have comparable wall time; not guaranteed",
+      "model_inference_device": "cpu",
+      "Faver_three_task_summary": "results/takeover_20261111/native_quality_compression_increment_20261111T1312Z/favernet_three_tasks_summary.json",
+      "last_verified_local_scope": "time of archived incremental audit"
     },
     "VAE_review": "results/takeover_20261111/vae_roundtrip_v2_completed/scientific_review.json",
     "fixed_H3_plan": "configs/openh3_20261111/fixed_h3_rphi_plan_20261111.json",
     "checkpoint_backup_complete_31984": true,
     "cached_compensation": {
       "host": "30794",
-      "status": "running_one_of12_scored",
+      "status": "running_9_of12_scored",
       "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
       "session": "cached-rgb-comp-20261111a",
       "worker_pid": 3994024,
       "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
-      "last_observed_at_utc": "2026-11-11T13:06:51.365163+00:00",
+      "last_observed_at_utc": "2026-11-11T13:48:54.567054+00:00",
       "launch_receipt": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/launch_receipt.json",
       "launch_receipt_sha256": "e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160",
       "implementation_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
       "tests_passed": 7,
       "real_input_inspection_samples": 12,
-      "completed_scored_samples": 1,
+      "completed_scored_samples": 9,
       "maximum_samples": 12,
       "beta_grid": [
         0,
@@ -242,10 +244,15 @@
         "terminate_grace_seconds": 30
       },
       "next": "Read grid.log, eval/partial_metrics.json, eval/metrics.json and fresh failure files; inspect actual owned process/session. No automatic relaunch or same-directory resume. Download a small result evidence archive when complete, audit all endpoints/common-flow/caches and clean controls before any quality conclusion.",
-      "latest_snapshot": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/root_snapshot_20261111T130651Z.json",
+      "latest_snapshot": "results/takeover_20261111/heartbeat_20261111T1348Z_runtime.json",
       "first_sample_seconds": 310.4286413779482,
-      "eta_rough_local": "Around22:00SG if remaining samples have similar cost; common flow is reused, actual remaining sample rates unmeasured; owned2h deadline22:57:58SG is a budget ceiling, not a completion guarantee."
+      "eta_rough_local": "Approximately22:02SG at measured~298-310s/sample; full acceptance after complete; hard owned budget22:57:58SG"
     },
-    "guide_matched_lora_readiness": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json"
+    "guide_matched_lora_readiness": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json",
+    "train_guide_evidence": "results/takeover_20261111/rphi_train_guides_legacy_smoke_completed/engineering_review.json",
+    "mixed_data_evidence": "results/takeover_20261111/mixed_temporal_smoke_review_20261111.json",
+    "VAE_gradient_evidence": "results/takeover_20261111/vae_decode_grad_smoke_20261111b_completed/local_verification.json",
+    "VAE_temporal_run": "runs/vae_decode_grad_temporal_smoke_20261111c",
+    "VAE_temporal_evidence": "results/takeover_20261111/vae_decode_grad_temporal_smoke_20261111c_completed/local_verification.json"
   }
 }

@@ -1,0 +1,225 @@
+{
+  "schema": "openh3.vae_gradient_rope_dispatch_audit.v1",
+  "audit_complete": true,
+  "created_utc": "2026-11-11T13:38:49.258518+00:00",
+  "mode": "read_only_actual_remote_source_and_existing_failure; no NPU execution or model loading",
+  "host": "huawei-modelarts-30794",
+  "source_files": {
+    "vae": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe",
+      "lines": [
+        299,
+        332
+      ]
+    },
+    "attention": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/modules/attention.py",
+      "sha256": "26ae302355066b7fe5363840268c73d937e33ec40341a0458ca8aa97493b5274",
+      "lines": [
+        591,
+        638,
+        920,
+        950
+      ]
+    },
+    "ops": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ops.py",
+      "sha256": "a0b8c7f32a146b383a795363bef35e480ffa84b5b3e9c9503f323b1446876f45",
+      "lines": [
+        58,
+        63,
+        1018,
+        1069
+      ]
+    },
+    "kitchen_public": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/__init__.py",
+      "sha256": "63c6767a9cac5596c00d5c42fd1246137c33a282ed144633dd37342d485a0a50",
+      "lines": [
+        783,
+        815
+      ]
+    },
+    "rope_eager": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/backends/eager/rope.py",
+      "sha256": "630a3d287bf602046935086f9d43eb6db2ec4971913a1cb3fb35bae6ea4ac9ee",
+      "lines": [
+        38,
+        51,
+        84,
+        106,
+        138,
+        152,
+        270,
+        297,
+        405,
+        420
+      ]
+    },
+    "rope_ascend": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/rope.py",
+      "sha256": "8fe40b99144d04f14c308683324ff49b24eccdbe8c8510059cdc6fd9451b2873",
+      "lines": [
+        36,
+        46,
+        107,
+        121,
+        191,
+        235,
+        238,
+        370
+      ]
+    },
+    "ascend_registration": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/__init__.py",
+      "sha256": "d981e152c5a37003782919746282635dce1d424511a73e8cd5cb4437080ae3af",
+      "lines": [
+        751,
+        782
+      ]
+    },
+    "actual_probe": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/vae_decode_grad_smoke_20261111a/code/check_vae_decode_grad.py",
+      "sha256": "60e5dcedadb900654faf9ff272fd8c3e89af217e3b8ba728f32d8d3c390cd5d4",
+      "lines": [
+        82,
+        101
+      ]
+    },
+    "actual_h3_context": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v2/code/h3_comfy.py",
+      "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+      "lines": [
+        87,
+        109,
+        229,
+        233
+      ]
+    },
+    "failure": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_decode_grad_smoke_20261111a/eval/failure.json",
+      "sha256": "ca65f9a8be2a1d5d58493b178e16c21ed885749034dca45a61c6842e3a44e4d0"
+    }
+  },
+  "observed_failure": {
+    "run": "runs/vae_decode_grad_smoke_20261111a",
+    "forward_max_abs_difference": 0.002856135368347168,
+    "atol": 0.0002,
+    "rtol": 0.0001,
+    "elapsed_seconds": 54.557568174786866,
+    "gate": "forward parity failed before loss.backward",
+    "backward_executed": false,
+    "no_gradient_capability_conclusion": true
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "certainty": "confirmed_static_dispatch_difference",
+      "evidence": [
+        "vae:309-310",
+        "actual_h3_context:92-103"
+      ],
+      "fact": "VAE Attention selects ck.rms_rope_split_half under grad-enabled mode and ck.rms_rope_split_half_ otherwise. native_training_math replaces only the functional public function with eager.rms_rope_split_half; both passes set mm.in_training=True.",
+      "implication": "The original smoke does not compare only autograd on/off: it also changes the RMS+RoPE implementation family."
+    },
+    {
+      "id": "F2",
+      "certainty": "confirmed_backend_source; actual_selected_backend_not_traced_in_failed_run",
+      "evidence": [
+        "rope_ascend:36-46",
+        "rope_ascend:107-121",
+        "rope_ascend:191-235",
+        "rope_eager:84-106"
+      ],
+      "fact": "Ascend functional RoPE uses torch_npu.npu_rms_norm and torch_npu.npu_rotary_mul. Its inplace form calls the same functional implementation then copies outputs to q/k. Eager uses F.rms_norm followed by multiplication/addcmul rotation.",
+      "implication": "Different kernel accumulation/rounding is a plausible explanation for the FP16 decoded mismatch, not yet a quantitatively isolated root cause. Registry default priority puts ascend before cuda/triton/eager, but constraints/fallback and selected backend must be logged at runtime."
+    },
+    {
+      "id": "F3",
+      "certainty": "confirmed_signature_and_no_decorator",
+      "evidence": [
+        "rope_ascend:191-218",
+        "ascend_registration:751-782"
+      ],
+      "fact": "Ascend rms_rope_split_half is an ordinary undecorated Python function, signature (q,k,freqs_cis,q_scale,k_scale=None,epsilon=1e-6,rot_dim=0). It accepts both keywords passed by VAE. It directly calls torch_npu primitives, not the public torch.library custom-op wrapper.",
+      "implication": "A scoped functional replacement is interface-compatible and retains the inference backend primitives; actual primitive backward support remains untested. Direct invocation must validate Ascend constraints instead of silently falling back."
+    },
+    {
+      "id": "F4",
+      "certainty": "confirmed_storage_difference_possible",
+      "evidence": [
+        "vae:303-306",
+        "rope_ascend:232-235",
+        "vae:321-329"
+      ],
+      "fact": "Inplace path returns q/k views sliced from shared qkv; functional path returns newly allocated tensors. Transposing them can yield different attention input strides/contiguity even with identical element values.",
+      "implication": "If the Ascend functional variant still fails parity, log q/k/v shapes,dtypes,strides and locate first mismatch before changing attention. Do not attribute every residual mismatch solely to RMS/RoPE arithmetic."
+    },
+    {
+      "id": "F5",
+      "certainty": "confirmed_Comfy_source; underlying_NPU_SDPA_kernel_not_traced",
+      "evidence": [
+        "attention:591-638",
+        "attention:920-950",
+        "ops:58-63",
+        "ops:1018-1069"
+      ],
+      "fact": "Comfy optimized_attention is selected at module import from configured backend. The inspected attention_pytorch path calls comfy.ops.scaled_dot_product_attention, then Torch SDPA. No explicit grad-enabled branch exists in that wrapper. The same mm.in_training=True is used for both existing smoke forwards.",
+      "implication": "Attention is a secondary possible source through Torch/NPU kernel or layout selection; this static audit has not identified its actual kernel or proved it identical in both passes."
+    }
+  ],
+  "recommended_single_variable_retry": {
+    "new_mode": "--rope-mode ascend_native",
+    "default_mode_preserved": "existing eager reference mode for replay of failed a; never rewrite old snapshot",
+    "only_changed_factor": "grad-enabled functional ck.rms_rope_split_half uses direct Ascend implementation instead of eager",
+    "no_grad_reference": "keep original ck.rms_rope_split_half_ object and its backend dispatch unchanged; same h3.decode wrapper",
+    "context_order": "enter native_training_math first, then scoped functional override; restore previous functional symbol in finally before outer context restores original globals",
+    "keep_fixed": [
+      "VAE weights and full SHA",
+      "CPU latent seed101 and float32 bytes",
+      "latent shape1x24x2x8x8",
+      "VAE float16 cast and scaling",
+      "no-grad reference",
+      "mm.in_training setting",
+      "residual operations",
+      "attention dispatch",
+      "output clamp/shape",
+      "atol0.0002/rtol0.0001"
+    ],
+    "hard_gates": [
+      "Ascend validate_rms_rope_split_half kwargs passes (no silent fallback)",
+      "reference and grad outputs satisfy unchanged parity tolerance",
+      "finite nonzero input gradient",
+      "VAE parameters remain frozen/no .grad and identical hash/version",
+      "no NPU task launched concurrently"
+    ],
+    "record": [
+      "resolved Ascend function module/source SHA",
+      "original functional/inplace object identities before/after scope",
+      "selected kitchen backend for original inplace call",
+      "first-layer q/k dtype/shape/stride and rot_dim",
+      "forward maxabs/RMSE/exceeding-tolerance fraction",
+      "whether backward was reached and actual number of backward calls"
+    ],
+    "claim_limit": "Passing small5-frame128x128 VAE input-gradient probe does not validate full22-frame memory, H3/LoRA backward or original-RGB trajectory training."
+  },
+  "if_retry_still_fails": [
+    "Do not relax the existing output parity gate or switch both branches to eager and claim inference equivalence.",
+    "From one captured input to the first attention block, compare original no-grad inplace backend vs direct Ascend functional values under no_grad; then compare normalization and RoPE separately. Capture copies before the inplace mutation.",
+    "Locate first divergence with forward hooks: QKV projection, post-RoPE q/k, attention output, post-residual, pre-internal-clamp decoder output. Keep hooks observational.",
+    "If q/k values match but attention output differs, evaluate identical layouts first as an explicit second factor; avoid combining a layout change with a new attention math implementation.",
+    "If forward parity passes but backward fails, report the actual unsupported/different primitive; do not substitute a straight-through gradient and label it an exact gradient."
+  ],
+  "limitations": [
+    "This audit executed only read-only file inspection and SHA hashing, not any NPU kernel or backward.",
+    "No final quantitative causal attribution can be made from one output maxabs alone.",
+    "No register_autograd for the inspected kitchen RoPE custom ops was found in package text; direct Ascend primitive autograd must be tested rather than assumed.",
+    "Failure occurs before backward, so it is not evidence that VAE decoder differentiation is impossible."
+  ],
+  "changes_this_task": [
+    "new audit JSON only"
+  ],
+  "runtime_modified": false,
+  "experiments_launched": 0
+}

@@ -1,0 +1,418 @@
+{
+  "schema": "native_quality_incremental_audit.v1",
+  "recorded_at_utc": "2026-11-11T13:50:32.354511+00:00",
+  "host_id": "huawei-modelarts-31984",
+  "method": "avernet",
+  "task": "denoise",
+  "source_id": "6UZVovkR3IU",
+  "queue_snapshot": {
+    "status": "running",
+    "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+    "pid": 562210,
+    "started_unix": 1794399432.0524,
+    "jobs": [
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 910.415660360828,
+        "peak_owned_rss_bytes": 5070385152,
+        "pid": 562211
+      },
+      {
+        "method": "favernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.033278089948,
+        "peak_owned_rss_bytes": 1987461120,
+        "pid": 569598
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 911.4128956813365,
+        "peak_owned_rss_bytes": 5069074432,
+        "pid": 569928
+      },
+      {
+        "method": "favernet",
+        "task": "denoise",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 81.036406760104,
+        "peak_owned_rss_bytes": 2425516032,
+        "pid": 577741
+      },
+      {
+        "method": "favernet",
+        "task": "compression",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 914.4072848530486,
+        "peak_owned_rss_bytes": 5061447680,
+        "pid": 582039
+      },
+      {
+        "method": "favernet",
+        "task": "compression",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 81.03523677587509,
+        "peak_owned_rss_bytes": 2277289984,
+        "pid": 600446
+      },
+      {
+        "method": "avernet",
+        "task": "deblur",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 1025.466892809607,
+        "peak_owned_rss_bytes": 3998117888,
+        "pid": 602232
+      },
+      {
+        "method": "avernet",
+        "task": "deblur",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.03813028987497,
+        "peak_owned_rss_bytes": 2225463296,
+        "pid": 609103
+      },
+      {
+        "method": "avernet",
+        "task": "denoise",
+        "stage": "infer",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 1022.47372041177,
+        "peak_owned_rss_bytes": 3999006720,
+        "pid": 609516
+      },
+      {
+        "method": "avernet",
+        "task": "denoise",
+        "stage": "metrics",
+        "returncode": 0,
+        "guard_reason": null,
+        "seconds": 82.04066180344671,
+        "peak_owned_rss_bytes": 1969004544,
+        "pid": 633837
+      }
+    ],
+    "completed_forwards": 5,
+    "failed_models": [],
+    "current": {
+      "method": "avernet",
+      "task": "compression",
+      "stage": "infer"
+    }
+  },
+  "admission_sha256": "0b0a22b9371bd4a63614bc3effb70d8749c66006be9a3dab22c8a4d58445c5f0",
+  "locked_files_match": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/run_quality_smoke.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/source_lock.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_smoke_plan.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/quality_input_cross_host.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/ordinary_h3_reference_metrics.json": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/eval_rphi.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_quality_smoke_20261111_v1/metric_runtime/restoration_metrics.py": true,
+    "/cache/zihaohe/omni_openh3_20261111/preparation/native_baselines_20261111/third_party/native_video_baselines_20261111/run_lossless_rgb.py": true
+  },
+  "official_source_files_match": {
+    "basicsr/__init__.py": true,
+    "basicsr/archs/__init__.py": true,
+    "basicsr/archs/arch_util.py": true,
+    "basicsr/archs/avernet_arch.py": true,
+    "basicsr/archs/spynet_arch.py": true,
+    "basicsr/data/__init__.py": true,
+    "basicsr/data/data_sampler.py": true,
+    "basicsr/data/data_util.py": true,
+    "basicsr/data/degradations.py": true,
+    "basicsr/data/prefetch_dataloader.py": true,
+    "basicsr/data/transforms.py": true,
+    "basicsr/data/tud_video_train_dataset.py": true,
+    "basicsr/data/video_test_dataset.py": true,
+    "basicsr/losses/__init__.py": true,
+    "basicsr/losses/basic_loss.py": true,
+    "basicsr/losses/loss_util.py": true,
+    "basicsr/models/__init__.py": true,
+    "basicsr/models/base_model.py": true,
+    "basicsr/models/lr_scheduler.py": true,
+    "basicsr/models/sr_model.py": true,
+    "basicsr/models/video_base_model.py": true,
+    "basicsr/models/video_recurrent_model.py": true,
+    "basicsr/test.py": true,
+    "basicsr/train.py": true,
+    "basicsr/utils/__init__.py": true,
+    "basicsr/utils/dist_util.py": true,
+    "basicsr/utils/file_client.py": true,
+    "basicsr/utils/flow_util.py": true,
+    "basicsr/utils/img_process_util.py": true,
+    "basicsr/utils/img_util.py": true,
+    "basicsr/utils/logger.py": true,
+    "basicsr/utils/misc.py": true,
+    "basicsr/utils/options.py": true,
+    "basicsr/utils/registry.py": true,
+    "scripts/data_preparation/generate_meta_info.py": true,
+    "scripts/data_preparation/synthesize_datasets.py": true,
+    "scripts/data_preparation/utils.py": true,
+    "setup.py": true
+  },
+  "official_checkpoint_sha256": "cdba740bab4c47f37a7b0e18eb147a3acab6897b0911744f7c5fbc30054b57ec",
+  "input_validation": {
+    "observation": {
+      "npz_sha256": "37e17f613fc63a5ce59df00e11463776a48f5db3aa7ae2e6573c8dcdd6a22adb",
+      "pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "uint8"
+    },
+    "target": {
+      "npz_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+      "pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "uint8"
+    }
+  },
+  "record_equals_admission": true,
+  "reference_file_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "paired_favernet_metrics_sha256": "39b11407cea906a16b5126217aef3f1fac41d7be1024fac5862339e21c2564a9",
+  "prediction_validation": {
+    "remote_path": "/cache/zihaohe/omni_openh3_20261111/runs/native_avernet_6UZVovkR3IU_smoke_20261111a/denoise/prediction/restored_float32.npz",
+    "file_sha256": "b9fa05d0f8b817cc16bac53823a3a628ab1e4f0923cc2054f2629b51b1ace336",
+    "rgb_sha256": "e0b17b13c46780b58d0b243fbb47de21f92e1dbc1f8e2d6267411c2d215e8f7d",
+    "raw_rgb_sha256": "82333f5f155d51fee7e0bcdf9389ddefd1dfacfbbcd13df755c303ebc0749142",
+    "dtype": "float32",
+    "shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "finite": true,
+    "raw_clamp_exact": true,
+    "gt_read_by_inference": false,
+    "device": "cpu",
+    "strict_checkpoint_load": true
+  },
+  "reference_input_numeric_checks": {
+    "quality.psnr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "quality.psnr_from_mean_mse": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "quality.mse": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "quality.mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "quality.perfect_frames": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "quality.frames": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "quality.lpips": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-06
+    },
+    "temporal.pairs": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    },
+    "temporal.unwarped_rgb_error_change_mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.flow_aligned_rgb_error_change_mae": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.valid_coverage": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-08
+    },
+    "temporal.valid_pairs": {
+      "absolute_difference": 0,
+      "absolute_tolerance": 0
+    }
+  },
+  "all_input_differences_exact_zero": true,
+  "model_metrics": {
+    "psnr": 40.73592868956917,
+    "psnr_from_mean_mse": 40.72197416674249,
+    "mse": 8.468423786029531e-05,
+    "mae": 0.0063597277929153895,
+    "perfect_frames": 0,
+    "frames": 22,
+    "lpips": 0.028487037020650776
+  },
+  "temporal_model": {
+    "pairs": 21,
+    "unwarped_rgb_error_change_mae": 0.006334372234402313,
+    "flow_aligned_rgb_error_change_mae": 0.004931595819514422,
+    "valid_coverage": 0.9037229805784494,
+    "valid_pairs": 21
+  },
+  "comparisons": {
+    "input": {
+      "reference": {
+        "psnr": 23.527251324089693,
+        "lpips": 0.6738691465421156,
+        "flow_aligned_rgb_error_change_mae": 0.06653651701552528
+      },
+      "avernet_minus_reference": {
+        "psnr": 17.208677365479478,
+        "lpips": -0.6453821095214648,
+        "flow_aligned_rgb_error_change_mae": -0.06160492119601085
+      }
+    },
+    "rphi_only": {
+      "reference": {
+        "psnr": 35.91715595526605,
+        "lpips": 0.11366325887766751,
+        "flow_aligned_rgb_error_change_mae": 0.01332017220556736
+      },
+      "avernet_minus_reference": {
+        "psnr": 4.818772734303124,
+        "lpips": -0.08517622185701673,
+        "flow_aligned_rgb_error_change_mae": -0.008388576386052938
+      }
+    },
+    "h3_raw": {
+      "reference": {
+        "psnr": 28.9467996813744,
+        "lpips": 0.5295069190588865,
+        "flow_aligned_rgb_error_change_mae": 0.021889221898856618
+      },
+      "avernet_minus_reference": {
+        "psnr": 11.78912900819477,
+        "lpips": -0.5010198820382357,
+        "flow_aligned_rgb_error_change_mae": -0.016957626079342196
+      }
+    },
+    "h3_raw_anchor": {
+      "reference": {
+        "psnr": 31.240183114503566,
+        "lpips": 0.4167830388654362,
+        "flow_aligned_rgb_error_change_mae": 0.01699162106074038
+      },
+      "avernet_minus_reference": {
+        "psnr": 9.495745575065605,
+        "lpips": -0.38829600184478547,
+        "flow_aligned_rgb_error_change_mae": -0.012060025241225958
+      }
+    },
+    "h3_rphi": {
+      "reference": {
+        "psnr": 32.47420034301705,
+        "lpips": 0.07907249541445212,
+        "flow_aligned_rgb_error_change_mae": 0.010079785560568174
+      },
+      "avernet_minus_reference": {
+        "psnr": 8.261728346552118,
+        "lpips": -0.05058545839380134,
+        "flow_aligned_rgb_error_change_mae": -0.005148189741053752
+      }
+    },
+    "h3_rphi_anchor": {
+      "reference": {
+        "psnr": 34.437090001319746,
+        "lpips": 0.05977050147273324,
+        "flow_aligned_rgb_error_change_mae": 0.008707944791586627
+      },
+      "avernet_minus_reference": {
+        "psnr": 6.298838688249425,
+        "lpips": -0.031283464452082466,
+        "flow_aligned_rgb_error_change_mae": -0.0037763489720722045
+      }
+    },
+    "favernet": {
+      "reference": {
+        "psnr": 39.94092509780152,
+        "lpips": 0.029445808465507897,
+        "flow_aligned_rgb_error_change_mae": 0.0051830098299043515
+      },
+      "avernet_minus_reference": {
+        "psnr": 0.795003591767653,
+        "lpips": -0.0009587714448571205,
+        "flow_aligned_rgb_error_change_mae": -0.0002514140103899295
+      }
+    }
+  },
+  "timing": {
+    "model_forward_seconds": 990.254882873036,
+    "inference_guard": {
+      "returncode": 0,
+      "guard_reason": null,
+      "seconds": 1022.47372041177,
+      "peak_owned_rss_bytes": 3999006720,
+      "pid": 609516
+    },
+    "metrics_guard": {
+      "returncode": 0,
+      "guard_reason": null,
+      "seconds": 82.04066180344671,
+      "peak_owned_rss_bytes": 1969004544,
+      "pid": 633837
+    }
+  },
+  "clipping": {
+    "component_fraction": 0.013369383437742813,
+    "raw_model_mse": 8.714674503521584e-05,
+    "scored_clamped_model_mse": 8.468423786029531e-05
+  },
+  "torch_npu_metadata_boundary": {
+    "original_receipts_unchanged": true,
+    "inference_binding_false_is_not_proof_of_no_later_indirect_import": true,
+    "device_cpu_supported_by_adapter_tensor_path_and_run_receipt": true,
+    "npu_import_warning_does_not_prove_npu_inference": true,
+    "no_npu_query_or_allocation_by_this_audit": true
+  },
+  "limitations": [
+    "One historical dev source; not independent frozen test or multisource ranking.",
+    "Aver/Faver are offline22/maxfuture21, not matched parameter/compute budgets; Rphi is causalK3 and H3 uses a22-frame block.",
+    "Aver uses isolated official architecture-only imports, strict checkpoint and original CPU operators; no fallback.",
+    "Prior flow tensor hash unavailable: input scores,21 pairs,coverage and flow description match, not prior bitwise flow tensors.",
+    "Completed guarded metrics were checked without rerunning model/LPIPS/flow.",
+    "Original video not rehashed; source binding comes from previously audited materialized snapshot."
+  ],
+  "actions": {
+    "new_model_forwards": 0,
+    "scoring_rerun": false,
+    "queue_modified": false,
+    "runtime_modified": false,
+    "original_receipts_unchanged": true
+  },
+  "quality_verdict": "requires_review_single_historical_dev_source"
+}

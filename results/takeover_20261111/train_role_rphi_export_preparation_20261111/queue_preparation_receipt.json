@@ -1,0 +1,33 @@
+{
+  "schema": "rphi.train_guide_export.queue_preparation.v1",
+  "prepared_only": true,
+  "launched": false,
+  "queue_path": "configs/openh3_20261111/rphi_train_guides_legacy_smoke_queue_30794.json",
+  "queue_sha256": "c0a1a25461990c08411d74e9cc017715bd1c11fff3fe9140bd69f36bf7cddc1a",
+  "admission_path": "results/takeover_20261111/train_role_rphi_export_preparation_20261111/train_export_prepared_admission.json",
+  "admission_remote_destination": "/cache/zihaohe/omni_openh3_20261111/preparation/train_role_rphi_export_20261111_v1/train_export_prepared_admission.json",
+  "admission_sha256": "5c783191217e5648b7a3d3e4f5ecd89fff9196468fa7b0c959eb8fc6708bebe1",
+  "implementation_pins": 1117,
+  "inherited_pins": 1104,
+  "runtime_snapshot_already_uploaded": true,
+  "queue_and_prepared_admission_uploaded": false,
+  "static_checks_passed": true,
+  "first_source_verified": "2BdYaGuVAKo",
+  "execution_not_started": true,
+  "fresh_resource_admission_pending_root": true,
+  "suggested_launch_argv": [
+    "venv/bin/python",
+    "code/takeover_queue.py",
+    "configs/openh3_20261111/rphi_train_guides_legacy_smoke_queue_30794.json",
+    "--stable-seconds",
+    "15"
+  ],
+  "notes": [
+    "No generic queue --inspect-only was invoked, avoiding status/lock writes.",
+    "GNU timeout does not use --foreground: TERM/KILL are scoped to the owned command process group.",
+    "The 585s timer includes the actual full train/dev preflight before model construction.",
+    "No remote runtime or active queue has been modified.",
+    "Predecessor-success gate removed after the independent VAE diagnostic failed. Root fresh review/empty-card checks still required; no launch was performed."
+  ],
+  "independent_of_vae_gradient_success": true
+}

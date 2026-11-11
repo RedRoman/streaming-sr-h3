@@ -1,0 +1,33 @@
+{
+  "inspection_only": true,
+  "actual_asset_hashes_verified": false,
+  "contract": {
+    "schema": "openh3.vae_decode_input_gradient_probe.v1",
+    "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "implementation_sha256": "60e5dcedadb900654faf9ff272fd8c3e89af217e3b8ba728f32d8d3c390cd5d4",
+    "seed": 101,
+    "latent_shape": [
+      1,
+      24,
+      2,
+      8,
+      8
+    ],
+    "latent_distribution": "CPU seeded float32 N(0,1), normalized native latent units",
+    "expected_rgb_shape": [
+      5,
+      128,
+      128,
+      3
+    ],
+    "forward_comparison_atol": 0.0002,
+    "forward_comparison_rtol": 0.0001,
+    "scope": "synthetic small decoder input-gradient only; no original-RGB restoration loss, no adapter gradient, no full22-frame or fullH3 memory acceptance",
+    "model_forwards": 2,
+    "backward_calls": 1,
+    "H3_denoiser_calls": 0,
+    "optimizer_steps": 0,
+    "VAE_parameters_updated": false
+  }
+}

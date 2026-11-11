@@ -1,0 +1,12 @@
+AverNet 去模糊新增完成结果已验收：34.959289 dB / LPIPS 0.055747219 / flow-aligned error change 0.003392476。
+完整 22帧480x832，stride1、21对相邻帧；预测float32 raw/clamp精确、NPZ/pixel SHA、官方源码/权重、输入/target与共同reference均通过。input baseline全部12个质量/时序数值差严格为0。
+
+相对同为offline22时序访问的FaverNet，PSNR +0.460717 dB、LPIPS -0.003221296、flow -0.000446114；两者参数量与计算量并未匹配。
+相对Rphi-only，PSNR +3.067789 dB、LPIPS -0.045683663，但flow +0.000096521，故并非所有维度优于因果模型。
+相对H3-Rphi-anchor，PSNR +4.136896 dB、LPIPS -0.031612059、flow -0.003012581。
+
+实测模型forward992.384s；受guard推理总1025.467s、评分82.038s，均成功且无guard触发。最近一次快照4/6次推理及评分完成，AverNet denoise infer中；未轮询后续未变状态。
+
+边界：单个历史dev源6UZVovkR3IU，不是独立测试或多源排名。Aver/Faver均offline22/maxfuture21，Rphi为causalK3，H3计算预算不同。Aver采用官方architecture-only隔离导入、严格checkpoint和原CPU算子，无替代算子；不能称官方完整BasicSR训练入口已兼容。flow为GT-proxy Farneback error-change，prior未存flow tensor hash，不能声称逐像素flow复验。
+CPU执行由adapter tensor/model路径和receipt支持；torch_npu_imported=false字段不是后续无间接导入的证明，导入警告不代表NPU推理。
+本轮未重跑forward或评分，未改动队列、运行代码或旧归档。

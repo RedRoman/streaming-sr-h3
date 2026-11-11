@@ -1,0 +1,18 @@
+FaverNet 三项 native 单源质量 smoke 已完成，所有新增 compression 证据验收通过。
+
+以下均为同一历史 dev 源 6UZVovkR3IU 的 22 帧 480x832；stride1，21 对相邻帧。PSNR 为逐帧均值；LPIPS/flow 越低越好。
+
+task | input PSNR/LPIPS/flow | Rphi-only PSNR/LPIPS/flow | Faver PSNR/LPIPS/flow | H3-Rphi-anchor PSNR/LPIPS/flow
+deblur | 31.573651/0.106752/0.003337022 | 31.891500/0.101431/0.003295955 | 34.498572/0.058969/0.003838589 | 30.822393/0.087359/0.006405056
+denoise | 23.527251/0.673869/0.066536517 | 35.917156/0.113663/0.013320172 | 39.940925/0.029446/0.005183010 | 34.437090/0.059771/0.008707945
+compression | 40.380179/0.016127/0.005185472 | 40.475871/0.015294/0.005063595 | 40.258843/0.016031/0.005244242 | 34.793695/0.026362/0.006870322
+
+判读：Faver 在 deblur/denoise 的 PSNR、LPIPS 明显高于当前 Rphi；deblur 的 flow 指标反而略差。compression 的 Faver 比 Rphi PSNR 低 0.217028 dB、LPIPS 高 0.000736867、flow 高 0.000180648，不能称全面获胜。三任务的当前 H3-Rphi-anchor 均落后于 Faver，但这仅为此开发源结果。
+
+比较预算：Faver offline22/maxfuture21；Rphi causalK3；H3 22帧块且计算量不同。无独立 test 或多源统计推断。flow 是 GT-proxy Farneback error-change，不能等同完整 flicker 验收。
+
+证据：compression 预测 NPZ/file/RGB SHA、float32 finite/raw-clamp exact、输入/target 像素、official 源码和 checkpoint、锁定 metric/runtime 合同均通过。三任务 input baseline 的全部质量/时序数值差均严格为零。既有 reference 无 flow tensor hash，不能声称逐像素 flow 复验。
+
+CPU 边界：adapter 的 CPU model/input 路径和 receipt 支持 CPU 执行；torch_npu_imported=false 元数据并不证明后续没有间接导入。torch_npu 警告或 manager 句柄不能被解释成 NPU 推理。
+
+最新一次快照：Faver 3次推理及3次评分全部完成；AverNet deblur infer 正在运行，未见队列失败。本审查未重复推理/评分、未修改运行文件或队列、未覆盖旧归档。

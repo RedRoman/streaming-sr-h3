@@ -1,0 +1,26 @@
+{
+  "schema": "openh3.vae_checkpoint_helper_frozen.v1",
+  "status": "CPU_tests_passed_NPU_unverified",
+  "module_sha256": "cdbdf29d7211885aa1ba4c0518c9b767cc2dd5f52aecde0b77cde229e2463eb6",
+  "tests_sha256": "ee17ace5c775fbf2a0724e20dfac54d8e5dc2dc18c9898ca1c996ac7a687c072",
+  "api": "checkpoint_decoder_blocks(stage, enabled=False)",
+  "strict_block_count": 36,
+  "use_reentrant": false,
+  "preserve_rng_state": true,
+  "tests_passed": 12,
+  "test_environment": {
+    "host": "huawei-modelarts-30794",
+    "torch": "2.10.0+cpu",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "torch_npu_imported": false,
+    "NPU_initialized": false
+  },
+  "limits": [
+    "Decoder-only activation checkpointing. No inference-quality, NPU-memory or full-resolution gradient claim from CPU tests.",
+    "Context must enclose both forward and backward under unchanged decoder math/RoPE.",
+    "Do not wrap the entire H3 backward with Ascend-native VAE RoPE: DiT recomputation requires eager RoPE. A future full-path integration needs distinct per-recompute context_fn. This helper has no context_fn implementation.",
+    "Shared/nested enabled scopes on any of the same blocks are rejected. Disabled mode is a no-op.",
+    "Output gradient guards persist with the graph after exit intentionally; backward outside scope raises even if no recomputation would be needed.",
+    "Parameter/buffer state, requires_grad, model training mode and class forward functions are not changed. Instance forward attribute presence and original identity are restored."
+  ]
+}

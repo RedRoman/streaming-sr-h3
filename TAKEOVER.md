@@ -293,3 +293,43 @@ VAE小梯度probe首run `runs/vae_decode_grad_smoke_20261111a` 于21:31:09失败
 21:48:54缓存补偿9/12、RN、约1.91GiB RSS、全部适用端点通过，无failure。剩3样本按~298-310s每样本粗估22:02SG，完成后优先一次归档全12并审计clean/near-clean与全部固定beta；不要在partial上选择部署beta。接下来工作仍是：补明确train controls/VAE(R) cache，完整H3的同部署数值轨迹/LoRA梯度、zero-adapter和保存重载parity、实际分辨率与联合显存；随后冻结有限训练预算，不自动沿用旧latent目标。混合时变数据先补版本化loader和自然cut/转换控制验收，不直接喂旧4-task条件。
 
 Aver/denoise新增验收：40.735929dB/.028487037LPIPS/flow .004931596，比Faver +.795004dB/−.000958771/−.000251414，比Rphi +4.818773dB/−.085176222/−.008388576。输入12项baseline数值差0，实际NPZ/source/weights/metric全部通过；1.336938%分量clip，保留raw/clipped误差。11文件小归档SHA `ea3a8c0cfbca2f735fb41b4404f48fd2180f908b55945b8195f8292ea222c34a`，审计 `native_quality_aver_denoise_increment_20261111/audit.json`。最新native5/6已评分、只剩Aver/compression正在推理；一次单dev来源离线结果，不外推泛化。下次首先检查已有native/cached队列完成，禁止重跑任何已验收臂。
+
+
+### 22:18回访：完整基线与缓存补偿验收，实际尺寸梯度瓶颈已定位
+
+缓存RGB补偿于22:01:29完成12/12、168网格点，3808.06s，0新H3/NFE/训练。一次82,779-byte小归档SHA `c0cf4d31748129e4269cda3962a5fa340054f97363343ac6b87c6c446e1a809a`，11文件manifest、实现/输入/端点、native beta.75、共同stride1 flow21对均通过；审计9/9 CPU tests。证据 `results/takeover_20261111/cached_rgb_compensation_completed_20261111/`。科学结论：不能把减VAE往返误差当通用修复。去噪beta.25 scalar36.894890dB/.079337LPIPS/.010641flow，补偿35.847826/.113465/.013366，而Rphi35.917156/.113663/.013320；补偿抵消有益去噪。压缩beta.75补偿35.630612/.022173优于scalar34.793695/.026362，却仍明显劣于Rphi40.475871/.015294。所有positive beta的identity都损伤原clean和Rphi，四标签是相同像素只算一源；nearclean .05补偿对Rphi PSNR−.359..−.370dB且LPIPS/flow略差，但仍比带噪input约+2.1..2.25dB，不能混淆比较基准。相同beta不是相同改动量；补偿finalclamp最多1.34818%分量/2.63510%像素，scalar为0。没有选择部署beta；主训练目标仍需原始RGB与clean保护，补偿保留为可证伪对照。
+
+Faver/Aver三native任务各1源，六次推理和六次评分全部completed，队列总6294.90s。汇总 `results/native_quality_completed_20261111/summary.json` SHA `f9030b8054c2cbe584137d7cce2bc5bd178f1afe57a2f5b53328f9cf0b291116`；最后Aver/compression一次小增量归档SHA `7c957697f1460274daf636f1e974b98472f2edd5d8934f2c34a5d6f2d3faf4ec`。Aver压缩40.272995dB/.015862883LPIPS/.005116218flow，对Rphi三指标均略差。两基线去模糊/去噪空间质量更好，但去模糊flow都略差于Rphi；不能概括全面领先。全部来自已用dev源6UZVovkR3IU、offline22/maxfuture21，Rphi causalK3，参数/算力不匹配，不能作公平流式SOTA或泛化证据。不得重跑这些已完成队列。
+
+VAE真实尺寸 `runs/vae_decode_grad_fullres_smoke_20261111d` 于22:03:16失败：22×480×832的no-grad参考完成，grad forward在allocated58.22GiB/free8.09MiB时OOM，实际1完成forward、0backward。归档SHA `03a3aa2d113f09e8075c41893a2fff82a5f2ab814465d02ce811fccc83ae0baf`，本地6文件manifest全过，保留失败。不能把小尺寸6.6GiB当完整分辨率内存，也未取得此run前向parity。
+
+独立 `code/vae_checkpoint_context.py` 对36个VAE块做非重入activation checkpoint，CPU真实Torch12/12通过：输出/梯度exact、RNG保持、权重不变、异常恢复、旧scope反传拒绝。新run e于22:15:06完成22×128×128的checkpoint单变量验证：forward bit-exact/maxabs0，latent及梯度SHA与已完成c完全一致，10705/10752梯度非零finite；36块全部重算，559权重完整SHA/versions/no-grad均不变。峰值allocated5,457,620,992/reserved5,775,556,608 bytes，61.53s。一次小归档SHA `35faa752dd99814d6da79f05396dce52d46229460f4722ac7cb7ed17ba2987b9`，report SHA `542a35f72f12b96302c19baef56a246c848db81fb0eea3e35e609705af1886f9`，源/权重/seed/loss/latent/容差与c一致。此helper当前仅独立decoder scope；完整H3中DiT重算需eager、VAE需native的各自math context，不能外层native包整条backward。
+
+22:18:39，fresh run `runs/vae_decode_grad_checkpoint_fullres_20261111f` 已真实running，tmux `vae-grad-fullres-checkpoint-20261111f`。1160pins/9门、新鲜card6 healthy/无PID/空闲/锁及15s二检通过；600s+30s限额。只有geometry改回22×480×832，原容差不变。下次优先验实际queue/report/failure；勿重启。即使VAE-only通过，仍不代表20B DiT+LoRA+VAE联合显存通过，也没有训练步数。
+
+
+22:19:41，f结束为failed：2forward+1backward已完成、未再OOM，但输入梯度未通过missing/nonfinite/zero检查，旧错误未细分三者且无峰值记录，不能冒充内存/梯度验收。一次小失败归档SHA `cee0f0c35dfea85f3e4790891e7de900721d6d019443878547d3ee8cfe403156`；审计 `results/takeover_20261111/vae_decode_grad_checkpoint_fullres_20261111f_failed/audit.json`。
+
+22:28:01，新g在同一22×480×832 graph做两轮反传诊断（第一轮retain_graph、清leaf.grad、第二轮loss×1024，再FP32除1024）。首次262080梯度全部为零且finite；缩放后262060/262080非零、全部finite，反缩放L2 .000759475、SHA `cee4bc8444a3bb909131a881565318f061d1965d4132cd96d710ccf35fc7dfa9`。forward bit-exact/maxabs0，559权重SHA仍一致，无权重梯度，108checkpoint调用/216重算覆盖36块（真实full尺寸内部3块）。68.94s、peakallocated9,939,240,448/reserved10,934,550,528 bytes。一次小归档SHA `6e060ae55992058df90c7036ccc54d8298b597136b5a0b8e288ce52de9ae9875`。此结果支持半精度反传的尺度敏感/下溢解释，不能定位唯一mean归一化环节；双反传retain_graph的峰值不是单步训练预算。3/3额外真实CPU测试已验两轮不累加、72重算和exact unscale，FP16 toy也显示可能的量化误差。
+
+22:31已准入h `runs/vae_decode_grad_scaled_fullres_20261111h`，tmux `vae-scaled-fullres-20261111h`：明确单次backward固定loss_scale1024，FP32反缩放梯度SHA必须与g精确相等；forward容差、frozen检查、满尺寸不变。1165pins/13门/freshcard6锁与15s二检，600s+30s预算，无optimizer/DiT/质量评价。下次先查h实际状态，验收后接train controls真实导出；不重跑d/e/f/g。
+
+完整轨迹候选 `code/openh3_train_trajectory.py` 已实现，SHA `805781046838c8ea29eff893c83484c3765e7da8be2f68c74168297ee0385cdd`。真实CPU9/9通过：调用官方CFGGuider.inner_sample/KSAMPLER/prepare_noise/pack/unpack函数体，tiny fake DiT/VAE校验完整joint三步梯度、音频缩放、checkpoint、双math重算及scope恢复。不是实际20B H3验证。正常fresh loader为static patcher，无默认hook误拒绝；不能把lowvram状态简单清标志。下一probe合同 `configs/openh3_20261111/h3_trajectory_probe_contract_20261111.json`，prepared_not_launch_ready：5帧128²，rank8×200linears，2轨迹6forwardNFE+1latentbackward、0VAE/optimizer，重算另计；必须先真实zero adapter严格parity，再梯度/frozen/memory。真实nonzero unmerged重载与BF16合并舍入差异独立待测。没有新LoRA训练步数。
+
+train clean控制导出器 `code/export_rphi_train_controls.py` SHA `b78df2c3b39a0c47a5d4f513c95b14cad0d647b85c83d529b05b50b7f92fd503`，9/9真实CPU测试。完整128train+32dev数据CPU检查108.41s、0forward，通过ID/SHA隔离；固定train源2BdYaGuVAKo的8个22×480×832实际control输入另验recipe/pixelhash，identity四标签相同、nearclean四task-keyed draw不同，一源不算多源。独立queue `preparation/train_control_export_20261111_v1/queue_30794.json` 1139pins，8controls×22frame/176Rphi调用，0VAE/H3/train。代码根审已完成；仅fresh launch admission待资源空闲后创建，agent未启动NPU。不要将control GT派生输入当盲恢复泄漏：仅用于明确clean/nearclean控制构造，模型只看控制观察，不接单独GT/task/severity。未来训练采样必须记录重复identity权重。
+
+
+22:33:03，h严格验收失败（不是OOM/NaN/全零）：单次scaled反传262052/262080有限非零，反缩放L2 .000759481918，与g .000759474759略异；梯度SHA `82e80bea4d896f3304a23db208cfe7ed8a104a719982eb6e3a1b99d21d759af9` 不等g的cee4...。peakallocated9,804,621,312/reserved10,815,012,864 bytes；56.36s。小失败归档SHA `fea167841d2bd254027b205f0f45a2b47b49b54e125207c673a1e7b36f1c0865`；本地audit保留failed，不降低原SHA门。这次failure在SHA门处早于frozenafter hash，且未写latent实际bytes/forward maxabs/modelrecord；只能推断前置allclose通过，不能把g的bitexact/559weightunchanged套给h。两组max_abs标量之差不是逐元素最大差；无完整梯度数组，不能量化真正偏差。下一有限诊断需先保存所有观测/实际grad再裁决，比较同图重复scaled和fresh graph scaled，保留原math/seed/flag；确定性flag只能作为后续单变量。实际H3 latent-only probe可独立推进，RGB训练尚未准入。
+
+22:35:25，独立train controls导出已通过root复核并启动，tmux `rphi-train-controls-20261111a`、run `runs/rphi_train_controls_legacy_smoke_20261111a`。1139pins、8现有门、新鲜card6健康/无PID/空闲62112MiB/锁和15秒二检，磁盘8.67TB空闲；launch_admission已本地保存。不会重复ordinary导出或改旧队列。CPU独立验收脚本 `preparation/train_control_export_acceptance_20261111_v1/audit_input_only.py` 已备好；实际complete后仅逐8NPZ检查/小证据归档，不能重导出或加载模型forward。
+
+
+重复性诊断顺序已收束：以h失败目录 `scientific_review.json` 为准，先A1/A2两个fresh-process完全相同的scaled-single，各保存实际gradient数组、latentbytes/forward差/frozenafter/runtime/恢复事实；仅A1/A2 exact一致后再加paired-history B。最多3process/6forward/4backward，未启动、不设事后宽容差。不能先归咎retain_graph，也不能说源代码证明了特定NPU attention kernel非确定性。已有本地torch_npu确定性接口，但切flag属于下一单变量，首轮保持现设置。
+
+
+22:41:45，train controls原队列实际completed8/8，完整manifest已发布。22:42:50核实后首次后台launcher未实际进入审计脚本，session退出且无log/receipt；已改独立launcher文件加单行命令。22:47:12实证唯一审计PID534790（launcher534788/timeout534789）、audit.log已验证首个缓存；285s+15s限额，只读八实际NPZ和CPU checkpoint状态、无重复导出/模型forward。完成后一次下载小归档并核验；若审计失败保留失败、修审计时用新目录，不能把已完成导出重跑或覆盖。
+
+
+22:48后train controls独立工程验收完成：唯一实际CPU审计91.272s、rc0，8/8NPZ文件/数组hash、配方、rawdraft、source/target/record/sidecar、causalK3、clamp关系和模型全state通过；CPU checkpoint state与NPU导出before/after一致。四identity task的输入/raw预测/clipped预测全部bitexact重复，nearclean四seed不同。最终44小文件归档165,006bytes，SHA `20b0ea9396ee0e621fe7e28cb1bf56c6adbd960c956a3916fbb2bf7a482dcf5e`，本地逐文件已核验；review `results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json` SHA `7029b2c7482933a6f7a7069d43239357356159e5cb65ee2087df6f1d33447e19`。实际导出176Rphi帧调用，VAE/H3/训练0，审计forward0。只复制小证据，未下载大NPZ。identity原始输出18.6237%分量被clamp，nearclean约7.71%；这是发生率，不是误差幅度/质量损伤率，未评分不能据此认定clean质量通过或严重损伤。
+
+下次接续：旧stage2/native六项/cached168网格/ordinary与traincontrols缓存/d-e-f-g-h probe均已终态，禁止重跑。优先实现A1/A2独立scaled-single重复性诊断并完整保存观测后判门；只有exact一致再B。可并行实现真实H3五帧128² latent-only zero-adapter→梯度门（合同已保存），不能把CPU fake tests当20B验收。之后补VAE(R)/全训练来源cache、clean保护目标和同预算有限LoRA方案。新增LoRA训练步数仍0，不用增加步数掩盖数值/接口不确定性。

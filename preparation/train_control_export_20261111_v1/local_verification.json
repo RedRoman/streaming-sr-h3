@@ -1,0 +1,32 @@
+{
+  "schema": "rphi.train_controls.preparation_local_receipt.v1",
+  "created_at_utc": "2026-11-11T14:23:55.619537+00:00",
+  "remote_host": "huawei-modelarts-30794",
+  "all_original_ordinary_queue_pins_preserved": true,
+  "inherited_pins": 1117,
+  "current_remote_pins_verified": 1139,
+  "all_local_download_and_code_hashes_verified": true,
+  "files": {
+    "cpu_receipt.json": "68e4b959f2cef47deb688acef8bbff0fd762db87f16093f4810dae40cb6595c7",
+    "cpu_tests.log": "7b9c53d5b0848ea57de7b2aab098310e2d1d409e19f058dcd3801def5a227116",
+    "inspection.json": "d8ed84e7fc661d1b2e01eb0b9bf86c21a37bc93da31b9c593d89fcdd52e83479",
+    "inspection.log": "7a1841579e83fe912f27a8e9ad70a600b649851a3c53dcbefdb28792c3f610b1",
+    "inspection_receipt.json": "7a1841579e83fe912f27a8e9ad70a600b649851a3c53dcbefdb28792c3f610b1",
+    "prepared_admission.json": "e0b3b045ba8aa2b6c6f053122439383af78adb1ffc922e82a9c0a6a69975597f",
+    "queue_30794.json": "785ccf1f10da8a45cfb7ec655868f5a53e49ba4493e7b4bb8f67c95dc245979b",
+    "queue_preparation_validation.json": "a2256465ef49b1115052184151f130076196b5b9dd7314c7f730dfdb48e58c10",
+    "run_cpu_inspection.py": "062a5af596606d0b37220f4561ba84899dc785aef9f96f4413a11961952fc49c",
+    "selected_control_inputs.json": "b0a023f97ce5dd8b51d4b225b96b8cb47f9a6e1d2f2da639cf0b844798412e05",
+    "source_pins.json": "0fe16ecfa39f9d145ff920292f92a5f802c5ef503e91c2d16366fc0bbedd11ab"
+  },
+  "real_input_cpu_inspection_passed": true,
+  "synthetic_cpu_tests_passed": 9,
+  "actual_rgb_export_complete": false,
+  "npu_launched": false,
+  "launch_admission_created": false,
+  "independent_root_review_still_required": true,
+  "guard": "card6 + shared lock +15s stable idle + fresh launch admission + 1185s timeout/15s grace; no existing process preemption",
+  "proposed_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
+  "final_queue_sha256": "785ccf1f10da8a45cfb7ec655868f5a53e49ba4493e7b4bb8f67c95dc245979b",
+  "output_contract": "one fixed train source;4 nominal task records x2 controls x22frames;float32 raw_draft/rphi_raw_rgb/rphi_rgb, no VAE/LoRA/training"
+}

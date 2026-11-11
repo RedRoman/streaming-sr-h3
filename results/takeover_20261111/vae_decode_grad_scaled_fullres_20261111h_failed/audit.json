@@ -1,0 +1,101 @@
+{
+  "probe_complete": false,
+  "decoded_geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "latent_geometry": [
+    1,
+    24,
+    7,
+    30,
+    52
+  ],
+  "actual_completed_forwards": 2,
+  "actual_completed_backwards": 1,
+  "no_grad_forward_completed": true,
+  "grad_forward_completed": true,
+  "backward_returned": true,
+  "all_planned_backwards_returned": true,
+  "full_decoder_memory_gate": "failed",
+  "full_H3_DiT_LoRA_memory_gate": "not_tested",
+  "restoration_quality_gate": "not_tested",
+  "scope": "synthetic latent decoder input gradient; no original RGB objective, no adapter gradient or joint fullH3 memory",
+  "scaled_single_backward": {
+    "scale": 1024.0,
+    "states": {
+      "scaled_loss_backward_raw": "finite_nonzero",
+      "scaled_loss_backward_unscaled_float32": "finite_nonzero"
+    },
+    "statistics": {
+      "scaled_loss_backward_raw": {
+        "present": true,
+        "shape": [
+          1,
+          24,
+          7,
+          30,
+          52
+        ],
+        "elements": 262080,
+        "dtype": "torch.float32",
+        "zero_count": 28,
+        "zero_fraction": 0.00010683760774554685,
+        "finite_count": 262080,
+        "nan_count": 0,
+        "inf_count": 0,
+        "finite_nonzero_count": 262052,
+        "finite_l2": 0.7777094841003418,
+        "finite_max_abs": 0.0180511474609375,
+        "finite_min_abs_nonzero": 5.960464477539063e-08,
+        "sha256_float32": "5aa31b160ed91a4a16ba0fb3bb6fcbb725841748fbbc0e159e935c3ea8e30508"
+      },
+      "scaled_loss_backward_unscaled_float32": {
+        "present": true,
+        "shape": [
+          1,
+          24,
+          7,
+          30,
+          52
+        ],
+        "elements": 262080,
+        "dtype": "torch.float32",
+        "zero_count": 28,
+        "zero_fraction": 0.00010683760774554685,
+        "finite_count": 262080,
+        "nan_count": 0,
+        "inf_count": 0,
+        "finite_nonzero_count": 262052,
+        "finite_l2": 0.00075948191806674,
+        "finite_max_abs": 1.7628073692321777e-05,
+        "finite_min_abs_nonzero": 5.820766091346741e-11,
+        "sha256_float32": "82e80bea4d896f3304a23db208cfe7ed8a104a719982eb6e3a1b99d21d759af9"
+      }
+    },
+    "first_unscaled_backward_performed": false,
+    "gradient_gate": "failed_or_incomplete",
+    "memory_semantics": "Single backward at fixed loss scale; decoder only; not joint DiT/LoRA memory"
+  },
+  "scaled_single_gradient_gate": "failed_or_incomplete",
+  "state": "failed",
+  "error": "ValueError('input gradient SHA differs from pinned reference: 82e80bea4d896f3304a23db208cfe7ed8a104a719982eb6e3a1b99d21d759af9')",
+  "failure_category": "runtime_or_numerical_failure",
+  "failure_gradient_state": "finite_nonzero",
+  "schema": "openh3.vae_gradient_probe_evidence_audit.v1",
+  "archive": {
+    "archive_sha256": "fea167841d2bd254027b205f0f45a2b47b49b54e125207c673a1e7b36f1c0865",
+    "manifest_member": "preparation/vae_decode_grad_scaled_fullres_20261111h/evidence_manifest.json",
+    "manifest_sha256": "abf13b91f73dc84beba01fcce5e4e1e7ce536b76b453dd43d7e5c60e5e60082d",
+    "verified_files": 8,
+    "uncompressed_bytes": 183055
+  },
+  "report_member": "runs/vae_decode_grad_scaled_fullres_20261111h/eval/failure.json",
+  "report_sha256": "2913dd1b7e92c6dd7fa79e0f9bdfa34285d8c1472752fada0658d65bd3d95941",
+  "queue_sha256": "1a9c8a8ee49c902297e4dd80abd5a67041670081024029b13168e4705a345415",
+  "synthetic_probe_only": true,
+  "prior_gradient_comparison": "not_requested",
+  "audit_implementation_sha256": "60ea824233a8a06dca079dd4dd04d62635403b9025eb22d06955bfc826b69722"
+}

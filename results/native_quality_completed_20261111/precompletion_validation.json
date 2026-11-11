@@ -1,0 +1,70 @@
+{
+  "schema": "native_quality_summary_precompletion.v1",
+  "created_at_utc": "2026-11-11T14:01:24.474532+00:00",
+  "complete": false,
+  "verified_existing_metric_records": [
+    {
+      "method": "favernet",
+      "task": "deblur",
+      "metrics_sha256": "169328ccaa2606a43dbc1ab95696deaf2eebbe424ad54ff92329a2d5abd899e9",
+      "verified_archive": "results/takeover_20261111/native_quality_heartbeat_20261111T1240Z"
+    },
+    {
+      "method": "favernet",
+      "task": "denoise",
+      "metrics_sha256": "39b11407cea906a16b5126217aef3f1fac41d7be1024fac5862339e21c2564a9",
+      "verified_archive": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z"
+    },
+    {
+      "method": "favernet",
+      "task": "compression",
+      "metrics_sha256": "5f7b49e01c49c40f841c86609fae5e020e68f46d5a9e964454fdd94c4c6a5194",
+      "verified_archive": "results/takeover_20261111/native_quality_compression_increment_20261111T1312Z"
+    },
+    {
+      "method": "avernet",
+      "task": "deblur",
+      "metrics_sha256": "199c8c869e37fcba9b3a932cdb096ed2ab2a110eb2a570e69ec69df1c0924b48",
+      "verified_archive": "results/takeover_20261111/native_quality_aver_deblur_increment_20261111T1330Z"
+    },
+    {
+      "method": "avernet",
+      "task": "denoise",
+      "metrics_sha256": "36c25a91d422249604f88df9a7cb81ab5bfb3261ba2563216f82ee3e3a1a8f86",
+      "verified_archive": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111"
+    }
+  ],
+  "count": 5,
+  "missing": [
+    "avernet/compression"
+  ],
+  "summary_script_sha256": "9400f7dbd977e6573c0f8e8b86db714c85ca17347d60f19a32001407b6f8b65b",
+  "summary_outputs_written": false,
+  "runtime_or_queue_modified": false,
+  "new_forward_or_scoring": false,
+  "health_observations": [
+    {
+      "observed_at_utc": "2026-11-11T13:57:31.980229+00:00",
+      "status": "running",
+      "completed_forwards": 5,
+      "current": "avernet/compression/infer",
+      "pid": 634172,
+      "elapsed_seconds": 810.3817713353783,
+      "peak_owned_rss_bytes": 3934863360,
+      "owned_process_state": "R",
+      "supervisor_pid": 562210,
+      "supervisor_state": "S"
+    },
+    {
+      "observed_at_utc": "2026-11-11T14:00:16.876733+00:00",
+      "status": "running",
+      "completed_forwards": 5,
+      "current": "avernet/compression/infer",
+      "pid": 634172,
+      "elapsed_seconds": 990.465978522785,
+      "peak_owned_rss_bytes": 4003692544,
+      "metrics_exists": false,
+      "failed_models": []
+    }
+  ]
+}

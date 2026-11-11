@@ -1,0 +1,17 @@
+{
+  "schema": "openh3.vae_gradient_auditor_v3_freeze.v1",
+  "auditor_sha256": "60ea824233a8a06dca079dd4dd04d62635403b9025eb22d06955bfc826b69722",
+  "tests_sha256": "90f4336c0c7ea00e6e7c80c3b3679cc62a95bec3f9e4fee65b4112b11d2b242f",
+  "stdlib_tests_passed": 29,
+  "torch_cpu_paired_backward_tests_passed": 3,
+  "v1": "one unscaled backward; unchanged strict original numerical and memory gates",
+  "v2": "paired retained-graph diagnostic only; full_decoder_memory_gate always not_established_by_paired_backward",
+  "v3": "one fixed-scaled backward, FP32 gradient unscale; expected gradient SHA must match; full-size decoder-only memory gate permitted only on complete valid report",
+  "v3_vs_v2_reference": "Same effective scale, all input/runtime/weight/loss preconditions and exact raw+FP32-unscaled diagnostic statistics; declared one-vs-two backward budget change only",
+  "full_H3_DiT_LoRA_memory_gate": "not_tested for all versions",
+  "prior_auditor_source_copies": [
+    "auditor_v1_frozen.py",
+    "auditor_v2_frozen.py"
+  ],
+  "no_probe_or_runtime_snapshot_changes": true
+}

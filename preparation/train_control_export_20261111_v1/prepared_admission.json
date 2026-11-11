@@ -1,0 +1,52 @@
+{
+  "schema": "rphi.train_controls.prepared_admission.v1",
+  "prepared_at_utc": "2026-11-11T14:21:56.788443+00:00",
+  "allow_one_source_train_control_export": true,
+  "meaning_of_allow": "CPU data/code preparation passed for the bounded recipe; this is not root launch authorization or NPU admission",
+  "independent_code_review_complete": false,
+  "queue_launched": false,
+  "actual_rgb_export_complete": false,
+  "role": "train",
+  "source_id": "2BdYaGuVAKo",
+  "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+  "original_parent_records": 4,
+  "controls": [
+    "identity",
+    "near_clean"
+  ],
+  "samples": 8,
+  "frames_per_sample": 22,
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "nominal_sr_control_is_native_hr": true,
+  "reference_derived_control": true,
+  "ordinary_observation_used": false,
+  "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "inspection_sha256": "d8ed84e7fc661d1b2e01eb0b9bf86c21a37bc93da31b9c593d89fcdd52e83479",
+  "inspection_receipt_sha256": "7a1841579e83fe912f27a8e9ad70a600b649851a3c53dcbefdb28792c3f610b1",
+  "selected_control_inputs_sha256": "b0a023f97ce5dd8b51d4b225b96b8cb47f9a6e1d2f2da639cf0b844798412e05",
+  "source_pins_sha256": "0fe16ecfa39f9d145ff920292f92a5f802c5ef503e91c2d16366fc0bbedd11ab",
+  "cpu_test_receipt_sha256": "68e4b959f2cef47deb688acef8bbff0fd762db87f16093f4810dae40cb6595c7",
+  "cpu_tests_passed": 9,
+  "cpu_tests_skipped": 0,
+  "full_train_samples_verified": 128,
+  "full_dev_samples_verified": 32,
+  "planned_rphi_frame_evaluations": 176,
+  "planned_rphi_forward_calls": 176,
+  "maximum_command_seconds": 1200,
+  "vae_calls": 0,
+  "h3_sampling_calls": 0,
+  "training_steps": 0,
+  "controls_seed_recipe": "exact reused rphi_h3_controls.control_input with eval_rphi.control_seed; PCG64 sigma_8bit=1 uint8 rint/clip for near_clean",
+  "frozen_state_check": "parameters and buffers must have equal canonical SHA before/after export",
+  "remaining_before_npu": [
+    "independent root prelaunch review",
+    "fresh health/idle/process admission and cooperating card6 lock",
+    "root-authorized new run launch_admission.json; never preempt e/f VAE checks"
+  ],
+  "scope_limit": "One training source controls preparation, no quality result; original source is prior materialization attestation."
+}

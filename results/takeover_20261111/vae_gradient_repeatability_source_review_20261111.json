@@ -1,0 +1,124 @@
+{
+  "schema": "openh3.vae_gradient_repeatability_source_review.v1",
+  "status": "read_only_source_audit_complete_cause_unconfirmed",
+  "date": "2026-11-11",
+  "actions": {"NPU_calls": 0, "model_loads": 0, "training_steps": 0, "gradient_arrays_recomputed": 0, "runtime_or_probe_edits": false, "web_search": false},
+  "primary_next_protocol": {
+    "source": "results/takeover_20261111/vae_decode_grad_scaled_fullres_20261111h_failed/scientific_review.json",
+    "read_version_sha256": "a96a2bb71b014a85c44292bdde71de9e6e64a587afbc8bde0bf886213e25091f",
+    "field": "proposed_next_diagnostic_not_launched",
+    "authority": "Root selected audit_evidence's controlled fresh-process A1/A2 then conditional paired-history B ordering",
+    "sequence": [
+      "A1: fresh process, same bound float32 latent bytes, scale1024, full geometry, native math, identical checkpoint source, one scaled backward; retain complete evidence before verdict",
+      "A2: second fresh process with exactly A1's configuration; retain complete evidence before verdict",
+      "Compare actual saved A1/A2 gradient arrays on CPU. Only if exact, run B with unscaled retained-graph backward, clear latent.grad, then scaled backward on that same graph",
+      "If A1/A2 differ, stop before B and investigate the scaled-single path's own repeatability; do not attribute g/h solely to retained-graph history"
+    ],
+    "maximum_new_processes": 3,
+    "maximum_top_level_forwards": 6,
+    "maximum_backwards": 4,
+    "optimizer_steps": 0,
+    "automatic_launch_authorized_by_this_review": false,
+    "alternative_same_graph_scaled_scaled_control": "A same-graph scaled/scaled repetition may be informative later, but is not added to or substituted for the selected A1/A2->B budget."
+  },
+  "observed_g_h_boundary": {
+    "g_report": {
+      "remote_path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_decode_grad_loss_scale_pair_20261111g/eval/report.json",
+      "sha256": "ae5e93556982dfef29af2c63e0a05ac3decd508d4e640ae080717dedb0c53f2b",
+      "facts": ["Forward bitwise equality is explicitly recorded", "Frozen before/after fingerprints matched", "Unscaled input gradient was all zero", "Scaled-after-unscaled raw gradient had 262060 finite nonzero elements", "36 blocks across three temporal chunks gave 108 checkpoint forward calls and 216 recomputations over two backwards"]
+    },
+    "h_failure": {
+      "remote_path": "/cache/zihaohe/omni_openh3_20261111/runs/vae_decode_grad_scaled_fullres_20261111h/eval/failure.json",
+      "sha256": "2913dd1b7e92c6dd7fa79e0f9bdfa34285d8c1472752fada0658d65bd3d95941",
+      "facts": ["Two forwards and one backward returned", "Scaled-single raw gradient had 262052 finite nonzero elements", "Exact expected-gradient SHA gate failed", "After-backward frozen fingerprint was not reached"],
+      "cannot_claim": ["Bitwise-equal forward", "Measured numerical forward max difference", "Saved actual latent byte identity", "Verified frozen after-backward weights", "Completed numerical acceptance"],
+      "source_based_inference_only": "Reaching the backward establishes that the source's forward allclose guard returned; failure.json does not contain its actual values or bitwise result."
+    },
+    "statistics_limit": "The 1.4901161193847656e-08 difference between reported unscaled max-absolute statistics is not max(abs(gradient_h-gradient_g)). Likewise, eight fewer nonzero elements is not a count or location map of all changed coordinates. Complete arrays were not saved, so actual Linf, relative L2, cosine, signs and support changes remain unknown."
+  },
+  "source_confirmed_findings": [
+    {
+      "finding": "The paired path clears leaf accumulation before its second backward",
+      "evidence": "check_vae_decode_grad.py h lines173-176: latent.grad=None before scaled backward; the actual g/h source diff confirms this paired branch is unchanged",
+      "implication": "Direct addition of the first leaf gradient to the second is not an explanation. This does not establish that the rest of the retained graph/native execution state is identical to a fresh graph."
+    },
+    {
+      "finding": "g and h use the same decoder checkpoint implementation",
+      "checkpoint_sha256_both": "cdbdf29d7211885aa1ba4c0518c9b767cc2dd5f52aecde0b77cde229e2463eb6",
+      "g_probe_sha256": "35669c592e7252b1f382f95464430a2827cb0ea4cfa08e03eb19408930445899",
+      "h_probe_sha256": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+      "actual_diff_review": "h adds --loss-scale, corresponding contract fields, first_loss multiplication, diagnostic naming and common FP32 unscale logic. No VAE temporal-layout or checkpoint wrapper change appears in that diff.",
+      "implication": "There is no source evidence for an accidental change in temporal chunk/checkpoint structure. The intentional number/history of backwards differs."
+    },
+    {
+      "finding": "Native VAE attention follows the PyTorch SDPA route under the default inspected Ascend configuration",
+      "evidence": "model_management.py462-475 enables PyTorch attention for Ascend unless split/quad options are set; attention.py591-632 uses comfy.ops.scaled_dot_product_attention with dropout_p=0 and is_causal=False; ops.py58-63 forwards to torch.nn.functional.scaled_dot_product_attention",
+      "limit": "The package exposes native scaled_dot_product_attention and fusion-attention symbols, but their dispatch implementation/profiling trace was not available in the inspected source. This review does not assert which concrete fused backward kernel ran, or that it is nondeterministic."
+    },
+    {
+      "finding": "The native RoPE replacement is shared and uses explicit NPU RMS/rotary primitives",
+      "evidence": "ascend/rope.py _rms_rope1 calls torch_npu.npu_rms_norm and _apply_rope1 calls npu_rotary_mul; check_vae_decode_grad.decoder_math scopes the same functional replacement across both forwards/backwards",
+      "limit": "No per-call deterministic option appears in these inspected Python functions. That absence does not establish nondeterminism, and no backward kernel internals were inspected."
+    },
+    {
+      "finding": "Temporal decode creates several contributions to shared latent positions",
+      "evidence": "vae.py729-789 pads by repeated last latent tokens, slices overlapping clips, blends overlap, and copies finalized chunks into the output; checkpoint wraps36 transformer blocks without changing these operations",
+      "implication": "Reduction/accumulation order and FP16 quantization are candidate mechanisms to diagnose, alongside attention/RMS/rotary backward. They are not identified causes."
+    },
+    {
+      "finding": "There is an explicit FP16 gradient boundary",
+      "evidence": "check_vae_decode_grad.py153-155 creates an FP32 leaf then passes latent.to(dtype=vae.vae_dtype) into the FP16 VAE; CPU FP32 unscale happens only after backward",
+      "observation": "Both g and h report raw minimum nonzero magnitude5.960464477539063e-08, consistent with an FP16 subnormal step. Dividing by1024 yields5.820766091346741e-11.",
+      "limit": "This is consistent with gradient quantization and explains why tiny value changes could alter zero counts; it does not locate the earlier source of a difference or prove a harmless error bound."
+    }
+  ],
+  "local_determinism_interfaces": {
+    "torch_npu_package_root": "/cache/yunfeng/envs/minimax-h3-npu/lib/python3.12/site-packages/torch_npu",
+    "set_deterministic_level": {
+      "path": "npu/__init__.py",
+      "sha256": "dc6b6763a6127c0a057a5e5f4f962bc94182e8a0697b446d5a8faeab35c9b058",
+      "lines": "597-611",
+      "observed_behavior": "Synchronizes torch's deterministic-algorithms flag with level0 or level>=1, then calls _C._npu_set_deterministic_level(level)",
+      "explicit_source_warning": "After using torch_npu.npu.set_deterministic_level, do not use torch.use_deterministic_algorithms again; source warns of unknown errors from mixing them",
+      "limit": "Python source does not enumerate complete supported level semantics or guarantee every native VAE operation has a deterministic implementation. No level was changed or tested here."
+    },
+    "npu_deterministic_getter_caution": {
+      "path": "npu/__init__.py",
+      "lines": "614-623",
+      "finding": "_get_deterministic_level is not a pure observer: when global Torch and NPU levels disagree it calls set_deterministic_level and mutates state",
+      "recommendation": "Do not call this reconciling getter merely as untracked logging. Record Torch flags directly; if the native level is inspected via a nonmutating native getter, label that private API and pin its runtime."
+    },
+    "autograd_boundary_helpers": {
+      "path": "npu/deterministic.py",
+      "sha256": "b37842cb3643384617d6d5b58c830b549c221c2b5af8e04c550d1171f39520d2",
+      "lines": "10-46",
+      "finding": "enable_deterministic_with_backward and disable_deterministic_with_backward insert custom autograd functions that toggle global Torch deterministic state in both forward and backward",
+      "recommendation": "Do not insert these graph/global-state changes into the first repeatability control. Checkpoint/recompute interactions would become another changed factor."
+    },
+    "native_op_api_bridge": {
+      "path": "include/third_party/op-plugin/op_plugin/utils/op_api_common.h",
+      "sha256": "e15ec5d8d33a4e0426eb008f6a7b0d60c72b043ae633fbe4045ad595b0f7e54d",
+      "lines": "381-404",
+      "finding": "Captures at::globalContext().deterministicAlgorithms(), includes it in the op API cache/dispatch state, and passes it to at_npu::native::SetDeterministicOps",
+      "implication": "A real backend control path exists; source still does not prove coverage or determinism of the actual dispatched VAE backward kernels."
+    },
+    "next_control_policy": "First A1/A2 preserve the exact existing numerical configuration and record actual deterministic flags before/after forward/backward. If nonrepeatability remains, a separately declared one-factor deterministic-mode experiment may follow; do not silently toggle settings, combine APIs, tolerate unsupported-op failures, or relax the strict acceptance gate."
+  },
+  "required_evidence_before_any_verdict": [
+    "Same serialized float32 latent bytes or matching freshly calculated SHA, shape, dtype and source-generation recipe",
+    "Input and output numerical parity values, exact output SHA/equality and model/runtime metadata",
+    "Before and after frozen-parameter SHA/version/grad checks, including on gradient comparison failure",
+    "Actual CPU float32 gradient arrays after every relevant backward, both raw-scaled and FP32-unscaled or a strictly verified reconstructible relation, each with file/array SHA",
+    "Actual checkpoint scope restoration and recompute counts, actual deterministic settings, HF32/JIT/precision/backend environment",
+    "CPU exact equality, true elementwise Linf/relative L2/cosine, sign changes and zero-support intersections; report descriptive errors without inventing a new passing tolerance",
+    "Atomic complete observation receipt before final gate decision, so a failed SHA verdict does not erase frozen/forward evidence"
+  ],
+  "additional_source_pins": [
+    {"path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py", "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe", "lines": "299-330,717-789"},
+    {"path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/modules/attention.py", "sha256": "26ae302355066b7fe5363840268c73d937e33ec40341a0458ca8aa97493b5274", "lines": "591-632,917-946"},
+    {"path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ops.py", "sha256": "a0b8c7f32a146b383a795363bef35e480ffa84b5b3e9c9503f323b1446876f45", "lines": "58-63"},
+    {"path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/model_management.py", "sha256": "045ab96003386a43e647c8ab96f22fbf3be6c577e2fc578ea31c6faa22facbd5", "lines": "462-475"},
+    {"path": "/cache/zihaohe/omni_openh3_20261111/venv/lib/python3.12/site-packages/comfy_kitchen/backends/ascend/rope.py", "sha256": "8fe40b99144d04f14c308683324ff49b24eccdbe8c8510059cdc6fd9451b2873", "functions": ["_rms_rope1", "_apply_rope1", "rms_rope_split_half"]}
+  ],
+  "conclusion": "No source-confirmed causal bug or established kernel nondeterminism explains g versus h yet. Same helper/source math and explicit leaf-grad reset narrow the questions; fresh-process scaled-single repeatability with complete arrays is the selected next control. The strict failed gate remains failed."
+}

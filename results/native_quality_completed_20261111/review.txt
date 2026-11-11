@@ -1,0 +1,35 @@
+双模型三项 native CPU smoke 已完整结束，6次推理和6次评分均成功。
+所有行来自同一历史dev源6UZVovkR3IU、22帧480x832、stride1、21对相邻帧；不能视为独立测试或多源排名。
+
+task | input PSNR/LPIPS | Rphi PSNR/LPIPS | Faver PSNR/LPIPS | Aver PSNR/LPIPS | H3-Rphi-anchor PSNR/LPIPS
+deblur | 31.573651/0.106752 | 31.891500/0.101431 | 34.498572/0.058969 | 34.959289/0.055747 | 30.822393/0.087359
+denoise | 23.527251/0.673869 | 35.917156/0.113663 | 39.940925/0.029446 | 40.735929/0.028487 | 34.437090/0.059771
+compression | 40.380179/0.016127 | 40.475871/0.015294 | 40.258843/0.016031 | 40.272995/0.015863 | 34.793695/0.026362
+
+退步和取舍（native相对input/Rphi）：
+deblur/favernet vs input: worse=flow_aligned_rgb_error_change_mae, delta={'psnr': 2.9249204230114607, 'lpips': -0.047783415595238854, 'flow_aligned_rgb_error_change_mae': 0.0005015669324036154}
+deblur/favernet vs rphi_only: worse=flow_aligned_rgb_error_change_mae, delta={'psnr': 2.607071504886342, 'lpips': -0.04246236705644564, 'flow_aligned_rgb_error_change_mae': 0.0005426346767871152}
+deblur/avernet vs input: worse=flow_aligned_rgb_error_change_mae, delta={'psnr': 3.385637518566025, 'lpips': -0.05100471170788461, 'flow_aligned_rgb_error_change_mae': 5.545324113752142e-05}
+deblur/avernet vs rphi_only: worse=flow_aligned_rgb_error_change_mae, delta={'psnr': 3.067788600440906, 'lpips': -0.0456836631690914, 'flow_aligned_rgb_error_change_mae': 9.652098552102124e-05}
+compression/favernet vs input: worse=psnr,flow_aligned_rgb_error_change_mae, delta={'psnr': -0.12133582343969351, 'lpips': -9.574161165139608e-05, 'flow_aligned_rgb_error_change_mae': 5.877037931765767e-05}
+compression/favernet vs rphi_only: worse=psnr,lpips,flow_aligned_rgb_error_change_mae, delta={'psnr': -0.21702846843317047, 'lpips': 0.0007368669083172644, 'flow_aligned_rgb_error_change_mae': 0.00018064759760385435}
+compression/avernet vs input: worse=psnr, delta={'psnr': -0.10718336753081559, 'lpips': -0.0002636741423471395, 'flow_aligned_rgb_error_change_mae': -6.925410014532903e-05}
+compression/avernet vs rphi_only: worse=psnr,lpips,flow_aligned_rgb_error_change_mae, delta={'psnr': -0.20287601252429255, 'lpips': 0.000568934377621521, 'flow_aligned_rgb_error_change_mae': 5.2623118140867654e-05}
+
+Clipping（只计RGB分量）：
+deblur/favernet: fraction=0.001611821, rawMSE=0.0003695677774, clampedMSE=0.000369564072593
+deblur/avernet: fraction=0.002868339, rawMSE=0.000323622655548, clampedMSE=0.000323609190139
+denoise/favernet: fraction=0.017685304, rawMSE=0.000108929541001, clampedMSE=0.000103905734217
+denoise/avernet: fraction=0.013369383, rawMSE=8.71467450352e-05, clampedMSE=8.46842378603e-05
+compression/favernet: fraction=0.010621009, rawMSE=9.48439713988e-05, clampedMSE=9.46142740614e-05
+compression/avernet: fraction=0.008623570, rawMSE=9.44901991759e-05, clampedMSE=9.43538060747e-05
+
+One previously used development source, not independent frozen test or a multisource ranking.
+Aver/Faver use offline22/maxfuture21; parameters and compute are not matched. Rphi-only is causalK3; H3 uses22-frame blocks with different compute.
+PSNR is mean frame PSNR. No pooled cross-task ranking: task severity and reference quality differ.
+Scores use float32 clamp[0,1] RGB without uint8 quantization. Raw output MSE and clipping fractions are retained; raw LPIPS was not evaluated.
+GT-proxy Farneback error-change is not a complete perceptual flicker measure. Prior flow tensor hashes were absent, so exact baseline scores/support are verified without claiming prior flow pixel identity.
+Aver uses isolated official architecture-only imports and original CPU operators; this does not verify the full BasicSR training entrypoint.
+CPU execution is supported by tensor/model paths and receipts. torch_npu_imported=false is a pre-import/hardcoded inference field and does not prove no subsequent indirect import; warnings or manager handles do not demonstrate NPU inference.
+
+本汇总仅读取已归档指标、验证hash/合同；未重跑forward或评分，未修改队列与运行代码。

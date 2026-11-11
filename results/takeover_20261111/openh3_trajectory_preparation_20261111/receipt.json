@@ -1,0 +1,56 @@
+{
+  "schema": "openh3.full_trajectory_interface_cpu_preparation.v1",
+  "complete": true,
+  "checked_at_utc": "2026-11-11T14:17:43Z",
+  "host_id": "huawei-modelarts-30794",
+  "remote_preparation": "/cache/zihaohe/omni_openh3_20261111/preparation/openh3_trajectory_cpu_20261111_v2",
+  "runtime_files_modified": false,
+  "NPU_jobs_launched": 0,
+  "CPU_environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENH3_COMFY_REFERENCE_ROOT": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI"
+  },
+  "command": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python -m unittest discover -s code/tests -p test_openh3_train_trajectory.py -v",
+  "tests": {"passed": 9, "failed": 0, "skipped": 0, "seconds": 4.298},
+  "sha256": {
+    "code/openh3_train_trajectory.py": "805781046838c8ea29eff893c83484c3765e7da8be2f68c74168297ee0385cdd",
+    "code/tests/test_openh3_train_trajectory.py": "7743b3c86174fcdc6f14eef2b5946ce84c062b9219fa73e8fec478cb02066a3b",
+    "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "cpu_tests.log": "6372953e474cb55e9ff606ac04856b7f573d8dffdac95e93d81ade7044fe3754"
+  },
+  "actual_reference_bodies_executed_without_Comfy_import": [
+    "comfy.sample.prepare_noise_inner", "comfy.sample.prepare_noise",
+    "comfy.utils.pack_latents", "comfy.utils.unpack_latents",
+    "CFGGuider.inner_sample", "KSAMPLER.sample", "sample_euler with no-grad decorator removed"
+  ],
+  "fake_parts": ["DiT", "VAE", "conditioning conversion", "CFG1 denoiser callback", "patcher/wrapper infrastructure"],
+  "validated": [
+    "CPU video-then-audio noise generator order and distinct randn audio initial latent",
+    "5/22 RGB frame to 2/7 latent and 8/37 audio-step geometry",
+    "official inner-sampler audio latent scaling and inverse output scaling plumbing",
+    "complete three-step joint Euler forward parity against official function body",
+    "finite nonzero adapter gradients through all three fake denoiser calls",
+    "DiT block checkpoint output and gradient parity on CPU",
+    "VAE native math per-forward/per-recompute context_fn with DiT math restored before its backward recomputation",
+    "failure-midpatch restoration, overlap rejection, late-backward guards including identity/no-recompute and expired session generations",
+    "tiny nonzero unmerged adapter strict reload parity separately from zero-adapter state"
+  ],
+  "not_established": [
+    "Real H3 zero-adapter equality to H3.sample",
+    "Real H3 nonzero unmerged save/reload output equality",
+    "Nonzero independent FP32 LoRA branch equality to BF16 merged inference (explicitly not assumed)",
+    "Actual VAE checkpoint-context NPU parity",
+    "Joint DiT plus VAE memory/backward or any full-size training run",
+    "Restoration quality or causal streaming semantics for full-block H3"
+  ],
+  "known_blocker": "Root observed uncheckpointed VAE grad forward OOM at 22x480x832; no full-size automatic execution is admitted by this module.",
+  "recommended_next_probe": {
+    "scope": "separately admitted single-device synthetic 5-frame 128x128 engineering probe; no optimizer or quality conclusion",
+    "first": "Same guide/raw draft/CPU seed: H3.sample no-adapter reference vs resident three-step zero-adapter trajectory; compare every joint step where observable and final video/audio, report max_abs and bitwise equality without relaxing thresholds post hoc",
+    "second": "At same tiny geometry only: full three-step latent loss backward with scoped DiT checkpoint, finite/nonzero adapter gradients and frozen-base version/hash checks; do not load VAE into the objective yet",
+    "third": "After independent native VAE checkpoint parity passes: same tiny geometry joint trajectory -> decoder -> fixed RGB probe loss backward; assert per-recompute context isolation, measured peak memory, frozen VAE/base",
+    "separate_later_gate": "Nonzero adapter save/reload under unmerged resident arithmetic, then explicitly quantify existing BF16 merged deployment rounding; no STE or silent pipeline substitution"
+  }
+}

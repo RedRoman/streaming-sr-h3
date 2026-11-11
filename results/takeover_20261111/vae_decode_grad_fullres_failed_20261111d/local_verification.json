@@ -1,0 +1,53 @@
+{
+  "verified": true,
+  "verified_manifest_files": 6,
+  "archive_sha256": "03a3aa2d113f09e8075c41893a2fff82a5f2ab814465d02ce811fccc83ae0baf",
+  "failure": {
+    "complete": false,
+    "contract": {
+      "schema": "openh3.vae_decode_input_gradient_probe.v1",
+      "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+      "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+      "implementation_sha256": "a1ae1c0b2df75a10055eba297f07259dcd63766e361614c2020f8fea0b0a4776",
+      "seed": 101,
+      "grad_rope_mode": "ascend_native",
+      "latent_shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ],
+      "latent_distribution": "CPU seeded float32 N(0,1), normalized native latent units",
+      "expected_rgb_shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "forward_comparison_atol": 0.0002,
+      "forward_comparison_rtol": 0.0001,
+      "scope": "synthetic decoder input-gradient only at declared geometry; no original-RGB restoration loss, no adapter gradient, no joint fullH3 memory acceptance",
+      "planned_model_forwards": 2,
+      "planned_backward_calls": 1,
+      "H3_denoiser_calls": 0,
+      "optimizer_steps": 0,
+      "VAE_parameters_updated": false
+    },
+    "error": "OutOfMemoryError('NPU out of memory. Tried to allocate 226.00 MiB (NPU 0; 60.96 GiB total capacity; 58.22 GiB already allocated; 58.22 GiB current active; 8.09 MiB free; 60.18 GiB reserved in total by PyTorch).If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.')",
+    "actual_completed_forwards": 1,
+    "actual_completed_backwards": 0,
+    "seconds": 60.91830468270928
+  },
+  "queue": {
+    "state": "failed",
+    "card": 6,
+    "step": "vae_decode_input_gradient_smoke",
+    "completed": [],
+    "returncode": 1,
+    "log": "/cache/zihaohe/omni_openh3_20261111/runs/vae_decode_grad_fullres_smoke_20261111d/logs/gradient.log",
+    "updated_at_utc": "2026-11-11T14:03:16.467958+00:00"
+  },
+  "interpretation": "No-grad reference completed; grad forward OOM before its completion and before backward. No forward parity or input-gradient result; failed full-resolution memory acceptance.",
+  "next_action": "Single-variable activation checkpointing; first compare exact prior22frame128\u00b2 gradientSHA, then freshfullresrun. No tolerance relaxation or jointH3 memory claim."
+}

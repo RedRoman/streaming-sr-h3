@@ -1,0 +1,42 @@
+{
+  "probe_complete": false,
+  "decoded_geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "latent_geometry": [
+    1,
+    24,
+    7,
+    30,
+    52
+  ],
+  "actual_completed_forwards": 2,
+  "actual_completed_backwards": 1,
+  "no_grad_forward_completed": true,
+  "grad_forward_completed": true,
+  "backward_returned": true,
+  "full_decoder_memory_gate": "failed",
+  "full_H3_DiT_LoRA_memory_gate": "not_tested",
+  "restoration_quality_gate": "not_tested",
+  "scope": "synthetic latent decoder input gradient; no original RGB objective, no adapter gradient or joint fullH3 memory",
+  "state": "failed",
+  "error": "FloatingPointError('decoder input gradient missing, nonfinite or zero')",
+  "failure_category": "runtime_or_numerical_failure",
+  "schema": "openh3.vae_gradient_probe_evidence_audit.v1",
+  "archive": {
+    "archive_sha256": "cee0f0c35dfea85f3e4790891e7de900721d6d019443878547d3ee8cfe403156",
+    "manifest_member": "preparation/vae_decode_grad_checkpoint_fullres_20261111f/evidence_manifest.json",
+    "manifest_sha256": "25413ee338f78274dcf0f03cd0b32fb727442de0b6910a17d4088d3a06750dd9",
+    "verified_files": 8,
+    "uncompressed_bytes": 175592
+  },
+  "report_member": "runs/vae_decode_grad_checkpoint_fullres_20261111f/eval/failure.json",
+  "report_sha256": "112c333d71a11777f2511f6840fea3f7eb6d91d93e28e0c2a82e17f90bd8a634",
+  "queue_sha256": "90234b74169d7ac305bfe75f1bd7153e4eee303985e0b673958cc9429e333508",
+  "synthetic_probe_only": true,
+  "prior_gradient_comparison": "not_requested",
+  "audit_implementation_sha256": "d4625e8917a5f13dcf41cebd681dec899dd2eaf3bcc9ed74d74c1d4042e8c441"
+}

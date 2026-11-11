@@ -1,6 +1,6 @@
 {
   "schema": "openh3.fixed_rphi_guides.plan.v1",
-  "status": "controls_scalar_VAE_completed_cached_RGB_compensation_running_train_interface_preparation",
+  "status": "fixed_H3_controls_VAE_cached_interface_completed_quality_tradeoffs_RGB_training_interface_preparation",
   "date": "2026-11-11",
   "source_manifest": "datasets/omni_pilot_v1/dev_materialized.jsonl",
   "candidate_selection": "Stage2 full audit passed. Retain legacy_g05 as the stronger original reference; native encoder and guard2 show no overall advantage. Compression and near-clean negative cases remain. See scientific_review_v2; no omni acceptance.",
@@ -226,8 +226,8 @@
     "A corrected interface may be trained after failure modes and matched controls are specified; frozen H3 need not already win on all tasks. No unbounded automatic training is authorized by this plan."
   ],
   "conditional_cached_compensation_protocol": {
-    "status": "running_CPU_fixed_grid_actual_inputs_preflight_passed",
-    "gate": "VAE diagnostic now completed and all24input/latent/finalizer and12baseline checks passed. Execute fixed cached family next; all coefficients remain development diagnostics, no deploy selection.",
+    "status": "completed_integrity_passed_no_universal_quality_advantage",
+    "gate": "Completed12/12 fixed samples,168 grid entries,0newH3 or training. All cached input/endpoint/support gates passed.",
     "family": "clip(R + beta * (G_R - V_R),0,1)",
     "definitions": {
       "R": "exact frozen Rphi float32 RGB guide",
@@ -265,22 +265,22 @@
     ],
     "interpretation": "Counterfactual cached interface diagnostic, not new trained method. Fixed raw H3 warm-start remains unchanged; subtracting VAE(R) does not isolate a pure sampler effect or establish causal attribution.",
     "selection": "Report all coefficients and failures; no deployment coefficient selected from this one-source development grid.",
-    "next_if_supported": "Define RGB-preserving guide-matched LoRA objective and matched budget controls on training sources; clean/near-clean protection and separate source testing remain required.",
+    "next_if_supported": "Compensation remains an optional controlled hypothesis, not an accepted repair or default output. Prioritize original RGB objective and clean-input protection; retain same-budget fixed controls.",
     "implementation": "code/diagnose_cached_rgb_compensation.py",
     "execution": {
       "host": "30794",
-      "status": "running_9_of12_scored",
+      "status": "completed_and_audited",
       "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/cached_rgb_compensation_legacy_20261111a",
       "session": "cached-rgb-comp-20261111a",
       "worker_pid": 3994024,
       "started_at_utc": "2026-11-11T12:57:58.826478+00:00",
-      "last_observed_at_utc": "2026-11-11T13:48:54.567054+00:00",
+      "last_observed_at_utc": "2026-11-11T14:16:01.053178+00:00",
       "launch_receipt": "results/takeover_20261111/cached_rgb_compensation_preparation_20261111/launch_receipt.json",
       "launch_receipt_sha256": "e615eb000d009e0fa9a4205687c1d41159450c772315ec3ed77df1d1e3549160",
       "implementation_sha256": "8a3d4c0aa0b7ef3221a52d7b59c2535cde01529539563865d4ebc460b5a1ff89",
       "tests_passed": 7,
       "real_input_inspection_samples": 12,
-      "completed_scored_samples": 9,
+      "completed_scored_samples": 12,
       "maximum_samples": 12,
       "beta_grid": [
         0,
@@ -305,12 +305,54 @@
         "owned_process_group_timeout_seconds": 7200,
         "terminate_grace_seconds": 30
       },
-      "next": "Read grid.log, eval/partial_metrics.json, eval/metrics.json and fresh failure files; inspect actual owned process/session. No automatic relaunch or same-directory resume. Download a small result evidence archive when complete, audit all endpoints/common-flow/caches and clean controls before any quality conclusion.",
+      "next": "Do not restart or rescore. Retain all coefficients and negative cases; train-role data and complete trajectory gradient/memory admission next.",
       "latest_snapshot": "results/takeover_20261111/heartbeat_20261111T1348Z_runtime.json",
       "first_sample_seconds": 310.4286413779482,
-      "eta_rough_local": "Approximately22:02SG at measured~298-310s/sample; full acceptance after complete; hard owned budget22:57:58SG"
+      "completed_at_utc": "2026-11-11T14:01:29.287239+00:00",
+      "scientific_review": "results/takeover_20261111/cached_rgb_compensation_completed_20261111/scientific_review.json",
+      "scientific_review_sha256": "d44293922c39e8cad3c201de3be68f55a9e004c02f3d82c8a9c6cb6bd4c3a953",
+      "audit": "results/takeover_20261111/cached_rgb_compensation_completed_20261111/audit_final.json",
+      "archive_sha256": "c0cf4d31748129e4269cda3962a5fa340054f97363343ac6b87c6c446e1a809a",
+      "grid_entries": 168
+    },
+    "result": {
+      "quality_verdict": "requires_review",
+      "selected_beta": null,
+      "universal_correction_supported": false,
+      "findings": [
+        {
+          "claim": "No universal compensation dominance; ordinary denoise loses much of the scalar beneficial correction.",
+          "evidence": "beta .25 scalar PSNR36.894890/LPIPS.07933719/flow.01064053; compensation35.847826/.11346453/.01336617; R35.917156/.11366326/.01332017. Compensation removes more than unwanted distortion in this case.",
+          "inference_limit": "One source; not a measured decomposition of independent VAE versus sampler errors."
+        },
+        {
+          "claim": "Compression remains a negative example at moderate/large coefficients despite improvement versus the matched scalar baseline.",
+          "evidence": "beta .75 compensation35.630612/.02217304/.00660668 beats scalar34.793695/.02636155/.00687032, but R40.475871/.01529395/.00506359 remains better on all three.",
+          "inference_limit": "A better method-to-method comparison is not proof of benefit over the usable restored input."
+        },
+        {
+          "claim": "Identity controls favor compensation over scalar at every positive fixed beta, but both damage clean content and also degrade R.",
+          "evidence": "All four identity labels have exactly identical RGB hashes per family/beta. R PSNR55.683714 LPIPS.00155075 flow.00073214; beta .05 compensation54.382509/.00167122/.00080140, scalar53.492258/.00223845/.00090175. Original input is exactly the reference (MSE/LPIPS/flow zero); its displayed120dB is a metric cap.",
+          "inference_limit": "Four labels represent one identical sample, not four independent clean-source wins."
+        },
+        {
+          "claim": "Near-clean beta .05 has a distortion/perceptual tradeoff, not uniform superiority.",
+          "evidence": "Compensation vs R PSNR−.3591..−.3696dB, LPIPS +.0000565..+.0000624, flow +.0000228..+.0000236; scalar PSNR−.4807..−.4956dB but LPIPS−.0002757..−.0002879 and flow−.0000442..−.0000449. Both still beat near-clean input by ~2.1..2.25dB.",
+          "inference_limit": "The four task-keyed noise draws share one source; poorer versus R does not imply poorer versus original noisy input."
+        },
+        {
+          "claim": "Equal beta does not equal equal repair magnitude.",
+          "evidence": "The audit emits change_mse_vs_R for both families at every beta and sample; R+beta(G−V) and R+beta(G−R) have different residuals and clipping.",
+          "inference_limit": "Do not attribute matched-beta gains purely to a better direction without a separately declared magnitude-matched comparison."
+        },
+        {
+          "claim": "Clipping contributes only to the measured final blend effect here; upstream internal clipping is already baked into both caches.",
+          "evidence": "Scalar is convex and has0 final clipped components for all84 entries; compensation reaches1.34818% clipped RGB components,2.63510% pixels, pre-final range[-.10191247,1.19988644]. Largest final-clamp pooled MSE reduction is2.56406326e-6.",
+          "inference_limit": "The float64 pre-final metrics are not true pre-internal-VAE-clamp measurements."
+        }
+      ]
     }
   },
-  "next_action": "Audit running cached scalar versus VAE-compensation fixed grid; meanwhile finish native baseline queue and source qualification. Implement original-RGB matched LoRA only with train-role cache and actual gradient/trajectory/memory admission.",
+  "next_action": "Complete original-RGB full trajectory/LoRA gradient, exact numerical and joint memory gates; add train-only clean controls. Do not extend dev grid or pick beta from the single source.",
   "guide_matched_lora_readiness": "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json"
 }

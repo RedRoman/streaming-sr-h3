@@ -1,0 +1,50 @@
+{
+  "schema": "openh3.vae_gradient_probe_readonly_review.v1",
+  "current_probe": "preparation/vae_decode_grad_checkpoint_smoke_20261111e/code/check_vae_decode_grad.py",
+  "current_probe_sha256": "c34fe347fe84207dd4b67680b415e735755f342292179aa67a655650721b5726",
+  "prior_probe_sha256": "1a1caab01bd875d90de3263b2a9f2c93dacb26336a4f1a57c253377dcccc5c59",
+  "verdict": "no_decoder_only_probe_blocker_found",
+  "findings": [
+    {
+      "lines": "112-114",
+      "finding": "CPU-seeded float32 latent creation unchanged; e/c latent byte SHA exact after runtime."
+    },
+    {
+      "lines": "115-118",
+      "finding": "Peak memory reset after VAE load; peaks include already resident VAE plus subsequent decoder operations, not activation-only memory."
+    },
+    {
+      "lines": "122-138",
+      "finding": "Checkpoint context is inside unchanged decoder_math context, with backward still inside both. Context restoration happens checkpoint-first then math. Appropriate for standalone decoder."
+    },
+    {
+      "lines": "124,138",
+      "finding": "Forward/backward counts are completed function return counts. A recorded backward return does not by itself mean finite gradient/frozen/expected SHA checks passed; audit requires complete report."
+    },
+    {
+      "lines": "130-146",
+      "finding": "Original allclose tolerance unchanged and exact expected input-gradient SHA is an additional gate. e runtime bitwise output and gradient equality both pass."
+    },
+    {
+      "lines": "147-166",
+      "finding": "Frozen parameter byte fingerprint, tensor versions and no parameter gradients checked before success. This does not independently attest all nonparameter buffers."
+    },
+    {
+      "lines": "167-171",
+      "finding": "Successful full 22x480x832 decoder probe can certify only decoder-specific peak memory at that shape. Small e does not certify full geometry; no probe certifies joint DiT/LoRA memory."
+    }
+  ],
+  "actual_e_acceptance": "results/takeover_20261111/vae_decode_grad_checkpoint_smoke_20261111e_completed/audit.json",
+  "actual_e_acceptance_sha256": "cf43a883aed769fb1f85e3488685a89029aab5b87d2b3b73823a00cb8fa90470",
+  "tests": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "command": "python3 -m unittest discover -s code/tests -p test_vae_gradient_probe_audit.py -v",
+    "scope": "stdlib only; no GPU/NPU/tensor/model calls"
+  },
+  "auditor_sha256": "d4625e8917a5f13dcf41cebd681dec899dd2eaf3bcc9ed74d74c1d4042e8c441",
+  "tests_sha256": "9712882399c3348eec867dd3409662d662e3cc773bad7f49d2ddeec05f2a64aa",
+  "no_runtime_or_snapshot_mutation": true,
+  "no_repeat_download": true
+}

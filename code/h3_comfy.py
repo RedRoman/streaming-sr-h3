@@ -20,9 +20,11 @@ import torch
 import torch.nn.functional as F
 import torch_npu  # noqa: F401
 
-ROOT = Path('/cache/zihaohe/streaming_sr0')
-COMFY = ROOT / 'code/ComfyUI'
-ASSETS = ROOT / 'assets/comfy_h3'
+CODE_ROOT = Path(__file__).resolve().parent
+ROOT = Path(os.environ.get('SSR0', str(CODE_ROOT.parent))).expanduser().resolve()
+COMFY = Path(os.environ.get('COMFYROOT', str(ROOT / 'code/ComfyUI'))).expanduser().resolve()
+ASSET_ROOT = Path(os.environ.get('H3_ASSET_ROOT', str(ROOT / 'assets'))).expanduser().resolve()
+ASSETS = ASSET_ROOT / 'comfy_h3'
 DIT_PATHS = {'fl2va': ASSETS / 'minimax_h3_fl2va_pruned_bf16.safetensors', 'ref2va': ASSETS / 'minimax_h3_ref2va_pruned_bf16.safetensors'}
 DIT_PATH = DIT_PATHS['fl2va']
 VAE_PATH = ASSETS / 'minimax_h3_video_vae_fp16.safetensors'
@@ -38,7 +40,7 @@ GRID = torch.linspace(1, 0, 50)
 SIGMAS = 12 * GRID / (1 + 11 * GRID)
 
 sys.path.insert(0, str(COMFY))
-sys.path.insert(0, str(ROOT / 'code'))
+sys.path.insert(0, str(CODE_ROOT))
 
 
 def sha(p):
@@ -128,7 +130,24 @@ def ref_resize(img_hw3, hw, resize):
 
 
 class H3:
-    def __init__(self, load_dit=True, verify_sha=False, dit='fl2va', lora_path=None, lora_rank=32):
+    def __init__(self, load_dit=True, verify_sha=False, dit='fl2va', lora_path=None, lora_rank=32,
+                 pretrained_manifest=None, adaptation_path=None, sigma_schedule=None):
+        self.pretrained_manifest = pretrained_manifest
+        self.sigma_schedule = None if sigma_schedule is None else torch.tensor(sigma_schedule, dtype=torch.float32)
+        if self.sigma_schedule is not None:
+            ss = self.sigma_schedule.tolist()
+            if len(ss) < 2 or not 0 < ss[0] <= 1 or ss[-1] != 0 or any(a <= b for a, b in zip(ss, ss[1:])):
+                raise ValueError('sigma schedule must strictly decrease from (0,1] to zero')
+        if pretrained_manifest and (lora_path is not None or dit != 'fl2va' or not load_dit):
+            raise ValueError('Open-H3 requires pristine FL2VA; legacy Stage-1 stacking is forbidden')
+        if adaptation_path and not pretrained_manifest:
+            raise ValueError('an Open-H3 adaptation requires its pretrained manifest')
+        pretrained = None
+        vae_path, context_path = VAE_PATH, CONTEXT_PATH
+        if pretrained_manifest:
+            from openh3_assets import read_manifest
+            pretrained = read_manifest(pretrained_manifest, verify=True)
+            vae_path, context_path = Path(pretrained['_paths']['vae']), Path(pretrained['_paths']['context'])
         self.precision_initial = set_precision()
         module_to_patch = patch_module_to()
         from comfy.cli_args import args as ca
@@ -137,31 +156,46 @@ class H3:
         import comfy.utils
         self.comfy_sd, self.cu = comfy.sd, comfy.utils
         self.dev = torch.device('npu', 0)
-        assert VAE_PATH.stat().st_size == SIZE['vae']
-        if verify_sha:
-            assert sha(VAE_PATH) == SHA['vae']
-        assert sha(CONTEXT_PATH) == SHA['context']
+        if not pretrained:
+            assert vae_path.stat().st_size == SIZE['vae']
+            if verify_sha:
+                assert sha(vae_path) == SHA['vae']
+            assert sha(context_path) == SHA['context']
         self.record = {'precision_initial': self.precision_initial, 'precision_used': {'matmul_hf32': False, 'conv_hf32': False},
                        'torch': torch.__version__, 'torch_npu': torch_npu.__version__, **module_to_patch,
                        'comfy_commit': (COMFY / 'COMMIT').read_text().strip()}
         t = time.perf_counter()
-        sd, meta = comfy.utils.load_torch_file(str(VAE_PATH), return_metadata=True)
+        sd, meta = comfy.utils.load_torch_file(str(vae_path), return_metadata=True)
         self.vae = comfy.sd.VAE(sd=sd, device=self.dev, dtype=torch.float16, metadata=meta)
         del sd
         self.vae.first_stage_model.eval().requires_grad_(False)
         self.record['vae_load_seconds'] = time.perf_counter() - t
-        self.context = torch.load(CONTEXT_PATH, map_location='cpu', weights_only=True)
+        self.context = torch.load(context_path, map_location='cpu', weights_only=True)
         self.patcher = None
         if load_dit:
-            dit_path = DIT_PATHS[dit]
-            assert dit_path.stat().st_size == SIZE['dit']
-            if verify_sha:
-                assert sha(dit_path) == SHA['dit' if dit == 'fl2va' else dit]
+            dit_path = Path(pretrained['_paths']['base']) if pretrained else DIT_PATHS[dit]
+            if not pretrained:
+                assert dit_path.stat().st_size == SIZE['dit']
+                if verify_sha:
+                    assert sha(dit_path) == SHA['dit' if dit == 'fl2va' else dit]
             self.record['dit'] = dit
             t = time.perf_counter()
             self.patcher = comfy.sd.load_diffusion_model(str(dit_path), model_options={'dtype': torch.bfloat16})
             model = self.patcher.model.diffusion_model.eval().requires_grad_(False)
             assert len(model.blocks) == 50 and self.patcher.model.latent_format.scale_factor == 1
+            if pretrained:
+                from openh3_runtime import (merge_pretrained, inject_adaptation, check_adapter,
+                                            merge_adaptation_for_inference)
+                self.record['openh3_pretrained'] = merge_pretrained(model, pretrained_manifest, pretrained)
+                if adaptation_path:
+                    import lora as L
+                    from safetensors.torch import load_file
+                    check_adapter(adaptation_path, self.record['openh3_pretrained'], lora_rank)
+                    inject_adaptation(model, lora_rank, seed=0)
+                    L.load(model, load_file(str(adaptation_path)), strict=True, strict_unused=True)
+                    merge_record = merge_adaptation_for_inference(model)
+                    self.record['openh3_adaptation'] = {'sha256': sha(adaptation_path), 'rank': lora_rank,
+                                                        'inference_merge': merge_record}
             if lora_path is not None:
                 import lora as L
                 from safetensors.torch import load_file
@@ -217,7 +251,12 @@ class H3:
         from pixel_consistency import BicubicConsistency
         assert mode in ('base', 'innerdc')
         # the step count follows the sigma schedule: a turbo LoRA runs the same sampler on 8 points, not 49
-        n_steps = len(SIGMAS) - 1
+        sigmas = SIGMAS if self.sigma_schedule is None else self.sigma_schedule
+        if self.pretrained_manifest and warm_start is None:
+            raise ValueError('Open-H3 port requires an explicit draft latent warm start')
+        if self.pretrained_manifest and (self.sigma_schedule is None or float(sigmas[0]) >= 1):
+            raise ValueError('Open-H3 port requires an explicit sub-unit sigma schedule')
+        n_steps = len(sigmas) - 1
         # innerDC's projection points were chosen on the 49-step grid; keep their relative position
         points = sorted({min(n_steps - 1, max(0, round(i * n_steps / 49))) for i in POINTS})
         T = guide.shape[2]
@@ -312,7 +351,7 @@ class H3:
         def hook(args):
             index = state['hooks']
             state['hooks'] += 1
-            assert state['calls'] == index + 1 and abs(float(args['sigma'].flatten()[0]) - float(SIGMAS[index])) < 1e-6
+            assert state['calls'] == index + 1 and abs(float(args['sigma'].flatten()[0]) - float(sigmas[index])) < 1e-6
             if gate is not None:
                 d = args['denoised']
                 out = d.clone()
@@ -396,7 +435,7 @@ class H3:
             with torch.no_grad(), native_training_math():
                 z = comfy.sample.prepare_noise(latent, seed) if noise is None else noise
                 samples = comfy.sample.sample(current, z, n_steps, 1., 'euler', 'simple', positive, [], latent,
-                                              seed=seed, disable_pbar=True, sigmas=SIGMAS)
+                                              seed=seed, disable_pbar=True, sigmas=sigmas)
             sync()
         finally:
             handle.remove()
@@ -405,6 +444,8 @@ class H3:
         if mode == 'innerdc':
             assert state['hooks'] == n_steps and [e['index'] for e in events] == points
         return {'video': video.cpu(), 'audio': audio.cpu()}, {'mode': mode, 'seed': seed, 'steps': n_steps, 'cfg': 1.,
+                'sigmas': sigmas.tolist(), 'warm_start': warm_start is not None,
+                'pretrained': self.record.get('openh3_pretrained'),
                 'audio_init': audio_init, 'audio_strength': (audio_strength if audio_target is not None else None),
                                                               'quota_steps': state.get('quota_steps', 0), 'quota_dbg': state.get('quota_dbg'),
                                                               'noise': 'absolute' if noise is not None else 'per_block',

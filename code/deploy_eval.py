@@ -12,8 +12,8 @@ Three subcommands:
             Cost: the 5 shared frames can only be emitted once block k is done, i.e. one block later.
   eval      one metric pass over any set of arms, with the gaps of the earlier tables closed:
               - fidelity: PSNR / LPIPS every 8th frame (same frames and code as metrics_s7 / real_metrics)
-              - null-space diagnostic: the same with the range replaced by the truth, U(D x_GT) + N(out),
-                which isolates the quality of the generated detail from the range error
+              - band diagnostic: replace U(D(out)) with U(D(GT)); this is an oracle substitution,
+                not an orthogonal null-space or physical observation decomposition
               - detail energy and cosine of N(out) against N(x_GT)
               - temporal: the GT-normalised ratios used so far, plus absolute temporal error
                 |d out - d GT|^2 per band, which stays defined on near-static clips where the ratio
@@ -31,8 +31,12 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
+from restoration_metrics import (METRIC_SCHEMA_VERSION, SCALAR_ALIASES, TEMPORAL_ALIASES,
+                                 add_aliases, assert_compatible_output, flow_visibility_mask,
+                                 masked_warp_mae, metric_metadata, paired_counts,
+                                 remap_target_to_source)
 
-ROOT = Path('/cache/zihaohe/streaming_sr0')
+ROOT = Path(os.environ.get('SSR0', os.environ.get('STREAMING_SR_ROOT', '/cache/zihaohe/streaming_sr0')))
 sys.path.insert(0, str(ROOT / 'code'))
 D_ = ROOT / os.environ.get('EVAL_SET', 'data/real_eval/const')
 OUT = ROOT / 'results/deploy'
@@ -55,8 +59,12 @@ SR_SCALE = int(os.environ.get('SR_SCALE', 4))
 
 
 def split(x, s=None):
+    """Return bicubic lowband U(D(x)) and complementary detail x-U(D(x)).
+
+    The legacy range/null names are retained in output aliases only. U D is
+    generally neither idempotent nor orthogonal and need not be the real camera.
+    """
     s = SR_SCALE if s is None else s
-    """x [H,W,3] -> (range, null) with range = U(D x), the decomposition used by real_metrics.rng_null."""
     t = x.permute(2, 0, 1)[None].double()
     h, w = t.shape[-2:]
     d = F.interpolate(t, size=(h // s, w // s), mode='bicubic', align_corners=False, antialias=True)
@@ -267,10 +275,8 @@ def flow(a, b):
 
 
 def warp(img, fl):
-    h, w = fl.shape[:2]
-    gx, gy = np.meshgrid(np.arange(w, dtype=np.float32), np.arange(h, dtype=np.float32))
-    return cv2.remap(np.ascontiguousarray(img), gx + fl[..., 0], gy + fl[..., 1], cv2.INTER_LINEAR,
-                     borderMode=cv2.BORDER_REPLICATE)
+    """Compatibility helper: img is frame 1, fl is frame 0→1, output is on frame 0."""
+    return remap_target_to_source(img, fl)
 
 
 def gray(x):
@@ -298,25 +304,31 @@ def seam_first(tag):
     return SEAMS.get(tag.split(':')[0], SEAM_FIRST)
 
 
-def pair_sets(T, tag):
+def pair_sets(T, tag, stride=STRIDE):
     sf = [t for t in seam_first(tag) if 0 < t < T]
-    return {'p8': [(t, t + 1) for t in range(0, T - 1, STRIDE)],
+    return {'p8': [(t, t + 1) for t in range(0, T - 1, stride)],
             'seam': [(t - 1, t) for t in sf],
             'interior': [(t - 7, t - 6) for t in sf if t - 7 >= 0]}
 
 
-def _eval(job):
+def _eval(job, *, frame_reader=None, gt_reader=None, clip_meta=None, frame_stride=STRIDE):
+    """Evaluate disk outputs, or explicit CPU RGB tensors for the pinned pilot.
+
+    Injected readers avoid encoding RGB targets as latents or writing whole clips.
+    The legacy p8 container name is retained; frame_stride records its actual grid.
+    """
     name, arms = job
     torch.set_num_threads(3)
     cv2.setNumThreads(2)        # cv2 otherwise starts one thread per core in every worker (load 600 on 31984)
     from revisit_metrics import lpips_dist
-    m = meta(name)
+    m = meta(name) if clip_meta is None else clip_meta
+    read_frame = arm_frame if frame_reader is None else frame_reader
     T = m['frames']
     gcache = {}
 
     def G(t):
         if t not in gcache:
-            g = load(D_ / name / 'hr' / f'{t:06d}.png')
+            g = load(D_ / name / 'hr' / f'{t:06d}.png') if gt_reader is None else gt_reader(t)
             gcache[t] = (g, *split(g))
         return gcache[t]
 
@@ -324,16 +336,19 @@ def _eval(job):
 
     def FL(t0, t1):
         if (t0, t1) not in fcache:
-            fcache[(t0, t1)] = flow(gray(G(t0)[0]), gray(G(t1)[0]))
+            a, b = gray(G(t0)[0]), gray(G(t1)[0])
+            fw, bw = flow(a, b), flow(b, a)
+            fcache[(t0, t1)] = (fw, flow_visibility_mask(fw, bw))
         return fcache[(t0, t1)]
 
-    rec = {'clip': name, 'degradation': m['degradation'].get('kind', '?'), 'leaked': name in LEAKED, 'arms': {}}
+    rec = {'metric_schema_version': METRIC_SCHEMA_VERSION, 'frame_stride': frame_stride, 'clip': name,
+           'degradation': m['degradation'].get('kind', '?'), 'leaked': name in LEAKED, 'arms': {}}
     for tag, arm in arms.items():
         r = {}
         # fidelity + null-space diagnostic + detail energy / cosine
         acc = {k: [] for k in ('psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos')}
-        for t in range(0, T, STRIDE):
-            y = arm_frame(arm, name, t)
+        for t in range(0, T, frame_stride):
+            y = read_frame(arm, name, t)
             if y is None:
                 continue
             g, gr, gn = G(t)
@@ -346,13 +361,14 @@ def _eval(job):
         if not acc['psnr']:
             continue
         r.update({k: float(np.mean(v)) for k, v in acc.items()})
+        add_aliases(r, SCALAR_ALIASES)
         r['n_frames'] = len(acc['psnr'])
         r['seam_grid'] = seam_first(tag)[:3]
         # temporal
-        for pset, pairs in pair_sets(T, tag).items():
-            s = {k: [] for k in ('dn', 'dg', 'tn', 'tr', 'wf', 'wf_g', 'wr', 'wr_g', 'wn', 'wn_g')}
+        for pset, pairs in pair_sets(T, tag, frame_stride).items():
+            s = {k: [] for k in ('dn', 'dg', 'tn', 'tr', 'wf', 'wf_g', 'wr', 'wr_g', 'wn', 'wn_g', 'coverage')}
             for t0, t1 in pairs:
-                y0, y1 = arm_frame(arm, name, t0), arm_frame(arm, name, t1)
+                y0, y1 = read_frame(arm, name, t0), read_frame(arm, name, t1)
                 if y0 is None or y1 is None:
                     s = None
                     break
@@ -362,22 +378,34 @@ def _eval(job):
                 s['dg'].append(float((gn1 - gn0).square().mean()))
                 s['tn'].append(float(((yn1 - yn0) - (gn1 - gn0)).square().mean()))
                 s['tr'].append(float(((yr1 - yr0) - (gr1 - gr0)).square().mean()))
-                fw = FL(t0, t1)
+                fw, mask = FL(t0, t1)
+                s['coverage'].append(float(mask.mean()))
                 for key, a0, a1, b0, b1 in (('wf', y0, y1, g0, g1), ('wr', yr0, yr1, gr0, gr1), ('wn', yn0, yn1, gn0, gn1)):
-                    s[key].append(float(np.abs(warp(a0.numpy(), fw) - a1.numpy()).mean()))
-                    s[key + '_g'].append(float(np.abs(warp(b0.numpy(), fw) - b1.numpy()).mean()))
+                    value = masked_warp_mae(a0.numpy(), a1.numpy(), fw, mask)
+                    gt_value = masked_warp_mae(b0.numpy(), b1.numpy(), fw, mask)
+                    if value is not None:
+                        s[key].append(value)
+                        s[key + '_g'].append(gt_value)
             if not s:
                 continue
-            mean = {k: float(np.mean(v)) for k, v in s.items()}
-            static = mean['dg'] < 1e-7 or mean['wf_g'] < 1e-5
+            mean = {k: float(np.mean(v)) if v else None for k, v in s.items()}
+            if mean['dg'] is None:
+                continue
+            static = mean['dg'] < 1e-7
+            def ratio(key, threshold=1e-5):
+                denominator = mean[key + '_g']
+                return None if denominator is None or denominator < threshold else mean[key] / denominator
             r[pset] = {'static': static,
                        'flicker': None if static else mean['dn'] / mean['dg'],
-                       'warp': None if static else mean['wf'] / mean['wf_g'],
-                       'warp_range': None if static else mean['wr'] / mean['wr_g'],
-                       'warp_null': None if static else mean['wn'] / mean['wn_g'],
+                       'warp': ratio('wf'), 'warp_range': ratio('wr'), 'warp_null': ratio('wn'),
                        # absolute, x1e3, defined on static clips too
                        'terr_null': 1e3 * mean['tn'], 'terr_range': 1e3 * mean['tr'],
-                       'warp_abs_excess': 1e3 * (mean['wf'] - mean['wf_g'])}
+                       'warp_abs_excess': None if mean['wf'] is None else 1e3 * (mean['wf'] - mean['wf_g']),
+                       'warp_mae': mean['wf'], 'warp_gt_mae': mean['wf_g'],
+                       'flow_valid_fraction': mean['coverage'],
+                       'flow_valid_fraction_min': min(s['coverage']),
+                       'n_temporal_pairs': len(s['tn']), 'n_valid_warp_pairs': len(s['wf'])}
+            add_aliases(r[pset], TEMPORAL_ALIASES)
         rec['arms'][tag] = r
     return rec
 
@@ -387,8 +415,9 @@ def summarise(rows, tags):
               'realistic': lambda r: r['degradation'] == 'realistic',
               'bicubic': lambda r: r['degradation'] != 'realistic',
               'clean16': lambda r: not r['leaked']}
-    scalar = ['psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos']
-    tkeys = ['flicker', 'warp', 'warp_range', 'warp_null', 'terr_null', 'terr_range', 'warp_abs_excess']
+    scalar = ['psnr', 'lpips', *SCALAR_ALIASES, *SCALAR_ALIASES.values()]
+    tkeys = ['flicker', 'warp', 'warp_range', 'warp_null', 'terr_null', 'terr_range', 'warp_abs_excess',
+             'warp_mae', 'warp_gt_mae', 'flow_valid_fraction', *TEMPORAL_ALIASES.values()]
     out = {}
     for gname, sel in groups.items():
         rs = [r for r in rows if sel(r)]
@@ -396,14 +425,13 @@ def summarise(rows, tags):
         for tag in tags:
             d = {}
             for k in scalar:
-                v = [r['arms'][tag][k] for r in rs if tag in r['arms']]
+                v = [r['arms'][tag][k] for r in rs if tag in r['arms'] and r['arms'][tag].get(k) is not None]
                 if v:
                     d[k] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)), 'n': len(v)}
             for pset in ('p8', 'seam', 'interior'):
                 for k in tkeys:
                     v = [r['arms'][tag][pset][k] for r in rs
-                         if tag in r['arms'] and pset in r['arms'][tag] and r['arms'][tag][pset][k] is not None
-                         and not r['arms'][tag][pset]['static']]
+                         if tag in r['arms'] and pset in r['arms'][tag] and r['arms'][tag][pset].get(k) is not None]
                     if v:
                         d[f'{pset}.{k}'] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)),
                                             'n': len(v)}
@@ -421,16 +449,16 @@ def paired(rows, a, b, keys):
                 continue
             ra, rb = r['arms'][a], r['arms'][b]
             if pset:
-                if pset not in ra or pset not in rb or ra[pset]['static'] or rb[pset]['static']:
+                if pset not in ra or pset not in rb:
                     continue
-                if ra[pset][key] is None or rb[pset][key] is None:
+                if ra[pset].get(key) is None or rb[pset].get(key) is None:
                     continue
                 v.append(ra[pset][key] - rb[pset][key])
             else:
                 v.append(ra[key] - rb[key])
         if v:
             res[k] = {'mean': float(np.mean(v)), 'ci95': ci(v), 'median': float(np.median(v)),
-                      'a_better': int(sum(x < 0 for x in v)), 'n': len(v)}
+                      **paired_counts(v, k), 'n': len(v)}
     return res
 
 
@@ -454,10 +482,18 @@ def main():
     p.add_argument('--ckpt', type=Path, default=ROOT / 'results/range_branch/k1.pt')
     p = sub.add_parser('eval'); p.add_argument('--arm', action='append', required=True, help='tag=path | tag=bicubic')
     p.add_argument('--name', required=True); p.add_argument('--pair', action='append', default=[], help='a,b')
+    p.add_argument('--clips', default=os.environ.get('EVAL_CLIPS', ''),
+                   help='comma-separated manifest clip IDs for a scoped CPU regression')
     ap.add_argument('--procs', type=int, default=24)
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     names = clips()
+    if a.cmd == 'eval' and a.clips:
+        requested = a.clips.split(',')
+        unknown = sorted(set(requested) - set(names))
+        if unknown:
+            raise ValueError(f'Unknown clip IDs in eval manifest: {unknown}')
+        names = [name for name in names if name in set(requested)]
     if a.cmd == 'rangesub':
         jobs = [(n, a.src, OUT / a.tag, a.ckpt) for n in names]
         with Pool(a.procs) as pool:
@@ -475,19 +511,25 @@ def main():
             for name, n in pool.imap_unordered(_blend, jobs):
                 print(json.dumps({'blend': a.tag, 'clip': name, 'frames': n}), flush=True)
     else:
+        output = OUT / f'{a.name}.json'
+        assert_compatible_output(output)
         arms = dict(x.split('=', 1) for x in a.arm)
         with Pool(a.procs) as pool:
             rows = sorted(pool.imap_unordered(_eval, [(n, arms) for n in names]), key=lambda r: r['clip'])
         keys = ['psnr', 'lpips', 'psnr_gtrange', 'lpips_gtrange', 'null_energy', 'null_cos',
                 'p8.flicker', 'p8.warp', 'p8.warp_range', 'p8.warp_null', 'p8.terr_null', 'p8.terr_range',
                 'seam.terr_null', 'seam.flicker', 'seam.warp']
-        res = {'arms': arms, 'leaked': sorted(LEAKED), 'per_clip': rows, 'summary': summarise(rows, list(arms)),
+        keys += list(SCALAR_ALIASES.values())
+        keys += [f'{pset}.{key}' for pset in ('p8', 'seam') for key in TEMPORAL_ALIASES.values()]
+        res = {'metric_schema_version': METRIC_SCHEMA_VERSION, 'metric_schema': metric_metadata(),
+               'eval_set': str(D_), 'sr_scale': SR_SCALE, 'frame_stride': STRIDE,
+               'arms': arms, 'leaked': sorted(LEAKED), 'per_clip': rows, 'summary': summarise(rows, list(arms)),
                'paired': {pr: {g: paired([r for r in rows if sel(r)], *pr.split(','), keys)
                                for g, sel in (('all', lambda r: True),
                                               ('realistic', lambda r: r['degradation'] == 'realistic'),
                                               ('clean16', lambda r: not r['leaked']))}
                           for pr in a.pair}}
-        (OUT / f'{a.name}.json').write_text(json.dumps(res, indent=1))
+        output.write_text(json.dumps(res, indent=1, allow_nan=False))
         print(json.dumps({'written': str(OUT / f'{a.name}.json'), 'clips': len(rows)}), flush=True)
 
 

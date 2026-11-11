@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "layout": "comfyui_minimax_h3",
+  "upstream": "https://nvlabs.github.io/Sana/Open-H3-Regenerate-2K/",
+  "port_scope": "ComfyUI FL2VA port, cached neutral text, noise audio; native Diffusers parity unverified",
+  "base": {
+    "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_fl2va_pruned_bf16.safetensors",
+    "bytes": 40225724176,
+    "sha256": "a32572fb90b5508b201ec7c2eddcc184b13ddfd3c6f6d2cf06a0b46535d541b4"
+  },
+  "vae": {
+    "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+    "bytes": 5207808496,
+    "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522"
+  },
+  "context": {
+    "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+    "bytes": 299557,
+    "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2"
+  },
+  "recipe": "refiner-only-comfy",
+  "components": [
+    {
+      "role": "refiner",
+      "path": "/cache/zihaohe/streaming_sr0/assets/refiner/open_regen_2k_refiner_rank384_bf16.safetensors",
+      "bytes": 5868409512,
+      "sha256": "4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2"
+    }
+  ]
+}

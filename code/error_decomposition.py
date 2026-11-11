@@ -1,27 +1,20 @@
-"""mech5 (PROTOCOL_mech.md): how much of the restorer's error lies in the subspace the observation fixes?
+"""Complementary bicubic-band error diagnosis (metric schema v2).
 
-Range-null decomposition: x = U(D x) + N(x). The observation determines the first term exactly, so any
-error there is error the model did not have to make. Step 2 measured that H3 under the same guide is 2.55 dB
-behind a classical projection, which suggests the share is not negligible -- but that was before Stage-1
-training and before innerDC. This measures it on the arm we actually ship.
-
-If the range share is large, a residual parameterisation (predict only N, take the range part from the
-observation) buys that part of the error for free, and it is a training-time change, not a projection.
-If innerDC has already driven it to ~0, the remaining gap is purely null-space, which says the prior is the
-only lever left and no observation-side mechanism can help.
-
-Read-out rule, fixed before running:
-  range share >= 0.20 -> residual parameterisation is worth building; report the implied PSNR headroom
-  range share <  0.05 -> the observation side is already exhausted; say so and stop proposing mechanisms there
+Lowband L=UD and detail I-L sum to identity, but are not generally orthogonal.
+MSE equals lowband MSE + detail MSE + 2*mean(low_error*detail_error).
+The GT-lowband substitution is an oracle diagnostic, not achievable recovery.
+Historical decomp.json is preserved; v2 reports direct and clipped intervention MSE.
 """
-import json
+import json, os
 from pathlib import Path
 import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
+from restoration_metrics import (METRIC_SCHEMA_VERSION, assert_compatible_output, band_error_terms,
+                                 metric_metadata, psnr_from_mse)
 
-ROOT = Path('/cache/zihaohe/streaming_sr0')
+ROOT = Path(os.environ.get('SSR0', os.environ.get('STREAMING_SR_ROOT', '/cache/zihaohe/streaming_sr0')))
 D_ = ROOT / 'data/stage2_eval'
 OUT = ROOT / 'results/mech5_error_decomp'
 ARMS = {'indep': ROOT / 'results/stage2_blocks/indep',
@@ -34,7 +27,7 @@ def load(p):
 
 
 def split(x, s=4):
-    """(range, null) = (U(D x), x - U(D x)) for the x4 antialiased bicubic observation operator."""
+    """Return complementary low/detail bands, not an orthogonal range/null split."""
     t = x.permute(0, 3, 1, 2).double()
     h, w = t.shape[-2:]
     d = F.interpolate(t, size=(h // s, w // s), mode='bicubic', align_corners=False, antialias=True)
@@ -50,10 +43,28 @@ def ci(v, n=10000, seed=0):
     return [float(np.percentile(m, 2.5)), float(np.percentile(m, 97.5))]
 
 
+def describe_terms(terms):
+    """PSNR from actual MSE, with explicitly named oracle intervention gains."""
+    out = dict(terms)
+    out['psnr'] = psnr_from_mse(out['mse_actual'])
+    out['psnr_gt_lowband_substitution'] = psnr_from_mse(out['mse_gt_lowband_substitution'])
+    out['psnr_gt_lowband_substitution_clipped'] = psnr_from_mse(out['mse_gt_lowband_substitution_clipped'])
+    out['oracle_lowband_substitution_gain_dB'] = out['psnr_gt_lowband_substitution'] - out['psnr']
+    out['oracle_lowband_substitution_clipped_gain_dB'] = out['psnr_gt_lowband_substitution_clipped'] - out['psnr']
+    # Compatibility aliases, not independent contributions to total error.
+    out['mse_range'], out['mse_null'] = out['mse_lowband'], out['mse_detail']
+    out['range_share'] = out['mse_lowband'] / max(out['mse_lowband'] + out['mse_detail'], 1e-12)
+    out['psnr_if_range_exact'] = out['psnr_gt_lowband_substitution']
+    out['headroom_dB'] = out['oracle_lowband_substitution_gain_dB']
+    return out
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    output = OUT / 'decomp_v2.json'
+    assert_compatible_output(output)
     man = json.loads((D_ / 'manifest.json').read_text())
-    acc = {a: {'range': [], 'null': [], 'share': [], 'psnr': [], 'psnr_resid': []} for a in ARMS}
+    acc = {a: [] for a in ARMS}
     rows = []
     for name in man['clips']:
         meta = json.loads((D_ / name / 'meta.json').read_text())
@@ -63,7 +74,7 @@ def main():
             sd = base / name / 'stream'
             if not sd.exists():
                 continue
-            er, en, nf = [], [], 0
+            frames = []
             for t in range(0, T, STRIDE):
                 f = sd / f'{t:06d}.png'
                 if not f.exists():
@@ -71,42 +82,41 @@ def main():
                 g, y = load(D_ / name / 'hr' / f'{t:06d}.png'), load(f)
                 gr, gn = split(g[None])
                 yr, yn = split(y[None])
-                er.append(float((yr - gr).square().mean()))
-                en.append(float((yn - gn).square().mean()))
-                nf += 1
-            if not nf:
+                frames.append(band_error_terms(g.numpy(), y.numpy(), gr[0].numpy(), yr[0].numpy()))
+            if not frames:
                 continue
-            mr, mn = float(np.mean(er)), float(np.mean(en))
-            share = mr / max(mr + mn, 1e-12)
-            # a residual parameterisation makes the range error exactly zero; the rest is unchanged
-            psnr = 10 * np.log10(1.0 / max(mr + mn, 1e-12))
-            psnr_r = 10 * np.log10(1.0 / max(mn, 1e-12))
-            r[arm] = {'mse_range': mr, 'mse_null': mn, 'range_share': share,
-                      'psnr': float(psnr), 'psnr_if_range_exact': float(psnr_r),
-                      'headroom_dB': float(psnr_r - psnr), 'frames': nf}
-            for k, v in (('range', mr), ('null', mn), ('share', share),
-                         ('psnr', psnr), ('psnr_resid', psnr_r)):
-                acc[arm][k].append(v)
+            terms = {key: float(np.mean([frame[key] for frame in frames])) for key in frames[0]}
+            r[arm] = {**describe_terms(terms), 'frames': len(frames)}
+            acc[arm].append(r[arm])
         rows.append(r)
         print(json.dumps({'clip': name, **{a: {k: round(v, 5) if isinstance(v, float) else v
                                                for k, v in r[a].items()} for a in ARMS if a in r}}), flush=True)
 
     agg = {}
-    for a in ARMS:
-        if not acc[a]['share']:
+    for a, samples in acc.items():
+        if not samples:
             continue
-        head = [p - q for p, q in zip(acc[a]['psnr_resid'], acc[a]['psnr'])]
-        agg[a] = {'range_share': {'mean': float(np.mean(acc[a]['share'])), 'ci95': ci(acc[a]['share'])},
-                  'mse_range': float(np.mean(acc[a]['range'])), 'mse_null': float(np.mean(acc[a]['null'])),
-                  'psnr': float(np.mean(acc[a]['psnr'])),
-                  'psnr_if_range_exact': float(np.mean(acc[a]['psnr_resid'])),
-                  'headroom_dB': {'mean': float(np.mean(head)), 'ci95': ci(head)}}
-    s = agg.get('indep', {}).get('range_share', {}).get('mean', 0.0)
-    verdict = ('residual parameterisation is worth building' if s >= 0.20 else
-               'the observation side is already exhausted' if s < 0.05 else 'partial')
-    out = {'n': len(rows), 'per_clip': rows, 'aggregate': agg, 'verdict': verdict}
-    (OUT / 'decomp.json').write_text(json.dumps(out, indent=1))
-    print(json.dumps({'aggregate': agg, 'verdict': verdict}, indent=1))
+        summary = {key: {'mean': float(np.mean([s[key] for s in samples])),
+                         'median': float(np.median([s[key] for s in samples])),
+                         'ci95': ci([s[key] for s in samples]), 'n': len(samples)}
+                   for key in samples[0] if key != 'frames'}
+        agg[a] = {key: value['mean'] for key, value in summary.items()}
+        agg[a].update({'range_share': summary['range_share'], 'headroom_dB': summary['headroom_dB'],
+                      'statistics': summary})
+    schema = metric_metadata()
+    schema['decomposition_identity'] = 'mse_actual = mse_lowband + mse_detail + mse_cross_term'
+    schema['legacy_decomposition_aliases'] = {
+        'mse_range': 'mse_lowband', 'mse_null': 'mse_detail',
+        'range_share': 'lowband/(lowband+detail) energy ratio only; excludes cross term; NOT fraction of total error',
+        'psnr_if_range_exact': 'psnr_gt_lowband_substitution (oracle, unclipped)',
+        'headroom_dB': 'oracle_lowband_substitution_gain_dB; may be negative, not achievable headroom',
+    }
+    schema['aggregation'] = 'Per clip: mean frame MSE then PSNR. Aggregate PSNR: mean of per-clip PSNR. statistics.ci95 bootstraps clips.'
+    verdict = 'Diagnostic only: nonorthogonal band energy shares cannot establish recoverable error or architectural necessity.'
+    out = {'metric_schema_version': METRIC_SCHEMA_VERSION, 'metric_schema': schema,
+           'n': len(rows), 'eval_set': str(D_), 'per_clip': rows, 'aggregate': agg, 'verdict': verdict}
+    output.write_text(json.dumps(out, indent=1, allow_nan=False))
+    print(json.dumps({'written': str(output), 'aggregate': agg, 'verdict': verdict}, indent=1))
 
 
 if __name__ == '__main__':

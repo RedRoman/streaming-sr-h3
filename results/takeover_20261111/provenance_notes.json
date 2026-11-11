@@ -1,0 +1,54 @@
+{
+  "audit_scope": "31984 read-only JSON metadata, directory entries and safetensors headers; no tensor or media decoding",
+  "confirmed_historical_overlap": {
+    "manifest": "/cache/zihaohe/streaming_sr0/data/real_eval/heldout/manifest.json",
+    "clips": 96,
+    "stage7_train_sources": 87,
+    "stage7_val_sources": 9,
+    "same_original_video_path_verified_examples": [
+      "1jyM3quZ0h0",
+      "1xRoPmw1yCY",
+      "24cmo2fEQo8",
+      "259QGi4PNAc",
+      "1lF4g89LKmc",
+      "4BVEb9P1YxQ"
+    ],
+    "verification": "Heldout meta.json.video resolves to /cache/zihaohe/streaming_sr0/data/real_av/_cand/<id>.mp4; candidates_big and prepare_stage7_train.py SRC refer to the same path; each example Stage7 safetensors embedded meta id and split match."
+  },
+  "checkpoint_claim_boundary": "Stage7 source overlap is established; this does not imply the original Stage1 headline checkpoint trained on Stage7.",
+  "pilot_latents_provenance": {
+    "source": "/temp/h3_unified_dataset_20260918/manifests/eligible.{train,val}.jsonl",
+    "rebuild_script": "/cache/zihaohe/streaming_sr0/code/rebuild_pilot.sh",
+    "rebuild_completed_host_log": "2026-11-04 00:22:50",
+    "train_files": 2874,
+    "val_files": 152,
+    "source_counts": {
+      "train": {
+        "h3_generated": 398,
+        "ostris_h3_1k": 348,
+        "seedance": 2128
+      },
+      "val": {
+        "h3_generated": 44,
+        "ostris_h3_1k": 8,
+        "seedance": 100
+      }
+    },
+    "interpretation": "Sidecars and rebuild script identify generated h3_unified material, not Stage7 real footage."
+  },
+  "pre_takeover_preserved": {
+    "original_root": "/cache/zihaohe/streaming_sr0",
+    "files": [
+      "code/omnibench_audio.py",
+      "code/omnibench_audio_lag.py",
+      "results/deploy/omnibench_audio_reference.json",
+      "results/deploy/omnibench_audio_lag.json"
+    ],
+    "audio_reference_clips": 71,
+    "notes": [
+      "OmniVR aligned SI-SDR mean -15.341 dB vs raw -33.614; degraded -0.291 with zero lag; do not compare unaligned SI-SDR as quality.",
+      "omnibench_audio.py mel_l1 uses natural log at 48 kHz; it is not directly numerically comparable to old 20log10 mel_dB at 32 kHz.",
+      "These are preserved historical scripts/results, not rerun or endorsed here; our OmniBench audio arm remains unrun."
+    ]
+  }
+}

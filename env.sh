@@ -1,8 +1,9 @@
-# streaming_sr0 runtime on 30778.
+# Runtime defaults to this checkout; shared assets are linked read-only by convention.
 # The CANN tree under $H3_BASE_ENV is complete, but its own set_env.sh hardcodes the path it was installed at,
 # so we export the same variables here against the actual location instead of sourcing it.
-export SSR0=/cache/zihaohe/streaming_sr0
-export H3_BASE_ENV=/cache/zihaohe/envs/minimax-h3-npu
+export SSR0="${SSR0:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)}"
+export H3_BASE_ENV="${H3_BASE_ENV:-/cache/zihaohe/envs/minimax-h3-npu}"
+export COMFYROOT="${COMFYROOT:-$SSR0/code/ComfyUI}"
 export CANN="$H3_BASE_ENV/Ascend/cann-9.0.1"
 export ASCEND_HOME_PATH="$CANN"
 export ASCEND_TOOLKIT_HOME="$CANN"
@@ -11,7 +12,9 @@ export ASCEND_AICPU_PATH="$CANN"
 export TOOLCHAIN_HOME="$CANN/toolkit"
 export PYTHONPATH="$CANN/python/site-packages:$CANN/opp/built-in/op_impl/ai_core/tbe:$PYTHONPATH"
 export LD_LIBRARY_PATH="$CANN/lib64:$CANN/lib64/plugin/opskernel:$CANN/lib64/plugin/nnengine:$CANN/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:$LD_LIBRARY_PATH"
-export PATH="$CANN/bin:$CANN/compiler/ccec_compiler/bin:$PATH"
+TASK_CCEC="$CANN/compiler/ccec_compiler/bin"
+if [ ! -d "$TASK_CCEC" ]; then TASK_CCEC="$CANN/tools/ccec_compiler/bin"; fi
+export PATH="$CANN/bin:$TASK_CCEC:$PATH"
 ATB="$H3_BASE_ENV/Ascend/nnal/nnal/atb/latest/atb/cxx_abi_1"
 export ATB_HOME_PATH="$ATB"
 export LD_LIBRARY_PATH="$ATB/lib:$ATB/examples:$LD_LIBRARY_PATH"

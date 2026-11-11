@@ -1,0 +1,88 @@
+{"group": 1, "total": 1, "source_id": "NPCSVxYpK3k", "split": "dev", "reused_verified": false, "target_pixel_sha256": "850febb112a77909cb2bd42b4077fda55f1b2bc880fe1f02fcbb6017ace28e50", "elapsed_seconds": 7.61}
+{
+  "VAE_encoded": false,
+  "input_plan_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/pilot/dev.jsonl": "cb78a41d45e2c8b094fdf498a0e0109d83a1a22c572138194445beed93f1c4c2",
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/pilot/train.jsonl": "0355e0c6cf7abd350d8e9a805b84d1482ef0465334997202b64eabd2a375a068"
+  },
+  "libraries": {
+    "OpenCV": "4.11.0",
+    "Pillow": "12.3.0",
+    "PyAV": "18.1.0",
+    "ffmpeg": [
+      "ffmpeg version 4.2 Copyright (c) 2000-2019 the FFmpeg developers",
+      "built with gcc 10.3.1 (GCC)",
+      "configuration: --enable-shared --prefix=/usr/local/ffmpeg",
+      "libavutil      56. 31.100 / 56. 31.100",
+      "libavcodec     58. 54.100 / 58. 54.100",
+      "libavformat    58. 29.100 / 58. 29.100",
+      "libavdevice    58.  8.100 / 58.  8.100",
+      "libavfilter     7. 57.100 /  7. 57.100",
+      "libswscale      5.  5.100 /  5.  5.100",
+      "libswresample   3.  5.100 /  3.  5.100"
+    ],
+    "ffmpeg_executable": "/usr/local/ffmpeg/bin/ffmpeg",
+    "ffmpeg_executable_sha256": "93297f600fed448a70cc23fa49e5a0e152cf23d0a0a80b7977801b980a443f23",
+    "libav_versions": {
+      "libavcodec": [
+        62,
+        28,
+        102
+      ],
+      "libavdevice": [
+        62,
+        3,
+        102
+      ],
+      "libavfilter": [
+        11,
+        14,
+        102
+      ],
+      "libavformat": [
+        62,
+        12,
+        102
+      ],
+      "libavutil": [
+        60,
+        26,
+        102
+      ],
+      "libswresample": [
+        6,
+        3,
+        102
+      ],
+      "libswscale": [
+        9,
+        5,
+        102
+      ]
+    },
+    "numpy": "1.26.4"
+  },
+  "manifests": {
+    "dev": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/smoke_dev_materialized.jsonl",
+      "samples": 4,
+      "sha256": "f1e2e54b4a5a01f5e2041678fc1fb3da51b5fa4c1b922c01ee401c5b42517ba4"
+    },
+    "train": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/smoke_train_materialized.jsonl",
+      "samples": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "materialized_verified_groups": 1,
+  "planned_groups": 40,
+  "reused_verified_groups": 0,
+  "schema": "openh3.materialization_summary.v1",
+  "seconds": 7.61,
+  "source_ids": [
+    "NPCSVxYpK3k"
+  ],
+  "status": "smoke_complete",
+  "total_npz_bytes": 13073724,
+  "training_started": false
+}

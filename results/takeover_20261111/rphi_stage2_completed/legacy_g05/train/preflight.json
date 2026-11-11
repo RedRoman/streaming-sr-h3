@@ -1,0 +1,124 @@
+{
+  "train": {
+    "manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "samples": 128,
+    "sources": 32,
+    "tasks": {
+      "sr": 32,
+      "deblur": 32,
+      "denoise": 32,
+      "compression": 32
+    },
+    "byte_hashes_verified": true,
+    "provenance": {
+      "schema": "openh3.materialized_omni_pilot.v1",
+      "manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+      "original_source_verification": "materialization_attestation_only",
+      "current_npz_verification": "receipt_file_and_pixel_sha256",
+      "target_semantics": "shared clean original-recording RGB reference proxy",
+      "task_order": [
+        "sr",
+        "deblur",
+        "denoise",
+        "compression"
+      ],
+      "condition": "public onehot4 + log2(nominal scale)/3 + known_mask",
+      "control_condition": "retain nominal task/scale; control label is not a model condition",
+      "near_clean_sigma_8bit": 1.0,
+      "sr_input_preparation": {
+        "implementation": "torch.nn.functional.interpolate",
+        "mode": "bicubic",
+        "align_corners": false,
+        "antialias": true,
+        "range": "float32 [0,1], clamped after resize",
+        "role": "HR input guide; not the physical forward operator"
+      }
+    },
+    "receipt_sha256": {
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/03a3334a701265bfd3ca168141cc06dae44c2f05205e35c94877718d58842397/complete.json": "ead11325960c4e62108330f9cafd78e036a20f9b31b434cfa60ca33f86c59a9a",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/0777d53619270c6d268e58f58b1ffad5969d43346777e7f6c5c256790eb402d4/complete.json": "6a7c0c2024243091cdf00c947a504530c0c36ff000c79049117290582483dec9",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/1f46f55287d3131bae6044f53e1012a416cb6fe516cbd06b811702a01f33cd05/complete.json": "9702d8c5b211bd2bf9209a59ebe336c5932b66c6f195cd13636b0349aad16bd1",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/2d36b185c8c2145c3e232f55d70a0b92d57fe036444828050c274ca4a47785d3/complete.json": "8d40e2ae5d3adf2e3a375f38f231d54de06b9d85fe230c8cc0c19c39b7f0728a",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/2f17411de157e15ed315ced653886973e174e2550d365e3c3789394724026ac1/complete.json": "bed4c79726e3cfa8b2d3d11d07734a11f4dedbfe8256bdc9e2ddecb8dbc6daf3",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/30dc7548aa495453900871d2dc2c9f30daa4119c442d95ffe5955a8f336a9426/complete.json": "a15d2c52a99f941dfd25bb6891d98e50d4bf224400f094c7a7c3c127ce437f67",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/3f2fd18078998a6537b5dfdcd72b5467f44eafb9d98645837b09e55636b7f96f/complete.json": "5e6d3820e8558670b346ee62f2653d99c30120fd1a749d524ad79dad977ef93b",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/476653017798c34c8caf866ab4282e505fbbe05f0ac8ca16acaea478830cf29e/complete.json": "5940a1ae8031cec8cdd2c04e6f957fcea448fe853fcc0a48e08af4975f13fdb5",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/complete.json": "77346b6a27ffbd71c143ede1bfb9b660fba8699a384336afc253fb63de4d9131",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/59210fdbc5d80c21669888f990d9d25ea53703928369af3b8347b846214eefe0/complete.json": "bb66fa1edfe8d7f97bdd9d67d6700f0c6f307c86cf6c30bca5630fdc0ab72c30",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/5bd36cf74623cd75f4964633a59d885f899166a4cb9d8dfeeb236a05d46e9241/complete.json": "e7f43648cee75a4b6b3caa39f88ed3e0e29d5f0305259c69988fb22c78fb270f",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/5dd2b0852f9e7c386a9c1b7fd45ad1e52dd5e38442eaabe08cccd25e07ee2e17/complete.json": "2f788b1d1826d4ed91fb9036bc0c95e8afe2271bbfae0105c3d1f4769c0dfc18",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/604bfd45998159a5ff0d234f0e327c693685d20caefade11b78debf310813dda/complete.json": "fae598599a2d98a58df9377572634ef613fbb76315cc843f870e2e77eff1ead5",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/658788e9b1bd729c7643029a99d143fdb13fb0e6caa3868a1a34d941b78f1b77/complete.json": "51a421b95f3f8b42b9d7f4652a286f6af3eb5e442c7ea980518addcbaf74f68f",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/6792a77d102872eb2f0ba3ffb1b0d42996ecb2526fe8f0846b18dfadc84993ee/complete.json": "26056c9dba27732cbe06e0bfaee1f7508ba5f129d3021cd1f5c7f6cb45183703",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/67b658437bd4cec392e9a64b4f8f03a521880ea4b4cab863c4d8bba7e896b746/complete.json": "727a0b45df75e40af553bf728d7fc6d9d766bc3380c749925dc47299fb40d40d",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/688886808a39894f0ed37dfb262e711d21f9549c5dd3cba04d71feb41cdc9665/complete.json": "05dba4fc503ee80385169cc43707e0219ea27a62e877a19c2b457d79c4f005c3",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/774f07a2aa27ad0765f89fae8c001fb8a8326c0062559f89c9cd9b38c0180e3b/complete.json": "e67cc83dfa28fad5a2b0f80cf247697735955118a3c73da68629fdcbd45af83c",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/82e547a696c49866692c5410bbd1c71c3a153a682b723dcd2cd685a5b9a3e5c0/complete.json": "d6cc6a8c03b4f2f6353bc6a6932ecc6c6b9c70ec53605f69162920ce622ef82e",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/96bd353c472d6734621eb00b59adcb2e421dc59b1d8ada84bc741a33738acf4d/complete.json": "4fd32b0ee4d6c812eb173a4f00f1a21a055dfcfbefd9de758bc200d84f51cfdd",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/9dde0e05ef2a9037f89817b278f5fd95700b2aba9d04e4fe843de1daf9333005/complete.json": "1cdd7c4fe319b2dc7de342738f6da0ba6149be1188afb97abf79c0fc55daa870",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/9e82174c3759b870bad797ba5a121d0745b53d3aa398ce455dce1e486d7bc2d7/complete.json": "f623d98f7f83db2984fc185aac589b103ebe325358a62597dd3fc1a9db31a96c",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/a9929a57f2100efc9a9205941280ab823c4716eb84e5c89920e8a28eaa11d39c/complete.json": "fcbe9de7f2f4a7f8180dc03b2d200675d8bb6b768c4a6a6982ea13fe8c9e1352",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/b3c8ef2b3bf0527fb4e3a993fa3b5afed7574025ba28d23f2069ec4dc6b819ea/complete.json": "a3147c98ac6446f031cb9c3c4a49b22bf874d38cdf8a04bc12cd023e10cbdd39",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/be5dbad21b59a6a66c5d9b5394442c1fe5119119c975f305c1cbf7ec5c48075d/complete.json": "0f8a4fb44e9258ca21d4a3945b23af54d97c907b45942f9766d0fa96d8bde026",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/c9cfb5e075f58225b13a5936af3d7f53225c2e8b354fef5a26659a321961eb5c/complete.json": "67afbc441ac38fe8774412478fdea3912a8b3ff355dd4f020ff15a87a490c23e",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/d182fc3095690a6015e503c37a80818a553b593b322fff4c0f08b703d40f6a55/complete.json": "b4596379419a31d78f3e453c7ddf59bd3c1e8791499d41ce321d05e38439fdff",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/d5c3bd119e5ef82961e1a8b40eaa9c0293eab27511696cff54f8c36e81d44135/complete.json": "cff7c16ec28b5d7976062c553614d050c070fa21b75062131b74f8523a3f7b74",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/db14b2a30191ec4cf043ce15abeb3007432a51d596044db72899ab22f41d8576/complete.json": "6f44882f41be2e16c0fa5fcf3b1c55ff7ddb10ab859900f382a2c7a0138495f1",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/e308e85933ed7f20dcd3cd21f2520bb3a5427ab37d6b6448dfa23d7cab89b6ce/complete.json": "ba45a9135b23c7501f0ce65753cc721d5391769e22160b5b1ac853ba2f70c526",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/e45896d003fb2b2795ae403de93bb25ab774c9bd6bf6275c485f3ccad6de83e4/complete.json": "dc5a496e282995fed922621c87ec3352cc76ebb8e855e7d5ae539bef5a1ab87a",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/e57aa72f38ee366615097d50b81378e2d977e2ae88785f523e750c13b5695144/complete.json": "f10776572f5bc3f60f088759db35f17753a4ceeec48c84fa61baf972b2e9c5d9"
+    }
+  },
+  "dev": {
+    "manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "samples": 32,
+    "sources": 8,
+    "tasks": {
+      "sr": 8,
+      "deblur": 8,
+      "denoise": 8,
+      "compression": 8
+    },
+    "byte_hashes_verified": true,
+    "provenance": {
+      "schema": "openh3.materialized_omni_pilot.v1",
+      "manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+      "original_source_verification": "materialization_attestation_only",
+      "current_npz_verification": "receipt_file_and_pixel_sha256",
+      "target_semantics": "shared clean original-recording RGB reference proxy",
+      "task_order": [
+        "sr",
+        "deblur",
+        "denoise",
+        "compression"
+      ],
+      "condition": "public onehot4 + log2(nominal scale)/3 + known_mask",
+      "control_condition": "retain nominal task/scale; control label is not a model condition",
+      "near_clean_sigma_8bit": 1.0,
+      "sr_input_preparation": {
+        "implementation": "torch.nn.functional.interpolate",
+        "mode": "bicubic",
+        "align_corners": false,
+        "antialias": true,
+        "range": "float32 [0,1], clamped after resize",
+        "role": "HR input guide; not the physical forward operator"
+      }
+    },
+    "receipt_sha256": {
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/08ad002234ec8ccab8644ebe579baf9eaaca5069f35b63ba6110a2c71174cb68/complete.json": "7cb0cd9435c7708c1f343eb011323267281e83929878195dad818135ea1089a4",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/0d6d079ef116855d07e7e17b73f5eeca866f47b0765ed1b46c26ee446ede940a/complete.json": "b27652c3b7985a80fc689053b1337f4e7c050fda31918cae97ee070db34cadc6",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/22edf17a7a8c93fa7c00560354ff5b0132715cefddb6b650b3b14f0bd11f4636/complete.json": "c2fcfadd2dee82d6db2d07fb58926739bf029f8ef657d3715c2d2c3fc02c57ac",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/258804df16c5894e41d6a3d2ea33a2ed25aa2fc0f11f4b36072389db0833e089/complete.json": "1dfb742082ab157c2f58abcbaa18111676899d27a7642b6de5b85a3593cb164a",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/3107166a48647c1a5e06179d538a21b74992b79645ad90b39177ce6f429b7f82/complete.json": "d9715fb52284ebe90802349e4fe51675991d0ef48591c1f832aa76d76c268cf6",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/complete.json": "bb1e78a89620ac07f517024893c5f778700c569870477dabb9896e9758417c7a",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/9e5f4e6b2de7703a069be46606f5bcca5cb65d59723ff1b92a8df39d9d2980ce/complete.json": "0b4bbe91cc104445ff952cd58b9443e54961b57d0073debb5e1661460cff21f1",
+      "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/fe0f09ec44af5da54c1da686a4083a51745db9509a7630952cc26f98454175a3/complete.json": "cdd9277ca5aff4f20a73095a9c085b7f6a1fee76acf5af893cf1eae0f58971a9"
+    }
+  },
+  "separation": {
+    "source_id_overlap": 0,
+    "source_sha256_overlap": 0,
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+  }
+}

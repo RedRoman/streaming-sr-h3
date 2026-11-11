@@ -7,18 +7,71 @@
     "current": "Useful integration and experimental infrastructure; no demonstrated distinct method contribution or omni generalization yet.",
     "H1_action_risk": "Downgrade to baseline/control: frozen candidates, regional counterfactual utility and calibrated selective override have direct prior art in VetoNet.",
     "H2_history_validity": "Generic history gating overlaps LaverNet and TURTLE. Narrow the research hypothesis to explicitly supervised marginal restoration utility of an actual past observation for the current query.",
-    "not_claimed": ["first selective generation", "first degradation-aware temporal gate", "first order-aware restoration", "first low/high frequency restoration-generation fusion", "pretrained component replacement or LoRA as a new algorithm", "causal H3 from causal R_phi", "independent calibrated risk from current training-fit variance"]
+    "not_claimed": [
+      "first selective generation",
+      "first degradation-aware temporal gate",
+      "first order-aware restoration",
+      "first low/high frequency restoration-generation fusion",
+      "pretrained component replacement or LoRA as a new algorithm",
+      "causal H3 from causal R_phi",
+      "independent calibrated risk from current training-fit variance"
+    ]
   },
   "primary_sources": [
-    {"method": "VetoNet", "url": "https://arxiv.org/abs/2610.21335", "publication": "2026-10 preprint", "overlap": "Frozen restoration/generation experts, regional counterfactual swaps, relative utility, certified veto."},
-    {"method": "SafeRestore", "url": "https://arxiv.org/abs/2609.03475", "publication": "2026-09 preprint", "overlap": "Selective restoration with disjoint policy tuning and risk certification; image iid assumptions do not establish video drift guarantees."},
-    {"method": "LaverNet", "url": "https://arxiv.org/abs/2512.16313", "publication": "2025-12 preprint", "overlap": "Lightweight all-in-one video restoration with selective propagation of degradation-agnostic features."},
-    {"method": "TURTLE", "url": "https://arxiv.org/abs/2410.03936", "publication": "NeurIPS 2024", "overlap": "Causal history retrieval, alignment and routing."},
-    {"method": "RONIN", "url": "https://arxiv.org/abs/2507.14851", "publication": "WACV 2026", "overlap": "Causal all-in-one restoration and per-frame degradation prompts."},
-    {"method": "ORCANet", "url": "https://arxiv.org/abs/2601.00533", "publication": "2026 preprint", "overlap": "Smoothly evolving compound weather and static/dynamic degradation prompts."},
-    {"method": "DiTTo", "url": "https://arxiv.org/abs/2605.30915", "publication": "2026 preprint", "overlap": "Order-aware restoration expert scheduling; our small-model diagnostic is not a claim to first order-aware restoration."},
-    {"method": "FiDeSR", "url": "https://arxiv.org/abs/2603.02692", "publication": "CVPR 2026", "overlap": "Low/high frequency enhancement and residual noise refinement for diffusion SR."},
-    {"method": "DDNM", "url": "https://arxiv.org/abs/2212.00490", "publication": "ICLR 2023", "overlap": "Range/null-space decomposition under an observation operator; canonical frequency bands here are not physical null spaces."}
+    {
+      "method": "VetoNet",
+      "url": "https://arxiv.org/abs/2610.21335",
+      "publication": "2026-10 preprint",
+      "overlap": "Frozen restoration/generation experts, regional counterfactual swaps, relative utility, certified veto."
+    },
+    {
+      "method": "SafeRestore",
+      "url": "https://arxiv.org/abs/2609.03475",
+      "publication": "2026-09 preprint",
+      "overlap": "Selective restoration with disjoint policy tuning and risk certification; image iid assumptions do not establish video drift guarantees."
+    },
+    {
+      "method": "LaverNet",
+      "url": "https://arxiv.org/abs/2512.16313",
+      "publication": "2025-12 preprint",
+      "overlap": "Lightweight all-in-one video restoration with selective propagation of degradation-agnostic features."
+    },
+    {
+      "method": "TURTLE",
+      "url": "https://arxiv.org/abs/2410.03936",
+      "publication": "NeurIPS 2024",
+      "overlap": "Causal history retrieval, alignment and routing."
+    },
+    {
+      "method": "RONIN",
+      "url": "https://arxiv.org/abs/2507.14851",
+      "publication": "WACV 2026",
+      "overlap": "Causal all-in-one restoration and per-frame degradation prompts."
+    },
+    {
+      "method": "ORCANet",
+      "url": "https://arxiv.org/abs/2601.00533",
+      "publication": "2026 preprint",
+      "overlap": "Smoothly evolving compound weather and static/dynamic degradation prompts."
+    },
+    {
+      "method": "DiTTo",
+      "url": "https://arxiv.org/abs/2605.30915",
+      "publication": "2026 preprint",
+      "overlap": "Order-aware restoration expert scheduling; our small-model diagnostic is not a claim to first order-aware restoration."
+    },
+    {
+      "method": "FiDeSR",
+      "url": "https://arxiv.org/abs/2603.02692",
+      "publication": "CVPR 2026",
+      "overlap": "Low/high frequency enhancement and residual noise refinement for diffusion SR."
+    },
+    {
+      "method": "DDNM",
+      "url": "https://arxiv.org/abs/2212.00490",
+      "publication": "ICLR 2023",
+      "overlap": "Range/null-space decomposition under an observation operator; canonical frequency bands here are not physical null spaces."
+    }
   ],
   "common_contract": {
     "launch": "No training launched by this plan. New runtimes/run directories require CPU/NPU smoke, frozen contracts, healthy idle device, cooperative lock and second idle check. Do not modify or repeat healthy stage2 jobs.",
@@ -27,7 +80,14 @@
     "fairness": "Match source/crops, initialization, parameters, train samples/steps, history access and inference calls. Separately report teacher/label generation and tuning costs.",
     "temporal": "Stride1 adjacent-frame evaluation plus 96-frame sequences; cross stable/abrupt/smooth degradation with motion/occlusion/cuts. A degradation change is not automatically a reason to reset history.",
     "selection": "Use predeclared development gates; lock candidate and thresholds before untouched source-level test. Current 8 dev sources cannot certify novelty, generalization or risk guarantees.",
-    "metrics": ["source-paired per-task RGB PSNR and LPIPS", "clean and near-clean damage", "masked adjacent-frame error change", "transition recovery delay", "consecutive harmful-edit duration", "runtime and total training cost"],
+    "metrics": [
+      "source-paired per-task RGB PSNR and LPIPS",
+      "clean and near-clean damage",
+      "masked adjacent-frame error change",
+      "transition recovery delay",
+      "consecutive harmful-edit duration",
+      "runtime and total training cost"
+    ],
     "negative_results": "Keep null and harmful results. Do not expand steps to rescue a failed mechanistic control without a new stated hypothesis."
   },
   "experiments": [
@@ -40,12 +100,30 @@
       "removal_contract": "Before labels are generated, specify and validate a missing-history mechanism. Train the shared teacher with that mask/dropout distribution; never treat arbitrary zeroed image pixels as an in-distribution observation. Freeze teacher and label hashes for all student arms; validate labels against actual intervention benefit.",
       "student_validation": "On source-disjoint development data, measure the trained student's own leave-one-history-out loss difference while holding all other history fixed. Evaluate predicted utility and harmful-history use against these student interventions, not merely against the teacher's self-generated labels. Student updates can change the true utility; teacher-label accuracy alone cannot pass the mechanism gate.",
       "not_a_probability": "Utility is restorer-dependent loss difference, not a calibrated probability or physical sensor reliability.",
-      "controls": ["same gate with restoration loss only", "same gate with real marginal-utility supervision", "same gate with utility labels shuffled within task/severity strata", "K1 and fixed K3 references", "fixed temporal decay and fixed hysteresis controls"],
+      "controls": [
+        "same gate with restoration loss only",
+        "same gate with real marginal-utility supervision",
+        "same gate with utility labels shuffled within task/severity strata",
+        "K1 and fixed K3 references",
+        "fixed temporal decay and fixed hysteresis controls"
+      ],
       "screening_budget": "Proposed first screen: three trainable arms, 1000 steps each, K3, crop96, same seed and minibatches. Precompute shared labels once and report that cost. Only a positive mechanism screen proceeds to repeated seeds and independent-source testing.",
       "pass": "Real utility beats the same-capacity and shuffled-label controls on paired transition quality and harmful-history use, while retaining stable-segment temporal benefit and clean protection.",
-      "reject": ["benefit disappears against fixed decay/hysteresis", "shuffled labels work equally well", "gate mostly ignores history", "gain is confined to scene cuts", "teacher labels fail to predict actual history intervention effects"],
+      "reject": [
+        "benefit disappears against fixed decay/hysteresis",
+        "shuffled labels work equally well",
+        "gate mostly ignores history",
+        "gain is confined to scene cuts",
+        "teacher labels fail to predict actual history intervention effects"
+      ],
       "integration_constraint": "Current R_phi already reads raw K3 observations without generated feedback. Keep that property when integrating H3; do not present it as a newly fixed existing bug.",
-      "depends_on": ["stage2 full audit and frozen candidate", "mixed/temporal pilot data materialization", "validated missing-history teacher contract"]
+      "depends_on": [
+        "stage2 full audit and frozen candidate",
+        "mixed/temporal pilot data materialization",
+        "validated missing-history teacher contract"
+      ],
+      "implementation_contract": "configs/openh3_20261111/history_utility_contract_20261111.json",
+      "preparation_status": "contract prepared; data and production implementation unready; no teacher/student run"
     },
     {
       "id": "P2_order_information",
@@ -57,9 +135,16 @@
       "phase1": "CPU source-paired synthesis and distortion/identifiability checks, followed by oracle-order, unordered-code and shuffled-order same-capacity controls (proposed 500 steps each). Oracle code is a labeled diagnostic only.",
       "phase2": "Only after phase1 shows headroom, learn a small observation-only order/interaction head and compare with the unordered blind model at the same budget. Test held-out parameter combinations, single-degradation and nearly commuting negative controls.",
       "pass": "Oracle order has useful headroom and blind inference recovers it beyond severity cues, parameter count and single-degradation specialization.",
-      "reject": ["oracle order does not improve restoration", "shuffled or inverted codes leave performance unchanged", "gain comes only from extra capacity", "held-out severity combinations remove the gain"],
+      "reject": [
+        "oracle order does not improve restoration",
+        "shuffled or inverted codes leave performance unchanged",
+        "gain comes only from extra capacity",
+        "held-out severity combinations remove the gain"
+      ],
       "novelty_boundary": "Order-aware restoration already exists. Potential contribution would be a proven identifiable and useful ordered interaction under a fixed video compute budget, not the presence of an order label.",
-      "depends_on": ["new ordered-pair dataset; current four single-task NPZs are insufficient"]
+      "depends_on": [
+        "new ordered-pair dataset; current four single-task NPZs are insufficient"
+      ]
     },
     {
       "id": "P3_h3_residual_intervention",
@@ -67,18 +152,42 @@
       "role": "cheap feasibility diagnostic before designing a generation interface; not a standalone novelty claim",
       "question": "Does fixed H3 provide correct detail that is obscured by harmful changes in other components?",
       "mechanism": "Let R be R_phi and G the fixed H3 output. Decompose G-R into a predeclared orthogonal Haar or DCT partition; add selected bands back to R in pixel space. This is a representation intervention, not a known physical null-space projection.",
-      "controls": ["R_phi only", "full H3 output", "fixed alpha .25 soft anchor", "predeclared low/mid/high residual bands", "random equal-dimensional subspaces", "phase-shuffled same-energy residual", "GT-oracle band subset for diagnosis only"],
+      "controls": [
+        "R_phi only",
+        "full H3 output",
+        "fixed alpha .25 soft anchor",
+        "predeclared low/mid/high residual bands",
+        "random equal-dimensional subspaces",
+        "phase-shuffled same-energy residual",
+        "GT-oracle band subset for diagnosis only"
+      ],
       "budget": "CPU reuse of pending fixed H3 all22-frame float32 caches; zero additional H3 sampling calls for the initial band screen, zero training.",
       "measure": "Evaluate final float32 output with identical clipping and report pre/post-clipping error, LPIPS and stride1 temporal changes. Oracle-selected subsets are never deployed or reported as learned-method results.",
       "pass": "A fixed representation constraint retains measurable correct detail beyond fixed mixing and random subspaces, without damaging stable structures or temporal consistency.",
-      "reject": ["even the tested oracle band family has no useful headroom", "only sharpness/no-reference scores improve", "fixed mixing or random subspaces match the result"],
+      "reject": [
+        "even the tested oracle band family has no useful headroom",
+        "only sharpness/no-reference scores improve",
+        "fixed mixing or random subspaces match the result"
+      ],
       "next_if_positive": "Design and train a guide-matched residual interface/LoRA for the useful component; compare against ordinary matched-guide LoRA with equal budget.",
-      "depends_on": ["stage2 candidate audit", "real H3/VAE smoke", "fixed raw-guide/R_phi-guide float32 output cache; presently not available", "clean/near-clean H3 control implementation before protection claims"]
+      "depends_on": [
+        "stage2 candidate audit",
+        "real H3/VAE smoke",
+        "fixed raw-guide/R_phi-guide float32 output cache; one-source ordinary cache now available",
+        "clean/near-clean H3 control implementation before protection claims"
+      ],
+      "preparation_status": "One-source ordinary H3 float caches now exist; compression is a strong negative case. Clean/near-clean H3 remains next. P3 decomposition itself is not implemented or evaluated."
     }
   ],
   "action_risk_control": {
     "status": "keep_as_baseline_not_primary_contribution",
-    "controls": ["fixed mixing", "residual magnitude", "absolute prediction-error variance", "relative utility", "shuffled utility"],
+    "controls": [
+      "fixed mixing",
+      "residual magnitude",
+      "absolute prediction-error variance",
+      "relative utility",
+      "shuffled utility"
+    ],
     "fairness": "Match accepted region coverage AND actual modification magnitude. Lower harm achieved simply by weaker editing is not evidence for a better risk estimate.",
     "calibration": "Use separately audited source groups for threshold fitting and testing. Training-fit confidence and temporally correlated frames do not establish independent risk certification.",
     "existing_diagnostic": "results/takeover_20261111/rphi_selection_headroom_20261111.json"

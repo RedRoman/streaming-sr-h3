@@ -1,0 +1,221 @@
+{
+  "source_id": "6UZVovkR3IU",
+  "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+  "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+  "task": "compression",
+  "split": "dev",
+  "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+  "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+  "schema": "rphi.guide_export.v1",
+  "complete": true,
+  "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+  "scope": "engineering_smoke_subset",
+  "checkpoint": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+  "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "checkpoint_step": 3000,
+  "model_schema": "rphi.canonical_rgb.v1",
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "condition_mode": "observations_only",
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "record_sha256": "fb5057fa4537572d347bbaae6b327d649eda3d45b33027ca549f756b9c434f88",
+  "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/compression.npz",
+  "observation_file_sha256": "e98c4eb4c3e2c33abe51cfce5f62197133adb06e04500aa130e422cf457934e3",
+  "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/target.npz",
+  "target_file_sha256": "11b26a71b52cbe2ecccf7f74888c9f3efd66ec1e571209718f65a4f718c44359",
+  "geometry": {
+    "frames": 22,
+    "height": 480,
+    "width": 832,
+    "channels": 3,
+    "layout": "THWC",
+    "dtype": "float32"
+  },
+  "frame_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "history_indices": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      4,
+      5,
+      6
+    ],
+    [
+      5,
+      6,
+      7
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      8,
+      9,
+      10
+    ],
+    [
+      9,
+      10,
+      11
+    ],
+    [
+      10,
+      11,
+      12
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      12,
+      13,
+      14
+    ],
+    [
+      13,
+      14,
+      15
+    ],
+    [
+      14,
+      15,
+      16
+    ],
+    [
+      15,
+      16,
+      17
+    ],
+    [
+      16,
+      17,
+      18
+    ],
+    [
+      17,
+      18,
+      19
+    ],
+    [
+      18,
+      19,
+      20
+    ],
+    [
+      19,
+      20,
+      21
+    ]
+  ],
+  "guide_npz": "samples/rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3.npz",
+  "guide_file_sha256": "e97c9d054ad48830c9c201d8cfc303b18a33e84178365d8f8bd8d4e079a5461a",
+  "arrays": {
+    "rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "691f200633dc66acfefb05c60e0d799164062418b1f3403a76c8e370e0be5f8c"
+    },
+    "raw_rgb": {
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "array_sha256": "9e39120ff1404cba7db375e483de58675dbd7d73b8bb9f2a3ce061afaa92c6cc"
+    }
+  },
+  "clipping": {
+    "component_count": 233060,
+    "component_fraction": 0.008842177787490288,
+    "raw_min": -0.013218964450061321,
+    "raw_max": 1.0237706899642944
+  },
+  "semantics": {
+    "rgb": "float32 THWC clipped to [0,1]; no quantization; intended downstream RGB guide",
+    "raw_rgb": "float32 THWC prediction before clipping; may be outside [0,1]",
+    "log_variance": "optional float32 THW1 isotropic per-channel variance in log space for raw_rgb errors; calibration only",
+    "input": "observed RGB only; SR uses prepare_observed bicubic HR grid; native observations unchanged",
+    "target_usage": "dataset integrity and HR geometry validation only; no target pixels enter model or exported arrays",
+    "temporal": "all original frames, consecutive t-2,t-1,t; first-frame repetition; no future frames",
+    "scope_limit": "development export only; no VAE/H3 call, learned physical operator, or confidence-guided DC"
+  },
+  "implementation_sha256": {
+    "code/export_rphi_guides.py": "20f57732815685cf656c23be87e2a25baf4c21f3f1d0b6a960e8c63793133db3",
+    "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6"
+  }
+}

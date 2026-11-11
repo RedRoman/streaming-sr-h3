@@ -1,0 +1,418 @@
+{
+  "schema": "openh3.history_utility_contract.v1",
+  "date": "2026-11-11",
+  "status": "implementation_contract_only_not_implemented_not_launched",
+  "ownership": "This file only. No production runtime, queue, remote assets, or existing plan is changed.",
+  "parent_experiment": "P1_history_marginal_utility",
+  "hypothesis": "At matched model and inference cost, explicit supervision of a past observation's marginal benefit improves history use beyond the same generic gate. Generic temporal gates, raw-only inputs and counterfactual utility are not claimed novel by themselves.",
+  "dependencies_read_sha256": {
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "configs/openh3_20261111/parallel_research_plan_20261111.json": "3e6d5871d91ea11b1c8e5a2b3907f361bd05a8fe999ada184d2c9e5e993e9481",
+    "configs/openh3_20261111/mixed_temporal_data_plan_20261111.json": "7664fb681af0893b7cce355ca392558cfa0a35f782bb810592af05d7d017652e"
+  },
+  "launch_readiness": {
+    "ready": false,
+    "unresolved": [
+      "Complete stage2 audit and freeze one eligible blind fidelity checkpoint/config/hash",
+      "Implement isolated mask-aware teacher/student and new loader; existing runtime is unchanged",
+      "Materialize and verify the selected 96-frame profiles for the existing 32 train / 8 dev sources",
+      "Freeze sample schedules, removal semantics, software/metric receipts and teacher/label hashes",
+      "Pass CPU contract tests and isolated NPU smoke before any training queue admission"
+    ],
+    "baseline_selection": "Resolve from the accepted stage2 audit before this experiment. Copy the exact selected architecture/encoder and fidelity tensors into every teacher/student; no per-arm architecture selection. If no accepted checkpoint exists, stop rather than silently use another seed/checkpoint.",
+    "selected_checkpoint_sha256": null,
+    "selected_model_config": null,
+    "independence": "The 8 dev sources are disjoint from the 32 pilot training sources, but previously tuned. They are a development screen, not independent calibration/test.",
+    "approved_independent_calibration_sources": 0,
+    "approved_frozen_test_sources": 0
+  },
+  "data": {
+    "source_registry": "configs/openh3_20261111/mixed_temporal_data_plan_20261111.json#/source_roles",
+    "train_sources": 32,
+    "dev_sources": 8,
+    "materialization_status": "Selected mixed/time-varying 96-frame profiles are planned, not available as materialized NPZs under this contract.",
+    "first_screen_profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "scope": "Native-resolution mixed blur/noise/H264 first. No SR or general omni result is implied by this P1 screen.",
+    "existing_single_task_npz": "Existing 22-frame single-task NPZs may test shapes/loaders and later regression checks; they cannot substitute for the time-varying experiment.",
+    "controls": {
+      "identity_fraction": 0.125,
+      "near_clean_fraction": 0.125,
+      "original_profile_fraction": 0.75,
+      "near_clean_sigma_8bit": 1,
+      "near_clean_rule": "PCG64 float32 Gaussian noise, rint ties-even, clip to uint8, keyed by source SHA/window/absolute frame. The same frame receives identical noise in every overlapping history; padding repeats it exactly."
+    },
+    "train_batch_composition": {
+      "batch_size": 16,
+      "original_per_profile": 4,
+      "identity": 2,
+      "near_clean": 2
+    },
+    "reference": "All profiles/controls in a source/window use the identical immutable original-recording HR center-crop reference, not the output of a restoration model; original recording is a reference proxy, not pristine radiance.",
+    "no_oracle_inputs": [
+      "source identity",
+      "profile/task label",
+      "severity/schedule",
+      "degradation transition or scene-cut annotation",
+      "target pixels",
+      "teacher utility labels",
+      "generated H3 output"
+    ],
+    "metadata_permitted_for": "Training sampling/shuffling and evaluation strata only; never gate or blind restoration inputs.",
+    "engineering_smoke": "The planned 1-source then 2-train/2-dev CPU dataset smoke is not the 32/8-source research screen. Do not start 1000-step arms on those few sources and report the planned screen as complete."
+  },
+  "architecture": {
+    "causal_input": {
+      "shape": "B,3,3,H,W",
+      "order": "t-2,t-1,t",
+      "scale": "float32 RGB /255 on the HR grid",
+      "crop": 96,
+      "current_frame_always_available": true,
+      "history_indices": "[max(t-2,0), max(t-1,0), t]",
+      "availability": "slot0 valid iff t>=2; slot1 valid iff t>=1. Repeated boundary padding is not an independent historical observation."
+    },
+    "mask_aware_restorer": {
+      "definition": "A new isolated copy/wrapper of the selected blind Rphi. The restoration backbone's first convolution takes 11 channels: filled 3xRGB (9) plus two history-weight maps. All remaining backbone and observation-encoder structure/config are exactly inherited.",
+      "filled_history": "x'_j = w_j*x_j + (1-w_j)*x_t for j in {0,1}; x'_2=x_t. The observation encoder receives the same filled RGB stack; the backbone head receives filled RGB plus w0,w1.",
+      "explicit_masks": "A missing history is filled with current observation AND tagged by w_j=0. This is an explicit absence intervention, not a claim that arbitrary zeros/duplicates are real past observations.",
+      "initialization": "Copy the selected head's first 9 input-channel weights and bias. Initialize the 2 added channel kernels to zero. Copy all other fidelity weights exactly. At all-one weights the new head is exactly equivalent to the inherited head at initialization.",
+      "added_parameters_formula": "2 * inherited_ch * 3 * 3; 1152 when ch=64",
+      "output": "Unclamped RGB; preserve existing RGB residual skip from current frame. No confidence head, VAE, H3, flow model, alignment change or recurrent generated state.",
+      "loss": "Use the existing fidelity_losses definition: Charbonnier epsilon0.001 + 0.1*edge L1 + 0.5*identity guard relative to the current observed RGB. Freeze these weights for teacher and all arms; no simultaneous guard or encoder ablation."
+    },
+    "shared_student_gate": {
+      "source": "Raw observations only; no learned restoration output or prior decoder feature is cached as evidence.",
+      "inputs_per_history": "AvgPool2d(kernel=16,stride=16) of current RGB, available history RGB, and their absolute RGB difference: 9 channels; add lag/2 and external availability: 2 channels. Total 11. Missing-history RGB is filled with current before gate feature construction.",
+      "network": [
+        {
+          "op": "Conv2d",
+          "in_channels": 11,
+          "out_channels": 16,
+          "kernel": 3,
+          "padding": 1,
+          "bias": true
+        },
+        {
+          "op": "SiLU"
+        },
+        {
+          "op": "Conv2d",
+          "in_channels": 16,
+          "out_channels": 1,
+          "kernel": 3,
+          "padding": 1,
+          "bias": true
+        }
+      ],
+      "parameter_count": 1745,
+      "sharing": "The same weights process the two historical slots by batching B*2; no slot-specific trainable branch.",
+      "spatial_grid": "Require H,W divisible by16; fail otherwise rather than silently pad/resize. H/16 by W/16 grid: crop96 is6x6, full480x832 is30x52. No future frames are pooled.",
+      "gate": "Predict signed normalized utility z_j; g_j=sigmoid(z_j). Bilinear upsample g to H,W with align_corners=False, no antialias. Effective history weight is w_j=a_j*g_j, with a_j external availability.",
+      "initialization": "Shared first convolution seeded once; final convolution weights and bias zero so initial g=0.5 for every available tile in all arms.",
+      "normal_forward": "One gate invocation and one mask-aware Rphi invocation per current frame. No teacher invocation during student training or deployed inference.",
+      "other_history_invariance": "Gate for slot j reads only current and that history slot. Removing slot j leaves all other slots' raw data, gate inputs and gates unchanged.",
+      "semantics": "g is an action weight; sigmoid does not make it a calibrated reliability probability."
+    },
+    "student_initialization": "After teacher freeze, all three student restorers copy the exact final teacher tensors. Their gates are bit-identically initialized for a given seed. All restorer and gate parameters are trainable in every arm.",
+    "parameter_matching": "Exact named parameter shapes/counts and initial tensors must match across the three students; only utility-label assignment and auxiliary coefficient differ."
+  },
+  "teacher": {
+    "training_steps": 1000,
+    "batch_size": 16,
+    "crop": 96,
+    "k": 3,
+    "sample_presentations": 16000,
+    "seed": 20261110,
+    "schedule": "An immutable teacher sample schedule, separate from the student schedule, sampled only from the same32 training sources with the declared 12+2+2 batch composition.",
+    "weights": "Teacher has the mask-aware restorer and no learned gate. It is trained before labels are generated; student weights are not consulted.",
+    "mask_distribution": [
+      {
+        "probability": 0.5,
+        "name": "all_available",
+        "weights": [
+          1,
+          1
+        ]
+      },
+      {
+        "probability": 0.1,
+        "name": "oldest_missing",
+        "weights": [
+          0,
+          1
+        ]
+      },
+      {
+        "probability": 0.1,
+        "name": "recent_missing",
+        "weights": [
+          1,
+          0
+        ]
+      },
+      {
+        "probability": 0.1,
+        "name": "both_missing",
+        "weights": [
+          0,
+          0
+        ]
+      },
+      {
+        "probability": 0.1,
+        "name": "local_binary",
+        "definition": "Independent Bernoulli(0.5) per slot and16x16 tile, nearest upsample to RGB grid."
+      },
+      {
+        "probability": 0.1,
+        "name": "local_soft",
+        "definition": "Independent Uniform(0.1,0.9) per slot and16x16 tile, bilinear upsample align_corners=False."
+      }
+    ],
+    "boundary_rule": "Multiply every sampled weight by true predecessor availability. Current-frame weight is always1.",
+    "purpose": "Teach both the explicit missing-slot representation and the local/soft weights encountered by students, avoiding an untrained mask intervention.",
+    "freeze": "eval mode; no gradients or state updates. Hash complete state_dict/model_config/training source manifest/mask schedule/code/software receipt. Regenerating any label after teacher changes creates a new experiment version.",
+    "headroom_check": "Before the three arms, use predeclared dev crops to compare teacher all-history versus current-only and inspect local leave-one-out utility distributions under clean/stable/transition cases. If the trained teacher never benefits from history or intervention maps are numerically degenerate, mark no headroom and review; do not label this a failure of the proposed student mechanism.",
+    "no_auto_extension": "No automatic extra teacher steps, model swap or selected checkpoint changes to manufacture headroom."
+  },
+  "optimizer": {
+    "type": "AdamW",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-8,
+    "weight_decay": 0,
+    "amsgrad": false,
+    "gradient_clip_norm": 1,
+    "steps": 1000,
+    "warmup_steps": 50,
+    "lr_schedule": "Existing train_rphi.learning_rate: linear warmup then cosine decay to20% floor, step indexed1..1000.",
+    "precision": "Float32 parameters and utility/error computations; one identical deterministic runtime policy for all arms. Any accelerator autocast choice must be predeclared and identical; default disabled.",
+    "runtime": "No asynchronous data-dependent skipping, dynamic history length, per-arm early stop, per-arm checkpoint selection, or extra forward passes."
+  },
+  "student_schedule": {
+    "seed": 20261111,
+    "steps": 1000,
+    "batch_size": 16,
+    "sample_presentations_per_arm": 16000,
+    "row_identity": [
+      "source_id",
+      "source_sha256",
+      "source_group_id",
+      "split",
+      "window_key",
+      "profile_id",
+      "frame_index",
+      "history_indices",
+      "true_availability",
+      "crop_tlhw",
+      "control_recipe_and_seed",
+      "external_mask",
+      "target_pixel_sha256",
+      "observation_pixel_sha256"
+    ],
+    "source_sampling": "Cycle deterministically shuffled source IDs within each profile/control stream. Freeze all16000 rows before teacher label inference. Do not let an arm's losses change the sampler.",
+    "frame_sampling": "Uniform0..95 within each selected source/profile, same rows in every arm. Early padded rows remain in restoration training but nonexistent history slots have no utility target.",
+    "crop_sampling": "Uniform valid crop origins on a4-pixel lattice,96x96; same crop/context in teacher-label inference and student training, no augmentation after cache creation.",
+    "external_mask_distribution": [
+      {
+        "probability": 0.7,
+        "mask": [
+          1,
+          1
+        ]
+      },
+      {
+        "probability": 0.1,
+        "mask": [
+          0,
+          1
+        ]
+      },
+      {
+        "probability": 0.1,
+        "mask": [
+          1,
+          0
+        ]
+      },
+      {
+        "probability": 0.1,
+        "mask": [
+          0,
+          0
+        ]
+      }
+    ],
+    "external_mask_semantics": "Multiply by true predecessor availability. The exact mask and its seed are frozen per row; all arms see the same masked examples.",
+    "sequence_state": "First screen has bounded K3 observations and no recurrent state. It tests local causal use, not long-history memory or indefinite streaming stability."
+  },
+  "utility_labels": {
+    "baseline": "For each immutable training row, let a be its true availability times external mask. Compute T(x,a) and, for each available j, T(x,a with j=0); all other slots, pixels, masks, crop and model state remain fixed.",
+    "removal_granularity": "Remove the entire historical slot j. The resulting utility map is local in its scored output, not a per-tile input intervention or Shapley/additive contribution.",
+    "pixel_loss": "Unclamped float32 RGB mean absolute error over3 channels against the current clean target.",
+    "tile_loss": "AvgPool2d(kernel16,stride16) of that pixel loss, yielding6x6 on crop96.",
+    "definition": "u_j = tile_MAE(T_without_j,target) - tile_MAE(T_with_all_available,target); positive means that history reduces error.",
+    "normalization": {
+      "scale_rgb": 0.000980392156862745,
+      "meaning": "0.25/255",
+      "target": "clip(u_j/scale_rgb,-4,4)",
+      "neutral_margin_rgb": 0.00019607843137254904,
+      "neutral_margin_meaning": "0.05/255, used for sign/harm reporting, not an adaptive training threshold"
+    },
+    "auxiliary_loss": "SmoothL1Loss(beta=1,reduction=none) between gate coarse z_j and normalized u_j; mean over available history slots and tiles. If none available, return differentiable zero. The same valid mask is used in all arms.",
+    "dependencies": "Loss labels are GT-based training supervision. GT, labels and schedule/severity fields are never forwarded to gate/restorer.",
+    "cache": "Store raw u, normalized labels, valid mask, sample-row hash, teacher hash, crop/context hash, target/observation hashes, forward count, dtype and backend receipt. Write once and verify before each arm.",
+    "compute_budget": "At most3 teacher forwards per training row: one all-available baseline and up to2 removals. Upper bound48000 crop96 forwards for16000 rows. Record actual count; boundary/external-missing histories need no removal call.",
+    "prohibit_circular_validation": "Recomputing teacher labels with the same teacher only verifies cache correctness, not mechanism quality. Quality acceptance requires the final student's own interventions."
+  },
+  "arms": [
+    {
+      "id": "generic_gate",
+      "auxiliary_coefficient": 0,
+      "label_assignment": "shared true cache; compute identical auxiliary graph then multiply by0",
+      "steps": 1000,
+      "batch_size": 16,
+      "inference_calls_per_frame": 1
+    },
+    {
+      "id": "utility_gate",
+      "auxiliary_coefficient": 0.01,
+      "label_assignment": "shared true cache",
+      "steps": 1000,
+      "batch_size": 16,
+      "inference_calls_per_frame": 1
+    },
+    {
+      "id": "shuffled_utility_gate",
+      "auxiliary_coefficient": 0.01,
+      "label_assignment": "fixed derangement of the same cached utility maps",
+      "steps": 1000,
+      "batch_size": 16,
+      "inference_calls_per_frame": 1
+    }
+  ],
+  "shuffle_control": {
+    "unit": "Whole6x6 utility map per available history slot, not independently shuffled pixels.",
+    "strata": [
+      "profile/control family",
+      "severity phase:static/low/ramp-up/high/ramp-down/abrupt-pre/abrupt-post, from training metadata only",
+      "history lag",
+      "external availability pattern"
+    ],
+    "donor_rule": "A donor must have a different source_id and source_group_id and lie in the same stratum. No fixed points, same-source windows or padding-invalid targets. Preserve the stratum label multiset and available-slot counts exactly.",
+    "determinism": "Freeze a source-disjoint constrained permutation with seed20261112 and hash the donor map before any student run.",
+    "insufficient_stratum": "Fail the cache contract if a source-disjoint derangement is impossible. Revise the sampling schedule before any arm; do not silently leave labels unchanged or pool across severity after seeing results.",
+    "no_leakage": "Stratum metadata is used to construct the negative control only; it is not an input feature."
+  },
+  "matched_budget": {
+    "student_total_steps": 3000,
+    "student_total_sample_presentations": 48000,
+    "exact_matches": [
+      "initial restorer and gate tensor hashes",
+      "architecture/parameter counts",
+      "trainable parameter names",
+      "16000-row schedule, masks and labels valid supports",
+      "source/crop/control/noise recipes",
+      "optimizer and LR schedule",
+      "all restoration loss weights",
+      "one student forward per batch and one backward per update",
+      "evaluation frames/crops/interventions and final-step checkpoint"
+    ],
+    "auxiliary_compute": "All arms load identical cache shapes and evaluate SmoothL1, including coefficient0 arm. Wall time is measured rather than asserted bit-identical; task learning signal is the predeclared experimental factor.",
+    "teacher_extra_budget": {
+      "steps": 1000,
+      "sample_presentations": 16000,
+      "label_inference_upper_bound": 48000,
+      "shared_across_arms": true,
+      "accounting": "Report shared teacher training, label generation, mask/label validation, tuning and student costs separately and summed. This is equal student budget, not a claim that the method costs the same end-to-end as a generic gate with no teacher."
+    },
+    "controls_budget": "K1/K3 and fixed decay/hysteresis are inference-only diagnostics on the same mask-aware restorer/gate checkpoint, not capacity/training-matched competing learned methods. Run all4 policies for every arm on the same3840 frame crops:15360 extra restorer calls per arm, separately recorded. Together with normal plus leave-one-out evaluation, upper bound26880 restorer calls per arm. Report changed history access and actual counts explicitly.",
+    "artifact_rule": "Same final step1000 for all three arms. Intermediate checkpoints may diagnose numerical failures but must not select different best steps."
+  },
+  "student_self_intervention_evaluation": {
+    "split": "Existing8-source dev only; never feed these interventions back as training labels during this experiment.",
+    "geometry": "First-screen fixed centered96x96 crop per source;96 frames at stride1. Results are crop-based development diagnostics, not full480p benchmark claims.",
+    "cases": "For each dev source: all3 native profiles plus one identity and one near-clean96-frame sequence. Control sequences are counted once per source, not once per profile.",
+    "frame_crops_per_arm": 3840,
+    "calls": "One normal student forward plus up to2 whole-history removal forwards per frame crop; theoretical upper bound11520 mask-aware restoration calls per arm, lower at sequence boundaries. Equal evaluation schedule across arms.",
+    "intervention": "Compute all original gates once. For removal j set its external availability and effective weight to0, fill its RGB from current, keep all other history pixels/gates/weights unchanged, then rerun the same student restorer. No weight updates.",
+    "measured_utility": "u_student_j = own tile_MAE(without j) - own tile_MAE(normal prediction); compare gate z and teacher-derived predictions against this quantity, not teacher self-labels.",
+    "reporting": [
+      "per-source sign accuracy excluding neutral |u_student|<=0.05/255, with positive/negative/neutral counts",
+      "per-source rank correlation where variance is nonzero; report undefined cases rather than0",
+      "gate-weighted harmful mass mean(g_j*max(-u_student_j-epsilon,0))",
+      "accepted harmful fraction among g>=0.5 and supported |u_student|>epsilon, alongside coverage",
+      "retained beneficial mass mean(g_j*max(u_student_j-epsilon,0))",
+      "RGB PSNR/LPIPS, clean/near-clean damage and adjacent-frame error with identical masks/support"
+    ],
+    "caution": "Each student's intervention utility depends on its own model and gate. Use normal-output paired quality as the primary comparison; lower self-harm from ignoring all history cannot pass.",
+    "teacher_only_check": "Teacher cache agreement is a correctness check only, reported separately from student utility transfer.",
+    "transitions": {
+      "abrupt_frame": 48,
+      "pre": [
+        24,
+        47
+      ],
+      "early_post": [
+        48,
+        55
+      ],
+      "late_post": [
+        56,
+        71
+      ],
+      "smooth_ramp_up": [
+        24,
+        47
+      ],
+      "smooth_ramp_down": [
+        72,
+        95
+      ]
+    },
+    "recovery_delay": "For each method, compare per-frame RGB error to its own fixed current-only diagnostic on the same input; afterframe48, report the first run of3 consecutive frames with error no worse than current-only (within1e-6 RGB MAE), censored atframe71. Also report the entire error trajectory; this is a local-history diagnostic, not an absolute recovery-time guarantee.",
+    "temporal_metrics": "Use actual adjacent frames; publish flow/motion-support estimator, support counts and cut exclusions. If flow support is unavailable, report simple adjacent RGB-error changes with its limitation and do not claim motion-compensated temporal quality.",
+    "cuts": "Natural cuts must be annotated or excluded from the primary continuous-content profiles. A separate synthetic cut case uses source pairs within the same split; both sources remain grouped in aggregation. No GT cut flag/reset is supplied to the model.",
+    "limitations": "K3 spans only2 past frames;96-frame rollout can reveal repeated local failures but cannot establish long-memory error accumulation behavior."
+  },
+  "fixed_references": {
+    "current_only": "Use the same final mask-aware restorer with w=[0,0], current unchanged. It is a current-only intervention, not a separately trained parameter-matched K1 model.",
+    "fixed_k3": "Use w=[1,1] subject to boundary availability.",
+    "fixed_decay": "Use lag2 weight0.5 and lag1 weight0.75, fixed before scoring; no tuned per-task values.",
+    "fixed_hysteresis": "Use the same gate scores but replace soft use by per-tile binary state: switch on atg>=0.6, switch off atg<=0.4, retain state otherwise; initialize off and reset only at known clip start. No cut/degradation oracle. This is an inference policy diagnostic, not a matched independent trained architecture.",
+    "comparison": "Evaluate these policies under the same crop/frame/metric support and report actual edit magnitude, history use and runtime. Do not tune thresholds on the final test."
+  },
+  "stage_gates": {
+    "implementation_acceptance": [
+      "All-one expanded-head initialization reproduces inherited Rphi RGB numerically within the explicitly recorded backend tolerance",
+      "Missing history content cannot affect output when its availability is0",
+      "Changing one removed history leaves other gate values unchanged",
+      "No future frame, target or degradation metadata influences the forward path",
+      "Boundary repeats create no independent-history labels",
+      "Teacher/label replay and source/crop/hash checks pass",
+      "Three student parameter/initialization/schedule hashes match",
+      "Shuffled donor permutation has no fixed points or same-source donors",
+      "Synthetic known beneficial/harmful intervention fixtures verify utility sign"
+    ],
+    "screen_pass": "Requires review: real-utility arm improves paired transition output quality over both trainable controls, improves student-based useful/harmful history discrimination, retains stable-segment benefit over current-only and does not damage clean/near-clean. Report all8 source differences; no automatic SOTA/novelty pass from one seed.",
+    "screen_reject": [
+      "Shuffled labels match real labels",
+      "Gains disappear against generic or fixed policies",
+      "Gate suppresses almost all history and loses stable benefits",
+      "Only teacher-label prediction improves, not student effects or restoration",
+      "Apparent gain arises only at scene cuts",
+      "Teacher/missing-history contract or data hashes fail"
+    ],
+    "repeated_seeds": "Only a positive screen proceeds to two additional student initialization/schedule seeds20261113 and20261114, with all three arms rerun per seed. Freeze the same teacher for a gate-seed robustness test; report that teacher-seed uncertainty remains unmeasured. Shared labels must be regenerated for changed schedules and their cost counted.",
+    "later_validation": "After repeated-seed support, freeze recipe and candidate before evaluating newly approved independent source groups. The current inventory has zero approved calibration/test groups; no relabeling of the8 dev sources.",
+    "no_automatic_expansion": "No longer schedule, teacher replacement, new alignment module, H3 integration or LoRA is launched by this contract."
+  }
+}

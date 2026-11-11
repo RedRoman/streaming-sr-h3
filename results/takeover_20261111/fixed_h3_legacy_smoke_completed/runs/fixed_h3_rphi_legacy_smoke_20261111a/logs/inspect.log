@@ -1,0 +1,52 @@
+{
+  "contract": {
+    "guide_manifest_sha256": "9e713b30d8b1d1f2ad912ce34423c0cf5f749dcc707198e7a01fa3bff54ce53d",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "rphi_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "model_config": {
+      "variant": "blind",
+      "k": 3,
+      "ch": 64,
+      "blocks": 8,
+      "condition_dim": 6,
+      "observation_encoder": "legacy"
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "sigma_schedule": [
+      0.909375,
+      0.8571428571428571,
+      0.6666666666666666,
+      0.0
+    ],
+    "seed": 101,
+    "audio_init": "zeros",
+    "mode": "base",
+    "adaptation": null,
+    "raw_guide_recipe": {
+      "implementation": "torch.nn.functional.interpolate",
+      "mode": "bicubic",
+      "align_corners": false,
+      "antialias": true,
+      "range": "float32 [0,1], clamped after resize",
+      "role": "HR input guide; not the physical forward operator"
+    },
+    "warm_start": "same E(raw HR RGB) in both H3 calls; pretrained latent upscaler unused",
+    "rphi_guide": "clipped float32 export rgb; no uint8/MP4 intermediate",
+    "alpha": 0.25,
+    "anchor": "clipped R_phi RGB; canonical Q4 SR, full RGB native",
+    "anchor_stage": "post-decode only; same generated output reused; no confidence weighting",
+    "metric": "eval_rphi RGB/LPIPS/flow on float32 clipped output, no prediction quantization",
+    "frame_stride": 1,
+    "controls_included": [],
+    "future_frames": "full 22-frame H3/VAE block; no whole-pipeline causality claim",
+    "scope": "development task observations; no clean-protection or frozen-test conclusion"
+  },
+  "sources": [
+    "6UZVovkR3IU"
+  ],
+  "samples": 4,
+  "h3_sample_calls": 8,
+  "denoiser_evaluations": 24,
+  "asset_hashes_verified": false,
+  "guide_and_data_hashes_verified": true
+}

@@ -1,0 +1,3685 @@
+{
+  "schema": "openh3.calibration_candidates_history_audit.v1",
+  "date": "2026-11-11",
+  "recorded_at_utc": "2026-11-11T09:46:53.557Z",
+  "host": "huawei-modelarts-31984",
+  "project_root": "/cache/zihaohe/streaming_sr0",
+  "status": "bounded_history_audit_complete_no_source_approved",
+  "execution": {
+    "remote_read_only": true,
+    "npu_started": false,
+    "model_loaded": false,
+    "training_started": false,
+    "source_video_decoded_or_rehashed": false,
+    "dataset_or_split_modified": false,
+    "local_files_written": [
+      "results/takeover_20261111/calibration_candidates_history_audit_20261111.json"
+    ]
+  },
+  "inputs": {
+    "plan": {
+      "path": "configs/openh3_20261111/mixed_temporal_data_plan_20261111.json",
+      "sha256": "7664fb681af0893b7cce355ca392558cfa0a35f782bb810592af05d7d017652e"
+    },
+    "inventory": {
+      "path": "results/takeover_20261111/mixed_temporal_inventory_31984_20261111.json",
+      "sha256": "9169250b571a83fa4673175e1a77ebc3e7298537fddb3163990a594346582d61"
+    },
+    "candidate_ids": [
+      "1OM5619KGEI",
+      "1yRMYH8cSFM",
+      "26HLgXWF-Co",
+      "2IpapScfsT4",
+      "457KFDtoIPM",
+      "63jbksEqycQ",
+      "6X5vLMqdKZo",
+      "6XN9trtsQGo",
+      "8jjlkOmWGUo",
+      "8wMzUIkaZ-I",
+      "8z2yFtX66C4",
+      "93X6stMF9xU",
+      "977zYEqpsSE",
+      "9EsNtRXnYbE",
+      "9S9-smHVvaw",
+      "9W--1bU_zjg",
+      "9jDguGDaxm8",
+      "A1LXWbDIMVQ",
+      "BMizovbaUbc",
+      "E1AGyM0arxY",
+      "EGc41s7IIZ0",
+      "EQxjYP1hMsI",
+      "EbJxKHCk0MY",
+      "EjHB5MD-_jA",
+      "ExsNRvMVmMY",
+      "H6Y_7Ax34-g",
+      "HTLK55-Fl80",
+      "Ha1kgyD4HHI",
+      "Hob0LAu8afQ",
+      "JiU9J-oQipU",
+      "Jz4wLRDTF54",
+      "KFVIKa8jfKs",
+      "KHpF2LzWHfQ",
+      "KN82wKXaxNo",
+      "MFjPziuZZws",
+      "MRwVio7Vxp4",
+      "MS8VU468rKk",
+      "N5NGtmtnz_c",
+      "NFmqHDRAkO0",
+      "NSyqj1DXZKg",
+      "PbUyPbafFh0",
+      "PkkhCW04O9k",
+      "Py4g6GeGHjQ",
+      "Q4pQKIHhsJk",
+      "VEssqQKC0YM",
+      "VKLQO0qaUZk"
+    ]
+  },
+  "summary": {
+    "candidates": 46,
+    "harvest_metadata_hits": 46,
+    "candidate_manifest_all_only_hits": 6,
+    "candidate_manifest_selected_hits": 0,
+    "bounded_model_use_log_or_result_hits": 0,
+    "known_training_and_eval_directory_filename_hits": 0,
+    "current_pilot_train_dev_id_hits": 0,
+    "audio_gate_failures_supported_by_logged_values": 45,
+    "audio_gate_outcome_unknown_due_to_rounding": 1,
+    "source_quality_previously_probed_in_original32": 2,
+    "independent_calibration_approved": 0,
+    "frozen_test_approved": 0,
+    "interpretation": "All 46 remain audit candidates. No model training/evaluation/tuning use was found in the bounded literal-ID and filename evidence. Acquisition and quality probing occurred for every candidate. No never-used, pristine, or independence guarantee is made."
+  },
+  "important_findings": [
+    {
+      "finding": "Six ID hits in candidates.json are not selected data",
+      "source_ids": [
+        "MFjPziuZZws",
+        "MRwVio7Vxp4",
+        "MS8VU468rKk",
+        "N5NGtmtnz_c",
+        "NFmqHDRAkO0",
+        "NSyqj1DXZKg"
+      ],
+      "evidence": "candidate_manifest_semantics lists exact /all indices. prepare_real_eval.py:95 consumes selected, prepare_stage7_train.py:58 consumes candidates_big selected. Neither selected set contains any of the 46."
+    },
+    {
+      "finding": "One audio failure classification is not established by printed precision",
+      "source_id": "Jz4wLRDTF54",
+      "evidence": "harvest_8.log:62 above_8k_ratio=0.0001; build_real_av.py:157-160 prints round(...,6) but filters the original value using >1e-4. The previous inventory's audio-fail label is therefore ambiguous for this source."
+    },
+    {
+      "finding": "probe_heldout.py narrative is not execution evidence and partly contradicts observed harvest history",
+      "evidence": "Code docstring lines 14-15 describes unknown prior probing/deletion, but all 46 have harvest entries. Current build_real_av.py:155-165 logs full metadata before quality filtering and preserves all rows. Default candidates_heldout.json is absent; absence does not rule out an alternative --out."
+    }
+  ],
+  "bounded_text_scan": {
+    "roots": [
+      "/cache/zihaohe/streaming_sr0/code",
+      "/cache/zihaohe/streaming_sr0/logs",
+      "/cache/zihaohe/streaming_sr0/results",
+      "/cache/zihaohe/streaming_sr0/configs",
+      "/cache/zihaohe/streaming_sr0/checkpoints"
+    ],
+    "max_directory_depth_below_each_root": 2,
+    "follow_directory_symlinks": false,
+    "excluded_directory_names": [
+      "ComfyUI",
+      "__pycache__",
+      ".git",
+      "node_modules"
+    ],
+    "allowed_suffixes": [
+      ".json",
+      ".jsonl",
+      ".txt",
+      ".log",
+      ".csv",
+      ".yaml",
+      ".yml",
+      ".sh",
+      ".py",
+      ".md"
+    ],
+    "per_file_cap_bytes": 8388608,
+    "global_cap_bytes": 146800640,
+    "files_scanned": 2303,
+    "bytes_read": 44219868,
+    "counts_by_root": {
+      "/cache/zihaohe/streaming_sr0/code": 285,
+      "explicit_external_manifest": 13,
+      "/cache/zihaohe/streaming_sr0/logs": 939,
+      "/cache/zihaohe/streaming_sr0/results": 1066
+    },
+    "scan_file_manifest_sha256": "a990bfdee9151a459b8fa0f09a33ab616c3ac544e73b14f925fd778ee82e26de",
+    "scan_file_manifest_digest_encoding": "SHA256 of compact JSON emitted by JavaScript JSON.stringify over ordered records {path,bytes,sha256}; full per-file list was tool-returned, not repeated in this result",
+    "initial_skips": [
+      {
+        "path": "/temp/h3_unified_dataset_20260918/manifests/eligible.train.jsonl",
+        "bytes": 10780676,
+        "reason": "file/global byte cap"
+      }
+    ],
+    "skip_resolution": "The single >8MiB eligible.train.jsonl was explicitly read afterward (10,780,676 bytes); no candidate ID hit. No global byte cap was reached.",
+    "literal_matches": [
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_1.log",
+        "bytes": 25590,
+        "sha256": "ad70659d9a5a0a5eec4f35e6143b810972c9fead4875e647182df60a672127ba",
+        "hits": [
+          {
+            "line": 27,
+            "source_ids": [
+              "1OM5619KGEI"
+            ],
+            "excerpt": "{\"file\": \"1OM5619KGEI.mp4\", \"rel\": \"balanced_train_segments/00001/1OM5619KGEI.mp4\", \"wh\": [1920, 1080], \"duration\": 10.024, \"band_ratio\": 0.02193, \"sharp_ok\": true, \"rms\": 0.21046224236488342, \"above_8k_ratio\": 2e-06}"
+          },
+          {
+            "line": 81,
+            "source_ids": [
+              "1yRMYH8cSFM"
+            ],
+            "excerpt": "{\"file\": \"1yRMYH8cSFM.mp4\", \"rel\": \"balanced_train_segments/00001/1yRMYH8cSFM.mp4\", \"wh\": [1920, 1080], \"duration\": 10.024, \"band_ratio\": 0.00662, \"sharp_ok\": true, \"rms\": 0.19875852763652802, \"above_8k_ratio\": 4.1e-05}"
+          },
+          {
+            "line": 97,
+            "source_ids": [
+              "26HLgXWF-Co"
+            ],
+            "excerpt": "{\"file\": \"26HLgXWF-Co.mp4\", \"rel\": \"balanced_train_segments/00001/26HLgXWF-Co.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.02021, \"sharp_ok\": true, \"rms\": 0.18347910046577454, \"above_8k_ratio\": 9.4e-05}"
+          },
+          {
+            "line": 109,
+            "source_ids": [
+              "2IpapScfsT4"
+            ],
+            "excerpt": "{\"file\": \"2IpapScfsT4.mp4\", \"rel\": \"balanced_train_segments/00001/2IpapScfsT4.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.02258, \"sharp_ok\": true, \"rms\": 0.09382500499486923, \"above_8k_ratio\": 1e-06}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_10.log",
+        "bytes": 26709,
+        "sha256": "8fe3456de39b1beddc0b50a3a48bb8543937571bade31c279c35e3da0d141fe7",
+        "hits": [
+          {
+            "line": 42,
+            "source_ids": [
+              "PbUyPbafFh0"
+            ],
+            "excerpt": "{\"file\": \"PbUyPbafFh0.mp4\", \"rel\": \"balanced_train_segments/00010/PbUyPbafFh0.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01089, \"sharp_ok\": true, \"rms\": 0.20151828229427338, \"above_8k_ratio\": 1.3e-05}"
+          },
+          {
+            "line": 53,
+            "source_ids": [
+              "PkkhCW04O9k"
+            ],
+            "excerpt": "{\"file\": \"PkkhCW04O9k.mp4\", \"rel\": \"balanced_train_segments/00010/PkkhCW04O9k.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.01538, \"sharp_ok\": true, \"rms\": 0.24436552822589874, \"above_8k_ratio\": 1.8e-05}"
+          },
+          {
+            "line": 72,
+            "source_ids": [
+              "Py4g6GeGHjQ"
+            ],
+            "excerpt": "{\"file\": \"Py4g6GeGHjQ.mp4\", \"rel\": \"balanced_train_segments/00010/Py4g6GeGHjQ.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.00639, \"sharp_ok\": true, \"rms\": 0.3096087574958801, \"above_8k_ratio\": 1.2e-05}"
+          },
+          {
+            "line": 83,
+            "source_ids": [
+              "Q4pQKIHhsJk"
+            ],
+            "excerpt": "{\"file\": \"Q4pQKIHhsJk.mp4\", \"rel\": \"balanced_train_segments/00010/Q4pQKIHhsJk.mp4\", \"wh\": [1920, 1200], \"duration\": 10.024, \"band_ratio\": 0.01628, \"sharp_ok\": true, \"rms\": 0.15882417559623718, \"above_8k_ratio\": 2.2e-05}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_12.log",
+        "bytes": 6584,
+        "sha256": "b0b1879fbe9fbf685660f8008c8defe98eb0a1985d6274660b2db353a586f36c",
+        "hits": [
+          {
+            "line": 12,
+            "source_ids": [
+              "VEssqQKC0YM"
+            ],
+            "excerpt": "{\"file\": \"VEssqQKC0YM.mp4\", \"rel\": \"balanced_train_segments/00012/VEssqQKC0YM.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.02316, \"sharp_ok\": true, \"rms\": 0.19104701280593872, \"above_8k_ratio\": 4.9e-05}"
+          },
+          {
+            "line": 18,
+            "source_ids": [
+              "VKLQO0qaUZk"
+            ],
+            "excerpt": "{\"file\": \"VKLQO0qaUZk.mp4\", \"rel\": \"balanced_train_segments/00012/VKLQO0qaUZk.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00892, \"sharp_ok\": true, \"rms\": 0.15014220774173737, \"above_8k_ratio\": 1.2e-05}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_2.log",
+        "bytes": 22745,
+        "sha256": "c57f6983441a26f9f9fb716dbddabd6dcca7cc5fe4d733eb43626828b982d1f6",
+        "hits": [
+          {
+            "line": 40,
+            "source_ids": [
+              "457KFDtoIPM"
+            ],
+            "excerpt": "{\"file\": \"457KFDtoIPM.mp4\", \"rel\": \"balanced_train_segments/00002/457KFDtoIPM.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.01778, \"sharp_ok\": true, \"rms\": 0.05796823650598526, \"above_8k_ratio\": 3e-06}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_3.log",
+        "bytes": 24481,
+        "sha256": "29b1481b4f6d0204550cfb7ed77dc1f60a226ea050088867f9a830d6793eb5f3",
+        "hits": [
+          {
+            "line": 17,
+            "source_ids": [
+              "63jbksEqycQ"
+            ],
+            "excerpt": "{\"file\": \"63jbksEqycQ.mp4\", \"rel\": \"balanced_train_segments/00003/63jbksEqycQ.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.01655, \"sharp_ok\": true, \"rms\": 0.0373668447136879, \"above_8k_ratio\": 2.5e-05}"
+          },
+          {
+            "line": 52,
+            "source_ids": [
+              "6X5vLMqdKZo"
+            ],
+            "excerpt": "{\"file\": \"6X5vLMqdKZo.mp4\", \"rel\": \"balanced_train_segments/00003/6X5vLMqdKZo.mp4\", \"wh\": [1280, 720], \"duration\": 9.225, \"band_ratio\": 0.02241, \"sharp_ok\": true, \"rms\": 0.12019572407007217, \"above_8k_ratio\": 3.7e-05}"
+          },
+          {
+            "line": 55,
+            "source_ids": [
+              "6XN9trtsQGo"
+            ],
+            "excerpt": "{\"file\": \"6XN9trtsQGo.mp4\", \"rel\": \"balanced_train_segments/00003/6XN9trtsQGo.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00826, \"sharp_ok\": true, \"rms\": 0.05132592096924782, \"above_8k_ratio\": 1e-06}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+        "bytes": 27549,
+        "sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+        "hits": [
+          {
+            "line": 12,
+            "source_ids": [
+              "8jjlkOmWGUo"
+            ],
+            "excerpt": "{\"file\": \"8jjlkOmWGUo.mp4\", \"rel\": \"balanced_train_segments/00004/8jjlkOmWGUo.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.0051, \"sharp_ok\": true, \"rms\": 0.12391359359025955, \"above_8k_ratio\": 4e-06}"
+          },
+          {
+            "line": 38,
+            "source_ids": [
+              "8wMzUIkaZ-I"
+            ],
+            "excerpt": "{\"file\": \"8wMzUIkaZ-I.mp4\", \"rel\": \"balanced_train_segments/00004/8wMzUIkaZ-I.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01079, \"sharp_ok\": true, \"rms\": 0.10437104851007462, \"above_8k_ratio\": 7e-06}"
+          },
+          {
+            "line": 44,
+            "source_ids": [
+              "8z2yFtX66C4"
+            ],
+            "excerpt": "{\"file\": \"8z2yFtX66C4.mp4\", \"rel\": \"balanced_train_segments/00004/8z2yFtX66C4.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.05757, \"sharp_ok\": true, \"rms\": 0.43991559743881226, \"above_8k_ratio\": 4e-06}"
+          },
+          {
+            "line": 55,
+            "source_ids": [
+              "93X6stMF9xU"
+            ],
+            "excerpt": "{\"file\": \"93X6stMF9xU.mp4\", \"rel\": \"balanced_train_segments/00004/93X6stMF9xU.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.0051, \"sharp_ok\": true, \"rms\": 0.11953885853290558, \"above_8k_ratio\": 4.9e-05}"
+          },
+          {
+            "line": 60,
+            "source_ids": [
+              "977zYEqpsSE"
+            ],
+            "excerpt": "{\"file\": \"977zYEqpsSE.mp4\", \"rel\": \"balanced_train_segments/00004/977zYEqpsSE.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.0135, \"sharp_ok\": true, \"rms\": 0.34468594193458557, \"above_8k_ratio\": 2.9e-05}"
+          },
+          {
+            "line": 73,
+            "source_ids": [
+              "9EsNtRXnYbE"
+            ],
+            "excerpt": "{\"file\": \"9EsNtRXnYbE.mp4\", \"rel\": \"balanced_train_segments/00004/9EsNtRXnYbE.mp4\", \"wh\": [1920, 1080], \"duration\": 10.024, \"band_ratio\": 0.03187, \"sharp_ok\": true, \"rms\": 0.20125052332878113, \"above_8k_ratio\": 5e-06}"
+          },
+          {
+            "line": 87,
+            "source_ids": [
+              "9S9-smHVvaw"
+            ],
+            "excerpt": "{\"file\": \"9S9-smHVvaw.mp4\", \"rel\": \"balanced_train_segments/00004/9S9-smHVvaw.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00609, \"sharp_ok\": true, \"rms\": 0.06796471029520035, \"above_8k_ratio\": 3e-06}"
+          },
+          {
+            "line": 92,
+            "source_ids": [
+              "9W--1bU_zjg"
+            ],
+            "excerpt": "{\"file\": \"9W--1bU_zjg.mp4\", \"rel\": \"balanced_train_segments/00004/9W--1bU_zjg.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.0123, \"sharp_ok\": true, \"rms\": 0.1259346306324005, \"above_8k_ratio\": 8e-06}"
+          },
+          {
+            "line": 108,
+            "source_ids": [
+              "9jDguGDaxm8"
+            ],
+            "excerpt": "{\"file\": \"9jDguGDaxm8.mp4\", \"rel\": \"balanced_train_segments/00004/9jDguGDaxm8.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01605, \"sharp_ok\": true, \"rms\": 0.176465705037117, \"above_8k_ratio\": 1e-06}"
+          },
+          {
+            "line": 125,
+            "source_ids": [
+              "A1LXWbDIMVQ"
+            ],
+            "excerpt": "{\"file\": \"A1LXWbDIMVQ.mp4\", \"rel\": \"balanced_train_segments/00004/A1LXWbDIMVQ.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.00794, \"sharp_ok\": true, \"rms\": 0.12668079137802124, \"above_8k_ratio\": 1.7e-05}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_5.log",
+        "bytes": 7464,
+        "sha256": "789915781ca4c9d7952e03c8d572907765149ed9b1a38cf5bdcee210f5b01382",
+        "hits": [
+          {
+            "line": 13,
+            "source_ids": [
+              "BMizovbaUbc"
+            ],
+            "excerpt": "{\"file\": \"BMizovbaUbc.mp4\", \"rel\": \"balanced_train_segments/00005/BMizovbaUbc.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01508, \"sharp_ok\": true, \"rms\": 0.004693781957030296, \"above_8k_ratio\": 0.393046}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+        "bytes": 24686,
+        "sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+        "hits": [
+          {
+            "line": 28,
+            "source_ids": [
+              "E1AGyM0arxY"
+            ],
+            "excerpt": "{\"file\": \"E1AGyM0arxY.mp4\", \"rel\": \"balanced_train_segments/00006/E1AGyM0arxY.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.00839, \"sharp_ok\": true, \"rms\": 0.1893894374370575, \"above_8k_ratio\": 4e-06}"
+          },
+          {
+            "line": 40,
+            "source_ids": [
+              "EGc41s7IIZ0"
+            ],
+            "excerpt": "{\"file\": \"EGc41s7IIZ0.mp4\", \"rel\": \"balanced_train_segments/00006/EGc41s7IIZ0.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01682, \"sharp_ok\": true, \"rms\": 0.14809420704841614, \"above_8k_ratio\": 1e-06}"
+          },
+          {
+            "line": 54,
+            "source_ids": [
+              "EQxjYP1hMsI"
+            ],
+            "excerpt": "{\"file\": \"EQxjYP1hMsI.mp4\", \"rel\": \"balanced_train_segments/00006/EQxjYP1hMsI.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00641, \"sharp_ok\": true, \"rms\": 0.33452680706977844, \"above_8k_ratio\": 5.1e-05}"
+          },
+          {
+            "line": 71,
+            "source_ids": [
+              "EbJxKHCk0MY"
+            ],
+            "excerpt": "{\"file\": \"EbJxKHCk0MY.mp4\", \"rel\": \"balanced_train_segments/00006/EbJxKHCk0MY.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.02337, \"sharp_ok\": true, \"rms\": 0.2789570689201355, \"above_8k_ratio\": 1.3e-05}"
+          },
+          {
+            "line": 86,
+            "source_ids": [
+              "EjHB5MD-_jA"
+            ],
+            "excerpt": "{\"file\": \"EjHB5MD-_jA.mp4\", \"rel\": \"balanced_train_segments/00006/EjHB5MD-_jA.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.02647, \"sharp_ok\": true, \"rms\": 0.010225645266473293, \"above_8k_ratio\": 1.4e-05}"
+          },
+          {
+            "line": 105,
+            "source_ids": [
+              "ExsNRvMVmMY"
+            ],
+            "excerpt": "{\"file\": \"ExsNRvMVmMY.mp4\", \"rel\": \"balanced_train_segments/00006/ExsNRvMVmMY.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.00553, \"sharp_ok\": true, \"rms\": 0.11285284906625748, \"above_8k_ratio\": 7.1e-05}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_7.log",
+        "bytes": 28049,
+        "sha256": "9d3da4669035ce1a493d33700e388b6ad1d9db6eaceb1e3a4a5a223cc04f5d74",
+        "hits": [
+          {
+            "line": 53,
+            "source_ids": [
+              "H6Y_7Ax34-g"
+            ],
+            "excerpt": "{\"file\": \"H6Y_7Ax34-g.mp4\", \"rel\": \"balanced_train_segments/00007/H6Y_7Ax34-g.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00687, \"sharp_ok\": true, \"rms\": 0.0685318112373352, \"above_8k_ratio\": 2.8e-05}"
+          },
+          {
+            "line": 84,
+            "source_ids": [
+              "HTLK55-Fl80"
+            ],
+            "excerpt": "{\"file\": \"HTLK55-Fl80.mp4\", \"rel\": \"balanced_train_segments/00007/HTLK55-Fl80.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.01271, \"sharp_ok\": true, \"rms\": 0.11180035024881363, \"above_8k_ratio\": 1.3e-05}"
+          },
+          {
+            "line": 100,
+            "source_ids": [
+              "Ha1kgyD4HHI"
+            ],
+            "excerpt": "{\"file\": \"Ha1kgyD4HHI.mp4\", \"rel\": \"balanced_train_segments/00007/Ha1kgyD4HHI.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.00554, \"sharp_ok\": true, \"rms\": 0.2525760531425476, \"above_8k_ratio\": 1.7e-05}"
+          },
+          {
+            "line": 124,
+            "source_ids": [
+              "Hob0LAu8afQ"
+            ],
+            "excerpt": "{\"file\": \"Hob0LAu8afQ.mp4\", \"rel\": \"balanced_train_segments/00007/Hob0LAu8afQ.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00763, \"sharp_ok\": true, \"rms\": 0.17140361666679382, \"above_8k_ratio\": 5e-06}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+        "bytes": 27394,
+        "sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+        "hits": [
+          {
+            "line": 35,
+            "source_ids": [
+              "JiU9J-oQipU"
+            ],
+            "excerpt": "{\"file\": \"JiU9J-oQipU.mp4\", \"rel\": \"balanced_train_segments/00008/JiU9J-oQipU.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01201, \"sharp_ok\": true, \"rms\": 0.18998342752456665, \"above_8k_ratio\": 7.1e-05}"
+          },
+          {
+            "line": 62,
+            "source_ids": [
+              "Jz4wLRDTF54"
+            ],
+            "excerpt": "{\"file\": \"Jz4wLRDTF54.mp4\", \"rel\": \"balanced_train_segments/00008/Jz4wLRDTF54.mp4\", \"wh\": [1280, 720], \"duration\": 10.024, \"band_ratio\": 0.21242, \"sharp_ok\": true, \"rms\": 0.14103390276432037, \"above_8k_ratio\": 0.0001}"
+          },
+          {
+            "line": 82,
+            "source_ids": [
+              "KFVIKa8jfKs"
+            ],
+            "excerpt": "{\"file\": \"KFVIKa8jfKs.mp4\", \"rel\": \"balanced_train_segments/00008/KFVIKa8jfKs.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.00865, \"sharp_ok\": true, \"rms\": 0.03738898038864136, \"above_8k_ratio\": 9e-06}"
+          },
+          {
+            "line": 87,
+            "source_ids": [
+              "KHpF2LzWHfQ"
+            ],
+            "excerpt": "{\"file\": \"KHpF2LzWHfQ.mp4\", \"rel\": \"balanced_train_segments/00008/KHpF2LzWHfQ.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01411, \"sharp_ok\": true, \"rms\": 0.0021382723934948444, \"above_8k_ratio\": 0.000238}"
+          },
+          {
+            "line": 93,
+            "source_ids": [
+              "KN82wKXaxNo"
+            ],
+            "excerpt": "{\"file\": \"KN82wKXaxNo.mp4\", \"rel\": \"balanced_train_segments/00008/KN82wKXaxNo.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.02965, \"sharp_ok\": true, \"rms\": 0.16526110470294952, \"above_8k_ratio\": 9.6e-05}"
+          }
+        ]
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+        "bytes": 26040,
+        "sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+        "hits": [
+          {
+            "line": 26,
+            "source_ids": [
+              "MFjPziuZZws"
+            ],
+            "excerpt": "{\"file\": \"MFjPziuZZws.mp4\", \"rel\": \"balanced_train_segments/00009/MFjPziuZZws.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.01155, \"sharp_ok\": true, \"rms\": 0.004138855263590813, \"above_8k_ratio\": 0.003825}"
+          },
+          {
+            "line": 33,
+            "source_ids": [
+              "MRwVio7Vxp4"
+            ],
+            "excerpt": "{\"file\": \"MRwVio7Vxp4.mp4\", \"rel\": \"balanced_train_segments/00009/MRwVio7Vxp4.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00538, \"sharp_ok\": true, \"rms\": 0.12992842495441437, \"above_8k_ratio\": 3e-06}"
+          },
+          {
+            "line": 34,
+            "source_ids": [
+              "MS8VU468rKk"
+            ],
+            "excerpt": "{\"file\": \"MS8VU468rKk.mp4\", \"rel\": \"balanced_train_segments/00009/MS8VU468rKk.mp4\", \"wh\": [1920, 1080], \"duration\": 10.022, \"band_ratio\": 0.01038, \"sharp_ok\": true, \"rms\": 0.3794187903404236, \"above_8k_ratio\": 6.7e-05}"
+          },
+          {
+            "line": 80,
+            "source_ids": [
+              "N5NGtmtnz_c"
+            ],
+            "excerpt": "{\"file\": \"N5NGtmtnz_c.mp4\", \"rel\": \"balanced_train_segments/00009/N5NGtmtnz_c.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.14042, \"sharp_ok\": true, \"rms\": 0.09308274835348129, \"above_8k_ratio\": 0.0}"
+          },
+          {
+            "line": 96,
+            "source_ids": [
+              "NFmqHDRAkO0"
+            ],
+            "excerpt": "{\"file\": \"NFmqHDRAkO0.mp4\", \"rel\": \"balanced_train_segments/00009/NFmqHDRAkO0.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.03291, \"sharp_ok\": true, \"rms\": 0.24961215257644653, \"above_8k_ratio\": 7.2e-05}"
+          },
+          {
+            "line": 113,
+            "source_ids": [
+              "NSyqj1DXZKg"
+            ],
+            "excerpt": "{\"file\": \"NSyqj1DXZKg.mp4\", \"rel\": \"balanced_train_segments/00009/NSyqj1DXZKg.mp4\", \"wh\": [1280, 720], \"duration\": 10.022, \"band_ratio\": 0.00719, \"sharp_ok\": true, \"rms\": 0.12823449075222015, \"above_8k_ratio\": 4e-06}"
+          }
+        ]
+      }
+    ],
+    "checked_manifest_files": [
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/const/manifest.json",
+        "bytes": 1177,
+        "sha256": "f666481e6f58f81bd81db51b115a24238f874774412c03d3c7d5f04fc336c843"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/heldout/manifest.json",
+        "bytes": 2557,
+        "sha256": "609c706aceed3614ebb0476c6ba0fa108d07c8d6159bde04aa8ea40df8d372f7"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/heldout_s2/manifest.json",
+        "bytes": 2498,
+        "sha256": "dc124ea38abca38cf15257441a2f6e53d52a9a6f312fe212136a83055e745eae"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/heldout_s6/manifest.json",
+        "bytes": 2817,
+        "sha256": "e5a01203c24972c3642b1da53937765e862295cf9a62c30537c2f83ebeeb93e5"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/heldout_s8/manifest.json",
+        "bytes": 2498,
+        "sha256": "ae481657c7ccb8385934d0b3d61978153fa04dfd63ad3d1706892653d7eeeef4"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/mvsr4x/manifest.json",
+        "bytes": 918,
+        "sha256": "2734a5405c514e4e728fbf13aa44209bb5b0948defcc14fbb4b98233f9020234"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/omnibench/manifest.json",
+        "bytes": 4786,
+        "sha256": "72ac7c41779a9b6df7b3ddbbf4e42d8550b91ff5caf2f0a4ea045e88ed292c6a"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/omnibench_nogt/manifest.json",
+        "bytes": 9140,
+        "sha256": "ef44735079fa41a8861615116e111ddb57ff818efedfbe42eb0ec8468998ace9"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/realvsr/manifest.json",
+        "bytes": 1057,
+        "sha256": "dfc94644f715c58188e8619d9442f97a15d8a5b429fc7757d92e52db2cf3f0cf"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/tvary/manifest.json",
+        "bytes": 1177,
+        "sha256": "0a84bf336bab643da456eef735507ed1a032ab2b25f82e8e7f4ae799caa0ef59"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_eval/videolq/manifest.json",
+        "bytes": 1154,
+        "sha256": "4f96c6ebc3fc632da80b22ea0fc33c46b0980225a16c5f29ac4f02466e1f4b74"
+      },
+      {
+        "path": "/cache/zihaohe/streaming_sr0/data/stage2_eval/manifest.json",
+        "bytes": 1342,
+        "sha256": "f1f8bf42e3e263d3505107ddc11e20e230870264bb500895c851dbab4b0d6b93"
+      },
+      {
+        "path": "/temp/h3_unified_dataset_20260918/manifests/eligible.val.jsonl",
+        "bytes": 581717,
+        "sha256": "d7017bc699199223823d5ae0296303e8ef565344ee4d63fd015e07118e3d77b1"
+      }
+    ],
+    "limitations": "Literal ID matches do not detect renamed aliases or content duplicates; no checkpoint tensors were deserialized and no archived/deleted history was recovered. File snapshot was not atomic."
+  },
+  "explicit_history_file_checks": [
+    {
+      "path": "/temp/h3_unified_dataset_20260918/manifests/eligible.train.jsonl",
+      "bytes": 10780676,
+      "sha256": "5fba00e5a260082e5d0a833069e9da06643c116c44a45e29f3461eddea33bb1b",
+      "hits": []
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_eval/exclude_ids.txt",
+      "bytes": 3671,
+      "sha256": "c060e727c1d9f922af11ae2e0aaa80d6a0a187c7e5e2a25fddf36cdcbd8d5ccb",
+      "hits": []
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/exclude_const24.txt",
+      "bytes": 288,
+      "sha256": "c15e31250f43ebb907a62d712308acabdc933f08cbc648b08e62c69c6ed316e3",
+      "hits": []
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+      "bytes": 40723,
+      "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+      "hits": [
+        {
+          "line": 568,
+          "source_ids": [
+            "MFjPziuZZws"
+          ],
+          "excerpt": "   \"file\": \"MFjPziuZZws.mp4\","
+        },
+        {
+          "line": 569,
+          "source_ids": [
+            "MFjPziuZZws"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/MFjPziuZZws.mp4\","
+        },
+        {
+          "line": 659,
+          "source_ids": [
+            "MRwVio7Vxp4"
+          ],
+          "excerpt": "   \"file\": \"MRwVio7Vxp4.mp4\","
+        },
+        {
+          "line": 660,
+          "source_ids": [
+            "MRwVio7Vxp4"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/MRwVio7Vxp4.mp4\","
+        },
+        {
+          "line": 672,
+          "source_ids": [
+            "MS8VU468rKk"
+          ],
+          "excerpt": "   \"file\": \"MS8VU468rKk.mp4\","
+        },
+        {
+          "line": 673,
+          "source_ids": [
+            "MS8VU468rKk"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/MS8VU468rKk.mp4\","
+        },
+        {
+          "line": 1270,
+          "source_ids": [
+            "N5NGtmtnz_c"
+          ],
+          "excerpt": "   \"file\": \"N5NGtmtnz_c.mp4\","
+        },
+        {
+          "line": 1271,
+          "source_ids": [
+            "N5NGtmtnz_c"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/N5NGtmtnz_c.mp4\","
+        },
+        {
+          "line": 1478,
+          "source_ids": [
+            "NFmqHDRAkO0"
+          ],
+          "excerpt": "   \"file\": \"NFmqHDRAkO0.mp4\","
+        },
+        {
+          "line": 1479,
+          "source_ids": [
+            "NFmqHDRAkO0"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/NFmqHDRAkO0.mp4\","
+        },
+        {
+          "line": 1699,
+          "source_ids": [
+            "NSyqj1DXZKg"
+          ],
+          "excerpt": "   \"file\": \"NSyqj1DXZKg.mp4\","
+        },
+        {
+          "line": 1700,
+          "source_ids": [
+            "NSyqj1DXZKg"
+          ],
+          "excerpt": "   \"rel\": \"balanced_train_segments/00009/NSyqj1DXZKg.mp4\","
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates_big.json",
+      "bytes": 76613,
+      "sha256": "2e204239e57126d88388eb53ac6433b1f467b16df06e64b2eb188fa07e2136cd",
+      "hits": []
+    }
+  ],
+  "candidate_manifest_semantics": [
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+      "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+      "fields": {
+        "all": {
+          "count": 112,
+          "matching_records": [
+            {
+              "json_pointer": "/all/15",
+              "record": {
+                "file": "MFjPziuZZws.mp4",
+                "rel": "balanced_train_segments/00009/MFjPziuZZws.mp4",
+                "wh": [
+                  1280,
+                  720
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.01155113220216877,
+                "sharp_ok": true,
+                "rms": 0.004138855263590813,
+                "above_8k_ratio": 0.0038251327350735664
+              }
+            },
+            {
+              "json_pointer": "/all/22",
+              "record": {
+                "file": "MRwVio7Vxp4.mp4",
+                "rel": "balanced_train_segments/00009/MRwVio7Vxp4.mp4",
+                "wh": [
+                  1280,
+                  720
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.005375712793264299,
+                "sharp_ok": true,
+                "rms": 0.12992842495441437,
+                "above_8k_ratio": 0.000002934010126409703
+              }
+            },
+            {
+              "json_pointer": "/all/23",
+              "record": {
+                "file": "MS8VU468rKk.mp4",
+                "rel": "balanced_train_segments/00009/MS8VU468rKk.mp4",
+                "wh": [
+                  1920,
+                  1080
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.01037531089494457,
+                "sharp_ok": true,
+                "rms": 0.3794187903404236,
+                "above_8k_ratio": 0.00006654122262261808
+              }
+            },
+            {
+              "json_pointer": "/all/69",
+              "record": {
+                "file": "N5NGtmtnz_c.mp4",
+                "rel": "balanced_train_segments/00009/N5NGtmtnz_c.mp4",
+                "wh": [
+                  1280,
+                  720
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.14042238614928207,
+                "sharp_ok": true,
+                "rms": 0.09308274835348129,
+                "above_8k_ratio": 2.124453999385878e-7
+              }
+            },
+            {
+              "json_pointer": "/all/85",
+              "record": {
+                "file": "NFmqHDRAkO0.mp4",
+                "rel": "balanced_train_segments/00009/NFmqHDRAkO0.mp4",
+                "wh": [
+                  1280,
+                  720
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.03291382099027004,
+                "sharp_ok": true,
+                "rms": 0.24961215257644653,
+                "above_8k_ratio": 0.00007177059887908399
+              }
+            },
+            {
+              "json_pointer": "/all/102",
+              "record": {
+                "file": "NSyqj1DXZKg.mp4",
+                "rel": "balanced_train_segments/00009/NSyqj1DXZKg.mp4",
+                "wh": [
+                  1280,
+                  720
+                ],
+                "duration": 10.022,
+                "band_ratio": 0.007188585149209287,
+                "sharp_ok": true,
+                "rms": 0.12823449075222015,
+                "above_8k_ratio": 0.0000036282369819673477
+              }
+            }
+          ]
+        },
+        "selected": {
+          "count": 28,
+          "matching_records": []
+        }
+      },
+      "n_probed": 112,
+      "n_pass": 28
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates_big.json",
+      "sha256": "2e204239e57126d88388eb53ac6433b1f467b16df06e64b2eb188fa07e2136cd",
+      "fields": {
+        "all": {
+          "count": 0,
+          "matching_records": []
+        },
+        "selected": {
+          "count": 290,
+          "matching_records": []
+        }
+      },
+      "n_probed": null,
+      "n_pass": 290
+    }
+  ],
+  "loader_semantics": {
+    "harvest": {
+      "path": "/cache/zihaohe/streaming_sr0/code/build_real_av.py",
+      "sha256": "e0dc4bdccfbb0afdb13aecb6c177f59e9298e8d13a405b55cc355b721cc42993",
+      "lines": "155-165",
+      "interpretation": "All metadata logged before sharp/audio gates; selected requires sharp_ok, rms >0.005 and above_8k_ratio >1e-4; all stores probe rows."
+    },
+    "eval": {
+      "path": "/cache/zihaohe/streaming_sr0/code/prepare_real_eval.py",
+      "sha256": "47a73da33cc19af897c610c01812158d52a493554c56b2658f939cabbf43ebab",
+      "lines": "89-106",
+      "interpretation": "Only selected records from the chosen candidate JSON are decoded; written per-ID meta and eval manifest provide separate materialization evidence."
+    },
+    "stage7": {
+      "path": "/cache/zihaohe/streaming_sr0/code/prepare_stage7_train.py",
+      "sha256": "d0ae30932c720426384f7473282c2f66c85a7e5a5182c9f6ab0f54d9ae841f35",
+      "lines": "24-26,58-81",
+      "interpretation": "Reads candidates_big selected; emits <source_id>_w<index>.npz in train/val; all 46 absent from direct output names and this selected set."
+    },
+    "pilot": {
+      "path": "/cache/zihaohe/streaming_sr0/code/preencode.py",
+      "sha256": "f0346ad94b1621d3040537dd51284b16503b6f098b2d2689a8b094c26d9dee0d",
+      "lines": "19,53-65",
+      "interpretation": "Reads eligible train/val manifests; neither contains literal candidate IDs. Pilot latent names were separately screened. This cannot rule out content under a different source alias."
+    },
+    "range": {
+      "path": "/cache/zihaohe/streaming_sr0/code/prepare_range_data.py",
+      "sha256": "7b08adb0a1203448b6fd9549a121af08b3e40aa65cb32b7e9b3fdae97a27564a",
+      "lines": "26,83-109",
+      "interpretation": "Reads eligible split manifest, excludes Stage2 eval and emits ID-window files; corresponding roots and scaled/native variants screened by filename."
+    },
+    "source_script_presence_rule": "A preparation/train shell script supplies a reproducible intended path, not proof of execution for an individual sample."
+  },
+  "directory_membership_checks": [
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/pilot_latents",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/pilot_latents",
+      "exists": true,
+      "entries": 6054,
+      "entry_names_sha256": "db95c89a46b16e39a4d00df95c12e075390d8e94a6cdec82f36ba938d9db2a45",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/range_pairs",
+      "resolved_root": "/temp/zihaohe_range_pairs",
+      "exists": true,
+      "entries": 873,
+      "entry_names_sha256": "923a0f80c2d6c257204748d262a6df68d8bba9dff53d7b0e6246dd923df7b50b",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/stage7_latents",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/stage7_latents",
+      "exists": true,
+      "entries": 872,
+      "entry_names_sha256": "57d3847069ca895a45ee66494ee2c67a3599b49e69afae9defba3f99b4594513",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/stage7_teacher",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/stage7_teacher",
+      "exists": true,
+      "entries": 884,
+      "entry_names_sha256": "2e3312d3a8fe60c875a6e02184f1a1cf0eeef0f0329b96b134522f10f77cb92d",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/stage7_train",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/stage7_train",
+      "exists": true,
+      "entries": 872,
+      "entry_names_sha256": "d07493c74bfd81ff3b34cca07e000cd453a854ab83e1395cb2f9cf76dbec39c8",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/stage8_audio",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/stage8_audio",
+      "exists": true,
+      "entries": 292,
+      "entry_names_sha256": "453bdd67e4e3d69765314012790b97c4565c583276c43d9c9ac4adf0a4a9018e",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/real_eval",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/real_eval",
+      "exists": true,
+      "entries": 767,
+      "entry_names_sha256": "2f9d8e84840fb6cc3a2b5f1fbb0e80cb421c139bf93d235898ab1c138860cf0a",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/streaming_sr0/data/stage2_eval",
+      "resolved_root": "/cache/zihaohe/streaming_sr0/data/stage2_eval",
+      "exists": true,
+      "entries": 1,
+      "entry_names_sha256": "ffa5b716b5a57837f7929dfcca4b4dfdeb97210a7fd5a12d2f1978846d6f1743",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/temp/zihaohe_range_pairs",
+      "resolved_root": "/temp/zihaohe_range_pairs",
+      "exists": true,
+      "entries": 873,
+      "entry_names_sha256": "923a0f80c2d6c257204748d262a6df68d8bba9dff53d7b0e6246dd923df7b50b",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_bd",
+      "resolved_root": "/cache/zihaohe/range_pairs_bd",
+      "exists": true,
+      "entries": 7016,
+      "entry_names_sha256": "ba83027c2c276aa318b62158fcceeb033583a2dfeb1a702c259fd60272e57943",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_bdfit",
+      "resolved_root": "/cache/zihaohe/range_pairs_bdfit",
+      "exists": true,
+      "entries": 7016,
+      "entry_names_sha256": "ba83027c2c276aa318b62158fcceeb033583a2dfeb1a702c259fd60272e57943",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_deblur",
+      "resolved_root": "/cache/zihaohe/range_pairs_deblur",
+      "exists": true,
+      "entries": 671,
+      "entry_names_sha256": "22ca2aac1e985ba4b4d0ad2a555ca92ad882d112960c94559e7a5551e5e95cde",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_deblur_or_ctl",
+      "resolved_root": "/cache/zihaohe/range_pairs_deblur_or_ctl",
+      "exists": true,
+      "entries": 138,
+      "entry_names_sha256": "9f4bdeb63c8503e821c78df5549d4f68b719bb91cbae01663d1ce15d1bf3a18c",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_deblur_or_hi",
+      "resolved_root": "/cache/zihaohe/range_pairs_deblur_or_hi",
+      "exists": true,
+      "entries": 138,
+      "entry_names_sha256": "9f4bdeb63c8503e821c78df5549d4f68b719bb91cbae01663d1ce15d1bf3a18c",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_deblur_or_lo",
+      "resolved_root": "/cache/zihaohe/range_pairs_deblur_or_lo",
+      "exists": true,
+      "entries": 138,
+      "entry_names_sha256": "9f4bdeb63c8503e821c78df5549d4f68b719bb91cbae01663d1ce15d1bf3a18c",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_deblurbig",
+      "resolved_root": "/cache/zihaohe/range_pairs_deblurbig",
+      "exists": true,
+      "entries": 10490,
+      "entry_names_sha256": "51ff54a73e851cc4a62f49e811e85f2cd40f3c87978572f79503ce90967c31f2",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_denoise",
+      "resolved_root": "/cache/zihaohe/range_pairs_denoise",
+      "exists": true,
+      "entries": 671,
+      "entry_names_sha256": "22ca2aac1e985ba4b4d0ad2a555ca92ad882d112960c94559e7a5551e5e95cde",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_denoisebig",
+      "resolved_root": "/cache/zihaohe/range_pairs_denoisebig",
+      "exists": true,
+      "entries": 10490,
+      "entry_names_sha256": "51ff54a73e851cc4a62f49e811e85f2cd40f3c87978572f79503ce90967c31f2",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s2",
+      "resolved_root": "/cache/zihaohe/range_pairs_s2",
+      "exists": true,
+      "entries": 882,
+      "entry_names_sha256": "d48efe6910c35e6853fd80c5d963cb6d8f61c92cdcb97def13145b27771f9705",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s2big",
+      "resolved_root": "/cache/zihaohe/range_pairs_s2big",
+      "exists": true,
+      "entries": 13852,
+      "entry_names_sha256": "b09887b6eb0e68d503b6af8fd63953de4d7a5f0c03c7a848cffc98e44a4e8501",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s3big",
+      "resolved_root": "/cache/zihaohe/range_pairs_s3big",
+      "exists": true,
+      "entries": 31,
+      "entry_names_sha256": "c57b6cc2ef88b3e5a7837b2e4c5251188121693e8f59cba88110f9327c9801fd",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s6big",
+      "resolved_root": "/cache/zihaohe/range_pairs_s6big",
+      "exists": true,
+      "entries": 7016,
+      "entry_names_sha256": "ba83027c2c276aa318b62158fcceeb033583a2dfeb1a702c259fd60272e57943",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s8",
+      "resolved_root": "/cache/zihaohe/range_pairs_s8",
+      "exists": true,
+      "entries": 882,
+      "entry_names_sha256": "d48efe6910c35e6853fd80c5d963cb6d8f61c92cdcb97def13145b27771f9705",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_s8big",
+      "resolved_root": "/cache/zihaohe/range_pairs_s8big",
+      "exists": true,
+      "entries": 13852,
+      "entry_names_sha256": "b09887b6eb0e68d503b6af8fd63953de4d7a5f0c03c7a848cffc98e44a4e8501",
+      "candidate_name_matches": []
+    },
+    {
+      "root": "/cache/zihaohe/range_pairs_x4big",
+      "resolved_root": "/cache/zihaohe/range_pairs_x4big",
+      "exists": true,
+      "entries": 13852,
+      "entry_names_sha256": "b09887b6eb0e68d503b6af8fd63953de4d7a5f0c03c7a848cffc98e44a4e8501",
+      "candidate_name_matches": []
+    }
+  ],
+  "known_loader_and_launch_script_evidence": [
+    {
+      "path": "/cache/zihaohe/streaming_sr0/tools/harvest.sh",
+      "sha256": "42d713fb8f12b2b9ed73280fb51fda9af6055f634e8c3aadb16d6dd27c3ef706",
+      "lines": [
+        {
+          "line": 1,
+          "text": "#!/bin/bash"
+        },
+        {
+          "line": 2,
+          "text": "# Scale the real-footage pool for Stage-7 training. Each worker takes a different AudioSet shard"
+        },
+        {
+          "line": 3,
+          "text": "# directory, so they do not fight over the same candidate list."
+        },
+        {
+          "line": 4,
+          "text": "cd /cache/zihaohe/streaming_sr0/code"
+        },
+        {
+          "line": 5,
+          "text": "for s in 1 2 3 4 5 6 7 8 9 10 11 12; do"
+        },
+        {
+          "line": 6,
+          "text": "  ( SHARD_START=$s PATH=/usr/local/ffmpeg/bin:$PATH OMP_NUM_THREADS=3 \\"
+        },
+        {
+          "line": 7,
+          "text": "    ../venv/bin/python -u build_real_av.py --shards 1 --per-shard 400 --keep 1000 --min-width 1280 \\"
+        },
+        {
+          "line": 8,
+          "text": "      > ../logs/harvest_$s.log 2>&1 ) &"
+        },
+        {
+          "line": 9,
+          "text": "  sleep 3"
+        },
+        {
+          "line": 10,
+          "text": "done"
+        },
+        {
+          "line": 11,
+          "text": "wait"
+        },
+        {
+          "line": 12,
+          "text": "echo HARVEST_DONE >> ../logs/harvest_1.log"
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/tools/make_stage7.sh",
+      "sha256": "e9b9cd63519f4082161adf614880087ce58379e11f690d98e38944b504599d1f",
+      "lines": [
+        {
+          "line": 1,
+          "text": "#!/bin/bash"
+        },
+        {
+          "line": 2,
+          "text": "cd /cache/zihaohe/streaming_sr0/code"
+        },
+        {
+          "line": 3,
+          "text": "for i in $(seq 0 15); do"
+        },
+        {
+          "line": 4,
+          "text": "  ( PATH=/usr/local/ffmpeg/bin:$PATH OMP_NUM_THREADS=3 ../venv/bin/python -u prepare_stage7_train.py \\"
+        },
+        {
+          "line": 5,
+          "text": "      --clips 290 --windows 3 --shard $i --nshards 16 > ../logs/mk7_$i.log 2>&1 ) &"
+        },
+        {
+          "line": 6,
+          "text": "done"
+        },
+        {
+          "line": 7,
+          "text": "wait"
+        },
+        {
+          "line": 8,
+          "text": "echo STAGE7_DATA_DONE >> ../logs/mk7_0.log"
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/tools/stage7_train.sh",
+      "sha256": "9df22198a5f56b8208d257df6054abfc38a0ed8fe9e358eb5fce6d2ae602df1b",
+      "lines": [
+        {
+          "line": 1,
+          "text": "#!/bin/bash"
+        },
+        {
+          "line": 2,
+          "text": "# Ceiling test: identical runs differing only in which guide the model sees."
+        },
+        {
+          "line": 3,
+          "text": "cd /cache/zihaohe/streaming_sr0/code"
+        },
+        {
+          "line": 4,
+          "text": "( export ASCEND_RT_VISIBLE_DEVICES=0,1,2,3; source ../env.sh"
+        },
+        {
+          "line": 5,
+          "text": "  ../venv/bin/python -m torch.distributed.run --nproc_per_node=4 --master_port=29511 \\"
+        },
+        {
+          "line": 6,
+          "text": "    train_stage1.py --data ../data/stage7_latents --out ../results/stage7_oracle \\"
+        },
+        {
+          "line": 7,
+          "text": "    --steps 2000 --rank 32 --guide-key guide_oracle > ../logs/s7_oracle.log 2>&1 ) &"
+        },
+        {
+          "line": 8,
+          "text": "sleep 25"
+        },
+        {
+          "line": 9,
+          "text": "( export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7; source ../env.sh"
+        },
+        {
+          "line": 10,
+          "text": "  ../venv/bin/python -m torch.distributed.run --nproc_per_node=4 --master_port=29512 \\"
+        },
+        {
+          "line": 11,
+          "text": "    train_stage1.py --data ../data/stage7_latents --out ../results/stage7_raw \\"
+        },
+        {
+          "line": 12,
+          "text": "    --steps 2000 --rank 32 --guide-key guide_raw > ../logs/s7_raw.log 2>&1 ) &"
+        },
+        {
+          "line": 13,
+          "text": "wait"
+        },
+        {
+          "line": 14,
+          "text": "echo STAGE7_TRAIN_DONE >> ../logs/s7_oracle.log"
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/tools/preenc7.sh",
+      "sha256": "079f4c28851cec168b4be7e2aa8fd68b9ce6b5e5c5b550ce73dcf752671c11f8",
+      "lines": [
+        {
+          "line": 1,
+          "text": "#!/bin/bash"
+        },
+        {
+          "line": 2,
+          "text": "cd /cache/zihaohe/streaming_sr0/code"
+        },
+        {
+          "line": 3,
+          "text": "for sp in val train; do"
+        },
+        {
+          "line": 4,
+          "text": "  for i in 0 1 2 3 4 5 6 7; do"
+        },
+        {
+          "line": 5,
+          "text": "    ( export ASCEND_RT_VISIBLE_DEVICES=$i; source ../env.sh"
+        },
+        {
+          "line": 6,
+          "text": "      OMP_NUM_THREADS=8 ../venv/bin/python -u preencode7.py --split $sp --shard $i --nshards 8 \\"
+        },
+        {
+          "line": 7,
+          "text": "        >> ../logs/preenc7_${sp}_$i.log 2>&1 ) &"
+        },
+        {
+          "line": 8,
+          "text": "  done"
+        },
+        {
+          "line": 9,
+          "text": "  wait"
+        },
+        {
+          "line": 10,
+          "text": "done"
+        },
+        {
+          "line": 11,
+          "text": "echo PREENC7_DONE >> ../logs/preenc7_train_0.log"
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/code/prepare_stage7_train.py",
+      "sha256": "d0ae30932c720426384f7473282c2f66c85a7e5a5182c9f6ab0f54d9ae841f35",
+      "lines": [
+        {
+          "line": 1,
+          "text": "\"\"\"Stage-7 training data: real footage, all-degradation, at both resolutions the system needs."
+        },
+        {
+          "line": 3,
+          "text": "Why real footage replaces the generated clips we trained Stage 1 on: measured during evaluation-set"
+        },
+        {
+          "line": 5,
+          "text": "(band_ratio 0.005 vs 0.09-0.10 on the sharpest real clips). Training and evaluating on it made the whole"
+        },
+        {
+          "line": 11,
+          "text": "  dx      208x120 uint8, D(hr) under the evaluation operator -- the range branch's target, and the"
+        },
+        {
+          "line": 24,
+          "text": "CAND = ROOT / 'data/real_av/candidates_big.json'"
+        },
+        {
+          "line": 26,
+          "text": "OUT = ROOT / 'data/stage7_train'"
+        },
+        {
+          "line": 32,
+          "text": "def read_window(path, start_s, n=T):"
+        },
+        {
+          "line": 43,
+          "text": "def eval_down(hr_u8):"
+        },
+        {
+          "line": 56,
+          "text": "    ap.add_argument('--val-frac', type=float, default=0.08)"
+        },
+        {
+          "line": 58,
+          "text": "    sel = json.loads(CAND.read_text())['selected'][:a.clips]"
+        },
+        {
+          "line": 63,
+          "text": "        split = 'val' if (i % max(2, int(1 / a.val_frac))) == 0 else 'train'"
+        },
+        {
+          "line": 68,
+          "text": "            out = d / f'{name}_w{w}.npz'"
+        },
+        {
+          "line": 76,
+          "text": "            hr = read_window(SRC / c['file'], start)"
+        },
+        {
+          "line": 81,
+          "text": "            dx = eval_down(hr)"
+        }
+      ]
+    },
+    {
+      "path": "/cache/zihaohe/streaming_sr0/code/prepare_range_data.py",
+      "sha256": "7b08adb0a1203448b6fd9549a121af08b3e40aa65cb32b7e9b3fdae97a27564a",
+      "lines": [
+        {
+          "line": 4,
+          "text": "image the evaluation operator would produce from the ground truth. mech5 measured that 43.5% of the"
+        },
+        {
+          "line": 11,
+          "text": "Target operator note: D must be the *evaluation* operator, torch bicubic with antialias=True, because that"
+        },
+        {
+          "line": 26,
+          "text": "MAN = Path('/temp/h3_unified_dataset_20260918/manifests')"
+        },
+        {
+          "line": 33,
+          "text": "def read_window(path, start_s):"
+        },
+        {
+          "line": 64,
+          "text": "def eval_down(hr_u8):"
+        },
+        {
+          "line": 65,
+          "text": "    \"\"\"D: the evaluation operator. uint8 [T,H,W,3] -> uint8 [T,H/4,W/4,3].\"\"\""
+        },
+        {
+          "line": 74,
+          "text": "    ap.add_argument('--split', default='train', choices=['train', 'val'])"
+        },
+        {
+          "line": 83,
+          "text": "    # the train manifest contains at least one truncated line; skip rather than abort the whole shard"
+        },
+        {
+          "line": 85,
+          "text": "    for l in (MAN / f'eligible.{a.split}.jsonl').read_text().splitlines():"
+        },
+        {
+          "line": 94,
+          "text": "    # keep the Stage-2 evaluation clips out of training"
+        },
+        {
+          "line": 95,
+          "text": "    held = set(json.loads((ROOT / 'data/stage2_eval/manifest.json').read_text())['clips'])"
+        },
+        {
+          "line": 103,
+          "text": "            out = d / f\"{r['id']}_w{w}.npz\""
+        },
+        {
+          "line": 109,
+          "text": "            fr = read_window(r['video_path'], start)"
+        },
+        {
+          "line": 118,
+          "text": "            tgt = eval_down(hr)"
+        }
+      ]
+    }
+  ],
+  "heldout_probe_default_output_exists": false,
+  "inventory_id_joins": [
+    {
+      "name": "pilot_latents_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/pilot_latents/train",
+      "inventory_source_count": 1437,
+      "source_ids_present_in_inventory": false,
+      "candidate_id_matches": null
+    },
+    {
+      "name": "pilot_latents_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/pilot_latents/val",
+      "inventory_source_count": 76,
+      "source_ids_present_in_inventory": false,
+      "candidate_id_matches": null
+    },
+    {
+      "name": "range_pairs_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/range_pairs/train",
+      "inventory_source_count": 391,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "range_pairs_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/range_pairs/val",
+      "inventory_source_count": 89,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_latents_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_latents/train",
+      "inventory_source_count": 265,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_latents_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_latents/val",
+      "inventory_source_count": 25,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_teacher_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_teacher/train",
+      "inventory_source_count": 265,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_teacher_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_teacher/val",
+      "inventory_source_count": 25,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_train_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_train/train",
+      "inventory_source_count": 265,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage7_train_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage7_train/val",
+      "inventory_source_count": 25,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage8_audio_train",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage8_audio/train",
+      "inventory_source_count": 265,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "stage8_audio_val",
+      "path": "/cache/zihaohe/streaming_sr0/data/stage8_audio/val",
+      "inventory_source_count": 25,
+      "source_ids_present_in_inventory": true,
+      "candidate_id_matches": []
+    },
+    {
+      "name": "unified_train",
+      "path": "/temp/h3_unified_dataset_20260918/manifests/eligible.train.jsonl",
+      "inventory_source_count": 2181,
+      "source_ids_present_in_inventory": false,
+      "candidate_id_matches": null
+    },
+    {
+      "name": "unified_val",
+      "path": "/temp/h3_unified_dataset_20260918/manifests/eligible.val.jsonl",
+      "inventory_source_count": 114,
+      "source_ids_present_in_inventory": false,
+      "candidate_id_matches": null
+    }
+  ],
+  "current_pilot_join": {
+    "train_matches": [],
+    "dev_matches": []
+  },
+  "per_candidate": [
+    {
+      "source_id": "1OM5619KGEI",
+      "source_group_hint": "audioset-youtube:1OM5619KGEI",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_1.log",
+          "file_sha256": "ad70659d9a5a0a5eec4f35e6143b810972c9fead4875e647182df60a672127ba",
+          "line": 27,
+          "record": {
+            "file": "1OM5619KGEI.mp4",
+            "rel": "balanced_train_segments/00001/1OM5619KGEI.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.02193,
+            "sharp_ok": true,
+            "rms": 0.21046224236488342,
+            "above_8k_ratio": 0.000002
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "1yRMYH8cSFM",
+      "source_group_hint": "audioset-youtube:1yRMYH8cSFM",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_1.log",
+          "file_sha256": "ad70659d9a5a0a5eec4f35e6143b810972c9fead4875e647182df60a672127ba",
+          "line": 81,
+          "record": {
+            "file": "1yRMYH8cSFM.mp4",
+            "rel": "balanced_train_segments/00001/1yRMYH8cSFM.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.00662,
+            "sharp_ok": true,
+            "rms": 0.19875852763652802,
+            "above_8k_ratio": 0.000041
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "26HLgXWF-Co",
+      "source_group_hint": "audioset-youtube:26HLgXWF-Co",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_1.log",
+          "file_sha256": "ad70659d9a5a0a5eec4f35e6143b810972c9fead4875e647182df60a672127ba",
+          "line": 97,
+          "record": {
+            "file": "26HLgXWF-Co.mp4",
+            "rel": "balanced_train_segments/00001/26HLgXWF-Co.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02021,
+            "sharp_ok": true,
+            "rms": 0.18347910046577454,
+            "above_8k_ratio": 0.000094
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "2IpapScfsT4",
+      "source_group_hint": "audioset-youtube:2IpapScfsT4",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_1.log",
+          "file_sha256": "ad70659d9a5a0a5eec4f35e6143b810972c9fead4875e647182df60a672127ba",
+          "line": 109,
+          "record": {
+            "file": "2IpapScfsT4.mp4",
+            "rel": "balanced_train_segments/00001/2IpapScfsT4.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02258,
+            "sharp_ok": true,
+            "rms": 0.09382500499486923,
+            "above_8k_ratio": 0.000001
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "457KFDtoIPM",
+      "source_group_hint": "audioset-youtube:457KFDtoIPM",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_2.log",
+          "file_sha256": "c57f6983441a26f9f9fb716dbddabd6dcca7cc5fe4d733eb43626828b982d1f6",
+          "line": 40,
+          "record": {
+            "file": "457KFDtoIPM.mp4",
+            "rel": "balanced_train_segments/00002/457KFDtoIPM.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.01778,
+            "sharp_ok": true,
+            "rms": 0.05796823650598526,
+            "above_8k_ratio": 0.000003
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "63jbksEqycQ",
+      "source_group_hint": "audioset-youtube:63jbksEqycQ",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_3.log",
+          "file_sha256": "29b1481b4f6d0204550cfb7ed77dc1f60a226ea050088867f9a830d6793eb5f3",
+          "line": 17,
+          "record": {
+            "file": "63jbksEqycQ.mp4",
+            "rel": "balanced_train_segments/00003/63jbksEqycQ.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01655,
+            "sharp_ok": true,
+            "rms": 0.0373668447136879,
+            "above_8k_ratio": 0.000025
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "6X5vLMqdKZo",
+      "source_group_hint": "audioset-youtube:6X5vLMqdKZo",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_3.log",
+          "file_sha256": "29b1481b4f6d0204550cfb7ed77dc1f60a226ea050088867f9a830d6793eb5f3",
+          "line": 52,
+          "record": {
+            "file": "6X5vLMqdKZo.mp4",
+            "rel": "balanced_train_segments/00003/6X5vLMqdKZo.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 9.225,
+            "band_ratio": 0.02241,
+            "sharp_ok": true,
+            "rms": 0.12019572407007217,
+            "above_8k_ratio": 0.000037
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "6XN9trtsQGo",
+      "source_group_hint": "audioset-youtube:6XN9trtsQGo",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_3.log",
+          "file_sha256": "29b1481b4f6d0204550cfb7ed77dc1f60a226ea050088867f9a830d6793eb5f3",
+          "line": 55,
+          "record": {
+            "file": "6XN9trtsQGo.mp4",
+            "rel": "balanced_train_segments/00003/6XN9trtsQGo.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00826,
+            "sharp_ok": true,
+            "rms": 0.05132592096924782,
+            "above_8k_ratio": 0.000001
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "8jjlkOmWGUo",
+      "source_group_hint": "audioset-youtube:8jjlkOmWGUo",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 12,
+          "record": {
+            "file": "8jjlkOmWGUo.mp4",
+            "rel": "balanced_train_segments/00004/8jjlkOmWGUo.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.0051,
+            "sharp_ok": true,
+            "rms": 0.12391359359025955,
+            "above_8k_ratio": 0.000004
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "8wMzUIkaZ-I",
+      "source_group_hint": "audioset-youtube:8wMzUIkaZ-I",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 38,
+          "record": {
+            "file": "8wMzUIkaZ-I.mp4",
+            "rel": "balanced_train_segments/00004/8wMzUIkaZ-I.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01079,
+            "sharp_ok": true,
+            "rms": 0.10437104851007462,
+            "above_8k_ratio": 0.000007
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "8z2yFtX66C4",
+      "source_group_hint": "audioset-youtube:8z2yFtX66C4",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 44,
+          "record": {
+            "file": "8z2yFtX66C4.mp4",
+            "rel": "balanced_train_segments/00004/8z2yFtX66C4.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.05757,
+            "sharp_ok": true,
+            "rms": 0.43991559743881226,
+            "above_8k_ratio": 0.000004
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "93X6stMF9xU",
+      "source_group_hint": "audioset-youtube:93X6stMF9xU",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 55,
+          "record": {
+            "file": "93X6stMF9xU.mp4",
+            "rel": "balanced_train_segments/00004/93X6stMF9xU.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.0051,
+            "sharp_ok": true,
+            "rms": 0.11953885853290558,
+            "above_8k_ratio": 0.000049
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "977zYEqpsSE",
+      "source_group_hint": "audioset-youtube:977zYEqpsSE",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 60,
+          "record": {
+            "file": "977zYEqpsSE.mp4",
+            "rel": "balanced_train_segments/00004/977zYEqpsSE.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.0135,
+            "sharp_ok": true,
+            "rms": 0.34468594193458557,
+            "above_8k_ratio": 0.000029
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "9EsNtRXnYbE",
+      "source_group_hint": "audioset-youtube:9EsNtRXnYbE",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 73,
+          "record": {
+            "file": "9EsNtRXnYbE.mp4",
+            "rel": "balanced_train_segments/00004/9EsNtRXnYbE.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.03187,
+            "sharp_ok": true,
+            "rms": 0.20125052332878113,
+            "above_8k_ratio": 0.000005
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "9S9-smHVvaw",
+      "source_group_hint": "audioset-youtube:9S9-smHVvaw",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 87,
+          "record": {
+            "file": "9S9-smHVvaw.mp4",
+            "rel": "balanced_train_segments/00004/9S9-smHVvaw.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00609,
+            "sharp_ok": true,
+            "rms": 0.06796471029520035,
+            "above_8k_ratio": 0.000003
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "9W--1bU_zjg",
+      "source_group_hint": "audioset-youtube:9W--1bU_zjg",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 92,
+          "record": {
+            "file": "9W--1bU_zjg.mp4",
+            "rel": "balanced_train_segments/00004/9W--1bU_zjg.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.0123,
+            "sharp_ok": true,
+            "rms": 0.1259346306324005,
+            "above_8k_ratio": 0.000008
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "9jDguGDaxm8",
+      "source_group_hint": "audioset-youtube:9jDguGDaxm8",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 108,
+          "record": {
+            "file": "9jDguGDaxm8.mp4",
+            "rel": "balanced_train_segments/00004/9jDguGDaxm8.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01605,
+            "sharp_ok": true,
+            "rms": 0.176465705037117,
+            "above_8k_ratio": 0.000001
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "A1LXWbDIMVQ",
+      "source_group_hint": "audioset-youtube:A1LXWbDIMVQ",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_4.log",
+          "file_sha256": "9b9ac0ccf27d2c1b0cc1756865c206ceb9581ccf1fb25f7589092a138478d01b",
+          "line": 125,
+          "record": {
+            "file": "A1LXWbDIMVQ.mp4",
+            "rel": "balanced_train_segments/00004/A1LXWbDIMVQ.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.00794,
+            "sharp_ok": true,
+            "rms": 0.12668079137802124,
+            "above_8k_ratio": 0.000017
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": true,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "BMizovbaUbc",
+      "source_group_hint": "audioset-youtube:BMizovbaUbc",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_5.log",
+          "file_sha256": "789915781ca4c9d7952e03c8d572907765149ed9b1a38cf5bdcee210f5b01382",
+          "line": 13,
+          "record": {
+            "file": "BMizovbaUbc.mp4",
+            "rel": "balanced_train_segments/00005/BMizovbaUbc.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01508,
+            "sharp_ok": true,
+            "rms": 0.004693781957030296,
+            "above_8k_ratio": 0.393046
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": true,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "E1AGyM0arxY",
+      "source_group_hint": "audioset-youtube:E1AGyM0arxY",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 28,
+          "record": {
+            "file": "E1AGyM0arxY.mp4",
+            "rel": "balanced_train_segments/00006/E1AGyM0arxY.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.00839,
+            "sharp_ok": true,
+            "rms": 0.1893894374370575,
+            "above_8k_ratio": 0.000004
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "EGc41s7IIZ0",
+      "source_group_hint": "audioset-youtube:EGc41s7IIZ0",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 40,
+          "record": {
+            "file": "EGc41s7IIZ0.mp4",
+            "rel": "balanced_train_segments/00006/EGc41s7IIZ0.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01682,
+            "sharp_ok": true,
+            "rms": 0.14809420704841614,
+            "above_8k_ratio": 0.000001
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "EQxjYP1hMsI",
+      "source_group_hint": "audioset-youtube:EQxjYP1hMsI",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 54,
+          "record": {
+            "file": "EQxjYP1hMsI.mp4",
+            "rel": "balanced_train_segments/00006/EQxjYP1hMsI.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00641,
+            "sharp_ok": true,
+            "rms": 0.33452680706977844,
+            "above_8k_ratio": 0.000051
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "EbJxKHCk0MY",
+      "source_group_hint": "audioset-youtube:EbJxKHCk0MY",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 71,
+          "record": {
+            "file": "EbJxKHCk0MY.mp4",
+            "rel": "balanced_train_segments/00006/EbJxKHCk0MY.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02337,
+            "sharp_ok": true,
+            "rms": 0.2789570689201355,
+            "above_8k_ratio": 0.000013
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "EjHB5MD-_jA",
+      "source_group_hint": "audioset-youtube:EjHB5MD-_jA",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 86,
+          "record": {
+            "file": "EjHB5MD-_jA.mp4",
+            "rel": "balanced_train_segments/00006/EjHB5MD-_jA.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02647,
+            "sharp_ok": true,
+            "rms": 0.010225645266473293,
+            "above_8k_ratio": 0.000014
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "ExsNRvMVmMY",
+      "source_group_hint": "audioset-youtube:ExsNRvMVmMY",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_6.log",
+          "file_sha256": "4ac4ec417e21f77f62143eacfb64c0388f0918cfc2ce4f1a8f2d8bd9063ba7e3",
+          "line": 105,
+          "record": {
+            "file": "ExsNRvMVmMY.mp4",
+            "rel": "balanced_train_segments/00006/ExsNRvMVmMY.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00553,
+            "sharp_ok": true,
+            "rms": 0.11285284906625748,
+            "above_8k_ratio": 0.000071
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "H6Y_7Ax34-g",
+      "source_group_hint": "audioset-youtube:H6Y_7Ax34-g",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_7.log",
+          "file_sha256": "9d3da4669035ce1a493d33700e388b6ad1d9db6eaceb1e3a4a5a223cc04f5d74",
+          "line": 53,
+          "record": {
+            "file": "H6Y_7Ax34-g.mp4",
+            "rel": "balanced_train_segments/00007/H6Y_7Ax34-g.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00687,
+            "sharp_ok": true,
+            "rms": 0.0685318112373352,
+            "above_8k_ratio": 0.000028
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "HTLK55-Fl80",
+      "source_group_hint": "audioset-youtube:HTLK55-Fl80",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_7.log",
+          "file_sha256": "9d3da4669035ce1a493d33700e388b6ad1d9db6eaceb1e3a4a5a223cc04f5d74",
+          "line": 84,
+          "record": {
+            "file": "HTLK55-Fl80.mp4",
+            "rel": "balanced_train_segments/00007/HTLK55-Fl80.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.01271,
+            "sharp_ok": true,
+            "rms": 0.11180035024881363,
+            "above_8k_ratio": 0.000013
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "Ha1kgyD4HHI",
+      "source_group_hint": "audioset-youtube:Ha1kgyD4HHI",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_7.log",
+          "file_sha256": "9d3da4669035ce1a493d33700e388b6ad1d9db6eaceb1e3a4a5a223cc04f5d74",
+          "line": 100,
+          "record": {
+            "file": "Ha1kgyD4HHI.mp4",
+            "rel": "balanced_train_segments/00007/Ha1kgyD4HHI.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00554,
+            "sharp_ok": true,
+            "rms": 0.2525760531425476,
+            "above_8k_ratio": 0.000017
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "Hob0LAu8afQ",
+      "source_group_hint": "audioset-youtube:Hob0LAu8afQ",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_7.log",
+          "file_sha256": "9d3da4669035ce1a493d33700e388b6ad1d9db6eaceb1e3a4a5a223cc04f5d74",
+          "line": 124,
+          "record": {
+            "file": "Hob0LAu8afQ.mp4",
+            "rel": "balanced_train_segments/00007/Hob0LAu8afQ.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00763,
+            "sharp_ok": true,
+            "rms": 0.17140361666679382,
+            "above_8k_ratio": 0.000005
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "JiU9J-oQipU",
+      "source_group_hint": "audioset-youtube:JiU9J-oQipU",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+          "file_sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+          "line": 35,
+          "record": {
+            "file": "JiU9J-oQipU.mp4",
+            "rel": "balanced_train_segments/00008/JiU9J-oQipU.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01201,
+            "sharp_ok": true,
+            "rms": 0.18998342752456665,
+            "above_8k_ratio": 0.000071
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "Jz4wLRDTF54",
+      "source_group_hint": "audioset-youtube:Jz4wLRDTF54",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+          "file_sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+          "line": 62,
+          "record": {
+            "file": "Jz4wLRDTF54.mp4",
+            "rel": "balanced_train_segments/00008/Jz4wLRDTF54.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.21242,
+            "sharp_ok": true,
+            "rms": 0.14103390276432037,
+            "above_8k_ratio": 0.0001
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "unknown_due_to_rounding_at_threshold",
+      "audio_gate_caveat": "Harvest prints ratio to 6 decimals, while selection uses original ratio > 1e-4. Logged 0.000100 with rms=0.14103390276432037 does not resolve strict comparison. Not selected in recorded manifests, but rejection reason is unknown.",
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "KFVIKa8jfKs",
+      "source_group_hint": "audioset-youtube:KFVIKa8jfKs",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+          "file_sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+          "line": 82,
+          "record": {
+            "file": "KFVIKa8jfKs.mp4",
+            "rel": "balanced_train_segments/00008/KFVIKa8jfKs.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00865,
+            "sharp_ok": true,
+            "rms": 0.03738898038864136,
+            "above_8k_ratio": 0.000009
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "KHpF2LzWHfQ",
+      "source_group_hint": "audioset-youtube:KHpF2LzWHfQ",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+          "file_sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+          "line": 87,
+          "record": {
+            "file": "KHpF2LzWHfQ.mp4",
+            "rel": "balanced_train_segments/00008/KHpF2LzWHfQ.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01411,
+            "sharp_ok": true,
+            "rms": 0.0021382723934948444,
+            "above_8k_ratio": 0.000238
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "KN82wKXaxNo",
+      "source_group_hint": "audioset-youtube:KN82wKXaxNo",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_8.log",
+          "file_sha256": "b01e757dd030de3c639c7dbf0c76a414c5d275717f31db98710ac2455dc6fe4b",
+          "line": 93,
+          "record": {
+            "file": "KN82wKXaxNo.mp4",
+            "rel": "balanced_train_segments/00008/KN82wKXaxNo.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02965,
+            "sharp_ok": true,
+            "rms": 0.16526110470294952,
+            "above_8k_ratio": 0.000096
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "MFjPziuZZws",
+      "source_group_hint": "audioset-youtube:MFjPziuZZws",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 26,
+          "record": {
+            "file": "MFjPziuZZws.mp4",
+            "rel": "balanced_train_segments/00009/MFjPziuZZws.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01155,
+            "sharp_ok": true,
+            "rms": 0.004138855263590813,
+            "above_8k_ratio": 0.003825
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/15",
+        "record": {
+          "file": "MFjPziuZZws.mp4",
+          "rel": "balanced_train_segments/00009/MFjPziuZZws.mp4",
+          "wh": [
+            1280,
+            720
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.01155113220216877,
+          "sharp_ok": true,
+          "rms": 0.004138855263590813,
+          "above_8k_ratio": 0.0038251327350735664
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "MRwVio7Vxp4",
+      "source_group_hint": "audioset-youtube:MRwVio7Vxp4",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 33,
+          "record": {
+            "file": "MRwVio7Vxp4.mp4",
+            "rel": "balanced_train_segments/00009/MRwVio7Vxp4.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00538,
+            "sharp_ok": true,
+            "rms": 0.12992842495441437,
+            "above_8k_ratio": 0.000003
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/22",
+        "record": {
+          "file": "MRwVio7Vxp4.mp4",
+          "rel": "balanced_train_segments/00009/MRwVio7Vxp4.mp4",
+          "wh": [
+            1280,
+            720
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.005375712793264299,
+          "sharp_ok": true,
+          "rms": 0.12992842495441437,
+          "above_8k_ratio": 0.000002934010126409703
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "MS8VU468rKk",
+      "source_group_hint": "audioset-youtube:MS8VU468rKk",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 34,
+          "record": {
+            "file": "MS8VU468rKk.mp4",
+            "rel": "balanced_train_segments/00009/MS8VU468rKk.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01038,
+            "sharp_ok": true,
+            "rms": 0.3794187903404236,
+            "above_8k_ratio": 0.000067
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/23",
+        "record": {
+          "file": "MS8VU468rKk.mp4",
+          "rel": "balanced_train_segments/00009/MS8VU468rKk.mp4",
+          "wh": [
+            1920,
+            1080
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.01037531089494457,
+          "sharp_ok": true,
+          "rms": 0.3794187903404236,
+          "above_8k_ratio": 0.00006654122262261808
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "N5NGtmtnz_c",
+      "source_group_hint": "audioset-youtube:N5NGtmtnz_c",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 80,
+          "record": {
+            "file": "N5NGtmtnz_c.mp4",
+            "rel": "balanced_train_segments/00009/N5NGtmtnz_c.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.14042,
+            "sharp_ok": true,
+            "rms": 0.09308274835348129,
+            "above_8k_ratio": 0
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/69",
+        "record": {
+          "file": "N5NGtmtnz_c.mp4",
+          "rel": "balanced_train_segments/00009/N5NGtmtnz_c.mp4",
+          "wh": [
+            1280,
+            720
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.14042238614928207,
+          "sharp_ok": true,
+          "rms": 0.09308274835348129,
+          "above_8k_ratio": 2.124453999385878e-7
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "NFmqHDRAkO0",
+      "source_group_hint": "audioset-youtube:NFmqHDRAkO0",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 96,
+          "record": {
+            "file": "NFmqHDRAkO0.mp4",
+            "rel": "balanced_train_segments/00009/NFmqHDRAkO0.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.03291,
+            "sharp_ok": true,
+            "rms": 0.24961215257644653,
+            "above_8k_ratio": 0.000072
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/85",
+        "record": {
+          "file": "NFmqHDRAkO0.mp4",
+          "rel": "balanced_train_segments/00009/NFmqHDRAkO0.mp4",
+          "wh": [
+            1280,
+            720
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.03291382099027004,
+          "sharp_ok": true,
+          "rms": 0.24961215257644653,
+          "above_8k_ratio": 0.00007177059887908399
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "NSyqj1DXZKg",
+      "source_group_hint": "audioset-youtube:NSyqj1DXZKg",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_9.log",
+          "file_sha256": "bdd3b1b11bd12d41a8bc4bd2fe32203194aedb1964d47da0279bcf574dc455c8",
+          "line": 113,
+          "record": {
+            "file": "NSyqj1DXZKg.mp4",
+            "rel": "balanced_train_segments/00009/NSyqj1DXZKg.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00719,
+            "sharp_ok": true,
+            "rms": 0.12823449075222015,
+            "above_8k_ratio": 0.000004
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": {
+        "path": "/cache/zihaohe/streaming_sr0/data/real_av/candidates.json",
+        "sha256": "9079e652f060ebd6242905937ef9778f6e08f52ffdbcf08718711c6918ee4642",
+        "json_pointer": "/all/102",
+        "record": {
+          "file": "NSyqj1DXZKg.mp4",
+          "rel": "balanced_train_segments/00009/NSyqj1DXZKg.mp4",
+          "wh": [
+            1280,
+            720
+          ],
+          "duration": 10.022,
+          "band_ratio": 0.007188585149209287,
+          "sharp_ok": true,
+          "rms": 0.12823449075222015,
+          "above_8k_ratio": 0.0000036282369819673477
+        }
+      },
+      "prior_candidate_manifest_interpretation": "Present in all only, absent from selected; prior quality probe, not selected model dataset membership",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "PbUyPbafFh0",
+      "source_group_hint": "audioset-youtube:PbUyPbafFh0",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_10.log",
+          "file_sha256": "8fe3456de39b1beddc0b50a3a48bb8543937571bade31c279c35e3da0d141fe7",
+          "line": 42,
+          "record": {
+            "file": "PbUyPbafFh0.mp4",
+            "rel": "balanced_train_segments/00010/PbUyPbafFh0.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01089,
+            "sharp_ok": true,
+            "rms": 0.20151828229427338,
+            "above_8k_ratio": 0.000013
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "PkkhCW04O9k",
+      "source_group_hint": "audioset-youtube:PkkhCW04O9k",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_10.log",
+          "file_sha256": "8fe3456de39b1beddc0b50a3a48bb8543937571bade31c279c35e3da0d141fe7",
+          "line": 53,
+          "record": {
+            "file": "PkkhCW04O9k.mp4",
+            "rel": "balanced_train_segments/00010/PkkhCW04O9k.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.01538,
+            "sharp_ok": true,
+            "rms": 0.24436552822589874,
+            "above_8k_ratio": 0.000018
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "Py4g6GeGHjQ",
+      "source_group_hint": "audioset-youtube:Py4g6GeGHjQ",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_10.log",
+          "file_sha256": "8fe3456de39b1beddc0b50a3a48bb8543937571bade31c279c35e3da0d141fe7",
+          "line": 72,
+          "record": {
+            "file": "Py4g6GeGHjQ.mp4",
+            "rel": "balanced_train_segments/00010/Py4g6GeGHjQ.mp4",
+            "wh": [
+              1920,
+              1080
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00639,
+            "sharp_ok": true,
+            "rms": 0.3096087574958801,
+            "above_8k_ratio": 0.000012
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "Q4pQKIHhsJk",
+      "source_group_hint": "audioset-youtube:Q4pQKIHhsJk",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_10.log",
+          "file_sha256": "8fe3456de39b1beddc0b50a3a48bb8543937571bade31c279c35e3da0d141fe7",
+          "line": 83,
+          "record": {
+            "file": "Q4pQKIHhsJk.mp4",
+            "rel": "balanced_train_segments/00010/Q4pQKIHhsJk.mp4",
+            "wh": [
+              1920,
+              1200
+            ],
+            "duration": 10.024,
+            "band_ratio": 0.01628,
+            "sharp_ok": true,
+            "rms": 0.15882417559623718,
+            "above_8k_ratio": 0.000022
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "VEssqQKC0YM",
+      "source_group_hint": "audioset-youtube:VEssqQKC0YM",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_12.log",
+          "file_sha256": "b0b1879fbe9fbf685660f8008c8defe98eb0a1985d6274660b2db353a586f36c",
+          "line": 12,
+          "record": {
+            "file": "VEssqQKC0YM.mp4",
+            "rel": "balanced_train_segments/00012/VEssqQKC0YM.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.02316,
+            "sharp_ok": true,
+            "rms": 0.19104701280593872,
+            "above_8k_ratio": 0.000049
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    },
+    {
+      "source_id": "VKLQO0qaUZk",
+      "source_group_hint": "audioset-youtube:VKLQO0qaUZk",
+      "source_group_status": "literal_original_video_identifier_only_content_dedup_pending",
+      "history_status": "no_recorded_model_use_found_in_bounded_scope_not_proof_never_used",
+      "harvest_evidence": [
+        {
+          "path": "/cache/zihaohe/streaming_sr0/logs/harvest_12.log",
+          "file_sha256": "b0b1879fbe9fbf685660f8008c8defe98eb0a1985d6274660b2db353a586f36c",
+          "line": 18,
+          "record": {
+            "file": "VKLQO0qaUZk.mp4",
+            "rel": "balanced_train_segments/00012/VKLQO0qaUZk.mp4",
+            "wh": [
+              1280,
+              720
+            ],
+            "duration": 10.022,
+            "band_ratio": 0.00892,
+            "sharp_ok": true,
+            "rms": 0.15014220774173737,
+            "above_8k_ratio": 0.000012
+          },
+          "classification": "harvest_acquisition_and_quality_probe_not_model_use"
+        }
+      ],
+      "prior_candidate_manifest": null,
+      "prior_candidate_manifest_interpretation": "No occurrence in either recorded candidate manifest",
+      "selected_candidate_membership": false,
+      "recorded_training_id_or_filename_match": false,
+      "recorded_evaluation_id_or_filename_match": false,
+      "recorded_tuning_output_literal_id_match": false,
+      "current_pilot_train_or_dev_id_match": false,
+      "original32_source_quality_probe": false,
+      "original_audio_gate_outcome": "audio_threshold_failure_supported_by_recorded_values",
+      "audio_gate_caveat": null,
+      "video_quality_verdict": "not_assessed_not_pristine_approved",
+      "calibration_test_assignment": "none",
+      "unresolved_history": [
+        "Unlogged/deleted/deeper outputs and renamed aliases were not exhaustively audited.",
+        "Full-file/perceptual cross-source duplicate and uploader/reupload grouping checks remain pending.",
+        "Foundation-model pretraining overlap is unknown."
+      ]
+    }
+  ],
+  "required_before_assignment": [
+    "Assess source reference quality and complete continuous-window decoding using only source pixels, not restoration scores.",
+    "Resolve cross-cohort exact/perceptual duplicate and original-video grouping, including differently named/reuploaded material.",
+    "Keep ambiguous/unlogged history limitations explicit; do not relabel old dev/eval sources as untouched.",
+    "Lock approved source groups and split seed before calibration/model-score access; this audit assigns none."
+  ]
+}

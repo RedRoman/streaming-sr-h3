@@ -1,0 +1,112 @@
+{
+  "schema": "openh3.legacy_controls_launch_receipt.v1",
+  "host": "huawei-modelarts-30794",
+  "launch_count": 1,
+  "session": "fixed-h3-controls-20261111a",
+  "queue_path": "configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json",
+  "queue_sha256": "a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648",
+  "generic_queue": "code/takeover_queue.py",
+  "generic_queue_sha256": "1ee1cca8081759e87b937dac1045a0060312924c1af508435afc87a399bd6a74",
+  "stable_seconds": 15,
+  "poll_seconds": 120,
+  "card": 6,
+  "lock_dir": "/cache/zihaohe/.npu-reservations",
+  "run_path": "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a",
+  "production_checkpoint": {
+    "path": "runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+    "step": 3000,
+    "sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617"
+  },
+  "pins": {
+    "verified_count": 1045,
+    "shared_external_count": 1001,
+    "comfy_files": 997,
+    "controls_snapshot_source_files": 18,
+    "ordinary_metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+    "controls_admission_sha256": "a650484899de940b7575bd8033846b4b46bcfd5626807f2579a11492bf23190b",
+    "controls_cpu_inspection_sha256": "94f245fb81028e0541f91ab03edf1c46a5f2e9987580cb1a579734a85c3d16ce"
+  },
+  "preflight": {
+    "schema": "openh3.controls_launch_preflight.v1",
+    "complete": true,
+    "checked_at_utc": "2026-11-11T10:18:01.418719+00:00",
+    "queue_sha256": "a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648",
+    "verified_pin_count": 1045,
+    "admission_checks": 7,
+    "card": 6,
+    "device": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3424,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "lock_available": true,
+    "new_run_absent": true,
+    "preflight_initializes_NPU": false
+  },
+  "initial_running_snapshot": {
+    "checked_at_utc": "2026-11-11T10:18:39.387391+00:00",
+    "session": "fixed-h3-controls-20261111a",
+    "tmux_exists": true,
+    "status": {
+      "state": "running",
+      "card": 6,
+      "step": "export_identity_nearclean_guides",
+      "completed": [],
+      "argv": [
+        "venv/bin/python",
+        "preparation/fixed_h3_controls_20261111_v1/code/rphi_h3_controls.py",
+        "export",
+        "--checkpoint",
+        "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+        "--dev-manifest",
+        "datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "--out",
+        "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides",
+        "--device",
+        "npu:0",
+        "--frame-batch",
+        "1",
+        "--max-sources",
+        "1"
+      ],
+      "updated_at_utc": "2026-11-11T10:18:32.662971+00:00"
+    },
+    "processes": [
+      "2974441   15474 bash -c (cd /cache/zihaohe/omni_openh3_20261111 && exec python code/takeover_queue.py configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json --stable-seconds 15 --poll-seconds 120); echo EXIT_CODE:$? >> ~/.mcp_bg_fixed-h3-controls-20261111a.log",
+      "2974442 2974441 python code/takeover_queue.py configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json --stable-seconds 15 --poll-seconds 120",
+      "2977996 2974442 venv/bin/python preparation/fixed_h3_controls_20261111_v1/code/rphi_h3_controls.py export --checkpoint /cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt --dev-manifest datasets/omni_pilot_v1/dev_materialized.jsonl --out runs/fixed_h3_rphi_legacy_controls_smoke_20261111a/guides --device npu:0 --frame-batch 1 --max-sources 1"
+    ],
+    "logs": {
+      "export.log": []
+    }
+  },
+  "workload": {
+    "sources": 1,
+    "controls": [
+      "identity",
+      "near_clean"
+    ],
+    "items": 8,
+    "h3_sample_calls": 16,
+    "denoiser_evaluations": 48,
+    "seed": 101,
+    "alpha": 0.25,
+    "frame_stride": 1
+  },
+  "source_id_expected": "6UZVovkR3IU",
+  "constraints": {
+    "no_old_runtime_or_run_modification": true,
+    "full_dev_automatic_launch": false,
+    "no_training": true,
+    "ordinary_tasks_included": false,
+    "identity_task_labels_are_duplicates": true,
+    "near_clean_task_keyed_noise": true,
+    "whole_pipeline_causality_claimed": false
+  },
+  "limitations": [
+    "Started export only; no controls completion or quality outcome yet.",
+    "Reservation locks coordinate cooperating jobs only; each process boundary rechecks idle memory."
+  ]
+}

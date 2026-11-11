@@ -1,10 +1,10 @@
 {
   "schema": "openh3.fixed_rphi_guides.plan.v1",
-  "status": "cpu_prepared_real_h3_unrun_candidate_not_selected",
+  "status": "ordinary_smoke_completed_real_H3_controls_queue_running",
   "date": "2026-11-11",
   "source_manifest": "datasets/omni_pilot_v1/dev_materialized.jsonl",
-  "candidate_selection": "Wait for stage2 full audit and source-paired quality/clean-protection/compression review. Preserve failed hypotheses. No automatic best-dev checkpoint search.",
-  "candidate_checkpoint": null,
+  "candidate_selection": "Stage2 full audit passed. Retain legacy_g05 as the stronger original reference; native encoder and guard2 show no overall advantage. Compression and near-clean negative cases remain. See scientific_review_v2; no omni acceptance.",
+  "candidate_checkpoint": "runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
   "entrypoints": {
     "export": "code/export_rphi_guides_stage2.py",
     "fixed_h3": "code/run_fixed_h3_rphi.py"
@@ -48,10 +48,13 @@
     "cpu_tests": 10,
     "tiny_checkpoint_actual_cpu_export": "1 source x 4 tasks x all 22 frames at 480x832; original two-step smoke model, no quality claim",
     "guide_input_provenance_inspection": true,
-    "H3_VAE_execution": false,
+    "H3_VAE_execution": true,
     "evidence_archive_sha256": "6587bff0d108b0b4f2b68686b21541fecb4a0001711b90ae2126189b93a2e1af",
     "isolated_remote_preparation": "preparation/fixed_h3_bridge_v3",
-    "code_bundle_sha256": "9e6cc5837acd3c53df13331d9e15de1b7bc3aca2ed455b56ecc5630dbe97c51a"
+    "code_bundle_sha256": "9e6cc5837acd3c53df13331d9e15de1b7bc3aca2ed455b56ecc5630dbe97c51a",
+    "isolated_complete_runtime": "preparation/fixed_h3_runtime_20261111_v1",
+    "colocated_dependency_CPU_tests": 10,
+    "control_CPU_tests": 6
   },
   "required_before_run": [
     "Review stage2 evidence and select an interpretable candidate (or record no candidate accepted).",
@@ -61,11 +64,77 @@
     "Only then full 8-source ordinary-task experiment with fixed alpha and no best-alpha selection."
   ],
   "remaining_for_research_acceptance": [
-    "Implement separate identity/near-clean guide exports and same H3 controls; ordinary tasks cannot establish clean protection.",
+    "Separate control exporter/evaluator implemented and CPU tested; complete actual full-resolution export and real H3 clean/near-clean controls before protection claims.",
     "Record real long-video/future-frame latency and drift separately from 22-frame adjacent metrics.",
     "Build train-guide exporter with training-source contract before guide-matched LoRA; the current exporter intentionally accepts dev only.",
     "Mixed/time-varying/source-disjoint calibration and frozen test remain separate gates."
   ],
   "automatic_launch": false,
-  "automatic_launch_reason": "Stage2 outcome and real H3 engineering admission are not complete; user has already authorized necessary execution once these evidence prerequisites pass."
+  "automatic_launch_reason": "One-source real H3 completed; compression has a large quality regression. Run one-source clean/near-clean controls first, then review whether to extend the fixed ordinary comparison. No LoRA launch or full-dev auto-extension.",
+  "candidate_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "actual_smoke": {
+    "queue": "configs/openh3_20261111/fixed_h3_legacy_smoke_queue_30794.json",
+    "run": "runs/fixed_h3_rphi_legacy_smoke_20261111a",
+    "tmux": "fixed-h3-legacy-smoke-20261111",
+    "card": 6,
+    "began_export_at_utc": "2026-11-11T09:54:10.814210+00:00",
+    "began_h3_process_at_utc": "2026-11-11T09:56:07.828211+00:00",
+    "verified_source": "6UZVovkR3IU",
+    "samples": 4,
+    "phase": "completed_4_of_4_ordinary_samples_engineering_pass_quality_tradeoff",
+    "min_free_mb": 60000,
+    "pinned_files": 1022,
+    "automatic_full_dev": false,
+    "completed_at_utc": "2026-11-11T10:11:30+00:00",
+    "metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+    "scientific_review": "results/takeover_20261111/fixed_h3_legacy_smoke_review_20261111.json"
+  },
+  "control_entrypoint": {
+    "path": "code/rphi_h3_controls.py",
+    "status": "CPU_tests_and_actual_export_inspect_passed_real_H3_control_queue_running",
+    "evidence": "results/takeover_20261111/followup_20261111_1755",
+    "isolated_remote": "preparation/fixed_h3_controls_20261111_v1",
+    "cpu_export_session": "h3-controls-cpu-20261111",
+    "ordinary_export_still_excludes_controls": true,
+    "independent_code_review": "No blocking protocol issue found; real VAE/NPU validation remains separate from six CPU tests.",
+    "actual_tiny_CPU_export": {
+      "sources": 1,
+      "samples": 8,
+      "frames": 22,
+      "shape": [
+        480,
+        832,
+        3
+      ],
+      "checkpoint_steps": 2,
+      "purpose": "engineering only",
+      "inspect_exit_code": 0,
+      "inspect_seconds": 65.18,
+      "H3_VAE_executed": false
+    }
+  },
+  "next_diagnostic": {
+    "kind": "clean_near_clean_fixed_H3_controls",
+    "candidate": "legacy_g05_final3000",
+    "sources": 1,
+    "samples": 8,
+    "h3_calls": 16,
+    "denoiser_evaluations": 48,
+    "run": "runs/fixed_h3_rphi_legacy_controls_smoke_20261111a",
+    "status": "running_export_identity_nearclean_guides",
+    "fixed_alpha": 0.25,
+    "seed": 101,
+    "frame_stride": 1,
+    "queue": "configs/openh3_20261111/fixed_h3_legacy_controls_smoke_queue_30794.json",
+    "queue_sha256": "a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648",
+    "tmux": "fixed-h3-controls-20261111a",
+    "card": 6,
+    "started_at_utc": "2026-11-11T10:18:32+00:00",
+    "queue_pid": 2974442,
+    "initial_export_pid": 2977996,
+    "implementation_pins": 1045,
+    "admission_conditions": 7,
+    "launch_receipt": "results/takeover_20261111/fixed_h3_controls_preparation_20261111/launch_receipt.json",
+    "automatic_full_dev": false
+  }
 }

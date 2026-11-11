@@ -4072,5 +4072,14 @@
     "approved_new_frozen_test_sources": 0,
     "produced_new_observation_npz": 0,
     "success_next_step": "One existing-train-source CPU smoke satisfies all receipt/replay/geometry/length checks, while candidate source audit independently determines whether 8 calibration + 16 test groups can be locked."
+  },
+  "history_audit_followup": {
+    "report": "results/takeover_20261111/calibration_candidates_history_audit_20261111.json",
+    "sources": 46,
+    "observed_model_use_matches_in_bounded_audit": 0,
+    "candidates_all_only_matches": 6,
+    "eligible_calibration_sources": 0,
+    "eligible_test_sources": 0,
+    "caveat": "Absence in bounded history is not proof of no use. Six candidates.all matches are acquisition/quality records, not selected model-use records. For Jz4wLRDTF54 the printed audio threshold is rounded; exact audio failure cause remains unknown. Full source grouping/dedup and visual quality audit are still required."
   }
 }

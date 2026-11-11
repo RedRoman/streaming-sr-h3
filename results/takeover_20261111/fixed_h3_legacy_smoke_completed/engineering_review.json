@@ -1,0 +1,64 @@
+{
+  "schema": "openh3.fixed_h3_engineering_review.v1",
+  "complete": true,
+  "engineering_passed": true,
+  "quality_acceptance": false,
+  "archive_sha256": "7c4dc1e53f7eda980b054c470d9802dbf8f08bb13fb50f354b87c255f71c4602",
+  "archive_member_hashes_verified": 17,
+  "metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "one_source_four_tasks": true,
+  "source_ids": [
+    "6UZVovkR3IU"
+  ],
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "frame_stride": 1,
+  "float32_unquantized_guides": true,
+  "paired_same_raw_warm_start_and_seed": true,
+  "raw_vs_rphi_guide_only_sampling_difference": true,
+  "fixed_refiner_turbo_native_3step": true,
+  "no_inner_dc_or_adaptation": true,
+  "lpips_local_available": true,
+  "all_21_flow_pairs_available": true,
+  "frozen_base_versions_unchanged": true,
+  "checks": [
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "task": "compression",
+      "source_id": "6UZVovkR3IU",
+      "warm_start_latent_sha256": "d6decad9bc5d39ad4f1a192d5bb66bea01c7ae193da33879d99a09729dffa2ce",
+      "h3_rphi_minus_input_psnr": -7.707993247358594
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "task": "deblur",
+      "source_id": "6UZVovkR3IU",
+      "warm_start_latent_sha256": "dac5cfcb4f94f49adc1b123438bdb8ade76043340dad96958ab5e03822e98968",
+      "h3_rphi_minus_input_psnr": -1.5526132545540534
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "task": "denoise",
+      "source_id": "6UZVovkR3IU",
+      "warm_start_latent_sha256": "eae71666f3d0ddacd32c86549096946455b76904d3678b492620dbc8b936a9f9",
+      "h3_rphi_minus_input_psnr": 8.94694901892736
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "task": "sr",
+      "source_id": "6UZVovkR3IU",
+      "warm_start_latent_sha256": "fd0858da7f5f92bf102af4935d4315181c8041a0694006502a27f80aa50f3ebe",
+      "h3_rphi_minus_input_psnr": -0.40700844746795894
+    }
+  ],
+  "limitations": [
+    "One source only; no quality acceptance or full-dev conclusion.",
+    "No identity/near-clean observations in ordinary smoke.",
+    "Full22 block does not establish whole-pipeline causality.",
+    "NPZ/cache not downloaded; this audit verifies producer-enforced geometry and declared input/latent hashes, not independent pixel rereading."
+  ]
+}

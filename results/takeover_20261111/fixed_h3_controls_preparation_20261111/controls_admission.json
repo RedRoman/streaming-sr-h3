@@ -1,0 +1,31 @@
+{
+  "schema": "openh3.legacy_controls_admission.v1",
+  "complete": true,
+  "allow_one_source_controls_smoke": true,
+  "allow_full_dev": false,
+  "reason": "Ordinary one-source engineering contract passed; compression degradation requires identity/near-clean diagnostic before any expansion.",
+  "ordinary_metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+  "ordinary_engineering_review_sha256": "c5ad79a77468f460af4c38d79d9d354cc79bcc7d3667f196da36a65a4e270f34",
+  "controls_cpu_inspection_sha256": "94f245fb81028e0541f91ab03edf1c46a5f2e9987580cb1a579734a85c3d16ce",
+  "controls_cpu_tests_passed": 6,
+  "rphi_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "rphi_checkpoint_step": 3000,
+  "rphi_variant": "legacy_g05 blind K3",
+  "scope": {
+    "sources": 1,
+    "items": 8,
+    "controls": [
+      "identity",
+      "near_clean"
+    ],
+    "h3_sample_calls": 16,
+    "denoiser_evaluations": 48,
+    "seed": 101,
+    "alpha": 0.25,
+    "frame_stride": 1
+  },
+  "identity_task_labels_are_duplicates": true,
+  "near_clean_task_keyed_noise_draws": true,
+  "ordinary_tasks_included": false,
+  "full_dev_automatic_launch": false
+}

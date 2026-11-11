@@ -183,3 +183,33 @@ FaverNet `14769f22685f4850c5e203d493c99ad2eba5b68b`、AverNet `c4eb019f71fe6a2cc
 当前Rphi本来只读原始K3观测，没有生成回灌bug；未来保持该接口属于约束，不冒充新贡献。退化改变不能简单等于清空历史，突然变噪时此前清楚帧可能更有用。源级数据、stride1/长片段、clean保护、连续损伤与恢复延迟必须一并评估，现32train/8dev不能支持泛化或风险认证。
 
 新增CPU诊断 `results/takeover_20261111/rphi_selection_headroom_20261111.json`，使用已归档native_g05指标（metrics SHA be0d2a0e9ccc96afbca8db89621a7a3d7717f1a772eb7571bf24455852f463bc）：8个压缩dev来源中，整段GT-PSNR oracle在input/Rphi二选一时，相对input仅+0.06649dB，always-Rphi为−0.01819dB，oracle额外+0.08467dB，选择恢复5/8。它仅是这两个已有整段候选的诊断，不是patch门控/H3/未来模型的上界，也不能部署或替代全矩阵验收。
+
+### 阶段二完整验收与固定H3接续（2026-11-11，17:56记录）
+
+两条stage2队列及CPU finalizer已于17:46:25完成。一次下载406,620-byte证据归档，SHA `bd8927b98087f4b072624d2be0ec83ec514c934522fd3c036500b00b037151b4`，56份小记录位于 `results/takeover_20261111/rphi_stage2_completed/`。四份metrics SHA全部核验；本地独立重跑audit与远端结果除路径外完全一致。以后不要重启stage2或重复下载此归档。正式科学结论使用 `rphi_stage2_scientific_review_v2.json`；v1是未执行的初步候选意见，已被v2取代。
+
+新增native_g20相对输入四任务PSNR为SR +0.02886、deblur +0.05685、denoise +9.00964、compression +0.04488dB，LPIPS分别−0.000441、−0.000489、−0.337680、−0.000179。相比native_g05，前三项PSNR下降0.09041/0.15433/0.73418dB，LPIPS也退步；去压缩平均改善0.06307dB但源级CI跨0。最差压缩来源EBmROluwLkc仍−0.05402dB。guard2的clean MAE降至0.000510（0.130/255），但8/8来源仍非零误差。near-clean MSE损伤由2/8降到0/8、平均PSNR增益1.5815dB；同时LPIPS .003460→.004206、flow误差 .002602→.002896，不能只凭MSE保护就升级主模型。
+
+frozen_confidence最终1500步的fidelity SHA与native_g05完全相同，全部task/identity/near-clean RGB及temporal指标差为0，训练probe RGB/anchor/code差为0；冻结隔离实验通过。1σ覆盖SR/deblur/denoise/compression分别86.31%/89.97%/81.46%/95.54%，1.96σ分别93.19%/95.12%/97.18%/99.47%；部分来源与variance桶仍明显欠覆盖，clean/near-clean约99.97%过宽。该头仅属于native_g05，训练集拟合不等于独立风险认证，不用它为legacy/g20提供已校准门控。所有结果仍是32train/8dev、stride4，未证明相邻闪烁或omni泛化。
+
+最终保留legacy_g05 final作为首个固定H3工程参考，checkpoint SHA `61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617`。它仍有去压缩均值−0.00464dB、最差−0.26860dB和near-clean负例，不称质量验收通过。native编码无整体优势；g20保留强guard消融。初稿g20队列仅准备，从未启动；其admission记录已置complete=false并使旧hash不匹配，防误启动。后续只读取 `fixed_h3_legacy_smoke_queue_30794.json`。
+
+真实H3新run为30794 `runs/fixed_h3_rphi_legacy_smoke_20261111a`，tmux `fixed-h3-legacy-smoke-20261111`，卡6通过健康/无进程/60GB空闲、协作锁与15秒后二次空闲检查。17:54:10开始guide导出，17:56:07已完成单来源6UZVovkR3IU×四任务×22帧导出和严格inspect，进入真实H3进程；当前尚无H3完成质量结论。冻结raw warm-start、seed101、3步refiner+Turbo、alpha .25，8次采样/24 NFE，stride1；先验收此smoke，再决定全8源，不能重复启动健康进程。队列固定1022个源码/环境/manifest/候选文件SHA，完整依赖快照 `preparation/fixed_h3_runtime_20261111_v1` 的10项CPU测试通过。早期v3仅包含入口，实际__file__相对依赖审计会缺文件；本次完整快照修复部署布局，没有修改正在运行的stage2代码。
+
+新增独立 `code/rphi_h3_controls.py` 和6项测试，支持identity/near-clean严格导出、固定H3六臂评估及逐样本原子partial_metrics。输入来自明确标注的reference-derived控制，nearclean沿用原seed/recipe；四task identity重复不当独立来源。远端隔离 `preparation/fixed_h3_controls_20261111_v1` 六项CPU测试全过；tmux `h3-controls-cpu-20261111` 正用旧tiny两步模型进行1源×8控制×22帧480×832的CPU导出，H3控制尚未执行。证据快照归档SHA `94de2262e1d44c5a80424a89c4d7a6817214555dd0d0eee2b0263bd5743a48c7` 已下载核验。
+
+P1实现合同 `history_utility_contract_20261111.json` 已记录缺失历史教师、匹配三臂、student自身leave-one-out验收和额外教师成本，未启动训练。数据历史审计 `calibration_candidates_history_audit_20261111.json` 覆盖46来源：2303文本、5补充清单、25数据根目录中未见明确model-use命中；6个只在candidates.all，不在selected，不应误判训练使用。一个音频阈值因打印舍入而原因不确定。46来源全部仍不分配calibration/test，后续继续全源hash、源组/感知去重与质量审计。
+
+### 18:11 固定H3普通任务小试完成：压缩过修复，先接clean/near-clean控制
+
+`runs/fixed_h3_rphi_legacy_smoke_20261111a` 于18:11:30完成4/4样本（同源6UZVovkR3IU）。17份小JSON/log归档69,831 bytes、SHA `7c4dc1e53f7eda980b054c470d9802dbf8f08bb13fb50f354b87c255f71c4602`，本地 `results/takeover_20261111/fixed_h3_legacy_smoke_completed/` 已核验。metrics SHA `c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da`。工程检查通过：全22帧480×832、float32、stride1与21对相邻帧、两臂相同raw draft/seed101/3步、仅guide改变、无innerDC/新LoRA、LPIPS可用。这里只读小记录及生产端执行的hash/shape检查，未独立下载重读大NPZ/cache，不冒称全像素复验或官方runtime parity。
+
+六臂结果见 `fixed_h3_legacy_smoke_review_20261111.json`。最终H3 Rphi+alpha .25 anchor相对Rphi-only，四任务PSNR均低；SR/去模糊/去噪LPIPS更好，但只有去噪的相邻flow误差也更好。压缩PSNR40.476→34.794（−5.682dB）、LPIPS .015294→.026362、flow .005064→.006870，明确保留过修复负例。去噪Rphi guide相对H3 raw改善+3.527dB、LPIPS−.45043，但最终组合PSNR仍低于Rphi-only1.480dB，LPIPS则 .11366→.05977。不能把单来源感知/保真取舍包装成全任务优胜。两路编码5.16–7.20s、首次sampling+decode12.07s/后续约6.16–6.19s仅为局部计时，模型初始加载约307s；不等于端到端实时。
+
+已完成真实tiny CPU controls导出和严格inspect：1源×8控制×22帧480×832、inspect65.18s退出0，6项CPU测试通过，独立协议代码审查无阻断问题。这仍不是实际H3 clean保护结果。下一项限定为相同来源、legacy final3000、identity/near-clean八样本/16次H3调用/48 NFE；准备独立 `fixed_h3_legacy_controls_smoke_queue_30794.json`，不改已完成ordinary输出，不自动扩大8源，不启动新LoRA。完整ordinary跨源比较在controls验收后再决定。
+
+31984已核验18个代码/计划/小证据备份，归档SHA `5e7dd51858135dffa055458ee0f5e33b2fd1c2e6ac2dce160048615cc06e683d`，目录 `preparation/followup_20261111_1800`。四个最终checkpoint的23,051,299-byte归档源SHA `ada3b570063461a31f777f2525eb44e4e5a6cc45793027ac3ad0fe8396f1c1ef`；前台SFTP触发300秒工具超时且留下不完整副本，未通过校验、未解包为有效备份。确认原前台writer消失后，改用后台下载session `omni-stage2-checkpoints-download-20261111`，当前仍在运行；不要重复传输。后续按 `stage2_checkpoint_backup_progress_20261111.json` 先查session、校验完整本地SHA，再后台上传到31984新路径并逐checkpoint复验，不能将旧partial目标归档当完成。原始30794 checkpoints完整保留。
+
+18:18:32更新：上述controls新队列已在30794卡6启动，tmux `fixed-h3-controls-20261111a`，queue PID2974442、首次export PID2977996；真实status为running/export_identity_nearclean_guides。启动前1045个完整pins及7项admission均通过，卡6无进程、healthy、空闲62112MB、锁可取，并由generic queue完成15秒二次空闲检查。新queue SHA `a9dea84db8708d65f92fc76f3095a6775f5996bda0067fac1f8032ebfd10d648`；launch_receipt已本地归档。下次优先查此run的queue_status与结果，健康则不重启，完成后一次归档审计；同时核验后台checkpoint备份，不重跑stage2或ordinary smoke。
+
+ordinary完成证据、controls启动凭据和最新计划共13项已另备份31984 `preparation/h3_complete_controls_launch_backup_20261111`，归档170,718 bytes、SHA `f29314c3fb388393a06ed9c500486488a35fef7017b42d307fb0dd4caddffd68`，远端逐文件SHA验证通过；此包不含checkpoint权重。

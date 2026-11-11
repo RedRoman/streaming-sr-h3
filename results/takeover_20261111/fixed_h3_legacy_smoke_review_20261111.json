@@ -1,0 +1,1979 @@
+{
+  "schema": "openh3.fixed_h3_independent_review.v1",
+  "review_date": "2026-11-11",
+  "review_complete": true,
+  "quality_verdict": "requires_review",
+  "completion_meaning": "All four ordinary-task engineering smoke samples and this independent numerical review completed; this is not a quality acceptance or an omni-generalization result.",
+  "evidence": {
+    "host": "huawei-modelarts-30794",
+    "metrics_path": "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/eval/metrics.json",
+    "metrics_sha256": "c2c46cd43b1bf2197c882726c7c65e4e65aff1dc19382bcebfcc13fc958c04da",
+    "metrics_bytes": 215978,
+    "metrics_schema": "openh3.fixed_rphi_guides.v1",
+    "metrics_complete": true,
+    "metrics_mtime_utc": "2026-11-11T10:11:22.628281+00:00",
+    "retrieved_at_utc": "2026-11-11T10:15:06.299656+00:00",
+    "queue_status_path": "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a/queue_status.json",
+    "queue_status_sha256": "3634cd104924fad72426a6049b2dfd9339c083c3fabdebbfbbc878e8f760fd24",
+    "queue_status": {
+      "state": "completed",
+      "card": 6,
+      "completed": [
+        "export_candidate_guides",
+        "inspect_fixed_h3_inputs",
+        "fixed_h3_raw_rphi_smoke"
+      ],
+      "updated_at_utc": "2026-11-11T10:11:30.803541+00:00"
+    },
+    "actual_queue_completion_utc": "2026-11-11T10:11:30.803541+00:00",
+    "actual_queue_completion_sgt": "2026-11-11T18:11:30.803541+08:00",
+    "method": "Read-only remote JSON extraction and independent arithmetic on recorded per-sample metrics. No NPZ/pixel arrays downloaded or rerun; no jobs launched or changed."
+  },
+  "scope": {
+    "source_count": 1,
+    "source_ids": [
+      "6UZVovkR3IU"
+    ],
+    "sample_count": 4,
+    "tasks": [
+      "compression",
+      "deblur",
+      "denoise",
+      "sr"
+    ],
+    "arms": [
+      "input",
+      "rphi_only",
+      "h3_raw",
+      "h3_raw_anchor",
+      "h3_rphi",
+      "h3_rphi_anchor"
+    ],
+    "frames_per_sample": 22,
+    "frame_stride": 1,
+    "temporal_pairs_per_sample": 21,
+    "valid_flow_coverage": 0.9037229805784494,
+    "total_h3_sample_calls": 8,
+    "total_denoiser_evaluations": 24,
+    "generated_frame_instances": 176,
+    "quality_scored_arm_frame_instances": 528,
+    "independence": "The four degradation tasks and 22 adjacent frames share one source and target clip. They are not independent sources; no significance or generalization claim is made.",
+    "controls_included": [],
+    "whole_pipeline_causal": false,
+    "limitations": [
+      "GT is the existing original-RGB proxy, not an independently verified pristine capture.",
+      "GT-proxy Farneback flow with the recorded in-bounds and forward/backward masks; identical support statistics do not verify pixelwise mask identity.",
+      "Adjacent-frame temporal error is a diagnostic, not a full perceptual flicker assessment.",
+      "H3/VAE uses the full 22-frame block; no streaming causality or cross-block consistency result.",
+      "The ComfyUI implementation's upstream Diffusers parity remains unvalidated.",
+      "No output images were visually reviewed in this numerical audit."
+    ]
+  },
+  "contract": {
+    "guide_manifest_sha256": "9e713b30d8b1d1f2ad912ce34423c0cf5f749dcc707198e7a01fa3bff54ce53d",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "rphi_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "model_config": {
+      "variant": "blind",
+      "k": 3,
+      "ch": 64,
+      "blocks": 8,
+      "condition_dim": 6,
+      "observation_encoder": "legacy"
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "sigma_schedule": [
+      0.909375,
+      0.8571428571428571,
+      0.6666666666666666,
+      0
+    ],
+    "seed": 101,
+    "audio_init": "zeros",
+    "mode": "base",
+    "adaptation": null,
+    "raw_guide_recipe": {
+      "implementation": "torch.nn.functional.interpolate",
+      "mode": "bicubic",
+      "align_corners": false,
+      "antialias": true,
+      "range": "float32 [0,1], clamped after resize",
+      "role": "HR input guide; not the physical forward operator"
+    },
+    "warm_start": "same E(raw HR RGB) in both H3 calls; pretrained latent upscaler unused",
+    "rphi_guide": "clipped float32 export rgb; no uint8/MP4 intermediate",
+    "alpha": 0.25,
+    "anchor": "clipped R_phi RGB; canonical Q4 SR, full RGB native",
+    "anchor_stage": "post-decode only; same generated output reused; no confidence weighting",
+    "metric": "eval_rphi RGB/LPIPS/flow on float32 clipped output, no prediction quantization",
+    "frame_stride": 1,
+    "controls_included": [],
+    "future_frames": "full 22-frame H3/VAE block; no whole-pipeline causality claim",
+    "scope": "development task observations; no clean-protection or frozen-test conclusion"
+  },
+  "lpips": {
+    "available": true,
+    "network": "alex",
+    "device": "cpu",
+    "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "weights_path": "/cache/zihaohe/omni_openh3_20261111/torch_home/hub/checkpoints/alexnet-owt-7be5be79.pth",
+    "downloads": false
+  },
+  "paired_protocol_checks": {
+    "all_samples_same_source": true,
+    "four_tasks_present": true,
+    "same_raw_encoded_warm_start_between_paired_calls": true,
+    "raw_and_rphi_guide_latent_hashes_differ": true,
+    "all_calls_seed_101": true,
+    "all_calls_three_steps_cfg_one_mode_base": true,
+    "all_call_sigmas_match_each_other": true,
+    "all_call_sigmas_match_declared_schedule_within_1e_7": true,
+    "all_calls_pretrained_fingerprint_matches_contract": true,
+    "all_calls_audio_zero": true,
+    "every_metric_frame_count_22": true,
+    "every_frame_index_adjacent_0_to_21": true,
+    "every_temporal_pair_count_21_and_valid_pairs_21": true,
+    "identical_recorded_flow_support_across_arms_and_tasks": true,
+    "every_quality_and_temporal_scalar_finite": true,
+    "frozen_parameter_versions_unchanged": true
+  },
+  "factor_interpretation": {
+    "guide": "Only guide changes between the two generated calls; both use the same raw encoded warm draft, seed and schedule.",
+    "warm_start_joint_effect_tested": false,
+    "anchors": "Both raw-H3 and Rphi-guided-H3 anchor arms anchor to the supplied R_phi RGB; raw_anchor does not mean anchoring to raw observation.",
+    "anchor_mode": "Post-decode alpha=0.25; canonical Q4 anchor for SR and full-resolution R_phi RGB for native tasks. Same generated outputs are reused; no additional sampling, confidence gating, or physical measurement-consistency guarantee.",
+    "metric_directions": {
+      "psnr": "higher",
+      "lpips": "lower",
+      "mse": "lower",
+      "mae": "lower",
+      "flow_aligned_rgb_error_change_mae": "lower",
+      "unwarped_rgb_error_change_mae": "lower"
+    },
+    "psnr_aggregation": "Mean per-frame PSNR; psnr_from_mean_mse is separately preserved."
+  },
+  "model_record": {
+    "precision_initial": {
+      "matmul_allow_hf32": false,
+      "conv_allow_hf32": true
+    },
+    "precision_used": {
+      "matmul_hf32": false,
+      "conv_hf32": false
+    },
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post2",
+    "torch_npu_module_to_cast_weight_dropped": true,
+    "mm_bmm_format_nd": true,
+    "jit_compile_false": true,
+    "comfy_commit": "5a665890ded5020c282f63c4ea2dd9e083e025ff",
+    "vae_load_seconds": 1.7989969616755843,
+    "dit": "fl2va",
+    "openh3_pretrained": {
+      "recipe": "refiner-turbo-comfy",
+      "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+      "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+      "merged_modules": 208,
+      "components": [
+        "refiner",
+        "turbo"
+      ],
+      "merge": "sum_fp32_then_cast_once",
+      "sharp_zero_curve_B_tensors": 0,
+      "upstream_diffusers_parity": "not_validated",
+      "legacy_stage1_loaded": false,
+      "legacy_turbo_loaded": false
+    },
+    "dit_load_seconds": 305.48605544772,
+    "guide_helper_sha256": "108ceff11e5a5c9a34a57bbc380447cf9941beb673a1bd421abc818de54ccd5c"
+  },
+  "freeze_audit": {
+    "base_parameter_versions_unchanged": true,
+    "frozen_base_tensors": 530
+  },
+  "timing": {
+    "units": "seconds",
+    "per_call": [
+      {
+        "task": "compression",
+        "arm": "raw",
+        "sampling_seconds": 10.293082601390779,
+        "sampling_decode_seconds": 12.068397986702621
+      },
+      {
+        "task": "compression",
+        "arm": "rphi",
+        "sampling_seconds": 5.0327908070757985,
+        "sampling_decode_seconds": 6.168800015933812
+      },
+      {
+        "task": "deblur",
+        "arm": "raw",
+        "sampling_seconds": 5.048014333471656,
+        "sampling_decode_seconds": 6.185658515430987
+      },
+      {
+        "task": "deblur",
+        "arm": "rphi",
+        "sampling_seconds": 5.045013367198408,
+        "sampling_decode_seconds": 6.158962088637054
+      },
+      {
+        "task": "denoise",
+        "arm": "raw",
+        "sampling_seconds": 5.0539472084492445,
+        "sampling_decode_seconds": 6.191398387774825
+      },
+      {
+        "task": "denoise",
+        "arm": "rphi",
+        "sampling_seconds": 5.039644714444876,
+        "sampling_decode_seconds": 6.191652578301728
+      },
+      {
+        "task": "sr",
+        "arm": "raw",
+        "sampling_seconds": 5.04617400560528,
+        "sampling_decode_seconds": 6.163477700203657
+      },
+      {
+        "task": "sr",
+        "arm": "rphi",
+        "sampling_seconds": 5.048006537370384,
+        "sampling_decode_seconds": 6.157235579565167
+      }
+    ],
+    "first_call": {
+      "task": "compression",
+      "arm": "raw",
+      "sampling_seconds": 10.293082601390779,
+      "sampling_decode_seconds": 12.068397986702621
+    },
+    "subsequent_seven_calls": {
+      "sampling": {
+        "count": 7,
+        "min": 5.0327908070757985,
+        "max": 5.0539472084492445,
+        "mean": 5.044798710516521
+      },
+      "sampling_plus_decode": {
+        "count": 7,
+        "min": 6.157235579565167,
+        "max": 6.191652578301728,
+        "mean": 6.17388355226389
+      }
+    },
+    "encode_both_per_sample": [
+      {
+        "task": "compression",
+        "seconds": 7.1976516135036945
+      },
+      {
+        "task": "deblur",
+        "seconds": 5.410632649436593
+      },
+      {
+        "task": "denoise",
+        "seconds": 5.165924021974206
+      },
+      {
+        "task": "sr",
+        "seconds": 5.158099347725511
+      }
+    ],
+    "vae_load_seconds": 1.7989969616755843,
+    "dit_load_seconds": 305.48605544772,
+    "sum_recorded_load_seconds": 307.2850524093956,
+    "interpretation": "Recorded sampling is synchronized; sampling_decode includes CPU output materialization/checks. These are component timings, not complete end-to-end restoration latency. They exclude R_phi export, full guide preparation, post-decode CPU anchoring, metrics, saving and unrecorded setup. First-call timing is distinct from the seven subsequent calls; no real-time or streaming throughput claim."
+  },
+  "per_sample": [
+    {
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "source_id": "6UZVovkR3IU",
+      "task": "compression",
+      "record_sha256": "fb5057fa4537572d347bbaae6b327d649eda3d45b33027ca549f756b9c434f88",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "sampling": {
+        "guide_pixel_sha256": {
+          "raw": "74d083c11d447a55064121d6d8dcab11a6d01d8f88bfcfe242f5e31a4036d216",
+          "rphi": "691f200633dc66acfefb05c60e0d799164062418b1f3403a76c8e370e0be5f8c"
+        },
+        "encode_both_seconds": 7.1976516135036945,
+        "calls": {
+          "raw": {
+            "guide_latent_sha256_float32": "d6decad9bc5d39ad4f1a192d5bb66bea01c7ae193da33879d99a09729dffa2ce",
+            "warm_start_latent_sha256_float32": "d6decad9bc5d39ad4f1a192d5bb66bea01c7ae193da33879d99a09729dffa2ce",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 10.293082601390779,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 12.068397986702621
+          },
+          "rphi": {
+            "guide_latent_sha256_float32": "b564d420f29ed7d3bd1fa3452bcf0325c85916017db5f7c8c0de571b9d56237f",
+            "warm_start_latent_sha256_float32": "d6decad9bc5d39ad4f1a192d5bb66bea01c7ae193da33879d99a09729dffa2ce",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.0327908070757985,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.168800015933812
+          }
+        },
+        "h3_sample_calls": 2,
+        "denoiser_evaluations": 6,
+        "warm_start": "fixed encoded raw RGB for both arms",
+        "guide_and_draft_joint_effect_tested": false
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "arms": {
+        "input": {
+          "quality": {
+            "psnr": 40.38017869669521,
+            "psnr_from_mean_mse": 40.36199882715778,
+            "mse": 0.00009200260351075806,
+            "mae": 0.006567879437912361,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.016126557549631052
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.007001744827806239,
+            "flow_aligned_rgb_error_change_mae": 0.005185472002873818,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "rphi_only": {
+          "quality": {
+            "psnr": 40.47587134168869,
+            "psnr_from_mean_mse": 40.457339470269595,
+            "mse": 0.0000900048791213291,
+            "mae": 0.006602282008629526,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.015293949029662392
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.0068901019325970795,
+            "flow_aligned_rgb_error_change_mae": 0.005063594784587622,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw": {
+          "quality": {
+            "psnr": 32.84481816229713,
+            "psnr_from_mean_mse": 32.71851510808067,
+            "mse": 0.0005347471630117494,
+            "mae": 0.015052122178954347,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.03232943004166538
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.011497628498902896,
+            "flow_aligned_rgb_error_change_mae": 0.008240041367354848,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw_anchor": {
+          "quality": {
+            "psnr": 34.968989061285576,
+            "psnr_from_mean_mse": 34.86250327704634,
+            "mse": 0.0003263996409132041,
+            "mae": 0.011827564172951997,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.025321633808992126
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.009437564052270213,
+            "flow_aligned_rgb_error_change_mae": 0.006762446480847541,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi": {
+          "quality": {
+            "psnr": 32.67218544933662,
+            "psnr_from_mean_mse": 32.53665281506849,
+            "mse": 0.0005576153474419488,
+            "mae": 0.015286302201011145,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.03287439048290253
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.0117903678433149,
+            "flow_aligned_rgb_error_change_mae": 0.008393352429959037,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi_anchor": {
+          "quality": {
+            "psnr": 34.79369489694031,
+            "psnr_from_mean_mse": 34.680159203219134,
+            "mse": 0.00034039571128173247,
+            "mae": 0.012033171350876042,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.02636154918846759
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.009647279012147245,
+            "flow_aligned_rgb_error_change_mae": 0.006870322040326539,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        }
+      },
+      "decoded_file": {
+        "path": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3.npz",
+        "sha256": "5dbaaf3d38cd379aa61c70162f21b34abe8d73cc59d270343b6a5bd405260235",
+        "arrays": {
+          "raw": "f0b264b90346119f389ffd371294c2cb7affd67deffe9effddcfaa819f38870e",
+          "rphi": "3ebe07f3b16f106ecd5574b80591463b37f6337b2cdb67d95efb0e6850052b66"
+        }
+      },
+      "soft_anchor": {
+        "raw": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "compression",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.022763942376961308,
+            "after_soft_update_preclip": 0.017072956782720982,
+            "after_clip_before_dtype_cast": 0.017072956782720982,
+            "output": 0.017072956781402058
+          }
+        },
+        "rphi": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "compression",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.023130588008219523,
+            "after_soft_update_preclip": 0.01734794100616464,
+            "after_clip_before_dtype_cast": 0.01734794100616464,
+            "output": 0.01734794100762152
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "source_id": "6UZVovkR3IU",
+      "task": "deblur",
+      "record_sha256": "4f12e481b792eb46fe7a27066a2a7bf33b4776f406c4153f59d5bd5ad66d5754",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "sampling": {
+        "guide_pixel_sha256": {
+          "raw": "b92c2deb458d93d8358d21f1b18aa90331ce2a3c3d374b4ff9aa56d15383c486",
+          "rphi": "7e7f13c625cfd4dd6821f7b394213e06ee5b54055942bd6fb1f12b7ea7e9ae10"
+        },
+        "encode_both_seconds": 5.410632649436593,
+        "calls": {
+          "raw": {
+            "guide_latent_sha256_float32": "dac5cfcb4f94f49adc1b123438bdb8ade76043340dad96958ab5e03822e98968",
+            "warm_start_latent_sha256_float32": "dac5cfcb4f94f49adc1b123438bdb8ade76043340dad96958ab5e03822e98968",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.048014333471656,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.185658515430987
+          },
+          "rphi": {
+            "guide_latent_sha256_float32": "e3ff4db76f456e5714aaf9ea417acbe8ecccc9e21ea2fde5eb287266782eadc9",
+            "warm_start_latent_sha256_float32": "dac5cfcb4f94f49adc1b123438bdb8ade76043340dad96958ab5e03822e98968",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.045013367198408,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.158962088637054
+          }
+        },
+        "h3_sample_calls": 2,
+        "denoiser_evaluations": 6,
+        "warm_start": "fixed encoded raw RGB for both arms",
+        "guide_and_draft_joint_effect_tested": false
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "arms": {
+        "input": {
+          "quality": {
+            "psnr": 31.573651258587777,
+            "psnr_from_mean_mse": 31.562004396855123,
+            "mse": 0.0006979102236259793,
+            "mae": 0.01158497277692993,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.10675193030725826
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.009273510104567917,
+            "flow_aligned_rgb_error_change_mae": 0.00333702248255057,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "rphi_only": {
+          "quality": {
+            "psnr": 31.891500176712896,
+            "psnr_from_mean_mse": 31.878508279609797,
+            "mse": 0.0006488572656224863,
+            "mae": 0.011137097635371065,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.10143088176846504
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.009094772796027979,
+            "flow_aligned_rgb_error_change_mae": 0.0032959547381670702,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw": {
+          "quality": {
+            "psnr": 29.765263443432286,
+            "psnr_from_mean_mse": 29.63354163544198,
+            "mse": 0.0010880424418687154,
+            "mae": 0.020088695980374584,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.0873370458456603
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.013307082017844874,
+            "flow_aligned_rgb_error_change_mae": 0.007766542401874349,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw_anchor": {
+          "quality": {
+            "psnr": 30.602942011454342,
+            "psnr_from_mean_mse": 30.527479613806104,
+            "mse": 0.0008856294272295166,
+            "mae": 0.017160428482685293,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.09237345985390923
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.011867925054633164,
+            "flow_aligned_rgb_error_change_mae": 0.006305827027452844,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi": {
+          "quality": {
+            "psnr": 30.021038004033723,
+            "psnr_from_mean_mse": 29.887634427373623,
+            "mse": 0.0010262107440868035,
+            "mae": 0.0193530810090141,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.08105460588227618
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.013281719850972394,
+            "flow_aligned_rgb_error_change_mae": 0.007906459892789522,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi_anchor": {
+          "quality": {
+            "psnr": 30.822392568923203,
+            "psnr_from_mean_mse": 30.746062713095487,
+            "mse": 0.0008421582911562079,
+            "mae": 0.01659622415946308,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.08735927736217325
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.011824174901744193,
+            "flow_aligned_rgb_error_change_mae": 0.006405056299020846,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        }
+      },
+      "decoded_file": {
+        "path": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db.npz",
+        "sha256": "3e2589f6e932068476db022aa98905424a469f5bfa3eb74b453aea77b1954529",
+        "arrays": {
+          "raw": "650aafc00a4ba50d69dbf1750e7d1037fc76a6c5af39b5dae1826958730dafb2",
+          "rphi": "3aef79afe7c6a935edcdec20f7ec2f08c2c450c38d6d2a967099b2d0f34b45a1"
+        }
+      },
+      "soft_anchor": {
+        "raw": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "deblur",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.02222511736517309,
+            "after_soft_update_preclip": 0.016668838023879813,
+            "after_clip_before_dtype_cast": 0.016668838023879813,
+            "output": 0.016668838020469433
+          }
+        },
+        "rphi": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "deblur",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.021874073941804153,
+            "after_soft_update_preclip": 0.016405555456353114,
+            "after_clip_before_dtype_cast": 0.016405555456353114,
+            "output": 0.01640555545826254
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "source_id": "6UZVovkR3IU",
+      "task": "denoise",
+      "record_sha256": "e549b761886f530e8d93585b63a86e405774381afc1cdee0cb6700f7e55f878a",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "sampling": {
+        "guide_pixel_sha256": {
+          "raw": "cfd1ca28df8ed24025a1310b3d249f4342b73222b13126ce31af9324fa8fad95",
+          "rphi": "e45d778f04c8bd85332f78401ec0348d8d29df3ff13518c8640f59c63e503107"
+        },
+        "encode_both_seconds": 5.165924021974206,
+        "calls": {
+          "raw": {
+            "guide_latent_sha256_float32": "eae71666f3d0ddacd32c86549096946455b76904d3678b492620dbc8b936a9f9",
+            "warm_start_latent_sha256_float32": "eae71666f3d0ddacd32c86549096946455b76904d3678b492620dbc8b936a9f9",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.0539472084492445,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.191398387774825
+          },
+          "rphi": {
+            "guide_latent_sha256_float32": "6e4b61c7d2add14b61391f36ef5208127b09b8696f441425686deb37e2c2efe9",
+            "warm_start_latent_sha256_float32": "eae71666f3d0ddacd32c86549096946455b76904d3678b492620dbc8b936a9f9",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.039644714444876,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.191652578301728
+          }
+        },
+        "h3_sample_calls": 2,
+        "denoiser_evaluations": 6,
+        "warm_start": "fixed encoded raw RGB for both arms",
+        "guide_and_draft_joint_effect_tested": false
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "arms": {
+        "input": {
+          "quality": {
+            "psnr": 23.527251324089693,
+            "psnr_from_mean_mse": 23.527244990211575,
+            "mse": 0.004438901427605036,
+            "mae": 0.05288396831956798,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.6738691465421156
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.07451142915234778,
+            "flow_aligned_rgb_error_change_mae": 0.06653651701552528,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "rphi_only": {
+          "quality": {
+            "psnr": 35.91715595526605,
+            "psnr_from_mean_mse": 35.91099591019266,
+            "mse": 0.00025638960246772213,
+            "mae": 0.011931790382227473,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.11366325887766751
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.01464505255175729,
+            "flow_aligned_rgb_error_change_mae": 0.01332017220556736,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw": {
+          "quality": {
+            "psnr": 28.9467996813744,
+            "psnr_from_mean_mse": 28.94144355668697,
+            "mse": 0.0012760146022752993,
+            "mae": 0.02662478104595617,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.5295069190588865
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.023589965000003783,
+            "flow_aligned_rgb_error_change_mae": 0.021889221898856618,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw_anchor": {
+          "quality": {
+            "psnr": 31.240183114503566,
+            "psnr_from_mean_mse": 31.234673895052776,
+            "mse": 0.0007525452354991372,
+            "mae": 0.020496082558303434,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.4167830388654362
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.018480467923497237,
+            "flow_aligned_rgb_error_change_mae": 0.01699162106074038,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi": {
+          "quality": {
+            "psnr": 32.47420034301705,
+            "psnr_from_mean_mse": 32.42482497101577,
+            "mse": 0.0005721600133307443,
+            "mae": 0.015535968515045259,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.07907249541445212
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.013400936127310187,
+            "flow_aligned_rgb_error_change_mae": 0.010079785560568174,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi_anchor": {
+          "quality": {
+            "psnr": 34.437090001319746,
+            "psnr_from_mean_mse": 34.40521390438192,
+            "mse": 0.0003626424244673987,
+            "mae": 0.012615166570799025,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.05977050147273324
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.011463170638056018,
+            "flow_aligned_rgb_error_change_mae": 0.008707944791586627,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        }
+      },
+      "decoded_file": {
+        "path": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b.npz",
+        "sha256": "469880a50072b89d1ecbd9f726cf2e00d46a17adb9ccef7579d7d8157047bfd4",
+        "arrays": {
+          "raw": "84426d88194945fe7205443d3dbc84336cb186d70187c03bd07703c0584e9766",
+          "rphi": "513cbcf2c5b5787ad836475fe580cb15011562fca1448f500bb0844216c78608"
+        }
+      },
+      "soft_anchor": {
+        "raw": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "denoise",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.037846223381130424,
+            "after_soft_update_preclip": 0.028384667535847813,
+            "after_clip_before_dtype_cast": 0.028384667535847813,
+            "output": 0.028384667537754153
+          }
+        },
+        "rphi": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "denoise",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "full-resolution R_phi RGB fidelity anchor",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": null,
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0,
+          "clipping_increased_residual": false,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.02638939041269201,
+            "after_soft_update_preclip": 0.01979204280951901,
+            "after_clip_before_dtype_cast": 0.01979204280951901,
+            "output": 0.019792042808102418
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "source_id": "6UZVovkR3IU",
+      "task": "sr",
+      "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "sampling": {
+        "guide_pixel_sha256": {
+          "raw": "e63dc72ea78a0b8501755e493b02b79c89dffb9d62ca12f2827ade953ee8e0ce",
+          "rphi": "8566621cc953912f1f7a35bc97b00d6bf00fd511ceae549a5c2445115bfb21dd"
+        },
+        "encode_both_seconds": 5.158099347725511,
+        "calls": {
+          "raw": {
+            "guide_latent_sha256_float32": "fd0858da7f5f92bf102af4935d4315181c8041a0694006502a27f80aa50f3ebe",
+            "warm_start_latent_sha256_float32": "fd0858da7f5f92bf102af4935d4315181c8041a0694006502a27f80aa50f3ebe",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.04617400560528,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.163477700203657
+          },
+          "rphi": {
+            "guide_latent_sha256_float32": "a2326a8400c74e1a81c41ce88bf2540bb5db552f0516f5dd50ac8c3b76e8c088",
+            "warm_start_latent_sha256_float32": "fd0858da7f5f92bf102af4935d4315181c8041a0694006502a27f80aa50f3ebe",
+            "sampling_record": {
+              "mode": "base",
+              "seed": 101,
+              "steps": 3,
+              "cfg": 1,
+              "sigmas": [
+                0.909375011920929,
+                0.8571428656578064,
+                0.6666666865348816,
+                0
+              ],
+              "warm_start": true,
+              "pretrained": {
+                "recipe": "refiner-turbo-comfy",
+                "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+                "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+                "merged_modules": 208,
+                "components": [
+                  "refiner",
+                  "turbo"
+                ],
+                "merge": "sum_fp32_then_cast_once",
+                "sharp_zero_curve_B_tensors": 0,
+                "upstream_diffusers_parity": "not_validated",
+                "legacy_stage1_loaded": false,
+                "legacy_turbo_loaded": false
+              },
+              "audio_init": "zeros",
+              "audio_strength": null,
+              "quota_steps": 0,
+              "quota_dbg": null,
+              "noise": "per_block",
+              "seconds": 5.048006537370384,
+              "correction_events": [],
+              "projection_device_dtype": null,
+              "base_parameter_versions_unchanged": true,
+              "frozen_base_tensors": 530
+            },
+            "sampling_decode_seconds": 6.157235579565167
+          }
+        },
+        "h3_sample_calls": 2,
+        "denoiser_evaluations": 6,
+        "warm_start": "fixed encoded raw RGB for both arms",
+        "guide_and_draft_joint_effect_tested": false
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "arms": {
+        "input": {
+          "quality": {
+            "psnr": 27.62042473008638,
+            "psnr_from_mean_mse": 27.608805294585178,
+            "mse": 0.0017342810173909486,
+            "mae": 0.019003446411193885,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.19062352112748407
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.014037029406230759,
+            "flow_aligned_rgb_error_change_mae": 0.006093241163485107,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "rphi_only": {
+          "quality": {
+            "psnr": 27.75723309590143,
+            "psnr_from_mean_mse": 27.745031938225395,
+            "mse": 0.0016807255655265198,
+            "mae": 0.01868661508004178,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.18481276590715756
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.013899599931147123,
+            "flow_aligned_rgb_error_change_mae": 0.006178677104236115,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw": {
+          "quality": {
+            "psnr": 27.146427908546215,
+            "psnr_from_mean_mse": 27.104491696513374,
+            "mse": 0.0019478290128527346,
+            "mae": 0.025443586022420372,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.16659492660652508
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.01657111300954882,
+            "flow_aligned_rgb_error_change_mae": 0.008025562834172021,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_raw_anchor": {
+          "quality": {
+            "psnr": 27.625841813468618,
+            "psnr_from_mean_mse": 27.600480460523475,
+            "mse": 0.001737608586262456,
+            "mae": 0.02276933536649725,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.16033281656828793
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.015474387163449744,
+            "flow_aligned_rgb_error_change_mae": 0.006955472353313651,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi": {
+          "quality": {
+            "psnr": 27.21341628261842,
+            "psnr_from_mean_mse": 27.165704536874497,
+            "mse": 0.0019205673712644712,
+            "mae": 0.025342024683552296,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.16010548919439316
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.01657440241268177,
+            "flow_aligned_rgb_error_change_mae": 0.00812246830069593,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        },
+        "h3_rphi_anchor": {
+          "quality": {
+            "psnr": 27.700107469123335,
+            "psnr_from_mean_mse": 27.671755557787286,
+            "mse": 0.001709324211668304,
+            "mae": 0.022654454539376992,
+            "perfect_frames": 0,
+            "frames": 22,
+            "lpips": 0.1549153138290752
+          },
+          "temporal": {
+            "pairs": 21,
+            "unwarped_rgb_error_change_mae": 0.015454635104440046,
+            "flow_aligned_rgb_error_change_mae": 0.007028169774760802,
+            "valid_coverage": 0.9037229805784494,
+            "valid_pairs": 21
+          }
+        }
+      },
+      "decoded_file": {
+        "path": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac.npz",
+        "sha256": "dcab64cd3573003a809e23dd5f03cf182d325d5fa04aa2702cde3be1d7b48f86",
+        "arrays": {
+          "raw": "56fa43d0d25babd46c3907b40cfe570f8101a97c32722c6f1613ba726428c378",
+          "rphi": "a91b319d7a12c2d78150c53ab9193982b58efe2935553de284aed88faf6bb80b"
+        }
+      },
+      "soft_anchor": {
+        "raw": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "sr",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "canonical Q4 of supplied R_phi RGB",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": {
+            "definition": "rphi_model.canonical_q4: bicubic, align_corners=False, antialias=True, scale=4",
+            "arithmetic": "CPU float64",
+            "comparison": "numerical equivalence, not bitwise equality",
+            "probe_max_abs_error": 5.551115123125783e-16,
+            "probe_tolerance": 1e-12,
+            "input_max_abs_error": 8.881784197001252e-16,
+            "input_tolerance": 1e-12,
+            "correction_residual_operator": "rphi_model.canonical_q4"
+          },
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0.0019574121624902877,
+          "clipping_increased_residual": true,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.0199357970844163,
+            "after_soft_update_preclip": 0.014951847813312226,
+            "after_clip_before_dtype_cast": 0.014952767268627168,
+            "output": 0.014952767271095567
+          }
+        },
+        "rphi": {
+          "schema": "rphi.post_decode_soft_anchor.v1",
+          "task": "sr",
+          "alpha": 0.25,
+          "stage": "post_decode_rgb",
+          "physical_observation_consistency": false,
+          "constraint_definition": "canonical Q4 of supplied R_phi RGB",
+          "confidence_weighting": false,
+          "shape": [
+            22,
+            3,
+            480,
+            832
+          ],
+          "operator_check": {
+            "definition": "rphi_model.canonical_q4: bicubic, align_corners=False, antialias=True, scale=4",
+            "arithmetic": "CPU float64",
+            "comparison": "numerical equivalence, not bitwise equality",
+            "probe_max_abs_error": 5.551115123125783e-16,
+            "probe_tolerance": 1e-12,
+            "input_max_abs_error": 8.881784197001252e-16,
+            "input_tolerance": 1e-12,
+            "correction_residual_operator": "rphi_model.canonical_q4"
+          },
+          "identity_passthrough": false,
+          "clipped_component_fraction": 0.0019085081585081586,
+          "clipping_increased_residual": true,
+          "clipping_broke_attained_anchor": false,
+          "output_within_anchor_tolerance": false,
+          "output_range": [
+            0,
+            1
+          ],
+          "note": "Soft canonical/fidelity anchoring only. Final clipping and dtype rounding are measured; no exact physical consistency claim.",
+          "residual_rmse": {
+            "before": 0.020419386305802246,
+            "after_soft_update_preclip": 0.015314539729351685,
+            "after_clip_before_dtype_cast": 0.015315344476501406,
+            "output": 0.015315344480075163
+          }
+        }
+      }
+    }
+  ],
+  "paired_deltas": [
+    {
+      "task": "compression",
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "comparisons": {
+        "rphi_only_minus_input": {
+          "a": "rphi_only",
+          "b": "input",
+          "psnr_db": 0.09569264499347696,
+          "lpips": -0.0008326085199686604,
+          "mse": -0.000001997724389428949,
+          "mae": 0.00003440257071716472,
+          "flow_aligned_rgb_error_change_mae": -0.00012187721828619668,
+          "unwarped_rgb_error_change_mae": -0.00011164289520915974
+        },
+        "h3_raw_minus_input": {
+          "a": "h3_raw",
+          "b": "input",
+          "psnr_db": -7.53536053439808,
+          "lpips": 0.016202872492034327,
+          "mse": 0.00044274455950099134,
+          "mae": 0.008484242741041986,
+          "flow_aligned_rgb_error_change_mae": 0.0030545693644810296,
+          "unwarped_rgb_error_change_mae": 0.0044958836710966565
+        },
+        "h3_rphi_minus_h3_raw": {
+          "a": "h3_rphi",
+          "b": "h3_raw",
+          "psnr_db": -0.17263271296051386,
+          "lpips": 0.0005449604412371481,
+          "mse": 0.00002286818443019941,
+          "mae": 0.00023418002205679786,
+          "flow_aligned_rgb_error_change_mae": 0.00015331106260418892,
+          "unwarped_rgb_error_change_mae": 0.0002927393444120043
+        },
+        "h3_raw_anchor_minus_h3_raw": {
+          "a": "h3_raw_anchor",
+          "b": "h3_raw",
+          "psnr_db": 2.124170898988446,
+          "lpips": -0.007007796232673252,
+          "mse": -0.00020834752209854533,
+          "mae": -0.0032245580060023503,
+          "flow_aligned_rgb_error_change_mae": -0.0014775948865073073,
+          "unwarped_rgb_error_change_mae": -0.0020600644466326826
+        },
+        "h3_rphi_anchor_minus_h3_rphi": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_rphi",
+          "psnr_db": 2.1215094476036924,
+          "lpips": -0.006512841294434937,
+          "mse": -0.00021721963616021635,
+          "mae": -0.003253130850135103,
+          "flow_aligned_rgb_error_change_mae": -0.001523030389632498,
+          "unwarped_rgb_error_change_mae": -0.002143088831167655
+        },
+        "h3_rphi_anchor_minus_h3_raw_anchor": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_raw_anchor",
+          "psnr_db": -0.17529416434526723,
+          "lpips": 0.0010399153794754638,
+          "mse": 0.000013996070368528393,
+          "mae": 0.0002056071779240453,
+          "flow_aligned_rgb_error_change_mae": 0.00010787555947899818,
+          "unwarped_rgb_error_change_mae": 0.00020971495987703176
+        },
+        "h3_rphi_minus_rphi_only": {
+          "a": "h3_rphi",
+          "b": "rphi_only",
+          "psnr_db": -7.803685892352071,
+          "lpips": 0.017580441453240135,
+          "mse": 0.00046761046832061973,
+          "mae": 0.008684020192381618,
+          "flow_aligned_rgb_error_change_mae": 0.003329757645371415,
+          "unwarped_rgb_error_change_mae": 0.004900265910717821
+        },
+        "h3_rphi_anchor_minus_rphi_only": {
+          "a": "h3_rphi_anchor",
+          "b": "rphi_only",
+          "psnr_db": -5.682176444748379,
+          "lpips": 0.011067600158805199,
+          "mse": 0.0002503908321604034,
+          "mae": 0.005430889342246516,
+          "flow_aligned_rgb_error_change_mae": 0.0018067272557389172,
+          "unwarped_rgb_error_change_mae": 0.0027571770795501655
+        }
+      }
+    },
+    {
+      "task": "deblur",
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "comparisons": {
+        "rphi_only_minus_input": {
+          "a": "rphi_only",
+          "b": "input",
+          "psnr_db": 0.31784891812511873,
+          "lpips": -0.005321048538793213,
+          "mse": -0.000049052958003493,
+          "mae": -0.0004478751415588657,
+          "flow_aligned_rgb_error_change_mae": -0.00004106774438349982,
+          "unwarped_rgb_error_change_mae": -0.00017873730853993838
+        },
+        "h3_raw_minus_input": {
+          "a": "h3_raw",
+          "b": "input",
+          "psnr_db": -1.8083878151554913,
+          "lpips": -0.01941488446159796,
+          "mse": 0.0003901322182427361,
+          "mae": 0.008503723203444653,
+          "flow_aligned_rgb_error_change_mae": 0.004429519919323779,
+          "unwarped_rgb_error_change_mae": 0.004033571913276957
+        },
+        "h3_rphi_minus_h3_raw": {
+          "a": "h3_rphi",
+          "b": "h3_raw",
+          "psnr_db": 0.2557745606014379,
+          "lpips": -0.006282439963384109,
+          "mse": -0.00006183169778191193,
+          "mae": -0.0007356149713604841,
+          "flow_aligned_rgb_error_change_mae": 0.00013991749091517292,
+          "unwarped_rgb_error_change_mae": -0.00002536216687248037
+        },
+        "h3_raw_anchor_minus_h3_raw": {
+          "a": "h3_raw_anchor",
+          "b": "h3_raw",
+          "psnr_db": 0.8376785680220564,
+          "lpips": 0.005036414008248932,
+          "mse": -0.00020241301463919884,
+          "mae": -0.002928267497689291,
+          "flow_aligned_rgb_error_change_mae": -0.0014607153744215055,
+          "unwarped_rgb_error_change_mae": -0.0014391569632117105
+        },
+        "h3_rphi_anchor_minus_h3_rphi": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_rphi",
+          "psnr_db": 0.8013545648894791,
+          "lpips": 0.006304671479897064,
+          "mse": -0.00018405245293059557,
+          "mae": -0.0027568568495510183,
+          "flow_aligned_rgb_error_change_mae": -0.0015014035937686758,
+          "unwarped_rgb_error_change_mae": -0.001457544949228201
+        },
+        "h3_rphi_anchor_minus_h3_raw_anchor": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_raw_anchor",
+          "psnr_db": 0.21945055746886055,
+          "lpips": -0.005014182491735977,
+          "mse": -0.00004347113607330866,
+          "mae": -0.0005642043232222116,
+          "flow_aligned_rgb_error_change_mae": 0.00009922927156800262,
+          "unwarped_rgb_error_change_mae": -0.00004375015288897097
+        },
+        "h3_rphi_minus_rphi_only": {
+          "a": "h3_rphi",
+          "b": "rphi_only",
+          "psnr_db": -1.8704621726791721,
+          "lpips": -0.020376275886188858,
+          "mse": 0.0003773534784643172,
+          "mae": 0.008215983373643035,
+          "flow_aligned_rgb_error_change_mae": 0.004610505154622452,
+          "unwarped_rgb_error_change_mae": 0.004186947054944415
+        },
+        "h3_rphi_anchor_minus_rphi_only": {
+          "a": "h3_rphi_anchor",
+          "b": "rphi_only",
+          "psnr_db": -1.069107607789693,
+          "lpips": -0.014071604406291793,
+          "mse": 0.00019330102553372162,
+          "mae": 0.005459126524092016,
+          "flow_aligned_rgb_error_change_mae": 0.003109101560853776,
+          "unwarped_rgb_error_change_mae": 0.002729402105716214
+        }
+      }
+    },
+    {
+      "task": "denoise",
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "comparisons": {
+        "rphi_only_minus_input": {
+          "a": "rphi_only",
+          "b": "input",
+          "psnr_db": 12.389904631176353,
+          "lpips": -0.5602058876644481,
+          "mse": -0.004182511825137313,
+          "mae": -0.0409521779373405,
+          "flow_aligned_rgb_error_change_mae": -0.05321634480995792,
+          "unwarped_rgb_error_change_mae": -0.059866376600590486
+        },
+        "h3_raw_minus_input": {
+          "a": "h3_raw",
+          "b": "input",
+          "psnr_db": 5.419548357284707,
+          "lpips": -0.14436222748322913,
+          "mse": -0.0031628868253297366,
+          "mae": -0.02625918727361181,
+          "flow_aligned_rgb_error_change_mae": -0.044647295116668664,
+          "unwarped_rgb_error_change_mae": -0.050921464152344
+        },
+        "h3_rphi_minus_h3_raw": {
+          "a": "h3_rphi",
+          "b": "h3_raw",
+          "psnr_db": 3.527400661642652,
+          "lpips": -0.45043442364443437,
+          "mse": -0.000703854588944555,
+          "mae": -0.01108881253091091,
+          "flow_aligned_rgb_error_change_mae": -0.011809436338288444,
+          "unwarped_rgb_error_change_mae": -0.010189028872693595
+        },
+        "h3_raw_anchor_minus_h3_raw": {
+          "a": "h3_raw_anchor",
+          "b": "h3_raw",
+          "psnr_db": 2.293383433129165,
+          "lpips": -0.11272388019345025,
+          "mse": -0.0005234693667761621,
+          "mae": -0.006128698487652736,
+          "flow_aligned_rgb_error_change_mae": -0.004897600838116238,
+          "unwarped_rgb_error_change_mae": -0.005109497076506545
+        },
+        "h3_rphi_anchor_minus_h3_rphi": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_rphi",
+          "psnr_db": 1.962889658302693,
+          "lpips": -0.01930199394171888,
+          "mse": -0.0002095175888633456,
+          "mae": -0.002920801944246234,
+          "flow_aligned_rgb_error_change_mae": -0.0013718407689815477,
+          "unwarped_rgb_error_change_mae": -0.0019377654892541694
+        },
+        "h3_rphi_anchor_minus_h3_raw_anchor": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_raw_anchor",
+          "psnr_db": 3.19690688681618,
+          "lpips": -0.357012537392703,
+          "mse": -0.0003899028110317385,
+          "mae": -0.007880915987504409,
+          "flow_aligned_rgb_error_change_mae": -0.008283676269153753,
+          "unwarped_rgb_error_change_mae": -0.00701729728544122
+        },
+        "h3_rphi_minus_rphi_only": {
+          "a": "h3_rphi",
+          "b": "rphi_only",
+          "psnr_db": -3.442955612248994,
+          "lpips": -0.03459076346321539,
+          "mse": 0.0003157704108630222,
+          "mae": 0.003604178132817786,
+          "flow_aligned_rgb_error_change_mae": -0.0032403866449991856,
+          "unwarped_rgb_error_change_mae": -0.0012441164244471024
+        },
+        "h3_rphi_anchor_minus_rphi_only": {
+          "a": "h3_rphi_anchor",
+          "b": "rphi_only",
+          "psnr_db": -1.4800659539463012,
+          "lpips": -0.05389275740493427,
+          "mse": 0.00010625282199967659,
+          "mae": 0.0006833761885715519,
+          "flow_aligned_rgb_error_change_mae": -0.004612227413980733,
+          "unwarped_rgb_error_change_mae": -0.003181881913701272
+        }
+      }
+    },
+    {
+      "task": "sr",
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "comparisons": {
+        "rphi_only_minus_input": {
+          "a": "rphi_only",
+          "b": "input",
+          "psnr_db": 0.13680836581504963,
+          "lpips": -0.005810755220326508,
+          "mse": -0.00005355545186442874,
+          "mae": -0.0003168313311521058,
+          "flow_aligned_rgb_error_change_mae": 0.00008543594075100837,
+          "unwarped_rgb_error_change_mae": -0.0001374294750836353
+        },
+        "h3_raw_minus_input": {
+          "a": "h3_raw",
+          "b": "input",
+          "psnr_db": -0.4739968215401653,
+          "lpips": -0.024028594520958985,
+          "mse": 0.00021354799546178605,
+          "mae": 0.006440139611226487,
+          "flow_aligned_rgb_error_change_mae": 0.0019323216706869147,
+          "unwarped_rgb_error_change_mae": 0.00253408360331806
+        },
+        "h3_rphi_minus_h3_raw": {
+          "a": "h3_rphi",
+          "b": "h3_raw",
+          "psnr_db": 0.06698837407220637,
+          "lpips": -0.0064894374121319265,
+          "mse": -0.000027261641588263415,
+          "mae": -0.00010156133886807597,
+          "flow_aligned_rgb_error_change_mae": 0.00009690546652390934,
+          "unwarped_rgb_error_change_mae": 0.0000032894031329507023
+        },
+        "h3_raw_anchor_minus_h3_raw": {
+          "a": "h3_raw_anchor",
+          "b": "h3_raw",
+          "psnr_db": 0.4794139049224029,
+          "lpips": -0.006262110038237151,
+          "mse": -0.00021022042659027862,
+          "mae": -0.002674250655923121,
+          "flow_aligned_rgb_error_change_mae": -0.0010700904808583706,
+          "unwarped_rgb_error_change_mae": -0.0010967258460990743
+        },
+        "h3_rphi_anchor_minus_h3_rphi": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_rphi",
+          "psnr_db": 0.4866911865049133,
+          "lpips": -0.005190175365317962,
+          "mse": -0.00021124315959616708,
+          "mae": -0.002687570144175304,
+          "flow_aligned_rgb_error_change_mae": -0.0010942985259351284,
+          "unwarped_rgb_error_change_mae": -0.0011197673082417228
+        },
+        "h3_rphi_anchor_minus_h3_raw_anchor": {
+          "a": "h3_rphi_anchor",
+          "b": "h3_raw_anchor",
+          "psnr_db": 0.07426565565471677,
+          "lpips": -0.005417502739212737,
+          "mse": -0.00002828437459415187,
+          "mae": -0.00011488082712025893,
+          "flow_aligned_rgb_error_change_mae": 0.00007269742144715152,
+          "unwarped_rgb_error_change_mae": -0.000019752059009697787
+        },
+        "h3_rphi_minus_rphi_only": {
+          "a": "h3_rphi",
+          "b": "rphi_only",
+          "psnr_db": -0.5438168132830086,
+          "lpips": -0.024707276712764403,
+          "mse": 0.00023984180573795137,
+          "mae": 0.006655409603510517,
+          "flow_aligned_rgb_error_change_mae": 0.0019437911964598157,
+          "unwarped_rgb_error_change_mae": 0.002674802481534646
+        },
+        "h3_rphi_anchor_minus_rphi_only": {
+          "a": "h3_rphi_anchor",
+          "b": "rphi_only",
+          "psnr_db": -0.057125626778095295,
+          "lpips": -0.029897452078082365,
+          "mse": 0.000028598646141784296,
+          "mae": 0.003967839459335213,
+          "flow_aligned_rgb_error_change_mae": 0.0008494926705246873,
+          "unwarped_rgb_error_change_mae": 0.0015550351732929232
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "guide_denoise",
+      "level": "promising_single_source",
+      "claim": "R_phi guide substantially improves this denoise example relative to raw-guided H3, with fixed raw warm draft.",
+      "evidence_comparison": "denoise/h3_rphi_minus_h3_raw"
+    },
+    {
+      "id": "guide_other_tasks",
+      "level": "mixed",
+      "claim": "SR and deblur have modest PSNR/LPIPS gains from R_phi guide but slightly worse flow error; compression worsens in all three metrics.",
+      "evidence_comparisons": [
+        "sr/h3_rphi_minus_h3_raw",
+        "deblur/h3_rphi_minus_h3_raw",
+        "compression/h3_rphi_minus_h3_raw"
+      ]
+    },
+    {
+      "id": "anchor_tradeoff",
+      "level": "mixed",
+      "claim": "Alpha 0.25 anchoring improves PSNR and flow error for all four tasks, but worsens deblur LPIPS for both raw-H3 and Rphi-guided-H3.",
+      "evidence_comparisons": [
+        "deblur/h3_raw_anchor_minus_h3_raw",
+        "deblur/h3_rphi_anchor_minus_h3_rphi"
+      ]
+    },
+    {
+      "id": "compression_harm",
+      "level": "negative_result",
+      "claim": "The final H3 R_phi+anchor arm remains substantially worse than R_phi-only on compression: all PSNR, LPIPS and flow metrics worsen. Do not hide this via cross-task averaging.",
+      "evidence_comparison": "compression/h3_rphi_anchor_minus_rphi_only"
+    },
+    {
+      "id": "no_uniform_dominance",
+      "level": "negative_result",
+      "claim": "The final H3 R_phi+anchor arm has lower PSNR than R_phi-only on all four tasks; LPIPS improves on SR/deblur/denoise, while flow improves only on denoise. This is not uniform quality improvement.",
+      "evidence_comparisons": [
+        "compression/h3_rphi_anchor_minus_rphi_only",
+        "deblur/h3_rphi_anchor_minus_rphi_only",
+        "denoise/h3_rphi_anchor_minus_rphi_only",
+        "sr/h3_rphi_anchor_minus_rphi_only"
+      ]
+    },
+    {
+      "id": "clipping",
+      "level": "diagnostic",
+      "claim": "Native-task anchor output has zero recorded clipped components. SR anchor output clips about 0.19% of components and slightly increases the Q4 residual relative to the preclip soft update; the correction remains soft, not exact consistency."
+    }
+  ],
+  "next_step": {
+    "priority": "one_source_identity_and_near_clean_controls_before_full_ordinary_dev",
+    "state": "authorized_and_assigned_to_inspect_architecture_as_a_new_run; this review launches nothing",
+    "rationale": "Compression over-restoration makes clean and near-clean harm the most discriminative immediate follow-up. Complete the fixed-parameter controls before considering an expanded ordinary dev run.",
+    "after_controls": "Use controls plus this negative result to decide the scope of a multi-source fixed-parameter diagnostic; preserve input and R_phi-only baselines and both H3 guide arms. Do not claim that a favorable comparison between H3 arms establishes a gain over the original observations or R_phi-only.",
+    "not_automatic": "No full-dev launch or acceptance is authorized by this review artifact itself."
+  }
+}

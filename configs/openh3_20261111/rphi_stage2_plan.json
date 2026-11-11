@@ -1,6 +1,6 @@
 {
   "schema": "rphi.stage2_plan.v1",
-  "status": "first_two_arms_evaluated_remaining_training_and_calibration_running",
+  "status": "completed_and_independently_audited_quality_tradeoff_requires_further_research",
   "date": "2026-11-11",
   "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111",
   "host": "30794",
@@ -158,5 +158,15 @@
     "full_matrix_audit": "pending",
     "candidate_selected": false,
     "initial_quality_read": "native encoder does not improve mean PSNR over legacy at matched budget; compression gain remains negative for both; await guard arm and calibration invariance audit"
+  },
+  "completed_at_utc": "2026-11-11T09:46:25.567483+00:00",
+  "full_evidence": "results/takeover_20261111/rphi_stage2_completed",
+  "scientific_review": "results/takeover_20261111/rphi_stage2_scientific_review_v2.json",
+  "full_archive_sha256": "bd8927b98087f4b072624d2be0ec83ec514c934522fd3c036500b00b037151b4",
+  "next_actual_run": {
+    "plan": "configs/openh3_20261111/fixed_h3_legacy_smoke_queue_30794.json",
+    "run_root": "/cache/zihaohe/omni_openh3_20261111/runs/fixed_h3_rphi_legacy_smoke_20261111a",
+    "candidate": "legacy_g05",
+    "scope": "one-source four-task fixed-H3 engineering smoke, not omni quality acceptance"
   }
 }

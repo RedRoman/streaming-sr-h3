@@ -1,0 +1,3807 @@
+{
+  "schema": "rphi.rgb_eval.v1",
+  "complete": true,
+  "checkpoint_sha256": "6a4045ed2cd1d5de5824435b47df1e5af43e70aa58f365049918b7d5ec41bb78",
+  "fidelity_state_sha256": "31b18bb4f5ddf9fe7e687b0bc8a777f5969ce045d05e95ab7a86d3532c7a1e06",
+  "initial_fidelity_sha256": "c54fcd3ec7b3cf9ec284beb4aa385bd9d2f28940f9e3560354e34b86c8faea74",
+  "source_checkpoint_sha256": "a735194cb24256c5b09a3504d29ee828912e900ab5fe783f97064cd93ca698d6",
+  "calibration_contract": {
+    "schema": "rphi.frozen_confidence_calibration.v1",
+    "source_checkpoint_sha256": "a735194cb24256c5b09a3504d29ee828912e900ab5fe783f97064cd93ca698d6",
+    "source_checkpoint": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/smoke_native/train/checkpoint_step000002.pt",
+    "source_fidelity_step": 2,
+    "source_fidelity_state_sha256": "31b18bb4f5ddf9fe7e687b0bc8a777f5969ce045d05e95ab7a86d3532c7a1e06",
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "train_source_ids": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "4bXb6GLm6zg",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "75UH33tO0Bo",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "DtgdD48804M",
+      "E_W73B44qOk",
+      "Gf6owJ8AY2E",
+      "H2pTKitY56w",
+      "HOsBXlQHWdE",
+      "HU9sbY3A1bo",
+      "JLyjEE1UKaU",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "JnbfAFodjZg",
+      "Kc0bCgT5P04",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q0-CI3XJvxw",
+      "Q975D6bpK_c",
+      "SJ-_0uGIL1c",
+      "VPp9ArDokWY"
+    ],
+    "train_source_sha256": [
+      "046f806a886ce145113c8008bb05d7aac220a244c6732cf4588febfcdd2128f0",
+      "0c5cd9b83eb2a791f307b1e620e2b9ef647536e994d72c3174abf95225165d46",
+      "141a8d5061804e39eae68c9a1b5556e60ffcd20388570f121b1a2299395a1801",
+      "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f",
+      "1a84cbf1b5080ade2e9652490823494a9a0869639f22bcda20cd26b53054773e",
+      "1acb0d03f85c15d2a98e8b8c0a2eb7502c75c1c494b0be190dbf96778fde06f9",
+      "2e2fdbc2dd151f4db19d83f3c618f2ca63a2bc184dd2fc950b8d4f336a091673",
+      "3a6ae69227924cdcb2ead52acf0f11cd094125dc7f9791485f8ef1af11404230",
+      "3ba7ac5e307be4a19a961150126a2ab5d2baa63a768a058a1a1c1ee21c8fcfb1",
+      "51c07a02ddd3ebe97dc3938a9cfa47ee5803a5e2f21e1724c7f2326ff7dfc530",
+      "528467e02fc259a1965fbd3036da85797eb35f1e2e970bacf9a0abe3b25b4bad",
+      "7704eea2ee4f311a29a1eedba84f2d2475b8ac9374896cad5c36cf1d24de0c32",
+      "77ecfddda8b9591b83e2aaed31ea6d8ceb4d4eb428ad9d35fae0dce0123179ce",
+      "80045af82f111282ede681e52f2afc7b2261575e3ca1225234bb9581f55e4ad1",
+      "84bc4c6400a8692a54b60811d7dcc5d3995a5ac58b2f2fb0240ab05a27ef04ed",
+      "944e1d3cf3f4db7a2ad37e898562243966c96716c0dd5256729ad2d024bdf5f1",
+      "ab0e2dcbd29861bd2a04b078bc5fc567b199218df13b9ad1ff7a0efec5b3dff7",
+      "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "b9c21383b06241c7deb486b96c35123baf50ebffb06e3df8907c6909eb7a4c8b",
+      "be96bc2d913f8429fb2060d00f4156d177b38e8e8688700097cb8e9daaac4bd0",
+      "bfed7427204cea9f5a7a84ff908e327c714c815c3a96282d36da08b04b7204cc",
+      "c671925f6231590b131b1efc94a6514778baa79c1165b518cc8864586e5ac10a",
+      "d0f51330782d6928e78bc5de2a9b4e251d27c93661d18a53fc82ed5acb6987ba",
+      "d4600b5b4c9609251539ac45c58aff31789eef2b1465f572cc275b0df1617b2a",
+      "d77fcd631a825f4ee46a3d1f294ca9580563c5a6929aaab0c182320a003bd016",
+      "daa90f52b75a71d9ded5ef0c9cd47ada37fb8e904096f4b90ad7047686cec935",
+      "dda7753e9ae9fcef00b92445eae7ae695338d1f0cc2d13adfdfca0feab21cded",
+      "e271d063cbd18f5f404a780725c1950e58f60325159427f5c0c3277e2f2437e8",
+      "e84bab5f4f2855676e18b94ddf7b78f6c9fde1eecf360d71fba89b3a5eb73512",
+      "e9af8f9ad9efd82387d9634dce2b60e27ffcef089430395451f0e9c858306d8f",
+      "ec35a1ed3acf6d935bbb0b294adf5bd9c544908d99c95f317d3d21a7f9632718",
+      "fdc47208eb97518887999ce59d18cc45891600fed09cce5c356bb3fa3a08b31d"
+    ],
+    "steps": 2,
+    "batch_size": 4,
+    "crop": 32,
+    "seed": 20261112,
+    "identity_fraction": 0.125,
+    "near_clean_fraction": 0.125,
+    "optimizer": {
+      "type": "AdamW",
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "weight_decay": 0.0,
+      "warmup": 50,
+      "schedule": "linear warmup, cosine decay to 0.2*lr",
+      "gradient_clip_norm": 1.0
+    },
+    "trainable": "confidence_head only; all other parameters and buffers frozen",
+    "loss": "Gaussian NLL without constant, raw RGB and target detached; detached backbone features",
+    "data_scope": "original training sources only; no development target optimization or model selection",
+    "statistical_scope": "training-set uncertainty fitting, NOT independent held-out calibration",
+    "step_semantics": "checkpoint.step/training_contract describe frozen fidelity training; calibration_step describes this additional head training"
+  },
+  "calibration_step": 2,
+  "fidelity_invariance": {
+    "fidelity_before_sha256": "31b18bb4f5ddf9fe7e687b0bc8a777f5969ce045d05e95ab7a86d3532c7a1e06",
+    "fidelity_after_sha256": "31b18bb4f5ddf9fe7e687b0bc8a777f5969ce045d05e95ab7a86d3532c7a1e06",
+    "identical": true,
+    "raw_output_max_abs_vs_source": {
+      "rgb": 0.0,
+      "anchor": 0.0,
+      "condition_code": 0.0
+    },
+    "probe_source": "fixed train-only batch; no dev target read",
+    "probe_samples": [
+      {
+        "record_index": 51,
+        "source_id": "SJ-_0uGIL1c",
+        "target_key": "604bfd45998159a5ff0d234f0e327c693685d20caefade11b78debf310813dda",
+        "frame_index": 18,
+        "history_indices": [
+          16,
+          17,
+          18
+        ],
+        "crop_tlhw": [
+          197,
+          538,
+          32,
+          32
+        ],
+        "control_recipe": null,
+        "input_preparation": "native RGB /255"
+      },
+      {
+        "record_index": 106,
+        "source_id": "H2pTKitY56w",
+        "target_key": "d182fc3095690a6015e503c37a80818a553b593b322fff4c0f08b703d40f6a55",
+        "frame_index": 17,
+        "history_indices": [
+          15,
+          16,
+          17
+        ],
+        "crop_tlhw": [
+          435,
+          124,
+          32,
+          32
+        ],
+        "control_recipe": null,
+        "input_preparation": "native RGB /255"
+      },
+      {
+        "record_index": 48,
+        "source_id": "SJ-_0uGIL1c",
+        "target_key": "604bfd45998159a5ff0d234f0e327c693685d20caefade11b78debf310813dda",
+        "frame_index": 8,
+        "history_indices": [
+          6,
+          7,
+          8
+        ],
+        "crop_tlhw": [
+          262,
+          271,
+          32,
+          32
+        ],
+        "control_recipe": null,
+        "input_preparation": "native RGB /255"
+      },
+      {
+        "record_index": 29,
+        "source_id": "Na-NDcdjEik",
+        "target_key": "476653017798c34c8caf866ab4282e505fbbe05f0ac8ca16acaea478830cf29e",
+        "frame_index": 7,
+        "history_indices": [
+          5,
+          6,
+          7
+        ],
+        "crop_tlhw": [
+          272,
+          657,
+          32,
+          32
+        ],
+        "control_recipe": {
+          "operator": "additive_gaussian_noise",
+          "sigma_8bit": 1.0,
+          "rng": "NumPy Generator PCG64",
+          "seed": 6976735434884730598,
+          "noise_dtype": "float32",
+          "quantization": "rint ties-even, clip [0,255], uint8",
+          "unique_frame_indices": [
+            5,
+            6,
+            7
+          ]
+        },
+        "input_preparation": "native RGB /255"
+      }
+    ]
+  },
+  "initial_backbone_sha256": "20a53cc9ba0332518e9f77a11343841a66f163a38c5f2981c9086d7a5200b76b",
+  "checkpoint_step": 2,
+  "model_config": {
+    "variant": "blind_confidence",
+    "k": 3,
+    "ch": 8,
+    "blocks": 1,
+    "condition_dim": 6,
+    "observation_encoder": "native"
+  },
+  "training_contract": {
+    "schema": "rphi.training_contract.v1",
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "train_source_ids": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "4bXb6GLm6zg",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "75UH33tO0Bo",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "DtgdD48804M",
+      "E_W73B44qOk",
+      "Gf6owJ8AY2E",
+      "H2pTKitY56w",
+      "HOsBXlQHWdE",
+      "HU9sbY3A1bo",
+      "JLyjEE1UKaU",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "JnbfAFodjZg",
+      "Kc0bCgT5P04",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q0-CI3XJvxw",
+      "Q975D6bpK_c",
+      "SJ-_0uGIL1c",
+      "VPp9ArDokWY"
+    ],
+    "train_source_sha256": [
+      "046f806a886ce145113c8008bb05d7aac220a244c6732cf4588febfcdd2128f0",
+      "0c5cd9b83eb2a791f307b1e620e2b9ef647536e994d72c3174abf95225165d46",
+      "141a8d5061804e39eae68c9a1b5556e60ffcd20388570f121b1a2299395a1801",
+      "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f",
+      "1a84cbf1b5080ade2e9652490823494a9a0869639f22bcda20cd26b53054773e",
+      "1acb0d03f85c15d2a98e8b8c0a2eb7502c75c1c494b0be190dbf96778fde06f9",
+      "2e2fdbc2dd151f4db19d83f3c618f2ca63a2bc184dd2fc950b8d4f336a091673",
+      "3a6ae69227924cdcb2ead52acf0f11cd094125dc7f9791485f8ef1af11404230",
+      "3ba7ac5e307be4a19a961150126a2ab5d2baa63a768a058a1a1c1ee21c8fcfb1",
+      "51c07a02ddd3ebe97dc3938a9cfa47ee5803a5e2f21e1724c7f2326ff7dfc530",
+      "528467e02fc259a1965fbd3036da85797eb35f1e2e970bacf9a0abe3b25b4bad",
+      "7704eea2ee4f311a29a1eedba84f2d2475b8ac9374896cad5c36cf1d24de0c32",
+      "77ecfddda8b9591b83e2aaed31ea6d8ceb4d4eb428ad9d35fae0dce0123179ce",
+      "80045af82f111282ede681e52f2afc7b2261575e3ca1225234bb9581f55e4ad1",
+      "84bc4c6400a8692a54b60811d7dcc5d3995a5ac58b2f2fb0240ab05a27ef04ed",
+      "944e1d3cf3f4db7a2ad37e898562243966c96716c0dd5256729ad2d024bdf5f1",
+      "ab0e2dcbd29861bd2a04b078bc5fc567b199218df13b9ad1ff7a0efec5b3dff7",
+      "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "b9c21383b06241c7deb486b96c35123baf50ebffb06e3df8907c6909eb7a4c8b",
+      "be96bc2d913f8429fb2060d00f4156d177b38e8e8688700097cb8e9daaac4bd0",
+      "bfed7427204cea9f5a7a84ff908e327c714c815c3a96282d36da08b04b7204cc",
+      "c671925f6231590b131b1efc94a6514778baa79c1165b518cc8864586e5ac10a",
+      "d0f51330782d6928e78bc5de2a9b4e251d27c93661d18a53fc82ed5acb6987ba",
+      "d4600b5b4c9609251539ac45c58aff31789eef2b1465f572cc275b0df1617b2a",
+      "d77fcd631a825f4ee46a3d1f294ca9580563c5a6929aaab0c182320a003bd016",
+      "daa90f52b75a71d9ded5ef0c9cd47ada37fb8e904096f4b90ad7047686cec935",
+      "dda7753e9ae9fcef00b92445eae7ae695338d1f0cc2d13adfdfca0feab21cded",
+      "e271d063cbd18f5f404a780725c1950e58f60325159427f5c0c3277e2f2437e8",
+      "e84bab5f4f2855676e18b94ddf7b78f6c9fde1eecf360d71fba89b3a5eb73512",
+      "e9af8f9ad9efd82387d9634dce2b60e27ffcef089430395451f0e9c858306d8f",
+      "ec35a1ed3acf6d935bbb0b294adf5bd9c544908d99c95f317d3d21a7f9632718",
+      "fdc47208eb97518887999ce59d18cc45891600fed09cce5c356bb3fa3a08b31d"
+    ],
+    "dev_source_ids": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "KR4M9nGv2is",
+      "MjfCH89sBzs",
+      "NPCSVxYpK3k"
+    ],
+    "task_order": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "target": "clean_original_recording",
+    "target_limit": "screened original recording is a clean-reference proxy, not pristine GT",
+    "source_verification": "original source SHA was verified at materialization; this run re-verifies NPZ content/provenance",
+    "guide_geometry": "SR: float Torch bicubic antialias to HR; native tasks: unchanged RGB",
+    "anchor": "Q4(rgb), canonical Torch bicubic antialias, NOT the physical observation operator",
+    "k": 3,
+    "crop": 32,
+    "seed": 20261111,
+    "observation_encoder": "native",
+    "observation_encoder_scope": "blind variants only; known always uses public-condition MLP",
+    "steps": 2,
+    "batch_size": 4,
+    "optimizer": {
+      "class": "torch.optim.AdamW",
+      "base_lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "confidence": "same settings in a separate optimizer when head is present",
+      "gradient_clipping": {
+        "max_norm": 1.0,
+        "norm_type": 2.0,
+        "error_if_nonfinite": true,
+        "groups": "fidelity and confidence separately"
+      }
+    },
+    "lr_schedule": {
+      "name": "linear_warmup_then_cosine_floor",
+      "warmup_steps": 50,
+      "total_steps": 2,
+      "minimum_multiplier": 0.2,
+      "warmup": "min(1, step / max(1, warmup_steps))",
+      "decay": "0.2 + 0.4 * (1 + cos(pi * max(0, step-warmup_steps) / max(1, total_steps-warmup_steps)))",
+      "application": "base_lr * warmup * decay; same schedule for both optimizers"
+    },
+    "determinism": {
+      "requested": "inherit",
+      "runtime": {
+        "requested": "inherit",
+        "torch_deterministic_algorithms": false,
+        "torch_deterministic_warn_only": false,
+        "float32_matmul_precision": "highest",
+        "cpu_threads": 8,
+        "device": "npu:0",
+        "torch_version": "2.10.0+cpu",
+        "torch_npu_version": "2.10.0.post2",
+        "environment": {
+          "HCCL_DETERMINISTIC": null,
+          "ASCEND_LAUNCH_BLOCKING": null
+        },
+        "npu": {
+          "jit_compile": false,
+          "matmul_allow_hf32": false,
+          "conv_allow_hf32": false
+        },
+        "bitwise_reproducibility_claimed": false
+      },
+      "seed_policy": "Python/NumPy/Torch seeded before CPU model initialization; NPU seeded when used",
+      "bitwise_reproducibility_claimed": false
+    },
+    "sampling": "step-addressed PCG64, balanced task slots; identical for every arm",
+    "identity_fraction": 0.125,
+    "near_clean_fraction": 0.125,
+    "near_clean": "data module fixed low Gaussian sigma recipe; source frames stay in original split",
+    "loss": {
+      "rgb": "Charbonnier eps=0.001",
+      "edge_l1_weight": 0.1,
+      "identity_guard_weight": 0.5,
+      "confidence_nll_weight": 1.0,
+      "confidence": "detached error Gaussian NLL; separate optimizer; no fidelity reweighting"
+    },
+    "evaluation": "final checkpoint, all dev tasks, original RGB; training crop validation is diagnostic only",
+    "rphi_scope": "standalone canonical RGB prototype; no H3 integration, soft DC or recurrent state yet",
+    "initial_backbone_sha256": "20a53cc9ba0332518e9f77a11343841a66f163a38c5f2981c9086d7a5200b76b"
+  },
+  "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+  "device": "npu:0",
+  "condition_mode": "observations_only",
+  "scope": "engineering_smoke_subset",
+  "source_ids": [
+    "6UZVovkR3IU"
+  ],
+  "available_sources": 8,
+  "frame_stride": 11,
+  "metric_contract": {
+    "rgb": "float32 clipped [0,1], no prediction quantization; original recording RGB proxy",
+    "baseline": "SR: torch bicubic antialias=True align_corners=False; native tasks: observed RGB identity",
+    "psnr": "mean per-frame RGB PSNR, unit peak; exact-zero MSE capped at 120 dB",
+    "aggregation": "windows averaged within source, then equal source weights; controls excluded from task scores",
+    "temporal": "selected frame pairs t,t+frame_stride; full RGB error-change, no x4 band/physical-null claim",
+    "calibration": "raw unclamped RGB errors, separate from quality metrics; nominal Gaussian coverage is a diagnostic",
+    "causal_context": "original consecutive frames t-2..t with first-frame repetition",
+    "control_inputs": "explicit identity and sigma=1/255 near-clean RGB controls from target; never ordinary dev input",
+    "comparison_limit": "development ablations, not an untouched generalization test"
+  },
+  "dataset_provenance": {
+    "schema": "openh3.materialized_omni_pilot.v1",
+    "manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "original_source_verification": "materialization_attestation_only",
+    "current_npz_verification": "receipt_file_and_pixel_sha256",
+    "target_semantics": "shared clean original-recording RGB reference proxy",
+    "task_order": [
+      "sr",
+      "deblur",
+      "denoise",
+      "compression"
+    ],
+    "condition": "public onehot4 + log2(nominal scale)/3 + known_mask",
+    "control_condition": "retain nominal task/scale; control label is not a model condition",
+    "near_clean_sigma_8bit": 1.0,
+    "sr_input_preparation": {
+      "implementation": "torch.nn.functional.interpolate",
+      "mode": "bicubic",
+      "align_corners": false,
+      "antialias": true,
+      "range": "float32 [0,1], clamped after resize",
+      "role": "HR input guide; not the physical forward operator"
+    }
+  },
+  "lpips": {
+    "available": true,
+    "network": "alex",
+    "device": "cpu",
+    "alexnet_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "weights_path": "/cache/zihaohe/omni_openh3_20261111/torch_home/hub/checkpoints/alexnet-owt-7be5be79.pth",
+    "downloads": false
+  },
+  "per_sample": [
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "compression",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "9ea5ddfdb24b9769353d371d178f2b8d4b918ea3f96495882c32ce9ea8c26f73",
+      "sample_id": "rphi-5316ef32951f086ff419b4ff520f52462aecdea2436c4280255c58862b75dea3",
+      "record_sha256": "fb5057fa4537572d347bbaae6b327d649eda3d45b33027ca549f756b9c434f88",
+      "frame_indices": [
+        0,
+        11
+      ],
+      "controls": {
+        "identity": {
+          "model": {
+            "psnr": 86.78811838076436,
+            "psnr_from_mean_mse": 86.78803289785358,
+            "mse": 2.0950611821941407e-09,
+            "mae": 3.222734346298307e-05,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 1.0832457419951425e-07
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "psnr_from_mean_mse": 120.0,
+            "mse": 0.0,
+            "mae": 0.0,
+            "perfect_frames": 2,
+            "frames": 2,
+            "lpips": 0.0
+          },
+          "raw_model_mse": 2.1126975425572046e-09,
+          "clipped_component_fraction": 0.01343566372863248,
+          "attribution": {
+            "baseline_mse": 0.0,
+            "model_mse": 2.0950611821941407e-09,
+            "mse_change": 2.0950611821941407e-09,
+            "correction_energy": 2.0950611821941407e-09,
+            "cross_term": 0.0,
+            "identity_abs_error": 0.0
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 5.658818374134833e-06,
+            "flow_aligned_rgb_error_change_mae": 1.7620149037611554e-06,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.0,
+            "flow_aligned_rgb_error_change_mae": 0.0,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.660724561662,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              0.0016874537811951522,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2396193.592211309,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415722176256,
+                "empirical_mse": 2.1126975425620395e-09,
+                "predicted_rms_sigma": 0.04978495327122067,
+                "empirical_rmse": 4.596408970666165e-05,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002478539459520083,
+            "gaussian_nll_without_constant": -3.000042057556226,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          }
+        },
+        "near_clean": {
+          "model": {
+            "psnr": 47.8104481635718,
+            "psnr_from_mean_mse": 47.81044447832681,
+            "mse": 1.6556005125015028e-05,
+            "mae": 0.0029879721473837703,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.006066420115530491
+          },
+          "baseline": {
+            "psnr": 47.810606708822775,
+            "psnr_from_mean_mse": 47.81060306817488,
+            "mse": 1.655540056601003e-05,
+            "mae": 0.0029757644802781897,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.006068637361750007
+          },
+          "raw_model_mse": 1.6556263082902087e-05,
+          "clipped_component_fraction": 0.01030899439102564,
+          "attribution": {
+            "baseline_mse": 1.655540056601003e-05,
+            "model_mse": 1.6556005125015028e-05,
+            "mse_change": 6.045590049997835e-10,
+            "correction_energy": 2.0994159324833675e-09,
+            "cross_term": -1.4948569274808582e-09,
+            "identity_abs_error": 2.7257669135153644e-21
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004407075107524429,
+            "flow_aligned_rgb_error_change_mae": 0.0040292926132678986,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004405676572730985,
+            "flow_aligned_rgb_error_change_mae": 0.004029412753880024,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.66072596818,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              13.223818449560573,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2393526.2712211004,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415739785907,
+                "empirical_mse": 1.655626308288333e-05,
+                "predicted_rms_sigma": 0.049784953288906385,
+                "empirical_rmse": 0.004068938815328061,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.0024619853108957075,
+            "gaussian_nll_without_constant": -2.9967025631273794,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          },
+          "seed": 3192222159304101944,
+          "sigma_8bit": 1.0
+        }
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "model": {
+        "psnr": 40.853110768555645,
+        "psnr_from_mean_mse": 40.83935085174626,
+        "mse": 8.242613097173593e-05,
+        "mae": 0.006253062206324321,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.015400842763483524
+      },
+      "baseline": {
+        "psnr": 40.85235714335713,
+        "psnr_from_mean_mse": 40.8386168453563,
+        "mse": 8.244006308976693e-05,
+        "mae": 0.006245808705778037,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.01540704956278205
+      },
+      "raw_model_mse": 8.242683948752363e-05,
+      "clipped_component_fraction": 0.012202023237179487,
+      "attribution": {
+        "baseline_mse": 8.244006308976693e-05,
+        "model_mse": 8.242613097173593e-05,
+        "mse_change": -1.393211803100969e-08,
+        "correction_energy": 2.091976187546863e-09,
+        "cross_term": -1.602409421854789e-08,
+        "identity_abs_error": 8.665544097105518e-21
+      },
+      "temporal_model": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.008924101494152119,
+        "flow_aligned_rgb_error_change_mae": 0.007851933129131794,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "temporal_baseline": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.008923712755235583,
+        "flow_aligned_rgb_error_change_mae": 0.007852003909647465,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "calibration_sufficient_statistics": {
+        "bin_count": [
+          0,
+          0,
+          0,
+          798720,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bin_variance_sum": [
+          0.0,
+          0.0,
+          0.0,
+          1979.6607522987722,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_mse_sum": [
+          0.0,
+          0.0,
+          0.0,
+          65.83596523547764,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          797844.3333333313,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1_96sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          798715.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_nll_sum": [
+          0.0,
+          0.0,
+          0.0,
+          -2382912.7336774766,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "calibration": {
+        "available": true,
+        "error_space": "raw unclamped RGB; per-channel variance",
+        "pixels": 798720,
+        "bins": [
+          {
+            "log_variance_low": null,
+            "log_variance_high": -12.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -12.0,
+            "log_variance_high": -10.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -10.0,
+            "log_variance_high": -8.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -8.0,
+            "log_variance_high": -6.0,
+            "pixels": 798720,
+            "predicted_variance": 0.0024785416069445765,
+            "empirical_mse": 8.24268394875271e-05,
+            "predicted_rms_sigma": 0.04978495361999021,
+            "empirical_rmse": 0.00907892281537447,
+            "coverage_1sigma": 0.9989036625267068,
+            "coverage_1_96sigma": 0.9999937399839743
+          },
+          {
+            "log_variance_low": -6.0,
+            "log_variance_high": -4.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -4.0,
+            "log_variance_high": -2.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -2.0,
+            "log_variance_high": 0.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": 0.0,
+            "log_variance_high": null,
+            "pixels": 0
+          }
+        ],
+        "variance_calibration_mae": 0.0023961147674570493,
+        "gaussian_nll_without_constant": -2.983414380105014,
+        "coverage_1sigma": 0.9989036625267068,
+        "coverage_1_96sigma": 0.9999937399839743,
+        "nominal_gaussian_coverage": [
+          0.682689492,
+          0.95000421
+        ],
+        "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+      },
+      "chunk_equivalence": {
+        "checked_frames": [
+          0,
+          1,
+          2,
+          11
+        ],
+        "tolerance_max_abs": 1e-05,
+        "max_abs_differences": {
+          "rgb": 0.0,
+          "log_variance": 0.0
+        },
+        "passed": true,
+        "context": "absolute original frame t-2..t; history preserved across groups"
+      },
+      "examples": {
+        "frames": [
+          0,
+          11
+        ],
+        "panel_order": [
+          "identity_or_bicubic",
+          "model",
+          "original_RGB_proxy"
+        ]
+      }
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "deblur",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "881b2c901c177886330a0848afa145c6859b48bc53f32deda365cce3c1802407",
+      "sample_id": "rphi-218db8cf1a42ffa9670334317ef601c1634a15e9837673ba916802ccd91160db",
+      "record_sha256": "4f12e481b792eb46fe7a27066a2a7bf33b4776f406c4153f59d5bd5ad66d5754",
+      "frame_indices": [
+        0,
+        11
+      ],
+      "controls": {
+        "identity": {
+          "model": {
+            "psnr": 86.78811838076436,
+            "psnr_from_mean_mse": 86.78803289785358,
+            "mse": 2.0950611821941407e-09,
+            "mae": 3.222734346298307e-05,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 1.0832457419951425e-07
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "psnr_from_mean_mse": 120.0,
+            "mse": 0.0,
+            "mae": 0.0,
+            "perfect_frames": 2,
+            "frames": 2,
+            "lpips": 0.0
+          },
+          "raw_model_mse": 2.1126975425572046e-09,
+          "clipped_component_fraction": 0.01343566372863248,
+          "attribution": {
+            "baseline_mse": 0.0,
+            "model_mse": 2.0950611821941407e-09,
+            "mse_change": 2.0950611821941407e-09,
+            "correction_energy": 2.0950611821941407e-09,
+            "cross_term": 0.0,
+            "identity_abs_error": 0.0
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 5.658818374134833e-06,
+            "flow_aligned_rgb_error_change_mae": 1.7620149037611554e-06,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.0,
+            "flow_aligned_rgb_error_change_mae": 0.0,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.660724561662,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              0.0016874537811951522,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2396193.592211309,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415722176256,
+                "empirical_mse": 2.1126975425620395e-09,
+                "predicted_rms_sigma": 0.04978495327122067,
+                "empirical_rmse": 4.596408970666165e-05,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002478539459520083,
+            "gaussian_nll_without_constant": -3.000042057556226,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          }
+        },
+        "near_clean": {
+          "model": {
+            "psnr": 47.816829450636035,
+            "psnr_from_mean_mse": 47.81682870019472,
+            "mse": 1.6531685322706107e-05,
+            "mae": 0.00298586787262699,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.00616522622294724
+          },
+          "baseline": {
+            "psnr": 47.81704354946471,
+            "psnr_from_mean_mse": 47.817042709446255,
+            "mse": 1.6530870703460137e-05,
+            "mae": 0.002973659803710222,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.006167772691696882
+          },
+          "raw_model_mse": 1.6531950127062433e-05,
+          "clipped_component_fraction": 0.010220936832264957,
+          "attribution": {
+            "baseline_mse": 1.6530870703460137e-05,
+            "model_mse": 1.6531685322706107e-05,
+            "mse_change": 8.146192459705778e-10,
+            "correction_energy": 2.0995113748556106e-09,
+            "cross_term": -1.2848921288831454e-09,
+            "identity_abs_error": 1.887419362692871e-21
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004406111343621725,
+            "flow_aligned_rgb_error_change_mae": 0.004026508424431086,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.0044047273380985845,
+            "flow_aligned_rgb_error_change_mae": 0.004026633221656084,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.6607264361803,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              13.204399205472376,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2393530.188585041,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415745645287,
+                "empirical_mse": 1.653195012704374e-05,
+                "predicted_rms_sigma": 0.04978495329479107,
+                "empirical_rmse": 0.0040659500890989474,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002462009624437485,
+            "gaussian_nll_without_constant": -2.9967074676795886,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          },
+          "seed": 1967346480974128519,
+          "sigma_8bit": 1.0
+        }
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "model": {
+        "psnr": 31.374648606420735,
+        "psnr_from_mean_mse": 31.374435835500908,
+        "mse": 0.0007287128308408757,
+        "mae": 0.011776880242991748,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.1036488376557827
+      },
+      "baseline": {
+        "psnr": 31.37468000806111,
+        "psnr_from_mean_mse": 31.374467024898955,
+        "mse": 0.0007287075975178935,
+        "mae": 0.011764534133481693,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.10364789515733719
+      },
+      "raw_model_mse": 0.0007287128417654685,
+      "clipped_component_fraction": 0.0030119023771367523,
+      "attribution": {
+        "baseline_mse": 0.0007287075975178935,
+        "model_mse": 0.0007287128308408757,
+        "mse_change": 5.233322982107526e-09,
+        "correction_energy": 2.100017367537452e-09,
+        "cross_term": 3.133305614523736e-09,
+        "identity_abs_error": 4.633783073460806e-20
+      },
+      "temporal_model": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.018429637589045336,
+        "flow_aligned_rgb_error_change_mae": 0.006111603695899248,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "temporal_baseline": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.018429091326784417,
+        "flow_aligned_rgb_error_change_mae": 0.006111521273851395,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "calibration_sufficient_statistics": {
+        "bin_count": [
+          0,
+          0,
+          0,
+          798720,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bin_variance_sum": [
+          0.0,
+          0.0,
+          0.0,
+          1979.660716656631,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_mse_sum": [
+          0.0,
+          0.0,
+          0.0,
+          582.0375209752266,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          741035.6666666548,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1_96sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          782616.6666666665,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_nll_sum": [
+          0.0,
+          0.0,
+          0.0,
+          -2278778.530196321,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "calibration": {
+        "available": true,
+        "error_space": "raw unclamped RGB; per-channel variance",
+        "pixels": 798720,
+        "bins": [
+          {
+            "log_variance_low": null,
+            "log_variance_high": -12.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -12.0,
+            "log_variance_high": -10.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -10.0,
+            "log_variance_high": -8.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -8.0,
+            "log_variance_high": -6.0,
+            "pixels": 798720,
+            "predicted_variance": 0.0024785415623205013,
+            "empirical_mse": 0.0007287128417658586,
+            "predicted_rms_sigma": 0.04978495317182192,
+            "empirical_rmse": 0.026994681731145834,
+            "coverage_1sigma": 0.927779029780968,
+            "coverage_1_96sigma": 0.9798385750534186
+          },
+          {
+            "log_variance_low": -6.0,
+            "log_variance_high": -4.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -4.0,
+            "log_variance_high": -2.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -2.0,
+            "log_variance_high": 0.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": 0.0,
+            "log_variance_high": null,
+            "pixels": 0
+          }
+        ],
+        "variance_calibration_mae": 0.0017498287205546424,
+        "gaussian_nll_without_constant": -2.8530380235831343,
+        "coverage_1sigma": 0.927779029780968,
+        "coverage_1_96sigma": 0.9798385750534186,
+        "nominal_gaussian_coverage": [
+          0.682689492,
+          0.95000421
+        ],
+        "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+      },
+      "chunk_equivalence": {
+        "checked_frames": [
+          0,
+          1,
+          2,
+          11
+        ],
+        "tolerance_max_abs": 1e-05,
+        "max_abs_differences": {
+          "rgb": 0.0,
+          "log_variance": 0.0
+        },
+        "passed": true,
+        "context": "absolute original frame t-2..t; history preserved across groups"
+      },
+      "examples": {
+        "frames": [
+          0,
+          11
+        ],
+        "panel_order": [
+          "identity_or_bicubic",
+          "model",
+          "original_RGB_proxy"
+        ]
+      }
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "denoise",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "39c99d0ccc29ab67d152c236d52c34decff1d10868b6fcba9357e4865caead4a",
+      "sample_id": "rphi-44446a30a82de76a42a032ec5973225cdc6e20dff9a47be7df66f8a46d98d49b",
+      "record_sha256": "e549b761886f530e8d93585b63a86e405774381afc1cdee0cb6700f7e55f878a",
+      "frame_indices": [
+        0,
+        11
+      ],
+      "controls": {
+        "identity": {
+          "model": {
+            "psnr": 86.78811838076436,
+            "psnr_from_mean_mse": 86.78803289785358,
+            "mse": 2.0950611821941407e-09,
+            "mae": 3.222734346298307e-05,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 1.0832457419951425e-07
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "psnr_from_mean_mse": 120.0,
+            "mse": 0.0,
+            "mae": 0.0,
+            "perfect_frames": 2,
+            "frames": 2,
+            "lpips": 0.0
+          },
+          "raw_model_mse": 2.1126975425572046e-09,
+          "clipped_component_fraction": 0.01343566372863248,
+          "attribution": {
+            "baseline_mse": 0.0,
+            "model_mse": 2.0950611821941407e-09,
+            "mse_change": 2.0950611821941407e-09,
+            "correction_energy": 2.0950611821941407e-09,
+            "cross_term": 0.0,
+            "identity_abs_error": 0.0
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 5.658818374134833e-06,
+            "flow_aligned_rgb_error_change_mae": 1.7620149037611554e-06,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.0,
+            "flow_aligned_rgb_error_change_mae": 0.0,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.660724561662,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              0.0016874537811951522,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2396193.592211309,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415722176256,
+                "empirical_mse": 2.1126975425620395e-09,
+                "predicted_rms_sigma": 0.04978495327122067,
+                "empirical_rmse": 4.596408970666165e-05,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002478539459520083,
+            "gaussian_nll_without_constant": -3.000042057556226,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          }
+        },
+        "near_clean": {
+          "model": {
+            "psnr": 47.814017897432734,
+            "psnr_from_mean_mse": 47.81401669115441,
+            "mse": 1.654239287340194e-05,
+            "mae": 0.002984633187049686,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.006074485136196017
+          },
+          "baseline": {
+            "psnr": 47.814151569560806,
+            "psnr_from_mean_mse": 47.81415026204792,
+            "mse": 1.654188410612293e-05,
+            "mae": 0.0029724258033426935,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.0060769368428736925
+          },
+          "raw_model_mse": 1.654263586591247e-05,
+          "clipped_component_fraction": 0.010195062099358974,
+          "attribution": {
+            "baseline_mse": 1.6541884106122926e-05,
+            "model_mse": 1.654239287340194e-05,
+            "mse_change": 5.087672790147406e-10,
+            "correction_energy": 2.0995487567371556e-09,
+            "cross_term": -1.5907814777247712e-09,
+            "identity_abs_error": 2.3562239748572993e-21
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004406282650769197,
+            "flow_aligned_rgb_error_change_mae": 0.004026150330901146,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004404884452331581,
+            "flow_aligned_rgb_error_change_mae": 0.004026268143206835,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.6607261962556,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              13.212934118806023,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2393528.4668875374,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415742641422,
+                "empirical_mse": 1.6542635865892958e-05,
+                "predicted_rms_sigma": 0.04978495329177424,
+                "empirical_rmse": 0.004067263928723209,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.0024619989383982493,
+            "gaussian_nll_without_constant": -2.9967053121087956,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          },
+          "seed": 1585384664942526951,
+          "sigma_8bit": 1.0
+        }
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "model": {
+        "psnr": 23.5214522159447,
+        "psnr_from_mean_mse": 23.521449616644414,
+        "mse": 0.0044448288029069445,
+        "mae": 0.05292589594512545,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.6730048358440399
+      },
+      "baseline": {
+        "psnr": 23.52135416438511,
+        "psnr_from_mean_mse": 23.521351578266184,
+        "mse": 0.004444929142364164,
+        "mae": 0.05292599165859059,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.6729647517204285
+      },
+      "raw_model_mse": 0.004444894190836783,
+      "clipped_component_fraction": 0.03773454193376068,
+      "attribution": {
+        "baseline_mse": 0.004444929142364164,
+        "model_mse": 0.0044448288029069445,
+        "mse_change": -1.0033945721955179e-07,
+        "correction_energy": 2.070552723196848e-09,
+        "cross_term": -1.0241000994224488e-07,
+        "identity_abs_error": 5.037463755998934e-19
+      },
+      "temporal_model": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.07493618762593884,
+        "flow_aligned_rgb_error_change_mae": 0.06640000641345978,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "temporal_baseline": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.07493700247142815,
+        "flow_aligned_rgb_error_change_mae": 0.06640098243951797,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "calibration_sufficient_statistics": {
+        "bin_count": [
+          0,
+          0,
+          0,
+          798720,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bin_variance_sum": [
+          0.0,
+          0.0,
+          0.0,
+          1979.660774640889,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_mse_sum": [
+          0.0,
+          0.0,
+          0.0,
+          3550.225888105575,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          432944.3333335805,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1_96sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          679358.6666660724,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_nll_sum": [
+          0.0,
+          0.0,
+          0.0,
+          -1680001.3829562492,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "calibration": {
+        "available": true,
+        "error_space": "raw unclamped RGB; per-channel variance",
+        "pixels": 798720,
+        "bins": [
+          {
+            "log_variance_low": null,
+            "log_variance_high": -12.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -12.0,
+            "log_variance_high": -10.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -10.0,
+            "log_variance_high": -8.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -8.0,
+            "log_variance_high": -6.0,
+            "pixels": 798720,
+            "predicted_variance": 0.0024785416349169783,
+            "empirical_mse": 0.004444894190837308,
+            "predicted_rms_sigma": 0.049784953900922496,
+            "empirical_rmse": 0.06667003967928403,
+            "coverage_1sigma": 0.5420476929757369,
+            "coverage_1_96sigma": 0.8505592280975466
+          },
+          {
+            "log_variance_low": -6.0,
+            "log_variance_high": -4.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -4.0,
+            "log_variance_high": -2.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -2.0,
+            "log_variance_high": 0.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": 0.0,
+            "log_variance_high": null,
+            "pixels": 0
+          }
+        ],
+        "variance_calibration_mae": 0.00196635255592033,
+        "gaussian_nll_without_constant": -2.103367116081041,
+        "coverage_1sigma": 0.5420476929757369,
+        "coverage_1_96sigma": 0.8505592280975466,
+        "nominal_gaussian_coverage": [
+          0.682689492,
+          0.95000421
+        ],
+        "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+      },
+      "chunk_equivalence": {
+        "checked_frames": [
+          0,
+          1,
+          2,
+          11
+        ],
+        "tolerance_max_abs": 1e-05,
+        "max_abs_differences": {
+          "rgb": 0.0,
+          "log_variance": 0.0
+        },
+        "passed": true,
+        "context": "absolute original frame t-2..t; history preserved across groups"
+      },
+      "examples": {
+        "frames": [
+          0,
+          11
+        ],
+        "panel_order": [
+          "identity_or_bicubic",
+          "model",
+          "original_RGB_proxy"
+        ]
+      }
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+      "target_key": "7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7",
+      "task": "sr",
+      "target_pixel_sha256": "7829c2141b77d605a03ed05e9bdc6e1d97468c1b5dbdca865079b0de7400ce89",
+      "observation_pixel_sha256": "88789660950c679c69059650da67d05619163dc6a1247bc397b14ee4b80fe9e5",
+      "sample_id": "rphi-9521b0c4e3cbfe289acbcdc7ac71780d47e87613f0ab31761b90a18529e76dac",
+      "record_sha256": "3f8fefa319cbfd42d270f409251c642d018702353aac887721f5c5f9ccb805a5",
+      "frame_indices": [
+        0,
+        11
+      ],
+      "controls": {
+        "identity": {
+          "model": {
+            "psnr": 86.78811838076436,
+            "psnr_from_mean_mse": 86.78803289785358,
+            "mse": 2.0950611821941407e-09,
+            "mae": 3.222734346298307e-05,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 1.0832457419951425e-07
+          },
+          "baseline": {
+            "psnr": 120.0,
+            "psnr_from_mean_mse": 120.0,
+            "mse": 0.0,
+            "mae": 0.0,
+            "perfect_frames": 2,
+            "frames": 2,
+            "lpips": 0.0
+          },
+          "raw_model_mse": 2.1126975425572046e-09,
+          "clipped_component_fraction": 0.01343566372863248,
+          "attribution": {
+            "baseline_mse": 0.0,
+            "model_mse": 2.0950611821941407e-09,
+            "mse_change": 2.0950611821941407e-09,
+            "correction_energy": 2.0950611821941407e-09,
+            "cross_term": 0.0,
+            "identity_abs_error": 0.0
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 5.658818374134833e-06,
+            "flow_aligned_rgb_error_change_mae": 1.7620149037611554e-06,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.0,
+            "flow_aligned_rgb_error_change_mae": 0.0,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.660724561662,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              0.0016874537811951522,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2396193.592211309,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.0024785415722176256,
+                "empirical_mse": 2.1126975425620395e-09,
+                "predicted_rms_sigma": 0.04978495327122067,
+                "empirical_rmse": 4.596408970666165e-05,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002478539459520083,
+            "gaussian_nll_without_constant": -3.000042057556226,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          }
+        },
+        "near_clean": {
+          "model": {
+            "psnr": 47.82130466333693,
+            "psnr_from_mean_mse": 47.82130155154137,
+            "mse": 1.6514667904959612e-05,
+            "mae": 0.002982419589841668,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.0061974802520126104
+          },
+          "baseline": {
+            "psnr": 47.821458932505806,
+            "psnr_from_mean_mse": 47.82145588143863,
+            "mse": 1.6514081053912075e-05,
+            "mae": 0.0029702065660363883,
+            "perfect_frames": 0,
+            "frames": 2,
+            "lpips": 0.006199544528499246
+          },
+          "raw_model_mse": 1.651492087867406e-05,
+          "clipped_component_fraction": 0.010211338141025641,
+          "attribution": {
+            "baseline_mse": 1.6514081053912078e-05,
+            "model_mse": 1.6514667904959612e-05,
+            "mse_change": 5.868510475341053e-10,
+            "correction_energy": 2.099535172512633e-09,
+            "cross_term": -1.5126841249792194e-09,
+            "identity_abs_error": 6.9193658240060765e-22
+          },
+          "temporal_model": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.004400381462774319,
+            "flow_aligned_rgb_error_change_mae": 0.004019737243652344,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "temporal_baseline": {
+            "pairs": 1,
+            "unwarped_rgb_error_change_mae": 0.00439896648727205,
+            "flow_aligned_rgb_error_change_mae": 0.004019855987280607,
+            "valid_coverage": 0.5793870192307692,
+            "valid_pairs": 1
+          },
+          "calibration_sufficient_statistics": {
+            "bin_count": [
+              0,
+              0,
+              0,
+              798720,
+              0,
+              0,
+              0,
+              0
+            ],
+            "bin_variance_sum": [
+              0.0,
+              0.0,
+              0.0,
+              1979.660726111166,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_mse_sum": [
+              0.0,
+              0.0,
+              0.0,
+              13.190797604199048,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_coverage_1_96sigma_sum": [
+              0.0,
+              0.0,
+              0.0,
+              798720.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "bin_nll_sum": [
+              0.0,
+              0.0,
+              0.0,
+              -2393532.9325200776,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "calibration": {
+            "available": true,
+            "error_space": "raw unclamped RGB; per-channel variance",
+            "pixels": 798720,
+            "bins": [
+              {
+                "log_variance_low": null,
+                "log_variance_high": -12.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -12.0,
+                "log_variance_high": -10.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -10.0,
+                "log_variance_high": -8.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -8.0,
+                "log_variance_high": -6.0,
+                "pixels": 798720,
+                "predicted_variance": 0.00247854157415761,
+                "empirical_mse": 1.6514920878654657e-05,
+                "predicted_rms_sigma": 0.04978495329070431,
+                "empirical_rmse": 0.004063855420491071,
+                "coverage_1sigma": 1.0,
+                "coverage_1_96sigma": 1.0
+              },
+              {
+                "log_variance_low": -6.0,
+                "log_variance_high": -4.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -4.0,
+                "log_variance_high": -2.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": -2.0,
+                "log_variance_high": 0.0,
+                "pixels": 0
+              },
+              {
+                "log_variance_low": 0.0,
+                "log_variance_high": null,
+                "pixels": 0
+              }
+            ],
+            "variance_calibration_mae": 0.002462026653278955,
+            "gaussian_nll_without_constant": -2.996710903095049,
+            "coverage_1sigma": 1.0,
+            "coverage_1_96sigma": 1.0,
+            "nominal_gaussian_coverage": [
+              0.682689492,
+              0.95000421
+            ],
+            "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+          },
+          "seed": 7388689528909731713,
+          "sigma_8bit": 1.0
+        }
+      },
+      "flow": "GT-proxy Farneback forward flow; in-bounds + forward/backward consistency mask",
+      "model": {
+        "psnr": 27.408076396307216,
+        "psnr_from_mean_mse": 27.407053797606572,
+        "mse": 0.0018167477049775772,
+        "mae": 0.01932068202188714,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.18933932483196259
+      },
+      "baseline": {
+        "psnr": 27.408064320155127,
+        "psnr_from_mean_mse": 27.407041543580405,
+        "mse": 0.0018167528311088664,
+        "mae": 0.01932037531079085,
+        "perfect_frames": 0,
+        "frames": 2,
+        "lpips": 0.1893397569656372
+      },
+      "raw_model_mse": 0.0018167499630712413,
+      "clipped_component_fraction": 0.006126886351495726,
+      "attribution": {
+        "baseline_mse": 0.0018167528311088664,
+        "model_mse": 0.0018167477049775772,
+        "mse_change": -5.1261312891941885e-09,
+        "correction_energy": 2.0946151938224093e-09,
+        "cross_term": -7.220746483149714e-09,
+        "identity_abs_error": 1.3311569443632108e-19
+      },
+      "temporal_model": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.029409184763550613,
+        "flow_aligned_rgb_error_change_mae": 0.01152674201875925,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "temporal_baseline": {
+        "pairs": 1,
+        "unwarped_rgb_error_change_mae": 0.029409213119748694,
+        "flow_aligned_rgb_error_change_mae": 0.011526823975145817,
+        "valid_coverage": 0.5793870192307692,
+        "valid_pairs": 1
+      },
+      "calibration_sufficient_statistics": {
+        "bin_count": [
+          0,
+          0,
+          0,
+          798720,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bin_variance_sum": [
+          0.0,
+          0.0,
+          0.0,
+          1979.660722989606,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_mse_sum": [
+          0.0,
+          0.0,
+          0.0,
+          1451.0745305047267,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          707044.3333333217,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_coverage_1_96sigma_sum": [
+          0.0,
+          0.0,
+          0.0,
+          756847.999999996,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bin_nll_sum": [
+          0.0,
+          0.0,
+          0.0,
+          -2103466.2363423784,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "calibration": {
+        "available": true,
+        "error_space": "raw unclamped RGB; per-channel variance",
+        "pixels": 798720,
+        "bins": [
+          {
+            "log_variance_low": null,
+            "log_variance_high": -12.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -12.0,
+            "log_variance_high": -10.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -10.0,
+            "log_variance_high": -8.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -8.0,
+            "log_variance_high": -6.0,
+            "pixels": 798720,
+            "predicted_variance": 0.0024785415702494066,
+            "empirical_mse": 0.0018167499630718233,
+            "predicted_rms_sigma": 0.04978495325145346,
+            "empirical_rmse": 0.042623349974771144,
+            "coverage_1sigma": 0.8852217715010539,
+            "coverage_1_96sigma": 0.9475761217948668
+          },
+          {
+            "log_variance_low": -6.0,
+            "log_variance_high": -4.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -4.0,
+            "log_variance_high": -2.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": -2.0,
+            "log_variance_high": 0.0,
+            "pixels": 0
+          },
+          {
+            "log_variance_low": 0.0,
+            "log_variance_high": null,
+            "pixels": 0
+          }
+        ],
+        "variance_calibration_mae": 0.0006617916071775833,
+        "gaussian_nll_without_constant": -2.6335464697796205,
+        "coverage_1sigma": 0.8852217715010539,
+        "coverage_1_96sigma": 0.9475761217948668,
+        "nominal_gaussian_coverage": [
+          0.682689492,
+          0.95000421
+        ],
+        "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+      },
+      "chunk_equivalence": {
+        "checked_frames": [
+          0,
+          1,
+          2,
+          11
+        ],
+        "tolerance_max_abs": 1e-05,
+        "max_abs_differences": {
+          "rgb": 0.0,
+          "log_variance": 0.0
+        },
+        "passed": true,
+        "context": "absolute original frame t-2..t; history preserved across groups"
+      },
+      "examples": {
+        "frames": [
+          0,
+          11
+        ],
+        "panel_order": [
+          "identity_or_bicubic",
+          "model",
+          "original_RGB_proxy"
+        ]
+      }
+    }
+  ],
+  "per_task": {
+    "sr": {
+      "sources": 1,
+      "samples": 1,
+      "model": {
+        "psnr": 27.408076396307216,
+        "mae": 0.01932068202188714,
+        "mse": 0.0018167477049775772,
+        "lpips": 0.18933932483196259
+      },
+      "baseline": {
+        "psnr": 27.408064320155127,
+        "mae": 0.01932037531079085,
+        "mse": 0.0018167528311088664,
+        "lpips": 0.1893397569656372
+      },
+      "model_minus_baseline": {
+        "psnr": {
+          "mean": 1.2076152088980052e-05,
+          "median_source_delta": 1.2076152088980052e-05,
+          "ci95_source_bootstrap": null,
+          "direction": "higher",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mae": {
+          "mean": 3.0671109629148985e-07,
+          "median_source_delta": 3.0671109629148985e-07,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mse": {
+          "mean": -5.1261312891941885e-09,
+          "median_source_delta": -5.1261312891941885e-09,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "lpips": {
+          "mean": -4.3213367462158203e-07,
+          "median_source_delta": -4.3213367462158203e-07,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        }
+      },
+      "damage": {
+        "threshold_mse": 1e-12,
+        "damaged_samples": 0,
+        "samples": 1,
+        "max_mse_increase": -5.1261312891941885e-09
+      },
+      "temporal": {
+        "unwarped_rgb_error_change_mae": {
+          "model": 0.029409184763550613,
+          "baseline": 0.029409213119748694,
+          "model_minus_baseline": -2.835619808058687e-08,
+          "n_sources": 1,
+          "direction": "lower"
+        },
+        "flow_aligned_rgb_error_change_mae": {
+          "model": 0.01152674201875925,
+          "baseline": 0.011526823975145817,
+          "model_minus_baseline": -8.195638656616211e-08,
+          "n_sources": 1,
+          "direction": "lower"
+        }
+      }
+    },
+    "deblur": {
+      "sources": 1,
+      "samples": 1,
+      "model": {
+        "psnr": 31.374648606420735,
+        "mae": 0.011776880242991748,
+        "mse": 0.0007287128308408757,
+        "lpips": 0.1036488376557827
+      },
+      "baseline": {
+        "psnr": 31.37468000806111,
+        "mae": 0.011764534133481693,
+        "mse": 0.0007287075975178935,
+        "lpips": 0.10364789515733719
+      },
+      "model_minus_baseline": {
+        "psnr": {
+          "mean": -3.140164037418458e-05,
+          "median_source_delta": -3.140164037418458e-05,
+          "ci95_source_bootstrap": null,
+          "direction": "higher",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mae": {
+          "mean": 1.2346109510055422e-05,
+          "median_source_delta": 1.2346109510055422e-05,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mse": {
+          "mean": 5.233322982107526e-09,
+          "median_source_delta": 5.233322982107526e-09,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "lpips": {
+          "mean": 9.424984455108643e-07,
+          "median_source_delta": 9.424984455108643e-07,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        }
+      },
+      "damage": {
+        "threshold_mse": 1e-12,
+        "damaged_samples": 1,
+        "samples": 1,
+        "max_mse_increase": 5.233322982107526e-09
+      },
+      "temporal": {
+        "unwarped_rgb_error_change_mae": {
+          "model": 0.018429637589045336,
+          "baseline": 0.018429091326784417,
+          "model_minus_baseline": 5.462622609184176e-07,
+          "n_sources": 1,
+          "direction": "lower"
+        },
+        "flow_aligned_rgb_error_change_mae": {
+          "model": 0.006111603695899248,
+          "baseline": 0.006111521273851395,
+          "model_minus_baseline": 8.242204785346985e-08,
+          "n_sources": 1,
+          "direction": "lower"
+        }
+      }
+    },
+    "denoise": {
+      "sources": 1,
+      "samples": 1,
+      "model": {
+        "psnr": 23.5214522159447,
+        "mae": 0.05292589594512545,
+        "mse": 0.0044448288029069445,
+        "lpips": 0.6730048358440399
+      },
+      "baseline": {
+        "psnr": 23.52135416438511,
+        "mae": 0.05292599165859059,
+        "mse": 0.004444929142364164,
+        "lpips": 0.6729647517204285
+      },
+      "model_minus_baseline": {
+        "psnr": {
+          "mean": 9.805155958986234e-05,
+          "median_source_delta": 9.805155958986234e-05,
+          "ci95_source_bootstrap": null,
+          "direction": "higher",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mae": {
+          "mean": -9.57134651397018e-08,
+          "median_source_delta": -9.57134651397018e-08,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mse": {
+          "mean": -1.0033945721955179e-07,
+          "median_source_delta": -1.0033945721955179e-07,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "lpips": {
+          "mean": 4.0084123611450195e-05,
+          "median_source_delta": 4.0084123611450195e-05,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        }
+      },
+      "damage": {
+        "threshold_mse": 1e-12,
+        "damaged_samples": 0,
+        "samples": 1,
+        "max_mse_increase": -1.0033945721955179e-07
+      },
+      "temporal": {
+        "unwarped_rgb_error_change_mae": {
+          "model": 0.07493618762593884,
+          "baseline": 0.07493700247142815,
+          "model_minus_baseline": -8.14845489305327e-07,
+          "n_sources": 1,
+          "direction": "lower"
+        },
+        "flow_aligned_rgb_error_change_mae": {
+          "model": 0.06640000641345978,
+          "baseline": 0.06640098243951797,
+          "model_minus_baseline": -9.760260581970215e-07,
+          "n_sources": 1,
+          "direction": "lower"
+        }
+      }
+    },
+    "compression": {
+      "sources": 1,
+      "samples": 1,
+      "model": {
+        "psnr": 40.853110768555645,
+        "mae": 0.006253062206324321,
+        "mse": 8.242613097173593e-05,
+        "lpips": 0.015400842763483524
+      },
+      "baseline": {
+        "psnr": 40.85235714335713,
+        "mae": 0.006245808705778037,
+        "mse": 8.244006308976693e-05,
+        "lpips": 0.01540704956278205
+      },
+      "model_minus_baseline": {
+        "psnr": {
+          "mean": 0.0007536251985129638,
+          "median_source_delta": 0.0007536251985129638,
+          "ci95_source_bootstrap": null,
+          "direction": "higher",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mae": {
+          "mean": 7.253500546283709e-06,
+          "median_source_delta": 7.253500546283709e-06,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 0,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "mse": {
+          "mean": -1.393211803100969e-08,
+          "median_source_delta": -1.393211803100969e-08,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        },
+        "lpips": {
+          "mean": -6.2067992985248566e-06,
+          "median_source_delta": -6.2067992985248566e-06,
+          "ci95_source_bootstrap": null,
+          "direction": "lower",
+          "model_better_sources": 1,
+          "ties": 0,
+          "n_sources": 1
+        }
+      },
+      "damage": {
+        "threshold_mse": 1e-12,
+        "damaged_samples": 0,
+        "samples": 1,
+        "max_mse_increase": -1.393211803100969e-08
+      },
+      "temporal": {
+        "unwarped_rgb_error_change_mae": {
+          "model": 0.008924101494152119,
+          "baseline": 0.008923712755235583,
+          "model_minus_baseline": 3.8873891653606885e-07,
+          "n_sources": 1,
+          "direction": "lower"
+        },
+        "flow_aligned_rgb_error_change_mae": {
+          "model": 0.007851933129131794,
+          "baseline": 0.007852003909647465,
+          "model_minus_baseline": -7.078051567077637e-08,
+          "n_sources": 1,
+          "direction": "lower"
+        }
+      }
+    }
+  },
+  "controls": {
+    "identity": {
+      "sr": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 86.78811838076436,
+          "mae": 3.222734346298307e-05,
+          "mse": 2.0950611821941407e-09,
+          "lpips": 1.0832457419951425e-07
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -33.21188161923564,
+            "median_source_delta": -33.21188161923564,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 3.222734346298307e-05,
+            "median_source_delta": 3.222734346298307e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 2.0950611821941407e-09,
+            "median_source_delta": 2.0950611821941407e-09,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": 1.0832457419951425e-07,
+            "median_source_delta": 1.0832457419951425e-07,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 2.0950611821941407e-09
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 5.658818374134833e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 5.658818374134833e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 1.7620149037611554e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 1.7620149037611554e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 86.78811838076436,
+          "mae": 3.222734346298307e-05,
+          "mse": 2.0950611821941407e-09,
+          "lpips": 1.0832457419951425e-07
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -33.21188161923564,
+            "median_source_delta": -33.21188161923564,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 3.222734346298307e-05,
+            "median_source_delta": 3.222734346298307e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 2.0950611821941407e-09,
+            "median_source_delta": 2.0950611821941407e-09,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": 1.0832457419951425e-07,
+            "median_source_delta": 1.0832457419951425e-07,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 2.0950611821941407e-09
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 5.658818374134833e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 5.658818374134833e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 1.7620149037611554e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 1.7620149037611554e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 86.78811838076436,
+          "mae": 3.222734346298307e-05,
+          "mse": 2.0950611821941407e-09,
+          "lpips": 1.0832457419951425e-07
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -33.21188161923564,
+            "median_source_delta": -33.21188161923564,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 3.222734346298307e-05,
+            "median_source_delta": 3.222734346298307e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 2.0950611821941407e-09,
+            "median_source_delta": 2.0950611821941407e-09,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": 1.0832457419951425e-07,
+            "median_source_delta": 1.0832457419951425e-07,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 2.0950611821941407e-09
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 5.658818374134833e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 5.658818374134833e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 1.7620149037611554e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 1.7620149037611554e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 86.78811838076436,
+          "mae": 3.222734346298307e-05,
+          "mse": 2.0950611821941407e-09,
+          "lpips": 1.0832457419951425e-07
+        },
+        "baseline": {
+          "psnr": 120.0,
+          "mae": 0.0,
+          "mse": 0.0,
+          "lpips": 0.0
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -33.21188161923564,
+            "median_source_delta": -33.21188161923564,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 3.222734346298307e-05,
+            "median_source_delta": 3.222734346298307e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 2.0950611821941407e-09,
+            "median_source_delta": 2.0950611821941407e-09,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": 1.0832457419951425e-07,
+            "median_source_delta": 1.0832457419951425e-07,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 2.0950611821941407e-09
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 5.658818374134833e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 5.658818374134833e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 1.7620149037611554e-06,
+            "baseline": 0.0,
+            "model_minus_baseline": 1.7620149037611554e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      }
+    },
+    "near_clean": {
+      "sr": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 47.82130466333693,
+          "mae": 0.002982419589841668,
+          "mse": 1.6514667904959612e-05,
+          "lpips": 0.0061974802520126104
+        },
+        "baseline": {
+          "psnr": 47.821458932505806,
+          "mae": 0.0029702065660363883,
+          "mse": 1.6514081053912075e-05,
+          "lpips": 0.006199544528499246
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.00015426916887406605,
+            "median_source_delta": -0.00015426916887406605,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 1.2213023805279864e-05,
+            "median_source_delta": 1.2213023805279864e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 5.868510475374935e-10,
+            "median_source_delta": 5.868510475374935e-10,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": -2.064276486635208e-06,
+            "median_source_delta": -2.064276486635208e-06,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 5.868510475341053e-10
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.004400381462774319,
+            "baseline": 0.00439896648727205,
+            "model_minus_baseline": 1.4149755022691696e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004019737243652344,
+            "baseline": 0.004019855987280607,
+            "model_minus_baseline": -1.1874362826347351e-07,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "deblur": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 47.816829450636035,
+          "mae": 0.00298586787262699,
+          "mse": 1.6531685322706107e-05,
+          "lpips": 0.00616522622294724
+        },
+        "baseline": {
+          "psnr": 47.81704354946471,
+          "mae": 0.002973659803710222,
+          "mse": 1.6530870703460137e-05,
+          "lpips": 0.006167772691696882
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.00021409882867118313,
+            "median_source_delta": -0.00021409882867118313,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 1.220806891676779e-05,
+            "median_source_delta": 1.220806891676779e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 8.146192459705778e-10,
+            "median_source_delta": 8.146192459705778e-10,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": -2.546468749642372e-06,
+            "median_source_delta": -2.546468749642372e-06,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 8.146192459705778e-10
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.004406111343621725,
+            "baseline": 0.0044047273380985845,
+            "model_minus_baseline": 1.3840055231402124e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004026508424431086,
+            "baseline": 0.004026633221656084,
+            "model_minus_baseline": -1.2479722499847412e-07,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "denoise": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 47.814017897432734,
+          "mae": 0.002984633187049686,
+          "mse": 1.654239287340194e-05,
+          "lpips": 0.006074485136196017
+        },
+        "baseline": {
+          "psnr": 47.814151569560806,
+          "mae": 0.0029724258033426935,
+          "mse": 1.654188410612293e-05,
+          "lpips": 0.0060769368428736925
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.0001336721280722486,
+            "median_source_delta": -0.0001336721280722486,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 1.2207383706992585e-05,
+            "median_source_delta": 1.2207383706992585e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 5.087672790113525e-10,
+            "median_source_delta": 5.087672790113525e-10,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": -2.451706677675247e-06,
+            "median_source_delta": -2.451706677675247e-06,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 5.087672790147406e-10
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.004406282650769197,
+            "baseline": 0.004404884452331581,
+            "model_minus_baseline": 1.39819843761671e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.004026150330901146,
+            "baseline": 0.004026268143206835,
+            "model_minus_baseline": -1.1781230568885803e-07,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      },
+      "compression": {
+        "sources": 1,
+        "samples": 1,
+        "model": {
+          "psnr": 47.8104481635718,
+          "mae": 0.0029879721473837703,
+          "mse": 1.6556005125015028e-05,
+          "lpips": 0.006066420115530491
+        },
+        "baseline": {
+          "psnr": 47.810606708822775,
+          "mae": 0.0029757644802781897,
+          "mse": 1.655540056601003e-05,
+          "lpips": 0.006068637361750007
+        },
+        "model_minus_baseline": {
+          "psnr": {
+            "mean": -0.00015854525097580563,
+            "median_source_delta": -0.00015854525097580563,
+            "ci95_source_bootstrap": null,
+            "direction": "higher",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mae": {
+            "mean": 1.2207667105580602e-05,
+            "median_source_delta": 1.2207667105580602e-05,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "mse": {
+            "mean": 6.045590049997835e-10,
+            "median_source_delta": 6.045590049997835e-10,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 0,
+            "ties": 0,
+            "n_sources": 1
+          },
+          "lpips": {
+            "mean": -2.2172462195158005e-06,
+            "median_source_delta": -2.2172462195158005e-06,
+            "ci95_source_bootstrap": null,
+            "direction": "lower",
+            "model_better_sources": 1,
+            "ties": 0,
+            "n_sources": 1
+          }
+        },
+        "damage": {
+          "threshold_mse": 1e-12,
+          "damaged_samples": 1,
+          "samples": 1,
+          "max_mse_increase": 6.045590049997835e-10
+        },
+        "temporal": {
+          "unwarped_rgb_error_change_mae": {
+            "model": 0.004407075107524429,
+            "baseline": 0.004405676572730985,
+            "model_minus_baseline": 1.398534793444449e-06,
+            "n_sources": 1,
+            "direction": "lower"
+          },
+          "flow_aligned_rgb_error_change_mae": {
+            "model": 0.0040292926132678986,
+            "baseline": 0.004029412753880024,
+            "model_minus_baseline": -1.2014061212539673e-07,
+            "n_sources": 1,
+            "direction": "lower"
+          }
+        }
+      }
+    }
+  },
+  "calibration_per_task": {
+    "sr": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 798720,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 798720,
+          "predicted_variance": 0.0024785415702494066,
+          "empirical_mse": 0.0018167499630718233,
+          "predicted_rms_sigma": 0.04978495325145346,
+          "empirical_rmse": 0.042623349974771144,
+          "coverage_1sigma": 0.8852217715010539,
+          "coverage_1_96sigma": 0.9475761217948668
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0006617916071775833,
+      "gaussian_nll_without_constant": -2.6335464697796205,
+      "coverage_1sigma": 0.8852217715010539,
+      "coverage_1_96sigma": 0.9475761217948668,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "deblur": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 798720,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 798720,
+          "predicted_variance": 0.0024785415623205013,
+          "empirical_mse": 0.0007287128417658586,
+          "predicted_rms_sigma": 0.04978495317182192,
+          "empirical_rmse": 0.026994681731145834,
+          "coverage_1sigma": 0.927779029780968,
+          "coverage_1_96sigma": 0.9798385750534186
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0017498287205546424,
+      "gaussian_nll_without_constant": -2.8530380235831343,
+      "coverage_1sigma": 0.927779029780968,
+      "coverage_1_96sigma": 0.9798385750534186,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "denoise": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 798720,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 798720,
+          "predicted_variance": 0.0024785416349169783,
+          "empirical_mse": 0.004444894190837308,
+          "predicted_rms_sigma": 0.049784953900922496,
+          "empirical_rmse": 0.06667003967928403,
+          "coverage_1sigma": 0.5420476929757369,
+          "coverage_1_96sigma": 0.8505592280975466
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.00196635255592033,
+      "gaussian_nll_without_constant": -2.103367116081041,
+      "coverage_1sigma": 0.5420476929757369,
+      "coverage_1_96sigma": 0.8505592280975466,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    },
+    "compression": {
+      "available": true,
+      "error_space": "raw unclamped RGB; per-channel variance",
+      "pixels": 798720,
+      "bins": [
+        {
+          "log_variance_low": null,
+          "log_variance_high": -12.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -12.0,
+          "log_variance_high": -10.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -10.0,
+          "log_variance_high": -8.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -8.0,
+          "log_variance_high": -6.0,
+          "pixels": 798720,
+          "predicted_variance": 0.0024785416069445765,
+          "empirical_mse": 8.24268394875271e-05,
+          "predicted_rms_sigma": 0.04978495361999021,
+          "empirical_rmse": 0.00907892281537447,
+          "coverage_1sigma": 0.9989036625267068,
+          "coverage_1_96sigma": 0.9999937399839743
+        },
+        {
+          "log_variance_low": -6.0,
+          "log_variance_high": -4.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -4.0,
+          "log_variance_high": -2.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": -2.0,
+          "log_variance_high": 0.0,
+          "pixels": 0
+        },
+        {
+          "log_variance_low": 0.0,
+          "log_variance_high": null,
+          "pixels": 0
+        }
+      ],
+      "variance_calibration_mae": 0.0023961147674570493,
+      "gaussian_nll_without_constant": -2.983414380105014,
+      "coverage_1sigma": 0.9989036625267068,
+      "coverage_1_96sigma": 0.9999937399839743,
+      "nominal_gaussian_coverage": [
+        0.682689492,
+        0.95000421
+      ],
+      "interpretation": "Calibration diagnostic; no confidence weighting of RGB quality metrics."
+    }
+  },
+  "materialization_receipt_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev/7f9f00749905da1894aa1ce4500e4bfb5d3388401263dd2472c732a68a3d6cc7/complete.json": "bb1e78a89620ac07f517024893c5f778700c569870477dabb9896e9758417c7a"
+  },
+  "elapsed_seconds": 34.184959817677736
+}

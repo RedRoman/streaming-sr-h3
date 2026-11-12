@@ -1,5 +1,19 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
+## 当前接续入口（2026-11-12 13:11 SGT，下面早期记录是历史）
+
+- Stage2、原SR300步、固定H3/native基线、缓存补偿、joint RGB小探针、首条训练VAE缓存及nonzero b均已终态，勿重跑。新guide-matched LoRA仍0步；小5×128通过不等于全22训练或恢复质量通过。
+- 31112完整资产已实核：Turbo从已有4step表示按alpha/rank=1/16与原header精确重建，416张量和完整文件SHA均等于原0b5e…fa99，已发布新链接。15原会话与8补传失败partial保留且superseded，**不再启动旧传输**。见`results/takeover_20261111/turbo_exact_reconstruction_review_20261112.json`。
+- **H3 nonzero b已完成并通过独立CPU终态审计**：31112卡1，12NFE/4decode/1RGBbackward/1SGD/1save/1clear-reload/1merge；producer2030.83s，finalizer04:45:53UTC完成。`runs/h3_nonzero_adapter_probe_20261112b_31112`及同名前缀_finalize勿重启。证据已下载至`results/takeover_20261111/h3_nonzero_adapter_probe_20261112b_31112_completed/`，archive SHA6410de…8533。**参数非零更新，但zero/updated/reloaded/merged的video、audio、RGB均byteexact相同**；这里只接受参数持久化、严格重载和声明合并流程，不能声称功能影响、质量收益或合并普遍等价。此synthetic checkpoint不得用于真实恢复训练warmstart。
+- P1已有真正新模块：11通道显式历史mask恢复器、1745参数观测门控、固定另一历史权重的LOO效用监督。真实legacy_g05继承58旧tensor+1152新增零权重、8CPU前向/4对输出byteexact已验收。2train2dev三profile/96帧数据a失败保留，b复用完成source1并fresh worker补3源，343.66s/396.97MiB；16NPZ实物像素门、源级角色和重放通过。研究32/8未完成。
+- **P1实际一步CPU已完成并独立验收**：7恢复器前向+1gate、2反传、teacher1AdamW/student0update/NPU0；execute123.95s、与inspect合计163.93s、峰2.05GiB。NumPy远端独立核379真实数组/43.85MB，参数变化、梯度、效用重算均过预声明门；不重复模型。见`results/takeover_20261111/history_utility_one_step_completed_20261112a/root_acceptance.json`。不是1000步教师或三学生臂研究训练完成。
+- 四源全96帧缩略图发现2BdYaGuVAKo多次明确切镜。唯一packet位置映射显示已知切镜把任意连续段上界限制到3.9039s，小于96帧24fps最短span95/24；该源不存在所需连续窗。原数据仍可工程检查，不能直接作为连续退化主实验。见`target_visual_review.json`及`history_utility_full_cohort_readiness_20261112/known_cut_coverage.json`。
+- **40源target-only预筛b已接续运行**：31984 `runs/history_utility_target_screen_20261112b`，状态读同名`_supervisor/status.json`及run/complete.json，tmux `p1-target-screen-20261112b`，worker/PG879787，05:12:57UTC实查running/worker存活、17复用像素核验完成且7/22新target已完成。freeze76f2bc…f4f2c5；7CPU tests与141pins实际预检/独立review通过。固定17完整target像素SHA复用、1既有资格失败不重试、其余22单次尝试；1CPU/768MiB ownedPG/1800+30s/逐源6GiB，0退化/0模型。最终只代表40source accounted，**不等于40target合格**。仅精确sourcecount错误且原log通过96target/24fps Fraction网格及source单调检查才列ineligible继续，其他异常仍停；勿重启健康b。
+- a失败保留：155.28s/峰212.36MB/17完成；DtgdD48804M为20fps，触发旧实际source帧<96门。原临时log已清，只能证明<96，不能补造精确数。a不得重跑。失败小证据`history_utility_target_screen_failed_20261112a`，archivee24638…3d514。Q0的15fps只是metadata，尚待b原协议实际判定。b终态需核39新receipt（17reuse+22attempt）与原1ineligible共40状态、file/pixelSHA、decode尝试/成功数量和真实预算；随后一次小图归档，复核全96帧及疑似pair，显式修订连续primary与cut/uncertain/ineligible诊断cohort。**排序不自动批准连续性**。不改旧receipt，不静默替换来源；approved target复用/metadata bridge审查后再生成三profile和teacher/student研究训练。
+- 后续H3：`results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/pending_execution_contract.json`已冻结，root_preparation_review只批准新实现准备，**入口尚未实现、没有队列**。用实际train clean RGB、固定缓存Z_R guide与Z_raw warmstart、全22×480×832；6NFE/2decode/1RGBback/0update，native tile每行batch4与真实几何计数预声明。实现单独入口/CPU fixtures/独立review/全asset pins和新卡准入后才单次运行。随后全训练cache与同预算guide-matched LoRA需报告实际部署输出变化及BF16合并损失。P1则连续性cohort→teacher/headroom→generic/utility/shuffled三臂。P2/P3新机制未训练。细项以`configs/openh3_20261111/rphi_stage2_plan.json#/latest_followup`为准。
+
+- 本轮349个代码与小证据文件已备份31984 `preparation/followup_20261112_1233`，05:12:19UTC归档与解包逐SHA核验通过；archive bf71ef…8047b。这是备份完成状态落盘前的时间点快照，原数据/权重未打包。
+
 本分支从 `archive/modelarts-20261103` 的 `43efbd4d090056365dc46f0ac6edb88e3d875761` 建立。
 远端工作目录为 `huawei-modelarts-31984:/cache/zihaohe/omni_openh3_20261111`。
 原项目 `/cache/zihaohe/streaming_sr0` 的权重、数据、运行时通过链接复用，所有新输出写入本工作目录。

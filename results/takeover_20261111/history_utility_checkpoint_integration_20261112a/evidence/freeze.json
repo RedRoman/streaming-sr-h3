@@ -1,0 +1,31 @@
+{
+  "schema": "rphi.history_utility_integration_cpu_freeze.v1",
+  "pins": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/check_history_utility_integration.py": "73b2b52e83252f305e381b178cc33adcfaff4bfff0bdcaa1ed0056f955cc39b3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/tests/test_history_utility_integration.py": "2992d8acb8300ac0d8a2a108e4bce33b9720fb01ca505e9819b6762c02cffc89",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/execution_contract.json": "3b13c0b075f3935799ccdfc4e6ea1f1d2549ce6fe539cb9b6ca6cc567d6cbfeb",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/run_cpu_once.py": "9ac804861fa31c7e73dcd58660c37f3a0d6150e2e8869a758936aee5351f1a2f"
+  },
+  "checkpoint_path": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+  "supervisor_out": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/supervisor",
+  "probe_out": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/actual_forward",
+  "tests_command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/tests/test_history_utility_integration.py",
+    "-v"
+  ],
+  "probe_command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/check_history_utility_integration.py",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/actual_forward"
+  ]
+}

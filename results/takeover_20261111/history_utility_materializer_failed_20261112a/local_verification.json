@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "2f841ab614de7c013a1521de190c85c9a93580282dad4c66b0d0cb5e0725d8e4",
+  "payload_SHA_verified": 7,
+  "failure": {
+    "message": "single-source CPU memory budget exceeded",
+    "type": "MemoryError"
+  },
+  "elapsed_seconds": 75.15749888587743,
+  "source1_complete_receipt": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/complete.json",
+    "sha256": "44bbe2ff1376be5e8fed6903cd8ba50cb044f3f1b92c5c477eb9421dfb16923d"
+  },
+  "parent_peak_MiB": 392.76953125,
+  "worker_sampled_combined_peak_MiB": 392.76953125,
+  "supervisor_actual_group_peak_MiB": 389.51953125,
+  "conservative_nonconcurrent_sum_MiB": 785.5390625,
+  "interpretation": "Old single-source guard accumulates process-lifetime parent and child ru_maxrss and adds their peaks; this nonconcurrent upper bound triggered on source2, while observed group RSS stayed below768MiB. This does not prove all unobserved instantaneous RSS values; guard is preserved, new recovery will use fresh per-source subprocesses.",
+  "relaunch_performed": false,
+  "scientific_continuity_approved": false
+}

@@ -1,0 +1,65 @@
+{
+  "budget": {
+    "CPU_threads": 1,
+    "NPU_calls": 0,
+    "grace_seconds": 30,
+    "memory_mib": 768,
+    "model_calls": 0,
+    "simultaneous_compute_workers": 1,
+    "wall_seconds": 1800
+  },
+  "files": {
+    "entry": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/code/recover_history_utility_materialization.py",
+      "sha256": "16ca6c7f3c0c347824da3b6ec41eab7fd1946138fb51efc047fb11d6ac3c9067"
+    },
+    "original_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/execution_contract.json",
+      "sha256": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad"
+    },
+    "original_entry": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_history_utility_pilot.py",
+      "sha256": "5e79799bc7dc25fb57a26cadd6618f603392d1a5dcbb89a32c5508e43e73efd9"
+    },
+    "original_failure": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/failure.json",
+      "sha256": "292dc52e96ca46dc921498d69cfc4644d91aef15fc3de43db06ce1c8fa4e2812"
+    },
+    "original_freeze": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/freeze.json",
+      "sha256": "6738f1fcfddb09007cb41c17949a36497f5ed891776d5f2700df014098b008a4"
+    },
+    "reuse_receipt": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/complete.json",
+      "sha256": "44bbe2ff1376be5e8fed6903cd8ba50cb044f3f1b92c5c477eb9421dfb16923d"
+    }
+  },
+  "recovery_reason": "Original single-source conservative historical parent+child peak sum crossed768MiB on source2; a retained. Fresh isolated per-source workers preserve same numerical entry and original13b6 data contract/window keys. No limit increase.",
+  "remaining_sources": [
+    "4EKWTiWjPTQ",
+    "6UZVovkR3IU",
+    "6rJrrfRO3cA"
+  ],
+  "reuse_artifacts": [
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/target.npz",
+      "sha256": "c9b6907a566485f5ebb19bb0fc109acfff26da9e136884641177245566381e7e"
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/native_static_blur_noise_h264.npz",
+      "sha256": "2523f7aa468e387af94841907ef090c5aa38cff924dd80e407413f9c453ba30e"
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/native_smooth_blur_noise_h264.npz",
+      "sha256": "f7d343aecd84697bbad17378fc07d7215615d737c7b15c7a7087ddd61d617302"
+    },
+    {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/native_abrupt_blur_noise_h264.npz",
+      "sha256": "486a621a11ea95e61d503b6338845b858519fc217d5e02bf12471757a2dc2cc5"
+    }
+  ],
+  "reuse_source_id": "2BdYaGuVAKo",
+  "schema": "openh3.history_utility_materialization_recovery.v1",
+  "scientific_continuity_approved": false,
+  "scope": "engineering only,2train2dev; no new split,model,teacher/student. Reused source1 must pass actual file+pixel SHA validation before remaining work."
+}

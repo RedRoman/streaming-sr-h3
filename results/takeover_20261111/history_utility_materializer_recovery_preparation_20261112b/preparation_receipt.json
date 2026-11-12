@@ -1,0 +1,43 @@
+{
+  "schema": "openh3.history_utility_recovery_preparation.v1",
+  "status": "prepared_inspected_waiting_root_goahead",
+  "source_sha256": "16ca6c7f3c0c347824da3b6ec41eab7fd1946138fb51efc047fb11d6ac3c9067",
+  "tests": {
+    "actual_codec_tested": false,
+    "elapsed_seconds": 0.01,
+    "passed": 5,
+    "schema": "openh3.history_utility_recovery_cpu_tests.v1",
+    "scope": "stdlib orchestration fixtures; exact reuse hash,source1 never computed,fresh workers inherited PG,3source18codec accounting,failure/nooverwrite",
+    "skipped": 0,
+    "source_sha256": "16ca6c7f3c0c347824da3b6ec41eab7fd1946138fb51efc047fb11d6ac3c9067",
+    "tests": 5,
+    "tests_sha256": "7bdef181162ce6beaef6069b90e048bfe85b092494986cc52ddc0fd0241a77c3"
+  },
+  "supervisor_sha256": "7d2ede0c8f58dcffbddaca9132acda49b785d6b983ad3d38d895ea3354e64893",
+  "recovery_contract_sha256": "c7015da0aa1c8baf2a2ddce3917c99a421ffdb8e3992ddd8ce37055310eac08f",
+  "freeze_sha256": "832514bc3ec1cf84f064833dab3de5cba1060c362b0b47119b4918ab3e2dcb33",
+  "actual_default_inspection_exitcode": 0,
+  "actual_pins_verified": 26,
+  "inspection_sha256": "68c1ff8f8ff597c3db6aefd8400606f313cb3eb3e866c73c7b0b5083fca6c3c9",
+  "reuse_actual_files_verified": 4,
+  "reuse_actual_pixels_not_yet_verified": true,
+  "execution_command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/run_once.py",
+    "--freeze",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/freeze.json",
+    "--freeze-sha256",
+    "832514bc3ec1cf84f064833dab3de5cba1060c362b0b47119b4918ab3e2dcb33",
+    "--execute",
+    "--admission",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/admission.json"
+  ],
+  "shell_command": "TORCH_DEVICE_BACKEND_AUTOLOAD=0 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 /cache/zihaohe/omni_openh3_20261111/venv/bin/python /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/run_once.py --freeze /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/freeze.json --freeze-sha256 832514bc3ec1cf84f064833dab3de5cba1060c362b0b47119b4918ab3e2dcb33 --execute --admission /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112b/admission.json",
+  "new_run": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b",
+  "materialization_started": false,
+  "a_preserved": true,
+  "original_data_contract_SHA": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad",
+  "source1_reused_not_rerun": true,
+  "model_calls": 0,
+  "NPU_calls": 0
+}

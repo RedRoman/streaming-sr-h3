@@ -1,0 +1,74 @@
+{
+  "actual_inspection": {
+    "path": "preparation/history_utility_target_screen_20261112b/inspection.json",
+    "sha256": "2c60e35671228125c22d675de9e224a520c3e0c97935a3dde5762f982177eb49"
+  },
+  "actual_inspection_exit_code": 0,
+  "budget": {
+    "CPU_threads": 1,
+    "NPU_calls": 0,
+    "degradation_codec_passes": 0,
+    "grace_seconds": 30,
+    "memory_mib": 768,
+    "model_calls": 0,
+    "new_target_decode_attempts": 22,
+    "output_disk_bytes": 6442450944,
+    "prior_ineligible_sources": 1,
+    "reused_complete_targets": 17,
+    "simultaneous_compute_workers": 1,
+    "wall_seconds": 1800
+  },
+  "contract": {
+    "path": "preparation/history_utility_target_screen_20261112b/recovery_contract.json",
+    "sha256": "cc9c7db9d4a99cfd490f79c5eaded0edc0fb7eceace114fd2a2fa5c86b5157f4"
+  },
+  "cpu_tests": {
+    "path": "preparation/history_utility_target_screen_20261112b/cpu_tests.json",
+    "sha256": "d8620456b528234ebfafbf5ee1959e042392543ad696d8f2d08d0e7250fb4e15"
+  },
+  "freeze": {
+    "path": "preparation/history_utility_target_screen_20261112b/freeze.json",
+    "sha256": "76f2bc8d10fe1f9b5dead874c5a9cad4024c880b0829f1d2fbca9f90d0f4f2c5"
+  },
+  "future_single_launch_command_pending_admission": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112b/run_once.py --freeze /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112b/freeze.json --freeze-sha256 76f2bc8d10fe1f9b5dead874c5a9cad4024c880b0829f1d2fbca9f90d0f4f2c5 --execute --admission /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112b/admission.json",
+  "future_tmux_session": "p1-target-screen-20261112b",
+  "host": "huawei-modelarts-31984",
+  "inspect_command": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112b/run_once.py --freeze /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112b/freeze.json --freeze-sha256 76f2bc8d10fe1f9b5dead874c5a9cad4024c880b0829f1d2fbca9f90d0f4f2c5",
+  "numerical_repair": "No numerical rule changed. New scoped wrapper preserves original decode log on exception. Only exact sourcecount ValueError plus valid sourceindex/PTS and target96/24fps Fraction grid is protocolineligible; all othererrorsfailclosed.",
+  "observed_at_utc": "2026-11-12T05:08:23.385921+00:00",
+  "pins_verified": 141,
+  "prior_failure_evidence": {
+    "path": "results/takeover_20261111/history_utility_target_screen_failed_20261112a/local_verification.json",
+    "sha256": "368fd4cc8f1eeae970645c7fc815e8dbcc8451102faed8d5ff5deda3e0d09525"
+  },
+  "reused_pixels_verified_in_this_inspection": false,
+  "reused_target_files_and_artifacts_actual_SHA_verified": 17,
+  "schema": "openh3.history_utility_target_screen_recovery_preparation.v1",
+  "scope": {
+    "NPU_calls": 0,
+    "accounted_source_count_if_complete": 40,
+    "degradation_codec_passes": 0,
+    "maximum_new_eligible_targets": 22,
+    "maximum_total_eligible_targets": 39,
+    "model_calls": 0,
+    "prior_ineligible_no_retry": 1,
+    "remaining_single_decode_attempts": 22,
+    "reuse_complete_targets": 17,
+    "scientific_continuity_approved": false
+  },
+  "source": {
+    "path": "preparation/history_utility_target_screen_20261112b/code/recover_history_utility_target_screen.py",
+    "sha256": "d18086f892580339015fb96a87190e492d69505dbd7132bd617c859694519f9d"
+  },
+  "source_files_actual_SHA_verified": 40,
+  "status": "prepared_actual_inspection_passed_not_launched_pending_root_review",
+  "status_accounting": "eligible/ineligible/error/noattempt kept per source; startedworkers, confirmeddecodeattempts, and successful targets counted separately.",
+  "supervisor": {
+    "path": "preparation/history_utility_target_screen_20261112b/run_once.py",
+    "sha256": "e87c5ea05febc32b0b0a8cf4fdf7903172829d61a21090061891b76b97e8b30d"
+  },
+  "tests": {
+    "path": "preparation/history_utility_target_screen_20261112b/code/tests/test_history_utility_target_screen_recovery.py",
+    "sha256": "3445b45fa36ebef91471f6d3bc14ad1d53700378a5cbf4a2bbc009aa7c5e1a5e"
+  }
+}

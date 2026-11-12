@@ -1,0 +1,217 @@
+{
+  "schema": "rphi.history_utility_one_step_engineering_contract.v1",
+  "date": "2026-11-12",
+  "status": "proposed_not_admitted_not_executed",
+  "ready": false,
+  "scope": "Bounded actual-data CPU engineering integration. One teacher optimizer step and one true-utility student backward; not teacher training completion, research arm comparison, independent calibration/test, temporal-quality or novelty acceptance.",
+  "source_sha256": {
+    "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "configs/openh3_20261111/history_utility_contract_20261111.json": "a2c94df6646936422ae3abde9599323db0eb5181c1a264b97d4593f948f37742"
+  },
+  "prior_forward_inheritance": {
+    "host": "huawei-modelarts-30794",
+    "report_sha256": "c51f6d080e5d45efaf26e6520e07f25716ef32947fe4222f27838b2cf9c7b73f",
+    "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "actual_restorer_forwards": 8,
+    "backward": 0,
+    "all_four_output_comparisons_bitexact": true,
+    "input_kind": "synthetic96; actual-data integration not yet established"
+  },
+  "pending_bindings": {
+    "new_entry_sha256": null,
+    "new_tests_sha256": null,
+    "CPU_runtime_snapshot_SHA": null,
+    "root_review_admission_SHA": null,
+    "checkpoint": {
+      "expected_path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_asset_20261112a/checkpoint_step003000.pt",
+      "expected_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "bytes": 7536179,
+      "destination_complete_receipt_sha256": "95e66fd86c8309cc4dc19a52f6613e1e049e21764044eba0784348b7640cf2ba",
+      "status": "destination bytes and SHA verified on31984; not model-loaded"
+    },
+    "materialization": {
+      "expected_complete": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/complete.json",
+      "complete_file_sha256": null,
+      "status": "pending; expected paths are not evidence of completion",
+      "train_receipt_index": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/train_receipt_index.json",
+      "train_index_sha256": null,
+      "dev_receipt_index": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/dev_receipt_index.json",
+      "dev_index_sha256": null,
+      "teacher_schedule": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/teacher_engineering_schedule.json",
+      "teacher_schedule_file_sha256": null,
+      "student_schedule": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/student_engineering_schedule.json",
+      "student_schedule_file_sha256": null,
+      "frozen_materializer_entry_sha256": "5e79799bc7dc25fb57a26cadd6618f603392d1a5dcbb89a32c5508e43e73efd9",
+      "materializer_freeze_sha256": "6738f1fcfddb09007cb41c17949a36497f5ed891776d5f2700df014098b008a4"
+    }
+  },
+  "data_contract": {
+    "mode": "engineering",
+    "materialized_sources": {
+      "train": [
+        "2BdYaGuVAKo",
+        "4EKWTiWjPTQ"
+      ],
+      "dev": [
+        "6UZVovkR3IU",
+        "6rJrrfRO3cA"
+      ]
+    },
+    "actual_compute_split": "train only; no dev forward, loss or optimizer",
+    "approved_independent_calibration_sources": 0,
+    "approved_frozen_test_sources": 0,
+    "frames_per_source": 96,
+    "profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "loader": "frozen HistoryUtilityDataset(receipts,plan,train_manifest,dev_manifest,split=train,scope=engineering,verify_pixels=True)",
+    "teacher_batch": "exact 16 rows from frozen teacher one-step engineering schedule; all original source/file/pixel/recipe/crop/row hashes revalidated",
+    "student_batch": "exact 16 rows from separate frozen student one-step engineering schedule; teacher label calls use these identical input/crop/target rows",
+    "composition_each_batch": {
+      "original_per_profile": 4,
+      "identity": 2,
+      "near_clean": 2
+    },
+    "crop": 96,
+    "k": 3,
+    "model_inputs_only": [
+      "observed FP32 B,3,3,96,96",
+      "availability FP32 B,2 or teacher weights FP32 B,2,96,96"
+    ],
+    "supervision_only": [
+      "target FP32 B,3,96,96",
+      "utility labels and valid mask"
+    ],
+    "metadata_never_forwarded": [
+      "source/group/split/profile/severity/transition/scene-cut labels",
+      "row/recipe/hash identities"
+    ],
+    "controls": "Clean target may construct the explicitly declared identity/near-clean observations in the frozen loader; target is otherwise supervision only. No clean target is silently substituted into ordinary observations.",
+    "absence": "Current observation fills unavailable history with explicit zero weight; true availability times frozen external mask, no future frames.",
+    "natural_cut_status": "unknown engineering only; no primary continuous-content scientific claim",
+    "preferred_location": "31984 alongside NPZs; only the 7.5MB checkpoint is copied to a new namespace. No large data transfer required."
+  },
+  "budget": {
+    "CPU_threads": 2,
+    "wall_seconds": 300,
+    "termination_grace_seconds": 10,
+    "owned_process_group_RSS_limit_bytes": 4294967296,
+    "restorer_batch_forwards": 7,
+    "restorer_sample_presentations": 112,
+    "gate_batch_forwards": 1,
+    "gate_history_maps": 32,
+    "backward_calls": 2,
+    "teacher_optimizer_step_calls": 1,
+    "student_optimizer_step_calls": 0,
+    "NPU_calls": 0,
+    "H3_calls": 0,
+    "VAE_calls": 0,
+    "retries": 0
+  },
+  "phases": [
+    {
+      "phase": "warmstart",
+      "action": "Verify complete real checkpoint SHA/config/58 state entries; copy all old weights bit-exact into mask-aware teacher with 1152 added head weights zero. No inference needed beyond previous frozen inheritance report."
+    },
+    {
+      "phase": "one_teacher_step",
+      "restorer_batch_forwards": 1,
+      "backward_calls": 1,
+      "optimizer_steps": 1,
+      "input": "teacher batch observed + frozen teacher_weights; no gate",
+      "loss": "unchanged train_rphi.fidelity_losses(pred,target,current_observed,edge_weight=.1,guard_weight=.5)",
+      "optimizer": {
+        "type": "AdamW",
+        "base_lr": 0.0001,
+        "actual_step1_lr": 2e-06,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "amsgrad": false,
+        "gradient_clip_norm": 1,
+        "schedule": "train_rphi.learning_rate(step=1,steps=1000,base_lr=1e-4,warmup=50); exactly one scheduled step, no posthoc lr choice",
+        "foreach": false,
+        "fused": false
+      },
+      "gradient_gate": "All trainable parameter gradients present and finite; aggregate norm nonzero. Clip once. Exactly one counted AdamW step, finite state and actual named-parameter change. Save before/after state tensors and hashes; zero initial mask-channel weights are expected to become trainable, not required individually nonzero."
+    },
+    {
+      "phase": "freeze_teacher_clone_students",
+      "action": "Set updated teacher eval/requires_grad False, clear gradients. Freeze state SHA and config. Deepcopy into generic_gate,utility_gate,shuffled_utility_gate with identical gate seed20261111. All named parameters/shapes/counts and initial bytes match across three students; no shared storage; each has 622900 params (621155 restorer+1745 gate). Only utility_gate is subsequently forwarded/backpropagated; no matched-arm performance claim."
+    },
+    {
+      "phase": "teacher_labels",
+      "restorer_batch_forwards": 3,
+      "backward_calls": 0,
+      "action": "One frozen-teacher baseline with student availability expanded to pixel weights; two whole-slot removal passes, other slot weights unchanged. All three calls no_grad and same student crop/observations/target. Fixed three batch calls even for missing rows, whose labels are excluded by valid mask.",
+      "utility": "tile_MAE(without,target)-tile_MAE(with_all,target), pool16 -> B2x6x6; normalization .25/255 clipped[-4,4]; unavailable labels zero/invalid; detached.",
+      "evidence": "Save actual teacher RGB for all three passes, raw/normalized label and valid arrays, teacher state SHA before/after, source/crop/pixel/row identities. Not a persistent research label cache or evidence of useful teacher headroom."
+    },
+    {
+      "phase": "true_utility_student_backward",
+      "restorer_batch_forwards": 1,
+      "gate_batch_forwards": 1,
+      "backward_calls": 1,
+      "optimizer_steps": 0,
+      "action": "Single observed/availability forward, matched_losses(arm=utility_gate) with fixed fidelity plus .01 auxiliary SmoothL1; one unscaled FP32 backward. No optimizer is constructed for any student.",
+      "gradient_gate": "Every active student trainable gradient present and finite; aggregate gate-final-convolution and RGB output-tail gradient norms nonzero. Gate first convolution may have exactly zero gradient at the zero-initialized final layer and must not be falsely rejected. Inactive generic/shuffled students remain grad=None and bytes unchanged. Save raw gradient arrays/hashes; all three student parameter bytes remain exactly initial."
+    },
+    {
+      "phase": "student_own_intervention_wiring",
+      "restorer_batch_forwards": 2,
+      "backward_calls": 0,
+      "optimizer_steps": 0,
+      "action": "Use detached normal student prediction and exact saved effective gate weights. Remove each history slot in turn without rerunning gate, keep other slot weights exact, no_grad same restorer. Report own raw utility maps/sign support descriptively on this training batch; this is a wiring check, not held-out student utility acceptance."
+    }
+  ],
+  "precision_and_runtime": {
+    "device": "cpu",
+    "dtype": "float32",
+    "autocast": false,
+    "loss_scaling": false,
+    "autoload": "TORCH_DEVICE_BACKEND_AUTOLOAD=0",
+    "deterministic_algorithms": true,
+    "seed_teacher": 20261110,
+    "seed_gate": 20261111,
+    "thread_env": [
+      "OMP_NUM_THREADS=2",
+      "MKL_NUM_THREADS=2",
+      "OPENBLAS_NUM_THREADS=1"
+    ],
+    "guard": "New owned subprocess group only; hard wall/RSS stop terminates owned descendants then writes failure. Never stop other jobs. No retries or automatic schedule extension."
+  },
+  "acceptance": {
+    "hard": [
+      "All pending bindings resolved and root review/admission present before execution",
+      "Exact counts and actual pixel/source/role/recipe validation",
+      "No GT/labels/metadata arguments in model.forward beyond declared control construction",
+      "All saved arrays finite and file/content hashes independently verified",
+      "Teacher exactly one optimizer step; students zero; frozen teacher unchanged during labels/student stage",
+      "No NPU/Comfy imports, no target fed to ordinary observed path",
+      "Failure preserves partial counts, state and available gradient evidence; never complete=true after exception"
+    ],
+    "descriptive_only": [
+      "Teacher and student signed utility distribution and neutral support",
+      "One teacher step loss values or updated-vs-prior weight differences",
+      "Student own utility on train crops",
+      "Any small-batch quality numbers; no benchmark/innovation or research success claim"
+    ]
+  },
+  "not_implemented_by_this_contract": [
+    "Executable one-step producer and tests",
+    "Frozen actual materialization/schedule/asset bindings",
+    "Root resource/review admission",
+    "Research teacher1000steps,16000labelrows,three-arm student training",
+    "Source-disjoint shuffled donor permutation (not attempted for this engineering scope)",
+    "Held-out dev/student utility evaluation and independent calibration/test"
+  ]
+}

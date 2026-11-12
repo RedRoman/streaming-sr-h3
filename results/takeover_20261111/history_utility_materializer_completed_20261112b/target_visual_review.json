@@ -1,0 +1,76 @@
+{
+  "schema": "rphi.history_utility_target_visual_review.v1",
+  "reviewed_at_utc": "2026-11-12T04:36:01.066290+00:00",
+  "reviewer": "root visual inspection of all4 displayed target-only contact sheets",
+  "input_receipt_sha256": "0c6bd8c635b6902668d8393dd983cb834f250a06cc3d816b851bcd4f7d651f41",
+  "frame_scope": "all96 frames per source, area-downsampled thumbnails; timestamps are output window-relative PTS, not original-source-PTS annotations",
+  "bindings": [
+    {
+      "source_id": "2BdYaGuVAKo",
+      "split": "train",
+      "source_receipt_sha256": "44bbe2ff1376be5e8fed6903cd8ba50cb044f3f1b92c5c477eb9421dfb16923d",
+      "target_pixel_sha256": "e69fa6f47606b3e68450bcb5c095bf36ed96a4a37f1fa7d44742b6bf9743f17d",
+      "png": "2BdYaGuVAKo_target96.png",
+      "png_sha256": "de95f948d1b7cb96eea2d4270db3c8f3e34fbdada6bb0addfac220f30dd1ecf4"
+    },
+    {
+      "source_id": "4EKWTiWjPTQ",
+      "split": "train",
+      "source_receipt_sha256": "b179ce364f844d646dad0ea68e073bea15074e89c2e95fd8db2ca79200ce9587",
+      "target_pixel_sha256": "e6a081f4019b99df6b2611ab363e92308c9f93ce413166aa115c9f47ed53f7be",
+      "png": "4EKWTiWjPTQ_target96.png",
+      "png_sha256": "037a7a7f612eac04a3e02559f000f4d95adc2bab5634db78797182e9858b4ff0"
+    },
+    {
+      "source_id": "6UZVovkR3IU",
+      "split": "dev",
+      "source_receipt_sha256": "d471792ce1e3d428d8b1b34622f3c74982835878cf801da3a8d731d944aecb46",
+      "target_pixel_sha256": "7d2af2b2fcadc0f996e39199b67950f984b2ca47cd65033507d2f1d335a9849d",
+      "png": "6UZVovkR3IU_target96.png",
+      "png_sha256": "ba07d3a51ca07874f42503f3552227d93044e8466850cbe7c79163079314bb86"
+    },
+    {
+      "source_id": "6rJrrfRO3cA",
+      "split": "dev",
+      "source_receipt_sha256": "676659e70af89cf5898345ca3c6b1ccd99b784bb5f0819ccf59ba8473eac5f3c",
+      "target_pixel_sha256": "938266046b33e61e5f4c543909b6095069582593fc3375d1f28b7032dd89f53e",
+      "png": "6rJrrfRO3cA_target96.png",
+      "png_sha256": "4b85cf728956f6a6f06aaf29057abd7cace55dcf26916dcebff55360d4debc89"
+    }
+  ],
+  "findings": {
+    "2BdYaGuVAKo": {
+      "decision": "not_cut_free; exclude this exact window from primary continuous-content experiment",
+      "clear_new_shot_starts": [
+        20,
+        35,
+        64,
+        73,
+        88
+      ],
+      "additional_candidate": [
+        94
+      ],
+      "description": "Gym to car, car to stage, stage camera change, stage to gym, wider gym view. Frame94 has another view jump needing full-size confirmation.",
+      "source_4sec_continuity_approved": false
+    },
+    "4EKWTiWjPTQ": {
+      "decision": "no obvious hard cut visible in96 thumbnails",
+      "description": "Continuous basketball court view/pan; not promoted through frozen data receipt.",
+      "source_4sec_continuity_approved": false
+    },
+    "6UZVovkR3IU": {
+      "decision": "no obvious hard cut visible in96 thumbnails",
+      "description": "Continuous truck view and camera motion; not promoted through frozen data receipt.",
+      "source_4sec_continuity_approved": false
+    },
+    "6rJrrfRO3cA": {
+      "decision": "ambiguous fast game-camera viewpoint change near71to72 requires full-resolution neighboring frames",
+      "candidate_new_view_start": 72,
+      "source_4sec_continuity_approved": false
+    }
+  },
+  "engineering_one_step_still_valid": true,
+  "research_cohort_ready": false,
+  "next": "Screen target-only candidate windows for all40 sources before expensive observation materialization; keep clear cuts as separately annotated diagnostics. Preserve source groups, freeze any window/cohort revision before model outcomes, never silently replace a source or relabel an existing engineering artifact."
+}

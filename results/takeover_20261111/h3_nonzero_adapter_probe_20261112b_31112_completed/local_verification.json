@@ -1,0 +1,66 @@
+{
+  "schema": "openh3.nonzero_adapter_local_verification.v1",
+  "utc": "2026-11-12T04:59:02.474182+00:00",
+  "archive": {
+    "sha256": "6410de63eb33c76f5665c8470cc1589f7ece492a251b0af095c51d8746228533",
+    "bytes": 5084133,
+    "members": 79,
+    "payload_files": 78,
+    "all_manifest_file_SHA_and_sizes_verified": true,
+    "safe_extraction": "Exclusive new payload directory; regular members only, no absolute paths, traversal, links, duplicate names or overwrite."
+  },
+  "producer_report_sha256": "f0e4276b455d7ca9c57d5e34f749739047f06af38d1b86b2e45c6650f0581792",
+  "terminal_audit_sha256": "8d113ad97d2d207e820102879efb9451a05cf46cf7280239e768e9fc84d9441a",
+  "terminal_audit_status": "passed_small_single_SGD_strict_reload_merge_descriptive_only",
+  "actual_small_arrays_independently_verified": 23,
+  "actual_small_array_bytes": 5042688,
+  "all_small_array_file_content_SHA_shape_dtype_finite_verified": true,
+  "local_array_recomputation_sha256": "20db929e8d152d0d112c3d3507f45b1364c7bd6f15ebcfe0d6b6244a0266d12b",
+  "frozen_JSON_fingerprints_independently_recomputed": {
+    "initial": {
+      "DiT": {
+        "parameters": "e5d39504fbceb7bd8b6594c73c271772ace4d8d56b84873f25cc8062a45bae88",
+        "registered_buffers": "1865eb2a3125deb57eee1f8f8018345c55f0e28c757ad7082d883f1ebfc81d43"
+      },
+      "VAE": {
+        "parameters": "06fe875e0dacaa54f6e32aa3b5857770f6cd8cdbd04d264255ac012e9e9ac432",
+        "registered_buffers": "56089618e6a282d6654e9845c79ced2af27f9cfc97e082a0ac065ffd24460a87"
+      }
+    },
+    "final": {
+      "DiT": {
+        "parameters": "06216dd6109630fdd42c05e5c4b51a0b7f7e3dbc904630fe1eddf3f413d8321e",
+        "registered_buffers": "1865eb2a3125deb57eee1f8f8018345c55f0e28c757ad7082d883f1ebfc81d43"
+      },
+      "VAE": {
+        "parameters": "06fe875e0dacaa54f6e32aa3b5857770f6cd8cdbd04d264255ac012e9e9ac432",
+        "registered_buffers": "56089618e6a282d6654e9845c79ced2af27f9cfc97e082a0ac065ffd24460a87"
+      }
+    }
+  },
+  "changed_DiT_parameter_byte_fingerprints": 60,
+  "reported_block_counts_independently_summed": {
+    "DiT": {
+      "backward": 150,
+      "merged": 150,
+      "reloaded": 150,
+      "updated": 150,
+      "zero": 150
+    },
+    "VAE": {
+      "backward": 36,
+      "merged_decode": 36,
+      "reloaded_decode": 36,
+      "updated_decode": 36,
+      "zero_decode": 36
+    }
+  },
+  "same_four_modes_noise_seed_input_hashes": true,
+  "large_gradients_parameters_checkpoint_downloaded": false,
+  "live_model_weights_reloaded_for_local_audit": false,
+  "model_calls": 0,
+  "NPU_calls": 0,
+  "boundary": "Local actual small arrays and archive bytes were independently verified. Large gradients/parameters/checkpoint were verified in place by the archived remote CPU auditor; base/live-state/version and merge-statistics provenance remains source-bound producer attestation.",
+  "total_array_records_remote_audited": 1628,
+  "FP16_cast_bytes_independently_equal": true
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "openh3.history_utility_target_screen_recovery_independent_review.v1",
+  "utc": "2026-11-12T05:08:39.637993+00:00",
+  "verdict": "no_launch_blocker_in_reviewed_frozen_recovery",
+  "source_hashes": {
+    "code/recover_history_utility_target_screen.py": "d18086f892580339015fb96a87190e492d69505dbd7132bd617c859694519f9d",
+    "code/tests/test_history_utility_target_screen_recovery.py": "3445b45fa36ebef91471f6d3bc14ad1d53700378a5cbf4a2bbc009aa7c5e1a5e",
+    "run_once.py": "e87c5ea05febc32b0b0a8cf4fdf7903172829d61a21090061891b76b97e8b30d",
+    "recovery_contract.json": "cc9c7db9d4a99cfd490f79c5eaded0edc0fb7eceace114fd2a2fa5c86b5157f4",
+    "freeze.json": "76f2bc8d10fe1f9b5dead874c5a9cad4024c880b0829f1d2fbca9f90d0f4f2c5",
+    "cpu_tests.json": "d8620456b528234ebfafbf5ee1959e042392543ad696d8f2d08d0e7250fb4e15"
+  },
+  "scope": {
+    "reuse_completed_targets": 17,
+    "prior_ineligible_no_retry": [
+      "DtgdD48804M"
+    ],
+    "remaining_sources_single_attempt": 22,
+    "total_accounted_if_complete": 40,
+    "maximum_eligible_targets": 39,
+    "degradation_codec_calls": 0,
+    "model_calls": 0,
+    "NPU_calls": 0,
+    "scientific_continuity_approved": false
+  },
+  "source_failure_interpretation": {
+    "Dtgd_inventory_fps": "20/1",
+    "source_SHA": "046f806a886ce145113c8008bb05d7aac220a244c6732cf4588febfcdd2128f0",
+    "source_bytes": 613808,
+    "actual_a_failure": "fewer than96actualsourceframes reached filter",
+    "exact_count": "unknown: originaltemporarylog removed",
+    "qualification_scope": "Ineligible under frozen centered4s/96-output/at-least96actual-source-frame protocol only; not a generally corrupt or unusable video.",
+    "Q0_CI3XJvxw_fps": "15/1",
+    "Q0_handling": "Still one of22single attempts; no metadata-only rejection.",
+    "23_976_handling": "No average-fps cutoff; 4bXb6GLm6zg alreadypassed actual gate and remains among17reuse; HU9sbY3A1bo remains actual single attempt."
+  },
+  "verified_static_bindings": {
+    "new_freeze_pins": 141,
+    "all65_prior_pins_preserved": true,
+    "all_recovery_contract_files_bound": true,
+    "new_local_snapshot_files_hashed": 5,
+    "all17_reuse_receipt_SHAs_match_actual_failed_archive": true,
+    "all17_target_and_diagnostic_artifact_SHAs_bound_in_new_freeze": true,
+    "reused_source_ids_match_original17completed": true,
+    "original_archive_SHA": "e246386844098711b4bb2be7060c34b0c456b16cf8da863c31e52b1afbc3d514",
+    "actual_NPZ_pixels_checked_by_this_reviewer": false
+  },
+  "correctness_checks": [
+    {
+      "area": "reuse",
+      "lines": "recover_history_utility_target_screen.py:128-143",
+      "finding": "Actual uint8 geometry/pixelSHA and original target-spec window key reverified with no decoder call; old targets,receipts,images read only."
+    },
+    {
+      "area": "failureclassification",
+      "lines": "recover_history_utility_target_screen.py:105-122",
+      "finding": "Only exact builtins.ValueError/count message may classify ineligible; actual persistentlog must prove both timebases,96sequential targetrows,positive<96sequentialsource rows,monotone sourcePTS,and exactFraction24fps targetgrid. All othererrors stop."
+    },
+    {
+      "area": "logpreservation",
+      "lines": "recover_history_utility_target_screen.py:92-102",
+      "finding": "Scoped wrapper calls originaldecoderunchanged, copiesoriginallog in finally before temporarycleanup, then restores boundmethod."
+    },
+    {
+      "area": "accounting",
+      "lines": "recover_history_utility_target_screen.py:168-206",
+      "finding": "17reuse+22attemptworkers+1priorineligible; sources have eligible/ineligible/error/noattempt. Startedworkers separate from confirmeddecoderattempts. Unexpectedfailedworker doesnot fabricate actualdecodecount."
+    },
+    {
+      "area": "resources",
+      "lines": "run_once.py:57-72,120-166",
+      "finding": "Inherited fixed1CPU/768MiB/1800s+30ownedPG supervisor includingTERM/INTcleanup. Sources serial and inheritPG. Disk6GiB free+per-source cap explicitly not realtimequota."
+    }
+  ],
+  "issue_found_and_closed": {
+    "issue": "The sourcecount exception occurs before targetgrid validation in frozenparser; initialclassifier omitted the remaininggrid guard.",
+    "fix": "Added exact Fraction(deltaPTS)*target_timebase==1/24 and a double-error negativefixture. No thresholdrelaxation."
+  },
+  "tests": {
+    "implementation_agent_receipt": "passed",
+    "tests": 7,
+    "elapsed_seconds": 0.065,
+    "reviewer_replayed_tests": false,
+    "scope": "local actualNumPy/PIL/stdlib, no realcodec/model execution; coordinatedworker fixtures explicitly synthetic"
+  },
+  "acceptance_boundary": "Review authorizes no launch itself. Root must bind new admission after actual defaultinspection. A completed b means all40sources accounted, not40successful targets or continuityapproval. Actual17pixel reuse and22attempt outcomes must be verified from terminal receipts; olda remainsfailed."
+}

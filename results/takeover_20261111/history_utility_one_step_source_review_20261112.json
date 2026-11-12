@@ -1,0 +1,33 @@
+{
+  "schema": "rphi.history_utility_one_step_root_review.v1",
+  "reviewed_at_utc": "2026-11-12T04:26:52.343973+00:00",
+  "entry": "code/check_history_utility_one_step.py",
+  "entry_sha256": "8c2611302c3d3d9445ea6f839f6705bac7bc5e6dc16916c90b3c0940887478a6",
+  "scope": "read-only source review, not actual-data execution acceptance",
+  "reviewers": [
+    "root",
+    "audit_evidence",
+    "inspect_architecture"
+  ],
+  "blocking_source_findings": [],
+  "verified_source_properties": [
+    "Exactly7 restorer forwards,1 gate forward,2 backward calls,1 teacher AdamW update and0 student updates",
+    "Observed pixels and explicit availability/weights are the only forward inputs; target is loss/utility supervision except declared identity/nearclean observation construction",
+    "Observer hooks removed before cloning teacher into students; same parameter values and independent storage across arms",
+    "Frozen updated teacher produces detached labels for identical student rows/crops; other history weight stays fixed in whole-slot intervention",
+    "Inactive student arms receive no gradients; final state SHA checked for teacher/students/baseline; those live final states are producer observations rather than independently saved full tensors",
+    "Default inspection verifies actual pixels without importing Torch; actual execution requires bound source/data/admission and a separate bounded supervisor"
+  ],
+  "resolved_before_freeze": [
+    "Cloned observer hooks were removed before student creation and explicitly tested",
+    "Learning-rate check uses the original1e-4*(1/50) floating-point expression; actual step1 LR remains the unchanged train_rphi function result"
+  ],
+  "CPU_fixture_evidence": "results/takeover_20261111/history_utility_one_step_cpu_validation_20261112b/local_review.json",
+  "remaining": [
+    "Accept data recovery b actual artifact inventory",
+    "Bind immutable data receipts and schedules plus runtime and reviewed supervisor",
+    "Run exactly one bounded actual-data CPU step",
+    "Independent saved-array audit; no quality, headroom or matched-arm acceptance implied"
+  ],
+  "actual_data_executed": false
+}

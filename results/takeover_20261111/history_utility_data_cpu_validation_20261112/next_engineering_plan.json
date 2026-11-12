@@ -1,0 +1,86 @@
+{
+  "schema": "openh3.history_utility_data_next_engineering.v1",
+  "status": "prepared_not_launched_no_training_admission",
+  "selected_sources": {
+    "train": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ"
+    ],
+    "dev": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA"
+    ]
+  },
+  "actual_original_source_file_evidence": "existing_source_availability.json",
+  "original_source_host": "31984",
+  "role_manifests": {
+    "train": {
+      "path": "results/takeover_20261111/materialized/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    },
+    "dev": {
+      "path": "results/takeover_20261111/materialized/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    }
+  },
+  "new_entry_suggested": "code/materialize_history_utility_pilot.py (not implemented here)",
+  "namespace_suggested": "runs/history_utility_2train2dev_data_20261112a (not created here)",
+  "reuse": {
+    "frozen_module": "code/materialize_mixed_temporal_pilot.py",
+    "sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37",
+    "reuse_pure_numeric_functions": [
+      "target_specification",
+      "decode_target",
+      "observation",
+      "save_npz"
+    ],
+    "do_not_call": [
+      "main",
+      "execute",
+      "load_registry",
+      "validate_plan"
+    ],
+    "reason": "old entry binds one SOURCE and six profiles; new entry must independently validate the fixed four-source/three-profile execution contract, without changing constants or global monkeypatches"
+  },
+  "data_budget": {
+    "sources": 4,
+    "frames_per_source": 96,
+    "profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "replays_per_profile": 2,
+    "target_decodes": 4,
+    "observation_codec_passes": 24,
+    "saved_target_NPZ": 4,
+    "saved_observation_NPZ": 12,
+    "CPU_workers": 1,
+    "ffmpeg_opencv_blas_threads": 1,
+    "memory_mib": 768,
+    "proposed_wall_limit_seconds": 1800,
+    "models": 0,
+    "NPU": 0
+  },
+  "new_noise_version_boundary": "New allowed-source/profile execution contract changes target_spec execution hash/window_key and therefore keyed noise. Reuse math, disclose new keys; do not claim old2Bd observation pixel hashes unchanged. Same source target pixels should reproduce under the same decode environment.",
+  "acceptance": [
+    "All4 original source SHAs match immutable role registry before/after.",
+    "All4 target clips are96x480x832 RGBuint8 and all12 observations use same per-source target.",
+    "Two pixel/noise replays exact, no unexpected H264 reset, actual frame timestamps and12 profile NPZ metadata/file/pixel hashes verified.",
+    "New receipt schema/fields must be reviewed against HistoryUtilityDataset; no renaming an incomplete/unknown schema into the old completed status.",
+    "Natural cuts remain unknown and scientific_continuity_approved=false; this is engineering only, not transition-quality acceptance.",
+    "Run new loader actual pixel validation and short deterministic teacher/student schedules on2train/2dev; model input namespace remains observed+availability only."
+  ],
+  "teacher_next": {
+    "engineering_only": "After data and model warmstart checks, prepare separately admitted one-update96crop teacher smoke with baseline SHA61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617. Do not run1000-step arms on2+2 and report the planned screen complete.",
+    "research_requirements": [
+      "32train+8dev three-profile materialization and source/cut audit",
+      "explicit accepted baseline binding in a new execution contract",
+      "immutable1000x16 teacher and separate student schedules",
+      "validated mask-aware teacher training/freeze/headroom before labels",
+      "shared label cache and source-disjoint derangement with no same-source donors",
+      "CPU tests then independent NPU smoke/admission"
+    ],
+    "research_budget": "Teacher1000steps batch16 crop96, then at most48000 shared label forwards; three student arms1000steps each only after headroom and cache validation. No extension authorized by this preparation."
+  }
+}

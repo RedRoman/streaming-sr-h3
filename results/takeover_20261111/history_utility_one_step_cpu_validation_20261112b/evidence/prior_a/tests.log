@@ -1,0 +1,43 @@
+test_admission_payload_binds_data_pins_but_avoids_admission_hash_cycle (__main__.OneStepTests.test_admission_payload_binds_data_pins_but_avoids_admission_hash_cycle) ... ok
+test_default_inspection_never_calls_execute_and_existing_out_is_refused (__main__.OneStepTests.test_default_inspection_never_calls_execute_and_existing_out_is_refused) ... {"complete": true, "status": "inspected_actual_pixels_no_model", "actual": null, "failure": null, "elapsed_seconds": 0.0002847108989953995}
+ok
+test_execute_exception_never_sets_complete (__main__.OneStepTests.test_execute_exception_never_sets_complete) ... {"complete": false, "status": "failed", "actual": null, "failure": "ValueError('injected')", "elapsed_seconds": 0.0002508005127310753}
+ok
+test_failure_after_teacher_update_preserves_states_and_hook_cleanup (__main__.OneStepTests.test_failure_after_teacher_update_preserves_states_and_hook_cleanup) ... FAIL
+test_missing_gradient_rejected_after_evidence_is_saved (__main__.OneStepTests.test_missing_gradient_rejected_after_evidence_is_saved) ... ok
+test_oracle_keys_dev_rows_and_revived_history_fail_before_model (__main__.OneStepTests.test_oracle_keys_dev_rows_and_revived_history_fail_before_model) ... ok
+test_real_torch_fixture_seven_forwards_two_backwards_one_update (__main__.OneStepTests.test_real_torch_fixture_seven_forwards_two_backwards_one_update) ... ERROR
+test_recovery_is_explicit_not_renamed_original_or_unknown_schema (__main__.OneStepTests.test_recovery_is_explicit_not_renamed_original_or_unknown_schema) ... ok
+
+======================================================================
+ERROR: test_real_torch_fixture_seven_forwards_two_backwards_one_update (__main__.OneStepTests.test_real_torch_fixture_seven_forwards_two_backwards_one_update)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_one_step_cpu_validation_20261112a/code/tests/test_history_utility_one_step.py", line 38, in test_real_torch_fixture_seven_forwards_two_backwards_one_update
+    report={};ev=probe.Evidence(td,report);probe.run_core(baseline,batches,ev,torch)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_one_step_cpu_validation_20261112a/code/check_history_utility_one_step.py", line 225, in run_core
+    lr=learning_rate(1,1000,1e-4,50);require(lr==2e-6,'step1 warmup differs')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_one_step_cpu_validation_20261112a/code/check_history_utility_one_step.py", line 24, in require
+    if not value:raise ValueError(message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: step1 warmup differs
+
+======================================================================
+FAIL: test_failure_after_teacher_update_preserves_states_and_hook_cleanup (__main__.OneStepTests.test_failure_after_teacher_update_preserves_states_and_hook_cleanup)
+----------------------------------------------------------------------
+ValueError: step1 warmup differs
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_one_step_cpu_validation_20261112a/code/tests/test_history_utility_one_step.py", line 61, in test_failure_after_teacher_update_preserves_states_and_hook_cleanup
+    with self.assertRaisesRegex(ValueError,'clone failure'):probe.run_core(baseline,batches,ev,torch)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "clone failure" does not match "step1 warmup differs"
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.233s
+
+FAILED (failures=1, errors=1)

@@ -1,0 +1,107 @@
+{
+  "schema": "openh3.history_utility_known_cut_coverage.v1",
+  "source_id": "2BdYaGuVAKo",
+  "basis": "root all96 thumbnail shot-change review; actual FFmpeg log packet-position identity maps target frames to original source PTS before fps/crop",
+  "root_review_sha256": "60babc522b64d5ad66c2c97fcdc52a4b048ffc1848d788658cc201bb6f00d61a",
+  "decode_log_sha256": "99b8601bd2670439e4557493b91e44538f3fde8e541ebaa2965bc9bfea369635",
+  "source_frame_time_base": "1/30000",
+  "source_format_duration_seconds": 10.022,
+  "accurate_seek_offset_seconds": 3.011,
+  "all96_target_packet_positions_uniquely_matched_to_source_log": true,
+  "cuts": [
+    {
+      "new_shot_target_index": 20,
+      "old_shot_source_frame": {
+        "index": 24,
+        "pts": 115115,
+        "pts_time_seconds": 3.83717,
+        "packet_position": 1622685
+      },
+      "new_shot_source_frame": {
+        "index": 26,
+        "pts": 117117,
+        "pts_time_seconds": 3.9039,
+        "packet_position": 1675078
+      },
+      "target_relative_pts_seconds": 0.875
+    },
+    {
+      "new_shot_target_index": 35,
+      "old_shot_source_frame": {
+        "index": 43,
+        "pts": 134134,
+        "pts_time_seconds": 4.47113,
+        "packet_position": 1999016
+      },
+      "new_shot_source_frame": {
+        "index": 44,
+        "pts": 135135,
+        "pts_time_seconds": 4.5045,
+        "packet_position": 2012080
+      },
+      "target_relative_pts_seconds": 1.5
+    },
+    {
+      "new_shot_target_index": 64,
+      "old_shot_source_frame": {
+        "index": 79,
+        "pts": 170170,
+        "pts_time_seconds": 5.67233,
+        "packet_position": 2540087
+      },
+      "new_shot_source_frame": {
+        "index": 81,
+        "pts": 172172,
+        "pts_time_seconds": 5.73907,
+        "packet_position": 2546948
+      },
+      "target_relative_pts_seconds": 2.70833
+    },
+    {
+      "new_shot_target_index": 73,
+      "old_shot_source_frame": {
+        "index": 91,
+        "pts": 182182,
+        "pts_time_seconds": 6.07273,
+        "packet_position": 2662324
+      },
+      "new_shot_source_frame": {
+        "index": 92,
+        "pts": 183183,
+        "pts_time_seconds": 6.1061,
+        "packet_position": 2671010
+      },
+      "target_relative_pts_seconds": 3.08333
+    },
+    {
+      "new_shot_target_index": 88,
+      "old_shot_source_frame": {
+        "index": 109,
+        "pts": 200200,
+        "pts_time_seconds": 6.67333,
+        "packet_position": 2952680
+      },
+      "new_shot_source_frame": {
+        "index": 111,
+        "pts": 202202,
+        "pts_time_seconds": 6.74007,
+        "packet_position": 2979540
+      },
+      "target_relative_pts_seconds": 3.70833
+    }
+  ],
+  "conservative_segment_length_upper_bounds_seconds": [
+    3.9039,
+    0.6673300000000002,
+    1.2679400000000003,
+    0.43377,
+    0.6673400000000003,
+    3.3486700000000003
+  ],
+  "maximum_upper_bound_seconds": 3.9039,
+  "fixed_continuous_duration_seconds": 4.0,
+  "any_4second_cut_free_window_possible_given_confirmed_cuts": false,
+  "limitation": "Conditional on root confirmed visual shot identities; other unseen cuts can only shorten segments. Does not infer additional cuts or relabel original receipts.",
+  "minimum_span_of96_samples_at24fps_seconds": 3.9583333333333335,
+  "any96_continuous_samples_at24fps_possible_given_confirmed_cuts": false
+}

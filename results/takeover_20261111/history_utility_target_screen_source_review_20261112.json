@@ -1,0 +1,68 @@
+{
+  "schema": "openh3.history_utility_target_screen_independent_source_review.v1",
+  "utc": "2026-11-12T04:51:07.349246+00:00",
+  "verdict": "no_launch_blocker_in_reviewed_frozen_source_and_contract",
+  "actual_execution_performed_by_reviewer": false,
+  "remote_inspection_performed_by_reviewer": false,
+  "reviewed_files": {
+    "code/screen_history_utility_targets.py": "97ae60ceee2b038afbe68fe9f7b51cb4e61a6a79c50258a0ad68d79df8f40c39",
+    "code/tests/test_history_utility_target_screen.py": "6772dc88361f08e91e18f6aa0999e0416e578f7142a901a8f1cf4e183d99aeb5",
+    "run_once.py": "e87c5ea05febc32b0b0a8cf4fdf7903172829d61a21090061891b76b97e8b30d",
+    "execution_contract.json": "38d7102e31e6a44bc22dee0e44326c745ae7bd1da93c0193ed01568d424eb333",
+    "freeze.json": "1173b26458a5b3eb47a4fababcd6195d27619cb7b7dbab6384b632d9e43455fb",
+    "cpu_tests.json": "90bc77fe05bdb9169b3517d0763a63fdfbb76dadfdc4afa4358c4c019907387c"
+  },
+  "pins": {
+    "declared": 65,
+    "contract_files_and_reused_receipts_targets_all_bound": true,
+    "local_new_snapshot_files_independently_hashed": 5,
+    "remote_actual_pin_admission": "To be verified by implementation agent default inspection and root admission; not independently re-read in this source review."
+  },
+  "checks": {
+    "reuse4_new36": {
+      "status": "consistent",
+      "lines": "code/screen_history_utility_targets.py:134-156,173-181",
+      "reason": "Reuse branch reads exact existing NPZ and prior receipt, verifies file/pixel SHA, invokes no decoder; new branch calls original target_specification/decode_target_owned and writes a new exclusive target cache."
+    },
+    "numeric_vs_authority": {
+      "status": "explicitly_separated",
+      "lines": "code/screen_history_utility_targets.py:128-146; execution_contract.execution_authority",
+      "reason": "13b6 remains only immutable numerical target/window namespace. New40source execution authority is a separate frozen contract; old2+2 execution contract unchanged."
+    },
+    "owned_process_bounds": {
+      "status": "consistent",
+      "lines": "run_once.py:57-72,120-166; code/screen_history_utility_targets.py:173-175",
+      "reason": "OneCPU affinity and threads,768MiB sampled ownedPG,1800s+30 cleanup; serial fresh source workers and decoder inherit the ownedPG. New SIGTERM/SIGINT handler closes external-termination cleanup gap."
+    },
+    "disk": {
+      "status": "bounded_fixed_payload_with_per_source_check",
+      "budget_bytes": 6442450944,
+      "new_target_payload_bytes": 4140564480,
+      "temporary_raw_bytes": 115015680,
+      "realtime_filesystem_quota": false
+    },
+    "science": {
+      "status": "candidate_ranking_only",
+      "lines": "code/screen_history_utility_targets.py:86-118,182",
+      "reason": "All96frames and95RGB-change pairs, top6 descriptive ranking, two specified full-resolution pairs; no automatic continuity/cut approval, no source replacement or shortened window."
+    },
+    "old_outputs": {
+      "status": "read_only",
+      "reason": "Old target/receipts are hashed and read only. New run/source directories and target files use exclusive creation; success cannot overwrite prior run receipts."
+    }
+  },
+  "tests": {
+    "implementation_agent_reported_passed": 5,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.134,
+    "reviewer_reran_tests": false,
+    "scope": "local CPU Python with actual NumPy/PIL; no codec/model execution"
+  },
+  "limitations": [
+    "Static source/contract review does not establish actual36decode completion, runtime resource conformance, or resulting pixels. Terminal receipts must show36new+4reuse and0observation/model/NPU.",
+    "PIL thumbnail RGB-change scores can be high for motion or flashes and can miss subtle cuts. They only prioritize visual review.",
+    "The known-cut montage remains diagnostic-only;40source target preparation does not confer32train8dev research cohort acceptance or independent split qualification.",
+    "New target-only NPZ metadata is not an already complete old training receipt; any later observation materialization needs a reviewed metadata bridge."
+  ]
+}

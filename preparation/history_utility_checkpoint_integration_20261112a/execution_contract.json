@@ -1,0 +1,56 @@
+{
+  "schema": "rphi.history_utility_integration_execution.v1",
+  "checkpoint": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+    "sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617"
+  },
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "budget": {
+    "baseline_forwards": 2,
+    "mask_aware_forwards": 6,
+    "student_forwards": 1,
+    "gate_forwards": 1,
+    "backward": 0,
+    "optimizer_steps": 0,
+    "NPU_calls": 0
+  },
+  "cpu_threads": 2,
+  "hard_timeout_seconds": 180,
+  "rss_limit_bytes": 2147483648,
+  "shape": [
+    1,
+    3,
+    3,
+    96,
+    96
+  ],
+  "output_policy": {
+    "inheritance_atol": 1e-06,
+    "inheritance_rtol": 1e-05,
+    "direction": "candidate_vs_baseline",
+    "bitexact_diagnostic": true,
+    "same_operator_absence_bitexact_required": true
+  },
+  "input": {
+    "kind": "synthetic",
+    "seed": 20261112
+  },
+  "implementation_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/check_history_utility_integration.py": "73b2b52e83252f305e381b178cc33adcfaff4bfff0bdcaa1ed0056f955cc39b3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_integration_20261112a/code/tests/test_history_utility_integration.py": "2992d8acb8300ac0d8a2a108e4bce33b9720fb01ca505e9819b6762c02cffc89"
+  },
+  "scope": "real checkpoint forward inheritance; no actual source data or training"
+}

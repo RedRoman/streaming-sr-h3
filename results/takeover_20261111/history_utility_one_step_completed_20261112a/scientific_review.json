@@ -1,0 +1,129 @@
+{
+  "schema": "rphi.history_utility_one_step_scientific_review.v1",
+  "utc": "2026-11-12T04:43:10.726812+00:00",
+  "engineering_verdict": "passed_bounded_actual_data_one_step_array_audit",
+  "quality_verdict": "requires_review",
+  "evidence": {
+    "archive_sha256": "b384ff9ef30e22aa769a1235f755faee2438ad3eba612fb8583668fa8504afa3",
+    "producer_report_sha256": "b94c8b960a439e1ff6930018c7d3bd3971a197158f22d4eb41206eee09e6baec",
+    "array_audit_sha256": "f538d05017e1d15918bd2bbe2869ab1ee3925f2f014ea5a6123a7fdb33e03f96",
+    "auditor_freeze_sha256": "d1b090b4740e5714679154327efa906a1f8baf8232ad4b8d16a520f223e73b47",
+    "actual_arrays_location": "huawei-modelarts-31984:/cache/zihaohe/omni_openh3_20261111/runs/history_utility_one_step_20261112a",
+    "arrays_downloaded": false,
+    "remote_numpy_verified": {
+      "arrays": 379,
+      "payload_bytes": 43851024,
+      "all_finite": true,
+      "all_file_and_content_SHA_exact": true
+    }
+  },
+  "independently_recomputed": {
+    "teacher_changed_parameter_tensors": 58,
+    "teacher_max_abs_parameter_delta": 2.000480890274048e-06,
+    "student_initial_restorer_exact_teacher_post_step": true,
+    "gradient_summary": {
+      "teacher_grad_raw": {
+        "parameters": 58,
+        "aggregate_norm": 0.07992593850440477,
+        "nonzero_elements": 620561
+      },
+      "teacher_grad_clipped": {
+        "parameters": 58,
+        "aggregate_norm": 0.07992593850440477,
+        "nonzero_elements": 620561
+      },
+      "student_grad": {
+        "parameters": 62,
+        "aggregate_norm": 0.11463197685307096,
+        "nonzero_elements": 620706
+      }
+    },
+    "utilities": {
+      "teacher_labels": {
+        "raw_max_abs_error": 6.018308337796263e-08,
+        "raw_atol": 2e-07,
+        "normalized_max_abs_error": 6.139419562611881e-05,
+        "normalized_atol": 0.0003,
+        "rtol": 0,
+        "valid_exact": true,
+        "missing_history_exact_zero": true,
+        "valid_tiles": 792,
+        "reference": "NumPy float64 mean(abs(RGB-GT)) over color and 16x16 tile; without minus all"
+      },
+      "student_own": {
+        "raw_max_abs_error": 8.879578672349453e-08,
+        "raw_atol": 2e-07,
+        "normalized_max_abs_error": 9.056797716766596e-05,
+        "normalized_atol": 0.0003,
+        "rtol": 0,
+        "valid_exact": true,
+        "missing_history_exact_zero": true,
+        "valid_tiles": 792,
+        "reference": "NumPy float64 mean(abs(RGB-GT)) over color and 16x16 tile; without minus all"
+      }
+    },
+    "gate_initialization": {
+      "logits_exact_zero": true,
+      "g_exact_half": true,
+      "weights_exact_half_availability": true
+    }
+  },
+  "producer_reported_not_independent_operation_trace": {
+    "counts": {
+      "teacher_training": 1,
+      "teacher_labels": 3,
+      "student_normal": 1,
+      "student_own_interventions": 2,
+      "restorer_total": 7,
+      "gate": 1,
+      "backward": 2,
+      "teacher_optimizer_steps": 1,
+      "student_optimizer_steps": 0,
+      "NPU_calls": 0
+    },
+    "freeze_checks": {
+      "baseline_unchanged": true,
+      "teacher_final_equals_saved_post_step": true,
+      "students_final_equals_saved_initial": true,
+      "teacher_gradients_cleared": true,
+      "teacher_labels_unchanged": true,
+      "hooks_removed": true,
+      "no_NPU_import": true,
+      "inputs_unchanged": true,
+      "clone_hooks_absent": true
+    },
+    "teacher_loss_before_optimizer_step": {
+      "total": 0.02269206941127777,
+      "charbonnier": 0.02109513059258461,
+      "edge_l1": 0.01468576304614544,
+      "identity_guard": 0.0002567243645898998
+    },
+    "student_single_batch_loss_no_optimizer_step": {
+      "total": 0.025308486074209213,
+      "charbonnier": 0.02327636070549488,
+      "edge_l1": 0.015567932277917862,
+      "identity_guard": 0.00020069378660991788,
+      "fidelity": 0.024933500215411186,
+      "utility": 0.0374985970556736
+    }
+  },
+  "audit_resource": {
+    "elapsed_seconds": 1.3481870852410793,
+    "peak_sampled_owned_group_RSS_bytes": 50532352,
+    "CPU_threads": 2,
+    "wall_limit_seconds": 120,
+    "RSS_limit_bytes": 1073741824
+  },
+  "conclusions": [
+    "The saved teacher tensors changed, and the saved utility student starts from exactly those post-step restorer tensors.",
+    "Both detached teacher and student-own leave-one-out maps match independently recomputed RGB tile errors within tolerances fixed before actual results. Missing history support is exactly zero/invalid.",
+    "The initial gate remains exactly zero-logit/0.5 action. Student gradients are finite and nonzero, including its final gate layer and restoration tail, but no student optimizer step occurred.",
+    "This closes actual-data one-step wiring and evidence integrity for the admitted engineering scope. It does not establish useful utility labels, learned selection, loss descent, held-out restoration quality or generalization."
+  ],
+  "limitations": [
+    "Counts and unsaved final live baseline/teacher/student fingerprints are producer attestations, clearly separated from independent saved-array computation.",
+    "Teacher and student losses are from different batch/action conditions and must not be interpreted as before/after improvement. Teacher post-update loss was not newly measured.",
+    "The shared 2train/2dev data engineering acceptance remains limited; natural continuity is unapproved and the full 32train/8dev research screen is not ready.",
+    "No model, optimizer, decoder or NPU was re-executed for this audit. Actual 43.85MB NPY payloads remain remote; only the 108334-byte small evidence archive was downloaded."
+  ]
+}

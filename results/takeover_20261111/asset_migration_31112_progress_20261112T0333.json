@@ -1,0 +1,38 @@
+{
+  "schema": "openh3.host31112_asset_migration_progress.v1",
+  "checked_utc": "2026-11-12T03:35:47.119844+00:00",
+  "refiner": {
+    "complete": true,
+    "full_bytes": 5868409512,
+    "sha256": "4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2",
+    "download_receipt_sha256": "4538cc76631b30ca95b19f4f4eb3bc1f40cda485824a0581359a7085433aa135",
+    "publication_receipt_sha256": "1b563ce7e26787fdae1f43a844b3bb696e0fa77a575b12187910a4161b39ac02",
+    "manifest_path_published_new_symlink": true,
+    "downloader_process_present": false,
+    "supervisor_process_present": false
+  },
+  "turbo": {
+    "complete": false,
+    "download_sessions_running": 15,
+    "download_verified_parts": 0,
+    "upload_started_parts": 0,
+    "aggregate_local_bytes_at_last_stat": 721996800,
+    "expected_bytes": 1956171936,
+    "transfer_jobs_sha256": "e2e852e0f7d86f45ab3d7118126525f799e4092580548eb1d03d60089ea2ecc5",
+    "parts_manifest_sha256": "46a3825c7f22d7510986e7941caf389eeeaec7a90e9f2587f9446fd5851171f3",
+    "remote_parts_directory_prepared": true,
+    "remote_parts_count_at_last_check": 0,
+    "assembly_source_sha256": "a25a2bcd28b93cb7baa93dc511f618a5a7de574053430d8b088c9bf5ee363e5d",
+    "assembly_executed": false,
+    "assembly_validation": "py_compile only; actual complete-part and full-file SHA checks deferred until all 15 complete remote parts exist"
+  },
+  "actions": {
+    "healthy_transfer_restarts": 0,
+    "duplicate_uploads": 0,
+    "manifest_edits": 0,
+    "existing_asset_overwrites": 0,
+    "NPU_calls": 0,
+    "producer_dispatches": 0
+  },
+  "next": "For each terminal download, verify full local part bytes/SHA before starting one upload_bg and recording its session. Preserve running sessions. Only assemble after all15 remote parts match; then publish only a fresh full-SHA-matching target."
+}

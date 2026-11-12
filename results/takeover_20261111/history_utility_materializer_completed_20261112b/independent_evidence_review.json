@@ -1,0 +1,47 @@
+{
+  "schema": "openh3.history_utility_materializer_independent_evidence_review.v1",
+  "utc": "2026-11-12T04:36:43.602455+00:00",
+  "decision": "engineering_2train2dev_evidence_consistent",
+  "archive_sha256": "87301020aea1122b11583c11036d8f3dfa269ff3f6bc7974f0f7c8b0e2fa3cca",
+  "payload_file_SHAs_independently_verified": 30,
+  "aggregate_sha256": "e7df416127da9811b098caf1bebc5bda43ad70d523745627a7eb0671eed5c6d4",
+  "source1_receipt_preserved": "44bbe2ff1376be5e8fed6903cd8ba50cb044f3f1b92c5c477eb9421dfb16923d",
+  "counts": {
+    "inherited_completed_target_decodes": 1,
+    "inherited_completed_codec_passes": 6,
+    "new_target_decodes": 3,
+    "new_codec_passes": 18,
+    "prior_failed_source2_decode_attempt": "Popen may have started; no completed decode evidence, not counted as a completed target"
+  },
+  "resource": {
+    "elapsed_seconds": 343.6631736503914,
+    "peak_owned_group_RSS_bytes": 416256000,
+    "limit_MiB": 768
+  },
+  "scope": {
+    "train_sources": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ"
+    ],
+    "dev_sources": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA"
+    ],
+    "shape": [
+      96,
+      480,
+      832,
+      3
+    ],
+    "profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "model_calls": 0,
+    "NPU_calls": 0,
+    "research_ready": false,
+    "natural_cut_status": "unknown_engineering_only"
+  },
+  "verification_boundary": "Independently verified local archive JSON/log bytes and logical receipt consistency. NPZ/pixel verification is the recorded remote loader evidence; large NPZ arrays are not in this small archive and were not locally re-read. Not restoration quality, continuous-clip acceptance, independent calibration/test qualification, or 32train/8dev readiness."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "rphi.history_utility_cpu_integration_local_review.v1",
+  "complete": true,
+  "archive_sha256": "5771f5f3f96c2ff0ee83cbe79a1208aa4c274048a7a1dc205626b6812a3226ca",
+  "archive_bytes": 1423907,
+  "report_sha256": "c51f6d080e5d45efaf26e6520e07f25716ef32947fe4222f27838b2cf9c7b73f",
+  "supervisor_receipt_sha256": "e91b784bbb4b0bced09d6aab5a725ad1dc257fb08b23321efe2d3da5b155fe9b",
+  "tests": {
+    "passed": 5,
+    "failed": 0,
+    "seconds": 0.229
+  },
+  "actual_checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+  "inherited_tensors": 58,
+  "added_zero_parameters": 1152,
+  "actual_counts": {
+    "baseline_forwards": 2,
+    "mask_aware_forwards": 6,
+    "student_forwards": 1,
+    "gate_forwards": 1,
+    "backward": 0,
+    "optimizer_steps": 0,
+    "NPU_calls": 0
+  },
+  "four_output_pairs_independently_byte_equal": true,
+  "validated_actual_arrays": 10,
+  "all_file_content_hashes_verified": true,
+  "all_pinned_sources_match": true,
+  "all_model_state_hashes_unchanged": true,
+  "actual_wall_seconds": 5.290371825918555,
+  "actual_peak_RSS_bytes": 305725440,
+  "limitations": [
+    "Synthetic96 RGB only; actual-data integration pending",
+    "No teacher/student training or backward/update",
+    "CPU results do not imply accelerator equivalence, restoration improvement, teacher headroom or novelty",
+    "Independent NumPy review rechecks saved outputs, not a second model forward"
+  ]
+}

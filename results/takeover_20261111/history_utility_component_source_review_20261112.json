@@ -1,0 +1,31 @@
+{
+  "schema": "rphi.history_utility_component_source_review.v1",
+  "reviewer": "root",
+  "scope": "Read-only independent review of the new model and data components. This is not a teacher/student training or quality acceptance.",
+  "sources": {
+    "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+  },
+  "blocking_findings": [],
+  "reviewed": [
+    "Strict authenticated baseline state inheritance; original nine RGB head channels preserved and two explicit mask channels zero-initialized.",
+    "Shared1745-parameter gate reads only current/history observation, absolute difference, lag and verified availability. Target/recipe/severity/source metadata are excluded from forward arguments.",
+    "Absent histories are replaced by current pixels before any interpolation or gate features, avoiding use of invalid values or repeated boundary frames as independent evidence.",
+    "Leave-one-out removes one weight slot without recomputing other gates; marginal utility uses unclamped tile MAE and detached target-derived labels.",
+    "Generic, utility and shuffled-utility arms retain the same fidelity loss and auxiliary graph; source-disjoint shuffled labels are not implemented by these components.",
+    "Data validates full32/8 role registry, explicit receipt identities, exact NPZ metadata/pixels, causal indices and one common spatial crop for all temporal slots.",
+    "Engineering subsets are explicitly barred from research_ready; complete train and dev provenance/continuity must be independently satisfied.",
+    "Identity and near-clean construction from proxy-clean targets is an explicit training control, not an ordinary observation or inference oracle."
+  ],
+  "pending": [
+    "Actual new2train2dev mixed96 materialization and data-to-model integration.",
+    "Separately bounded actual-data teacher update/student gradient smoke.",
+    "Complete32train8dev cohort and natural-cut review before the planned research screen.",
+    "Mask-aware teacher training and frozen teacher headroom; shared utility labels, source-disjoint shuffled assignments and matched student optimization.",
+    "Source-level restoration/clean-protection/stride1 temporal evaluation, independent calibration/test sources and quality benefit evidence."
+  ],
+  "teacher_training_accepted": false,
+  "student_training_accepted": false,
+  "quality_benefit_verified": false,
+  "novelty_established": false
+}

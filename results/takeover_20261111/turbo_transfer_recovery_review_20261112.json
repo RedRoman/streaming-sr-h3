@@ -1,0 +1,61 @@
+{
+  "schema": "openh3.turbo_transport_recovery_review.v1",
+  "utc": "2026-11-12T04:03:38.320349+00:00",
+  "status": "held_for_target_side_exact_reconstruction",
+  "full_asset_bytes": 1956171936,
+  "original_retained_prefix_bytes": 927759360,
+  "original_prefixes_source_exact": 15,
+  "missing_suffix_total_bytes": 1028412576,
+  "materialized_suffix_segments": 71,
+  "suffix_download_attempts": 8,
+  "suffix_download_failures": 8,
+  "suffix_partial_bytes": 25067520,
+  "complete_parts": 0,
+  "target_uploads_started": 0,
+  "published_asset": false,
+  "actual_background_error": "exit 255 only; no stderr exposed by transfer_status; exact root cause unestablished",
+  "direct_sftp_1MiB": {
+    "schema": "openh3.sftp_bounded_range_diagnostic.v1",
+    "utc": "2026-11-12T04:03:38.320349+00:00",
+    "source_host": "30794",
+    "method": "ssh_download direct SFTP",
+    "bytes": 1048576,
+    "sha256": "2b0362cc6b41265a27cab2c6dc9cc92900707d50651e654568aaa11e14332fbd",
+    "elapsed_seconds": 33.913,
+    "exact": true,
+    "network_speed_including_handshake_bytes_per_second": 30919.588358446617,
+    "larger_diagnostic_dispatched": false,
+    "hold_reason": "Root owns candidate exact local BF16 conversion reconstruction on 31112; preserve all transport partials; no further large transfers."
+  },
+  "local_openssh_diagnostic": {
+    "schema": "openh3.bounded_ssh_read_diagnostic.v1",
+    "utc": "2026-11-12T04:01:37.038584+00:00",
+    "max_bytes": 1048576,
+    "timeout_seconds": 60,
+    "remote_host": "30794",
+    "method": "existing configured OpenSSH; BatchMode; strict known-host policy unchanged",
+    "complete": true,
+    "exit_code": 0,
+    "stderr": "Warning: Permanently added '[dev-modelarts-cnnorth9.huaweicloud.com]:30794' (RSA) to the list of known hosts.\r\n",
+    "elapsed_seconds": 29.682424068450928,
+    "bytes": 1048576,
+    "sha256": "2b0362cc6b41265a27cab2c6dc9cc92900707d50651e654568aaa11e14332fbd"
+  },
+  "no_NPU_or_model_execution": true,
+  "evidence": {
+    "prefix_receipt.json": "e9872e5128251c226e08be0d7f7fbc30da4deca4b4065a819fd51a04e70cd3d2",
+    "source_receipt.json": "556189b131ae3ac029b1b330f97fe845dcb8380427651025b2026d42b0f218d5",
+    "recovery_jobs.json": "20efa161ceb489c140806542e7f2087cb1a0c5152813ef1bfe6cab72acf7009a",
+    "ssh_diagnostic.json": "617a40602be1f717bad76573b7048b7b0152b726658c106c487930fc2bb40263",
+    "sftp_diagnostic.json": "ff175f519860012c22d7e4ad372b59c8251b14045512ab402d962c1a3e071f28",
+    "materialize_suffixes.py": "28465da0933e01ba5e51d3d01b3e4dd65fd01e4d7d34d317f454f8fad91ca127",
+    "reconstruct_local.py": "924c3d309c9d2b9fdc7f53261a0f8102e1720a38ef1d2ffdbc868dd1d9028007",
+    "ledger_ops.py": "19a652bb57c8345d8821d2ff296c09b6c1f3f0205a794d6652daa78514a5c2a5",
+    "test_reconstruct_local.py": "d9e578c0d99a3da95950c54fda23273dffac584c91b072329cbd1e5ac95ba248"
+  },
+  "tests": {
+    "local_reconstruction_tests": 2,
+    "passed": 2,
+    "purpose": "exact reconstruction + retained prefix unchanged + refusal of SHA mismatch/offset gap/overwrite"
+  }
+}

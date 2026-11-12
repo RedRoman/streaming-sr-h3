@@ -1,0 +1,49 @@
+{
+  "schema": "rphi.history_utility_one_step_execution_interface.v1",
+  "entry": "code/check_history_utility_one_step.py",
+  "entry_sha256": "8c2611302c3d3d9445ea6f839f6705bac7bc5e6dc16916c90b3c0940887478a6",
+  "tests": "code/tests/test_history_utility_one_step.py",
+  "tests_sha256": "0cffe109fd8cca7710beb91356fa751afc48fc1277e0494f96152eafa4bc3e15",
+  "CLI": "--execution-contract FILE --out NEW_DIRECTORY [--execute]; default strict actual-pixel inspection does not import Torch or construct a model",
+  "root_admission_required": {
+    "approved": true,
+    "scope": "engineering_one_step_not_research",
+    "source_contract_sha256": "exact immutable engineering contract bytes",
+    "entry_sha256": "exact copied entry bytes",
+    "execution_payload_sha256": "SHA256(json.dumps({k:v for k,v in execution.items() if k != root_admission},sort_keys=True,separators=(comma,colon),allow_nan=False).encode()); key comparison is literal string root_admission"
+  },
+  "admission_order": [
+    "Freeze execution payload without root_admission",
+    "Compute payload SHA with producer execution_payload_sha256",
+    "Write root_admission binding exact payload/source contract/entry",
+    "Record admission file SHA in execution.root_admission",
+    "Freeze final execution/queue and interpreter/source/environment/asset pins",
+    "Run default inspection then bounded execute only after root review/resource admission"
+  ],
+  "guard_required": "Entry verifies declared 2CPU/300s/4GiB and count budgets; root one-shot supervisor must enforce300s+10s grace and owned process-group RSS. Entry does not independently supervise its own RSS/time.",
+  "data_schemas_supported": [
+    "openh3.history_utility_materialization.v1",
+    "openh3.history_utility_materialization_recovery.v1"
+  ],
+  "recovery_accounting": "New explicit schema keeps reused1/new3 and prior failed attempt caveat, original data contract13b6e03f...47ad; never rename recovery to original materialization.",
+  "current_status": "8 synthetic small-Torch CPU tests passed; no actual-data one-step execution or producer snapshot/queue admission has occurred",
+  "output_schema": "rphi.history_utility_one_step_report.v1",
+  "array_record_fields": [
+    "path(relative to out)",
+    "file_sha256",
+    "content_sha256",
+    "shape",
+    "dtype"
+  ],
+  "evidence_layout": [
+    "arrays/input/{teacher,student}/observed.npy and availability.npy; input/teacher/weights.npy",
+    "arrays/supervision/{teacher,student}/target.npy",
+    "arrays/teacher_before/*.npy,teacher_after/*.npy,student_initial/*.npy",
+    "arrays/teacher_grad_raw/*.npy,teacher_grad_clipped/*.npy,student_grad/*.npy",
+    "arrays/teacher_labels/{all,without0,without1,raw_utility,normalized,valid}.npy",
+    "arrays/student_normal/{rgb,z,g,weights}.npy; student_own/{without0,without1,raw_utility,normalized,valid}.npy",
+    "partial.json during phases; report.json only successful; failure.json otherwise"
+  ],
+  "failure_policy": "Preserve completed counts and available arrays; finally removes observer hooks and records checkpoint/baseline/teacher/student/input/source hashes where initialization reached. No retries/optimizer extension/automatic result selection.",
+  "unit_test_scope": "B2/16x16/ch4 fixture, not production B16/96/ch64. Full successful fixture is7F/2B/1update; separate injected post-teacher-update failure fixture is1F/1B/1update. These are isolated synthetic unit models, not an actual-data teacher run."
+}

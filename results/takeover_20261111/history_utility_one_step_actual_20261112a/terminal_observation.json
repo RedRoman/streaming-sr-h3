@@ -1,0 +1,58 @@
+{
+  "schema": "rphi.history_utility_one_step_actual_terminal_observation.v1",
+  "recorded_at_utc": "2026-11-12T04:41:51.488079+00:00",
+  "host": "huawei-modelarts-31984",
+  "scope": "engineering_one_step_not_research",
+  "source": "One read-only terminal observation of producer report and frozen supervisor status; independent array audit delegated separately.",
+  "freeze_sha256": "c6910eb2da0bd008e473c2e659e6d7f6525d8fed8e57bb8f6c2a00e8bd63e27e",
+  "execution_contract_sha256": "8b6b311fea9e3ede7da2d5a799045449eca873e3116931f19b4d14cea2fbb000",
+  "root_admission_sha256": "c32ca946f69ad83acb0dd0d48355045dadb32e605865f68722a63662245e0b0d",
+  "report": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_one_step_20261112a/report.json",
+    "sha256": "b94c8b960a439e1ff6930018c7d3bd3971a197158f22d4eb41206eee09e6baec",
+    "complete": true,
+    "status": "completed_one_step_engineering",
+    "producer_elapsed_seconds": 122.93890814855695
+  },
+  "actual": {
+    "teacher_training": 1,
+    "teacher_labels": 3,
+    "student_normal": 1,
+    "student_own_interventions": 2,
+    "restorer_total": 7,
+    "gate": 1,
+    "backward": 2,
+    "teacher_optimizer_steps": 1,
+    "student_optimizer_steps": 0,
+    "NPU_calls": 0
+  },
+  "supervisor": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_one_step_20261112a_supervisor/execute/status.json",
+    "sha256": "1690aeb175b5487d7ac2a669fa28b1c55aa8b39ca73878b3127d14b86256c834",
+    "complete": true,
+    "state": "completed",
+    "returncode": 0,
+    "PID": 861942,
+    "PGID": 861942,
+    "active_worker_seconds": 123.95465676672757,
+    "combined_active_worker_seconds": 163.9263520464301,
+    "peak_owned_group_RSS_bytes": 2201800704,
+    "pins_unchanged": true,
+    "pins": 18
+  },
+  "default_inspect": {
+    "complete": true,
+    "report_sha256": "53175f0aa0874d984abc972be65db3fa3f7501fd1a54951840643e181b4b9ead",
+    "active_worker_seconds": 39.971695279702544,
+    "peak_owned_group_RSS_bytes": 750723072
+  },
+  "independent_array_audit": "delegated to audit_evidence; not yet asserted here",
+  "research_training_complete": false,
+  "quality_efficacy_proven": false,
+  "retry_or_repeated_model_calls": false,
+  "limitations": [
+    "One actual CPU engineering step verifies wiring only, not the proposed 1000-step teacher/student research matrix.",
+    "Only two training sources and two development sources are materialized; no independent calibration or frozen test claim.",
+    "Final live state hashes are producer attestations where final live weights were not separately saved; independent auditor must preserve that boundary."
+  ]
+}

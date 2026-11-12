@@ -1,0 +1,56 @@
+{
+  "actual_inspection": {
+    "path": "preparation/history_utility_target_screen_20261112a/inspection.json",
+    "sha256": "54ad354e8b7f0a4930f21b3c36b82b1f41c83e0197fd8896e147c3c1fd941639"
+  },
+  "contract": {
+    "path": "preparation/history_utility_target_screen_20261112a/execution_contract.json",
+    "sha256": "38d7102e31e6a44bc22dee0e44326c745ae7bd1da93c0193ed01568d424eb333"
+  },
+  "cpu_tests": {
+    "path": "preparation/history_utility_target_screen_20261112a/cpu_tests.json",
+    "sha256": "90bc77fe05bdb9169b3517d0763a63fdfbb76dadfdc4afa4358c4c019907387c"
+  },
+  "created_at_utc": "2026-11-12T04:51:46.877979+00:00",
+  "freeze": {
+    "path": "preparation/history_utility_target_screen_20261112a/freeze.json",
+    "sha256": "1173b26458a5b3eb47a4fababcd6195d27619cb7b7dbab6384b632d9e43455fb"
+  },
+  "future_single_launch_command_pending_admission": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/run_once.py --freeze /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/freeze.json --freeze-sha256 1173b26458a5b3eb47a4fababcd6195d27619cb7b7dbab6384b632d9e43455fb --execute --admission /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/admission.json",
+  "future_tmux_session": "p1-target-screen-20261112a",
+  "host": "huawei-modelarts-31984",
+  "inspect_command": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/run_once.py --freeze /cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/freeze.json --freeze-sha256 1173b26458a5b3eb47a4fababcd6195d27619cb7b7dbab6384b632d9e43455fb",
+  "inspection_exit_code": 0,
+  "model_or_NPU_calls": 0,
+  "new_target_decodes_so_far": 0,
+  "pins_verified": 65,
+  "root_review_required_before_execution": true,
+  "schema": "openh3.history_utility_target_screen_preparation.v1",
+  "scope": "4 existing targets reused,36 new target decodes,0degradation passes,0model,0NPU;all40contact sheets/95pair scores each,6ranked pairs each;strictly pendingvisualreview",
+  "source": {
+    "path": "code/screen_history_utility_targets.py",
+    "sha256": "97ae60ceee2b038afbe68fe9f7b51cb4e61a6a79c50258a0ad68d79df8f40c39"
+  },
+  "source_files_actual_full_SHA_verified": 40,
+  "status": "prepared_actual_inspection_passed_not_launched_pending_root_review",
+  "supervision": {
+    "CPU_threads": 1,
+    "external_TERM_INT_owned_cleanup": true,
+    "grace_seconds": 30,
+    "minimum_free_disk_gib": 6,
+    "minimum_free_memory_gib": 3,
+    "owned_group_memory_mib": 768,
+    "simultaneous_compute_workers": 1,
+    "wall_seconds": 1800
+  },
+  "supervisor": {
+    "path": "preparation/history_utility_target_screen_20261112a/run_once.py",
+    "sha256": "e87c5ea05febc32b0b0a8cf4fdf7903172829d61a21090061891b76b97e8b30d"
+  },
+  "target_files_actual_full_SHA_verified": 4,
+  "target_pixels_verified_in_this_inspection": false,
+  "tests": {
+    "path": "code/tests/test_history_utility_target_screen.py",
+    "sha256": "6772dc88361f08e91e18f6aa0999e0416e578f7142a901a8f1cf4e183d99aeb5"
+  }
+}

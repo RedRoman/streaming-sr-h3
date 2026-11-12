@@ -1,0 +1,86 @@
+{
+  "schema": "openh3.history_utility_data_cpu_validation.v1",
+  "created_utc": "2026-11-12T03:36:07.928401+00:00",
+  "source_sha256": {
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "code/tests/test_history_utility_data.py": "40994f7092e20932ff54bf2e754f49a1f485e30703429d2c6641d1b3b56bc525"
+  },
+  "cpu_tests": {
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_history_utility_data.py",
+      "-v"
+    ],
+    "tests": 8,
+    "failures": 0,
+    "skips": 0,
+    "elapsed_seconds": 1.765,
+    "log_sha256": "8bdd73780f6af4d411209c7c85b59ebabeaa9294ec82467a29a2b0320069894d",
+    "scope": "Synthetic full-shape NPZ pixel fixtures plus real complete-receipt metadata; not actual remote mixed NPZ pixel verification"
+  },
+  "software": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "numpy": "2.5.1",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O"
+  },
+  "actual_metadata_inspection_sha256": "0bdb42e04722580a83e177c7bcf506ad103d965b53a5eda1f1770c6e025004e4",
+  "existing_source_availability_sha256": "e724b6a0e5679598068238cc67bb7503283ba6b1726f452264f87ecc3da40a1a",
+  "actual_source_files_hashed": 4,
+  "actual_source_manifest_matches": 4,
+  "baseline": {
+    "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "step": 3000,
+    "model_config": {
+      "variant": "blind",
+      "k": 3,
+      "ch": 64,
+      "blocks": 8,
+      "condition_dim": 6,
+      "observation_encoder": "legacy"
+    },
+    "fidelity_loss": {
+      "rgb": "Charbonnier eps=0.001",
+      "edge_l1_weight": 0.1,
+      "identity_guard_weight": 0.5,
+      "confidence_nll_weight": 1.0,
+      "confidence": "detached error Gaussian NLL; separate optimizer; no fidelity reweighting"
+    },
+    "selected_as": "legacy_g05 frozen engineering/reference baseline; not quality-accepted omni model",
+    "evidence": "results/takeover_20261111/rphi_stage2_scientific_review_v2.json"
+  },
+  "model_review": {
+    "source": "code/rphi_history_utility.py",
+    "sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "read_only": true,
+    "blocking_findings": [],
+    "scope": "old9+zero2 head inheritance; shared1745 gate; raw observation+FP32 availability only; other-slot invariant LOO; detached utility supervision; fixed matched fidelity losses",
+    "cpu_tests_rerun_by_this_reviewer": false
+  },
+  "readiness": {
+    "materialized_sources_confirmed_in_prior_receipt": 1,
+    "materialized_profiles_per_source": 6,
+    "P1_profiles_loaded": 3,
+    "actual_mixed_NPZ_loaded_here": false,
+    "current_source_cut_status": "unknown_engineering_only",
+    "research_ready": false,
+    "training_source_requirement": 32,
+    "dev_source_requirement": 8,
+    "teacher_training_launched": false,
+    "NPU_calls": 0,
+    "label_cache_implemented": false,
+    "source_disjoint_shuffled_label_map_implemented": false,
+    "teacher_training_loop_implemented": false
+  },
+  "limitations": [
+    "Registry and selected actual MP4s are verified; full selected mixed NPZ loading still needs a bounded remote CPU run.",
+    "Only this dataset split can pass its research_ready gate; both train and dev must pass independently before a research teacher run.",
+    "NumPy teacher local-soft masks implement a fixed float32 separable align_corners=False formula; no bit-identical Torch interpolation claim.",
+    "Identity and near-clean intentionally construct observations from the reference proxy; ordinary inputs do not read target pixels."
+  ]
+}

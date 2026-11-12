@@ -1,0 +1,27 @@
+{
+  "schema": "openh3.nonzero_CPU_auditor_target_validation.v1",
+  "host": "31112",
+  "utc": "2026-11-12T03:28:38.083211+00:00",
+  "tests_passed": 17,
+  "skipped": 0,
+  "test_log": "cpu_tests_31112_v2.log",
+  "test_log_sha256": "cb2c4d97b1faff3d5881a89188d9bd1720d262111ea313f870881a689dcd2050",
+  "source_sha256": {
+    "audit_terminal.py": "603cb5773362fd1c96d8b7fa7318914ae287bfc74a70766a7b6e34338170535b",
+    "audit_arrays.py": "79e7c509471cbca52d4b6a94b0b01141b1f7d2136e58b60e1542feb625726030",
+    "audit_checkpoint.py": "80736954b747ade56bc3c32b245678f624844f4f9568fc5b5450deb71056db41",
+    "finalize_once.py": "10069ea77cf4c4503ff54eb7a6ea83a814eade1fa2d2474b40e2458d60ba469f",
+    "small_archive.py": "669537db16b0371021d22b2472951fe817dc909c02584c0ba6f1d27230f102f0",
+    "test_audit.py": "c43ce4e7ec97a89a27e137979f2998a3fd2ab3f9428f2a1c69b666761768df35"
+  },
+  "admission_sha256": "eeaa32b0135b065d3399ae7210bdc5c85ba692148be8b4b2f133f65ac4d5d5dd",
+  "first_attempt": {
+    "log": "cpu_tests_31112.log",
+    "sha256": "98947071082a6ebf5446cea332b7f3c0a53e3f5126e7fb44e5db51886e1f1312",
+    "tests": 17,
+    "errors": 1,
+    "cause": "Test fixture source contract absent from target configs; 16 tests passed. Fixture copied with exact d314 SHA; no source/test gate changed."
+  },
+  "producer_launched": false,
+  "finalizer_launched": false
+}

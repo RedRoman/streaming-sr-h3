@@ -1,0 +1,74 @@
+{
+  "schema": "openh3.nonzero_b_startup.v1",
+  "observed_utc": "2026-11-12T04:12:29.380356+00:00",
+  "host": "31112",
+  "queue": {
+    "state": "running",
+    "card": 1,
+    "step": "single_SGD_save_reload_merge",
+    "completed": [],
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=30s",
+      "3600s",
+      "venv/bin/python",
+      "preparation/h3_nonzero_adapter_probe_20261112b_31112/code/check_h3_nonzero_adapter.py",
+      "--pretrained-manifest",
+      "configs/openh3_20261111/refiner_turbo_30794.json",
+      "--execution-contract",
+      "preparation/h3_nonzero_adapter_probe_20261112b_31112/execution_contract.json",
+      "--out",
+      "runs/h3_nonzero_adapter_probe_20261112b_31112/eval",
+      "--execute"
+    ],
+    "updated_at_utc": "2026-11-12T04:11:01.659289+00:00"
+  },
+  "phase": "load_and_verify_assets",
+  "phase_last": [],
+  "actual": {
+    "NFE": {
+      "merged": 0,
+      "reloaded": 0,
+      "updated": 0,
+      "zero": 0
+    },
+    "RGB_loss_expressions": 0,
+    "VAE_decode_calls": {
+      "merged": 0,
+      "reloaded": 0,
+      "updated": 0,
+      "zero": 0
+    },
+    "VAE_encode_calls": 0,
+    "adapter_updates": 0,
+    "backward_attempts": 0,
+    "checkpoint_saves": 0,
+    "clear_reload_cycles": 0,
+    "completed_backward_calls": 0,
+    "forbidden_calls": [],
+    "merge_calls": 0,
+    "optimizer_steps": 0,
+    "stage_decode_calls": {},
+    "unscale_calls": 0
+  },
+  "producer_process_rows_pid_ppid_stat_elapsedCPU_RSS": [
+    [
+      "360651",
+      "360647",
+      "Rl",
+      "87",
+      "86.3",
+      "1801848"
+    ]
+  ],
+  "finalizer": {
+    "state": "waiting_for_terminal",
+    "pid": 362132,
+    "started_at_utc": "2026-11-12T04:11:54.230640+00:00",
+    "audit_invocations": 0,
+    "NPU_calls": 0
+  },
+  "CPU_inspection_SHA": "212ff57918cbb404b28b59a97ab041b625af1ee6f9c0d591b991450cea611932",
+  "admission_SHA": "f4e3f1178795330a2236e97d242a07a762981ebb7e127917e08bc18ac6cff7ab"
+}

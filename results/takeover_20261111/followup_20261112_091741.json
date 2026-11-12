@@ -1,0 +1,119 @@
+{
+  "schema": "openh3.followup.v1",
+  "at_utc": "2026-11-12T09:36:46.843738+00:00",
+  "H3_saved_subset_audit": {
+    "status": "completed_and_independently_accepted_saved_subset_only",
+    "host": "31112",
+    "run": "runs/h3_saved_adamw_partial_audit_20261112b",
+    "audit_sha256": "45455ffb415b853ccb1c5afc7ce7ca0d1d47dc5ac731184a39c34512d9d250d6",
+    "actual_arrays": 3222,
+    "adapter_tensors": 400,
+    "optimizer_tensors": 1200,
+    "root_acceptance": "results/takeover_20261111/h3_saved_subset_completed_20261112b/root_acceptance.json",
+    "ready_for_continuation": true,
+    "original_run_accepted": false,
+    "elapsed_seconds": 49.051197247579694,
+    "unmerged_updated_RGB_changed": true,
+    "zero_MSE": 0.0030889882945633455,
+    "updated_MSE": 0.003098216962949771,
+    "quality_gain": false
+  },
+  "H3_continuation": {
+    "host": "31112",
+    "status": "CPU10_passed_actual_input_inspection_passed_waiting_for_idle_NPU",
+    "prep": "preparation/h3_adamw_saved_continuation_preparation_20261112b",
+    "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
+    "execution_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
+    "NPU_launched": false,
+    "scope": "6NFE2decode1merge0backward0update;original_failure_preserved",
+    "CPU_candidate_a_failure": "param_group lr mapped against recipe without lr; fixed in b with exact actual_lr mapping; failure retained",
+    "resource_observation": "09:31UTC all8cards had PIDs; no processes killed"
+  },
+  "input_preservation": {
+    "status": "train_and_dev_caches_complete_independent_CPU_audits_dispatched_heads0",
+    "module": {
+      "path": "code/rphi_input_preservation.py",
+      "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+      "parameters": 1745,
+      "CPU_tests_passed": 9,
+      "CPU_receipt": "preparation/input_preservation_module_cpu_20261112a/cpu_receipt.json",
+      "CPU_receipt_sha256": "bd4d04617eaefbd57dc627f399591d84fea1dc8a5e5e8fa742750ecfab1780f0"
+    },
+    "donors": {
+      "host": "31984",
+      "run": "runs/input_preservation_donors_20261112a",
+      "producer_complete": true,
+      "donor_ready": true,
+      "rows": 16000,
+      "strata": 36,
+      "independent_actual_audit": {
+        "path": "results/takeover_20261111/input_preservation_donors_completed_20261112a/payload/runs/input_preservation_donors_20261112a/independent_audit.json",
+        "sha256": "db16b92830f0f7608cfca4e40a50c71db6b6eb94902793ee97347c67fb73638d"
+      },
+      "manifest": {
+        "path": "results/takeover_20261111/input_preservation_donors_completed_20261112a/payload/runs/input_preservation_donors_20261112a/manifest.json",
+        "sha256": "cd5c27e29dca71cbf87df607e05ba5fd0f71a666b82b50907b001ad04899fe43"
+      },
+      "donor_map": {
+        "bytes": 7745074,
+        "donor_map_sha256": "93351eb1d63955431c8e3546f42c89f5d3933da53e6636ca89765f872b15a2bf",
+        "file_sha256": "fdb872a4e1b20c07b67af2c7b40a322f6b968ea7efcac9b2a96239c8898a2d6a",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_donors_20261112a/input_preservation_donor_map.json"
+      },
+      "both_absent_rows": 1815
+    },
+    "proposal": {
+      "path": "configs/openh3_20261111/input_preservation_interface_proposal_20261112.json",
+      "sha256": "d1dd2afd1b9daddea8340fe1edff7c71ed6215fbf6f3ef038adaa4b01aa262de"
+    },
+    "prospective_screen": {
+      "path": "configs/openh3_20261111/input_preservation_screen_20261112.json",
+      "sha256": "144120baa552ae8371a73a03dcd3c48da9204e86a9f7e87186f3697ee0178577"
+    },
+    "train_final_K1_cache_exists": true,
+    "exact_dev_K3_reconstruction_verified": "producer_2880_exact_pending_independent_audit",
+    "training_steps_per_arm": {
+      "matched": 0,
+      "shuffled": 0
+    },
+    "new_restorer_training_steps": 0,
+    "training_admitted": false,
+    "next": "Accept actual CPU cache audits, implement/freeze CPU head trainer/evaluator and LPIPS backend/weights/resources, verify backend smoke, then matched/shuffled1000 each under unchanged screen.",
+    "caches": {
+      "host": "31984",
+      "train": {
+        "run": "runs/input_preservation_train_cache_20261112b",
+        "complete": true,
+        "manifest_sha256": "4fc49311e3c03b1e089e9eafbd33207965b806ddc5b250fb4fbe936297dc70b9",
+        "rows": 16000,
+        "forwards": 1000,
+        "restorer_updates": 0,
+        "elapsed_seconds": 434.3782916665077,
+        "frozen_state_exact": true
+      },
+      "dev": {
+        "run": "runs/input_preservation_dev_cache_20261112a",
+        "complete": true,
+        "manifest_sha256": "e509faed1b14840aecbb1a7e059d1e43e0b008dc4cee1bc9a88c2901f007e886",
+        "rows": 2880,
+        "restorer_forwards": 0,
+        "elapsed_seconds": 41.16166702006012
+      },
+      "evidence": "results/takeover_20261111/input_preservation_cache_completed_20261112b",
+      "train_a_not_launched_preserved": true
+    },
+    "cache_audits": {
+      "host": "31984",
+      "status": "dispatched_actual_status_files_authoritative",
+      "dev": "runs/input_preservation_dev_cache_audit_20261112a",
+      "train": "runs/input_preservation_train_cache_audit_20261112a",
+      "entry_sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+      "audit_tests_passed": 11,
+      "runner_tests_passed": 10,
+      "resources": "each900s2CPU;dev4GiB/train32GiB",
+      "NPU_calls": 0
+    }
+  },
+  "source_splits": "19train6dev;no independent test",
+  "formal_H3_training_steps": 0
+}

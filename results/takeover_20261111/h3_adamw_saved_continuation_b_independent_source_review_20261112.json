@@ -1,0 +1,59 @@
+{
+  "created_at_utc": "2026-11-12T09:31:55.300361+00:00",
+  "review_type": "independent_read_only_source_and_local_evidence_review",
+  "reviewer_operations": {
+    "SSH_calls": 0,
+    "tests_rerun": 0,
+    "actual_NPZ_reads": 0,
+    "checkpoint_deserializations": 0,
+    "model_calls": 0,
+    "NPU_calls": 0
+  },
+  "blocking_findings": [],
+  "schema": "openh3.saved_adamw_continuation_independent_delta_review.v1",
+  "status": "no_remaining_source_blocker_in_reviewed_delta",
+  "prior_review": {
+    "path": "results/takeover_20261111/h3_adamw_saved_continuation_independent_source_review_20261112.json",
+    "sha256": "5d1b20fdcfd9d3153a8cb55cba1f1e36ffed6840f65256ba163196395514ea81"
+  },
+  "entry": {
+    "path": "code/check_h3_adamw_saved_continuation.py",
+    "sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8"
+  },
+  "tests": {
+    "path": "code/tests/test_h3_adamw_saved_continuation.py",
+    "sha256": "f7d5c4264b88095a5a933460a99e3800cbc6e709e8c69ee9a0c35c4d0cfa6494"
+  },
+  "source_freeze": {
+    "path": "preparation/h3_adamw_saved_continuation_preparation_20261112b/source_freeze.json",
+    "sha256": "fd296091a6a97c155db60beef010e5241e3e1666f1331c938fa9b4cdd0e6828b"
+  },
+  "frozen_files_independently_SHA_verified": 15,
+  "local_cpu_evidence": {
+    "path": "preparation/h3_adamw_saved_continuation_preparation_20261112b/local_cpu_receipt.json",
+    "sha256": "e777296dfc0c01e26d170f524790bee5a22faf55ca57ea82e767a4fb96d59e9c"
+  },
+  "reason_for_new_candidate": "Actual Torch CPU fixture of candidate a raised KeyError because frozen probe recipe stores actual_lr, not lr. Old a source and failed test evidence remain unchanged.",
+  "verified_delta": [
+    "Only new optimizer_group_recipe maps exact frozen recipe.actual_lr to Torch parameter-group lr and converts betas to a tuple; all other declared optimizer fields remain exact.",
+    "restore_optimizer validates loaded group against this explicit mapping, retaining canonical400parameter/1200state coverage, dtype/device/value and same-step requirements. No optimizer.step is added.",
+    "New pure Python regression checks original recipe lacks lr and exact actual_lr=1.0000000000000002e-6 without rounding.",
+    "Compared full entry/test diff against frozen a: no other numerical or budget changes."
+  ],
+  "cpu_test_scope": {
+    "local_total": 10,
+    "local_passed": 6,
+    "local_Torch_skipped": 4,
+    "reviewer_reran": false,
+    "actual_Torch_CPU_fixture_acceptance": "pending_parent_execution_at_review_time"
+  },
+  "required_before_execution": [
+    "New b source/runtime/queue pins must bind bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8 rather than old a.",
+    "Real Torch CPU fixtures and accepted actual saved-subset audit remain separate prerequisites; this source review does not substitute for either."
+  ],
+  "claim_boundaries": [
+    "Original3600second failed producer remains failed; saved-subset CPU acceptance cannot claim completed prior strict reload or merge.",
+    "Continuation retains6NFE/2decode and0backward/0update; strict reloaded outputs must match saved updated bytes, merged differences remain descriptive.",
+    "No actual checkpoint/model/NPU execution performed in this review."
+  ]
+}

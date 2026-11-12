@@ -1,0 +1,136 @@
+{
+  "schema": "openh3.real_AdamW_failed_root_review.v1",
+  "reviewed_at_utc": "2026-11-12T08:44:51.324425+00:00",
+  "status": "failed_wall_budget_not_accepted",
+  "run_host": "31112",
+  "run": "runs/h3_real_adamw_update_20261112a",
+  "producer_complete": false,
+  "terminal_audit_complete": true,
+  "numerical_acceptance": "producer_failed_not_accepted",
+  "failure": {
+    "type": "TimeoutError",
+    "message": "owned worker exceeded fixed wall budget"
+  },
+  "failed_at_utc": "2026-11-12T08:32:23.000179+00:00",
+  "active_worker_seconds": 3601.0143717136234,
+  "peak_owned_group_RSS_bytes": 87447408640,
+  "owned_cleanup": {
+    "pgid": 510744,
+    "TERM_sent": true,
+    "KILL_sent": false,
+    "remaining_live": [],
+    "zombies_only": false
+  },
+  "runtime_pins_unchanged": true,
+  "phase": "clear_and_strict_reload",
+  "actual": {
+    "NFE": {
+      "merged": 0,
+      "reloaded": 0,
+      "updated": 3,
+      "zero": 3
+    },
+    "RGB_loss_expressions": 1,
+    "Rphi_calls": 0,
+    "VAE_decode_calls": {
+      "merged": 0,
+      "reloaded": 0,
+      "updated": 1,
+      "zero": 1
+    },
+    "VAE_encode_calls": 0,
+    "adapter_updates": 1,
+    "backward_attempts": 1,
+    "checkpoint_saves": 1,
+    "clear_reload_cycles": 1,
+    "clip_calls": 1,
+    "completed_backward_calls": 1,
+    "forbidden_calls": [],
+    "merge_calls": 0,
+    "optimizer_state_clear_reload": 1,
+    "optimizer_state_saves": 1,
+    "optimizer_steps": 1,
+    "stage_decode_calls": {
+      "updated_decode": 1,
+      "zero_decode": 1
+    },
+    "unscale_calls": 1
+  },
+  "clear_reload_counter_scope": "load_state_dict returned; subsequent exact inventory/state/output checks are incomplete",
+  "terminal_audit_actual_check_names": [
+    "bounded_actual_work",
+    "frozen_initial_partial",
+    "final_frozen_partial",
+    "failed_run_scope"
+  ],
+  "evidence": {
+    "queue_status.json": {
+      "path": "results/takeover_20261111/h3_real_adamw_failed_20261112a/queue_status.json",
+      "sha256": "28299a42e3e76ce00b5e8fe7dae9bd471ebfa7fc7950051199857280de9d9edb"
+    },
+    "partial.json": {
+      "path": "results/takeover_20261111/h3_real_adamw_failed_20261112a/partial.json",
+      "sha256": "ff278a84665a7cae78246dc017cbbfe0b0ddb2e93ac9f7d08c6fa31c0309b646"
+    },
+    "terminal_audit.json": {
+      "path": "results/takeover_20261111/h3_real_adamw_failed_20261112a/terminal_audit.json",
+      "sha256": "171431f56e6807f0b9841df092e1e0fd923c86b2bba56caf782c18d78ee055b6"
+    },
+    "local_verification.json": {
+      "path": "results/takeover_20261111/h3_real_adamw_failed_20261112a/local_verification.json",
+      "sha256": "a862962b60f55e2736b0c00732ddfe866823ae7d379cfa2a5547bf331cebb36b"
+    }
+  },
+  "small_archive": {
+    "sha256": "75e3e700fb051d56906378d6002abcebe90f8184fdb3800c23cbaf276dbc001d",
+    "bytes": 989404,
+    "downloaded_once": true,
+    "all_payload_SHA_verified": true
+  },
+  "saved_artifacts_producer_report_only": {
+    "adapter": {
+      "path": "real_train_AdamW_step1.safetensors",
+      "sha256": "b805168bc6d1af3506db5788b9c22a6eec1c30f804dba34268013001558932be",
+      "bytes": 149313664
+    },
+    "optimizer": {
+      "path": "real_train_AdamW_step1_optimizer.safetensors",
+      "sha256": "569eeaf6d470036cb75b216bfd1dcf0fcd824aadbfe283a0f779657e4055664e"
+    }
+  },
+  "acceptance_boundaries": {
+    "first_step_equations_independently_accepted": false,
+    "strict_persistence_accepted": false,
+    "functional_effect_accepted": false,
+    "merge_accepted": false,
+    "quality_accepted": false,
+    "formal_guide_matched_training_steps": 0,
+    "original_failure_preserved": true
+  },
+  "terminal_audit_generic_limitations_correction": "The terminal audit contains generic success-path limitations. This failed path only performed bounded work and partial frozen-state checks; its generic claim that all RGB/gradient/adapter/optimizer arrays were checked must not be treated as evidence.",
+  "diagnostic": {
+    "path": "results/takeover_20261111/h3_real_adamw_timeout_static_diagnostic_20261112.json",
+    "sha256": "50de4805d7a8b8c77a59f4509e34d9107a6e5f11ffd1cc97e03c2fbd606db9d7",
+    "finding": "Thousands of successful require calls rewrite the growing full JSON. Static amplification is proven; the precise interrupted operation and exclusive cause of timeout are not instrumented."
+  },
+  "helper": {
+    "source": "code/h3_evidence_checks.py",
+    "sha256": "cf6528c6f0d6b484f903a015a63af13850e725a14aa59f185678b5413c9daffe",
+    "CPU_receipt": "preparation/h3_evidence_checks_cpu_20261112a/cpu_receipt.json",
+    "CPU_tests_passed": 7,
+    "integrated": false,
+    "deployed": false,
+    "independent_review": {
+      "path": "results/takeover_20261111/h3_evidence_checks_independent_review_20261112.json",
+      "sha256": "d69222c04bb84ba0ff60f08254dc996e1e50cea80fea9a4afbf0f5d07dd0950f",
+      "passed": true,
+      "integration_pending": true
+    }
+  },
+  "next_steps": [
+    "Independently audit existing saved adapter/optimizer, first-step equations and zero/updated output artifacts on CPU under a new bounded contract.",
+    "In a new immutable snapshot integrate success-no-flush checks, retain all validation predicates, add explicit phase/progress flushing and exact checkpoint/runtime pins.",
+    "After successful CPU acceptance and fresh NPU health/memory/no-PID/shared-lock/15s second check, load existing checkpoint and perform only reloaded3NFE1decode plus declared BF16 merge3NFE1decode. No new backward, update, encode or Rphi calls.",
+    "Accept reload against original updated output byte-for-byte, audit declared merge and actual functional effect; keep original failed run unchanged and formal training0 until engineering requirements pass."
+  ]
+}

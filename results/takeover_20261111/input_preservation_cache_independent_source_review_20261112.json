@@ -1,0 +1,27 @@
+{
+  "schema": "rphi.input_preservation_cache_source_independent_review.v1",
+  "complete": true,
+  "reviewed_at_utc": "2026-11-12T09:06:47.169210+00:00",
+  "source": {
+    "path": "code/export_input_preservation_cache.py",
+    "sha256": "c1bfb152b99d62937abb88a23f8668f8193768fbcee59277cffbe3826af75bb4"
+  },
+  "verdict": "no_source_blocker_for_separately_admitted_cache_preparation",
+  "checks": [
+    "TRAIN uses exact16000 unchanged student rows and final1000-step teacher; prediction receives observed with zero two-history weights, features only observed/availability; target accessed only in FP64 label helper.",
+    "DEV reads all180 prior six-array NPZ with file/array/row hashes, reconstructs each complete96-current causal K3 and checks exact observed-row SHA. No new model inference or source-NPZ fallback.",
+    "Dev targets remain diagnostics, not usable_for_training; candidate set remains raw input and final teacher K1; raw and clipped tile selection objectives separated.",
+    "Actual writes and array payload bounded below3GiB, new output directory, compact progress; exceptions retain failed state; train actual teacher state/version/frozen checks and operation budgets are explicit."
+  ],
+  "limitations": [
+    "Read-only source review, no repeated tests/data reading/SSH/model/NPU.",
+    "Torch CPU runtime and actual NPU cache export have not been established by this source review.",
+    "A complete cache is preparation only; failed old history headroom remains failed and no head training admission follows."
+  ],
+  "actions": {
+    "source_edits": 0,
+    "SSH": 0,
+    "model_calls": 0,
+    "tests_repeated": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "rphi.input_preservation_cache_CPU_fixtures.v1",
+  "complete": true,
+  "utc": "2026-11-12T09:04:58.395903+00:00",
+  "returncode": 0,
+  "command": [
+    "/Users/hezihao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "code/tests",
+    "-p",
+    "test_input_preservation_cache.py",
+    "-v"
+  ],
+  "elapsed_seconds": 0.1606947910040617,
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "source_sha256": {
+    "export_input_preservation_cache.py": "c1bfb152b99d62937abb88a23f8668f8193768fbcee59277cffbe3826af75bb4",
+    "train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "rphi_input_preservation.py": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+    "tests/test_input_preservation_cache.py": "93f9d5dbb1cfb9be32858f2056eafc36027e5ed3823030013f01b633c97ed1c5"
+  },
+  "tests": 11,
+  "skipped": 0,
+  "tests_log_sha256": "b57447f0f6ed2515654f837161203ed2bb037de554a06239b00be0ddfce95ef4",
+  "scope": "Local NumPy small fixtures only; frozen pure label AST executed, feature callback is a raw-only numeric fixture (not actual Torch feature/backend parity). No real source data/checkpoints, Torch/model/NPU/SSH calls or production exports.",
+  "original_sources_unchanged": true
+}

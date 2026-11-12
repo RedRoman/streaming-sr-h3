@@ -269,13 +269,10 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun completed Stage2/cache/full22/P1materialization/schedules/backend/teacher/headroom or the failed H3 AdamW producer.",
-      "Independently audit existing saved adapter/optimizer, first-step equations and zero/updated output artifacts on CPU under a new bounded contract.",
-      "In a new immutable snapshot integrate success-no-flush checks, retain all validation predicates, add explicit phase/progress flushing and exact checkpoint/runtime pins.",
-      "After successful CPU acceptance and fresh NPU health/memory/no-PID/shared-lock/15s second check, load existing checkpoint and perform only reloaded3NFE1decode plus declared BF16 merge3NFE1decode. No new backward, update, encode or Rphi calls.",
-      "Accept reload against original updated output byte-for-byte, audit declared merge and actual functional effect; keep original failed run unchanged and formal training0 until engineering requirements pass.",
-      "Keep P1 original mean-history-gain gate failure; no extra teacher steps or admission of the original three student arms.",
-      "Implement once-only train19 final-K1 label export and exact dev rawK3 reconstruction, then matched/shuffled1000step CPU heads under the frozen input-preservation screen. Existing head training remains0."
+      "Read new cache audit actual status; never restart completed producers/Stage2/teacher/headroom/failed H3.",
+      "Accept H3 saved subset independently; original failed run remains failed.",
+      "Fresh idle resources needed before one new H3 reload/merge continuation; inspect+CPU10 complete; no NPU run started.",
+      "Finish source-reviewed CPU head trainer/evaluator and fixed LPIPS metric backend; two-step backend smoke then matched/shuffled1000 final-only, no threshold/step tuning."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -1118,7 +1115,7 @@
       "source_train_only": true,
       "worker_PID_is_historical": true
     },
-    "updated_at_utc": "2026-11-12T08:44:51.324425+00:00",
+    "updated_at_utc": "2026-11-12T09:36:46.843738+00:00",
     "backup_31984_current_turn": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
@@ -1156,7 +1153,7 @@
       "local_receipt": "preparation/followup_20261112_full22_terminal/verification.json",
       "scope": "60 changed/new small records after1405snapshot; full6.5MB archive separately mirrored exactly to31984. This completion record follows the point-in-time backup."
     },
-    "followup_this_turn": "results/takeover_20261111/followup_20261112_063541.json",
+    "followup_this_turn": "results/takeover_20261111/followup_20261112_091741.json",
     "H3_real_AdamW": {
       "status": "failed_wall_budget_not_accepted",
       "host": "31112",
@@ -1249,7 +1246,7 @@
       "scope": "Point-in-time failure evidence and helper snapshot before this verification/status bookkeeping."
     },
     "input_preservation": {
-      "status": "module_CPU9_passed_actual_donors_independently_accepted_train_labels_missing",
+      "status": "train_and_dev_caches_complete_independent_CPU_audits_dispatched_heads0",
       "module": {
         "path": "code/rphi_input_preservation.py",
         "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
@@ -1289,15 +1286,77 @@
         "path": "configs/openh3_20261111/input_preservation_screen_20261112.json",
         "sha256": "144120baa552ae8371a73a03dcd3c48da9204e86a9f7e87186f3697ee0178577"
       },
-      "train_final_K1_cache_exists": false,
-      "exact_dev_K3_reconstruction_verified": false,
+      "train_final_K1_cache_exists": true,
+      "exact_dev_K3_reconstruction_verified": "producer_2880_exact_pending_independent_audit",
       "training_steps_per_arm": {
         "matched": 0,
         "shuffled": 0
       },
       "new_restorer_training_steps": 0,
       "training_admitted": false,
-      "next": "Implement once-only train19 K1 label cache (1000 batches16,no restorer updates), dev rawK3 feature cache with exact observed SHA and input/K1 two-candidate diagnostic, CPU head trainer/evaluator and metric resource contract. No automatic threshold/feature/step changes."
+      "next": "Accept actual CPU cache audits, implement/freeze CPU head trainer/evaluator and LPIPS backend/weights/resources, verify backend smoke, then matched/shuffled1000 each under unchanged screen.",
+      "caches": {
+        "host": "31984",
+        "train": {
+          "run": "runs/input_preservation_train_cache_20261112b",
+          "complete": true,
+          "manifest_sha256": "4fc49311e3c03b1e089e9eafbd33207965b806ddc5b250fb4fbe936297dc70b9",
+          "rows": 16000,
+          "forwards": 1000,
+          "restorer_updates": 0,
+          "elapsed_seconds": 434.3782916665077,
+          "frozen_state_exact": true
+        },
+        "dev": {
+          "run": "runs/input_preservation_dev_cache_20261112a",
+          "complete": true,
+          "manifest_sha256": "e509faed1b14840aecbb1a7e059d1e43e0b008dc4cee1bc9a88c2901f007e886",
+          "rows": 2880,
+          "restorer_forwards": 0,
+          "elapsed_seconds": 41.16166702006012
+        },
+        "evidence": "results/takeover_20261111/input_preservation_cache_completed_20261112b",
+        "train_a_not_launched_preserved": true
+      },
+      "cache_audits": {
+        "host": "31984",
+        "status": "dispatched_actual_status_files_authoritative",
+        "dev": "runs/input_preservation_dev_cache_audit_20261112a",
+        "train": "runs/input_preservation_train_cache_audit_20261112a",
+        "entry_sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+        "audit_tests_passed": 11,
+        "runner_tests_passed": 10,
+        "resources": "each900s2CPU;dev4GiB/train32GiB",
+        "NPU_calls": 0
+      }
+    },
+    "H3_saved_subset_audit": {
+      "status": "completed_and_independently_accepted_saved_subset_only",
+      "host": "31112",
+      "run": "runs/h3_saved_adamw_partial_audit_20261112b",
+      "audit_sha256": "45455ffb415b853ccb1c5afc7ce7ca0d1d47dc5ac731184a39c34512d9d250d6",
+      "actual_arrays": 3222,
+      "adapter_tensors": 400,
+      "optimizer_tensors": 1200,
+      "root_acceptance": "results/takeover_20261111/h3_saved_subset_completed_20261112b/root_acceptance.json",
+      "ready_for_continuation": true,
+      "original_run_accepted": false,
+      "elapsed_seconds": 49.051197247579694,
+      "unmerged_updated_RGB_changed": true,
+      "zero_MSE": 0.0030889882945633455,
+      "updated_MSE": 0.003098216962949771,
+      "quality_gain": false
+    },
+    "H3_saved_continuation": {
+      "host": "31112",
+      "status": "CPU10_passed_actual_input_inspection_passed_waiting_for_idle_NPU",
+      "prep": "preparation/h3_adamw_saved_continuation_preparation_20261112b",
+      "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
+      "execution_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
+      "NPU_launched": false,
+      "scope": "6NFE2decode1merge0backward0update;original_failure_preserved",
+      "CPU_candidate_a_failure": "param_group lr mapped against recipe without lr; fixed in b with exact actual_lr mapping; failure retained",
+      "resource_observation": "09:31UTC all8cards had PIDs; no processes killed"
     }
   }
 }

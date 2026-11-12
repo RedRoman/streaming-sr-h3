@@ -1,0 +1,99 @@
+{
+  "complete": true,
+  "accepted_scope": "exact_dev_cache_only",
+  "audit_sha256": "49290eb86666926f155a9578555e43c71de31c9cf8e7c0019a8208b1433fcff3",
+  "actual_rows": 2880,
+  "actual_arrays": 1440,
+  "old_arrays": 1080,
+  "raw_features_exact": true,
+  "two_candidate_oracle_not_deployable": true,
+  "native_equal_source_equal_profile": {
+    "input": {
+      "unclamped_mae": 0.02332199730456194,
+      "unclamped_mse": 0.0016578468593114952,
+      "clipped_mae": 0.02332199730456194,
+      "clipped_mse": 0.0016578468593114952
+    },
+    "K1": {
+      "unclamped_mae": 0.018353838472671063,
+      "unclamped_mse": 0.0012191998897496624,
+      "clipped_mae": 0.01806260868463718,
+      "clipped_mse": 0.0012168098570683632
+    },
+    "unclamped_tile_oracle": {
+      "unclamped_mae": 0.018231859948911435,
+      "unclamped_mse": 0.0012174530755798176,
+      "clipped_mae": 0.017994097790780768,
+      "clipped_mse": 0.0012154663868624027
+    },
+    "clipped_tile_oracle": {
+      "unclamped_mae": 0.01824779354457879,
+      "unclamped_mse": 0.0012173858155575643,
+      "clipped_mae": 0.017983787328526825,
+      "clipped_mse": 0.0012152388187568772
+    }
+  },
+  "controls": {
+    "identity": {
+      "sources": 6,
+      "equal_source": {
+        "input": {
+          "clipped_mae": 0.0,
+          "clipped_mse": 0.0,
+          "unclamped_mae": 0.0
+        },
+        "K1": {
+          "clipped_mae": 0.00154814142476495,
+          "clipped_mse": 1.2027899740995382e-05,
+          "unclamped_mae": 0.0020597319125889154
+        },
+        "unclamped_tile_oracle": {
+          "clipped_mae": 0.0,
+          "clipped_mse": 0.0,
+          "unclamped_mae": 0.0
+        },
+        "clipped_tile_oracle": {
+          "clipped_mae": 0.0,
+          "clipped_mse": 0.0,
+          "unclamped_mae": 0.0
+        }
+      },
+      "oracle_K1_tile_fraction": 0.0
+    },
+    "near_clean": {
+      "sources": 6,
+      "equal_source": {
+        "input": {
+          "clipped_mae": 0.0025929660610460883,
+          "clipped_mse": 1.4297492965623289e-05,
+          "unclamped_mae": 0.0025929660610460883
+        },
+        "K1": {
+          "clipped_mae": 0.002523132976253879,
+          "clipped_mse": 1.9009159942553556e-05,
+          "unclamped_mae": 0.0029129913239013404
+        },
+        "unclamped_tile_oracle": {
+          "clipped_mae": 0.002192865885872435,
+          "clipped_mse": 1.0387597344872182e-05,
+          "unclamped_mae": 0.0022932540752215336
+        },
+        "clipped_tile_oracle": {
+          "clipped_mae": 0.0020667914166199205,
+          "clipped_mse": 9.478986862708453e-06,
+          "unclamped_mae": 0.002348587781842883
+        }
+      },
+      "oracle_K1_tile_fraction": 0.6634355709876544
+    }
+  },
+  "clipped_tile_oracle_MAE_gain_vs_K1": 7.882135611035623e-05,
+  "relative_gain": 0.004363785845474033,
+  "head_training_steps": 0,
+  "LPIPS": null,
+  "flow_aligned_flicker": null,
+  "limitations": [
+    "GT-only diagnostic of input/K1 fixed16tile selector; not learned gate performance.",
+    "No independent test/fullframe generalization; frozen thresholds unaffected."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "rphi.input_preservation_cache_audit_source_freeze.v1",
+  "status": "prepared_not_admitted_not_executed",
+  "files": {
+    "dev_execution_contract.template.json": {
+      "sha256": "5bf6f770e4b416bd7a52058318434d253b16b32bc00f8b44d368785e1fec5e6c",
+      "bytes": 3118
+    },
+    "train_execution_contract.template.json": {
+      "sha256": "8f1d98d9e618e873c4ac0c51c31dbfb56f527060e829c167778c6d748c3e8bbc",
+      "bytes": 3129
+    },
+    "cpu_receipt.json": {
+      "sha256": "92fc0d3b21095d41ae7b07b4f6cf9e0a8edd6a29a3a51bec89f1b65f1adff92e",
+      "bytes": 2510
+    },
+    "tests.log": {
+      "sha256": "4d90a24739cbe3896a3878d21792d8d0db85eeb557841838a0a7c09cc7357146",
+      "bytes": 2028
+    },
+    "code/history_utility_revised_data.py": {
+      "sha256": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+      "bytes": 22877
+    },
+    "code/rphi_history_utility.py": {
+      "sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+      "bytes": 15454
+    },
+    "code/rphi_condition_v2.py": {
+      "sha256": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+      "bytes": 3422
+    },
+    "code/rphi_input_preservation.py": {
+      "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+      "bytes": 7645
+    },
+    "code/audit_input_preservation_cache.py": {
+      "sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+      "bytes": 33892
+    },
+    "code/train_rphi.py": {
+      "sha256": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+      "bytes": 21004
+    },
+    "code/rphi_model.py": {
+      "sha256": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "bytes": 9703
+    },
+    "code/rphi_data.py": {
+      "sha256": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "bytes": 23960
+    },
+    "code/history_utility_data.py": {
+      "sha256": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+      "bytes": 26567
+    },
+    "code/train_history_utility.py": {
+      "sha256": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+      "bytes": 30622
+    },
+    "code/tests/test_input_preservation_cache_audit.py": {
+      "sha256": "4f62bcfe89ae6b2b20834022638a4e25d871f1d8e45cdcf810c7a8c7285e5a36",
+      "bytes": 13437
+    }
+  },
+  "external_runner_required": true,
+  "producer_scope": "dev completed a + train completed b; original failed train a is not consumed",
+  "resources": {
+    "train": {
+      "seconds": 900,
+      "CPU": 2,
+      "RAM_bytes": 34359738368,
+      "source_cache_bytes": 12884901888
+    },
+    "dev": {
+      "seconds": 900,
+      "CPU": 2,
+      "RAM_bytes": 4294967296
+    },
+    "small_evidence_max_bytes": 33554432
+  },
+  "zero_restorer_calls": true,
+  "actual_audit_pending": true
+}

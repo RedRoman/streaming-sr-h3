@@ -1,0 +1,26 @@
+test_accept_only_actual_saved_subset_without_relabel (test_h3_adamw_saved_continuation.PureBoundaries.test_accept_only_actual_saved_subset_without_relabel) ... ok
+test_budget_no_backward_update_extra_noise_or_tile (test_h3_adamw_saved_continuation.PureBoundaries.test_budget_no_backward_update_extra_noise_or_tile) ... ok
+test_functional_failure_not_hidden_by_reload (test_h3_adamw_saved_continuation.PureBoundaries.test_functional_failure_not_hidden_by_reload) ... ok
+test_strict_bytes_include_signed_zero_and_dtype (test_h3_adamw_saved_continuation.PureBoundaries.test_strict_bytes_include_signed_zero_and_dtype) ... ok
+test_success_no_flush_failure_durable_and_guard_restoration (test_h3_adamw_saved_continuation.PureBoundaries.test_success_no_flush_failure_durable_and_guard_restoration) ... ok
+test_actual_save_no_overwrite_and_canonical_snapshot_identity (test_h3_adamw_saved_continuation.TorchRestoration.test_actual_save_no_overwrite_and_canonical_snapshot_identity) ... ok
+test_exact_fresh_all_fields_load_without_update (test_h3_adamw_saved_continuation.TorchRestoration.test_exact_fresh_all_fields_load_without_update) ... ERROR
+test_real_200_matrix_BF16_merge_preserves_all_other_state (test_h3_adamw_saved_continuation.TorchRestoration.test_real_200_matrix_BF16_merge_preserves_all_other_state) ... ok
+test_wrong_step_shape_order_and_nonfinite_rejected (test_h3_adamw_saved_continuation.TorchRestoration.test_wrong_step_shape_order_and_nonfinite_rejected) ... ok
+
+======================================================================
+ERROR: test_exact_fresh_all_fields_load_without_update (test_h3_adamw_saved_continuation.TorchRestoration.test_exact_fresh_all_fields_load_without_update)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_adamw_saved_continuation_preparation_20261112a/code/tests/test_h3_adamw_saved_continuation.py", line 138, in test_exact_fresh_all_fields_load_without_update
+    opt = M.restore_optimizer(self.params, self.expected, self.saved, self.inventory, list(self.params), self.t,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_adamw_saved_continuation_preparation_20261112a/code/check_h3_adamw_saved_continuation.py", line 237, in restore_optimizer
+    wanted = tuple(A.optimizer_recipe()[key]) if key == 'betas' else A.optimizer_recipe()[key]
+                                                                     ~~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'lr'
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.394s
+
+FAILED (errors=1)

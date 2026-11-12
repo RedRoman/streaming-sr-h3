@@ -1,0 +1,212 @@
+{
+  "H3_calls": 0,
+  "Rphi_calls": 0,
+  "VAE_calls": 0,
+  "cache_manifest": {
+    "complete": true,
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/manifest.json",
+    "sha256": "a2c5a5b7607aaa0bce74e0bd573a98f5fb36ecb0a8ee61d5726d6d72c134d62e"
+  },
+  "cached_VAE_R_provenance_only": {
+    "array_sha256": "f1feb211975064e8ab3f3430b21ef84f9b6aed837864fc2fbc14dfad4033f5cd",
+    "bytes": 105431168,
+    "dtype": "float32",
+    "file_sha256": "b2976f56f3349dc810ff85ad7a2454f22bdb3c5bd38762ac0d01e8aec4b9210e",
+    "finite": true,
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/vae_rphi_as_returned_internal_clipped.npy",
+    "shape": [
+      22,
+      480,
+      832,
+      3
+    ]
+  },
+  "checkpoints": {
+    "adapter": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/h3_real_adamw_update_20261112a/eval/real_train_AdamW_step1.safetensors",
+      "sha256": "b805168bc6d1af3506db5788b9c22a6eec1c30f804dba34268013001558932be"
+    },
+    "optimizer": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/h3_real_adamw_update_20261112a/eval/real_train_AdamW_step1_optimizer.safetensors",
+      "sha256": "569eeaf6d470036cb75b216bfd1dcf0fcd824aadbfe283a0f779657e4055664e"
+    }
+  },
+  "complete": true,
+  "context": {
+    "actual_file_checked": true,
+    "bytes": 299557,
+    "fresh_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+    "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+    "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2"
+  },
+  "guide": {
+    "array_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+    "bytes": 1048448,
+    "dtype": "float32",
+    "file_sha256": "7878c6860be75e731ca7b396aa620f69cf16a3787fa06b839cc7e3b2ed852da7",
+    "finite": true,
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/rphi_guide_latent.npy",
+    "shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ]
+  },
+  "identity": {
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "parent_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+    "role": "train",
+    "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "task": "compression"
+  },
+  "inspection_only": true,
+  "model_asset_bytes_SHA_verified": false,
+  "model_assets_size_only_verified": true,
+  "model_input_keys": [
+    "guide",
+    "raw_warm_start"
+  ],
+  "native_geometry_plan": {
+    "decode_temporal_pad_and_chunks": [
+      0,
+      1
+    ],
+    "height_tile_plan": [
+      [
+        0,
+        112,
+        224
+      ],
+      [
+        256,
+        256,
+        256
+      ],
+      [
+        144,
+        144
+      ]
+    ],
+    "latent_scale": "native normalized (mean-latents_mean)/latents_std; no extra external scale",
+    "output_shape": [
+      1,
+      3,
+      22,
+      480,
+      832
+    ],
+    "policy_changed": false,
+    "tile_size": 256,
+    "tiling": true,
+    "vae_ratio": 16,
+    "vae_ratio_t": 4,
+    "width_tile_plan": [
+      [
+        0,
+        192,
+        384,
+        576
+      ],
+      [
+        256,
+        256,
+        256,
+        256
+      ],
+      [
+        64,
+        64,
+        64
+      ]
+    ]
+  },
+  "original_active_worker_seconds": 3601.0143717136234,
+  "original_failure_preserved": true,
+  "original_last_partial_elapsed_seconds": 3591.1253384184092,
+  "original_run_accepted": false,
+  "original_source_verification": "materialization_attestation_only; no live original video SHA claim",
+  "partial_cpu_audit": {
+    "path": "runs/h3_saved_adamw_partial_audit_20261112b/output/audit.json",
+    "sha256": "45455ffb415b853ccb1c5afc7ce7ca0d1d47dc5ac731184a39c34512d9d250d6"
+  },
+  "planned": {
+    "NFE": 6,
+    "Rphi_calls": 0,
+    "VAE_decodes": 2,
+    "VAE_encode_calls": 0,
+    "adapter_updates": 0,
+    "backward_attempts": 0,
+    "checkpoint_saves": 0,
+    "clip_calls": 0,
+    "completed_backward_calls": 0,
+    "merge_calls": 1,
+    "optimizer_steps": 0,
+    "saved_adapter_loads": 1,
+    "saved_optimizer_loads": 1,
+    "stage_decodes": 2,
+    "unscale_calls": 0
+  },
+  "runtime_files_verified": 1364,
+  "schema": "openh3.saved_adamw_continuation_input_inspection.v1",
+  "target": {
+    "array_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+    "conversion": "CPU numpy frames.astype(float32)/float32(255), then torch.from_numpy; save actual bytes and require the predeclared float32 SHA.",
+    "dtype": "uint8",
+    "key": "frames",
+    "loss_target_float32_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+    "max": 255,
+    "min": 0,
+    "npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz",
+    "npz_file_sha256": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+    "shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "usage": "Original-recording clean proxy, only RGB loss/supervision; never sent to H3/conditioning/guide/warm-start/noise/decoder input; no target VAE encode."
+  },
+  "target_float32_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+  "target_model_input": false,
+  "target_usage": "loss only, original clean RGB proxy; no resize/clamp/frame selection/encode",
+  "torch_imported": false,
+  "verified_selected_files": {
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/complete.json": "77346b6a27ffbd71c143ede1bfb9b660fba8699a384336afc253fb63de4d9131",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/compression.npz": "013c218847d34d5fd5b14139ebc47320dc569eb7179a90d4bd9fe7f967090c7d",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train_materialized.jsonl": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/train_vae_cache_portable_20261112e_31112/source_contract.json": "9c2e2bdc64fffec33a2e08c90e36affc87edc4c14ea3bb79467166da277ffdc4",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/manifest.json": "1c73a26f1cb81157c2445fac44d33acc925256ec77343f50aa7d54f7ab9f0008",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.json": "5300dfb95c1f22cd40541c4945a5ba4a0f225096e9da164b00e968bd64c0ff90",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.npz": "5403aa63735e13762b299fb2c42d6ae6999c25e6dc1aa42eafb47d8c5e2e6009"
+  },
+  "warm_start": {
+    "array_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+    "bytes": 1048448,
+    "dtype": "float32",
+    "file_sha256": "ba050f2bdab60a0b3d5462e1390bc848f390c67a501770569f697f7c631889ad",
+    "finite": true,
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/raw_warm_start_latent.npy",
+    "shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ]
+  }
+}

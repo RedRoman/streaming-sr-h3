@@ -1,6 +1,12 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
-## 当前接续入口（2026-11-12 16:48 SGT，下面早期记录是历史）
+## 当前接续入口（2026-11-12 17:39 SGT，下面早期记录是历史）
+
+- **17:39新状态**：两套input-preservation缓存已完整执行，勿重跑。31984 train `runs/input_preservation_train_cache_20261112b` 16000行/1000冻结K1前向/0更新，434.38s；dev `runs/input_preservation_dev_cache_20261112a` 2880行K3逐字节重建/180旧cache1080arrays/0恢复器，41.16s。小证据41文件唯一下载逐SHA验核：`results/takeover_20261111/input_preservation_cache_completed_20261112b`。train a因card7已有他人进程而未启动，旧状态保留；b使用双检空闲card2且现已结束。
+- **独立缓存CPU验收已派发**：31984 `runs/input_preservation_{dev,train}_cache_audit_20261112a/status.json` 是实际来源，两tmux `input-preservation-{dev,train}-audit-20261112a`。分别900+30s/2CPU/dev4GiB train32GiB，0恢复器/NPU；auditor11项与runner10项远端CPU检查通过。仅派发，未在此记录宣称完成。完成后只下载各output/evidence.tar.gz一次，核原K3/特征/标签/两候选诊断。新matched/shuffled仍各0步，trainer/evaluator正在实现；需冻结LPIPS及完整screen实现，再CPU backend smoke后各1000最终步。
+- **H3已保存的一次更新子集通过CPU实物验收**：31112 `runs/h3_saved_adamw_partial_audit_20261112b` completed，49.05s/1.46GB峰RSS；3222实际arrays、400adapter和1200optimizer状态、unscale/clip/AdamW方程及两个safetensors均过，zero/reference四路byteexact，ready_for_continuation=true。证据26文件唯一下载逐SHA验证；`results/takeover_20261111/h3_saved_subset_completed_20261112b/root_acceptance.json`。更新确实改变unmerged RGB；同样本MSE .0030889883→.0030982170（+0.299%，PSNR25.10184→25.08888dB），**不是质量提升**。原超时run仍failed，strict reload/merge/deployment仍未验收。
+- **H3补验b准备已通过，待空闲卡**：31112 `preparation/h3_adamw_saved_continuation_preparation_20261112b`；entry bebc1fa7…023c8，execution be8e73ba…c7c5e，10/10真实CPU测试与实际输入inspect通过；a的lr字段失败保留，b只显式映射冻结actual_lr。只准许reload+merge合计6NFE2decode，0反传/更新，3600+30s/4CPU/128GiB。09:31UTC31112全部8卡有PID，**未派发NPU**。下一轮新查健康/显存/PID/shared lock和15秒二次空闲；不得杀他人作业或以旧snapshot启动。
+
 
 - **P1教师1000步与headroom已全部完成/独立数值验收，原headroom门失败**：31984 `runs/history_utility_teacher_20261112a`及finalize、`runs/history_utility_headroom_20261112a`及finalize均completed，勿重跑。教师fresh legacy初始化、1000固定updates/16000rows，saved58参数174AdamW状态finite，最终checkpoint799956…26e34；实际433.81s/peakNPU1.049GiB。小证据1cf2a1…1345b3/14payload已唯一下载实核，root acceptance d71b91…391a8。
 - Headroom6dev×5profile×96中心crop已执行11430crop forwards/720invocations，180NPZ/1080真实FP32 arrays约1.91GB在远端独立CPU重算，maxdiff6.94e-17，producer142.63s/CPUaudit36.64s。唯一失败门：平均K1-minus-all MAE **-0.000260693**，虽4/6source略正，两源6UZ/EB在全部3退化profile负且主导均值。不得把complete当headroom通过。identity all平均MAE.00202832（50.4065dB），6/6损伤；nearclean平均48.5386→48.1427dB、5/6 MAE损伤；K1同样有保护问题。详见 `results/takeover_20261111/history_utility_headroom_completed_20261112a/root_review.json`，archive197aac…bb6fa已本地验14payload。没有LPIPS/全帧/光流flicker或独立测试结论。

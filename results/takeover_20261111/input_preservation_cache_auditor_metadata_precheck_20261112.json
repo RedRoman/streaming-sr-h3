@@ -1,0 +1,80 @@
+{
+  "schema": "rphi.input_preservation_cache_auditor_actual_metadata_check.v1",
+  "complete": true,
+  "utc": "2026-11-12T09:31:16.672072+00:00",
+  "entry_sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+  "rows": [
+    {
+      "role": "dev",
+      "manifest": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/input_preservation_cache_completed_20261112b/remote/runs/input_preservation_dev_cache_20261112a/output/manifest.json",
+        "sha256": "e509faed1b14840aecbb1a7e059d1e43e0b008dc4cee1bc9a88c2901f007e886"
+      },
+      "execution": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/input_preservation_cache_completed_20261112b/remote/preparation/input_preservation_cache_20261112a/dev_execution_contract.json",
+        "sha256": "c2f4a9861672b67d9b89b9032508a2bbe2b5267c40b5c69d14a673e375049077"
+      },
+      "contract_template": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/input_preservation_cache_audit_20261112a/dev_execution_contract.template.json",
+        "sha256": "5bf6f770e4b416bd7a52058318434d253b16b32bc00f8b44d368785e1fec5e6c"
+      },
+      "completed_rows": 2880,
+      "producer_actual_output_bytes": 29793527,
+      "counts": {
+        "backwards": 0,
+        "crop_forward_attempts": 0,
+        "crop_forwards_completed": 0,
+        "old_arrays_verified": 1080,
+        "old_cache_file_verification_attempts": 180,
+        "old_cache_files_verified": 180,
+        "optimizer_updates": 0,
+        "raw_K3_exact_rows": 2880,
+        "raw_feature_batches": 180,
+        "raw_feature_rows": 2880,
+        "restorer_forward_attempts": 0,
+        "restorer_forwards_completed": 0,
+        "restorer_invocations_observed": 0
+      },
+      "template_bindings_match": true,
+      "actual_small_json_identity_chain_passed": true
+    },
+    {
+      "role": "train",
+      "manifest": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/input_preservation_cache_completed_20261112b/remote/runs/input_preservation_train_cache_20261112b/output/manifest.json",
+        "sha256": "4fc49311e3c03b1e089e9eafbd33207965b806ddc5b250fb4fbe936297dc70b9"
+      },
+      "execution": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/input_preservation_cache_completed_20261112b/remote/preparation/input_preservation_cache_20261112a/train_b_execution_contract.json",
+        "sha256": "5efe460c7cffa90ae948bb64b84266a3aa2a5d8ee6952fc1b373aededeb6f316"
+      },
+      "contract_template": {
+        "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/input_preservation_cache_audit_20261112a/train_execution_contract.template.json",
+        "sha256": "8f1d98d9e618e873c4ac0c51c31dbfb56f527060e829c167778c6d748c3e8bbc"
+      },
+      "completed_rows": 16000,
+      "producer_actual_output_bytes": 1879556644,
+      "counts": {
+        "backwards": 0,
+        "crop_forward_attempts": 16000,
+        "crop_forwards_completed": 16000,
+        "old_arrays_verified": 0,
+        "old_cache_file_verification_attempts": 0,
+        "old_cache_files_verified": 0,
+        "optimizer_updates": 0,
+        "raw_K3_exact_rows": 0,
+        "raw_feature_batches": 1000,
+        "raw_feature_rows": 16000,
+        "restorer_forward_attempts": 1000,
+        "restorer_forwards_completed": 1000,
+        "restorer_invocations_observed": 1000
+      },
+      "template_bindings_match": true,
+      "actual_small_json_identity_chain_passed": true
+    }
+  ],
+  "actual_NPZ_read": 0,
+  "torch_imported": false,
+  "actual_audits_pending": true,
+  "scope": "Local downloaded immutable small JSONs only; teacher contract compared via accepted terminal embedded contract. No complete default inspection, NPZ scan, raw Torch feature recompute, model, SSH or NPU."
+}

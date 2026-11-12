@@ -1,0 +1,63 @@
+{
+  "schema": "rphi.input_preservation_cache_audit_runner_independent_review.v1",
+  "created_at_utc": "2026-11-12T09:35:11.204125+00:00",
+  "status": "no_remaining_source_blocker_in_reviewed_scope",
+  "entry": {
+    "path": "code/run_input_preservation_cache_audit_once.py",
+    "sha256": "c5653e61d1986d5b4b098172a122d479b7f9f9136a785f5735047fe943aacbb2"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_cache_audit_once.py",
+    "sha256": "016f88a4ebe305543d05af9bf7c6e613bbb6831cfd0149e1392c50f7b423982f"
+  },
+  "freeze": {
+    "path": "preparation/input_preservation_cache_audit_runner_20261112a/source_freeze.json",
+    "sha256": "d1b76137bd3b47ee6c688d4146fb63c2bf6fb752e10d9d874d15792de499c7f6"
+  },
+  "cpu_receipt": {
+    "path": "preparation/input_preservation_cache_audit_runner_20261112a/cpu_receipt.json",
+    "sha256": "70c1f8cc714828a8b2bd246cf0da58237d064bc101317d8a553e5957c8aa0f12"
+  },
+  "owned_process_source": {
+    "path": "preparation/input_preservation_cache_audit_runner_20261112a/owned_process.py",
+    "sha256": "efabd330e5b49653fc01275bba18c9c408de43fd56e194685102bb313e097388"
+  },
+  "freeze_members_independently_SHA_verified": 10,
+  "blocking_findings": [],
+  "reviewed_gates": [
+    "Pins bind exact runner, frozen CPU auditor, all auditor dependencies, numerical contract, completed producer and separate numerical admission. Launch admission binds exact plan/entry/contract and forbids device selection or extra argv.",
+    "Fresh runs/<name>/output is claimed once by exclusive directory creation. Existing failed/successful attempts cannot be retried through this runner.",
+    "Only frozen supervisor supervise/signal_guard/write functions are used. The module import does not execute its old NPU runner main; there is no device inspection, CANN shell, model construction or card-lock action.",
+    "Two-core affinity and backend-autoload0 environment apply before child creation. Fresh process-group supervision samples current summed group RSS every0.25s: train32GiB/dev4GiB,900s worker wall budget,30s TERM grace followed by owned KILL if necessary.",
+    "TERM/INT around process creation is blocked until process identity is assigned. Failure or remaining owned descendants prevents completion; only the owned fresh process group is cleaned.",
+    "Completion requires actual-array audit status and exact typed role/counts, CPU runtime, no backend/model invocation, unchanged producer-manifest identity and a bound small archive. Metadata-only complete cannot satisfy this gate.",
+    "Plan/runtime pins are rechecked after exit; a changed source or terminal/archive failure revokes acceptance. Head-training admission remains false."
+  ],
+  "test_evidence_scope": {
+    "reported_tests": 10,
+    "passed": 10,
+    "skipped": 0,
+    "author_executed": true,
+    "reviewer_reran": false,
+    "scope": "Local stdlib mocked-supervisor fixtures; not a new Linux live-process resource-guard execution."
+  },
+  "resource_boundary": [
+    "900seconds covers the worker including cache audit and its archive. Parent metadata preflight/postflight and fixed TERM/KILL cleanup are outside worker wall accounting.",
+    "RSS is a sampled owned-process-group sum, not a cgroup/kernel memory quota.",
+    "The referenced frozen supervisor source was inspected; this review does not independently repeat prior real Linux supervisor tests."
+  ],
+  "not_claimed": [
+    "Actual cache data acceptance",
+    "Actual resource/run completion",
+    "Head training admission",
+    "Restoration quality improvement"
+  ],
+  "reviewer_operations": {
+    "SSH": 0,
+    "actual_cache_reads": 0,
+    "model_calls": 0,
+    "NPU_calls": 0,
+    "test_reruns": 0,
+    "author_source_edits": 0
+  }
+}

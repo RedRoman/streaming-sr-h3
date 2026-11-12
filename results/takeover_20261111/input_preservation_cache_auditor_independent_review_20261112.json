@@ -1,0 +1,66 @@
+{
+  "created_at_utc": "2026-11-12T09:31:55.300361+00:00",
+  "review_type": "independent_read_only_source_and_local_evidence_review",
+  "reviewer_operations": {
+    "SSH_calls": 0,
+    "tests_rerun": 0,
+    "actual_NPZ_reads": 0,
+    "checkpoint_deserializations": 0,
+    "model_calls": 0,
+    "NPU_calls": 0
+  },
+  "blocking_findings": [],
+  "schema": "rphi.input_preservation_cache_auditor_independent_source_review.v1",
+  "status": "no_remaining_source_blocker_in_reviewed_scope",
+  "entry": {
+    "path": "code/audit_input_preservation_cache.py",
+    "sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_cache_audit.py",
+    "sha256": "4f62bcfe89ae6b2b20834022638a4e25d871f1d8e45cdcf810c7a8c7285e5a36"
+  },
+  "source_freeze": {
+    "path": "preparation/input_preservation_cache_audit_20261112a/source_freeze.json",
+    "sha256": "70e45e2d040f19ae3985410aee221a741caa55924f744e64514a50d9224cbf08"
+  },
+  "frozen_files_independently_SHA_verified": 15,
+  "cpu_evidence": {
+    "path": "preparation/input_preservation_cache_audit_20261112a/cpu_receipt.json",
+    "sha256": "92fc0d3b21095d41ae7b07b4f6cf9e0a8edd6a29a3a51bec89f1b65f1adff92e"
+  },
+  "cpu_evidence_scope": {
+    "reported_tests": 11,
+    "reported_passed": 11,
+    "reported_skipped": 0,
+    "executed_by": "author",
+    "reviewer_read_receipt_and_log": true,
+    "scope": "Local NumPy fixtures; no Torch raw-feature execution or actual cache scan."
+  },
+  "reviewed_gates": [
+    "Fixed accepted headroom report/audit binds teacher contract/report/checkpoint, dataset audit and original schedules. Exact teacher final state/final_frozen and train19/dev6 role chain are checked.",
+    "Raw features are independently expressed from observed history/current pixels plus availability and fixed lag; target, utility labels and learned model outputs do not enter features.",
+    "Train recomputes actual source pixels and all16000 original student rows; each of1000 new NPZ files has exact7-array membership, file/content/per-row SHA, role, shape, dtype and finite checks.",
+    "Dev revalidates180 original six-array RGB caches and causal K3 hashes, then independently recomputes180 new eight-array files/2880rows. Actual saved K1 is retained without an extra clamp.",
+    "FP64 tile MAE reductions use predeclared absolute1e-12; PSNR uses1e-10. Features, label normalization, saved signed subtraction, selection threshold/ties, role and provenance remain exact.",
+    "Three native profiles are equally weighted within each source and sources equally weighted; identity/near-clean are distinct. GT-dependent two-candidate tile oracle remains diagnostic only.",
+    "Exact train frozen-check field set prevents vacuous success. Output must be fresh and outside producer cache; archive resolves manifest against root and excludes NPZ/checkpoints. Packaging failure revokes completion."
+  ],
+  "resolved_review_findings": [
+    "Added independent teacher/data/headroom identity-chain checks.",
+    "Required exact three true train frozen_checks fields.",
+    "Rejected auditor output nested inside producer cache.",
+    "Resolved producer manifest path before small archive creation.",
+    "Required exact NPZ declared-array membership and per-batch row counts."
+  ],
+  "remaining_execution_requirements": [
+    "External bounded runner must enforce900seconds,2CPU and32GiB train or4GiB dev; entry only checks these resource declarations and sets Torch threads.",
+    "Actual backend-matched Torch raw-feature byte parity and complete train/dev cache audits remain pending.",
+    "Consumers must require status actual_cache_data_features_and_labels_verified_no_training_admission and full actual counts; metadata-only complete status is not an array acceptance."
+  ],
+  "claim_boundaries": [
+    "No restorer construction/replay or checkpoint deserialization. K1 forward/freeze proof remains authenticated producer evidence, not independently re-executed inference.",
+    "Original history headroom failure is retained. Cache audit does not admit head training, establish quality gain, or make the GT oracle deployable."
+  ],
+  "other_files_modified": false
+}

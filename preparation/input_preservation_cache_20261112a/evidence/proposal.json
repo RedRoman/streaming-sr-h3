@@ -1,0 +1,187 @@
+{
+  "schema": "rphi.input_preservation_interface_proposal.v1",
+  "status": "prepared_interface_only_not_implemented_not_admitted",
+  "created_utc": "2026-11-12T08:05:43.934799+00:00",
+  "parent_design": {
+    "path": "configs/openh3_20261111/input_preservation_followup_20261112.json",
+    "sha256": "9e1646c9a53f24004f10a48be2d85ac30e0a5b6b9feed65b7dc36e3ee8620972"
+  },
+  "original_history_headroom_remains_failed": true,
+  "student_training_admitted": false,
+  "evidence": {
+    "headroom_report": {
+      "path": "results/takeover_20261111/history_utility_headroom_completed_20261112a/producer/report.json",
+      "sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578"
+    },
+    "four_and_five_candidate_diagnostic": {
+      "path": "results/takeover_20261111/history_mask_oracle_diagnostic_completed_20261112a/report.json",
+      "sha256": "d15678c06122da83e06bf1e6219e0304b8ba5ca77eea8e59fa9e6f2a7b84605a"
+    },
+    "persistent_schedule_manifest": {
+      "path": "results/takeover_20261111/history_utility_schedules_completed_20261112a/manifest.json",
+      "sha256": "5c001aaa3335e335a16311f9d42e400f29274d65049f967859b7969c9d75ee0b"
+    },
+    "frozen_teacher_checkpoint_sha256": "79995694df154084af6e76020dfa05c0f64010600bba839521fee7a01d326e34"
+  },
+  "source_reading": {
+    "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "code/prepare_history_utility_schedules.py": "a7e4c575ebe77310127ef8f5789909be9a05e6255bf7cf086a03a31f70125660",
+    "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "code/eval_history_utility_teacher.py": "f20705d0b1851aec7b57264f7afb7b2fbe29cf359b5b4a0172a194b1225f5ed4"
+  },
+  "new_files_proposed_only": [
+    "code/rphi_input_preservation.py",
+    "code/prepare_input_preservation_cache.py",
+    "code/train_input_preservation_head.py",
+    "code/eval_input_preservation_head.py",
+    "code/tests/test_input_preservation.py"
+  ],
+  "architecture": {
+    "class": "InputPreservationHead(seed=20261111)",
+    "forward_signature": "forward(observed:FP32[B,3,3,H,W], availability:FP32[B,2]) -> {benefit_score:FP32[B,1,H/16,W/16], correction_mask:bool[B,1,H/16,W/16]}",
+    "allowed_inputs": "Raw RGB t-2,t-1,t in [0,1] and binary effective causal availability only. No target, task/profile/severity/source IDs, K1 output/residual or generated frames enter the head.",
+    "reuse": "Actual existing class is HistoryUtilityGate, not ObservationHistoryGate. Reuse its features() and same1745-parameter net without altering the frozen source.",
+    "features": "HistoryUtilityGate.features gives[B*2,11,h,w]: tile16 means of current RGB/history RGB/abs(current-history), lag/2, availability. Absent history is filled from current before feature construction.",
+    "single_output_rule": "Apply the same shared net to both slot feature maps; reshape scores[B,2,h,w], then arithmetic mean over slot axis, keeping dimension1. Do NOT multiply this final score by availability: both-absent examples must still judge current-image restoration benefit. Two internal slot scores receive the same single-map objective through their mean; no slotwise benefit labels.",
+    "network": "Conv2d11->16,k3,pad1,bias; SiLU; Conv2d16->1,k3,pad1,bias.1745 trainable parameters, FP32, no dropout/normalization. Same first-layer seed and zero final weight/bias in both arms.",
+    "state": "No recurrent state, no future inputs, no learned restoration feedback. Existing gate pooling removes within-tile high-frequency arrangement; this first trial does not redesign the feature extractor.",
+    "geometry": "H,W positive multiples16, minimum16; crop96 gives6x6. Fail on unsupported geometry; no implicit pad/resize. Tile grid begins at the provided crop origin, not presumed global-frame alignment."
+  },
+  "fixed_restorer": {
+    "model": "Exact final1000 MaskAwareRestorer, eval(), all parameters requires_gradFalse and gradNone",
+    "mode": "K1: forward(observed, zeros[B,2,H,W]). Its history filling and condition encoder therefore see current RGB in all three slots.",
+    "output": "Unclamped FP32 k1_rgb; no RGB target enters the forward.",
+    "invariants": "State_dict SHA and parameter versions before/after label export; zero optimizer updates/backwards for restorer. Unit fixture verifies changing raw past with zero weights cannot change K1."
+  },
+  "composition": {
+    "function": "compose_input_preservation(current_rgb,k1_rgb,benefit_score)",
+    "hard_rule": "correction_mask=(benefit_score>0). Exact0,positive/negative zero ties preserve input. Nonfinite score/output fails; no epsilon/threshold search.",
+    "spatial_rule": "Nearest-neighbor repeat_interleave16 in both spatial axes; no interpolation, feathering, overlap or post-filter in this first isolated trial.",
+    "raw_output": "torch.where(pixel_mask,k1_rgb,current_rgb); avoids floating arithmetic in bypass branch and guarantees bitwise raw preservation when maskFalse.",
+    "evaluation": "Score unclamped output plus separately clipped[0,1] deployment output and clipping statistics. Never train through hard threshold/RGB composition in this trial.",
+    "risk": "Hard16pixel boundaries may introduce seams and per-frame decision flicker. Record actual composed-image PSNR/MAE/LPIPS, boundary residual-gradient jump relative to raw/K1, and stride1 action-map flip rate. No flow-aware temporal-quality claim from those statistics. No adaptive smoothing selected on dev."
+  },
+  "fixed_train_rows": {
+    "split": "train19 only; revised cohort and source/group train/dev exclusion unchanged",
+    "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "dataset_sha256": "3e075085a2e846e10bb9edf5775b2df00fa32fad3f04d4135e49713b2d6f3e87",
+    "schedule": {
+      "bytes": 14924552,
+      "file_sha256": "b5e6d4c6031d79d5b9457c98fe215d49e393e335994559597498176f4e666f08",
+      "numeric_schedule_sha256": "17c7ca57110c4006b2a0f41986dac58daa9945bff7e113265bb8b66ffb3be5cc",
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/student_schedule.json",
+      "rows": 16000,
+      "schedule_sha256": "adda5689d88417b4141ca8f632a7b03515a829b18266057312569dea3298a100"
+    },
+    "reuse_rule": "Use all16000 existing numeric student rows in original order,1000 contiguous batches16, including12native+2identity+2near_clean per batch. Preserve crop/frame/control noise and true_availability*external_mask. teacher_mask must beNone. No row resampling or dev labels.",
+    "all_rows_valid": "Single restoration-benefit map is supervised even when both histories are absent. Do not apply the old per-history valid-slot loss mask."
+  },
+  "labels": {
+    "definition": "raw_benefit=tile16_MAE(current_rgb,target)-tile16_MAE(frozen_K1_rgb,target). Positive means K1 is better.",
+    "numerics": "Actual FP32 RGB; independent CPU FP64 absolute-error/channel/spatial mean for raw benefit. Retain both tile MAEs and raw FP64 benefit.",
+    "training_target": "FP32 clip(raw_benefit/(0.25/255),-4,4), explicitly borrowed from the original utility normalization.",
+    "loss": "Mean SmoothL1(beta=1) over all B*1*6*6 entries between single benefit_score and detached normalized target. No RGB fidelity loss, class reweighting, confidence weighting, target-dependent sampling or extra auxiliary loss.",
+    "interpretation": "A bounded normalized signed-benefit predictor, not calibrated expected MAE gain/probability. Saturation is recorded and signs/ties remain raw-ground-truth diagnostics."
+  },
+  "new_train_cache_required": {
+    "existing_available": false,
+    "why": "Existing headroom RGB caches are dev6 only. Teacher training forward outputs used changing weights/masks and were not final-teacher K1 predictions. Neither can become train19 labels.",
+    "export_budget": "Exactly1000 batched frozen-K1 forwards of16 rows=16000crop predictions;0restorer backward/optimizer update. No repeated label export per arm.",
+    "cache_per_batch": [
+      "actual k1_rgb FP32[16,3,96,96]",
+      "raw-only deterministic gate features FP32[16,2,11,6,6]",
+      "tile MAE(input,target),tile MAE(K1,target),raw_benefit FP64[16,1,6,6]",
+      "normalized_benefit FP32[16,1,6,6]",
+      "all row hashes, full observed/current/target float32 SHA, teacher SHA, source/source-group/window/crop/control/source-pixel bindings"
+    ],
+    "features_backend": "CPU Torch FP32,2CPU threads, exact frozen features() math on the loader CPU observations before copying observations to the NPU restorer. Save actual FP32 features. Use this same CPU feature/head backend for training and the first cached-dev comparison; require exact cached-feature versus recomputed-feature parity. No cross-CPU/NPU parity is assumed and no automatic head-backend switch is permitted.",
+    "audit": "Independent CPU reuses verified train19 source NPZ/rows to reconstruct current/target and features, reads saved K1 arrays, and recomputes signed labels. It does not replay K1. Freeze actual file/array/row/implementation SHAs; exclude source fields from network features.",
+    "output_limit_proposed_bytes": 3221225472,
+    "known_payload_bytes": {
+      "K1_RGB": 1769472000,
+      "raw_features": 50688000,
+      "three_FP64_label_maps": 13824000,
+      "normalized_FP32_label_map": 2304000
+    },
+    "resource_proposal": "One bounded new label-export run,4CPU/32GiB hostRSS/12GiB immutable-source cache,<=900s, single fresh admitted NPU card with existing health/lock/idle policy. This is a proposed cap, not measured completion time; failure stops, no automatic retry/extension."
+  },
+  "dev_cache_reuse": {
+    "K1_reusable": true,
+    "source_report_sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578",
+    "rows": 2880,
+    "RGB_caches": 180,
+    "target_scope": "Dev targets only scoring, oracle diagnostic and integrity; never training labels.",
+    "history_not_directly_saved": "Six-array NPZ has only current raw crop, not an explicit fullK3 tensor.",
+    "exact_reconstruction": "Index every cached current by(source,profile,frame,crop). Each source/profile has all96frames with the identical center crop. Reconstruct[x[max(t-2,0)],x[max(t-1,0)],x[t]] from cached current arrays; near-clean uses the already saved corresponding raw current. Verify C-contiguous FP32 stack against each original records.jsonl observed_crop_sha256_float32, and current/target/K1/row/file hashes.",
+    "failure_policy": "Any missing row/history/SHA mismatch stops cached-dev evaluation. Do not silently switch to source NPZ or generate new histories/model outputs.",
+    "conditional_saved_compute": "Only after exact reconstruction passes: evaluate both heads on reconstructed observations and compose with already cached K1;0new restorer forwards. This exact reuse has not yet been executed.",
+    "required_new_two_candidate_diagnostic": "During this single dev-cache preparation pass compute tilewise min(input,K1), exact ties prefer input, separately for degraded/identity/near_clean/source/phase. Existing four- and five-candidate oracle results are not the input+K1 two-candidate bound. No extra model call and no additional repeated scan now.",
+    "scope_limit": "Only96x96center crops. Full-frame480x832 gate/K1 behavior needs later separately bounded inference; crop caches do not supply full-frame restoration outputs or exact full-frame condition features."
+  },
+  "shuffled_control": {
+    "arms": [
+      "matched_benefit_head",
+      "shuffled_benefit_head"
+    ],
+    "same_except": "Both identical1745parameter initialization, rows/features, optimizer,1000steps, one loss coefficient1, inference composition and final checkpoint step. Only normalized whole-map label assignment differs.",
+    "new_map_required": true,
+    "old_map_not_usable": "Old donor_map is per valid history slot with history-lag strata; this experiment has one benefit map per row and includes both-absent rows.",
+    "unit": "One entire1x6x6 benefit map for each of16000rows; no pixel/tile permutation.",
+    "stratum": [
+      "profile_id",
+      "severity_phase",
+      "effective_availability[2]"
+    ],
+    "source_exclusion": "Donor source_id and source_group_id must both differ from recipient. Metadata only; never choose donors by errors/labels/results.",
+    "algorithm": "Seed20261112; adapt existing SHA256-keyed group ordering and within-group row ordering; cyclic rotate by largest source-group row count within each stratum. Require largest group<=half stratum and exact donor bijection/no reuse.",
+    "failure": "If any stratum infeasible, record it and block both head-training arms pending design review. No hidden coarsening, new RNG/resampling or borrowing dev rows.",
+    "normalization": "Permute saved normalized complete maps. Preserve the overall and stratum label distributions exactly; no per-arm extra labeling cost."
+  },
+  "head_training": {
+    "steps_per_arm": 1000,
+    "batch_size": 16,
+    "seed": 20261111,
+    "optimizer": {
+      "type": "AdamW",
+      "lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "foreach": false,
+      "fused": false,
+      "gradient_clip_norm": 1,
+      "warmup_steps": 50,
+      "lr_schedule": "exact train_rphi.learning_rate(step,1000,1e-4,50): linear warmup, cosine20percent floor"
+    },
+    "precision": "FP32; no autocast/loss scaler",
+    "restorer_forward_calls_after_cache": 0,
+    "restorer_optimizer_updates": 0,
+    "head_updates_total_two_arms": 2000,
+    "checkpoint": "Complete head/optimizer/RNG/row cursor/row+donor+cache hashes; final1000only for comparison, no dev checkpoint selection. Smoke checkpoints excluded.",
+    "resource_proposal": "Separate2CPU/4GiB/900s bounded CPU run per arm after actual short CPU backend smoke. No completion-time claim or automatic NPU fallback.",
+    "backend": "CPU Torch,2threads, TORCH_DEVICE_BACKEND_AUTOLOAD=0; exact runtime versions pinned at implementation. NPU is needed only for the separately admitted fixed-K1 label export, not for this small head."
+  },
+  "minimum_tests_before_admission": [
+    "Final-layer zero initialization gives exact raw output; zero/signed-zero ties preserve input; NaN fails.",
+    "Changing unavailable past or target/metadata cannot alter head features/prediction; only raw observed+availability accepted.",
+    "K1 zero-weight invariance and full frozen state/parameter-version checks.",
+    "Single-map signed label formula, all-absent supervision, clipping/sign and hard16pixel boundary fixture.",
+    "Train-only role/source/group binding, strict donor bijection/strata and infeasible fail-closed fixture.",
+    "Exact dev K3 reconstruction against stored full-observation SHA; missing neighbor and altered current/near-clean bytes reject without fallback.",
+    "Identical matched/shuffle initial tensors, strict checkpoint reload/RNG/step, optimizer touches only1745 head parameters.",
+    "Actual composed output metrics (including a seam fixture) differ from choosing optimistic tile oracle; no target enters compose."
+  ],
+  "acceptance_scope": "Compare fixed final matched head against shuffled head, raw and K1 on actual composed outputs at threshold0. Report source-balanced native fidelity, control harm, worst-source/phase and correction/flip/seam coverage. Bypass-all is not restoration progress. No automatic acceptance from oracle gain or label-regression accuracy; root must freeze the exact comparative acceptance rule before training. This new experiment does not reopen the failed original teacher gate or claim independent test quality.",
+  "next_order": [
+    "Implement isolated head/composition and CPU tests; freeze new donor metadata and exact execution contracts.",
+    "One bounded train-only final-K1 label export and independent cache audit; prepare dev rawK3 reconstruction+two-candidate diagnostic using existing arrays.",
+    "Short head-backend smoke, then separately admitted matched/shuffled1000step head runs; no restorer training.",
+    "One paired cached-dev evaluation with actual composed outputs; if justified, design independent source-disjoint test/full-frame temporal evaluation separately."
+  ]
+}

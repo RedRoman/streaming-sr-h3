@@ -1,0 +1,78 @@
+{
+  "schema": "openh3.saved_adamw_continuation_independent_source_review.v1",
+  "created_at_utc": "2026-11-12T09:22:03.317013+00:00",
+  "verdict": "no_remaining_source_blocker_in_reviewed_scope",
+  "review_complete": true,
+  "execution_admitted": false,
+  "source_sha256": "5da651ce1cd4f4a40cdd7c9692c1771da682e985aa10fac50f840931bc2958b4",
+  "test_sha256": "cd6c903415d0be887e90043fcf4806759ad11c564133bd629972ef9e037e8311",
+  "preparation_freeze": {
+    "path": "preparation/h3_adamw_saved_continuation_preparation_20261112a/source_freeze.json",
+    "sha256": "0490c0f0d2ce37e7515536a517759849008160f5a4a540495cb951ea024bfe80"
+  },
+  "local_cpu_receipt": {
+    "path": "preparation/h3_adamw_saved_continuation_preparation_20261112a/local_cpu_receipt.json",
+    "sha256": "7064b9699e68ad32665597c52f6857db80eac20775f64a0394a0cfbbcdf6818c",
+    "recorded_passed": 5,
+    "recorded_skipped": 4,
+    "reviewer_reran_tests": false
+  },
+  "source_freeze_members_verified": 15,
+  "blocking_findings": [],
+  "checked": [
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 75,
+      "finding": "The prerequisite requires completed independent saved-subset actual-array/equation acceptance, correct failed partial/queue/protocol/checkpoint hashes and saved_subset_ready_for_continuation; original failure/reload/merge/functional flags must stay false."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 208,
+      "finding": "Fresh400 adapter and1200 optimizer state restoration validates exact keys, FP32 shape/finite/content, original order/full parameter group, step=1 and native device placement. Saved post-load actual arrays are independently hash-bound. load_state_dict-return counter is separate from strict-inventory-verified."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 441,
+      "finding": "Single merge streams200 matrices, uses original FP32 addmm/one BF16 cast, hashes declared results, permits only corresponding weight version+1 and exact intended bytes; all other base parameters and registered buffers retain their identities/bytes. Merge differences stay descriptive; no equivalence/quality claim."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 506,
+      "finding": "Saved updated versus newly reloaded video/audio/FP16decoder/RGB are all strict actual byte comparisons including signed-zero; original zero/reference is prerequisite byte-exact and recomputed from pinned actual arrays for attribution."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 532,
+      "finding": "6NFE+2native decodes, one saved adapter/optimizer load and one merge;0 backward/update/encode/Rphi/unscale/clip/checkpoint-save. Actual50x3 DiT and36x3 VAE per-mode block observations,2 decoder contexts,6spatial tile rows with batch4 and actual noise observations are bounded."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 548,
+      "finding": "Fresh pretrained base/VAE bytes must match prior canonical inventories. Input uses identical accepted TRAIN Z_R guide and Z_raw warm-start, seed101 and packed noise/initial-state bytes; clean target only participates in offline descriptive MSE. No nonzero checkpoint is used before the explicit strict saved restoration."
+    },
+    {
+      "path": "code/check_h3_adamw_saved_continuation.py",
+      "line": 692,
+      "finding": "Merged no-adapter semantics explicitly set adapter_B_all_zero_at_session_entry=None, retain actual parameter count0, and label BF16 merged arithmetic. This resolves the initially observed vacuous-empty-set metadata claim."
+    },
+    {
+      "path": "code/h3_evidence_checks.py",
+      "line": 28,
+      "finding": "New entry imports the reviewed no-success-flush require. Per-tensor validation successes do not dump full JSON; explicit phase/progress persists. Failed gates retain failure evidence. Frozen old helper/producer sources remain unchanged."
+    }
+  ],
+  "limitations": [
+    "This is static source and frozen-small-file review, not a real model or runtime execution acceptance.",
+    "Four actual Torch CPU restoration/merge/saved-array fixtures were skipped on local Python and remain required in the existing CPU runtime before NPU admission.",
+    "The reviewed preparation is not a completed runtime/runner/resource admission; root owns source/runtime pins, fresh resource checks, single owned process group and terminal actual-array auditing.",
+    "No actual GPU/NPU, SSH, model load/forward/backward, checkpoint restoration, array rescan or test rerun occurred during this independent review.",
+    "Full initial/final canonical inventory records remain producer attestations until a separate actual terminal audit; no unsaved full matrix independent reconstruction claim."
+  ],
+  "actions": {
+    "SSH": 0,
+    "NPU_calls": 0,
+    "model_calls": 0,
+    "tests_rerun": 0,
+    "other_source_edits": 0
+  }
+}

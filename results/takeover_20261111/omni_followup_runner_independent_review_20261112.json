@@ -1,0 +1,58 @@
+{
+  "schema": "omni.followup_runner_independent_review.v1",
+  "reviewed_at_utc": "2026-11-12T09:05:15.517352+00:00",
+  "complete": true,
+  "source": {
+    "path": "code/run_omni_followup_once.py",
+    "sha256": "8df017e4f1aa48bff3bd80a1f3361061f28f84b01c65991bc119eddeb023f30e"
+  },
+  "tests": {
+    "path": "code/tests/test_omni_followup_once.py",
+    "sha256": "c19a5ea4e5ca6a85d381a52f0561aaf06661fd8904239dc98dca639e5f938d93",
+    "root_reported_passed": 9,
+    "rerun_by_reviewer": false
+  },
+  "verdict": "no_source_blocker_for_separately_admitted_fixed_jobs",
+  "checks": [
+    {
+      "lines": [
+        53,
+        94
+      ],
+      "finding": "Exact four kinds, budgets, CPU/device scope, argv, manifest/entry/contract pins, root launch admission and prerequisite type/value gates."
+    },
+    {
+      "lines": [
+        126,
+        142
+      ],
+      "finding": "Fresh run directory, cooperative card lock, first idle/memory checks, fixed15second wait and second fresh idle/memory checks; no auto-wait/retry."
+    },
+    {
+      "lines": [
+        143,
+        157
+      ],
+      "finding": "Fixed CPU affinity and numeric thread limits; all kinds backend autoload0; CPU audit no device inspector/CANN wrapper, NPU entry must explicitly register torch_npu."
+    },
+    {
+      "lines": [
+        155,
+        177
+      ],
+      "finding": "Owned-process supervision delegated to separately SHA-pinned existing supervisor; exact typed terminal report predicates and final unchanged plan/pins; no training/result acceptance invented."
+    }
+  ],
+  "boundaries": [
+    "Static source/test review only; no SSH, model, NPU, real job dispatch or repeated tests.",
+    "Cooperative lock cannot prevent an unrelated noncooperating process taking the card; fresh checks only attest their instants.",
+    "Actual supervisor implementation and launch plan/source pins remain root admission responsibilities.",
+    "Worker complete is execution completion, not independent numerical/quality acceptance."
+  ],
+  "actions": {
+    "SSH": 0,
+    "model_calls": 0,
+    "tests_repeated": 0,
+    "source_edits": 0
+  }
+}

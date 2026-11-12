@@ -2,6 +2,8 @@
 
 ## 当前接续入口（2026-11-12 18:55 SGT，下面早期记录是历史）
 
+- **18:57收束备份已验**：本地commit `2ea2aaa0ae92b5ca4b5fede1e8faca014da59b79`；31984 `preparation/followup_20261112_1856` 的64文件和两个诊断小归档全部SHA通过，0覆盖，backup SHA `0e4edbd819836196f00b9e8293c623120035b49aebd6bfcbcd15cea4de5bda9b`。这是本条收据落盘前快照。仅通知新完成/失败/重要结论；无变化保持安静。
+
 - **18:55 balanced-Huber单变量诊断已完成，保护头支线暂缓，勿再加步/调阈值**：31984 `runs/input_preservation_balanced_huber_probe_20261112a`，86.26s/峰313.1MB，先精确重放旧分数SHA，再只改正负tile权重，各类总重0.5；5TRAIN-fold×200GD，0DEV/0恢复器/0NPU。source宏BA **0.501422**、AUC **0.510326**；负标签误选K1由1降到.530613，但正标签保留也由1降到.533458。nearclean BA.574678/AUC.631390，三native混合profile BA却为.473815/.495428/.471488；不是统一保护收益。19TRAIN且教师已见过全部来源，不是独立泛化测试；固定线性小模型结果也不能否定所有raw特征。小归档50338B/SHA3e231db9…fd9048唯一下载、5payload全核，144个source/profile宏汇总最大差4.44e-16；root_acceptance4d673133…3eff4。当前1745头旧screen仍失败，**本支线按预声明停止迭代，项目继续**。
 - **接续重点**：H3唯一download session `h3-saved-continuation-missing-download-20261112a`仍RUNNING，最新本地37,340,160/718,719,172B；慢但增长，勿重复传输。目标安装/完整SHA工具已准备于`preparation/h3_saved_continuation_target_install_20261112a`，12/12本地测试通过、每目标独立inode且绝不覆盖已有文件；未部署/未执行，全1406依赖与4大模型53.26GB SHA/runtime仍待核。已有接管授权足够执行必要CPU验证，不另设确认。完成下载后按README顺序验、单次上传、安装、全SHA；新NPU仍要资源/锁/15秒双检。若31112先有空卡，可在原主机做已准备reload+merge补验，绝不能两机重复启动。guide-matched正式LoRA仍0步。
 - **基线没有漏跑**：FaverNet/AverNet6/6单源三任务早已在`results/native_quality_completed_20261111`收束。本次只核现有小证据并修正readiness嵌套旧pending文字，0新推理/下载。下一优先冻结多源相同输入/target/window/预算矩阵，只补缺格；旧6条仅hash完全一致才复用。它们是offline22帧/未来21帧单源smoke，不能称多源SOTA结论。

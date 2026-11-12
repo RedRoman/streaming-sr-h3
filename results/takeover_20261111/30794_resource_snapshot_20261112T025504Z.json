@@ -1,0 +1,160 @@
+{
+  "schema": "openh3.single_npu_smi_snapshot.v1",
+  "host": "huawei-modelarts-30794",
+  "observed_at_utc": "2026-11-12T02:55:04Z",
+  "command": "date -u '+%Y-%m-%dT%H:%M:%SZ'; npu-smi info",
+  "command_executions": 1,
+  "npu_smi_version": "25.5.1",
+  "method": "Fields transcribed from this single returned npu-smi stdout; no additional process/user investigation or NPU import.",
+  "cards": [
+    {
+      "card": 0,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 32016,
+      "total_mb": 65536,
+      "free_mb": 33520,
+      "AICore_percent": 0,
+      "power_watts": 102.8,
+      "temperature_c": 50,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 28646
+        }
+      ]
+    },
+    {
+      "card": 1,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27846,
+      "total_mb": 65536,
+      "free_mb": 37690,
+      "AICore_percent": 0,
+      "power_watts": 100.3,
+      "temperature_c": 50,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    },
+    {
+      "card": 2,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27844,
+      "total_mb": 65536,
+      "free_mb": 37692,
+      "AICore_percent": 0,
+      "power_watts": 96.5,
+      "temperature_c": 50,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    },
+    {
+      "card": 3,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27842,
+      "total_mb": 65536,
+      "free_mb": 37694,
+      "AICore_percent": 0,
+      "power_watts": 98,
+      "temperature_c": 51,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    },
+    {
+      "card": 4,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 29897,
+      "total_mb": 65536,
+      "free_mb": 35639,
+      "AICore_percent": 0,
+      "power_watts": 94,
+      "temperature_c": 51,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 26532
+        }
+      ]
+    },
+    {
+      "card": 5,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27843,
+      "total_mb": 65536,
+      "free_mb": 37693,
+      "AICore_percent": 100,
+      "power_watts": 353.2,
+      "temperature_c": 54,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    },
+    {
+      "card": 6,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27843,
+      "total_mb": 65536,
+      "free_mb": 37693,
+      "AICore_percent": 0,
+      "power_watts": 96.9,
+      "temperature_c": 50,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    },
+    {
+      "card": 7,
+      "device": "910B3",
+      "health": "OK",
+      "used_mb": 27843,
+      "total_mb": 65536,
+      "free_mb": 37693,
+      "AICore_percent": 0,
+      "power_watts": 97.8,
+      "temperature_c": 51,
+      "processes": [
+        {
+          "pid": 1794498,
+          "name": "python",
+          "memory_mb": 24478
+        }
+      ]
+    }
+  ],
+  "configured_nonzero_candidate_card": 6,
+  "minimum_free_mb": 60000,
+  "eligible_cards_at_snapshot": [],
+  "conclusion": "Do not admit nonzero probe on card6 from this snapshot: existingPID1794498 and37693MB free. Card7 has the same blocking conditions. Fresh prelaunch admission/locks remain required even if a later snapshot is idle.",
+  "actions": "No device import, resource reservation, kill, launch or environment modification."
+}

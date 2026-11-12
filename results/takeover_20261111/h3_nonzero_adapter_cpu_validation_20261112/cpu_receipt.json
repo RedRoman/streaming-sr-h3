@@ -1,0 +1,61 @@
+{
+  "actual_CPU_tiny_path": {
+    "NFE": 12,
+    "SGD_steps": 1,
+    "actual_VAE_native_context_entries": 76,
+    "actual_context_restorations": 76,
+    "adapter_tensors": 400,
+    "backward": 1,
+    "merge_equivalence_claim": false,
+    "strict_unmerged_reload": true,
+    "trajectories": 4
+  },
+  "complete": true,
+  "created_at_utc": "2026-11-12T02:25:42.645219+00:00",
+  "development_history": [
+    {
+      "log": "cpu_tests_initial.log",
+      "sha256": "75a48c5dd5c418b7ad64ec34b1f894c639fccde590dc1d263f7a074b9c2d78be",
+      "status": "first8_passed_full400_fixture_reached_reloaded_decode_then_110s_timeout_due_repeated_JSON_IO; not a numeric pass"
+    },
+    {
+      "log": "cpu_tests_final.log",
+      "sha256": "2c2ec75fc8fb7bf8faff5512d887da735a0c9a884277a926280ecf6d7ba35411",
+      "status": "9_passed_before_failure_safe_statistics_patch; not used as final_source_acceptance"
+    },
+    {
+      "status": "Final source adds JSON-safe null for nonfinite observation statistics; tenth test proves failed merge preserves evidence before any base write."
+    }
+  ],
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENH3_COMFY_REFERENCE_ROOT": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "python": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "torch": "2.10.0+cpu"
+  },
+  "fixture_IO": "Only full 400-adapter CPU test batches partial.json metadata; every actual NPY/safetensors/array hash is still written and checked. Small tests use production atomic partial writes. Production code save behavior is unchanged.",
+  "host": "huawei-modelarts-30794",
+  "schema": "openh3.nonzero_adapter_cpu_validation.v1",
+  "scope": "Real Torch CPU arithmetic with tiny 50-block/200-linear/400-adapter model and pinned official sampler AST. No real H3/VAE weights loaded, no Comfy device imports, no NPU call, no training dataset, no production checkpoint or launch configuration. Actual arrays and safetensors are exercised in temporary test fixtures; this is not real-model numerical acceptance.",
+  "source_contract_sha256": "d3148504db9fbee2925448ea69e5f2ba83da5eba2127bf3229c9964f445bc08a",
+  "source_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_nonzero_adapter.py": "ab710d9a365ac8f502aea177f8993354e2a17d086de97cc71a0e4b265ae99f6b",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "code/openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa",
+    "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/tests/test_h3_nonzero_adapter.py": "a2ccddecab0c442c4dc51aaee1d35bd2a6a1c53ec40004cfbcb5184ff740a72f",
+    "code/tests/test_openh3_train_trajectory.py": "f9e05c4cadff196e0da0c7ef511321ee21db73e30252dc092df01d1534f61287"
+  },
+  "tests": {
+    "log": "cpu_tests_failure_safe.log",
+    "log_sha256": "0e626302010ee7d08b0353ef6c654ef4119ee4eb0433b3f6db297577cd73ed6f",
+    "passed": 10,
+    "seconds": 6.767,
+    "skipped": 0
+  }
+}

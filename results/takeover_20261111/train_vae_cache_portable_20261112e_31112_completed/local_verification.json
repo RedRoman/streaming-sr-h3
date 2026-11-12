@@ -1,0 +1,82 @@
+{
+  "schema": "openh3.train_vae_cache_portable_local_verification.v1",
+  "verified_utc": "2026-11-12T03:01:20.398877+00:00",
+  "complete": true,
+  "archive_sha256": "1d2310858199d3666617495700235f84321f9c6eb4ae6aab929fbdc50c0bd459",
+  "archive_bytes": 2161030,
+  "archive_members": 67,
+  "payload_files_sha_verified": 66,
+  "archive_manifest_sha256": "2168c9ddb38e5928679916fb55d2fddc2db098e02ebd88354ef632b5db70be78",
+  "producer_report_sha256": "a2c5a5b7607aaa0bce74e0bd573a98f5fb36ecb0a8ee61d5726d6d72c134d62e",
+  "remote_audit_sha256": "9e7ed3e7110650367d9180cf01e2c0f43e36871623c5fc5dfd6050b17bfd484a",
+  "remote_audit_all_11_checks_passed": true,
+  "bound_entry_legacy_helper_contract_queue_auditor_sha_verified": true,
+  "latent_numpy_validation": {
+    "raw_warm_start_latent": {
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ],
+      "dtype": "float32",
+      "array_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+      "elements": 262080,
+      "min": -4.842004776000977,
+      "max": 4.421302795410156,
+      "finite": true,
+      "file_sha256": "ba050f2bdab60a0b3d5462e1390bc848f390c67a501770569f697f7c631889ad",
+      "bytes": 1048448
+    },
+    "rphi_guide_latent": {
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ],
+      "dtype": "float32",
+      "array_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+      "elements": 262080,
+      "min": -4.842004776000977,
+      "max": 4.459837913513184,
+      "finite": true,
+      "file_sha256": "7878c6860be75e731ca7b396aa620f69cf16a3787fa06b839cc7e3b2ed852da7",
+      "bytes": 1048448
+    }
+  },
+  "latent_actual_relations": {
+    "Z_raw_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+    "Z_R_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+    "Z_raw_equals_Z_R": false,
+    "decode_input_Z_R_exact": true,
+    "FP16_stage_decode_cast_exact": true,
+    "latent_equality_is_not_a_quality_gate": true,
+    "VAE_R_semantics": "as returned by H3 decode, after VAE internal clamp; no pre-clamp claim"
+  },
+  "operation_budget_verified": true,
+  "frozen_inventory_validation": {
+    "inventory_phases": [
+      "frozen_final",
+      "frozen_initial"
+    ],
+    "scope": "Independent canonical JSON/file hashes; parameter/buffer bytes and object/version facts are producer-recorded. No live model re-read or Python-cache inventory.",
+    "parameters": 559,
+    "registered_buffers": 42,
+    "parameters_sha256": "06fe875e0dacaa54f6e32aa3b5857770f6cd8cdbd04d264255ac012e9e9ac432",
+    "registered_buffers_sha256": "56089618e6a282d6654e9845c79ced2af27f9cfc97e082a0ac065ffd24460a87",
+    "initial_final_json_file_sha_equal": true
+  },
+  "large_RGB_downloaded": false,
+  "large_RGB_validation_scope": "The remote CPU auditor read and verified actual NPY file/content SHA, dtype/shape and finite [0,1] values. Local verification binds that audit by archive SHA; RGB bytes were not copied locally.",
+  "used_assets_rehashed_locally": false,
+  "used_asset_validation_scope": "Remote CPU auditor independently rehashed only VAE/context. Local verification binds its exact report; no weight files were downloaded.",
+  "Torch_imported": false,
+  "torch_npu_imported": false,
+  "local_model_or_NPU_calls": 0,
+  "producer_or_finalizer_rerun": false,
+  "single_archive_download": true,
+  "quality_verdict": "not_assessed"
+}

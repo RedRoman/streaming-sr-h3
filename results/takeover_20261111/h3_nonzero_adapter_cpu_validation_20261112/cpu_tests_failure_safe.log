@@ -1,0 +1,26 @@
+test_SGD_once_unscale_and_zero_A_legitimate (__main__.ArithmeticAndIdentity.test_SGD_once_unscale_and_zero_A_legitimate) ... ok
+test_expected_shapes_from_real_linears_scale_and_alias_rejected (__main__.ArithmeticAndIdentity.test_expected_shapes_from_real_linears_scale_and_alias_rejected) ... ok
+test_guard_budget_restoration_and_native_tiling (__main__.ArithmeticAndIdentity.test_guard_budget_restoration_and_native_tiling) ... {"phase": "zero_decode", "elapsed_seconds": 0.0037232255563139915, "max_rss_KiB_linux": 350748, "rss": {"VmHWM": "350748 kB", "VmRSS": "350748 kB"}}
+ok
+test_identity_ignores_timing_not_recipe_and_out_never_overwrites (__main__.ArithmeticAndIdentity.test_identity_ignores_timing_not_recipe_and_out_never_overwrites) ... ok
+test_merge_BF16_rounding_descriptive_and_only_declared_writes (__main__.ArithmeticAndIdentity.test_merge_BF16_rounding_descriptive_and_only_declared_writes) ... ok
+test_missing_or_nonfinite_gradient_stops_before_update (__main__.ArithmeticAndIdentity.test_missing_or_nonfinite_gradient_stops_before_update) ... ok
+test_nonfinite_merge_preserves_JSON_evidence_before_any_base_write (__main__.ArithmeticAndIdentity.test_nonfinite_merge_preserves_JSON_evidence_before_any_base_write) ... ok
+test_reload_output_equality_is_strict_merged_is_descriptive (__main__.ArithmeticAndIdentity.test_reload_output_equality_is_strict_merged_is_descriptive) ... ok
+test_strict_file_keys_dtype_shape_metadata_and_destructive_reload (__main__.ArithmeticAndIdentity.test_strict_file_keys_dtype_shape_metadata_and_destructive_reload) ... ok
+test_four_actual_sampler_trajectories_RGB_SGD_save_clear_reload_merge (__main__.CompleteTinyPath.test_four_actual_sampler_trajectories_RGB_SGD_save_clear_reload_merge) ... {"phase": "zero", "elapsed_seconds": 0.23690939415246248, "max_rss_KiB_linux": 359308, "rss": {"VmHWM": "359308 kB", "VmRSS": "359308 kB"}}
+{"phase": "zero_decode", "elapsed_seconds": 0.582168510183692, "max_rss_KiB_linux": 372312, "rss": {"VmHWM": "372312 kB", "VmRSS": "372312 kB"}}
+{"phase": "backward", "elapsed_seconds": 0.6387705942615867, "max_rss_KiB_linux": 382500, "rss": {"VmHWM": "382500 kB", "VmRSS": "382500 kB"}}
+{"phase": "updated", "elapsed_seconds": 2.4107231497764587, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "381536 kB"}}
+{"phase": "updated_decode", "elapsed_seconds": 2.601167494431138, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "381536 kB"}}
+{"phase": "reloaded", "elapsed_seconds": 2.7254399498924613, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "384804 kB"}}
+{"phase": "reloaded_decode", "elapsed_seconds": 2.91714786645025, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "384804 kB"}}
+{"phase": "merged", "elapsed_seconds": 3.1413203915581107, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "381432 kB"}}
+{"phase": "merged_decode", "elapsed_seconds": 3.1834536138921976, "max_rss_KiB_linux": 388400, "rss": {"VmHWM": "388400 kB", "VmRSS": "381432 kB"}}
+{"CPU_tiny_joint": {"adapter_tensors": 400, "trajectories": 4, "NFE": 12, "backward": 1, "SGD_steps": 1, "strict_unmerged_reload": true, "merge_equivalence_claim": false, "actual_VAE_native_context_entries": 76, "actual_context_restorations": 76}}
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 6.767s
+
+OK

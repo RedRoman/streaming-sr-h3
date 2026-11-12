@@ -1,0 +1,62 @@
+{
+  "schema": "openh3.nonzero_adapter_terminal_audit_cpu_validation.v1",
+  "created_at_utc": "2026-11-12T03:15:26.292343+00:00",
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "preparation/h3_nonzero_adapter_terminal_audit_20261112",
+    "-p",
+    "test_audit.py",
+    "-v"
+  ],
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "numpy": "2.5.1",
+  "returncode": 0,
+  "tests": 17,
+  "failures": 0,
+  "skips": 0,
+  "source_sha256": {
+    "README.md": "477f499dfaf200dc0e94f2ea1026f72f1a634c763989ca4f5ea0a79a09f1a649",
+    "audit_arrays.py": "79e7c509471cbca52d4b6a94b0b01141b1f7d2136e58b60e1542feb625726030",
+    "audit_checkpoint.py": "80736954b747ade56bc3c32b245678f624844f4f9568fc5b5450deb71056db41",
+    "audit_terminal.py": "603cb5773362fd1c96d8b7fa7318914ae287bfc74a70766a7b6e34338170535b",
+    "finalize_once.py": "10069ea77cf4c4503ff54eb7a6ea83a814eade1fa2d2474b40e2458d60ba469f",
+    "small_archive.py": "669537db16b0371021d22b2472951fe817dc909c02584c0ba6f1d27230f102f0",
+    "test_audit.py": "c43ce4e7ec97a89a27e137979f2998a3fd2ab3f9428f2a1c69b666761768df35"
+  },
+  "log_sha256": "9add881ad5197a1c0069fc5810faad1df4537e534f8e530a555ebdba42202a17",
+  "source_sha_after": {
+    "README.md": "477f499dfaf200dc0e94f2ea1026f72f1a634c763989ca4f5ea0a79a09f1a649",
+    "audit_arrays.py": "79e7c509471cbca52d4b6a94b0b01141b1f7d2136e58b60e1542feb625726030",
+    "audit_checkpoint.py": "80736954b747ade56bc3c32b245678f624844f4f9568fc5b5450deb71056db41",
+    "audit_terminal.py": "603cb5773362fd1c96d8b7fa7318914ae287bfc74a70766a7b6e34338170535b",
+    "finalize_once.py": "10069ea77cf4c4503ff54eb7a6ea83a814eade1fa2d2474b40e2458d60ba469f",
+    "small_archive.py": "669537db16b0371021d22b2472951fe817dc909c02584c0ba6f1d27230f102f0",
+    "test_audit.py": "c43ce4e7ec97a89a27e137979f2998a3fd2ab3f9428f2a1c69b666761768df35"
+  },
+  "wait_budget_revision": {
+    "old_seconds": 3600,
+    "new_seconds": 4200,
+    "producer_hard_seconds": 3600,
+    "producer_termination_grace_seconds": 30,
+    "poll_seconds": 30,
+    "audit_timeout_seconds": 300,
+    "scientific_acceptance_gates_changed": false,
+    "fake_clock_terminal_at_3630_verified": true,
+    "fake_clock_timeout_at_4200_verified": true
+  },
+  "actions": {
+    "Torch_imports": 0,
+    "NPU_calls": 0,
+    "model_loads": 0,
+    "producer_modifications": 0,
+    "actual_run_audit": false,
+    "admission_written": false,
+    "dispatch": false
+  },
+  "scope": "Synthetic CPU evidence tests including actual400key NPY/safetensors; not a model forward or future real run acceptance."
+}

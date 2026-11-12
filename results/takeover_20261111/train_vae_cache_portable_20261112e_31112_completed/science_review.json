@@ -1,0 +1,200 @@
+{
+  "schema": "openh3.train_vae_cache_portable_science_review.v1",
+  "reviewed_utc": "2026-11-12T03:02:27.843168+00:00",
+  "review_complete": true,
+  "engineering_verdict": "passed_single_train_vae_only_cache",
+  "quality_verdict": "not_assessed",
+  "evidence": {
+    "archive_sha256": "1d2310858199d3666617495700235f84321f9c6eb4ae6aab929fbdc50c0bd459",
+    "archive_bytes": 2161030,
+    "archive_manifest_sha256": "2168c9ddb38e5928679916fb55d2fddc2db098e02ebd88354ef632b5db70be78",
+    "payload_files_verified": 66,
+    "producer_report_sha256": "a2c5a5b7607aaa0bce74e0bd573a98f5fb36ecb0a8ee61d5726d6d72c134d62e",
+    "remote_audit_sha256": "9e7ed3e7110650367d9180cf01e2c0f43e36871623c5fc5dfd6050b17bfd484a",
+    "local_verification_sha256": "277398b8af3d0515608b8302041395dcab9e894c925f272f9eb36ef3188a52af",
+    "terminal_observation_sha256": "7cd3712f60dbf640d40cca262150f0d3fa404777c33e1723fff2676355d4a789"
+  },
+  "actual_scope": {
+    "host": "huawei-modelarts-31112",
+    "physical_card": "1",
+    "source_count": 1,
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "role": "train",
+    "task": "ordinary compression",
+    "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+    "frames": 22,
+    "RGB_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "latent_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "controls_included": false,
+    "full_32_source_training": false,
+    "other_31_train_sources_cached": false,
+    "dev_source_used_as_training": false,
+    "source_split_evidence_scope": "Accepted full train/dev manifest identity and source isolation records; selected compression NPZ bytes/pixels were checked. Original source video was not live-rehashed."
+  },
+  "completed_calls": {
+    "H3_sampler_calls": 0,
+    "NFE": 0,
+    "PIL_fromarray_calls": {
+      "raw": 22,
+      "rphi": 22
+    },
+    "Rphi_calls": 0,
+    "backward_calls": 0,
+    "decode_calls": 1,
+    "encode_calls": 2,
+    "forbidden_calls": [],
+    "optimizer_steps": 0,
+    "stage_decode_calls": 1,
+    "stage_encode_calls": 2
+  },
+  "what_was_verified": [
+    "The preaccepted ordinary TRAIN row and frozen legacy Rphi cache identity were preserved; Rphi was not rerun.",
+    "Z_raw was encoded from the actual observed RGB after official same-size PIL uint8 preprocessing. It remains the raw warm-start latent for future comparisons.",
+    "Z_R was encoded from clipped Rphi RGB after the same P preprocessing. The decoder consumed the exact saved Z_R and its exact FP16 stage cast.",
+    "The two latent file and array SHA values were independently recomputed locally. The remote CPU auditor additionally checked the actual 105431168-byte VAE_R NPY.",
+    "Frozen inventories cover 559 parameters and 42 registered buffers. Initial/final JSON files are byte-identical, with matching canonical tensor fingerprints, producer-recorded version/object/freeze checks, and restored wrappers/math.",
+    "Only VAE/context asset bytes were independently rehashed remotely; the complete parent manifest and original metadata fingerprint remain fixed."
+  ],
+  "cache_artifacts": {
+    "raw_warm_start_latent": {
+      "array_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+      "bytes": 1048448,
+      "dtype": "float32",
+      "file_sha256": "ba050f2bdab60a0b3d5462e1390bc848f390c67a501770569f697f7c631889ad",
+      "path": "arrays/raw_warm_start_latent.npy",
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ]
+    },
+    "rphi_guide_latent": {
+      "array_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+      "bytes": 1048448,
+      "dtype": "float32",
+      "file_sha256": "7878c6860be75e731ca7b396aa620f69cf16a3787fa06b839cc7e3b2ed852da7",
+      "path": "arrays/rphi_guide_latent.npy",
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ]
+    },
+    "vae_rphi_as_returned_internal_clipped": {
+      "array_sha256": "f1feb211975064e8ab3f3430b21ef84f9b6aed837864fc2fbc14dfad4033f5cd",
+      "bytes": 105431168,
+      "dtype": "float32",
+      "file_sha256": "b2976f56f3349dc810ff85ad7a2454f22bdb3c5bd38762ac0d01e8aec4b9210e",
+      "path": "arrays/vae_rphi_as_returned_internal_clipped.npy",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ]
+    }
+  },
+  "latent_relationships": {
+    "Z_raw_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+    "Z_R_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+    "Z_raw_equals_Z_R": false,
+    "decode_input_Z_R_exact": true,
+    "FP16_stage_decode_cast_exact": true,
+    "latent_equality_is_not_a_quality_gate": true,
+    "VAE_R_semantics": "as returned by H3 decode, after VAE internal clamp; no pre-clamp claim"
+  },
+  "preprocessing": {
+    "raw": {
+      "before_P_float32_sha256": "4d8f9dade6f3c7e924703666c2c462c1aa1a61011b3e3a4492eb751b6c386b1f",
+      "PIL_uint8_sha256": "7be6f913295ca02f0a3f3179c45c2519deaf5569972083228d6fa75ebda160ea",
+      "after_P_float32_sha256": "4d8f9dade6f3c7e924703666c2c462c1aa1a61011b3e3a4492eb751b6c386b1f",
+      "changed_components": 0,
+      "max_abs_difference": 0.0,
+      "mse_difference": 0.0,
+      "quantization": "clip(255*x,0,255).astype(uint8), truncation, not round"
+    },
+    "rphi": {
+      "before_P_float32_sha256": "2eff620370f5ebcf2c53150901a1123636405b344c495c172e71a96d2d4aecc6",
+      "PIL_uint8_sha256": "16a8eb46d4ba101e9d539d898ddb62e17954afd0a347d056720da8873e96280b",
+      "after_P_float32_sha256": "793a65a2e7db9535fb53aba6de46305926311c8051f09ee2cfac8dceab0925da",
+      "changed_components": 22368857,
+      "max_abs_difference": 0.003921567928045988,
+      "mse_difference": 4.917768013728755e-06,
+      "quantization": "clip(255*x,0,255).astype(uint8), truncation, not round"
+    }
+  },
+  "asset_scope": {
+    "scope": "only_used_components_checked; unused_components_metadata_only",
+    "parent_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "parent_metadata_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "checked": {
+      "vae": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/minimax_h3_video_vae_fp16.safetensors",
+        "bytes": 5207808496,
+        "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+        "actual_file_checked": true
+      },
+      "context": {
+        "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+        "bytes": 299557,
+        "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+        "actual_file_checked": true
+      }
+    },
+    "unused_roles": [
+      "base",
+      "refiner",
+      "turbo"
+    ],
+    "unused_policy": "metadata_only_not_statted_not_hashed_not_loaded",
+    "unused_paths_resolved_by_auditor": false,
+    "full_recipe_assets_verified": false,
+    "scope_evidence": "used bytes independently rehashed; producer non-use follows frozen source and recorded loader boundaries, not syscall tracing"
+  },
+  "timing_and_memory": {
+    "producer_report_elapsed_seconds": 90.32788564357907,
+    "producer_timer_scope": "Begins after CPU input inspection; includes VAE loading, two encodes, one decode, hashing and evidence work. Not end-to-end restoration or steady-state FPS.",
+    "remote_cpu_audit_elapsed_seconds": 31.59506307821721,
+    "queue_completed_utc": "2026-11-12T02:53:59.539979+00:00",
+    "finalizer_completed_utc": "2026-11-12T02:54:33.774586+00:00",
+    "finalizer_audit_invocations": 1,
+    "observed_peak_allocated_bytes": 7132525568,
+    "observed_peak_reserved_bytes": 8136949760
+  },
+  "scientific_limits": [
+    "This is cache engineering acceptance, with no PSNR, LPIPS, temporal fidelity, no-harm or downstream task-quality gate.",
+    "No H3 sampling, denoising step, backward pass, optimizer step or training was performed. The result is not full 32-source training progress.",
+    "One existing training source and one ordinary compression sample provide no held-out or cross-source generalization evidence, and do not establish an omni restoration method.",
+    "VAE_R is the as-returned output after the VAE internal clamp. No true pre-internal-clamp pixels were captured, so saturation effects cannot be inferred from this cache alone.",
+    "Z_raw and Z_R differ, but that difference alone is not evidence of repair benefit. Official uint8 preprocessing changes Rphi values and must remain part of any paired downstream protocol.",
+    "Parent recipe fingerprint is metadata provenance. Unused base/refiner/turbo files were not resolved, stat-ed, hashed or loaded; no full-recipe readiness or merge safety is established.",
+    "No cross-host numerical parity or comparison with a previous independently generated copy of this TRAIN cache was tested.",
+    "Model tensor byte/version observations are producer-recorded and bound to frozen source; the local audit does not reread a live NPU model."
+  ],
+  "recommended_next_step": "Reuse these immutable, hash-bound caches only in a separately admitted limited TRAIN experiment. Preserve Z_raw warm-start and the original clipped R anchor. A full H3 experiment still requires actual verification of its base/refiner/turbo assets and its own execution/quality gates; do not expand data or claim quality from this cache pass.",
+  "actions": {
+    "archive_downloads": 1,
+    "producer_replays": 0,
+    "finalizer_replays": 0,
+    "local_Torch_imports": false,
+    "local_NPU_calls": 0,
+    "large_RGB_downloaded": false,
+    "weight_files_downloaded": false
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "H3_calls": 0,
+  "Rphi_calls": 0,
+  "Rphi_checkpoint_state_sha256": "bc1913d4b853ec1678d6ab6fd57faeac9c96f6d539838f5f462e6cf061d8a3f1",
+  "VAE_calls": 0,
+  "asset_inspection": "all recipe asset sizes only; no DiT bytes read; VAE/context actualSHA only on execute",
+  "complete": true,
+  "execution_contract_sha256": "4be0a1f6324c27d1ff5ea37c93ac291fb843af0909efa1d4fa3e6eeaacef27ba",
+  "expected_latent_shape": [
+    1,
+    24,
+    7,
+    30,
+    52
+  ],
+  "export_row": {
+    "arrays": {
+      "raw_draft": {
+        "array_sha256": "4d8f9dade6f3c7e924703666c2c462c1aa1a61011b3e3a4492eb751b6c386b1f",
+        "dtype": "float32",
+        "shape": [
+          22,
+          480,
+          832,
+          3
+        ]
+      },
+      "rphi_raw_rgb": {
+        "array_sha256": "45ccc18712d97bfacb821b13d76fedc8eabc314d12828abc45ad17dd5f014500",
+        "dtype": "float32",
+        "shape": [
+          22,
+          480,
+          832,
+          3
+        ]
+      },
+      "rphi_rgb": {
+        "array_sha256": "2eff620370f5ebcf2c53150901a1123636405b344c495c172e71a96d2d4aecc6",
+        "dtype": "float32",
+        "shape": [
+          22,
+          480,
+          832,
+          3
+        ]
+      }
+    },
+    "checkpoint": "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+    "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "checkpoint_step": 3000,
+    "clipping": {
+      "component_count": 3988392,
+      "component_fraction": 0.15131756264568766,
+      "raw_max": 1.0682837963104248,
+      "raw_min": -0.0485445037484169
+    },
+    "complete": true,
+    "condition_mode": "observations_only",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "frame_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "geometry": {
+      "channels": 3,
+      "dtype": "float32",
+      "frames": 22,
+      "height": 480,
+      "layout": "THWC",
+      "observation_shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "width": 832
+    },
+    "guide_file_bytes": 188002496,
+    "guide_file_sha256": "5403aa63735e13762b299fb2c42d6ae6999c25e6dc1aa42eafb47d8c5e2e6009",
+    "guide_npz": "samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.npz",
+    "history_indices": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        5,
+        6,
+        7
+      ],
+      [
+        6,
+        7,
+        8
+      ],
+      [
+        7,
+        8,
+        9
+      ],
+      [
+        8,
+        9,
+        10
+      ],
+      [
+        9,
+        10,
+        11
+      ],
+      [
+        10,
+        11,
+        12
+      ],
+      [
+        11,
+        12,
+        13
+      ],
+      [
+        12,
+        13,
+        14
+      ],
+      [
+        13,
+        14,
+        15
+      ],
+      [
+        14,
+        15,
+        16
+      ],
+      [
+        15,
+        16,
+        17
+      ],
+      [
+        16,
+        17,
+        18
+      ],
+      [
+        17,
+        18,
+        19
+      ],
+      [
+        18,
+        19,
+        20
+      ],
+      [
+        19,
+        20,
+        21
+      ]
+    ],
+    "implementation_sha256": {
+      "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+      "code/export_rphi_train_guides.py": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f",
+      "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6"
+    },
+    "latent_path": null,
+    "model_config": {
+      "blocks": 8,
+      "ch": 64,
+      "condition_dim": 6,
+      "k": 3,
+      "observation_encoder": "legacy",
+      "variant": "blind"
+    },
+    "observation_file_sha256": "013c218847d34d5fd5b14139ebc47320dc569eb7179a90d4bd9fe7f967090c7d",
+    "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/compression.npz",
+    "observation_pixel_sha256": "7be6f913295ca02f0a3f3179c45c2519deaf5569972083228d6fa75ebda160ea",
+    "provenance_file_sha256": "5300dfb95c1f22cd40541c4945a5ba4a0f225096e9da164b00e968bd64c0ff90",
+    "provenance_json": "samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.json",
+    "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+    "role": "train",
+    "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+    "schema": "rphi.train_rgb_guide_export.v1",
+    "scope": "engineering_training_subset",
+    "semantics": {
+      "condition": "blind observations only; no task label, severity, target statistic, or hidden recipe enters restorer",
+      "raw_draft": "float32 THWC [0,1] observed HR input; SR Torch bicubic antialias x4, native unchanged; NOT pretrained latent upscaler output",
+      "rphi_raw_rgb": "float32 THWC prediction before output clipping; may be outside [0,1]",
+      "rphi_rgb": "float32 THWC clip(rphi_raw_rgb,0,1), no RGB8 quantization",
+      "scope": "ordinary four-task TRAIN cache from fixed reference candidate; not held-out evaluation, quality approval, VAE encoding, or LoRA training",
+      "target_usage": "original-recording clean proxy; integrity/geometry verification here, reference for future RGB supervision only; no target pixels enter restorer or guide arrays",
+      "temporal": "all 22 original frames; K3 histories [max(0,t-2),max(0,t-1),t], no future, no batch-boundary history reset"
+    },
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "split": "train",
+    "target_file_sha256": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+    "target_key": "4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0",
+    "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz",
+    "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+    "target_role": "supervision_reference_only_never_model_input",
+    "task": "compression",
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "vae_encoded": false,
+    "vae_roundtrip_path": null
+  },
+  "full_manifest_scope": "complete32train/8dev source metadata and checkpoint contract; current pixel/file verification is selected compression row only",
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "input_files": {
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train_materialized.jsonl": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/train_vae_cache_20261112a/source_contract.json": "9c2e2bdc64fffec33a2e08c90e36affc87edc4c14ea3bb79467166da277ffdc4",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/manifest.json": "1c73a26f1cb81157c2445fac44d33acc925256ec77343f50aa7d54f7ab9f0008"
+  },
+  "model_constructed": false,
+  "model_input_arrays": [
+    "raw_draft",
+    "rphi_rgb"
+  ],
+  "original_source_verification": "materialization_attestation_only; no live original video SHA claim",
+  "preprocessing": {
+    "raw": {
+      "PIL_frames": 22,
+      "PIL_uint8_sha256": "7be6f913295ca02f0a3f3179c45c2519deaf5569972083228d6fa75ebda160ea",
+      "after_P_float32_sha256": "4d8f9dade6f3c7e924703666c2c462c1aa1a61011b3e3a4492eb751b6c386b1f",
+      "before_P_float32_sha256": "4d8f9dade6f3c7e924703666c2c462c1aa1a61011b3e3a4492eb751b6c386b1f",
+      "changed_components": 0,
+      "dtype": "float32",
+      "max_abs_difference": 0.0,
+      "mse_difference": 0.0,
+      "quantization": "clip(255*x,0,255).astype(uint8), truncation, not round",
+      "resize": "official same-size Lanczos center; no custom bypass",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "source_sha256": {
+        "comfy/utils.py": "9320cf5c624e96acc1d9ec92ff120ed6387a2142707f3194cb21dd0d11ac2500",
+        "comfy_extras/nodes_minimax_h3.py": "108ceff11e5a5c9a34a57bbc380447cf9941beb673a1bd421abc818de54ccd5c"
+      },
+      "versions": {
+        "Pillow": "12.3.0",
+        "numpy": "2.5.4",
+        "torch": "2.10.0+cpu"
+      }
+    },
+    "rphi": {
+      "PIL_frames": 22,
+      "PIL_uint8_sha256": "16a8eb46d4ba101e9d539d898ddb62e17954afd0a347d056720da8873e96280b",
+      "after_P_float32_sha256": "793a65a2e7db9535fb53aba6de46305926311c8051f09ee2cfac8dceab0925da",
+      "before_P_float32_sha256": "2eff620370f5ebcf2c53150901a1123636405b344c495c172e71a96d2d4aecc6",
+      "changed_components": 22368857,
+      "dtype": "float32",
+      "max_abs_difference": 0.003921567928045988,
+      "mse_difference": 4.917768013728754e-06,
+      "quantization": "clip(255*x,0,255).astype(uint8), truncation, not round",
+      "resize": "official same-size Lanczos center; no custom bypass",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "source_sha256": {
+        "comfy/utils.py": "9320cf5c624e96acc1d9ec92ff120ed6387a2142707f3194cb21dd0d11ac2500",
+        "comfy_extras/nodes_minimax_h3.py": "108ceff11e5a5c9a34a57bbc380447cf9941beb673a1bd421abc818de54ccd5c"
+      },
+      "versions": {
+        "Pillow": "12.3.0",
+        "numpy": "2.5.4",
+        "torch": "2.10.0+cpu"
+      }
+    }
+  },
+  "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+  "record": {
+    "latent_path": null,
+    "observation_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/compression.npz",
+    "observation_pixel_sha256": "7be6f913295ca02f0a3f3179c45c2519deaf5569972083228d6fa75ebda160ea",
+    "schema": "openh3.materialized_omni_pilot.v1",
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "split": "train",
+    "status": "materialized_not_vae_encoded",
+    "target_key": "4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0",
+    "target_npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz",
+    "target_pixel_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+    "task": "compression"
+  },
+  "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+  "role": "train",
+  "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+  "schema": "openh3.train_vae_cache_input_inspection.v1",
+  "selected_asset_files": {
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/complete.json": "77346b6a27ffbd71c143ede1bfb9b660fba8699a384336afc253fb63de4d9131",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/compression.npz": "013c218847d34d5fd5b14139ebc47320dc569eb7179a90d4bd9fe7f967090c7d",
+    "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.json": "5300dfb95c1f22cd40541c4945a5ba4a0f225096e9da164b00e968bd64c0ff90",
+    "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/samples/rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9.npz": "5403aa63735e13762b299fb2c42d6ae6999c25e6dc1aa42eafb47d8c5e2e6009"
+  },
+  "source_id": "2BdYaGuVAKo",
+  "source_isolation": {
+    "dev_samples": 32,
+    "dev_source_ids": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "KR4M9nGv2is",
+      "MjfCH89sBzs",
+      "NPCSVxYpK3k"
+    ],
+    "dev_source_sha256": [
+      "14a56187f654f5e4806f584b182aaafd43446972f590bd5ce3541a3b1bf27853",
+      "64d2f614b02de50ddde0c8523262c50758226a8e5a18a4a6501a37d1867d797f",
+      "76fb2da14ef8f1f573ebc133d64a6c0c785352b008057c75bb64488bc2f52ab7",
+      "c0a488b752166c64349009eba8111d0937b59e401221c5413d607733fa738297",
+      "cb8f4fc1db60b40be6d56877abea5c58d7c1efe918b6c6cc037a01973191f7d2",
+      "d09784e162459a9cd1df80c1d0e41b0f295edcc020ef53ee46597f8db70282e0",
+      "d0b7a721f385de8b87cf06b1fbb394c8c6f818bfcc26967322f62eca37c1725f",
+      "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f"
+    ],
+    "scope": "complete contracted train/dev sets; no claim about arbitrary external datasets",
+    "source_id_overlap": 0,
+    "source_sha256_overlap": 0,
+    "train_samples": 128,
+    "train_source_ids": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "4bXb6GLm6zg",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "75UH33tO0Bo",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "DtgdD48804M",
+      "E_W73B44qOk",
+      "Gf6owJ8AY2E",
+      "H2pTKitY56w",
+      "HOsBXlQHWdE",
+      "HU9sbY3A1bo",
+      "JLyjEE1UKaU",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "JnbfAFodjZg",
+      "Kc0bCgT5P04",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q0-CI3XJvxw",
+      "Q975D6bpK_c",
+      "SJ-_0uGIL1c",
+      "VPp9ArDokWY"
+    ],
+    "train_source_sha256": [
+      "046f806a886ce145113c8008bb05d7aac220a244c6732cf4588febfcdd2128f0",
+      "0c5cd9b83eb2a791f307b1e620e2b9ef647536e994d72c3174abf95225165d46",
+      "141a8d5061804e39eae68c9a1b5556e60ffcd20388570f121b1a2299395a1801",
+      "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f",
+      "1a84cbf1b5080ade2e9652490823494a9a0869639f22bcda20cd26b53054773e",
+      "1acb0d03f85c15d2a98e8b8c0a2eb7502c75c1c494b0be190dbf96778fde06f9",
+      "2e2fdbc2dd151f4db19d83f3c618f2ca63a2bc184dd2fc950b8d4f336a091673",
+      "3a6ae69227924cdcb2ead52acf0f11cd094125dc7f9791485f8ef1af11404230",
+      "3ba7ac5e307be4a19a961150126a2ab5d2baa63a768a058a1a1c1ee21c8fcfb1",
+      "51c07a02ddd3ebe97dc3938a9cfa47ee5803a5e2f21e1724c7f2326ff7dfc530",
+      "528467e02fc259a1965fbd3036da85797eb35f1e2e970bacf9a0abe3b25b4bad",
+      "7704eea2ee4f311a29a1eedba84f2d2475b8ac9374896cad5c36cf1d24de0c32",
+      "77ecfddda8b9591b83e2aaed31ea6d8ceb4d4eb428ad9d35fae0dce0123179ce",
+      "80045af82f111282ede681e52f2afc7b2261575e3ca1225234bb9581f55e4ad1",
+      "84bc4c6400a8692a54b60811d7dcc5d3995a5ac58b2f2fb0240ab05a27ef04ed",
+      "944e1d3cf3f4db7a2ad37e898562243966c96716c0dd5256729ad2d024bdf5f1",
+      "ab0e2dcbd29861bd2a04b078bc5fc567b199218df13b9ad1ff7a0efec5b3dff7",
+      "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "b9c21383b06241c7deb486b96c35123baf50ebffb06e3df8907c6909eb7a4c8b",
+      "be96bc2d913f8429fb2060d00f4156d177b38e8e8688700097cb8e9daaac4bd0",
+      "bfed7427204cea9f5a7a84ff908e327c714c815c3a96282d36da08b04b7204cc",
+      "c671925f6231590b131b1efc94a6514778baa79c1165b518cc8864586e5ac10a",
+      "d0f51330782d6928e78bc5de2a9b4e251d27c93661d18a53fc82ed5acb6987ba",
+      "d4600b5b4c9609251539ac45c58aff31789eef2b1465f572cc275b0df1617b2a",
+      "d77fcd631a825f4ee46a3d1f294ca9580563c5a6929aaab0c182320a003bd016",
+      "daa90f52b75a71d9ded5ef0c9cd47ada37fb8e904096f4b90ad7047686cec935",
+      "dda7753e9ae9fcef00b92445eae7ae695338d1f0cc2d13adfdfca0feab21cded",
+      "e271d063cbd18f5f404a780725c1950e58f60325159427f5c0c3277e2f2437e8",
+      "e84bab5f4f2855676e18b94ddf7b78f6c9fde1eecf360d71fba89b3a5eb73512",
+      "e9af8f9ad9efd82387d9634dce2b60e27ffcef089430395451f0e9c858306d8f",
+      "ec35a1ed3acf6d935bbb0b294adf5bd9c544908d99c95f317d3d21a7f9632718",
+      "fdc47208eb97518887999ce59d18cc45891600fed09cce5c356bb3fa3a08b31d"
+    ]
+  },
+  "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+  "target_in_model_input": false,
+  "target_usage": "selected target loaded only for receipt/pixel/geometry integrity; never returned as a model input",
+  "task": "compression",
+  "verified_runtime_files": 1292
+}

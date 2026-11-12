@@ -1,0 +1,45 @@
+{
+  "actual_NPU_model_calls": 0,
+  "actual_NPU_model_loads": 0,
+  "complete": true,
+  "elapsed_unittest_seconds": 3.386,
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENH3_COMFY_REFERENCE_ROOT": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "numpy": "2.5.4",
+    "python": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "torch": "2.10.0+cpu"
+  },
+  "host": "huawei-modelarts-30794",
+  "logs": {
+    "cpu_test_final.log": "91217d44ed324969762f528aa11ca2ae1d71c5ff8e0d5971e3fd2c3a09226d53",
+    "cpu_test_initial.log": "a03781b7eb68a8264172ecdf6cbdbcdedd360c03af7078c794afcac788bde676"
+  },
+  "passed": 10,
+  "production_queue_started": false,
+  "schema": "openh3.joint_rgb_probe_cpu_validation.v1",
+  "scope": "Tiny real Torch joint path with official pinned sampler AST; no model weight loading, no actual Comfy import, no NPU forward, no full H3/VAE joint proof. Initial run had 1 failing asymmetric-tolerance fixture; numeric fixture corrected; final all10 pass.",
+  "skipped": 0,
+  "source_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/tests/test_h3_joint_rgb_probe.py": "bcc74cba3ec4ebadbcf0078e36a7589886f1cd432b5163c7d2703f6d06ed1a72",
+    "code/tests/test_openh3_train_trajectory.py": "f9e05c4cadff196e0da0c7ef511321ee21db73e30252dc092df01d1534f61287"
+  },
+  "target": {
+    "actual_array_sha256": "10efb5fae35949846d1853d3f2a5812f03b09c15ba0884f62e8e349170c1fef7",
+    "dtype": "float32",
+    "recipe": "torch.linspace(.2,.8,128,dtype=torch.float32,device=cpu)[None,None,:,None]",
+    "shape": [
+      1,
+      1,
+      128,
+      1
+    ]
+  },
+  "tests": 10,
+  "validated_at_utc": "2026-11-11T16:23:10.565844+00:00"
+}

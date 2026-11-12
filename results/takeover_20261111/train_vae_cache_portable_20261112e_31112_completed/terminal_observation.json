@@ -1,0 +1,62 @@
+{
+  "source": "single read-only SSH status observation before the sole archive download",
+  "observation": {
+    "checked_utc": "2026-11-12T02:55:28.679402+00:00",
+    "queue": {
+      "state": "completed",
+      "updated_at_utc": "2026-11-12T02:53:59.539979+00:00"
+    },
+    "finalizer": {
+      "state": "completed",
+      "complete": true,
+      "elapsed_seconds": 152.1630222760141,
+      "audit_invocations": 1,
+      "archive": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112_audit/evidence.tar.gz",
+        "sha256": "1d2310858199d3666617495700235f84321f9c6eb4ae6aab929fbdc50c0bd459",
+        "bytes": 2161030,
+        "members": 67,
+        "manifest_sha256": "2168c9ddb38e5928679916fb55d2fddc2db098e02ebd88354ef632b5db70be78",
+        "uncompressed_payload_bytes": 4778099,
+        "large_RGB_stays_remote": true
+      },
+      "pid": 282867,
+      "started_at_utc": "2026-11-12T02:52:01.611569+00:00",
+      "updated_at_utc": "2026-11-12T02:54:33.774586+00:00"
+    },
+    "producer": {
+      "complete": true,
+      "phase": "completed",
+      "elapsed_seconds": 90.32788564357907,
+      "actual": {
+        "H3_sampler_calls": 0,
+        "NFE": 0,
+        "PIL_fromarray_calls": {
+          "raw": 22,
+          "rphi": 22
+        },
+        "Rphi_calls": 0,
+        "backward_calls": 0,
+        "decode_calls": 1,
+        "encode_calls": 2,
+        "forbidden_calls": [],
+        "optimizer_steps": 0,
+        "stage_decode_calls": 1,
+        "stage_encode_calls": 2
+      }
+    },
+    "audit": {
+      "state": "completed",
+      "complete": true,
+      "archive": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112_audit/evidence.tar.gz",
+        "sha256": "1d2310858199d3666617495700235f84321f9c6eb4ae6aab929fbdc50c0bd459",
+        "bytes": 2161030,
+        "members": 67,
+        "manifest_sha256": "2168c9ddb38e5928679916fb55d2fddc2db098e02ebd88354ef632b5db70be78",
+        "uncompressed_payload_bytes": 4778099,
+        "large_RGB_stays_remote": true
+      }
+    }
+  }
+}

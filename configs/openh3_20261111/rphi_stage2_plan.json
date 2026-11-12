@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-11T16:31:00.517190+00:00",
-    "stage": "small_joint_H3_VAE_RGB_probe_running_after_10_CPU_tests;prior_complete_stages_untouched;matched_LoRA0",
+    "at_utc": "2026-11-12T03:08:51.306712+00:00",
+    "stage": "small_joint_RGB_and_first_train_VAE_cache_accepted;nonzero_NPU_pending_assets_and_resource;matched_LoRA0",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,11 +269,10 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun completed H3 b, VAE j, old stage2/native/compensation/export stages; preserve i exact failure and B skipped.",
-      "Inspect existing joint RGB run and its one CPU finalizer; never restart healthy process. On terminal, audit actual saved RGB/target/latent/cast/gradient evidence before claiming acceptance.",
-      "Require same-graph mixed math/checkpoint restoration, original RGB loss and saved RGB/latent output evidence; parameter-only fingerprints must not be described as all buffers/state.",
-      "After small joint acceptance, test nonzero adapter save/reload and BF16 merge rounding separately, then22x480x832 joint memory/backward, then complete train-role caches and finite matched raw/Rphi-guide LoRA budget.",
-      "Broaden source-isolated quality/temporal and omni baseline comparisons only after valid training/evaluation interfaces; no omni/generalization claim from current smoke sources."
+      "Do not rerun accepted31112e cache. Continue exact refiner/turbo assets migration and verify existing base SHA before H3 on31112.",
+      "Finish independent nonzero CPU terminal auditor and run one fixed 12NFE/4decode/1SGD probe when a fully verified host/card is available.",
+      "After nonzero gate, prepare full22 joint backward memory and remaining deduplicated train-cache cases; prior i exact-repeatability failure remains negative.",
+      "Prepare finite same-budget raw-guide/Rphi-guide training only after valid interfaces; measure clean/near-clean protection and held-source quality."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -344,9 +343,9 @@
       "session": "h3-joint-rgb-probe-20261112a",
       "physical_card": 6,
       "PID": 1259896,
-      "queue_state": "running",
+      "queue_state": "completed_and_independently_audited",
       "queue_started_at_utc": "2026-11-11T16:26:08.920045+00:00",
-      "observed_phase": "load_and_verify_assets",
+      "observed_phase": "completed",
       "process_stat": "Rl",
       "process_elapsed": "02:07",
       "process_CPU_percent": 92.8,
@@ -391,10 +390,15 @@
       "CPU_tests_skipped": 0,
       "CPU_evidence": "results/takeover_20261111/h3_joint_rgb_cpu_validation_20261112/cpu_receipt.json",
       "source_review": "results/takeover_20261111/h3_joint_rgb_probe_source_review_20261112.json",
-      "actual_joint_acceptance": false,
+      "actual_joint_acceptance": true,
       "training_steps": 0,
-      "next": "Do not restart healthy process; bind one CPU finalizer, then audit actual terminal arrays/counters/frozen state.",
-      "latest_observation": "results/takeover_20261111/h3_joint_rgb_probe_20261112a_runtime_0034.json"
+      "next": "One-step nonzero adapter serialization/merge followed by full22 joint-memory admission; no rerun.",
+      "latest_observation": "results/takeover_20261111/h3_joint_rgb_probe_20261112a_completed/scientific_review.json",
+      "completed_at_utc": "2026-11-11T16:51:36.230074+00:00",
+      "evidence": "results/takeover_20261111/h3_joint_rgb_probe_20261112a_completed/scientific_review.json",
+      "evidence_sha256": "8f4aa8133dfa87c223c4afd0d19eb32809c3e06461e8dd91e4af93976492da05",
+      "archive_sha256": "0ff5bc22be203473975742d336307fa3b7ed6986558c149eb69eea96c7b919d4",
+      "startup_process_snapshot_is_historical": true
     },
     "joint_RGB_CPU_finalizer": {
       "run": "runs/h3_joint_rgb_probe_20261112a_finalize",
@@ -402,7 +406,7 @@
       "session": "h3-joint-rgb-finalize-20261112a",
       "pid": 1298315,
       "started_at_utc": "2026-11-11T16:31:00.515300+00:00",
-      "state": "waiting_for_terminal",
+      "state": "completed",
       "config_sha256": "9bdc967925c9c1496175aacc10193aa16b7ebfef64b1b2be83f8f2e0c4af34bd",
       "CPU_tests_passed": 9,
       "remote_CPU_receipt_sha256": "7ea3738ba2b065711f532d16183b20813f4f3b0a7b01b68b32e4210a62c6b3ba",
@@ -412,19 +416,112 @@
       "NPU_calls": 0,
       "audit_once_timeout_seconds": 180,
       "archive_max_files": 100,
-      "archive_max_uncompressed_bytes": 16777216
+      "archive_max_uncompressed_bytes": 16777216,
+      "audit_invocations": 1,
+      "completed_at_utc": "2026-11-11T16:52:20.123197+00:00",
+      "numerical_acceptance": "passed_small_joint_RGB_only"
     },
     "nonzero_adapter_followup_contract": "configs/openh3_20261111/h3_nonzero_adapter_probe_contract_20261112.json",
     "train_VAE_cache_preparation_review": "results/takeover_20261111/train_vae_cache_preparation_review_20261112.json",
     "backup_31984_this_turn": {
-      "path": "preparation/followup_20261112_0035",
-      "files": 80,
-      "archive_bytes": 473949,
-      "archive_sha256": "d0f1e3d6edcf673982f9e4491d581c320d0dd85bd496f04eb37e5ad62ae7ea7a",
-      "verified_at_utc": "2026-11-11T16:35:49.583645+00:00",
-      "all_file_sizes_and_SHA_verified": true,
-      "receipt": "preparation/followup_20261112_0035/remote_verification.json",
-      "scope": "source/runtime snapshots,CPU evidence,source/data review,prelaunch/current-run metadata; later terminal evidence not yet available"
+      "path": "preparation/followup_20261112_1115",
+      "state": "completed_verified",
+      "files": 537,
+      "archive_sha256": "6cd87a21f8d0a8e05750700739569ccad978d0cca48cc4f47411422de9d1458f",
+      "local_receipt": "preparation/followup_20261112_1115/verification.json"
+    },
+    "train_VAE_cache_preparation": {
+      "status": "completed_and_independently_audited_single_train_VAE_cache",
+      "host": "31112",
+      "physical_card": 1,
+      "prep": "preparation/train_vae_cache_portable_20261112e_31112",
+      "run": "runs/train_vae_cache_legacy_smoke_20261112e_31112",
+      "queue_sha256": "7d03cc9a80acdc7a63e133e4dce818ea4f63f29e710e6360dbe7cec9f944e916",
+      "execution_sha256": "2f8ad8c22cd8d6c731f6bc95eb039badb85873c3826737dec946e08cd736b352",
+      "started_at_utc": "2026-11-12T02:51:48.518892+00:00",
+      "entry": "code/export_train_vae_cache_portable.py",
+      "legacy_numeric_entry": "code/export_train_vae_cache.py",
+      "unchanged_numerical_preprocessing": true,
+      "asset_verification_scope": "only actual used VAE/context bytes; complete parent recipe metadata identity only",
+      "actual_input_CPU_inspection": "preparation/train_vae_cache_portable_20261112e_31112/final_cpu_inspection/inspection.json",
+      "finalizer": {
+        "run": "runs/train_vae_cache_legacy_smoke_20261112e_31112_finalize",
+        "state": "completed",
+        "pid": 282867,
+        "started_at_utc": "2026-11-12T02:52:01.611569+00:00",
+        "maximum_wait_seconds": 900,
+        "audit_once_timeout_seconds": 180,
+        "completed_at_utc": "2026-11-12T02:54:33.774Z",
+        "audit_invocations": 1
+      },
+      "budget": {
+        "encode": 2,
+        "decode": 1,
+        "NFE": 0,
+        "backward": 0,
+        "optimizer_steps": 0
+      },
+      "migration_verification": "preparation/migration_31112_20261112/target_verification.json",
+      "completed_training_steps": 0,
+      "scope": "One ordinary compression sample from one train source, not full32 cache or quality acceptance",
+      "superseded_d": "Never admitted or launched; card7 occupied before admission; no repeated model calls",
+      "completed_at_utc": "2026-11-12T02:53:59.539Z",
+      "evidence": "results/takeover_20261111/train_vae_cache_portable_20261112e_31112_completed/science_review.json",
+      "evidence_sha256": "34452cd78197842fd3c8e0982f3c961d72fa7000f9c15ec526567743c34099d6",
+      "local_verification": "results/takeover_20261111/train_vae_cache_portable_20261112e_31112_completed/local_verification.json",
+      "archive_sha256": "1d2310858199d3666617495700235f84321f9c6eb4ae6aab929fbdc50c0bd459",
+      "producer_wall_seconds": 90.3279,
+      "peak_allocated_bytes": 7132525568,
+      "quality_assessed": false
+    },
+    "resource_scan": "results/takeover_20261111/resource_scan_20261112T0210Z.json",
+    "nonzero_adapter_probe": {
+      "status": "CPU10passed_and_actual30794_inspection_passed;NPU_not_launched",
+      "prep": "preparation/h3_nonzero_adapter_probe_20261112a",
+      "run": "runs/h3_nonzero_adapter_probe_20261112a",
+      "contract": "configs/openh3_20261111/h3_nonzero_adapter_probe_contract_20261112.json",
+      "actual_CPU_inspection": "results/takeover_20261111/h3_nonzero_adapter_actual_inspection_20261112a/local_verification.json",
+      "budget": {
+        "NFE": 12,
+        "VAE_decode": 4,
+        "RGB_backward": 1,
+        "SGD_update": 1
+      },
+      "independent_terminal_auditor": {
+        "state": "CPU17passed_independently_reviewed_frozen_not_deployed",
+        "prep": "preparation/h3_nonzero_adapter_terminal_audit_20261112",
+        "receipt": "preparation/h3_nonzero_adapter_terminal_audit_20261112/cpu_receipt.json",
+        "receipt_sha256": "f6b9e172ae21cc0780ca79c04a64c10e18c4dbed1be0a8d567df113b447e05c6",
+        "wait_seconds": 4200,
+        "audit_once_seconds": 300
+      },
+      "remaining": "NPU resources then single real nonzero update/save-clear-reload and descriptive BF16 merge check"
+    },
+    "asset_migration_31112": {
+      "state": "in_progress",
+      "turbo": {
+        "manifest": "preparation/turbo_transfer_31112_20261112/manifest.json",
+        "jobs": "preparation/turbo_transfer_31112_20261112/transfer_jobs.json",
+        "state": "15_exact_chunks_downloading_to_local;not_uploaded_to_target",
+        "bytes": 1956171936,
+        "sha256": "0b5e411b519ea5041734d44fc102b0dfd6b6a29737048ad1a80a522fb633fa99"
+      },
+      "refiner": {
+        "public_source_review": "results/takeover_20261111/public_asset_access_review_31112_20261112.json",
+        "state": "downloading",
+        "host": "31112",
+        "started_at_utc": "2026-11-12T03:13:23Z",
+        "supervisor_pid": 317937,
+        "downloader_pid": 317938,
+        "status": "preparation/asset_refiner_31112_20261112/status.json",
+        "terminal_receipt": "preparation/asset_refiner_31112_20261112/receipt.json",
+        "maximum_seconds": 7200,
+        "automatic_retries": 0
+      },
+      "base": {
+        "state": "actual_full_SHA_verified_no_model_load",
+        "receipt": "preparation/base_asset_verify_31112_20261112/result.json"
+      }
     }
   }
 }

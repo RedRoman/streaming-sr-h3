@@ -1,0 +1,60 @@
+{
+  "additional_execution_fields": {
+    "asset_verification_scope": "only_used_components_checked; unused_components_metadata_only",
+    "legacy_entry_sha256": "5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1"
+  },
+  "complete": true,
+  "created_at_utc": "2026-11-12T02:35:09.270362+00:00",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "python": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "torch": "2.10.0+cpu"
+  },
+  "execution_schema": "openh3.train_vae_cache_portable_execution.v1",
+  "host": "huawei-modelarts-30794",
+  "not_executed": [
+    "actual31112 portable main input inspection",
+    "real VAE2encode1decode",
+    "NPU admission"
+  ],
+  "prior_numeric_CPU_evidence": {
+    "receipt": "results/takeover_20261111/train_vae_cache_cpu_validation_20261112/cpu_receipt.json",
+    "repeated": false,
+    "sha256": "935b1668c21eb7f399c8abf8217b40a906dd7bcd0f7c31b5f71c346e16573310"
+  },
+  "schema": "openh3.train_vae_cache_portable_cpu_validation.v1",
+  "scope": "CPU synthetic file-admission/delegation tests. Actual immutable VAE-only loader function bodies executed via AST with fake torch/H3, not a real device/model. No new numerical VAE path: input inspection, preprocessing, encode_pair, execute and loader remain from unchanged pinned legacy sources. No model weights loaded, no actual VAE encode/decode, no NPU, no launch configuration.",
+  "source_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "code/export_rphi_train_guides.py": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f",
+    "code/export_train_vae_cache.py": "5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1",
+    "code/export_train_vae_cache_portable.py": "05ad19f05c8dcc10b83520c1eb4cc87f94c41e5a87f973528a23959e1999561a",
+    "code/openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa",
+    "code/openh3_vae_only_assets.py": "7a478fab9f8ecce72a90c76cd423e294ed0aab07e5733b02fc7fc545d929a7f7",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/run_vae_roundtrip_diagnostic.py": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811",
+    "code/tests/test_train_vae_cache.py": "a4b241fd7861a7a4b395efaf94059a1fa0a3ca5dade0adcf3f6bee4dfb389369",
+    "code/tests/test_train_vae_cache_portable.py": "89012aabd3062e5cfade9eceb9a572c01baa6f21b4607a658c5bc84dc614251d"
+  },
+  "tests": {
+    "log": "cpu_tests.log",
+    "log_sha256": "659b4e0420a68ca74f451a82845a520fce4fe3ed7c6c752fea69ff6a631e1376",
+    "passed": 9,
+    "seconds": 0.054,
+    "skipped": 0
+  },
+  "verified_boundaries": [
+    "Complete parent manifest SHA/schema/component order/size-and-digest metadata preserved",
+    "New fingerprint exactly equals old full-manifest algorithm with the same metadata",
+    "Unused base/refiner/turbo paths may be absent and are never resolved, stat-ed or opened",
+    "Used VAE/context size and actual SHA mandatory; same-size corruption fails",
+    "Partial full-recipe verification never marked true or admitted as DiT preload",
+    "Original loader AST only verifies VAE/context and calls H3(load_dit=False,verify_sha=True); scoped binding restores",
+    "Original execute receives identical raw/Rphi input objects; no GT/degradation changes",
+    "Partial, success and failure reports accurately mark unused assets metadata-only; complete resets on failure"
+  ]
+}

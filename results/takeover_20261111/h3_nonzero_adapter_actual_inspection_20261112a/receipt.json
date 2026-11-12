@@ -1,0 +1,80 @@
+{
+  "NPU_admission_exists_after": false,
+  "NPU_launcher_called": false,
+  "NPU_run_directory_exists_after": false,
+  "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+  "actual_forbidden_modules_loaded": [],
+  "actual_pin_map_sha256": "9abbca5d25a582cd33694e001a8bc67a22b75c7e58bbc44c5563b0b875ca410c",
+  "admission_created": false,
+  "argv": [
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_nonzero_adapter_probe_20261112a/code/check_h3_nonzero_adapter.py",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_nonzero_adapter_probe_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_nonzero_adapter_probe_20261112a_cpu_inspection/inspection"
+  ],
+  "complete": true,
+  "created_at_utc": "2026-11-12T02:50:43.926553+00:00",
+  "elapsed_seconds": 0.8124313857406378,
+  "execution_contract_sha256": "2fa24c4e300d10ecc66737c6054faa7714bec40ab9d57f53399e73fd507b0781",
+  "forbidden_import_attempts": [],
+  "host": "huawei-modelarts-30794",
+  "inspection": {
+    "asset_bytes_sha_verified": false,
+    "assets_size_only_verified": true,
+    "contract_sha256": "2fa24c4e300d10ecc66737c6054faa7714bec40ab9d57f53399e73fd507b0781",
+    "inspection_only": true,
+    "joint_prerequisite": {
+      "archive": {
+        "path": "runs/h3_joint_rgb_probe_20261112a_finalize/evidence.tar.gz",
+        "sha256": "0ff5bc22be203473975742d336307fa3b7ed6986558c149eb69eea96c7b919d4"
+      },
+      "audit": {
+        "path": "runs/h3_joint_rgb_probe_20261112a_finalize/terminal_audit.json",
+        "sha256": "7d82f9234d6ed864b01c39f5c41a91a96d5d34694e390b33e2dee53dc2db9b42"
+      },
+      "report": {
+        "path": "runs/h3_joint_rgb_probe_20261112a/eval/report.json",
+        "sha256": "1abd5af5090ef62ec3002aaa96eabe5c18256035733d513c1aa4ec574263d2b4"
+      }
+    },
+    "planned": {
+      "NFE": 12,
+      "RGB_backward": 1,
+      "SGD_steps": 1,
+      "VAE_decode": 4,
+      "VAE_encode": 0,
+      "checkpoint_saves": 1,
+      "clear_reload_cycles": 1,
+      "loss_scale": 1024.0,
+      "lr": 0.0001,
+      "merge_calls": 1
+    },
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "reference_arrays_verified": [
+      "guide",
+      "raw_warm_start",
+      "target",
+      "reference_video",
+      "reference_audio",
+      "reference_rgb",
+      "reference_decoder_input"
+    ],
+    "runtime_files_verified": 1288,
+    "source_contract_sha256": "d3148504db9fbee2925448ea69e5f2ba83da5eba2127bf3229c9964f445bc08a"
+  },
+  "inspection_file_sha256": "a4789c38cfbd22dc3630c1bbed37387682e93829cf8a6c592c10762aee5b0b0d",
+  "large_asset_verification_scope": "All recipe files size-only; context and prior joint artifacts/arrays actual SHA verified by default producer. No full VAE/DiT/adapter weight SHA claim.",
+  "log_sha256": "2e221eb2eb55b4cd39dc6bf25fa6af328089731efffe30d95930ab96b7f953a5",
+  "python": "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+  "python_version": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+  "queue_pins_checked": 1289,
+  "queue_sha256": "66932be8f82bae11f4b717c6eda576b4dbb508462c1f176c9bf843de55bed2e2",
+  "run_directory_created": false,
+  "schema": "openh3.nonzero_adapter_actual_CPU_inspection.v1",
+  "scope": "Only frozen default CPU CLI, metadata/pins and saved reference arrays; no model/device import, card query, NPU admission or execution.",
+  "verified_queue_pins_file_sha256": "ffbd61b602c1fa1999f783aa8258ad7493a3e08f172eff0c0e65190ae3af6883",
+  "wrapper_sha256": "2fe56a16fc885d17d7647d75d1af4d88d4b953623c18328a0f8f142350680353"
+}

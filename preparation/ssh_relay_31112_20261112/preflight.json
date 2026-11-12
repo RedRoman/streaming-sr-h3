@@ -1,0 +1,56 @@
+{
+  "schema": "omni.constrained_ssh_relay_preflight.v1",
+  "checked_utc": "2026-11-12T02:30:37.451778+00:00",
+  "status": "blocked_before_credentials_loaded",
+  "source_host": "huawei-modelarts-30794",
+  "destination_host": "huawei-modelarts-31112",
+  "route_intended": "local constrained agent -> 31112 -> 30794; bulk bytes 30794 to 31112 only",
+  "local_ssh_version": "OpenSSH_10.2p1, LibreSSL 3.3.6",
+  "destination_existing_ssh_version": "OpenSSH_8.8p1, OpenSSL 1.1.1wa 16 Nov 2023",
+  "destination_hostname": "ma-job-09a25024-364c-4f14-b572-afb3b9a9a1e2-worker-0",
+  "known_hosts_public_lookup": [
+    {
+      "lookup": "[dev-modelarts-cnnorth9.huaweicloud.com]:31112",
+      "key_count": 0,
+      "key_types": []
+    },
+    {
+      "lookup": "huawei-modelarts-31112",
+      "key_count": 0,
+      "key_types": []
+    },
+    {
+      "lookup": "172.16.1.52",
+      "key_count": 0,
+      "key_types": []
+    },
+    {
+      "lookup": "[172.16.1.52]:31112",
+      "key_count": 0,
+      "key_types": []
+    },
+    {
+      "lookup": "[dev-modelarts-cnnorth9.huaweicloud.com]:30794",
+      "key_count": 1,
+      "key_types": [
+        "ssh-rsa"
+      ]
+    }
+  ],
+  "constraints_requirement_evidence": "Local installed ssh-add manual: destination constraints added in OpenSSH 8.9; remote SSH client and server support required when using them through forwarded ssh-agent channels.",
+  "blockers": [
+    "Existing destination SSH client is older than OpenSSH 8.9; no supported constrained forwarding client established.",
+    "No existing local known_hosts entry for destination public gateway port 31112; no new scan accepted as trusted."
+  ],
+  "private_agent_started": false,
+  "ssh_add_invoked": false,
+  "private_key_read_by_this_task": false,
+  "credential_forwarding_attempted": false,
+  "relay_authentication_probe_executed": false,
+  "bulk_transfer_started": false,
+  "file_bytes_transferred": 0,
+  "npu_calls": 0,
+  "existing_local_scp_untouched": true,
+  "permitted_next_step": "Establish an approved host-key trust source and a destination SSH client supporting destination constraints, or continue existing authorized transfer. Do not retry with unconstrained agent forwarding.",
+  "private_tcp_failure_evidence": "preparation/host_transfer_31112_20261112/readiness.json"
+}

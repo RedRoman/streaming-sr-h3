@@ -1,0 +1,127 @@
+{
+  "schema": "openh3.train_vae_cache_portable_queue_source_review.v1",
+  "created_at_utc": "2026-11-12T02:44:31.302Z",
+  "status": "frozen_source_consistent_target_migration_incomplete_not_admitted",
+  "scope": "Read-only local queue/execution/wrapper/source review plus one target stdlib-only pin/path inspection. No torch/NPU import, card query, launch, resource reservation, snapshot edit or admission grant.",
+  "reviewed_prep": "preparation/train_vae_cache_portable_20261112d_31112",
+  "source_review": {
+    "path": "results/takeover_20261111/train_vae_cache_portable_source_review_20261112.json",
+    "sha256": "c0878ea736d1310b0f00543c71f73d40aa7b08df109455df3902d08f80f22aff"
+  },
+  "frozen_files": {
+    "queue.json": {
+      "exists": true,
+      "sha256": "554d456c8849a700e7c13fa37bbece984e42d66b51efc65ba28957479bc1e5fe"
+    },
+    "execution_contract.json": {
+      "exists": true,
+      "sha256": "f5cdc5df2b13932f99023a01df1824e6f925f46d0bd0d49271504a1f3d94bee6"
+    },
+    "run_once.py": {
+      "exists": true,
+      "sha256": "45f7e3ed7d861ddc45b6de131fcfeef555142579328eb4ed8abd8cb98b82d78d"
+    },
+    "freeze.json": {
+      "exists": true,
+      "sha256": "478197083f65d619628c22900f00d504ea9147513f38440f0aab1c2d72405ff2"
+    }
+  },
+  "pins": {
+    "queue": 1298,
+    "execution": 1297,
+    "queue_only_extra": "preparation/train_vae_cache_portable_20261112d_31112/execution_contract.json",
+    "unused_base_refiner_turbo_asset_paths": [],
+    "residual_yunfeng_paths": [],
+    "large_weight_pins": "None. Rphi checkpoint .pt is pinned both by absolute and relative path with the same SHA; VAE/context actual bytes/SHA are enforced by the unchanged fixed parent manifest and portable loader.",
+    "local_relative_files_checked": 139,
+    "local_SHA_mismatches": [],
+    "local_absent_relative_files": 1106,
+    "local_absence_is_not_remote_failure": true
+  },
+  "contracts_checked": [
+    "Portable entry SHA05ad19f05c8dcc10b83520c1eb4cc87f94c41e5a87f973528a23959e1999561a, helper SHA7a478fab9f8ecce72a90c76cd423e294ed0aab07e5733b02fc7fc545d929a7f7 and old numerical entry SHA5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1 match the frozen source review.",
+    "Queue and execution bind the exact fixed parent manifest SHA1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975, final3000 Rphi checkpoint, full train/dev manifests, accepted train guide manifest and fixed source2BdYaGuVAKo compression sample.",
+    "Explicit asset_verification_scope is only_used_components_checked; unused_components_metadata_only. No nonexistent diffusion weights are required by this queue, and no placeholder/sparse weights are introduced.",
+    "run_once verifies queue-bound admission schema/approval/card7, refuses pre-existing status, takes nonblocking status/card locks, performs two idle checks separated by15seconds and calls generic run_plan once. Generic run_plan rechecks all pins, required JSON guards and card before starting its one step. No wait/retry loop.",
+    "Single owned timeout command is600seconds TERM plus30seconds KILL, one step, physical card7 only, minimum free60000MB. Numerical budget remains2encode/1decode,0Rphi model/0NFE/0backward/0optimizer. No full-source/full32 expansion.",
+    "New queue uses its own run directory/cache output and exclusive log creation; portable exporter refuses an existing output directory.",
+    "Host metadata explicitly says31112 with migration_source_host30794. The guard filename SCHEME3_REVIEW_HOLD.source30794.json and historical_hold_semantics label an imported source restriction, not a live target-host external reservation/hold.",
+    "Source restriction is checked for no_new_scheme3_executions=true; it does not replace fresh target-host resource admission. This review did not check resources."
+  ],
+  "target_readonly_observation": {
+    "host": "huawei-modelarts-31112",
+    "scope": "stdlib-only source/path/pin inspection; no torch/NPU import, no device query",
+    "python_paths": {
+      "venv/bin/python": {
+        "exists": true,
+        "resolved": "/cache/zihaohe/envs/minimax-h3-npu/bin/python3.12",
+        "executable": true,
+        "text": null
+      },
+      "venv/pyvenv.cfg": {
+        "exists": true,
+        "resolved": "/cache/zihaohe/streaming_sr0/venv/pyvenv.cfg",
+        "executable": false,
+        "text": "home = /cache/zihaohe/envs/minimax-h3-npu/bin\ninclude-system-site-packages = true\nversion = 3.12.14\nexecutable = /cache/zihaohe/envs/minimax-h3-npu/bin/python3.12\ncommand = /cache/zihaohe/envs/minimax-h3-npu/bin/python3.12 -m venv --system-site-packages /cache/zihaohe/streaming_sr0/venv\n"
+      },
+      "/cache/zihaohe/envs/minimax-h3-npu/bin/python3.12": {
+        "exists": true,
+        "resolved": "/cache/zihaohe/envs/minimax-h3-npu/bin/python3.12",
+        "sha256": null
+      },
+      "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_classes.py": {
+        "exists": true,
+        "resolved": "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_classes.py",
+        "sha256": "0db3dc302e28fd085065ea2883ce33fa4af406b9fd1439f2a431f053e9a764b9"
+      },
+      "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_ops.py": {
+        "exists": true,
+        "resolved": "/cache/zihaohe/envs/minimax-h3-npu/lib/python3.12/site-packages/torch/_ops.py",
+        "sha256": "0e4ad0eb427cbdcc707f86eb3949b49f3ae9d19aa73e23745d31ca34e3c928a7"
+      }
+    },
+    "pins": {
+      "declared": 1298,
+      "actual_existing_SHA_checked": 84,
+      "missing_count": 1214,
+      "mismatch": [],
+      "missing_categories": {
+        "comfy": 997,
+        "prior_preparation": 200,
+        "other": 17
+      },
+      "missing_examples": [
+        "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/dev_materialized.jsonl",
+        "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train_materialized.jsonl",
+        "/cache/zihaohe/omni_openh3_20261111/runs/rphi_stage2_20261111/legacy_g05/train/checkpoint_step003000.pt",
+        "/cache/zihaohe/omni_openh3_20261111/runs/rphi_train_guides_legacy_smoke_20261111a/guides/manifest.json",
+        "code/ComfyUI/.ci/update_windows/update.py",
+        "code/ComfyUI/COMMIT",
+        "code/ComfyUI/alembic_db/env.py",
+        "code/ComfyUI/alembic_db/versions/0001_assets.py"
+      ]
+    },
+    "source30794_hold": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/migration_31112_20261112/SCHEME3_REVIEW_HOLD.source30794.json",
+      "exists": false,
+      "sha256": null,
+      "record": null
+    },
+    "admission_exists": false,
+    "bounds": "A migration-time snapshot only. No current resource availability, binary/runtime compatibility or launch readiness claim. No VAE/context large-file reread was performed here."
+  },
+  "source_blockers": [],
+  "pending_launch_gates": [
+    "Complete migration of all1298 declared pin paths and rerun a fresh complete SHA check;84 existing paths matched during this review but1214 were absent.",
+    "Install the genuine source30794 hold copy with truthful provenance; it was absent at inspection. Do not manufacture a target-host hold or treat this imported restriction as a reservation.",
+    "Complete actual31112 portable CPU input inspection and used VAE/context full byte/SHA checks, including selected materialized NPZ and guide bindings.",
+    "Root alone must create fresh exact-queue admission after current card/lock/resource checks; admission was absent at inspection."
+  ],
+  "not_authorized_or_performed_by_reviewer": [
+    "NPU import",
+    "card inspection",
+    "launch",
+    "admission grant",
+    "snapshot mutation"
+  ]
+}

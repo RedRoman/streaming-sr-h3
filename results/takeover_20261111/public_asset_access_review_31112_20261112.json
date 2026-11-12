@@ -1,0 +1,123 @@
+{
+  "schema": "openh3.public_asset_metadata_access_review.v1",
+  "created_at_utc": "2026-11-12T03:00:49.257Z",
+  "scope": "Read-only known own-project download/conversion metadata and bounded public HEAD requests. No checkpoint download, other-user private asset access, environment change, NPU import or launch.",
+  "target_host": "huawei-modelarts-31112",
+  "refiner": {
+    "required_bytes": 5868409512,
+    "required_sha256": "4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2",
+    "known_download_record": "huawei-modelarts-31984:/cache/zihaohe/streaming_sr0/code/dl_refiner.sh:13",
+    "public_repository": "Kijai/MiniMax-H3-experimental",
+    "public_file": "loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+    "pinned_revision": "c2e7b89b1800123c49a0f620a1932c01d8952256",
+    "pinned_public_URL": "https://hf-mirror.com/Kijai/MiniMax-H3-experimental/resolve/c2e7b89b1800123c49a0f620a1932c01d8952256/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+    "original_header_probe": {
+      "time_utc": "2026-11-12T02:58:07.620662+00:00",
+      "host": "huawei-modelarts-31112",
+      "expected_refiner_sha256": "4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2",
+      "expected_refiner_bytes": 5868409512,
+      "requests": [
+        {
+          "url": "https://huggingface.co/Kijai/MiniMax-H3-experimental/resolve/main/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+          "method": "HEAD",
+          "body_read_bytes": 0,
+          "error": "URLError(OSError(99, 'Cannot assign requested address'))",
+          "seconds": 12.047045292332768
+        },
+        {
+          "url": "https://hf-mirror.com/Kijai/MiniMax-H3-experimental/resolve/main/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+          "method": "HEAD",
+          "body_read_bytes": 0,
+          "status": 302,
+          "headers": {
+            "Content-Length": "1136",
+            "Content-Type": "text/plain; charset=utf-8",
+            "X-Linked-Etag": "\"4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2\"",
+            "X-Linked-Size": "5868409512",
+            "X-Repo-Commit": "c2e7b89b1800123c49a0f620a1932c01d8952256"
+          },
+          "exact_expected_SHA_in_headers": true,
+          "seconds": 0.6761657372117043
+        }
+      ],
+      "large_weight_downloaded": false
+    },
+    "pinned_redirect_head_probe": {
+      "time_utc": "2026-11-12T02:59:19.907118+00:00",
+      "host": "huawei-modelarts-31112",
+      "public_pinned_resolve_url": "https://hf-mirror.com/Kijai/MiniMax-H3-experimental/resolve/c2e7b89b1800123c49a0f620a1932c01d8952256/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+      "method_each_hop": "HEAD",
+      "body_bytes_read": 0,
+      "hops": [
+        {
+          "hop": 0,
+          "host": "hf-mirror.com",
+          "status": 302,
+          "headers": {
+            "Content-Length": "1140",
+            "Content-Type": "text/plain; charset=utf-8",
+            "X-Linked-Etag": "\"4bf30291343eef5e51ee867ba37dd31bce3133d1da1ace1a245a7130b88818c2\"",
+            "X-Linked-Size": "5868409512",
+            "X-Repo-Commit": "c2e7b89b1800123c49a0f620a1932c01d8952256"
+          },
+          "seconds": 0.7199177546426654
+        },
+        {
+          "hop": 1,
+          "host": "cas-bridge.xethub.hf.co",
+          "status": 200,
+          "headers": {
+            "Content-Length": "5868409512",
+            "ETag": "\"cdf165202040d569171983230acc4d4672ee8d317d2bcafe11c77c7c44bef73a\"",
+            "Accept-Ranges": "bytes"
+          },
+          "seconds": 1.6468892870470881
+        }
+      ]
+    },
+    "conclusion": "Exact target SHA and size advertised by X-Linked-Etag/X-Linked-Size; final cas-bridge object HEAD200 with matching size and Accept-Ranges bytes. A public download route is reachable from31112. HEAD does not establish throughput or full downloaded-file SHA; any future authorized download must use this pinned revision, no-overwrite staging and verify actual full bytes/SHA.",
+    "CDN_ETag_boundary": "Final CDN ETag is a different object identifier, not substituted for the required file SHA. Exact required SHA comes from the pinned resolve response's X-Linked-Etag."
+  },
+  "turbo": {
+    "required_bytes": 1956171936,
+    "required_sha256": "0b5e411b519ea5041734d44fc102b0dfd6b6a29737048ad1a80a522fb633fa99",
+    "exact_public_URL_found": false,
+    "own_asset_header_source": "huawei-modelarts-31984:/cache/zihaohe/streaming_sr0/assets/openh3_split/openh3_turbo128_comfy.safetensors",
+    "header_metadata": {
+      "source": "../assets/openh3_split/openh3_turbo128.safetensors",
+      "converted_layout": "comfyui_minimax_h3",
+      "conversion": "qkv block-diag fused (contiguous q|k|v); mlp.fc1 swiglu halves swapped; scale1.0; verified by reproducing Kijai refiner rank384 bit-for-bit in bf16",
+      "verify": "results/deploy/openh3_convert_verify.json"
+    },
+    "conversion_source": "huawei-modelarts-31984:/cache/zihaohe/streaming_sr0/code/convert_openh3_to_comfy.py",
+    "conversion_control_evidence": "Existing own-project openh3_convert_verify.json reports416matchingrefiner tensors,0missing/extra,max_rel_err0.0. This validates a tensor conversion control, not a public URL or deterministic whole-file SHA reconstruction.",
+    "known_public_parent": {
+      "repo": "Efficient-Large-Model/Open-H3-Regenerate-2K",
+      "revision": "50c09cf1df5f9262b9279868c1c666bd5fe3476b",
+      "file": "lora/open_h3_regenerate_2k_lora.safetensors",
+      "bytes": 12452449080,
+      "sha256": "8e36a0912ab72f7f3b00f41e3c7c97c7dfdec21e66c88ab22f08b9b0c681bb04"
+    },
+    "conclusion": "No exact public URL appears in the inspected own download/conversion records or exact-name web searches. The raw Turbo or public merged12.45GB LoRA is not byte-identical to the required1.956GB converted split. Do not silently substitute it. Future direct transfer of the existing own SHA-verified converted file is the narrower exact-identity path; public reconstruction is a separate conversion/serialization/full-SHA task, not performed here."
+  },
+  "network_budget": {
+    "large_files_downloaded": 0,
+    "checkpoint_body_bytes_read": 0,
+    "only_HEAD_for_candidate_file": true,
+    "source_header_read_bytes": {
+      "refiner": 53920,
+      "turbo": 53400
+    },
+    "no_speed_claim": true
+  },
+  "resource_snapshot": {
+    "path": "results/takeover_20261111/30794_resource_snapshot_20261112T025504Z.json",
+    "status": "not_launch_eligible_at_single_snapshot"
+  },
+  "limitations": [
+    "Public HEAD metadata authenticates advertised object identity, not actual downloaded-file contents.",
+    "No transfer speed or completion-time estimate from these HEAD observations.",
+    "Public Turbo nonexistence is not proven; only no exact URL found in the checked sources.",
+    "No remote original file was fully rehashed in this task and no model was loaded."
+  ]
+}

@@ -383,3 +383,39 @@ VAE j独立card7，23:53:53 fresh健康3418/65536MB、无PID/锁，1214pins/17�
 00:34:12实查：joint已完成模型加载及源/预检，当前initial_resident_fingerprints，phase elapsed456.34s，进程Rl/CPU445%、RSS45,525,024KiB；阶段allocated45,610,662,400B。尚0NFE/0decode/0back，无failure，CPU finalizer等待、审计0次。正在扫描冻结参数/registered buffers，不是挂起，也不是联合反传显存验收。下次先读现有queue/partial和finalize_status，不另启。
 
 00:35:49，本轮80个源码/runtime/CPU小证据/下一关方案已备份31984 `preparation/followup_20261112_0035`，归档473,949bytes，SHAd0f1e3d6edcf673982f9e4491d581c320d0dd85bd496f04eb37e5ad62ae7ea7a，全文件大小/SHA通过；未覆盖根代码或模型资产。当前producer/CPUfinalizer健康等待后续数值结果，终态证据尚未产生；勿把备份完成当实验通过。
+
+
+### 2026-11-12 10:20 接续：小尺寸联合 RGB 已验收，迁移空闲算力
+
+joint RGB a 已于00:51:36SG完成，CPU finalizer00:52:20一次审计通过。一次2,677,576-byte归档SHA0ff5bc22be203473975742d336307fa3b7ed6986558c149eb69eea96c7b919d4，73members/72payload和11个实际小数组本地重新核验；video/audio/decoder cast/RGB均逐位相等。6NFE、2decode、1RGB backward、0update；400梯度对在远端CPU逐数组审计，200B非零、unscaled B L2 .009887167308。DiT530参数+2注册buffer、VAE559参数+42注册buffer冻结，DiT150/VAE36重算；联合peakallocated43.301067GiB，wall1518.065s含加载和hash。证据 h3_joint_rgb_probe_20261112a_completed/{local_verification,scientific_review}.json；不重跑，旧i严格重复性失败保留。不是全22联合显存或恢复训练质量通过。
+
+训练VAE缓存新入口export_train_vae_cache.py已完成8/8真实CPU测试和当前selected NPZ像素验证，源review无阻断；preparation/train_vae_cache_20261112a已冻结1295pins并在30794完成最终CPU inspection，尚未NPU启动。固定一条TRAIN compression，2encode+1decode，VAE-only，保留uint8/PIL量化与原float32补偿锚。13/13 CPU terminal audit/finalizer tests通过，尚未配置或启动。
+
+10:07SG检查30794所有8卡被他人PID1794498训练占用，31984也全占；未抢占。全已知Huawei端口只读扫描发现31112卡1–7空闲、已有streaming_sr0资产，30837全空闲但资产缺，32193卡7空闲。资源快照 results/takeover_20261111/resource_scan_20261112T0210Z.json，使用前需再查并持锁15秒二检。先准备31112最小迁移（项目pins+一条训练缓存+完整32/8元数据约237MB），不覆盖已有runtime/资产；外部runtime/权重另核验，历史SCHEME3_HOLD作为来源30794证据复制到新namespace不冒充目标现行锁。新guide-matched正式训练仍0步；nonzero adapter新入口和CPU测试正在独立实现/审查，未启动。
+
+
+### 2026-11-12 10:52 接续：31112 实际训练 VAE 缓存已启动
+
+237,025,280-byte最小迁移已完成，15传输块及总archive SHA57e4c935…c4d383一致；31112逐文件验证1254payload、1298queue pins，无覆盖。收据preparation/migration_31112_20261112/target_verification.json。原单流下载取消，partial保留；private-IP连通测试失败、SSH受约束转发不可用均保留负结果，没有复制私钥或使用未约束forwarding。
+
+Portable入口code/export_train_vae_cache_portable.py仅将未用base/refiner/turbo改成metadata身份绑定，VAE/context实际bytes+SHA检查严格保留；完整recipe不得据此称已验证。全部模型/PIL量化/编码解码仍复用旧5e2e18f…，CPU9/9和独立source review通过，31112真实选定NPZ/32train8dev隔离检查通过。独立CPU收尾17/17通过。d的card7在准入前被他人PID263295占用，未admit/未启动，保留未启动记录；新e只改物理card1与namespace，预算/模型/数据不变。
+
+10:51:27SG卡1健康3411/65536MB、无PID、共享锁空闲、1298pins全过，持锁15秒二检后10:51:48实际running。prep preparation/train_vae_cache_portable_20261112e_31112；run runs/train_vae_cache_legacy_smoke_20261112e_31112；queue7d03cc9a…4e916、execution2f8ad8c2…6b352。单一train compression固定2encode+1decode、0H3/0backward/0optimizer，600s+30s期限；不能重启健康进程或重复同样缓存。10:52:01CPU finalizer PID282867真实waiting，输出run同名前缀_finalize；最多900s等待/一次180s audit，归档在同前缀_audit。
+
+非零adapter probe code/check_h3_nonzero_adapter.py已10/10真实CPU tests和独立source review通过；a快照已上传30794，1289pins/实际joint report-audit-archive+7参考数组通过default CPU inspection，无模型导入/无admission/无NPU。证据h3_nonzero_adapter_actual_inspection_20261112a。独立终态auditor正在实现，实际NPU仍待空闲卡或31112完整refiner/turbo资产；固定12NFE/4decode/1RGBbackward/1SGD，不增加步数。新guide-matched正式训练仍0；下一关nonzero重载/merge与全22联合显存。
+
+
+11:03接续：e 已10:53:59SG完成，CPUfinalizer10:54:33一次审计通过；唯一2,161,030-byte归档SHA1d231085…bd459，67members/66payload和两个262080元素FP32 latent本地SHA/形状/有限值复核通过。science_review SHA34452cd7…099d6/local_verification277398b8…a52af位于results/takeover_20261111/train_vae_cache_portable_20261112e_31112_completed。实际2encode1decode，559parameters+42registered buffers初末不变，peak7,132,525,568bytes，producer90.3279s含加载/hash。105,431,168-byte VAE_R只在远端完整CPU核验，没有下载/重算质量指标。raw的P不改变bytes，Rphi的P改变22,368,857分量；后续训练保留相同P。工程通过而非质量/泛化/全32cache，正式guide-matched训练仍0。禁止重跑e。
+
+30794于10:55SG全部8卡仍他人PID1794498占用，卡6/7余37693MB，不启动非零a。31112完整H3尚缺refiner与convertedturbo；公共fixedrevision refiner HEAD200/大小与LFS SHA一致，准备单次有时限下载；convertedturbo没有相同SHA的已知publicURL，30794真实文件SHA0b5e411b…fa99通过后分15×128MiB（尾块较小）迁移，全部download session已启动：omni-turbo-part-0-20261112至-14-20261112。本地preparation/turbo_transfer_31112_20261112/{manifest,transfer_jobs}.json记录，partial在parts/，禁止重复下载健康transfer。完成后逐块SHA，再上传31112新namespace、拼接验证全1,956,171,936bytes和SHA，未验证前不放入manifest路径。31112现有40.225GB base仅大小检查过，完整H3前必须全SHA。
+
+
+11:13接续：31112现有40,225,724,176-byte base完整SHA a32572fb…541b4已实核通过（80.856s、0模型load/NPU），receipt preparation/base_asset_verify_31112_20261112/result.json。refiner公共固定revision单次下载已03:13:23UTC实际downloading：supervisor317937、downloader317938，status preparation/asset_refiner_31112_20261112/status.json，终态receipt.json，7200s+10s墙限，无自动重试，无tmux；成功仅发布该新目录.ready，不修改manifest路径。后续先查status/receipt/PID，绝不重复健康下载。Turbo15块仍下载本地，完成后再逐块传目标并全SHA验收。
+
+非零独立CPU auditor preparation/h3_nonzero_adapter_terminal_audit_20261112 已17项CPU测试通过；当前只读review/等待限额收尾，尚未部署/配置/NPU启动。主producer硬限3600+30s，finalizer等待将调4200s以覆盖终态，再一次300s CPU audit，不能把等待时间误算模型budget。
+
+
+11:16最终非零auditor已冻结，17/17 CPU通过、独立read-only review无阻断；receipt f6b9e172…e05c6、finalizer10069ea7…a469f。4200等待覆盖3600+30模型硬限，fake-clock3630终态/4200超时通过，科学门保持。尚未上传、无config/admission/dispatch；下一次资产ready或30794有空卡后绑定正确host producer快照与新finalizer配置再启动。当前没有运行中的本项目NPU训练；运行中仅refiner下载和15个Turbo块传输，勿误报为训练。
+
+
+11:17本轮537个源码/快照/小证据已备份31984 preparation/followup_20261112_1115，8,409,392bytes，SHA6cd87a21f8d0a8e05750700739569ccad978d0cca48cc4f47411422de9d1458f；逐文件大小/SHA验收通过、0覆盖。包含本轮已接受joint与e缓存证据、portable/nonzero源码及CPU审计器、31112迁移来源与下载启动记录；不包含正在下载的大权重或105MB缓存RGB。下次先查两个资产传输状态，现有e已完成勿重跑。

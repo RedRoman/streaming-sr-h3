@@ -1,0 +1,29 @@
+{
+  "schema": "openh3.refiner_download_launch.v1",
+  "started_utc": "2026-11-12T03:13:23.178728+00:00",
+  "source_sha256": "01608c791354bd64148789001faf78741b3e62ab03adf33383b4ad0d14bed185",
+  "launcher_sha256": "3c25407545864165e6a538c0741a43b4a2ecdaf16cfe6275aca2e5b401cc61ea",
+  "max_wall_seconds": 7200,
+  "cleanup_grace_seconds": 10,
+  "automatic_retries": 0,
+  "model_calls": 0,
+  "NPU_calls": 0,
+  "dispatch_count": 1,
+  "state": "dispatched",
+  "supervisor_pid": 317937,
+  "process_group": 317937,
+  "command": [
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "7200s",
+    "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python3",
+    "-u",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/asset_refiner_31112_20261112/download_refiner.py",
+    "--self-sha256",
+    "01608c791354bd64148789001faf78741b3e62ab03adf33383b4ad0d14bed185"
+  ],
+  "status_path": "/cache/zihaohe/omni_openh3_20261111/preparation/asset_refiner_31112_20261112/status.json",
+  "receipt_path": "/cache/zihaohe/omni_openh3_20261111/preparation/asset_refiner_31112_20261112/receipt.json",
+  "log_path": "/cache/zihaohe/omni_openh3_20261111/preparation/asset_refiner_31112_20261112/download.log"
+}

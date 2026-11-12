@@ -1,0 +1,216 @@
+{
+  "acceptance_facts": {
+    "RGB_backward": {
+      "auxiliary_latent_audio_loss": false,
+      "completed_backward_calls": 1,
+      "graph": {
+        "rgb_has_grad_fn": true,
+        "rgb_requires_grad": true,
+        "video_has_grad_fn": true,
+        "video_requires_grad": true
+      },
+      "local_numpy_float64_MSE": 0.08738713960766997,
+      "loss_expressions": 1,
+      "loss_scale": 1024.0,
+      "target": "fixed synthetic broadcast intensity ramp, not original RGB supervision",
+      "target_sha256": "10efb5fae35949846d1853d3f2a5812f03b09c15ba0884f62e8e349170c1fef7",
+      "torch_float32_actual_backward_MSE": 0.08738712966442108
+    },
+    "RGB_gate": {
+      "allclose_passed": true,
+      "measured_bytes_equal": true,
+      "measured_max_abs": 0.0,
+      "predeclared_atol": 0.0002,
+      "predeclared_rtol": 0.0001,
+      "semantics": "as-returned internal-clipped float32; no extra quantization or clamp",
+      "shape": [
+        5,
+        128,
+        128,
+        3
+      ]
+    },
+    "actual_budget": {
+      "RGB_loss_expressions": 1,
+      "adapter_updates": 0,
+      "backward_attempts": 1,
+      "candidate_NFE": 3,
+      "candidate_VAE_decode_calls": 1,
+      "completed_backward_calls": 1,
+      "forbidden_calls": [],
+      "optimizer_steps": 0,
+      "reference_NFE": 3,
+      "reference_VAE_decode_calls": 1,
+      "stage_decode_calls": {
+        "candidate_decode": 1,
+        "reference_decode": 1
+      }
+    },
+    "checkpoint_and_math": {
+      "DiT_backward_recomputations": 150,
+      "DiT_blocks": 50,
+      "DiT_candidate_calls": 150,
+      "DiT_reference_calls": 150,
+      "DiT_rope": "comfy_kitchen.backends.eager.rope.rms_rope_split_half",
+      "VAE_backward_recomputations": 36,
+      "VAE_candidate_calls": 36,
+      "VAE_decoder_blocks": 36,
+      "VAE_reference_calls": 36,
+      "decoder_context_restorations_passed": 73,
+      "decoder_native_rope": "comfy_kitchen.backends.ascend.rope.rms_rope_split_half",
+      "math_and_wrapper_restored": true,
+      "math_observations": 558,
+      "stale_backward_guard_rejected": true,
+      "whole_run_and_session_patcher_shapes_restored": true
+    },
+    "frozen": {
+      "DiT_parameters": 530,
+      "DiT_registered_buffers": 2,
+      "VAE_parameters": 559,
+      "VAE_registered_buffers": 42,
+      "before_after_canonical_bytes_equal": true,
+      "local_canonical_inventory_JSON_hash_recomputed": true,
+      "local_live_model_rehash": false,
+      "scope": "Named parameter and registered-buffer records plus source-bound object/version/device/grad checks; no unregistered Python cache claim"
+    },
+    "gradients": {
+      "A_zero_legal_at_zero_B": true,
+      "B_L2_raw_remote": 10.124459323513136,
+      "B_L2_unscaled_producer": 0.009887167308118299,
+      "B_nonzero_tensors": 200,
+      "adapter_arrays_remote_verified": 800,
+      "adapter_tensors": 400,
+      "basis": "remote independent CPU actual saved arrays; no local gradient array recomputation",
+      "finite_adapter_tensors": 400,
+      "retained_video": {
+        "elements": 3072,
+        "raw_l2_float64": 13.754377229359347,
+        "raw_nonzero": 3071,
+        "unscaled_l2_float64": 0.013432009013046238,
+        "unscaled_nonzero": 3071
+      },
+      "retained_video_arrays_remote_verified": 2
+    },
+    "local_actual_array_parity": {
+      "audio": {
+        "array_equal": true,
+        "bytes_equal": true,
+        "max_abs_float64": 0.0,
+        "relative_L2_float64": 0.0
+      },
+      "decoder_input": {
+        "array_equal": true,
+        "bytes_equal": true,
+        "max_abs_float64": 0.0,
+        "relative_L2_float64": 0.0
+      },
+      "rgb": {
+        "array_equal": true,
+        "bytes_equal": true,
+        "max_abs_float64": 0.0,
+        "relative_L2_float64": 0.0
+      },
+      "video": {
+        "array_equal": true,
+        "bytes_equal": true,
+        "max_abs_float64": 0.0,
+        "relative_L2_float64": 0.0
+      }
+    },
+    "sampling": {
+      "audio_initialization": "zeros before official joint seeded noise",
+      "audio_shape": [
+        1,
+        32,
+        2,
+        8
+      ],
+      "candidate_NFE": 3,
+      "checkpoint_recomputations_counted_separately": true,
+      "packed_initial_and_noise": "source-bound observer SHA records equal; not regenerated locally",
+      "pretrained": {
+        "components": [
+          "refiner",
+          "turbo"
+        ],
+        "fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+        "legacy_stage1_loaded": false,
+        "legacy_turbo_loaded": false,
+        "manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+        "merge": "sum_fp32_then_cast_once",
+        "merged_modules": 208,
+        "recipe": "refiner-turbo-comfy",
+        "sharp_zero_curve_B_tensors": 0,
+        "upstream_diffusers_parity": "not_validated"
+      },
+      "raw_warm_start_and_guide_fixed": true,
+      "reference_NFE": 3,
+      "sigmas_float32": [
+        0.909375011920929,
+        0.8571428656578064,
+        0.6666666865348816,
+        0.0
+      ],
+      "video_shape": [
+        1,
+        24,
+        2,
+        8,
+        8
+      ]
+    },
+    "timing_memory": {
+      "CPU_finalizer_complete_at_utc": "2026-11-11T16:52:19.668059+00:00",
+      "logical_device": "npu:0",
+      "peak_allocated": 46494167040,
+      "peak_allocated_GiB": 43.30106735229492,
+      "peak_reserved": 47076868096,
+      "peak_reserved_GiB": 43.84375,
+      "physical_card": 6,
+      "producer_complete_at_utc": "2026-11-11T16:51:36.230074+00:00",
+      "producer_wall_seconds_including_hash_audits": 1518.065065923147
+    }
+  },
+  "blocking_findings": [],
+  "complete": true,
+  "created_at_utc": "2026-11-12T02:10:15.977860+00:00",
+  "evidence": {
+    "MANIFEST_payload_files_checked": 72,
+    "archive": "evidence.tar.gz",
+    "archive_bytes": 2677576,
+    "archive_sha256": "0ff5bc22be203473975742d336307fa3b7ed6986558c149eb69eea96c7b919d4",
+    "execution_contract_sha256": "f52d3e0164947197c1788fc53396aa478953b65d28dad56d7907aa78683e6987",
+    "local_verification": "local_verification.json",
+    "local_verification_sha256": "bcd9d026a94010950e5872d42232687b8742eef7ba450f5680cc119eeebdbba0",
+    "producer_report": "runs/h3_joint_rgb_probe_20261112a/eval/report.json",
+    "producer_report_sha256": "1abd5af5090ef62ec3002aaa96eabe5c18256035733d513c1aa4ec574263d2b4",
+    "producer_sha256": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "remote_CPU_audit_sha256": "7d82f9234d6ed864b01c39f5c41a91a96d5d34694e390b33e2dee53dc2db9b42",
+    "remote_independent_CPU_audit": "runs/h3_joint_rgb_probe_20261112a_finalize/terminal_audit.json",
+    "safe_members": 73,
+    "trajectory_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22"
+  },
+  "limitations": [
+    "No nonzero update/save-reload or BF16 merge parity has been tested.",
+    "No full22x480x832 joint H3+VAE memory/backward or finite matched LoRA training quality is established.",
+    "Synthetic intensity target is neither real RGB supervision nor an optimizer-stability/quality test.",
+    "Prior i strict cross-process VAE gradient repeatability failure remains failed; this success does not supersede it.",
+    "Remote gradient arrays were independently CPU-audited but intentionally absent from the local small archive."
+  ],
+  "next_gate": "Separately reviewed/admitted nonzero single-SGD update/save-reload/merge probe. This review is not launch authorization.",
+  "reviewer_actions": {
+    "NPU_calls": 0,
+    "archive_downloads": 1,
+    "local_numpy_array_checks": 11,
+    "model_loads": 0,
+    "producer_runtime_changes": 0,
+    "remote_gradient_downloads": 0
+  },
+  "schema": "openh3.joint_rgb_scientific_review.v1",
+  "scope": "Fixed seed101 synthetic numerical probe;5frames128x128, joint video+audio three-step H3 then frozen native VAE, zero-initialized rank8 adapter. No dataset training or quality evaluation.",
+  "verdict": "passed_small_joint_RGB_only",
+  "what_this_establishes": [
+    "For this fixed small zero-adapter input, differentiable joint three-step video/audio, decoder cast and RGB match official reference bytes.",
+    "One scaled RGB-only backward reaches retained video and all400 adapter tensors with finite gradients, including200 nonzero B tensors, while frozen parameters/buffers and scoped lifecycle gates pass."
+  ]
+}

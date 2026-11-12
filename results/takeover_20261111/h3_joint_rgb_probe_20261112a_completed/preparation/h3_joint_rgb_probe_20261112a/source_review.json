@@ -1,0 +1,99 @@
+{
+  "schema": "openh3.small_joint_rgb_source_review.v1",
+  "reviewed_at_utc": "2026-11-11T16:23:42.797485+00:00",
+  "status": "no_remaining_source_blockers_found",
+  "source_sha256": {
+    "configs/openh3_20261111/h3_joint_rgb_probe_contract_20261111.json": "1d9acc5451dce4f0454832ff86dffc98eb85f8ed07c9d13c73b776367f560cc7",
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/tests/test_h3_joint_rgb_probe.py": "bcc74cba3ec4ebadbcf0078e36a7589886f1cd432b5163c7d2703f6d06ed1a72",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c"
+  },
+  "scope": "Independent read-only review of real Comfy decode/checkpoint/lifecycle dependencies and the new frozen bounded joint RGB CLI. No launch approval or empirical joint-model acceptance.",
+  "actions": {
+    "source_or_runtime_edits": false,
+    "tests_rerun": false,
+    "model_loads": 0,
+    "NPU_calls": 0,
+    "launch_or_process_changes": false,
+    "remote_reads": "Python stdlib source-text/hash reads only"
+  },
+  "resolved_findings": [
+    {
+      "severity": "P2",
+      "finding": "An exception during ResidentH3Trajectory.__enter__ before saved state existed could trigger a second AttributeError in probe finally and skip final evidence.",
+      "resolution": "restore_patcher_state checks initialization before accessing saved fields, records not-applicable session restoration, and still repairs whole-run state.",
+      "evidence": "code/check_h3_joint_rgb_grad.py:352-369,544-570; test_session_entry_failure_and_bad_restoration_not_hidden"
+    },
+    {
+      "severity": "P2",
+      "finding": "current_patcher session restoration was initially recorded against whole-run state without a terminal gate; later manual restoration could hide a session failure.",
+      "resolution": "Session current_patcher/shapes are audited against session entry before repair; whole-run restoration is separate; all four results enter the terminal gate.",
+      "evidence": "code/check_h3_joint_rgb_grad.py:352-369,582-588"
+    }
+  ],
+  "key_checks": [
+    {
+      "area": "Same graph and forward gates",
+      "evidence": "code/check_h3_joint_rgb_grad.py:204-250,512-540",
+      "result": "Strict final video/audio parity precedes candidate decode. The retained video feeds ResidentH3Trajectory.decode without detach; decoder FP16 input SHA matches reference. RGB allclose(candidate,reference) uses unchanged atol=.0002/rtol=.0001 and reports bitexact. One CPU float32 RGB-only MSE times1024 drives the retained graph; no latent/audio auxiliary objective or optimizer."
+    },
+    {
+      "area": "VAE/DiT math context isolation",
+      "evidence": "code/openh3_train_trajectory.py:145-224,335-343,437-478; code/check_h3_joint_rgb_grad.py:308-320,428-453",
+      "result": "Block observers wrap bound forward before checkpoint captures it, so they see recomputation inside context_fn. Decoder forward/recompute uses scoped ascend_native; each context restores its full prior state. DiT candidate/backward uses its own session-entry expectation. Reference and candidate temporary scale_shift/gate function IDs are not incorrectly equated."
+    },
+    {
+      "area": "Resident graph and internal fallback",
+      "evidence": "code/check_h3_joint_rgb_grad.py:266-304,459-538; actual comfy/sd.py:1271-1304,1307-1352; comfy/model_management.py:939-1038",
+      "result": "disable_offload alone cannot protect DiT: VAE load_models_gpu may free other models. The new CLI checks canonical object/version/device/byte/frozen state before and after decode and before backward. It blocks sd.VAE OOM fallback entrypoints and repeated stage.decode, preserving native stage.tiled_decode and successful decode arithmetic."
+    },
+    {
+      "area": "Native geometry and 36-call derivation",
+      "evidence": "actual comfy/ldm/minimax/vae.py:431-453,499-527,531-534,717-727,738-765,394-395; code/check_h3_joint_rgb_grad.py:410-414,571-581",
+      "result": "Defaults ratio_t=4, clip17, token_drop3, chunk5, overlap2 give _decode_temporal_chunks(2)=(5,1): T2 is padded to7, not8. Native128<tile256 gives one spatial tile; one decoder invocation visits36 blocks. This is a source-derived predeclared count, not a claimed prior5-frame measured checkpoint count. The probe logs actual native plan and actual counts before strict acceptance."
+    },
+    {
+      "area": "Freeze and failure evidence",
+      "evidence": "code/check_h3_joint_rgb_grad.py:91-156,170-201,544-595",
+      "result": "Parameters and all registered buffers, including nonpersistent buffers, are fingerprinted separately; untracked Python caches are explicitly outside scope. Raw and FP32-unscaled gradients are saved; final state/hash/runtime observations are attempted before complete/failure verdict. Aggregate B must be nonzero; A can be zero at zero B. Adapter values cannot change without an optimizer."
+    },
+    {
+      "area": "Exact budget",
+      "evidence": "code/check_h3_joint_rgb_grad.py:37-41,266-304,469-477,571-588",
+      "result": "Success requires3reference+3candidate explicit NFE,1reference+1candidate VAE decode,1backward,0optimizer/update; DiT150 and VAE36 checkpoint block recomputes are separately counted. No extra whole-model backward forward, no encode, and no OOM fallback is admitted."
+    },
+    {
+      "area": "Final provenance addition",
+      "evidence": "code/check_h3_joint_rgb_grad.py:606-620",
+      "result": "Entrypoint, existing source contract, manifest, complete implementation pins and actual context-file SHA are checked before execution; model loader then verifies bound asset bytes. Inspect-only does not claim all asset-byte hashes were verified."
+    }
+  ],
+  "actual_Comfy_sources_read": {
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/sd.py": {
+      "sha256": "99ac1b53d523c2295acd036af3550d0dc07f3df7b87729380813ad8003778556",
+      "lines": "1029-1040,1264-1355"
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/model_management.py": {
+      "sha256": "045ab96003386a43e647c8ab96f22fbf3be6c577e2fc578ea31c6faa22facbd5",
+      "lines": "939-1038"
+    },
+    "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py": {
+      "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe",
+      "lines": "287-325,360-455,465-527,531-660,685-789,818-837"
+    }
+  },
+  "CPU_test_boundary": {
+    "reviewer_reran_tests": false,
+    "implementer_reported": "10/10 real Torch CPU tests passed,0skip,3.386seconds; source/tests SHA above. Receipt handled by implementing agent.",
+    "actual_model_acceptance": false,
+    "limit": "Tiny DiT/36 tiny VAE block fixtures and pinned sampler function bodies test plumbing and restoration, not actual H3/VAE numerical parity, finite gradients or memory."
+  },
+  "pending_before_launch": [
+    "Complete immutable snapshot and actual imported dependency/asset pins; independent root review/admission, single-card resource/lock/two-check policy and bounded owned timeout.",
+    "Real model must independently pass strict latent parity, existing RGB tolerance, finite nonzero RGB-to-adapter gradients, declared counters, freeze and all restoration gates.",
+    "Small same-graph success would still not accept nonzero save/reload/BF16 merge, full22 joint memory, optimization stability or restoration quality. VAE i strict repeatability failure and skipped B remain unchanged."
+  ]
+}

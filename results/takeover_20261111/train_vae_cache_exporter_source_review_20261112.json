@@ -1,0 +1,296 @@
+{
+  "CPU_validation_boundary": {
+    "coverage": [
+      "fixed train/controls/dev/source/target bindings",
+      "no-target numerical API/no-overwrite",
+      "official same-size truncation",
+      "exact2encode1decode and raw immutability",
+      "actual P mismatch before stage",
+      "input hash/range rejection",
+      "decode failure restores and preserves latent evidence",
+      "second decode and sd fallback forbidden"
+    ],
+    "implementer_result": {
+      "Torch_CPU_tests": 8,
+      "actual_selected_input_inspection": "First real CPU input-only preflight passed; final frozen-SHA reinspection receipt being archived by implementer. No model construction/forward.",
+      "passed": 8,
+      "reported_by": "/root/audit_audio_omni",
+      "reviewer_rerun": false,
+      "seconds": 1.966,
+      "skipped": 0
+    },
+    "not_established": "Actual VAE values, real full22 memory and successful cache completion require separately admitted execution.",
+    "reviewer_executed_tests": false,
+    "test_methods": 8,
+    "test_source_reviewed": true
+  },
+  "actual_deployment_source": [
+    {
+      "finding": "_resize -> common_upscale(lanczos, center), no alternate custom pixel path",
+      "host": "huawei-modelarts-30794",
+      "lines": "68-72",
+      "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy_extras/nodes_minimax_h3.py",
+      "sha256": "108ceff11e5a5c9a34a57bbc380447cf9941beb673a1bd421abc818de54ccd5c"
+    },
+    {
+      "finding": "Same-size input still converts clip(255*x).astype(uint8), then PIL Lanczos and float32/255; truncation, not rounding. The new AST CPU P and actual PIL/vae.encode observer SHA gates agree by construction only until real execution validates them.",
+      "lines": "1097-1139",
+      "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/utils.py",
+      "sha256": "9320cf5c624e96acc1d9ec92ff120ed6387a2142707f3194cb21dd0d11ac2500"
+    },
+    {
+      "finding": "Actual encode crops/reorders, process_input -> vae_dtype, native stage.encode, then output dtype. OOM fallback would retry; new exporter blocks sd fallback while retaining native stage tiling.",
+      "lines": "1417-1473;1264-1355",
+      "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/sd.py",
+      "sha256": "99ac1b53d523c2295acd036af3550d0dc07f3df7b87729380813ad8003778556"
+    },
+    {
+      "finding": "Native full22 encode uses clip_length17, repeat-last-frame padding, concatenation and token_drop3. Encode returns normalized (mean-latents_mean)/latents_std; decode reverses normalization and finalizer clips internally. No new external latent scaling or remedial clipping is applied.",
+      "lines": "505-508;664-677;792-837",
+      "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe"
+    }
+  ],
+  "created_at_utc": "2026-11-12T02:00:52.931383+00:00",
+  "finalized_at_utc": "2026-11-12T02:01:46.094029+00:00",
+  "open_blocking_findings": [],
+  "passed_source_checks": [
+    "Fixed accepted train guide manifest, final3000 checkpoint SHA/model config/state SHA, full32train/8dev source metadata and ID/SHA isolation are checked; selected current NPZ and materialization receipt are rehashed and pixel-verified. Full source-video bytes remain prior materialization attestation.",
+    "Selected compression row binds record/source/task/target/input/checkpoint hashes and sidecar. All22 frame indices and causalK3 history are required; original clean pixels are used only inside inspection for integrity/geometry and never passed to encode_pair.",
+    "raw_draft is recomputed from current observed compression pixels and required exact. Rphi RGB is exactly clip(existing raw Rphi prediction); no RphiModel construction/forward occurs. CPU checkpoint deserialization does occur.",
+    "P preprocessing is frozen by source hashes, CPU official AST, actual PIL uint8 bytes and actual pre-vae.encode float32 bytes. Native stage receives normal deployment FP16 path; output latents must be float32 [1,24,7,30,52].",
+    "Decode consumes the saved Rphi guide latent exactly once. raw latent remains fixed; compensation R refers to original float32 Rphi RGB before P, and returned VAE(R) is explicitly internally clipped.",
+    "load_vae_only verifies and binds VAE/context actual bytes/SHA, constructs H3(load_dit=False), checks no DiT patcher/frozen list. Other refiner/Turbo/base assets are recipe provenance and size-only inspection, not loaded or rehashed.",
+    "Native whole22 temporal/spatial tiling remains unchanged. Actual stage/H3/VAE/PIL counters guard two encodes and one decode; H3 sampling, alternate encoding, sd OOM tiled retry and repeated stage calls fail closed.",
+    "VAE is frozen and resident; pre/post parameters and all registered buffers are checked for object/version/device/bytes/grad state. Per-instance wrapper restoration and math flags are gated. No claim covers unregistered Python caches.",
+    "New out path is required. Arrays carry file and pixel SHA/dtype/shape. Partial/failure evidence is atomic and failed terminal handling forces complete=false."
+  ],
+  "remaining_limitations": [
+    "One train compression row only; not full32source cache or training readiness.",
+    "CausalK3 applies to upstream Rphi; native whole22 VAE encoding/decoding is not a causal streaming proof.",
+    "Internally clipped VAE output is not pre-clamp decoder output.",
+    "No quality, optimization, LoRA reload/merge, joint-H3 memory or deployment acceptance follows from this source review."
+  ],
+  "resolved_findings": [
+    {
+      "issue": "Terminal phase or manifest write could fail after complete=True and leave failure marked complete.",
+      "resolution": "main exception now forces complete=False before failure evidence.",
+      "severity": "P2"
+    },
+    {
+      "issue": "Final full fingerprint collection error could be merely recorded while snapshot gate passed.",
+      "resolution": "Final gate now requires final fingerprint artifact, both parameter/buffer unchanged booleans, no final-inventory error and matching artifact SHA.",
+      "severity": "P2"
+    },
+    {
+      "issue": "Forbidden h3 helper wrappers restored by ExitStack were not included in restoration audit.",
+      "resolution": "h3.sample/encode/encode_guide/ref_block are now included in wrapper_snapshot where present.",
+      "severity": "P3"
+    },
+    {
+      "issue": "Rphi_loaded=false was ambiguous because checkpoint metadata/state are deserialized on CPU.",
+      "resolution": "Final source explicitly records Rphi_model_constructed=false and Rphi_checkpoint_deserialized_on_CPU=true.",
+      "severity": "clarification"
+    }
+  ],
+  "review_activity": {
+    "NPU_calls": 0,
+    "artifact_created": "this independent review only",
+    "existing_runtime_modified": false,
+    "model_loads": 0,
+    "remote_actions": "read-only actual Comfy source excerpts; no weights or pixel caches downloaded",
+    "tests_rerun_by_reviewer": false
+  },
+  "reviewed_files": [
+    {
+      "functions": {
+        "bounded_calls": {
+          "end_line": 327,
+          "line": 261
+        },
+        "check_contract": {
+          "end_line": 74,
+          "line": 55
+        },
+        "encode_pair": {
+          "end_line": 360,
+          "line": 330
+        },
+        "execute": {
+          "end_line": 446,
+          "line": 363
+        },
+        "inspect_inputs": {
+          "end_line": 224,
+          "line": 156
+        },
+        "main": {
+          "end_line": 478,
+          "line": 449
+        },
+        "official_preprocess": {
+          "end_line": 153,
+          "line": 115
+        },
+        "selected_row": {
+          "end_line": 104,
+          "line": 77
+        }
+      },
+      "path": "code/export_train_vae_cache.py",
+      "sha256": "5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1"
+    },
+    {
+      "path": "code/tests/test_train_vae_cache.py",
+      "sha256": "a4b241fd7861a7a4b395efaf94059a1fa0a3ca5dade0adcf3f6bee4dfb389369"
+    },
+    {
+      "functions": {
+        "validate_train_contract": {
+          "end_line": 113,
+          "line": 82
+        },
+        "verify_cache": {
+          "end_line": 210,
+          "line": 190
+        }
+      },
+      "path": "code/export_rphi_train_guides.py",
+      "sha256": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f"
+    },
+    {
+      "functions": {
+        "load_vae_only": {
+          "end_line": 264,
+          "line": 244
+        },
+        "manifest_vae_binding": {
+          "end_line": 241,
+          "line": 233
+        },
+        "verify_vae_binding": {
+          "end_line": 229,
+          "line": 213
+        }
+      },
+      "path": "code/run_vae_roundtrip_diagnostic.py",
+      "sha256": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811"
+    },
+    {
+      "functions": {
+        "H3": {
+          "end_line": 453,
+          "line": 132
+        },
+        "official_resize": {
+          "end_line": 119,
+          "line": 112
+        }
+      },
+      "path": "code/h3_comfy.py",
+      "sha256": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c"
+    },
+    {
+      "functions": {
+        "RphiDataset": {
+          "end_line": 427,
+          "line": 123
+        },
+        "prepare_observed": {
+          "end_line": 93,
+          "line": 75
+        }
+      },
+      "path": "code/rphi_data.py",
+      "sha256": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301"
+    },
+    {
+      "functions": {
+        "check_snapshot": {
+          "end_line": 135,
+          "line": 119
+        },
+        "freeze_snapshot": {
+          "end_line": 116,
+          "line": 113
+        },
+        "frozen_inventory": {
+          "end_line": 110,
+          "line": 91
+        },
+        "override_method": {
+          "end_line": 262,
+          "line": 254
+        },
+        "wrapper_snapshot": {
+          "end_line": 344,
+          "line": 343
+        },
+        "wrappers_restored": {
+          "end_line": 349,
+          "line": 347
+        }
+      },
+      "path": "code/check_h3_joint_rgb_grad.py",
+      "sha256": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0"
+    },
+    {
+      "functions": {
+        "runtime_imports": {
+          "end_line": 399,
+          "line": 324
+        },
+        "verify_pins": {
+          "end_line": 321,
+          "line": 313
+        }
+      },
+      "path": "code/check_h3_trajectory_grad.py",
+      "sha256": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3"
+    },
+    {
+      "functions": {
+        "read_manifest": {
+          "end_line": 77,
+          "line": 45
+        }
+      },
+      "path": "code/openh3_assets.py",
+      "sha256": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa"
+    },
+    {
+      "path": "results/takeover_20261111/train_vae_cache_preparation_review_20261112.json",
+      "sha256": "9c2e2bdc64fffec33a2e08c90e36affc87edc4c14ea3bb79467166da277ffdc4"
+    }
+  ],
+  "schema": "openh3.train_vae_cache_source_review.v1",
+  "scope": {
+    "RGB_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "budget": {
+      "DiT_NFE": 0,
+      "Rphi_forwards": 0,
+      "VAE_decodes": 1,
+      "VAE_encodes": 2,
+      "backward": 0,
+      "optimizer_steps": 0
+    },
+    "latent_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "role": "train",
+    "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+    "source_id": "2BdYaGuVAKo",
+    "task": "compression"
+  },
+  "source_frozen_by_implementer": true,
+  "status": "no_remaining_source_blockers_found"
+}

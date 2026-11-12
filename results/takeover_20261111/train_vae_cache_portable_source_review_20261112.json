@@ -1,0 +1,124 @@
+{
+  "schema": "openh3.train_vae_cache_portable_source_review.v1",
+  "created_at_utc": "2026-11-12T02:36:56.386000+00:00",
+  "status": "source_and_supplied_CPU_evidence_review_complete_no_blockers_actual_host_execution_pending",
+  "scope": "Read-only independent review of the two new portable admission files and frozen numerical dependencies. No model load, NPU call, duplicate CPU test run or change to any old source/review/snapshot.",
+  "blocking_findings": [],
+  "source_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "code/export_rphi_train_guides.py": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f",
+    "code/export_train_vae_cache.py": "5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1",
+    "code/export_train_vae_cache_portable.py": "05ad19f05c8dcc10b83520c1eb4cc87f94c41e5a87f973528a23959e1999561a",
+    "code/openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa",
+    "code/openh3_vae_only_assets.py": "7a478fab9f8ecce72a90c76cd423e294ed0aab07e5733b02fc7fc545d929a7f7",
+    "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "code/run_vae_roundtrip_diagnostic.py": "04e2f3e63b3caabec6f9998d97f7c33d39f920fa89b7d17776b48c73b20d1811",
+    "code/tests/test_train_vae_cache.py": "a4b241fd7861a7a4b395efaf94059a1fa0a3ca5dade0adcf3f6bee4dfb389369",
+    "code/tests/test_train_vae_cache_portable.py": "89012aabd3062e5cfade9eceb9a572c01baa6f21b4607a658c5bc84dc614251d"
+  },
+  "additional_actual_source_sha256": {
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c"
+  },
+  "CPU_evidence": {
+    "receipt": "results/takeover_20261111/train_vae_cache_portable_cpu_validation_20261112/cpu_receipt.json",
+    "receipt_sha256": "a076a37223ff9f730def72ac6171a444401e8436fb040b541ea36deb2c4414b6",
+    "archive": "results/takeover_20261111/train_vae_cache_portable_cpu_validation_20261112/cpu_evidence.tar.gz",
+    "archive_sha256": "c423efc63aca196bf04dd326cc06cd672392b096d3fba094ac0d4512300c30e3",
+    "archive_bytes": 71609,
+    "regular_members": 17,
+    "source_files_verified_against_archive_and_current_local": 13,
+    "log_sha256": "659b4e0420a68ca74f451a82845a520fce4fe3ed7c6c752fea69ff6a631e1376",
+    "tests": {
+      "log": "cpu_tests.log",
+      "log_sha256": "659b4e0420a68ca74f451a82845a520fce4fe3ed7c6c752fea69ff6a631e1376",
+      "passed": 9,
+      "seconds": 0.054,
+      "skipped": 0
+    },
+    "scope": "CPU synthetic file-admission/delegation tests. Actual immutable VAE-only loader function bodies executed via AST with fake torch/H3, not a real device/model. No new numerical VAE path: input inspection, preprocessing, encode_pair, execute and loader remain from unchanged pinned legacy sources. No model weights loaded, no actual VAE encode/decode, no NPU, no launch configuration.",
+    "independent_reviewer_reran_tests": false
+  },
+  "checked_boundaries": [
+    {
+      "finding": "Complete parent identity retained, partial verification made explicit",
+      "evidence": [
+        "code/openh3_vae_only_assets.py:17",
+        "code/openh3_vae_only_assets.py:31",
+        "code/openh3_vae_only_assets.py:57"
+      ],
+      "details": "Exact parent manifest SHA, schema/layout/recipe/component order and all declared path/bytes/SHA metadata are validated. Fingerprint reproduces the unchanged parent identity algorithm; this is provenance identity, not verification that absent assets were inspected."
+    },
+    {
+      "finding": "Only the actual VAE/context assets are accessed",
+      "evidence": [
+        "code/openh3_vae_only_assets.py:46",
+        "code/openh3_vae_only_assets.py:62"
+      ],
+      "details": "Only vae/context are resolved, stat-ed and fully SHA checked; _paths contains exactly those roles. Unused base/refiner/turbo records are metadata only; no placeholder, sparse file or fabricated asset is made. _files_sha256_verified=False and safe_for_DiT_pretrained_merge=False prevent a full-recipe verification claim."
+    },
+    {
+      "finding": "Portable runtime cannot silently replace the frozen numerical exporter",
+      "evidence": [
+        "code/export_train_vae_cache_portable.py:21",
+        "code/export_train_vae_cache_portable.py:84",
+        "code/export_train_vae_cache_portable.py:111"
+      ],
+      "details": "The portable entry, helper and frozen legacy entry must be pinned; legacy SHA is fixed to 5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1. All original input/provenance checks, preprocessing-source pins and selected TRAIN compression identity remain. The original inspect_inputs and execute are called with the same raw/Rphi values."
+    },
+    {
+      "finding": "Actual loader path remains VAE-only",
+      "evidence": [
+        "code/run_vae_roundtrip_diagnostic.py:213",
+        "code/run_vae_roundtrip_diagnostic.py:233",
+        "code/run_vae_roundtrip_diagnostic.py:245",
+        "code/h3_comfy.py:146",
+        "code/h3_comfy.py:175"
+      ],
+      "details": "The frozen loader independently verifies used VAE/context bytes and SHA against original constants, scopes and restores their bindings, and calls H3(load_dit=False, verify_sha=True). H3 diffusion file access is inside the unused load_dit branch. The fixed FP16 VAE, native normalized latents, original uint8/PIL preprocessing, 22-frame geometry and native chunk/tiling path are unchanged."
+    },
+    {
+      "finding": "Train-role target stays outside the model input",
+      "evidence": [
+        "code/export_train_vae_cache.py:156",
+        "code/export_train_vae_cache.py:204",
+        "code/export_train_vae_cache.py:363"
+      ],
+      "details": "Original complete32train/8dev source isolation and checkpoint contract verification remain. Only the selected source2BdYaGuVAKo compression row has current pixel/file verification. Target is read for receipt/pixel/geometry checks but never returned to execute; only raw_draft and clipped rphi_rgb enter the two encodes. Rphi checkpoint is deserialized on CPU; no Rphi model or DiT is constructed."
+    },
+    {
+      "finding": "Reports do not falsely inherit all-assets-size verification",
+      "evidence": [
+        "code/export_train_vae_cache_portable.py:57",
+        "code/export_train_vae_cache_portable.py:117"
+      ],
+      "details": "Every partial/success/failure save records used-component verification and corrects the inherited unused-assets sizes_only wording to metadata_only, with full_recipe_assets_verified=False. Failure forces complete=False. Old output refusal and frozen parameter/buffer/runtime restoration gates remain intact."
+    }
+  ],
+  "CPU_coverage": [
+    "Missing unused files accepted without resolve/stat/open",
+    "Same-size used-file corruption, missing/size-mismatched used files and parent SHA mismatch rejected",
+    "Malformed parent recipe/layout/order/digest/size metadata rejected",
+    "Fingerprint exactly equals old complete-manifest algorithm",
+    "Identical numerical input-object delegation to the frozen executor",
+    "Truthful initialization/success/failure scope and complete reset",
+    "Pinned actual loader function bodies via AST with fake Torch/H3 verify only VAE/context and restore bindings"
+  ],
+  "integration_requirements_not_source_blockers": [
+    "New queue/execution implementation pins must not retain unavailable base/refiner/turbo asset paths; generic verify_pins would otherwise access those files before this entry runs. Keep exact parent manifest, used VAE/context and complete code/runtime pins.",
+    "The separately prepared CPU terminal audit must accept and verify portable_component_scope/asset_verification_scope rather than imply that all parent recipe assets were inspected.",
+    "Actual destination-host input inspection, actual VAE/context file-byte verification, fresh admission and bounded real 2encode/1decode execution remain pending; this review is not a launch receipt."
+  ],
+  "not_proven": [
+    "No actual destination-host portable input inspection has run in this review",
+    "No actual VAE encode/decode or NPU behavior has been validated by these nine synthetic CPU tests",
+    "No restoration quality, training readiness, full H3 preload or full parent-asset availability claim"
+  ],
+  "unchanged_prior_review": {
+    "path": "results/takeover_20261111/train_vae_cache_exporter_source_review_20261112.json",
+    "sha256": "6d26dcba72e40516c83e8a1357e7be6bb4fd4fa10156ced4a388c65a1d80d66e"
+  }
+}

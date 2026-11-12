@@ -1,0 +1,57 @@
+{
+  "schema": "rphi.history_mask_oracle_diagnostic_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "parameters": {
+    "tile": 16,
+    "metric": "unclamped RGB MAE float64 of saved float32",
+    "four_tie_order": [
+      "00",
+      "10",
+      "01",
+      "11"
+    ],
+    "five_tie_order": [
+      "input",
+      "00",
+      "10",
+      "01",
+      "11"
+    ],
+    "primary_drop_threshold": 0.0,
+    "secondary_drop_threshold": -0.00019607843137254904,
+    "keep_on_threshold_equality": true,
+    "interaction": "E00+E11-E01-E10; both history slots available only",
+    "GT_scope": "offline saved-candidate-set diagnostic only; never a deployable selector or student admission"
+  },
+  "resources": {
+    "CPU": 2,
+    "AS_bytes": 4294967296,
+    "wall_seconds": 180
+  },
+  "source_pins": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_mask_oracle_diagnostic_20261112a/diagnose_cached_masks.py": "de86b866902daee492d100b74e2a6c29bb743bbd3232d7bf00fdb9fa5579d337",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_mask_oracle_diagnostic_20261112a/array_checks.py": "f5eecaf866cd62a1390de8713b2d3d58a5a308816ac69a16e1d5d6b31bae1696",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_mask_oracle_diagnostic_20261112a/test_diagnostic.py": "0c9bb0eb5cbd0a75caa0c83999087fc4b52d805d5b7a8cce135a907d1f835c93"
+  },
+  "report": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_headroom_20261112a/output/report.json",
+    "sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578"
+  },
+  "prior_actual_array_audit": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_headroom_20261112a_finalize/audit.json",
+    "sha256": "38d783deb2f41fc31da4657ba0329383bc192fd41ff943962d3041e5d4607807"
+  },
+  "protocol": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_headroom_20261112.json",
+    "sha256": "d529c075ba5499d512b3728ff689cc104f1a80e9b985d5bb10bda7eaca690b03"
+  },
+  "records": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_headroom_20261112a/output/records.jsonl",
+    "sha256": "5acf4c60436ba014c6122251dcb024317cb71be6a091d7d8c28f15d1eb82ba20",
+    "rows": 2880
+  },
+  "admission": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_mask_oracle_diagnostic_20261112a/root_admission.json",
+    "sha256": "40970112e666c2b32d98b99617a169040eb11ed1e509c1c19dd18e06ccadabca"
+  }
+}

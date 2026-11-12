@@ -1,0 +1,86 @@
+{
+  "actions_performed": {
+    "main_config_edits": 0,
+    "model_calls": 0,
+    "remote_requery": 0,
+    "source_edits": 0,
+    "training": 0
+  },
+  "bounded_evaluation": {
+    "LPIPS_note": "LPIPS is an additional perceptual model computation, not zero model calls. Its bounded metric runtime/weight pins must be declared before admission; do not silently omit or replace it.",
+    "head_checkpoint_choices_per_arm": 1,
+    "head_row_forwards_total_two_arms": 5760,
+    "model_seed_pairs": 1,
+    "new_restorer_forwards": 0,
+    "new_restorer_training_steps": 0,
+    "repeat_dev_scans_for_threshold_selection": 0,
+    "rows": 2880,
+    "threshold_choices": 1
+  },
+  "created_at_utc": "2026-11-12T08:14:39.359414+00:00",
+  "current_evidence": {
+    "dev_K3_reconstruction_verified": false,
+    "four_or_five_candidate_oracle_not_two_candidate_bound": true,
+    "new_head_implemented_or_trained": false,
+    "original_history_gate_failed": true,
+    "train19_final_K1_label_cache_available": false
+  },
+  "further_scope": "Even a dev pass is one seed pair on6 repeatedly inspected development sources. Fresh source-disjoint evaluation/full-frame inference and separately bounded repeated seeds are future work, not requirements claimed completed here.",
+  "oracle_boundary": "GT is allowed only in train-label construction and evaluation. Input/K1 tilewise oracle is a candidate-set upper bound and label sign/regression diagnostics describe supervision. Neither establishes raw-observation predictability, actual composed-image LPIPS/seams, matched-over-shuffle benefit, independent source generalization, or admission.",
+  "pretraining_required": [
+    "All interface tests in proposal pass; preserve-input signed-zero ties are byte-exact; target/metadata are absent from network inputs.",
+    "Train19-only final-K1 cache: exactly16000 existing rows and1000 batch forwards; full frozen teacher/row/source/array/feature SHA audit and no restorer backward/update.",
+    "Whole-map shuffle is a strict source-and-group-excluded bijection within declared strata; infeasible strata stop both arms without fallback.",
+    "Dev cache reconstructs exact K3 bytes against original observation hashes for all2880 rows. No missing-neighbor fallback or new restorer output.",
+    "Freeze this comparative rule, metric implementation/weights/range and CPU backend before either1000-step head run. Two-candidate input/K1 oracle may be reported in the same preparation pass, but cannot pass the actual-head gate or determine thresholds."
+  ],
+  "proposed_actual_output_screen": {
+    "aggregation": "First mean96frames within each(source,native profile); then equal3native profiles within source; then equal6sources. Identity and near_clean separate, equal6sources. Never pool controls to manufacture native improvement.",
+    "controls": {
+      "coverage": "Report corrected-tile and actual changed-pixel fractions per source/profile/phase for both heads, with native mean strictly between0and1. Near-clean has no arbitrary correction cap: judge actual harm, not low coverage alone.",
+      "identity": "Mean MAE(matched,target)<=0.05/255, every-source MAE<=0.10/255, and mean strictly below K1. Identity corrected-tile fraction<=0.05. Raw identity error is zero: do not demand a negative error or report infinite PSNR as evidence of a gain.",
+      "near_clean": "Mean MAE(matched)-MAE(raw)<=0.05/255; every-source harm<=0.10/255; mean MAE(matched)<=MAE(K1)."
+    },
+    "decision": "All numeric/integrity gates plus complete LPIPS/PSNR/coverage/boundary/flip evidence => eligible_for_next_bounded_fullframe_validation, never quality_proven. Any failed gate => failed_dev_screen; missing required metric or unresolved seam regression => pending_review. Do not adjust threshold/features/steps/checkpoint or rerun automatically.",
+    "native_MAE": {
+      "guardrails": "No equal-source native profile mean worse than K1; worst source native MAE harm relative to K1 <=0.05/255.",
+      "material_gain_margin": 3.9215686274509805e-05,
+      "raw_restoration_retained": "E(raw)>E(matched) and retained_gain=(E(raw)-E(matched))/(E(raw)-E(K1))>=0.95, with positive baseline denominator. Report this even though aggregate superiority to K1 makes it redundant; bypass-all fails.",
+      "rule": "E(K1)-E(matched)>=0.01/255 AND E(shuffled)-E(matched)>=0.01/255.",
+      "source_support": "At least4/6 sources have strictly positive gain versus K1; at least4/6 separately versus shuffle. Publish all6 paired values; these counts are not significance tests.",
+      "threshold_rationale": "0.01/255 and0.05/255 are proposed small, explicit engineering margins; they are neither utility-label normalization nor empirically calibrated perceptual/statistical thresholds. Freeze before training or replace prospectively; do not tune them after outputs."
+    },
+    "perceptual_and_boundaries": {
+      "LPIPS": "Required, pinned identical implementation/weights, complete2880rows×4arms. Native mean matched no worse than K1 or shuffled by more than0.001; identity/near_clean each no worse than raw by more than0.001. Proposed engineering noninferiority margin, not a calibrated perceptual threshold. Missing/partial LPIPS => pending, not passed.",
+      "PSNR": "Required descriptive per-source/profile/control MSE and PSNR; retain infinite identity PSNR explicitly rather than average infinities. Native mean PSNR must not be lower than K1 by more than0.05dB.",
+      "seams": "Required actual RGB residual-gradient jump at internal16pixel tile boundaries relative to raw/K1, all source/profile/phase values. If the source-balanced native jump exceeds both raw and K1, mark requires_review and block automatic progression; no smoothing or threshold repair in this run.",
+      "temporal": "Required stride1 mask flip rate on all95adjacent pairs per source/profile and separate declared degradation transitions. Report masks/outputs of both heads. This measures decisions, not flow-aligned flicker; no temporal-quality pass from this statistic."
+    },
+    "primary_arrays": "Actual clipped deployment RGB for raw/K1/matched/shuffled; additionally publish identical metrics for unclamped outputs and clipping rates. Raw MAE gain versus K1 and shuffle must not reverse sign.",
+    "scope": "One selected6dev/96center-crop screening run. No independent test or full-frame/streaming quality claim."
+  },
+  "reviewed_proposal": {
+    "path": "configs/openh3_20261111/input_preservation_interface_proposal_20261112.json",
+    "sha256": "d1dd2afd1b9daddea8340fe1edff7c71ed6215fbf6f3ef038adaa4b01aa262de"
+  },
+  "schema": "rphi.input_preservation_pretraining_gate_review.v1",
+  "status": "proposed_bounded_dev_screen_not_adopted_not_training_admission",
+  "unchanged_experiment": {
+    "batch_size": 16,
+    "checkpoint": "final_step1000_only",
+    "controls": "Raw and fixed K1 share exact same rows/targets/preprocessing with both heads. Shuffle changes only complete label-map assignment. No GT, labels, source/profile/severity metadata or K1 output enters head.forward.",
+    "dev_sources": 6,
+    "donor_seed": 20261112,
+    "features": "exact frozen HistoryUtilityGate.features; no new features or geometry changes",
+    "heads": [
+      "matched_benefit_head",
+      "shuffled_benefit_head"
+    ],
+    "initial_seed": 20261111,
+    "restorer": "frozen final teacher K1, no restorer update",
+    "threshold": 0,
+    "train_sources": 19,
+    "train_steps_each": 1000
+  },
+  "verdict": "Interface is coherent. Before either head is trained, root must freeze one explicit actual-output screening rule. The rules below are a proposed engineering policy, not measured results, significance thresholds, or a claim that current evidence passes."
+}

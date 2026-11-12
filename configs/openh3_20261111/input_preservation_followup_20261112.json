@@ -1,0 +1,40 @@
+{
+  "schema": "rphi.input_preservation_followup.v1",
+  "status": "design_frozen_pending_implementation_and_train_only_labels_not_admitted",
+  "created_at_utc": "2026-11-12T07:56:41.038388+00:00",
+  "evidence": "results/takeover_20261111/history_mask_oracle_diagnostic_completed_20261112a/root_review.json",
+  "original_failed_headroom_remains_failed": true,
+  "frozen_teacher_checkpoint_sha256": "79995694df154084af6e76020dfa05c0f64010600bba839521fee7a01d326e34",
+  "purpose": "Test whether raw observations can predict when the fixed restorer helps, with an explicit preserve-input action.",
+  "first_isolated_experiment": {
+    "teacher_mode": "K1/current-only; fixed weights and0restorer optimizer updates",
+    "model_input": "current and available past raw observations only; no clean targets/degradation ground truth/source-id",
+    "label": "signed16x16tile error benefit MAE(input,target)-MAE(frozenK1,target), train sources only",
+    "head_candidate": "reuse small observation-only feature extractor with one signed-benefit output; do not simultaneously redesign restorer or history gate",
+    "output": "raw input or fixed K1 correction selected by predicted benefit at fixedzero threshold; ties preserve input; specify spatial boundary treatment before launch",
+    "train_sources": 19,
+    "development_sources": 6,
+    "fixed_training_budget_proposed": 1000,
+    "controls": [
+      "raw input",
+      "frozen K1",
+      "same head/capacity/budget with source-and-group-isolated shuffled whole-map benefit labels"
+    ],
+    "training_and_data_budgets": "Must freeze exact train-only label rows, source/condition-preserving shuffle and actual NPU/CPU/caching budget before executing. Existing dev oracle labels never used for training.",
+    "metrics": [
+      "source-balanced degradedMAE/PSNR/LPIPS on actual output",
+      "identity/near-clean harm and correction coverage",
+      "worst-source/phase behavior",
+      "stride1 full-frame flow-aware temporal quality later; tiled crop scores alone insufficient"
+    ]
+  },
+  "decision_before_combining_history": [
+    "Confirm raw-only benefit prediction beats shuffled head and fixedK1 at matched budget.",
+    "Report protection/fidelity tradeoff without picking dev thresholds/checkpoints; no bypass-all trivial solution accepted as restoration progress.",
+    "Retain failed outcomes; no extra teacher steps or automatic scale-up.",
+    "Define fresh source-disjoint test independent of the6dev sources used in this design."
+  ],
+  "further_history_experiment": "After input-preservation test, evaluate predicted two-slot LOO/history decision with same bypass and comparable cost; four-state routing is secondary only if observed residual interaction justifies it.",
+  "H3_parallel": "Existing realTRAIN AdamW boundedprobe on31112; wait for actual deployment/reload audit before guide-matched formal LoRA.",
+  "student_training_admitted": false
+}

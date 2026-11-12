@@ -1,0 +1,74 @@
+{
+  "evidence_form": "Returned JSON fields transcribed from the one completed tool result. Full literal stdout and complete source JSON bytes were not persisted; this is not a source-file SHA attestation.",
+  "host": "huawei-modelarts-31112",
+  "interpretation": "Producer and finalizer PIDs existed, producer reported running with no failure and updated-complete hashing phase. This does not establish fresh NPU utilization, eventual completion, audit passage, or quality/functional readiness. No repeated read or intervention.",
+  "operation": {
+    "downloads": 0,
+    "process_interventions": 0,
+    "read_only": true,
+    "requeries": 0,
+    "ssh_invocations": 1,
+    "timeout_seconds": 15
+  },
+  "recorded_at_utc": "2026-11-12T08:14:39.359414+00:00",
+  "remote_observed_at_utc": null,
+  "returned_json_fields": {
+    "runs/h3_real_adamw_update_20261112a/eval/partial.json": {
+      "actual": {
+        "NFE": {
+          "merged": 0,
+          "reloaded": 0,
+          "updated": 3,
+          "zero": 3
+        },
+        "RGB_loss_expressions": 1,
+        "Rphi_calls": 0,
+        "VAE_decode_calls": {
+          "merged": 0,
+          "reloaded": 0,
+          "updated": 1,
+          "zero": 1
+        },
+        "VAE_encode_calls": 0,
+        "adapter_updates": 1,
+        "backward_attempts": 1,
+        "checkpoint_saves": 1,
+        "clear_reload_cycles": 0,
+        "clip_calls": 1,
+        "completed_backward_calls": 1,
+        "forbidden_calls": [],
+        "merge_calls": 0,
+        "optimizer_state_clear_reload": 0,
+        "optimizer_state_saves": 1,
+        "optimizer_steps": 1,
+        "stage_decode_calls": {
+          "updated_decode": 1,
+          "zero_decode": 1
+        },
+        "unscale_calls": 1
+      },
+      "complete": false,
+      "failure": null,
+      "phase": "full_state_hash_updated_complete"
+    },
+    "runs/h3_real_adamw_update_20261112a/queue_status.json": {
+      "active_worker_seconds": 2194.9406555425376,
+      "complete": false,
+      "owned_pgid": 510744,
+      "peak_owned_group_rss_bytes": 87447408640,
+      "proc_exists": true,
+      "state": "running",
+      "worker_pid": 510744
+    },
+    "runs/h3_real_adamw_update_20261112a_finalize/finalize_status.json": {
+      "audit_invocations": 0,
+      "complete": false,
+      "pid": 510727,
+      "proc_exists": true,
+      "state": "waiting"
+    }
+  },
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "schema": "openh3.h3_real_adamw_readonly_observation.v1",
+  "timestamp_limitation": "The single earlier SSH read did not capture host UTC. Filename/recorded_at_utc are local evidence-persistence time, not invented remote observation time."
+}

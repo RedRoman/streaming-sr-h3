@@ -1,0 +1,44 @@
+{
+  "schema": "rphi.history_mask_oracle_diagnostic_source_review.v1",
+  "created_utc": "2026-11-12T07:49:28.935808+00:00",
+  "reviewer": "inspect_architecture",
+  "status": "no_remaining_source_blocker_found",
+  "launch_admitted": false,
+  "read_only_source_review": true,
+  "tests_repeated_by_reviewer": false,
+  "actual_RGB_arrays_read_by_reviewer": false,
+  "sources": {
+    "preparation/history_mask_oracle_diagnostic_20261112a/diagnose_cached_masks.py": "de86b866902daee492d100b74e2a6c29bb743bbd3232d7bf00fdb9fa5579d337",
+    "preparation/history_mask_oracle_diagnostic_20261112a/array_checks.py": "f5eecaf866cd62a1390de8713b2d3d58a5a308816ac69a16e1d5d6b31bae1696",
+    "preparation/history_mask_oracle_diagnostic_20261112a/test_diagnostic.py": "0c9bb0eb5cbd0a75caa0c83999087fc4b52d805d5b7a8cce135a907d1f835c93",
+    "preparation/history_mask_oracle_diagnostic_20261112a/cpu_receipt.json": "c245756cbf5fe0c9a24b624fd5533bdfae7d4324807471f2e1c17260d288cbcb"
+  },
+  "checked": {
+    "mapping": "00=current_only,10=remove_1(oldest kept),01=remove_0(recent kept),11=all_history; candidate index keep0+2*keep1 agrees.",
+    "availability": "Only masks whose bits are <= actual causal availability are oracle candidates; LOO-selected unavailable slots are forced off. Both-history interaction excludes first two frames.",
+    "LOO_sign": "Drop oldest iff E01-E11<0 and recent iff E10-E11<0, simultaneously. Secondary negative-margin threshold is explicit and separate; equality keeps.",
+    "ties": "Exact argmin order00,10,01,11; separate authorized five-candidate secondary uses input,00,10,01,11. No tolerance/outcome-dependent tie selection.",
+    "interaction": "E00+E11-E01-E10, only both available. signed mean, mean absolute, fractions and mean_frame_RMS are correctly named under per-frame averaging.",
+    "aggregation": "Equal96frames and36tiles per source/profile; equal three degraded profiles and six sources for primary; identity and near_clean separate. 2820 both-available rows /101520 interaction tiles.",
+    "bindings": "Original failed gate/report and independently audited arrays remain SHA-bound; prior assessment comparison uses frozen1e-12 float tolerance and exact Boolean gates. File/array/row hashes and causal metadata rechecked; small bindings/source rechecked on completion.",
+    "scope": "Four-mask result is GT minimum inside fixed saved whole-crop binary-mask candidate predictions. Tile-wise error choice does not reproduce a spatially varying mask network. No soft-mask/retraining/global-quality bound, deployment selection, or automatic student admission."
+  },
+  "resolved_findings": [
+    {
+      "issue": "Whole assessment dict equality rejected valid independently reduced FP64 values.",
+      "resolution": "Frozen C.compare now accepts only the already declared float tolerance; Boolean gates remain exact. Actual small JSON comparison in receipt max error1.0842021724855044e-19."
+    },
+    {
+      "issue": "Mean of per-frame RMS could be misread as pooled RMS.",
+      "resolution": "Field renamed mean_frame_RMS; numerical selection and gate unchanged."
+    }
+  ],
+  "existing_CPU_receipt": {
+    "complete": true,
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "scope": "Seven small NumPy mathematical fixtures plus comparison of already downloaded small report/audit JSON; zero actual RGB NPZ reads or model calls."
+  },
+  "remaining": "Root must freeze final contract/pins and separately admit one bounded CPU diagnostic; this review neither executes it nor changes the original failed headroom gate."
+}

@@ -45,7 +45,7 @@ def diagnostic_tiles(errors,input_error,availability):
            'feasible_mask_fraction':{mask:float(feasible[i]) for i,mask in enumerate(MASKS)},
            'loo_zero_differs_from_oracle4_fraction':float(np.mean(zero!=oracle4)),
            'loo_zero_strict_positive_regret_fraction':float(np.mean(values['loo_zero']>e4)),
-           'interaction':None if interaction is None else {'signed_mean':float(interaction.mean()),'mean_absolute':float(np.abs(interaction).mean()),'RMS':float(np.sqrt(np.square(interaction).mean())),'positive_fraction':float((interaction>0).mean()),'negative_fraction':float((interaction<0).mean()),'above_margin_fraction':float((interaction>MARGIN).mean()),'below_negative_margin_fraction':float((interaction< -MARGIN).mean())}}
+           'interaction':None if interaction is None else {'signed_mean':float(interaction.mean()),'mean_absolute':float(np.abs(interaction).mean()),'mean_frame_RMS':float(np.sqrt(np.square(interaction).mean())),'positive_fraction':float((interaction>0).mean()),'negative_fraction':float((interaction<0).mean()),'above_margin_fraction':float((interaction>MARGIN).mean()),'below_negative_margin_fraction':float((interaction< -MARGIN).mean())}}
     return stats
 
 def mean_tree(items):
@@ -71,13 +71,29 @@ def summarize(rows,protocol):
     profiles=[{'profile_id':pid,'statistics':mean_tree([lookup[sid,pid] for sid in protocol['dev_source_ids']])} for pid in protocol['profile_ids']]
     return {'primary_degraded_equal_source_equal_profile':mean_tree([r['degraded'] for r in by_source]),'identity_equal_source':mean_tree([r['identity'] for r in by_source]),'near_clean_equal_source':mean_tree([r['near_clean'] for r in by_source]),'per_source':by_source,'per_profile_equal_source':profiles,'per_source_profile':by_pair}
 
+def report_view(value,secondary=False):
+    """Keep the additional input oracle in a separately labelled control table."""
+    if isinstance(value,list):return [report_view(x,secondary) for x in value]
+    if not isinstance(value,dict):return value
+    if secondary and 'mae' in value:
+        return {'input_mae':value['mae']['input'],'oracle4_mae':value['mae']['oracle4'],
+                'oracle5_mae':value['mae']['oracle5'],
+                'oracle5_gain_over_oracle4':value['oracle5_gain_over_oracle4'],
+                'oracle5_harm_vs_input':value['harm_vs_input']['oracle5'],
+                'oracle5_selection_fraction':value['selection_fraction']['oracle5']}
+    return {k:report_view(v,secondary) for k,v in value.items()
+            if secondary or k not in ('oracle5','oracle5_gain_over_oracle4')}
+
 def inspect(path,execute=False,out=None):
     c=C.read(path);C.need(c['schema']=='rphi.history_mask_oracle_diagnostic_execution.v1' and c['parameters']==PARAMETERS and c['resources']==RESOURCES,'fixed diagnostic contract differs')
     C.need(C.sha(__file__)==c['source_pins'].get(str(Path(__file__).resolve())) and C.sha(C.__file__)==HELPER_SHA==c['source_pins'].get(str(Path(C.__file__).resolve())),'actual source/helper identity differs')
     for p,h in c['source_pins'].items():C.need(C.sha(p)==h,'source pin differs')
     report=C.read(C.bound(c['report'],c['root']));audit=C.read(C.bound(c['prior_actual_array_audit'],c['root']));protocol=C.read(C.bound(c['protocol'],c['root']))
     C.need(report['complete'] is True and report['status']=='complete_headroom_fail' and report['assessment']['headroom_rule_passed'] is False,'preserve the completed negative headroom result')
-    C.need(audit['complete'] is True and audit['report_sha256']==c['report']['sha256'] and audit['auditor_sha256']==HELPER_SHA and audit['actual_cache_files']==180 and audit['actual_arrays']==1080 and audit['actual_rows']==2880 and audit['assessment']==report['assessment'],'not the independently audited cache/report')
+    C.need(audit['complete'] is True and audit['report_sha256']==c['report']['sha256'] and audit['auditor_sha256']==HELPER_SHA and audit['actual_cache_files']==180 and audit['actual_arrays']==1080 and audit['actual_rows']==2880,'not the independently audited cache/report')
+    # Independent FP64 tile reductions may differ by rounding; use the already
+    # frozen cross-implementation tolerance and keep every Boolean gate exact.
+    C.compare(audit['assessment'],report['assessment'],{},'prior_assessment')
     C.need(c['protocol']['sha256']==C.PROTOCOL_SHA==audit['protocol_sha256'] and protocol['rule']==C.RULE,'original headroom rule changed')
     C.need(c['records']==report['records'] and len(report['actual_rgb_caches'])==180,'records/cache binding differs')
     rp=C.bound(c['records'],c['root']);records=[json.loads(x) for x in rp.read_text().splitlines() if x.strip()];base=C.validate_rows(records,protocol)
@@ -110,8 +126,10 @@ def run(c,report,prior,protocol,records):
     # This old result is an immutable cross-check, not a new acceptance rule.
     old_gain=sums['primary_degraded_equal_source_equal_profile']['gain_vs_K1']['all']
     C.compare(old_gain,report['assessment']['source_balanced_degraded_mae_gain'],checks,'original_gain')
+    for p,h in c['source_pins'].items():C.need(C.sha(p)==h,'source changed during diagnostic')
+    for name in ('report','prior_actual_array_audit','protocol','records'):C.bound(c[name],c['root'])
     C.need(not any(n=='torch' or n.startswith('torch_npu') for n in sys.modules),'framework import prohibited')
-    return {'schema':'rphi.history_mask_oracle_diagnostic.v1','complete':True,'status':'offline_cached_candidate_diagnostic_complete','parameters':PARAMETERS,'report':c['report'],'prior_actual_array_audit':c['prior_actual_array_audit'],'protocol':c['protocol'],'actual_cache_files':180,'actual_arrays':1080,'actual_rows':2880,'actual_tiles':103680,'interaction_rows_both_available':2820,'interaction_tiles_both_available':101520,'actual_cache_bytes':actual_bytes,'actual_cache_inventory_sha256':C.vsha(batch_hashes),'maximum_recomputation_abs_error':checks,'four_mask_primary':{'meaning':'GT minimum inside four saved whole-crop binary-mask predictions; per16tile error selection only','tie_order':list(MASKS)},'five_candidate_secondary_control':{'meaning':'Separate GT minimum of same four saved outputs plus raw current input; not a history gate or accepted method','tie_order':['input',*MASKS]},'summaries':sums,'original_headroom_rule_passed':False,'original_headroom_rule_unchanged':True,'student_training_admitted':False,'model_calls':0,'training_steps':0,'source_NPZ_reads':0,'image_composites_created':0,'limitations':['Post-failure descriptive GT diagnostic on the same selected development set; no independent test evidence.','Oracle and LOO-sign selectors both use target-derived errors and are not deployable raw-only decisions.','Each cached candidate came from a whole-crop binary mask. Tile-wise error selection does not execute a spatially varying input-mask gate; convolution neighborhoods mean its output may differ.','This is an upper bound on improvement only inside the saved candidate set, not arbitrary soft masks, retraining, or full-frame restoration.','Interaction is evaluated only where both history slots exist; boundary frames cannot supply all four physical states.','No model replay, student admission, original-gate change, threshold search, LPIPS or flow-temporal claim.']}
+    return {'schema':'rphi.history_mask_oracle_diagnostic.v1','complete':True,'status':'offline_cached_candidate_diagnostic_complete','parameters':PARAMETERS,'report':c['report'],'prior_actual_array_audit':c['prior_actual_array_audit'],'protocol':c['protocol'],'actual_cache_files':180,'actual_arrays':1080,'actual_rows':2880,'actual_tiles':103680,'interaction_rows_both_available':2820,'interaction_tiles_both_available':101520,'actual_cache_bytes':actual_bytes,'actual_cache_inventory_sha256':C.vsha(batch_hashes),'maximum_recomputation_abs_error':checks,'source_and_bound_small_files_unchanged':True,'four_mask_primary':{'meaning':'GT minimum inside four saved whole-crop binary-mask predictions; per16tile error selection only','tie_order':list(MASKS),'summaries':report_view(sums)},'five_candidate_secondary_control':{'meaning':'Separate GT minimum of same four saved outputs plus raw current input; not a history gate or accepted method','tie_order':['input',*MASKS],'summaries':report_view(sums,True)},'original_headroom_rule_passed':False,'original_headroom_rule_unchanged':True,'student_training_admitted':False,'model_calls':0,'training_steps':0,'source_NPZ_reads':0,'image_composites_created':0,'limitations':['Post-failure descriptive GT diagnostic on the same selected development set; no independent test evidence.','Oracle and LOO-sign selectors both use target-derived errors and are not deployable raw-only decisions.','Each cached candidate came from a whole-crop binary mask. Tile-wise error selection does not execute a spatially varying input-mask gate; convolution neighborhoods mean its output may differ.','This is an upper bound on improvement only inside the saved candidate set, not arbitrary soft masks, retraining, or full-frame restoration.','Interaction is evaluated only where both history slots exist; boundary frames cannot supply all four physical states.','No model replay, student admission, original-gate change, threshold search, LPIPS or flow-temporal claim.']}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--execution-contract',required=True);p.add_argument('--out',required=True);p.add_argument('--execute',action='store_true');a=p.parse_args()

@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-12T07:41:52.591751+00:00",
-    "stage": "P1_teacher1000_completed;headroom_failed_preserved;H3_real_AdamW_probe_running",
+    "at_utc": "2026-11-12T08:22:49.737226+00:00",
+    "stage": "P1_history_headroom_failed_preserved;input_preservation_module_CPU_passed_donor_metadata_completed;H3_real_AdamW_clear_reload_running",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -272,7 +272,7 @@
       "Do not rerun completed Stage2/cache/full22/P1materialization/schedules/backend/teacher/headroom.",
       "Read realTRAIN H3 AdamW producer and finalizer actual status; wait if healthy,accept actual output once terminal.",
       "Preserve P1 negative mean-history-gain gate; do not extend teacher or silently admit original three student arms.",
-      "Run bounded CPU candidate-set oracle/LOO interaction diagnostic from already saved arrays,then freeze revised research hypothesis before any new training.",
+      "Input-preservation module CPU9passed; real16000row donor metadata independently accepted. Implement isolated train-only finalK1 labels and exactdev rawK3 cache; only then matched/shuffled1000step heads under prospectively frozen screen.",
       "Keep guide-matched LoRA formal training at0 until realAdamW deployment/persistence outcome; no quality/generalization claim from engineering probes."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
@@ -618,10 +618,10 @@
       "data_CPU_tests": 8,
       "data_evidence": "results/takeover_20261111/history_utility_data_cpu_validation_20261112/cpu_receipt.json",
       "mechanism": "mask-aware9RGB+2mask channels;1745-parameter shared observation-only gate;detached marginal history utility via fixed-other-slot removal",
-      "next": "Finish25source materialization and once-only actual revised train19/dev6 pair audit; then separately prepare teacher1000/headroom and three equal-budget students. Do not restart healthy materializer.",
-      "teacher_training_steps": 0,
+      "next": "Use isolated input-preservation module+prospective screen. After actual donor audit, implement one train19 final-frozenK1 label export and exact devK3 cache preparation, then bounded matched/shuffle head-only runs. Do not restart teacher/headroom or admit old three students.",
+      "teacher_training_steps": 1000,
       "student_training_steps": 0,
-      "research_cohort_ready": false,
+      "research_cohort_ready": true,
       "quality_benefit_verified": false,
       "actual_checkpoint_inheritance": "results/takeover_20261111/history_utility_checkpoint_integration_20261112a/local_review.json",
       "actual_checkpoint_report_sha256": "c51f6d080e5d45efaf26e6520e07f25716ef32947fe4222f27838b2cf9c7b73f",
@@ -975,7 +975,23 @@
         "original_students_admitted": false,
         "extra_teacher_steps_admitted": false,
         "next": "CPU existing candidate four/five-state oracle and LOO interaction diagnostic; GT only offline candidate-set bound"
-      }
+      },
+      "cached_candidate_diagnostic": {
+        "status": "completed_and_root_reviewed",
+        "host": "31984",
+        "run": "runs/history_mask_oracle_diagnostic_20261112a",
+        "report_sha256": "d15678c06122da83e06bf1e6219e0304b8ba5ca77eea8e59fa9e6f2a7b84605a",
+        "root_review": "results/takeover_20261111/history_mask_oracle_diagnostic_completed_20261112a/root_review.json",
+        "actual_arrays": 1080,
+        "elapsed_seconds": 26.515060164,
+        "model_calls": 0,
+        "original_headroom_accepted": false,
+        "student_training_admitted": false,
+        "next": "configs/openh3_20261111/input_preservation_followup_20261112.json"
+      },
+      "research_cohort_ready_scope": "Revised19train6dev materialized and independently audited; old32/8 research_ready remainsfalse; no frozen test.",
+      "headroom_accepted": false,
+      "original_students_admitted": false
     },
     "resource_snapshot_this_turn": {
       "observed_utc": "2026-11-12T03:52:29.776213+00:00",
@@ -1100,7 +1116,7 @@
       "source_train_only": true,
       "worker_PID_is_historical": true
     },
-    "updated_at_utc": "2026-11-12T07:41:52.591751+00:00",
+    "updated_at_utc": "2026-11-12T08:28:15.890359+00:00",
     "backup_31984_current_turn": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
@@ -1120,7 +1136,7 @@
     "full22_next_training_gates": {
       "path": "results/takeover_20261111/h3_next_training_gates_20261112.json",
       "sha256": "ff00fc291f1d51f4abf216c07222e9221c3a5ac77bc2703178c0f63a47ae5af2",
-      "status": "new_realTRAIN_AdamW_single_update_interface_required;not_dispatched"
+      "status": "realTRAIN_AdamW_single_update_dispatched_and_running;terminal_audit_pending"
     },
     "backup_31984_full22_terminal_delta": {
       "schema": "openh3.followup_backup_verification.v1",
@@ -1149,13 +1165,116 @@
       "queue_sha256": "0843ec7964cac52a40d8c811cf80143832ff566a702596c9a52806de2ba1117e",
       "execution_sha256": "f81de1f4129085bd42579c6d7be15301fd4852749933d8cd452a73fd1cabe6d1",
       "scope": "one real TRAIN AdamW engineering update;not formalguide-matchedtraining",
-      "latest_observation": "preparation/h3_real_adamw_update_20261112a/observation_0736.json",
+      "latest_observation": "preparation/h3_real_adamw_update_20261112a/observation_082403.json",
       "finalizer": {
         "state": "waiting",
         "session": "h3-real-adamw-finalize-20261112a",
         "run": "runs/h3_real_adamw_update_20261112a_finalize",
         "admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e"
-      }
+      },
+      "phase": "clear_and_strict_reload",
+      "actual": {
+        "NFE": {
+          "merged": 0,
+          "reloaded": 0,
+          "updated": 3,
+          "zero": 3
+        },
+        "RGB_loss_expressions": 1,
+        "Rphi_calls": 0,
+        "VAE_decode_calls": {
+          "merged": 0,
+          "reloaded": 0,
+          "updated": 1,
+          "zero": 1
+        },
+        "VAE_encode_calls": 0,
+        "adapter_updates": 1,
+        "backward_attempts": 1,
+        "checkpoint_saves": 1,
+        "clear_reload_cycles": 1,
+        "clip_calls": 1,
+        "completed_backward_calls": 1,
+        "forbidden_calls": [],
+        "merge_calls": 0,
+        "optimizer_state_clear_reload": 1,
+        "optimizer_state_saves": 1,
+        "optimizer_steps": 1,
+        "stage_decode_calls": {
+          "updated_decode": 1,
+          "zero_decode": 1
+        },
+        "unscale_calls": 1
+      },
+      "engineering_update_complete": true,
+      "complete": false,
+      "persistence_or_deployment_accepted": false,
+      "observed_at_utc": "2026-11-12T08:24:03.524825+00:00"
+    },
+    "backup_31984_latest": {
+      "schema": "openh3.followup_backup_verification.v1",
+      "complete": true,
+      "verified_at_utc": "2026-11-12T08:30:11.784400+00:00",
+      "files": 57,
+      "archive_sha256": "8ca1d4741b1f40958cb0b1ca93108470ee2ed217daf657c0dab469872b7ea5e1",
+      "archive_bytes": 185973,
+      "manifest_sha256": "e7aa9bc8c56ad9a1e6c095e4d078fb2f995dc512b950bcefede0c8965acb6897",
+      "payload": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_1629/verified_payload",
+      "archive_members_verified": true,
+      "extracted_files_verified": true,
+      "overwritten_files": 0,
+      "scope": "57 changed/new small files after1545 snapshot; point-in-time before this completion record."
+    },
+    "input_preservation": {
+      "status": "module_CPU9_passed_actual_donors_independently_accepted_train_labels_missing",
+      "module": {
+        "path": "code/rphi_input_preservation.py",
+        "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+        "parameters": 1745,
+        "CPU_tests_passed": 9,
+        "CPU_receipt": "preparation/input_preservation_module_cpu_20261112a/cpu_receipt.json",
+        "CPU_receipt_sha256": "bd4d04617eaefbd57dc627f399591d84fea1dc8a5e5e8fa742750ecfab1780f0"
+      },
+      "donors": {
+        "host": "31984",
+        "run": "runs/input_preservation_donors_20261112a",
+        "producer_complete": true,
+        "donor_ready": true,
+        "rows": 16000,
+        "strata": 36,
+        "independent_actual_audit": {
+          "path": "results/takeover_20261111/input_preservation_donors_completed_20261112a/payload/runs/input_preservation_donors_20261112a/independent_audit.json",
+          "sha256": "db16b92830f0f7608cfca4e40a50c71db6b6eb94902793ee97347c67fb73638d"
+        },
+        "manifest": {
+          "path": "results/takeover_20261111/input_preservation_donors_completed_20261112a/payload/runs/input_preservation_donors_20261112a/manifest.json",
+          "sha256": "cd5c27e29dca71cbf87df607e05ba5fd0f71a666b82b50907b001ad04899fe43"
+        },
+        "donor_map": {
+          "bytes": 7745074,
+          "donor_map_sha256": "93351eb1d63955431c8e3546f42c89f5d3933da53e6636ca89765f872b15a2bf",
+          "file_sha256": "fdb872a4e1b20c07b67af2c7b40a322f6b968ea7efcac9b2a96239c8898a2d6a",
+          "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_donors_20261112a/input_preservation_donor_map.json"
+        },
+        "both_absent_rows": 1815
+      },
+      "proposal": {
+        "path": "configs/openh3_20261111/input_preservation_interface_proposal_20261112.json",
+        "sha256": "d1dd2afd1b9daddea8340fe1edff7c71ed6215fbf6f3ef038adaa4b01aa262de"
+      },
+      "prospective_screen": {
+        "path": "configs/openh3_20261111/input_preservation_screen_20261112.json",
+        "sha256": "144120baa552ae8371a73a03dcd3c48da9204e86a9f7e87186f3697ee0178577"
+      },
+      "train_final_K1_cache_exists": false,
+      "exact_dev_K3_reconstruction_verified": false,
+      "training_steps_per_arm": {
+        "matched": 0,
+        "shuffled": 0
+      },
+      "new_restorer_training_steps": 0,
+      "training_admitted": false,
+      "next": "Implement once-only train19 K1 label cache (1000 batches16,no restorer updates), dev rawK3 feature cache with exact observed SHA and input/K1 two-candidate diagnostic, CPU head trainer/evaluator and metric resource contract. No automatic threshold/feature/step changes."
     }
   }
 }

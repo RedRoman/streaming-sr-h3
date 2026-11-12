@@ -1,0 +1,27 @@
+{
+  "schema": "rphi.history_mask_oracle_root_review.v1",
+  "reviewed_at_utc": "2026-11-12T07:56:41.038388+00:00",
+  "diagnostic_accepted": true,
+  "original_headroom_accepted": false,
+  "students_admitted": false,
+  "report_sha256": "d15678c06122da83e06bf1e6219e0304b8ba5ca77eea8e59fa9e6f2a7b84605a",
+  "source_sha256": "de86b866902daee492d100b74e2a6c29bb743bbd3232d7bf00fdb9fa5579d337",
+  "actual_rows": 2880,
+  "actual_saved_arrays": 1080,
+  "model_calls": 0,
+  "degraded_four_mask_oracle_gain_vs_K1": 0.0002609830880166398,
+  "degraded_four_mask_oracle_relative_MAE_gain": 0.014219537150511849,
+  "GT_LOO_fraction_of_four_mask_oracle_gain": 0.9324901243672785,
+  "GT_LOO_positive_regret_tile_fraction": 0.1224922839506173,
+  "identity_four_mask_oracle_MAE": 0.00187999005873871,
+  "nearclean_four_mask_oracle_harm_vs_input": 0.0001489353538171095,
+  "nearclean_input_selection_rate_oracle5": 0.4418885030864197,
+  "scientific_interpretation": [
+    "Existing binary-mask outputs contain modest selection headroom; uniform history use is not supported by the original gate.",
+    "Within these cached candidates, target-informed two-slot LOO achieves about93% of target-informed four-state candidate gain. Joint-state complexity is not the first justified change.",
+    "Even the best of four restored candidates damages identity and mean near-clean input. An explicit input-preservation action deserves isolated testing.",
+    "Both selectors and candidate minimum use target; no raw-only learnability or deployed input-mask performance has been established.",
+    "The6dev source set has now informed design. Preserve original results and obtain separate frozen source-disjoint test before generalization claims."
+  ],
+  "next_prioritized_hypothesis": "Frozen K1 restoration plus raw-observation-only signed correction-benefit head and explicit input bypass; test independently before combining with predicted history utility. No original student-arm admission."
+}

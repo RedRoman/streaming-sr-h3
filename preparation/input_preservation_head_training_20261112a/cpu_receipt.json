@@ -1,0 +1,28 @@
+{
+  "NPU_calls": 0,
+  "SSH": 0,
+  "actual_dataset_reads": 0,
+  "actual_model_calls": 0,
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "preparation/input_preservation_head_training_20261112a/code/tests",
+    "-p",
+    "test_input_preservation_head_training.py",
+    "-v"
+  ],
+  "elapsed_seconds": 0.07764595799380913,
+  "launched": false,
+  "log_sha256": "1fe5914c6dacd6b334b7d49b9238dfe2a47b2744c2c0e5ca1fe38993cdfb5485",
+  "passed": 5,
+  "returncode": 0,
+  "schema": "rphi.input_preservation_head_training_local_CPU_receipt.v1",
+  "skip_reason": "Local Torch absent; 3 true Torch CPU fixtures must pass before real cached-head backend admission.",
+  "skipped": 3,
+  "source_sha256": "4b90e6195cd3bfe42e4e3133f77334e4b52a7849637c8edc86b0d3f36dc763bc",
+  "tests": 8,
+  "tests_sha256": "fc4855dde46bf5c123cca4979287ee8c1ef4e67c0b2347f0eb5fbe0b383c0579"
+}

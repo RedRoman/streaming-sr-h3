@@ -1,0 +1,37 @@
+{
+  "schema": "rphi.input_preservation_cache_audit_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "role": "dev",
+  "producer_manifest": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_dev_cache_20261112a/output/manifest.json",
+    "sha256": "e509faed1b14840aecbb1a7e059d1e43e0b008dc4cee1bc9a88c2901f007e886"
+  },
+  "producer_execution_contract": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_20261112a/dev_execution_contract.json",
+    "sha256": "c2f4a9861672b67d9b89b9032508a2bbe2b5267c40b5c69d14a673e375049077"
+  },
+  "resources": {
+    "wall_seconds": 900,
+    "CPU_cores": 2,
+    "RSS_limit_bytes": 4294967296,
+    "max_small_output_bytes": 33554432
+  },
+  "implementation_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/audit_input_preservation_cache.py": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/code/rphi_input_preservation.py": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d"
+  },
+  "admission": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_cache_audit_20261112a/dev_admission.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "prepared_not_admitted": true,
+  "scope": "CPU-only independent cache/data/feature/label validation; no restorer construction or replay, no head training. External bounded runner required."
+}

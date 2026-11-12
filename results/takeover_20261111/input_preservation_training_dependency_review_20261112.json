@@ -1,0 +1,93 @@
+{
+  "NPU_calls": 0,
+  "actual_donor_metadata": {
+    "both_absent_rows": 1815,
+    "does_not_establish": "label or model utility",
+    "map_file_sha256": "fdb872a4e1b20c07b67af2c7b40a322f6b968ea7efcac9b2a96239c8898a2d6a",
+    "rows": 16000,
+    "strata": 36,
+    "train_sources": 19,
+    "whole_map_bijection_cross_source_AND_group": true
+  },
+  "before_research": [
+    {
+      "dependency": "Actual independent train and dev cache audits",
+      "required": "Bind original complete audits to exact producer manifests; train16000/1000/7000, dev2880/180/1440 plus180/1080 original caches. The training module checks these metadata gates and loads only train feature/normalized arrays.",
+      "state": "Parent owns actual execution and resulting report bindings; not assumed from source fixtures."
+    },
+    {
+      "dependency": "Frozen evaluator and LPIPS readiness",
+      "required": "rphi.input_preservation_metric_readiness.v1 complete/frozen; proposal/screen SHA; evaluator/implementation SHA map; real Alex+linear weight paths/SHA; version0.1; clippedRGB mapped[-1,1]; downloadsfalse; CPU2threads/batch16/exact versions.",
+      "state": "Architecture owns evaluator, parent owns real weight/source inventory; must be bound before either backend/research command."
+    },
+    {
+      "dependency": "Two short CPU backend smokes",
+      "required": "Each arm2steps on exact cached rows, unchanged1000step LR formula; full saved head/optimizer/RNG strictfreshreload. Separate artifact backend_smoke_not_research_resume.",
+      "state": "Prepared only. Research consumes both compatible reports; never warm-starts from them."
+    },
+    {
+      "dependency": "Two research admissions",
+      "required": "Fresh seed20261111, one1000step run per arm, same1745initialweights/schedule/features/loss/AdamW/runtime, shuffle only wholelabelmapindices. No devlabels or K1/GT arrays enter training; 00 retained.",
+      "state": "No launch by this agent; root fills exact numerical and launch admissions after prior dependencies."
+    }
+  ],
+  "created_at_utc": "2026-11-12T09:50:52.732918+00:00",
+  "files": {
+    "configs/openh3_20261111/input_preservation_interface_proposal_20261112.json": "d1dd2afd1b9daddea8340fe1edff7c71ed6215fbf6f3ef038adaa4b01aa262de",
+    "configs/openh3_20261111/input_preservation_screen_20261112.json": "144120baa552ae8371a73a03dcd3c48da9204e86a9f7e87186f3697ee0178577",
+    "preparation/input_preservation_cache_audit_runner_20261112a/source_freeze.json": "d1b76137bd3b47ee6c688d4146fb63c2bf6fb752e10d9d874d15792de499c7f6",
+    "preparation/input_preservation_head_runner_20261112a/source_freeze.json": "ed102eefef7d3cb837c12f4abf6c067fff50bd282d87459c1a08a09d6e7a12b3",
+    "preparation/input_preservation_head_training_20261112d/source_freeze.json": "a4f35c7cd2077b00e444c3eeade392fc8bc0823d767e32278c9bf5505a6d0ea0",
+    "results/takeover_20261111/input_preservation_donors_completed_20261112a/local_verification.json": "261d31c5618d0f8d9c32248e59ac1e94cad2594d1a52ad3ea276cdbce00e54b3"
+  },
+  "fixed_resources": {
+    "automatic_evaluation": false,
+    "automatic_retry": false,
+    "cache_audit_dev": "900s+30cleanup,2CPU,4GiB sampled ownedPG RSS",
+    "cache_audit_train": "900s+30cleanup,2CPU,32GiB sampled ownedPG RSS",
+    "head_arm_each": "900s+30cleanup,2CPU,4GiB sampled ownedPG RSS,32MiBoutput"
+  },
+  "head_training_admitted_by_this_agent": false,
+  "metric_contract": {
+    "not_established": [
+      "quality/generalization",
+      "independent held-out test",
+      "fullframe/streaming behavior",
+      "old failed history gate repaired",
+      "deployability from GT oracle"
+    ],
+    "owner": "inspect_architecture",
+    "required": [
+      "source/profile-balanced clipped and raw MAE/MSE/PSNR with exact-match null PSNR handling",
+      "same actual LPIPS weights/CPU preprocessing all4arms",
+      "identity and near-clean harm separately, full paired source outcomes",
+      "correction tile and changed pixel coverage",
+      "fixed internal16px residual-gradient jump; unresolved seam regression blocks automatic progression",
+      "stride1 decision-mask flips with transition strata; not flow-aligned flicker"
+    ],
+    "scope": "6dev/2880rows, raw/K1/matched/shuffled, final1000only, fixedscreen"
+  },
+  "schema": "rphi.input_preservation_training_dependency_review.v1",
+  "scope": "Read/design and isolated local fixture preparation; no SSH, actual cache/model training, evaluation or dispatch by this agent. Parent reports are marked as such.",
+  "trainer": {
+    "correct_d_bundle": {
+      "layout": "Each member starts preparation/input_preservation_head_training_20261112d/; extract once at project root, never at prep d.",
+      "path": "preparation/input_preservation_head_training_20261112d/source_bundle.tar.gz",
+      "sha256": "188b544fa0fb2bac0529a79a2632ff4daf54be1115089c64f2c53b5b4b04d0dc"
+    },
+    "local_tests": {
+      "Torch_skipped": 4,
+      "passed": 5
+    },
+    "old_a_failure_preserved": true,
+    "parent_reported_actual_CPU_tests": {
+      "local_log_downloaded_by_this_agent": false,
+      "log_sha256": "0762d0d53a89091a0aa43018b40287377158407ebc74fabed3e6f34ac7cafbde",
+      "passed": 9,
+      "skipped": 0
+    },
+    "remote_c_wrong_old_bundle_not_candidate_failure": true,
+    "source_sha256": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd"
+  },
+  "training_steps_executed_by_this_agent": 0
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "rphi.input_preservation_head_trainer_independent_delta_review.v1",
+  "created_at_utc": "2026-11-12T09:47:28.902284+00:00",
+  "status": "no_remaining_source_blocker_pending_c_real_Torch_CPU_tests",
+  "entry": {
+    "path": "code/train_input_preservation_heads.py",
+    "sha256": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_head_training.py",
+    "sha256": "6d9cfff6b7c2ea6e93f45f1fbd028c522a9b60d183613b29b7ff8819ce81b594"
+  },
+  "freeze": {
+    "path": "preparation/input_preservation_head_training_20261112c/source_freeze.json",
+    "sha256": "d933e0070440c55e1587cf760442498fe2c9be4caa3d189c8fc9cdc07a3bad2e"
+  },
+  "receipt": {
+    "path": "preparation/input_preservation_head_training_20261112c/cpu_receipt.json",
+    "sha256": "bf361410af75acf34296476cd03a54f8187b39574b560e2e11590c12cbc4f257"
+  },
+  "prior_source_review": {
+    "path": "results/takeover_20261111/input_preservation_head_trainer_independent_review_20261112.json",
+    "sha256": "75a8c183aaa000bff95ed117c4ddec40761c93fee86c1f7dd3b314f636436904"
+  },
+  "frozen_members_SHA_verified": 17,
+  "blocking_findings": [],
+  "failure_preserved": {
+    "a_actual_Torch_result": "7/8 passed; fresh serialization/reload fixture failed",
+    "cause": "cpu_tree canonicalizes OrderedDict to dict; old tree_equal rejects different container types despite identical tensor state.",
+    "b_remote_dispatch": false,
+    "old_sources_reviews_receipts_unchanged": true
+  },
+  "reviewed_delta": [
+    "Canonicalize live model and optimizer state with the same existing cpu_tree operation before comparing to saved dictionaries. This removes only the mapping-container mismatch.",
+    "New binary_tree_equal retains exact dictionary key sets, list/tuple types and lengths, scalar values, and tensor dtype/shape/content SHA. Signed-zero tensor differences are rejected.",
+    "Model fresh reload additionally matches saved final_state_sha256. Complete optimizer step/moment state and restored Python/NumPy/Torch RNG are compared with the binary helper.",
+    "Both initial-state and final-checkpoint serialization use the new exact binary helper. No loss, LR, data, donor, step count, feature or inference rule changes.",
+    "New Torch regression demonstrates torch.equal accepts positive/negative zero while binary comparison rejects it; reload fixture explicitly checks live OrderedDict versus saved dict before verifying canonical strict equality."
+  ],
+  "test_scope": {
+    "local_total": 9,
+    "local_passed": 5,
+    "local_Torch_skipped": 4,
+    "reviewer_reran": false,
+    "real_c_Torch_CPU_result": "pending_parent_execution_at_review_time"
+  },
+  "limitations": [
+    "Source review is not a passed backend test or actual training. Separate cached-data smoke and root admission remain required.",
+    "The prior a static review did not establish that skipped Torch serialization/reload tests passed. The actual failure and its source/receipt remain preserved."
+  ],
+  "reviewer_operations": {
+    "SSH": 0,
+    "actual_dataset_reads": 0,
+    "model_calls": 0,
+    "test_reruns": 0,
+    "author_source_edits": 0
+  }
+}

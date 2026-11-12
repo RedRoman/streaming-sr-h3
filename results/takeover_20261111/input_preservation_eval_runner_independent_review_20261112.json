@@ -1,0 +1,53 @@
+{
+  "schema": "rphi.input_preservation_eval_runner_independent_source_review.v1",
+  "created_at_utc": "2026-11-12T09:59:04.906584+00:00",
+  "status": "no_source_blocker_in_reviewed_frozen_runner",
+  "entry": {
+    "path": "code/run_input_preservation_eval_once.py",
+    "sha256": "bad078e4f879dc6047d60be07e0bc4b29b2cc44e22df9bf905711170c4b17f76"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_eval_once.py",
+    "sha256": "25ac96156f67523733298c80329669e9beacda27d1dc8da266472f4cfdd90883"
+  },
+  "freeze": {
+    "path": "preparation/input_preservation_eval_runner_20261112a/source_freeze.json",
+    "sha256": "4a9e68b1cf8d88ccb99a124c1242ecbc19742d0d88e8eaf75bf1f1e5a83da6b3"
+  },
+  "cpu_receipt": {
+    "path": "preparation/input_preservation_eval_runner_20261112a/cpu_receipt.json",
+    "sha256": "bdf97f5cde3ce65be13a5ceaf234244011da19e5635de8efc56b8606a6fc46fd"
+  },
+  "freeze_members_SHA_verified": 9,
+  "blocking_findings": [],
+  "resources": {
+    "worker_wall_seconds": 1800,
+    "owned_cleanup_grace_seconds": 30,
+    "CPU_affinity_cores": 2,
+    "Torch_threads": 2,
+    "RSS_limit_bytes": 4294967296,
+    "RSS_scope": "sampled current owned process-group sum, not kernel-enforced quota",
+    "output_max_bytes": 268435456,
+    "parent_metadata_preflight_and_postflight_outside_worker_wall": true
+  },
+  "checked": [
+    "Exact frozen evaluator25cdeec and trainer2df11a; reused f895 runner primitives and efabd owned-process supervisor are SHA-bound. Importing primitives does not launch their former training/NPU entrypoints.",
+    "Both matched/shuffled completed research reports must attest final1000, cursor16000,1000 forward/backward/update counts and strict checkpoint reload. Reports bind their actual training execution payload; both contracts match except arm/admission and share initial state. Final checkpoint bytes, role and model identity are bound into evaluation.",
+    "All proposal/screen/cache/audit/metric-readiness inputs match training and evaluation. Pinned local AlexNet/LPIPSv0.1 readiness must be complete, available and frozen; no downloads or fallback. Separate numerical and launch admissions bind the exact plan, source, execution contract and output.",
+    "One new exclusive run directory and lock, exact fixed argv, CPU-only environment, one supervise call, no retry/resume/automatic training/full-frame evaluation. Worker failure is preserved; source/plan/input pins are checked again afterward.",
+    "Terminal requires actual2880 records,2850 adjacent pairs,180 batch-index rows and their SHA/size. Strict counts360 head calls/5760 rows and720 LPIPS calls/11520 rows, independent observer counts180+180+720,0restorer/backward/update. Frozen head states/versions/no-grad and LPIPS frozen flag required.",
+    "failed_dev_screen or pending_review may be a successfully completed execution, explicitly not quality success. Metric coverage must still be complete; quality_proven/independent_test/automatic_training_or_fullframe_admission remain false.",
+    "Final delta correctly resolves a relative metric-readiness path against execution root in terminal, matching preflight behavior."
+  ],
+  "fixtures": {
+    "author_local_passed": 7,
+    "skipped": 0,
+    "scope": "stdlib metadata and fake-supervisor fixtures; no actual Linux process-group/model/cache execution",
+    "reviewer_reran": false
+  },
+  "limits": [
+    "This review does not verify actual future trained checkpoints or run deployment; frozen template contains pending final1000 evidence and is not an admission.",
+    "Runner checks artifact bytes and producer terminal fields; it explicitly does not independently recompute actual RGB or scientific metrics.",
+    "No SSH, model/LPIPS call, cache scan, training, source edit or launch occurred in this independent review."
+  ]
+}

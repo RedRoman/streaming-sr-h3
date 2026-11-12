@@ -1,0 +1,90 @@
+{
+  "schema": "rphi.input_preservation_actual_auditors_independent_source_review.v1",
+  "created_utc": "2026-11-12T10:14:17.027382+00:00",
+  "status": "no_source_blocker_in_reviewed_frozen_candidates",
+  "entries": [
+    {
+      "name": "input_preservation_heads_actual_audit_20261112a",
+      "scope": "Saved final1000 head/optimizer/RNG state and paired training metadata only",
+      "files": {
+        "audit_actual.py": {
+          "path": "preparation/input_preservation_heads_actual_audit_20261112a/audit_actual.py",
+          "sha256": "4d36d375ce7fba09c52f0f479171a6508cd4e707492cc5ba490a782a4636e7f6"
+        },
+        "test_audit_actual.py": {
+          "path": "preparation/input_preservation_heads_actual_audit_20261112a/test_audit_actual.py",
+          "sha256": "989c49232179e5d103b15643e7b676fd0be65f19aa0d6b8feef93bf159829639"
+        },
+        "source_freeze.json": {
+          "path": "preparation/input_preservation_heads_actual_audit_20261112a/source_freeze.json",
+          "sha256": "a9e07f453c23936f328c6ea5b5de390ca39a8306f7bfdaeb30997f2394de9b09"
+        },
+        "cpu_receipt.json": {
+          "path": "preparation/input_preservation_heads_actual_audit_20261112a/cpu_receipt.json",
+          "sha256": "5c78da9fe9fac1b0469574df94e3ac4830a7d71e6e98b214ab875d5be694a446"
+        }
+      },
+      "freeze_member_count_verified": 6
+    },
+    {
+      "name": "input_preservation_eval_actual_audit_20261112a",
+      "scope": "Actual saved score/mask/RGB/metric arrays and aggregate support only",
+      "files": {
+        "audit_actual.py": {
+          "path": "preparation/input_preservation_eval_actual_audit_20261112a/audit_actual.py",
+          "sha256": "80803d349c7dbd66d3765d557bf7fb945b553d82e0bcdbe057edcf91d4441cc2"
+        },
+        "test_audit_actual.py": {
+          "path": "preparation/input_preservation_eval_actual_audit_20261112a/test_audit_actual.py",
+          "sha256": "a15e51f7435fa70ce0214a4fd36d93fda1aa349e73be9865ff959f405c1766ab"
+        },
+        "source_freeze.json": {
+          "path": "preparation/input_preservation_eval_actual_audit_20261112a/source_freeze.json",
+          "sha256": "a3b3c7f60869625830ac22bb5de5b2706c525a8bc411e6ff2b750179893e0771"
+        },
+        "cpu_receipt.json": {
+          "path": "preparation/input_preservation_eval_actual_audit_20261112a/cpu_receipt.json",
+          "sha256": "7a7914aa3fd2c9373ee15465693eaf4b6fc661802344971d0ac9ad388741feaa"
+        }
+      },
+      "freeze_member_count_verified": 6
+    }
+  ],
+  "blocking_findings": [],
+  "head_saved_state_checks": [
+    "Independent weights_only CPU deserialization of four initial/final checkpoints; exact1745-parameter/four-FP32-tensor names, shapes, finite and byteSHA; both initial states/RNG equal; actual final states changed.",
+    "Four AdamW parameter states/twelve tensors, exact step1000 and declared recipe, finite first/second moments and nonnegative variance; serialization inspection is not optimizer replay.",
+    "1000 paired metrics and16000 feature rows bind cache JSONL row/feature SHA and exact scheduleLR including floathex. Matched label SHA binds cacheindex; shuffled label indices bind authenticated full donor bijection. SourceANDgroup isolation and1815 both-absent rows retained.",
+    "Original report/contract/source/admission/smoke/cache identities checked before and after. Counts and strict live reload remain producer attestations. No model/trainer import, model construction, NPZ read or new update."
+  ],
+  "eval_saved_array_checks": [
+    "Independently authenticate180 newNPZ×5arrays and180 originalNPZ×6RGBarrays, shapes/dtypes/file+array+rowSHA; exact2880dev row/source/profile/crop identities.",
+    "Actualthreshold0 masks and nearest16 selection reconstructraw/K1/headRGB. Signed-zero-preserving clamp,23040 unclamped/clippedRGBSHA, perrowFP64MAE/MSE/PSNR/clipping/seam and source/profile/clean/nearclean averages are independently checked.",
+    "All2850 adjacentpairs and declared-transition support recomputed. Preregistered numerical reduction tolerances1e-12 metric/1e-10PSNR do not relax byte hashes, selection, identities or scientific thresholds.",
+    "LPIPS11520 authenticated saved distances are reaggregated, not re-inferred or weightvalidated. Frozen-model status stays a producerattestation; full scientific screen remains verbatim and no threshold or quality admission is recomputed.",
+    "New output cannot reside inside producer/originalcache artifacts; external900s/2CPU/4GiB supervision is explicitly required."
+  ],
+  "fixtures_read": {
+    "head": {
+      "local_passed": 5,
+      "Torch_skipped": 2
+    },
+    "evaluation": {
+      "local_passed": 5,
+      "skipped": 0
+    },
+    "reviewer_reran": false
+  },
+  "operations": {
+    "SSH": 0,
+    "actual_checkpoint_or_NPZ_reads": 0,
+    "model_calls": 0,
+    "test_reruns": 0,
+    "source_edits": 0
+  },
+  "limits": [
+    "This source review does not claim actual audit completion; root owns target-runtime tests/execution and exact final input contracts.",
+    "Head training arithmetic and gradients are not replayed. Evaluation head/LPIPS forwards are not repeated.",
+    "Current failed development screen is not converted into a passing quality result by successful file/array auditing."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "rphi.input_preservation_heads_evaluation_cpu_validation.v1",
+  "complete": true,
+  "started_utc": "2026-11-12T09:49:54.987375+00:00",
+  "finished_utc": "2026-11-12T09:49:55.405512+00:00",
+  "command": [
+    "/Users/hezihao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/input_preservation_heads_evaluation_20261112a/code/tests",
+    "-p",
+    "test_input_preservation_heads_eval.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests_discovered": 12,
+  "tests_passed": 10,
+  "tests_skipped": 2,
+  "skipped_reason": "Local Torch unavailable; real-head reload/composition and fake-metric Torch input wrapper await bounded remote fixture validation.",
+  "source_files": {
+    "eval_input_preservation_heads.py": "25cdeec76d1472fe1a590d27ba0d65553a67ce9fada3d329210874d7bab28e39",
+    "audit_input_preservation_cache.py": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+    "train_input_preservation_heads.py": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd",
+    "eval_rphi.py": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+    "rphi_input_preservation.py": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+    "train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "tests/test_input_preservation_heads_eval.py": "38986d0d875e8bb36557f35261ad99559779031a334e6e4f7c692543b033aaef"
+  },
+  "test_log": {
+    "path": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/input_preservation_heads_evaluation_20261112a/tests.log",
+    "sha256": "cd03883684936c6d617e782c4ceb8e030df97e020158874d3e787fcb6526162a"
+  },
+  "actual_dev_or_train_arrays_read": 0,
+  "SSH_calls": 0,
+  "NPU_calls": 0,
+  "real_head_or_LPIPS_calls": 0,
+  "scope": "NumPy math/protocol/record fixtures only; not actual learned-head, LPIPS or quality validation."
+}

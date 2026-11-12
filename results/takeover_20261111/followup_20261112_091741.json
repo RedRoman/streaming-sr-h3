@@ -1,6 +1,6 @@
 {
   "schema": "openh3.followup.v1",
-  "at_utc": "2026-11-12T09:36:46.843738+00:00",
+  "at_utc": "2026-11-12T10:24:26.304735+00:00",
   "H3_saved_subset_audit": {
     "status": "completed_and_independently_accepted_saved_subset_only",
     "host": "31112",
@@ -20,17 +20,34 @@
   },
   "H3_continuation": {
     "host": "31112",
-    "status": "CPU10_passed_actual_input_inspection_passed_waiting_for_idle_NPU",
+    "status": "31112_all8occupied_31984_missing_dependency_migration_preparing_not_launched",
     "prep": "preparation/h3_adamw_saved_continuation_preparation_20261112b",
     "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
     "execution_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
     "NPU_launched": false,
     "scope": "6NFE2decode1merge0backward0update;original_failure_preserved",
     "CPU_candidate_a_failure": "param_group lr mapped against recipe without lr; fixed in b with exact actual_lr mapping; failure retained",
-    "resource_observation": "09:31UTC all8cards had PIDs; no processes killed"
+    "resource_observation": "2026-11-12 10:04 UTC all8cards on31112 still occupied;31984 cards3/4/5 idle at10:07UTC but continuation dependencies not migrated/admitted; do not use stale resource snapshot.",
+    "target_31984_inventory": {
+      "complete": true,
+      "small_SHA_verified": 1056,
+      "missing": 346,
+      "mismatched": 0,
+      "large_files_pending_SHA": 4,
+      "inventory_sha256": "ba21bafa64fb5ca557cccee0a58017605f51b3520ac04f024fee6498c89bc05c",
+      "NPU_admission": false
+    },
+    "migration": {
+      "status": "bounded_source_bundle_preparation_delegated",
+      "prep": "preparation/h3_saved_continuation_migration_31984_20261112a",
+      "source_host": "31112",
+      "target_host": "31984",
+      "no_transfer_started": true,
+      "no_model_launch": true
+    }
   },
   "input_preservation": {
-    "status": "train_and_dev_caches_complete_independent_CPU_audits_dispatched_heads0",
+    "status": "both1000_complete_independently_verified_failed_dev_screen_all_K1",
     "module": {
       "path": "code/rphi_input_preservation.py",
       "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
@@ -71,14 +88,14 @@
       "sha256": "144120baa552ae8371a73a03dcd3c48da9204e86a9f7e87186f3697ee0178577"
     },
     "train_final_K1_cache_exists": true,
-    "exact_dev_K3_reconstruction_verified": "producer_2880_exact_pending_independent_audit",
+    "exact_dev_K3_reconstruction_verified": true,
     "training_steps_per_arm": {
-      "matched": 0,
-      "shuffled": 0
+      "matched": 1000,
+      "shuffled": 1000
     },
     "new_restorer_training_steps": 0,
     "training_admitted": false,
-    "next": "Accept actual CPU cache audits, implement/freeze CPU head trainer/evaluator and LPIPS backend/weights/resources, verify backend smoke, then matched/shuffled1000 each under unchanged screen.",
+    "next": "Prepare one fixed 5-fold TRAIN-source-heldout linear Huber diagnostic vs fold-train constant; 19TRAIN only, no6DEV, no tuning threshold/steps/seeds. Preserve failed head screen and previous history headroom failure.",
     "caches": {
       "host": "31984",
       "train": {
@@ -104,14 +121,121 @@
     },
     "cache_audits": {
       "host": "31984",
-      "status": "dispatched_actual_status_files_authoritative",
+      "status": "both_completed_and_actual_arrays_independently_verified",
       "dev": "runs/input_preservation_dev_cache_audit_20261112a",
       "train": "runs/input_preservation_train_cache_audit_20261112a",
       "entry_sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
       "audit_tests_passed": 11,
       "runner_tests_passed": 10,
       "resources": "each900s2CPU;dev4GiB/train32GiB",
-      "NPU_calls": 0
+      "NPU_calls": 0,
+      "train_audit_sha256": "ce53dccdd3c8a10c52a01944bb6829d13de492e133850ebf077fb8e5fc7c6893",
+      "dev_audit_sha256": "49290eb86666926f155a9578555e43c71de31c9cf8e7c0019a8208b1433fcff3",
+      "train_seconds": 395.199219009839,
+      "dev_seconds": 53.21721070446074
+    },
+    "backend_smokes": {
+      "host": "31984",
+      "completed_steps_each": 2,
+      "strict_reload": true,
+      "same_initial_state_sha256": "5fb32a1f6423f0459ed799826afe55f3f8314bbc201a7f079d2fd85bbdac26d6",
+      "not_research_resume": true,
+      "source_sha256": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd"
+    },
+    "research": {
+      "host": "31984",
+      "matched_run": "runs/input_preservation_head_research_matched_20261112a",
+      "shuffled_run": "runs/input_preservation_head_research_shuffled_20261112a",
+      "matched_checkpoint_sha256": "78699d3f8d3e58cba9435628f368579349de1df18fc43442743e7d57c38923e9",
+      "shuffled_checkpoint_sha256": "8f17509cbe39c5dd9227883a70a4c2a69b5afe4a7fa46f2747c4437a25b44cd4",
+      "completed_steps_each": 1000,
+      "rows_each": 16000,
+      "fresh_same_seed": true,
+      "resumed": false,
+      "strict_reload_each": true,
+      "new_restorer_forwards": 0,
+      "NPU_calls": 0,
+      "independent_actual_saved_tensor_audit": "completed_true_saved1745_and_AdamW1000_per_arm",
+      "quality_accepted": false
+    },
+    "evaluation": {
+      "host": "31984",
+      "run": "runs/input_preservation_heads_evaluation_20261112a",
+      "session": "input-preservation-heads-eval-20261112a",
+      "status": "completed",
+      "worker_pid": 1357987,
+      "source_sha256": "25cdeec76d1472fe1a590d27ba0d65553a67ce9fada3d329210874d7bab28e39",
+      "plan_sha256": "41d9608b9387a809be844c1c12bd8f2bbf86a0f45f765473d5d199de86a49f44",
+      "execution_sha256": "68f2ec8efc8bf6cdb0c43910c44a8571cfeed5a673901752a14b0740b85042e8",
+      "CPU_tests": 12,
+      "runner_tests": 7,
+      "planned_rows": 2880,
+      "arms": [
+        "raw",
+        "K1",
+        "matched",
+        "shuffled"
+      ],
+      "LPIPS_required": true,
+      "metric_readiness_sha256": "ea959d71bb5685965a3f78268deb941a878a62fe80a135aa400e106586fc3303",
+      "wall_seconds": 1800,
+      "CPU_threads": 2,
+      "RSS_limit_bytes": 4294967296,
+      "quality_accepted": false,
+      "scientific_verdict": "failed_dev_screen",
+      "elapsed_seconds": 220.83847097028047,
+      "actual_rows": 2880,
+      "actual_LPIPS_calls": 720,
+      "decision_coverage": 1.0,
+      "preservation_coverage": 0.0,
+      "RGB_identical_to_K1_all_rows": true
+    },
+    "completed_training_was_admitted": true,
+    "candidate_admitted_for_followup_training": false,
+    "actual_array_audit": {
+      "status": "completed",
+      "run": "runs/input_preservation_eval_actual_audit_20261112a",
+      "elapsed_seconds": 70.69474388472736,
+      "actual_saved_arrays": 900,
+      "original_RGB_arrays": 1080,
+      "actual_rows": 2880,
+      "adjacent_pairs": 2850,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_psnr_absolute_difference": 0.0,
+      "source_scope": "Independent NumPy RGB reconstruction/metrics; stored LPIPS distances reaggregated without model replay."
+    },
+    "terminal_evidence": {
+      "path": "results/takeover_20261111/input_preservation_eval_completed_20261112a",
+      "archive_sha256": "54967767347f7df4ab01391e2302a61d5c94289e9e4dbfb129df6720df11330b",
+      "files": 218,
+      "root_review_sha256": "b4f8ac32c1b9e887f963dc9aa3044047f9968d8bdf425fa4a53656ef2b1ad31a",
+      "local_archive_and_member_SHA_verified": true,
+      "completed_runs_do_not_repeat": true
+    },
+    "training_evidence": {
+      "path": "results/takeover_20261111/input_preservation_heads_training_completed_20261112a",
+      "archive_sha256": "35c727be4436fab011eb44fa70abffb2ddb8478f634f4920e80505f661ba9d9f",
+      "files": 124,
+      "local_archive_and_member_SHA_verified": true
+    },
+    "train_only_label_diagnostic": {
+      "status": "completed",
+      "run": "runs/input_preservation_train_label_diagnostic_20261112a",
+      "tiles": 576000,
+      "positive_fraction": 0.7374357638888889,
+      "negative_fraction": 0.2625642361111111,
+      "global_constant_Huber_minimizer": 0.6064863297865715,
+      "global_constant_Huber_loss": 1.144627385283886,
+      "zero_gradient": -0.32029030724722896,
+      "elapsed_seconds": 6.338292674161494,
+      "dev_reads": 0,
+      "model_calls": 0,
+      "proof_boundary": "Supports positive prior dominance; not proof of feature insufficiency or sole cause."
+    },
+    "next_feature_diagnostic": {
+      "status": "implementation_in_progress_not_launched",
+      "prep": "preparation/input_preservation_train_feature_probe_20261112a",
+      "scope": "Five TRAIN source-group folds, fold-local standardization, fixed linear Huber ridge1e-3/200GD steps per fold, analytical Lipschitz step, constant baseline; CPU2/4GiB/180s, no6DEV or main-model update."
     }
   },
   "source_splits": "19train6dev;no independent test",

@@ -1,0 +1,118 @@
+{
+  "schema": "rphi.input_preservation_failed_screen_diagnostic_proposal.v1",
+  "status": "read_only_proposal_no_new_execution_or_training_admission",
+  "main_conclusion": "两臂从第2步起训练动作全选K1，dev screen失败。TRAIN标签总体偏正且原Huber目标常数最优为正，已有直接证据支持边际先验主导的解释；尚不能判定raw特征无信息。下一步只做19train内部source/group隔离的可分性诊断，不拍保护权重/加步/调dev阈值。",
+  "observed_local_training_evidence": {
+    "matched": {
+      "steps": 1000,
+      "loss_first100_mean": 1.195448563694954,
+      "loss_last100_mean": 1.1566527140140535,
+      "all_K1_training_batches": 999,
+      "first_all_K1_step": 2,
+      "initial_step_coverage": 0.0,
+      "tail_nonzero_gradient_steps": 1000,
+      "gradient_clipping_trigger_steps": 55
+    },
+    "shuffled": {
+      "steps": 1000,
+      "loss_first100_mean": 1.202824043929577,
+      "loss_last100_mean": 1.154795320034027,
+      "all_K1_training_batches": 999,
+      "first_all_K1_step": 2,
+      "initial_step_coverage": 0.0,
+      "tail_nonzero_gradient_steps": 1000,
+      "gradient_clipping_trigger_steps": 79
+    }
+  },
+  "scope": "日志coverage是每步更新前的当前batch动作；999个batch全K1不等于网络score严格常数，也不是final模型重评全部TRAIN。原19train/6dev仍为开发流程。",
+  "root_reported_actual_evidence": {
+    "dev_screen": "failed；两头100%tile选K1，native31.08496dB/LPIPS0.0968657等K1；identity损伤MAE0.001548；nearclean48.53855→47.97560dB。实际数组审计70.69s全部exact、最大metric差0。",
+    "train_label_diagnostic": {
+      "complete": true,
+      "elapsed_seconds": 6.34,
+      "normalized_label_tiles": 576000,
+      "positive_fraction": 0.7374357639,
+      "negative_fraction": 0.2625642361,
+      "plus4_saturation_fraction": 0.2169166667,
+      "minus4_saturation_fraction": 0.01894965278,
+      "g0": -0.3202903072,
+      "constant_Huber_minimizer": 0.6064863298,
+      "constant_Huber_loss": 1.1446273853,
+      "identity": {
+        "rows": 2000,
+        "negative_fraction": 1.0
+      },
+      "near_clean": {
+        "rows": 2000,
+        "positive_fraction": 0.614847,
+        "constant_Huber_minimizer": 0.2457628443
+      },
+      "native_profile_rows_each": 4000,
+      "source": "root提供实际完成结果；本代理未重读NPZ或声称独立重算该统计",
+      "numeric_scope": "仅既有TRAIN normalized_benefit；60轮双边根界、最近0解，±4平坦区解析例[-3,3]已测；不从饱和值反推raw benefit幅度"
+    }
+  },
+  "fixed_math_and_inference": {
+    "sampling": "原1000×16批，每批12native+2identity+2near_clean；controls25%但并非25%负标签；00共1815行未丢弃。",
+    "target": "y=FP32 clip(raw_benefit/(.25/255),−4,4)，raw benefit达到±1/255即饱和；SmoothL1 beta1梯度为clip(pred−y,−1,1)。",
+    "features_initialization": "16×16 current/history RGB和absdiff均值+lag/availability；共享1745参数、两slot分数均值。零尾层使step1 score0且首层梯度0（代码推导），后续首层可训练。",
+    "supported": "TRAIN正标签73.74%、g(0)<0、正常数最优直接支持边际先验鼓励全K1。whole-map双射保留全体及profile/phase/effective strata标签分布，所以shuffle具有相同常数最优。",
+    "unproven": "尚不能判定实际模型仅用了常数、raw特征没有信息、或通道尺度导致失败。常数全数据loss与online末100步loss不是公平的最终模型比较。"
+  },
+  "next_single_diagnostic": {
+    "authorization": "仅建议，未实现/启动；不改旧screen/代码，不SSH。",
+    "data_split": "只用19train已有raw_features/normalized labels；预声明确定性source_group整组held-out folds，冻结后不重分。原6dev不进拟合/标准化/超参选择。",
+    "comparison": "每fold训练组的原Huber常数最优 baseline，对比一个固定线性Huber benefit probe；只用同raw特征、同normalized target、threshold0。九个图像通道标准化只依赖该fold训练组，lag/availability保留；两个slot采用对称均值接口。固定一次求解/正则，无超参数扫描。此probe只诊断可分性，非新部署模块。",
+    "outputs": "所有held-out source/profile的loss差；identity误选K1率；nearclean正/负标签分别的错误；native正标签保留；原tile权重及source均衡均报。保存fold/统计/固定停止理由，不选最佳fold。",
+    "next_if_supported": "若跨source稳定优于常数且能区分identity负例，才考虑仅改原head特征标准化的一项消融，其他预算/label/loss/threshold不变。",
+    "next_if_not_supported": "保留信息不足或线性表达不足的不确定性；不直接加步、拍保护权重或宣称任何raw方法都不可学。",
+    "limits": "不读raw_benefit就不能由饱和normalized值反推真实MAE损伤；不重扫已完成label诊断。任何内部probe结果均不解除原dev失败，也不替代最终独立source test。"
+  },
+  "evidence": [
+    {
+      "path": "results/takeover_20261111/input_preservation_heads_training_completed_20261112a/payload/runs/input_preservation_head_research_matched_20261112a/output/report.json",
+      "sha256": "a95e92fe8a2938a5c8e5037b7c520ba44fb0b4e1e4451888108c33d848e94d84"
+    },
+    {
+      "path": "results/takeover_20261111/input_preservation_heads_training_completed_20261112a/payload/runs/input_preservation_head_research_matched_20261112a/output/metrics.jsonl",
+      "sha256": "2522d84be8b9cc01a5617d425d1890a12a9f33a98463caa922ea813a76554b36"
+    },
+    {
+      "path": "results/takeover_20261111/input_preservation_heads_training_completed_20261112a/payload/runs/input_preservation_head_research_shuffled_20261112a/output/report.json",
+      "sha256": "2cd4be2d433ffe95233a09a73ad5575b7c9a5bb05730454c4f57c49d27791f74"
+    },
+    {
+      "path": "results/takeover_20261111/input_preservation_heads_training_completed_20261112a/payload/runs/input_preservation_head_research_shuffled_20261112a/output/metrics.jsonl",
+      "sha256": "ff93ec3d0e1bf1843618772cdfb2c2a4142c7b10a794ce6a0656fd7d4d51c693"
+    },
+    {
+      "path": "code/rphi_history_utility.py",
+      "sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+      "line": 166,
+      "supports": "零尾层初始化和16x16平均特征，current/history/absdiff加lag、availability"
+    },
+    {
+      "path": "code/rphi_input_preservation.py",
+      "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+      "line": 107,
+      "supports": "raw MAE benefit与归一化截断；head输出>0选K1"
+    },
+    {
+      "path": "code/train_input_preservation_heads.py",
+      "sha256": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd",
+      "line": 236,
+      "supports": "全tile等权SmoothL1 beta1、pre-update coverage与梯度日志"
+    },
+    {
+      "path": "configs/openh3_20261111/input_preservation_interface_proposal_20261112.json",
+      "sha256": "d1dd2afd1b9daddea8340fe1edff7c71ed6215fbf6f3ef038adaa4b01aa262de",
+      "line": 65,
+      "supports": "固定16000行、每批12native+2identity+2near_clean、目标/预算"
+    },
+    {
+      "path": "preparation/input_preservation_train_label_diagnostic_20261112a/diagnose.py",
+      "sha256": "e5d5b5ebfaeb423e4e266fec90328afce950d11aab59d3de1d8bcea74c109929",
+      "supports": "root已执行TRAIN-only normalized-label诊断；本代理未重跑，统计结果来源root完成消息"
+    }
+  ]
+}

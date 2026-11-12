@@ -1,0 +1,63 @@
+{
+  "schema": "rphi.input_preservation_cache_actual_audit.v1",
+  "complete": true,
+  "role": "train",
+  "producer_manifest": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_cache_20261112b/output/manifest.json",
+    "sha256": "4fc49311e3c03b1e089e9eafbd33207965b806ddc5b250fb4fbe936297dc70b9"
+  },
+  "producer_source_sha256": "c1bfb152b99d62937abb88a23f8668f8193768fbcee59277cffbe3826af75bb4",
+  "actual_rows": 16000,
+  "actual_cache_files": 1000,
+  "actual_cache_arrays": 7000,
+  "actual_cache_bytes": 1838210000,
+  "raw_feature_rows_recomputed": 16000,
+  "original_cache_files_verified": 0,
+  "original_cache_arrays_verified": 0,
+  "original_cache_bytes_verified": 0,
+  "maximum_absolute_difference": {
+    "input_mae": 5.551115123125783e-17,
+    "k1_mae": 5.551115123125783e-17,
+    "raw_benefit": 8.326672684688674e-17
+  },
+  "tolerances": {
+    "FP64_metrics": 1e-12,
+    "PSNR": 1e-10,
+    "features_normalization_thresholds_provenance": "exact bytes"
+  },
+  "restorer_calls": 0,
+  "restorer_constructed": false,
+  "checkpoint_deserialized": false,
+  "NPU_calls": 0,
+  "head_training_admitted": false,
+  "original_history_headroom_remains_failed": true,
+  "K1_forward_and_freeze_scope": "Source-bound producer counters and frozen SHA attestations; this audit does not replay the teacher.",
+  "runtime": {
+    "versions": {
+      "python": "3.12.14",
+      "numpy": "1.26.4",
+      "torch": "2.10.0+cpu",
+      "torch_npu": null
+    },
+    "threads": 2,
+    "device": "cpu",
+    "torch_npu_imported_at_end": false
+  },
+  "actual_pair": {
+    "revised_pair_ready": true,
+    "training_admitted": false,
+    "legacy_research_ready": false,
+    "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "train_sources": 19,
+    "dev_sources": 6
+  },
+  "data_recompute_scope": "Original source19 train pixels; dev6 only source-isolation verification. No dev supervision used.",
+  "producer_output_inventory": {
+    "files": 1004,
+    "bytes": 1879556644,
+    "array_bytes": 1838210000,
+    "array_membership_sha256": "746bd6cc1d3587cdca6ac6106d0d042e9051ccac90c44b59a9772aff4ff7ac02"
+  },
+  "status": "actual_cache_data_features_and_labels_verified_no_training_admission",
+  "elapsed_seconds": 395.199219009839
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "rphi.input_preservation_heads_evaluator_independent_source_review.v1",
+  "created_at_utc": "2026-11-12T09:55:06.622836+00:00",
+  "status": "no_source_blocker_in_reviewed_final_candidate",
+  "entry": {
+    "path": "code/eval_input_preservation_heads.py",
+    "sha256": "25cdeec76d1472fe1a590d27ba0d65553a67ce9fada3d329210874d7bab28e39"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_heads_eval.py",
+    "sha256": "38986d0d875e8bb36557f35261ad99559779031a334e6e4f7c692543b033aaef"
+  },
+  "freeze": {
+    "path": "preparation/input_preservation_heads_evaluation_20261112a/source_freeze.json",
+    "sha256": "cc4a75601242b4270e4184894e4a31a4a31f5bd3733dfb22f7e31bc18db04f99"
+  },
+  "author_cpu_receipt": {
+    "path": "preparation/input_preservation_heads_evaluation_20261112a/cpu_receipt.json",
+    "sha256": "8ab67e309ee1e617184c992eba274445acd70a597bc357d2ccbabf3ec076be4a"
+  },
+  "freeze_members_SHA_verified": 18,
+  "blocking_findings": [],
+  "resolved_during_review": [
+    "Checkpoint pair now binds the exact frozen trainer recipe and both optimizer specifications, not merely equality between two potentially equally wrong checkpoints; only final1000 research states with cursor16000 are accepted.",
+    "Primary metrics, LPIPS and temporal support reuse actual Torch-clamped RGB. Unclamped composition and signed-zero byte identity remain independently checked; no NumPy clamp substitutes deployment outputs."
+  ],
+  "source_checks": [
+    {
+      "lines": "178,213,253,281",
+      "finding": "Both heads bind final trainer2df11a, proposal and fixed screen, exact source/cache/donor/initial state identities, explicit CPU FP32 optimizer/loss recipe, final1000 steps and16000 rows. Actual source pins checked before and after. Smoke checkpoints,999-step states and alternate thresholds are rejected."
+    },
+    {
+      "lines": "77,213,281,400",
+      "finding": "Model input is raw causal feature data only. Ground truth is read solely for independent metrics; it is not used in score generation, selection or threshold choice. Teacher oracle headroom is not an actual head gain."
+    },
+    {
+      "lines": "77,123,178",
+      "finding": "All2880 dev rows, four fixed arms and three native profiles are accounted for. Native results average96 frames within source/profile, then profiles and six sources equally; identity/near-clean remain separate. Source support counts are explicit and no frame-IID significance assertion is made."
+    },
+    {
+      "lines": "178",
+      "finding": "All numeric thresholds are preregistered. Native MAE comparisons against K1 and shuffled, source support, worst-source harm, retained raw gain, coverage, unclamped reversal, clean/near-clean harm, LPIPS and PSNR gates all use actual outputs. Seam excess over both raw andK1 yields pending review. Missing required metrics cannot pass."
+    },
+    {
+      "lines": "302,319,400",
+      "finding": "Local pinned AlexNet and LPIPSv0.1 weights only, no download or fallback. Clipped FP32 RGB maps to[-1,1], each metric batch must contain16 finite distances. Actual gate.net and LPIPS hooks enforce360 head calls/5760 rows and720 metric calls/11520 rows. Finally removes hooks and checks frozen model/metric state and no parameter gradients."
+    },
+    {
+      "lines": "104,123",
+      "finding": "All2850 adjacent source/profile frame pairs are evaluated with transition labels. Mask flips and unwarped RGB changes remain descriptive; they do not claim flow-compensated flicker or streaming quality."
+    },
+    {
+      "lines": "400,452",
+      "finding": "No restorer forward, backward or optimizer update is present. Fresh output and256MiB artifact bound are enforced. Producer complete and screen eligibility are separate; quality_proven, independent_test and automatic admission stay false. External1800s/2CPU/4GiB supervision remains a separate launch requirement."
+    }
+  ],
+  "fixtures_read": {
+    "local_discovered": 12,
+    "local_passed": 10,
+    "local_Torch_skipped": 2,
+    "covered": "Clipping and byte-sensitive metrics, raw ties and nearest tiles, seams, equal source/profile aggregation, fixed gates and missing LPIPS, complete adjacent support, fixed checkpoint recipe, output hashes and no overwrite; two Torch fixtures cover real head reload/composition and a fake metric input wrapper.",
+    "reviewer_reran": false,
+    "root_reported_later_validation": {
+      "actual_CPU_tests_passed": 12,
+      "skipped": 0,
+      "real_local_AlexNet_plus_LPIPS_linear_weights_loaded": true,
+      "synthetic_LPIPS_batches": 1,
+      "synthetic_examples": 16,
+      "finite_result_approx": 0.4468,
+      "actual_dev_rows": 0,
+      "provenance": "Direct root message; underlying new runtime receipt not independently read by this reviewer."
+    }
+  },
+  "scientific_limits": [
+    "Six repeatedly inspected dev sources and fixed96x96 center crops provide a bounded dev screen, not an independent test, full-frame result or statistical generalization proof.",
+    "At least4/6 positive source comparisons is a preregistered support rule, not a significance test; adjacent frames and profiles from one source are dependent.",
+    "Threshold0 and final1000 checkpoint are fixed. No post-result feature, threshold, checkpoint or metric adjustment is authorized by screen completion.",
+    "Synthetic LPIPS readiness and CPU fixtures do not evaluate learned head quality. Actual frozen trained heads and complete dev data still require the separately admitted evaluation."
+  ],
+  "reviewer_operations": {
+    "SSH": 0,
+    "actual_cache_arrays_read": 0,
+    "model_or_LPIPS_calls": 0,
+    "test_reruns": 0,
+    "other_source_edits": 0
+  }
+}

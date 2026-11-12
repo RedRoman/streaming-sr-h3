@@ -1,0 +1,96 @@
+{
+  "schema": "openh3.saved_continuation_31984_portability_review.v1",
+  "created_utc": "2026-11-12T10:10:50.571213+00:00",
+  "scope": "local frozen evidence/source review only; target host not inspected",
+  "definition": {
+    "schema": "openh3.saved_continuation_crosshost_inventory_definition.v1",
+    "target_host_label": "huawei-modelarts-31984",
+    "source_host_label": "huawei-modelarts-31112",
+    "root": "/cache/zihaohe/omni_openh3_20261111",
+    "execution_contract_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
+    "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
+    "planned_unchanged": {
+      "NFE": 6,
+      "Rphi_calls": 0,
+      "VAE_decodes": 2,
+      "VAE_encode_calls": 0,
+      "adapter_updates": 0,
+      "backward_attempts": 0,
+      "checkpoint_saves": 0,
+      "clip_calls": 0,
+      "completed_backward_calls": 0,
+      "merge_calls": 1,
+      "optimizer_steps": 0,
+      "saved_adapter_loads": 1,
+      "saved_optimizer_loads": 1,
+      "stage_decodes": 2,
+      "unscale_calls": 0
+    },
+    "required_file_count": 1406,
+    "runtime_pin_count": 1364,
+    "scope": "Read-only static dependency inventory. No device/model import, migration, admission, or claim of runtime parity. Existing historical admission is inventoried as data only; no launch permission is created.",
+    "full_runtime_version_must_match": {
+      "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:37:13) [GCC 14.3.0]",
+      "quality_claim": false,
+      "role": "train",
+      "synthetic_no_dataset": false,
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post2",
+      "visible_device": "1"
+    },
+    "large_file_bytes_are_not_hashed": true,
+    "directory_and_runtime_import_checks_pending": true
+  },
+  "script": {
+    "path": "preparation/h3_saved_continuation_31984_inventory_20261112/inventory_readonly.py",
+    "sha256": "e2b3884ea9d6e02cf0a595464de7b6be7d4a5ea35394b57ad4a080feaa79cce5"
+  },
+  "sources": [
+    {
+      "path": "results/takeover_20261111/h3_continuation_ready_20261112b/payload/preparation/h3_adamw_saved_continuation_preparation_20261112b/execution_contract.json",
+      "sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e"
+    },
+    {
+      "path": "results/takeover_20261111/h3_real_adamw_failed_20261112a/partial.json",
+      "sha256": "ff278a84665a7cae78246dc017cbbfe0b0ddb2e93ac9f7d08c6fa31c0309b646"
+    },
+    {
+      "path": "results/takeover_20261111/h3_full22_joint_rgb_probe_20261112a_completed/payload/preparation/h3_full22_joint_rgb_probe_20261112a/source_contract.json",
+      "sha256": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3"
+    },
+    {
+      "path": "results/takeover_20261111/h3_full22_joint_rgb_probe_20261112a_completed/payload/preparation/h3_full22_joint_rgb_probe_20261112a/input_inventory.json",
+      "sha256": "c1a5e5339e335c1e536474da5712dbd04429753743803c51e6f3cfde8c880367"
+    },
+    {
+      "path": "results/takeover_20261111/h3_saved_subset_completed_20261112b/remote/runs/h3_saved_adamw_partial_audit_20261112b/output/audit.json",
+      "sha256": "45455ffb415b853ccb1c5afc7ce7ca0d1d47dc5ac731184a39c34512d9d250d6"
+    }
+  ],
+  "uncompressed_sizes_bytes": {
+    "adapter": 149313664,
+    "optimizer": 298511448,
+    "two_checkpoints_plus_required_updated_RGB": 553256280,
+    "checkpoints_and_required_prior_arrays_unique_by_file_SHA": 769380184,
+    "plus_cache_e_unique": 874811352,
+    "plus_all_named_selected_inputs_unique": 1091230133
+  },
+  "size_boundaries": "Array size totals use standard128byte NPY headers matching cache receipts; exclude additional metadata/runtime. Existing target-host assets are unknown. Compression below500MB is unmeasured and not promised.",
+  "transfer_conclusion": "As-is uncompressed mandatory checkpoint+updatedRGB exceeds500MB. Large model assets are expected reusable only after actual existence/SHA verification; no reuse is established by path alone.",
+  "must_verify": [
+    "All1364 source/runtime pins, including997Comfy files and49absolute runtime files.",
+    "Five parent assets base/VAE/context/refiner/turbo with full SHA before eventual execution; this inventory intentionally does not hash large files.",
+    "Original fullPython sys.version, Torch2.10.0+cpu and torch_npu2.10.0.post2; actual imported files, precision/math/native tile and pretrained identity.",
+    "All TRAIN source/record/target/cachee dependencies and original15NPY comparisons, not only small latents.",
+    "Fresh target-host resource checks, new isolated output/launch admission/owned guard; historical31112 permission is not reused as target admission."
+  ],
+  "same_absolute_path_boundary": "Root/cache asset paths remain identical. _31112 in an immutable directory name is not a hostname gate, but that exact path and bytes still must exist on31984.",
+  "omitted_from_transfer": "Unrelated original3222array gradient/update/reload fragments are not required by frozen continuation inspect; do not copy the entire failed run blindly.",
+  "operations": {
+    "SSH": 0,
+    "remote_reads": 0,
+    "model_calls": 0,
+    "existing_source_edits": 0,
+    "migration": 0
+  }
+}

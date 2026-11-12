@@ -1,6 +1,19 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
-## 当前接续入口（2026-11-12 17:39 SGT，下面早期记录是历史）
+## 当前接续入口（2026-11-12 18:24 SGT，下面早期记录是历史）
+
+- **18:24四臂完整评估与两独立CPU审计完成，科学门失败，勿重跑**：head matched/shuffled各1000步已真实保存/严格重载，1745参数及AdamW.step1000已CPU实物审计；同初始/同1000个输入批次/完整donor映射通过。eval220.84s/720LPIPS，2880rows全部matched=shuffled=K1（clipped/unclipped RGB SHA逐行相同）。两头103680tile全选择K1，保留输入0%，不是有效confidence校准。独立NumPy70.69s核900保存array、1080旧RGB、23040RGB SHA、2880rows/2850stride1 pairs，metric/PSNRmaxdiff0。两个小归档124files/35c727be…9d9f与218files/54967767…1330b均唯一下载逐SHA验收。root review `results/takeover_20261111/input_preservation_eval_completed_20261112a/root_acceptance.json` SHA b4f8ac32…ad31a。
+- **质量结论**：native raw29.09718dB/LPIPS.15249456→K1与两头31.08496/.09686566；新头对K1增益严格0。identity输出MAE.00154814/LPIPS.00249051，未保护原本无误差输入；nearclean PSNR48.53855→47.97560、LPIPS.00288145→.00373010（MAE虽略降，不能称保护通过）。最坏混合H264例6rJrrfRO3cA/abrupt/frame44，MAE.012341→.014390、LPIPS.039418→.129378；不是纯去压缩基准。maskflip0来自全1常数决策，不是flicker质量通过。19train/6dev为开发集，无独立泛化/SOTA结论。
+- **TRAIN-only诊断也已完成，勿重扫**：1000已存label arrays/576000tile，73.7436%正标签，零点Huber梯度−.32029，全局常数最优+.606486、loss1.144627。identity和nearclean各12.5%row，三native各25%；两臂原train日志step2起999/999批都全K1。支持总体正先验主导假设，不证明特征无信息。下一只做19TRAIN内部按source_group冻结5折、fold内标准化、线性Huber/ridge1e-3/固定200步与常数对照（180s2CPU4GiB），正在实现，**尚未启动**，不碰6DEV/不调旧threshold/不盲加训练步。建议在`input_preservation_failure_diagnostic_proposal_20261112.json`。
+- **H3补验迁移正在准备**：31112仍全8卡有PID，31984曾见3/4/5空闲但不能据旧快照准入；31984只读1406依赖清单核得1056小SHA一致、346缺失、0冲突、4现存大权重仍待全SHA。新`preparation/h3_saved_continuation_migration_31984_20261112a`只在31112打包缺失依赖（SHA去重/600s2CPU4GiB/unique≤1.3GB），root委派准备，实际status以新receipt为准；尚未跨机传输、未NPU启动。H3正式guide-matched仍0步。不要重启旧failed AdamW；后续只reload+merge6NFE2decode0update。
+
+
+- **18:10新增头实验真实完成各1000步，固定四臂dev评估运行中**：31984 `runs/input_preservation_head_research_{matched,shuffled}_20261112a` completed，各16000行/1000FP32 CPU updates，same initial 5fb32a1f…c26d6，fresh seed20261111，checkpoint分别78699d3f…23e9和8f17509c…4cd4；strict reload各通过、无Rphi/H3更新、NPU0。两2步smoke已先通过，禁止作warmstart或重跑。trainer d source2df11a…54cd真实CPU9/9；a与stale-bundle c失败保留，d已正确验证bundle。
+- **评估唯一进程**：run `runs/input_preservation_heads_evaluation_20261112a`，tmux `input-preservation-heads-eval-20261112a`，PID1357987；plan41d9608b…9f44/execution68f2ec8e…42e8，1800+30s/2CPU4GiB，0训练/恢复器。绑定两final1000，raw/K1/matched/shuffled×2880rows，完整LPIPS、clean/nearclean、source配对、边界与stride1 maskflip。evaluator25cdeec…28e39远端12/12、runner7/7、实际LPIPS合成16行通过，readiness ea959d71…3303已在训练前冻结。先读status，不重启健康进程；complete不等screen pass。actual checkpoint与评估数组的独立CPU审计正准备。head训练小归档124files/1.65MB（35c727be…9d9f）正唯一下载，未在本条宣称本地验收。
+- **H3补验仍未启动**：10:04UTC31112所有8卡仍有进程。31984在10:07UTC的3/4/5空闲，但31112保存的adapter+optimizer+RGB依赖未迁移/验收，不能直接用旧检查启动。正式guide-matched LoRA训练仍0。
+
+
+- **17:46两缓存独立CPU验收都已完成，勿重跑**：dev2880行/1440array及旧1080array通过，53.22s；train16000行/7000array、全raw-feature字节与归一化标签通过，395.20s；FP64最大差8.33e-17。两小归档均唯一下载并逐SHA验证，root acceptance在`results/takeover_20261111/input_preservation_{dev,train}_cache_audit_completed_20261112a/`。training_admitted仍false：新trainer a真实CPU7/8通过，OrderedDict与保存dict重载比较失败，修新b，不改旧a。新head仍各0研究步。完整LPIPS/评测代码正在并行完成。
 
 - **17:39新状态**：两套input-preservation缓存已完整执行，勿重跑。31984 train `runs/input_preservation_train_cache_20261112b` 16000行/1000冻结K1前向/0更新，434.38s；dev `runs/input_preservation_dev_cache_20261112a` 2880行K3逐字节重建/180旧cache1080arrays/0恢复器，41.16s。小证据41文件唯一下载逐SHA验核：`results/takeover_20261111/input_preservation_cache_completed_20261112b`。train a因card7已有他人进程而未启动，旧状态保留；b使用双检空闲card2且现已结束。
 - **独立缓存CPU验收已派发**：31984 `runs/input_preservation_{dev,train}_cache_audit_20261112a/status.json` 是实际来源，两tmux `input-preservation-{dev,train}-audit-20261112a`。分别900+30s/2CPU/dev4GiB train32GiB，0恢复器/NPU；auditor11项与runner10项远端CPU检查通过。仅派发，未在此记录宣称完成。完成后只下载各output/evidence.tar.gz一次，核原K3/特征/标签/两候选诊断。新matched/shuffled仍各0步，trainer/evaluator正在实现；需冻结LPIPS及完整screen实现，再CPU backend smoke后各1000最终步。

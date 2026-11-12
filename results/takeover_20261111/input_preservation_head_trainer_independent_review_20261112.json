@@ -1,0 +1,62 @@
+{
+  "schema": "rphi.input_preservation_head_trainer_independent_source_review.v1",
+  "created_at_utc": "2026-11-12T09:44:09.499516+00:00",
+  "status": "no_remaining_source_blocker_pending_real_Torch_CPU_validation",
+  "entry": {
+    "path": "code/train_input_preservation_heads.py",
+    "sha256": "4b90e6195cd3bfe42e4e3133f77334e4b52a7849637c8edc86b0d3f36dc763bc"
+  },
+  "tests": {
+    "path": "code/tests/test_input_preservation_head_training.py",
+    "sha256": "fc4855dde46bf5c123cca4979287ee8c1ef4e67c0b2347f0eb5fbe0b383c0579"
+  },
+  "freeze": {
+    "path": "preparation/input_preservation_head_training_20261112a/source_freeze.json",
+    "sha256": "2251cf1d0cee32d063805adc9d7663858a39e5ea7f17098fa72190c6c3c26a66"
+  },
+  "receipt": {
+    "path": "preparation/input_preservation_head_training_20261112a/cpu_receipt.json",
+    "sha256": "454f4db1160e746b0eccb2959772aedb9c90a98099ac6a96a763a96e0767ff65"
+  },
+  "freeze_members_SHA_verified": 16,
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "problem": "First draft consumed nonexistent donor audit top-level fields and would fail before training.",
+      "resolution": "Now binds actual remote independent-audit schema, manifest/map/schedule input file hashes and nested validation fields:16000 rows,19sources,36strata,1815 both-absent rows, source AND group exclusion, bijection, seeded rotation and strata frequencies. Source remains metadata-only for this check."
+    }
+  ],
+  "reviewed_contract": [
+    "Matched and shuffled heads share frozen1745-parameter model, seed20261111, same16000 row/features order,1000 contiguous batch16 steps, optimizer/loss/runtime. Only complete normalized1x6x6 label-map indices differ.",
+    "Actual source/group-disjoint donor map and original student schedule are revalidated. Both-absent rows remain supervised; no old valid-history mask or label-based resampling is used.",
+    "Reads only train cache raw_features and normalized_benefit arrays. Full file/hash and selected-array/per-row provenance are checked without decompressing K1,GT,source RGB or dev cache arrays. Dev acceptance is metadata-only eligibility.",
+    "Only raw features enter forward_features; detached normalized labels enter SmoothL1(beta1) mean over every row/tile. No RGB loss or hard composition is trained.",
+    "CPUFP32/2threads/autoload0; exact pretrained experiment and metric-readiness bindings. AdamW1e-4 schedule uses unchanged1000step/warmup50/cosine20percent learning_rate, clipnorm1 and only four head parameter tensors.",
+    "Two-step backend smoke is separate, non-resumable and excluded from research results. Each1000step arm requires both compatible smoke receipts and a separate exact admission.",
+    "Initial state is saved. Only terminal2 or1000 checkpoints are produced, with full model/optimizer/RNG/cursor/provenance; fresh model/optimizer/RNG reload must be exact. No development checkpoint selection or automatic retry is provided."
+  ],
+  "test_evidence": {
+    "local_total": 8,
+    "local_passed": 5,
+    "local_Torch_skipped": 3,
+    "reviewer_reran": false,
+    "scope": "Synthetic NumPy/cache/provenance and pure-Python checks passed. Actual two-update Torch/autograd/serialization fixtures still require root CPU execution; no actual head training claim."
+  },
+  "execution_requirements": [
+    "Root must supply the external900second/2CPU/4GiB owned-process supervisor; producer validates declarations but does not implement wall/RSS enforcement.",
+    "Real Torch fixtures and separately admitted cached-data backend smokes must pass before research1000-step execution.",
+    "Paired evaluator must verify both final checkpoints have identical initial state and all common recipe/data bindings; source review is not an actual matched-pair result."
+  ],
+  "statistical_and_leakage_boundaries": [
+    "The test uses one pair of heads on repeatedly inspected6-source development data. A later passed screen permits only the declared bounded next validation; it is neither significance nor independent generalization evidence.",
+    "Training labels use TRAIN GT for signed-benefit supervision. Development GT remains outside training. An oracle diagnostic or low regression loss cannot establish improvement of composed RGB.",
+    "Original history headroom failure remains preserved; no original three-student training is admitted here."
+  ],
+  "reviewer_operations": {
+    "SSH": 0,
+    "actual_array_reads": 0,
+    "model_calls": 0,
+    "test_reruns": 0,
+    "source_edits": 0
+  }
+}

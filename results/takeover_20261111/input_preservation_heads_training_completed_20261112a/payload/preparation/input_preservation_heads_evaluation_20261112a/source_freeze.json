@@ -1,0 +1,91 @@
+{
+  "schema": "rphi.input_preservation_heads_evaluation_freeze.v1",
+  "status": "prepared_not_actual_evaluated_not_launch_admitted",
+  "files": {
+    "metric_readiness.template.json": {
+      "sha256": "cb9e31dfb31075d1d166126a34fe2d71640ccd011229c26f63478c3bfc636de4",
+      "bytes": 492479
+    },
+    "cpu_receipt.json": {
+      "sha256": "8ab67e309ee1e617184c992eba274445acd70a597bc357d2ccbabf3ec076be4a",
+      "bytes": 2720
+    },
+    "tests.log": {
+      "sha256": "cd03883684936c6d617e782c4ceb8e030df97e020158874d3e787fcb6526162a",
+      "bytes": 2237
+    },
+    "evaluation_execution_contract.template.json": {
+      "sha256": "22096f45e843b42a2b927cd8c6ec0c90cf5cc34775e438d0dfe8d299302f1735",
+      "bytes": 6801
+    },
+    "code/train_input_preservation_heads.py": {
+      "sha256": "2df11a8563940aea729e2b3e4252f38515c0a66889caa2635debef72239e54cd",
+      "bytes": 25906
+    },
+    "code/eval_rphi.py": {
+      "sha256": "6f2526a0f503813b1e7364710433e40a87fd8cc442fbf29f56dad34914c64809",
+      "bytes": 28374
+    },
+    "code/history_utility_revised_data.py": {
+      "sha256": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+      "bytes": 22877
+    },
+    "code/rphi_history_utility.py": {
+      "sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+      "bytes": 15454
+    },
+    "code/rphi_condition_v2.py": {
+      "sha256": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+      "bytes": 3422
+    },
+    "code/rphi_input_preservation.py": {
+      "sha256": "7a52656a3119dcaad515dee0ec591bccbb21ee7756ba150b7f59827ad3b8100d",
+      "bytes": 7645
+    },
+    "code/audit_input_preservation_cache.py": {
+      "sha256": "ee9cbcd1dcb1a1de8cee7b09f19f1437e2d665e33added8bf42f606581d55aa1",
+      "bytes": 33892
+    },
+    "code/train_rphi.py": {
+      "sha256": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+      "bytes": 21004
+    },
+    "code/eval_input_preservation_heads.py": {
+      "sha256": "25cdeec76d1472fe1a590d27ba0d65553a67ce9fada3d329210874d7bab28e39",
+      "bytes": 37399
+    },
+    "code/rphi_model.py": {
+      "sha256": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "bytes": 9703
+    },
+    "code/rphi_data.py": {
+      "sha256": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "bytes": 23960
+    },
+    "code/history_utility_data.py": {
+      "sha256": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+      "bytes": 26567
+    },
+    "code/train_history_utility.py": {
+      "sha256": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+      "bytes": 30622
+    },
+    "code/tests/test_input_preservation_heads_eval.py": {
+      "sha256": "38986d0d875e8bb36557f35261ad99559779031a334e6e4f7c692543b033aaef",
+      "bytes": 13342
+    }
+  },
+  "runtime_pending": "Real Torch two fixture tests and local-weight LPIPS loader verification. No real dev scan permitted by this preparation.",
+  "budget": {
+    "CPU_threads": 2,
+    "RSS_bytes": 4294967296,
+    "seconds": 1800,
+    "output_bytes": 268435456,
+    "head_calls": 360,
+    "head_rows": 5760,
+    "LPIPS_calls": 720,
+    "LPIPS_rows": 11520,
+    "new_restorer_calls": 0,
+    "updates": 0
+  }
+}

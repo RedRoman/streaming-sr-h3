@@ -1,0 +1,28 @@
+{
+  "schema": "openh3.history_utility_trainer_readonly_review.v1",
+  "reviewed_at_utc": "2026-11-12T07:03:10.572477+00:00",
+  "complete": true,
+  "verdict": "no_source_blocker_found_for_separately_admitted_backend_smoke",
+  "files": {
+    "code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "code/check_history_utility_backend.py": "0a48f122891e4ec898b4998c94424976729e6948c481f2f63a88eb1fb9f5945f",
+    "code/run_history_utility_once.py": "08fea0223868fbd2a23e87eaa12bd44f1e8c74ff60c31cde86fd4d2fe0d0644f",
+    "preparation/history_utility_training_templates_20261112a/preparation_receipt.json": "265d1117b5ca9b3c1dfa54de93796b65651c608378b38551063e3a0ebbd9d31b",
+    "preparation/history_utility_trainer_cpu_20261112b/cpu_receipt.json": "b3944f08492ac5ce712220abba3017f4ca701b97af9bd2f9e32e31aa975db379"
+  },
+  "checked": [
+    "Actual train19/dev6 pair and immutable accepted full schedule bindings; dev targets do not enter optimizer batches.",
+    "Model receives observed RGB and explicit mask only; target is used for fidelity supervision and guard loss.",
+    "Step-indexed LR checks completed step before next update; optimizer state finite/shape/count and exact restore verified.",
+    "Research resume preserves training identity and actual model/optimizer/RNG; backend artifact_role prevents smoke weights being accepted as research warmstart.",
+    "Actual forward/backward/optimizer attempt and completion counters now preserve a successful optimizer mutation even if later validation fails.",
+    "CPU prepare path bypasses CANN shell and NPU inventory; root runner guards owned process group with fixed budgets and no automatic retry."
+  ],
+  "evidence_boundary": "Read source and producer-provided CPU receipt only; did not repeat tests or execute real data/model. Backend9-test report is not actual NPU acceptance.",
+  "limitations": [
+    "Final teacher completion remains pending headroom, not quality acceptance.",
+    "Strict source/runtime/baseline checks may still reject an actual runtime mismatch; only a newly admitted real backend smoke establishes that execution path.",
+    "Two-step backend weights must not initialize research training."
+  ],
+  "next": "Use newly frozen actual schedule hashes in backend contract; root alone controls dispatch and later teacher admission."
+}

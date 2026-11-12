@@ -1,0 +1,141 @@
+{
+  "budget": {
+    "NPU_calls": 0,
+    "maximum_new_output_bytes": 32212254720,
+    "memory_mib": 768,
+    "minimum_free_bytes": 6442450944,
+    "model_calls": 0,
+    "source_MP4_decodes": 0,
+    "termination_grace_seconds": 30,
+    "threads": 1,
+    "wall_seconds": 3600,
+    "worker_processes": 1
+  },
+  "codec_passes": 132,
+  "disk_boundary": "Free space and new output are measured before/after each source; no filesystem quota claimed.22x4 raw uint8 arrays plus temporary buffers fit below30GiB by geometry.",
+  "evidence_root": "/cache/zihaohe/omni_openh3_20261111",
+  "files": {
+    "cohort": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+      "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+    },
+    "dev_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    },
+    "entry_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/code/materialize_history_utility_revised.py",
+      "sha256": "04b369bfac80a9fc5b8d8638f5f5a3e8365421fccb082623990cac1faab18c8a"
+    },
+    "loader_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/history_utility_data.py",
+      "sha256": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+    },
+    "numeric_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_mixed_temporal_pilot.py",
+      "sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37"
+    },
+    "numerical_window_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/execution_contract.json",
+      "sha256": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad"
+    },
+    "plan": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+      "sha256": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4"
+    },
+    "revised_loader_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/code/history_utility_revised_data.py",
+      "sha256": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1"
+    },
+    "source_inventory": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/evidence/history_utility_full_cohort_inventory_20261112a.json",
+      "sha256": "8d528586d2eba0870bea9b29e5d83bd8a4efc0737564185fa872167b1340f4e6"
+    },
+    "train_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    }
+  },
+  "new_sources": [
+    "4M_k01zIbVM",
+    "4OvgouW2OyA",
+    "4WlLNs_yXWQ",
+    "6X6wb0FC6Fg",
+    "6vv_w-TvcrY",
+    "74ZtTQKeQoU",
+    "8ySFFOeBGEs",
+    "90wsfIQ0kHs",
+    "9eY__Y9Zl2Y",
+    "9hJigrKndKw",
+    "BYbIKQqGE2U",
+    "EBmROluwLkc",
+    "GcdzBmlxyN0",
+    "Gf6owJ8AY2E",
+    "JN95P7fLJLc",
+    "JfQZeAIHg3s",
+    "MB9_-kTLSbg",
+    "MjfCH89sBzs",
+    "NYaslQ8njPc",
+    "Na-NDcdjEik",
+    "Q975D6bpK_c",
+    "VPp9ArDokWY"
+  ],
+  "numerical_namespace": "Original13b6 spec/window/seed contract unchanged; this separate contract authorizes selected25 current sources.",
+  "profiles": [
+    "native_static_blur_noise_h264",
+    "native_smooth_blur_noise_h264",
+    "native_abrupt_blur_noise_h264"
+  ],
+  "readiness": "Materialized complete does not mean revised dataset/training admitted; wrapper validation follows separately.",
+  "replays": 2,
+  "retry_policy": "No automatic retries; original and partial outputs are never overwritten.",
+  "reuse_receipts": {
+    "4EKWTiWjPTQ": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/complete.json",
+      "sha256": "b179ce364f844d646dad0ea68e073bea15074e89c2e95fd8db2ca79200ce9587"
+    },
+    "6UZVovkR3IU": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6UZVovkR3IU/complete.json",
+      "sha256": "d471792ce1e3d428d8b1b34622f3c74982835878cf801da3a8d731d944aecb46"
+    },
+    "6rJrrfRO3cA": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6rJrrfRO3cA/complete.json",
+      "sha256": "676659e70af89cf5898345ca3c6b1ccd99b784bb5f0819ccf59ba8473eac5f3c"
+    }
+  },
+  "schema": "openh3.history_utility_revised_materialization_execution.v1",
+  "scope": "revised_primary_CPU_materialization_only_no_training",
+  "selected_source_ids": {
+    "dev": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "MjfCH89sBzs"
+    ],
+    "train": [
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "Gf6owJ8AY2E",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q975D6bpK_c",
+      "VPp9ArDokWY"
+    ]
+  },
+  "software_sha256": "6f30996798631f03aa6b4fd332815678d4f41b0d4a023c527430b43ce3f62583",
+  "source_MP4_decodes": 0
+}

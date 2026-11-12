@@ -1,0 +1,65 @@
+{
+  "schema": "rphi.history_utility_headroom_rule.v1",
+  "created_at_utc": "2026-11-12T06:46:25.910601+00:00",
+  "status": "preregistered_before_teacher1000_execution_and_outcomes",
+  "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+  "dev_source_ids": [
+    "6UZVovkR3IU",
+    "6rJrrfRO3cA",
+    "74ZtTQKeQoU",
+    "EBmROluwLkc",
+    "GcdzBmlxyN0",
+    "MjfCH89sBzs"
+  ],
+  "profile_ids": [
+    "native_static_blur_noise_h264",
+    "native_smooth_blur_noise_h264",
+    "native_abrupt_blur_noise_h264",
+    "identity",
+    "near_clean"
+  ],
+  "rule": {
+    "neutral_margin": 0.00019607843137254904,
+    "minimum_mean_degraded_mae_gain": 0.00019607843137254904,
+    "minimum_sources_with_positive_degraded_gain": 4,
+    "minimum_positive_tile_fraction": 0.01,
+    "minimum_negative_tile_fraction": 0.01,
+    "minimum_sources_per_non_neutral_sign": 3,
+    "minimum_raw_utility_std": 0.00019607843137254904
+  },
+  "unit": "RGB0to1; unclamped prediction MAE",
+  "teacher": "final1000_only; exact revised19train6dev; frozen strict checkpoint; no best-step selection",
+  "evaluation": {
+    "crop_tlhw": [
+      192,
+      368,
+      96,
+      96
+    ],
+    "frames_per_source_profile": 96,
+    "stride": 1,
+    "rows": 2880,
+    "modes": [
+      "all_available_history",
+      "current_only",
+      "oldest_removed_other_weight_fixed",
+      "recent_removed_other_weight_fixed"
+    ],
+    "crop_forward_upper_bound": 11520,
+    "zero_available_slot": "reuse all-history output; report skipped forward counts",
+    "utility": "MAE(tile16,remove_slot)-MAE(tile16,all); available whole-slot LOO; raw and signed; target only for measurement",
+    "aggregation": "primary degraded effect equal-weight six sources and equal-weight three degraded profiles; signs on all five profiles; unavailable tiles excluded"
+  },
+  "rationale": "An operational development screen for useful selective history: mean gain exceeds the existing neutral-utility margin, benefit appears in at least4/6 sources, and both useful and harmful tiles have nontrivial support across sources. The1% and3source support thresholds are newly preregistered engineering design choices, not statistical significance or a literature standard. No teacher outputs were inspected.",
+  "failure_action": "Stop all three student admissions pending design review; preserve full negative result. Do not extend teacher steps, select earlier checkpoint, replace sources, pool strata or lower thresholds posthoc. Any revised hypothesis is a separately named experiment.",
+  "quality_limits": "Passing is only teacher headroom for the matched development experiment. Report clean/near-clean harm and each profile/source, transitions, PSNR/LPIPS separately in full evaluation. No final restoration quality, calibration, generalization or omni claim.",
+  "data_audit": {
+    "path": "results/takeover_20261111/history_utility_revised_dataset_completed_20261112a/payload/audit/dataset_audit/audit.json",
+    "sha256": "6456d81b20392b6ba8fb16f58324b649c26ad93ad6131bca88c992bdae226abd"
+  },
+  "implementation": {
+    "path": "code/history_utility_headroom.py",
+    "sha256": "6cd463e1f93042e913cdcd8beb7bc8b48d5d88ac323949f97e5da17eee205518"
+  },
+  "training_admitted": false
+}

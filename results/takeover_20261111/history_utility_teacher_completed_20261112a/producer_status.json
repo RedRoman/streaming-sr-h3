@@ -1,0 +1,169 @@
+{
+  "schema": "rphi.history_utility_once_status.v1",
+  "state": "completed",
+  "complete": true,
+  "kind": "teacher1000",
+  "plan_sha256": "fe3bf82774cf4dac91e96e735441da4eabc9621b117e271daded8b2598609229",
+  "producer_started": true,
+  "physical_card": 7,
+  "resource": {
+    "wall_seconds": 3600,
+    "CPU_threads": 4,
+    "rss_bytes": 34359738368,
+    "grace_seconds": 30
+  },
+  "automatic_retry": false,
+  "cooperative_lock_only": true,
+  "first_resources": {
+    "available_RAM_bytes": 1605631868928,
+    "disk_free_bytes": 14534765539328
+  },
+  "first_devices": {
+    "0": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3459,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "1": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3456,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "2": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3417,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "3": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3412,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "4": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3412,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "5": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3412,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "6": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3420,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "7": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3419,
+      "total_mb": 65536,
+      "utilization": 0
+    }
+  },
+  "updated_at_utc": "2026-11-12T07:26:45.860721+00:00",
+  "second_devices": {
+    "0": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3459,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "1": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3457,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "2": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3418,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "3": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3412,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "4": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3412,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "5": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3411,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "6": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3421,
+      "total_mb": 65536,
+      "utilization": 0
+    },
+    "7": {
+      "health": "OK",
+      "pids": [],
+      "used_mb": 3419,
+      "total_mb": 65536,
+      "utilization": 0
+    }
+  },
+  "second_resources": {
+    "available_RAM_bytes": 1605640474624,
+    "disk_free_bytes": 14534765527040
+  },
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "worker_pid": 1051993,
+  "owned_pgid": 1051993,
+  "command": [
+    "bash",
+    "/cache/zihaohe/omni_openh3_20261111/code/run_takeover_command.sh",
+    "/cache/zihaohe/envs/minimax-h3-npu/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_history_utility.py",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_teacher_20261112a/output",
+    "--execute"
+  ],
+  "peak_owned_group_RSS_bytes": 10923249664,
+  "RSS_samples": 1737,
+  "active_worker_seconds": 439.8376659890637,
+  "returncode": 0,
+  "remaining_owned_live_processes": [],
+  "report_sha256": "3ca4bff0f26f949ecfcba6650ff269265c4f85499fce023b6db04e25dd8a9e3c",
+  "acceptance": "execution complete; independent result acceptance pending",
+  "pins_unchanged": true
+}

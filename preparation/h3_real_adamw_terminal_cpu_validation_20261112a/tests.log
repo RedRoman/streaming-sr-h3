@@ -1,0 +1,28 @@
+test_400_actual_Torch_states_independent_numpy_audit (test_audit.ActualSavedState.test_400_actual_Torch_states_independent_numpy_audit) ... ERROR
+test_actual_role_sets_include1200states_each_and_fourcasts (test_audit.Numeric.test_actual_role_sets_include1200states_each_and_fourcasts) ... ok
+test_correct_first_step_and_error_distribution (test_audit.Numeric.test_correct_first_step_and_error_distribution) ... ok
+test_nonfinite_state_rejected (test_audit.Numeric.test_nonfinite_state_rejected) ... ok
+test_output_parity_is_not_AdamW_equation_tolerance (test_audit.Numeric.test_output_parity_is_not_AdamW_equation_tolerance) ... ok
+test_state_file_extra_key_tampering_rejected (test_audit.Numeric.test_state_file_extra_key_tampering_rejected) ... ok
+test_total900_not_reset_before_archive (test_audit.Numeric.test_total900_not_reset_before_archive) ... ok
+test_wait_covers3630_terminal_and_stops4200 (test_audit.Numeric.test_wait_covers3630_terminal_and_stops4200) ... ok
+test_wrong_LR_scale_betas_eps_rejected (test_audit.Numeric.test_wrong_LR_scale_betas_eps_rejected) ... ok
+test_zero_gradient_coordinates_are_byte_hard (test_audit.Numeric.test_zero_gradient_coordinates_are_byte_hard) ... ok
+
+======================================================================
+ERROR: test_400_actual_Torch_states_independent_numpy_audit (test_audit.ActualSavedState.test_400_actual_Torch_states_independent_numpy_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_terminal_cpu_validation_20261112a/test_audit.py", line 104, in test_400_actual_Torch_states_independent_numpy_audit
+    reader=A.Arrays(e.path,e.data['arrays']);result=A.gradients_update_checkpoint(e.data,reader,{k:list(v) for k,v in shapes.items()},contract,expected_device='cpu',video_shape=[1])
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_terminal_cpu_validation_20261112a/audit_terminal.py", line 312, in gradients_update_checkpoint
+    require(all(group[k]==v for k,v in wanted.items()),'actual saved parameter group differs')
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_terminal_cpu_validation_20261112a/audit_arrays.py", line 11, in require
+    raise ValueError(message)
+ValueError: actual saved parameter group differs
+
+----------------------------------------------------------------------
+Ran 10 tests in 8.731s
+
+FAILED (errors=1)

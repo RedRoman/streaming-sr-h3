@@ -1,0 +1,68 @@
+{
+  "schema": "rphi.history_utility_trainer_preparation.v1",
+  "created_at_utc": "2026-11-12T06:59:24.807293+00:00",
+  "status": "source_frozen_cpu_tests_passed_not_admitted",
+  "source_snapshot": {
+    "local": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/history_utility_trainer_cpu_20261112b",
+    "remote": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b",
+    "manifest_sha256": "f301c290de74d327ad24b447991e87f54171315948d0f603fbe8038164b81d55",
+    "source_archive_sha256": "aa67307da5f1d3173734a17b683bec53eb970bdf6cdf76e02fad135d36cf8b2f",
+    "files": {
+      "code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+      "code/check_history_utility_backend.py": "0a48f122891e4ec898b4998c94424976729e6948c481f2f63a88eb1fb9f5945f",
+      "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+      "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+      "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+      "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+      "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+      "code/tests/test_train_history_utility.py": "aeb32571e1836f489c2b48aa62f0a69178c1a7b6ce8de48c8b34743e4db8546b",
+      "code/tests/test_history_utility_backend.py": "61aa9d9b413eb3e172f329d02f5161f02e39e0c7a502c98001a684bbe6a2322a"
+    }
+  },
+  "tests": {
+    "receipt_path": "preparation/history_utility_trainer_cpu_20261112b/cpu_receipt.json",
+    "receipt_sha256": "b3944f08492ac5ce712220abba3017f4ca701b97af9bd2f9e32e31aa975db379",
+    "log_sha256": "7253c230b5fcdf7363dd2c84db0de7c3ad986556390d4a164219e84192c036ae",
+    "run": 9,
+    "passed": 9,
+    "skipped": 0,
+    "scope": "Actual Torch CPU tiny fixtures only; no baseline/data assets loaded, no NPU import/model/training launch."
+  },
+  "templates": {
+    "teacher_execution_contract.template.json": "857837c1647f46db16da07c95f9f88d4cd86bb45c7dec12b99076a3058df6405",
+    "backend_execution_contract.template.json": "98b6d13c94fdf121de488016f919b5e1d838f6ab52eb1c350723115ba8c3abb8"
+  },
+  "pending": [
+    "Bind actual completed schedule manifest + two schedule file SHAs; semantic expected hashes remain fixed.",
+    "Create final teacher contract and bind its actual file SHA into backend contract.",
+    "Use independent new backend admission and external owned process group guard: 900s+30s,4CPU,32GiB,one idle card withlock and15s second check.",
+    "Backend first2 updates may not warmstart research. Only freshbaseline teacher1000 admission after actual backend resource/finite/strictreload acceptance.",
+    "Research external timeout at most7200s requires measured backend throughput; no automatic continuation or student launch.",
+    "Teacher final1000 must be frozen and pass separately preregistered headroom before student implementation/admission."
+  ],
+  "actual_dataset_scan_performed_by_this_preparation": false,
+  "actual_backend_run": false,
+  "actual_research_training_steps": 0,
+  "template_null_SHA_semantics": "Pending actual artifacts. Intentionally fails binding validation, not an executable approved contract.",
+  "commands_after_independent_finalization": {
+    "backend_inspect": [
+      "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/check_history_utility_backend.py",
+      "--execution-contract",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_training_templates_20261112a/backend_execution_contract.json",
+      "--out",
+      "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_backend_20261112a/inspection"
+    ],
+    "backend_execute_requires_guard": [
+      "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/check_history_utility_backend.py",
+      "--execution-contract",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_training_templates_20261112a/backend_execution_contract.json",
+      "--out",
+      "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_backend_20261112a/output",
+      "--execute"
+    ]
+  }
+}

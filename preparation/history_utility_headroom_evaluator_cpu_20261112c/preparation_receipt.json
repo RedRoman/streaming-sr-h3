@@ -1,0 +1,95 @@
+{
+  "schema": "rphi.history_utility_teacher_headroom_preparation.v1",
+  "created_at_utc": "2026-11-12T07:16:16.984275+00:00",
+  "status": "prepared_cpu_tests_passed_not_admitted",
+  "source_frozen": true,
+  "entry_sha256": "f20705d0b1851aec7b57264f7afb7b2fbe29cf359b5b4a0172a194b1225f5ed4",
+  "tests_sha256": "3afd74b6e7db2ae79e13e72d2db5f5f49e71469c5d5e4b9a3b302028221e711c",
+  "snapshot": {
+    "local": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/history_utility_headroom_evaluator_cpu_20261112c",
+    "remote": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_headroom_evaluator_cpu_20261112c",
+    "manifest_sha256": "3ccc9009a478fe75ef3c74f8c0bb2a3a218d00670296043e43113d458ea629ec",
+    "archive_sha256": "62945cdae917d19b4ff2f0475623b18b30f623f47c37c36b7ed634b48e8d84f1",
+    "files": {
+      "code/eval_history_utility_teacher.py": "f20705d0b1851aec7b57264f7afb7b2fbe29cf359b5b4a0172a194b1225f5ed4",
+      "code/history_utility_headroom.py": "6cd463e1f93042e913cdcd8beb7bc8b48d5d88ac323949f97e5da17eee205518",
+      "code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+      "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+      "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+      "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+      "code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+      "code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+      "code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+      "code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+      "code/tests/test_history_utility_teacher_eval.py": "3afd74b6e7db2ae79e13e72d2db5f5f49e71469c5d5e4b9a3b302028221e711c"
+    }
+  },
+  "actual_CPU_tests": {
+    "count": 8,
+    "passed": 8,
+    "skipped": 0,
+    "test_seconds": 0.259,
+    "receipt_sha256": "c22ffae64f86bd6dfd1de090801bd573b6a40d6d98dc49bd615508a3a33c2280",
+    "log_sha256": "8f6aa1ca9bc659ef350a2de1dda7d4ac7fab048b8c23ab197cccc1464a335553",
+    "assets_loaded": false,
+    "actual_data_loaded": false,
+    "torch_npu_imported": false
+  },
+  "template_sha256": "448e39fd27f728ed159401ddc55b8564c0d9d8044593cd2cf7a733f3c03526e2",
+  "actual_teacher_evaluation": false,
+  "scope": {
+    "sources": 6,
+    "profiles": 5,
+    "frames_per_profile": 96,
+    "crop": [
+      192,
+      368,
+      96,
+      96
+    ],
+    "rows": 2880,
+    "crop_forwards": 11430,
+    "crop_forward_upper_bound": 11520,
+    "unavailable_LOO_skip": 90,
+    "backward": 0,
+    "optimizer_steps": 0,
+    "model_selection": false,
+    "student_admission": false,
+    "LPIPS": false,
+    "motion_compensated_flicker": false
+  },
+  "independent_metric_evidence": {
+    "arrays_per_batch": [
+      "current",
+      "target",
+      "all_history",
+      "current_only",
+      "remove_0",
+      "remove_1"
+    ],
+    "dtype": "float32",
+    "serialization": "uncompressed NPZ",
+    "frame_crop_only": true,
+    "array_payload_bytes": 1911029760,
+    "output_budget_bytes": 3221225472,
+    "exact_file_array_row_hashes": true,
+    "extra_model_forwards": 0,
+    "download_policy": "small summary only; actual NPZ remain remote for independent CPU audit"
+  },
+  "metric_semantics": {
+    "headroom": "unclamped RGB MAE, unnormalized tile16 LOO utility, FP64 reductions of actualFP32 outputs",
+    "deployment": "separate clipped MAE/MSE/PSNR; zeroMSE PSNR null plus exact-match boolean",
+    "controls": "input/current-only/all-history harm per source, profile and phase",
+    "quality_scope": "Only fixed96x96 crop development headroom; no fullRGB/device generalization or flow/LPIPS claim"
+  },
+  "prior_candidates": {
+    "a": "8tinyCPU tests passed before actual-array persistence addition; no actual model/data",
+    "b": "source bundle uploaded only, no CPU tests or model execution; preserved"
+  },
+  "pending": [
+    "Actual final1000 checkpoint and complete terminal report, strict SHA bindings.",
+    "Independent source review of final evaluator and separate external resource/admission.",
+    "Actual dev evaluation and independent cached-array CPU metric recomputation."
+  ],
+  "no_automatic_continuation": true
+}

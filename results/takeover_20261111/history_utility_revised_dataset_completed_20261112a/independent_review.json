@@ -1,0 +1,66 @@
+{
+  "schema": "openh3.revised_dataset_independent_review.v1",
+  "complete": true,
+  "reviewed_at_utc": "2026-11-12T06:45:23.598857+00:00",
+  "verdict": "accepted_revised_pair_and_schedule_engineering_only",
+  "evidence": {
+    "evidence.tar.gz": "f03b97cf93464f9277b0a258055fe7e6bc9fde221f66aad06dab1d398c773b19",
+    "local_verification.json": "c8cbc3d0659ed4ecd97779d905609270e68b01273d7cf21788202c307d155de2",
+    "original_producer_status.json": "0034ba01ca34f1321906a015b845f8f74e6f28bd446e372323835ea75fc00a00",
+    "verify_local.py": "5cd745dcd6c95a963df9717e8d1333f3d086d7892676d87e7e9981b920278523"
+  },
+  "accepted": {
+    "primary_sources": 25,
+    "train_sources": 19,
+    "dev_sources": 6,
+    "new_materializations": 22,
+    "reused_complete_sources": 3,
+    "new_codec_passes": 132,
+    "new_source_MP4_decodes": 0,
+    "actual_unique_NPZ_verified_remotely": 100,
+    "near_clean_additional_target_reads": 19,
+    "near_clean_frames_generated_and_hashed": 1824,
+    "revised_pair_ready": true,
+    "legacy_research_ready": false,
+    "training_admitted": false,
+    "actual_training_steps": 0,
+    "actual_model_calls": 0,
+    "actual_batch_constructions": 0
+  },
+  "local_consistency": {
+    "all49_payload_SHA_verified": true,
+    "source_ID_hash_group_train_dev_disjoint": true,
+    "25_source_roles_window_target_pixels_match_frozen_cohort": true,
+    "100_artifact_rows_match_receipts": true,
+    "new_authority_and_3_legacy_reuse_sidecars_checked": true,
+    "132_new_codec_replay_records_pairwise_pixel_equal": true,
+    "frozen_sources_contract_admissions_match": true,
+    "producer_status_and_admission_packaging": "Finalizer reserializes these JSON files with sorted keys. Archived bytes differ from original hashes, but full JSON semantics match the pinned original admission and separately downloaded original producer status."
+  },
+  "schedule_evidence": {
+    "teacher_rows": 16000,
+    "student_rows": 16000,
+    "steps_per_role": 1000,
+    "batch_size": 16,
+    "teacher_seed": 20261110,
+    "student_seed": 20261111,
+    "teacher_schedule_sha256": "475b06d0a09fd341e98fbcdfe28e4e4f5de907526579a78eac23b82825603354",
+    "student_schedule_sha256": "adda5689d88417b4141ca8f632a7b03515a829b18266057312569dea3298a100",
+    "scope": "Remote actual row validation; local summary/hash consistency only. Full schedule rows are not in this archive. Generation is not training."
+  },
+  "resources": {
+    "materializer_supervisor_seconds": 1613.028396527283,
+    "materializer_peak_owned_RSS_bytes": 457203712,
+    "terminal_CPU_audit_seconds": 178.01095855236053,
+    "terminal_audit_peak_owned_RSS_bytes": 302592000,
+    "terminal_audit_invocations": 1
+  },
+  "limitations": [
+    "The original40-source registry and32/8 roles remain unchanged; this acceptance covers only the frozen25-source primary cohort. It is not original40 completion.",
+    "Original13b6 is the numerical window/seed namespace; the new frozen contract separately authorizes current25-source execution.",
+    "These development-selected sources include0 frozen test sources. Visual continuity screening is not proof of pristine independence or a quality/generality result.",
+    "Remote frozen loaders actually checked NPZ file/pixel/metadata. This review downloaded no NPZ and did not independently recompute pixels locally.",
+    "Legacy loader research_ready remains false. Revised exact-pair readiness does not itself authorize research training, and no training or quality result is claimed."
+  ],
+  "next_step": "Persist the full hash-matching schedules and separately freeze donor metadata before a newly admitted finite training run; no launch is authorized by this review."
+}

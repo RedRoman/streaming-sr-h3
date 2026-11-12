@@ -1,0 +1,49 @@
+{
+  "CPU": {
+    "auditor": {
+      "pass": 11,
+      "receipt": "preparation/h3_real_adamw_terminal_cpu_validation_20261112d/cpu_receipt.json",
+      "skip": 0
+    },
+    "producer": {
+      "pass": 11,
+      "receipt": "preparation/h3_real_adamw_cpu_validation_20261112c/cpu_receipt.json",
+      "skip": 0
+    },
+    "runner": {
+      "pass": 8,
+      "receipt": "preparation/h3_real_adamw_terminal_cpu_validation_20261112b/guard_cpu_receipt.json",
+      "skip": 0
+    }
+  },
+  "NPU_calls": 0,
+  "actual_metadata_pins_verified": 1350,
+  "auditor_final_source_freeze_sha256": "f9c3fbbd2dc4a411c9a89fe8dcf4cbaf36c14b076d5c492d2cf9193419e93be2",
+  "execution_contract_sha256": "f81de1f4129085bd42579c6d7be15301fd4852749933d8cd452a73fd1cabe6d1",
+  "final_freeze_sha256": "c353d0512b92c7be074627cde0e782920028644e22ace88c2f0e33c03d2f2e7a",
+  "formal_training_runs": 0,
+  "fresh_launch_admission_sha256": "68a8035d3f11ce5f8286582ce623625a36876b1c172120d1a56604b35f021ca3",
+  "host": "huawei-modelarts-31112",
+  "independent_source_review_sha256": "88d61bc6ffe9b7a520e1c19eb243ddcfe9725497bfe5e834876612085e7720a6",
+  "input_inspection_note": "Actual cache inputs were CPU-verified by prior candidate; final changes only byte-exact functional attribution. Root authorized metadata-only final verification, no repeat input scan.",
+  "installation_receipt": {
+    "path": "preparation/h3_real_adamw_final_binding_20261112a/installation_receipt.json",
+    "sha256": "295c21972c06347eaa0ab06a710f40c46cea7436e1f2c0e6f7ccf6a7959815d2"
+  },
+  "original_pending_execution_contract_sha256": "94f64c33b17b7e1eb7ac046b844e904babc30d93823e80c38c6110dc756e7f51",
+  "physical_card": 1,
+  "producer_admission_sha256": "e068031508b4b32637536fca45b40e959f48956fca712a51827663f6b6868c50",
+  "producer_or_finalizer_launched_by_preparer": false,
+  "protocol_sha256": "febe204693b74c1ceae303492cb2100ec176b651cd45fc30bc229e4c33cf26d5",
+  "queue_sha256": "0843ec7964cac52a40d8c811cf80143832ff566a702596c9a52806de2ba1117e",
+  "ready_for_root_dispatch": true,
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "root_next_actions": [
+    "fresh health/idle/resource review",
+    "dispatch exact runner once; runner independently repeats fixedcard checks after15s under shared lock",
+    "dispatch exact bound finalizer once"
+  ],
+  "schema": "openh3.real_AdamW_final_binding_delivery.v1",
+  "source_sha256": "27fb9145790635a34398f52ae437f6a3f3f698f097c9a22ccc74ebcd4c6827b3",
+  "terminal_admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e"
+}

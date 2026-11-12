@@ -1,0 +1,126 @@
+{
+  "schema": "rphi.history_utility_headroom_root_review.v1",
+  "reviewed_at_utc": "2026-11-12T07:39:36.754378+00:00",
+  "numerical_execution_accepted": true,
+  "headroom_accepted": false,
+  "student_training_admitted": false,
+  "archive_sha256": "197aac255290d08b9200c56ed152e9808390feec155b12d3116450bd096bb6fa",
+  "payloads_verified": 14,
+  "audit_sha256": "38d783deb2f41fc31da4657ba0329383bc192fd41ff943962d3041e5d4607807",
+  "producer_report_sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578",
+  "actual_arrays_independently_verified": 1080,
+  "actual_crop_rows": 2880,
+  "source_mean_degraded_history_gain": -0.00026069268747303903,
+  "failed_gates": [
+    "source_balanced_degraded_gain"
+  ],
+  "by_profile": [
+    {
+      "profile": "identity",
+      "modes": {
+        "input": {
+          "source_mean_unclamped_mae": 0.0,
+          "mean_source_PSNR_dB": null
+        },
+        "all_history": {
+          "source_mean_unclamped_mae": 0.0020283193000039503,
+          "mean_source_PSNR_dB": 50.40649292775619
+        },
+        "current_only": {
+          "source_mean_unclamped_mae": 0.0020597319125889154,
+          "mean_source_PSNR_dB": 50.21244760045351
+        }
+      },
+      "all_history_harm_vs_input_MAE": 0.0020283193000039503,
+      "all_history_sources_harmed": 6,
+      "K1_sources_harmed": 6
+    },
+    {
+      "profile": "native_abrupt_blur_noise_h264",
+      "modes": {
+        "input": {
+          "source_mean_unclamped_mae": 0.02494421409067608,
+          "mean_source_PSNR_dB": 28.340862523334273
+        },
+        "all_history": {
+          "source_mean_unclamped_mae": 0.019053706096515525,
+          "mean_source_PSNR_dB": 30.70325192810099
+        },
+        "current_only": {
+          "source_mean_unclamped_mae": 0.018825292469605643,
+          "mean_source_PSNR_dB": 30.80653832401423
+        }
+      },
+      "all_history_harm_vs_input_MAE": -0.0058905079941605565,
+      "all_history_sources_harmed": 0,
+      "K1_sources_harmed": 0
+    },
+    {
+      "profile": "native_smooth_blur_noise_h264",
+      "modes": {
+        "input": {
+          "source_mean_unclamped_mae": 0.023775361985051292,
+          "mean_source_PSNR_dB": 28.87130794088189
+        },
+        "all_history": {
+          "source_mean_unclamped_mae": 0.018824416473924202,
+          "mean_source_PSNR_dB": 30.827665611097117
+        },
+        "current_only": {
+          "source_mean_unclamped_mae": 0.01850553450412861,
+          "mean_source_PSNR_dB": 30.97012647379361
+        }
+      },
+      "all_history_harm_vs_input_MAE": -0.00495094551112709,
+      "all_history_sources_harmed": 0,
+      "K1_sources_harmed": 0
+    },
+    {
+      "profile": "native_static_blur_noise_h264",
+      "modes": {
+        "input": {
+          "source_mean_unclamped_mae": 0.021246415837958436,
+          "mean_source_PSNR_dB": 30.079369421887932
+        },
+        "all_history": {
+          "source_mean_unclamped_mae": 0.01796547090999258,
+          "mean_source_PSNR_dB": 31.292500839758976
+        },
+        "current_only": {
+          "source_mean_unclamped_mae": 0.017730688444278928,
+          "mean_source_PSNR_dB": 31.478213341937302
+        }
+      },
+      "all_history_harm_vs_input_MAE": -0.0032809449279658583,
+      "all_history_sources_harmed": 0,
+      "K1_sources_harmed": 0
+    },
+    {
+      "profile": "near_clean",
+      "modes": {
+        "input": {
+          "source_mean_unclamped_mae": 0.0025929660610460883,
+          "mean_source_PSNR_dB": 48.53855426811172
+        },
+        "all_history": {
+          "source_mean_unclamped_mae": 0.002854823156741218,
+          "mean_source_PSNR_dB": 48.1427302736903
+        },
+        "current_only": {
+          "source_mean_unclamped_mae": 0.0029129913239013404,
+          "mean_source_PSNR_dB": 47.97559827492715
+        }
+      },
+      "all_history_harm_vs_input_MAE": 0.00026185709569512944,
+      "all_history_sources_harmed": 5,
+      "K1_sources_harmed": 5
+    }
+  ],
+  "limits": [
+    "6development sources only; no frozen independent test",
+    "96x96center-crop assessment, not full frame quality",
+    "No LPIPS or motion-compensated flicker evaluation",
+    "Binary mask utility exists but original mean-history-gain gate failed; do not quietly change it or launch original students"
+  ],
+  "next": "No extra teacher steps. CPU-only existing-output four-mask oracle and LOO interaction diagnostic to distinguish useful selective history from ineffective fusion; target-derived oracle is unattainable deployment upper bound, not proposed test-time access."
+}

@@ -1,0 +1,25 @@
+test_None_or_NaN_rejected_before_unscale_or_step (test_h3_real_adamw_update.AdamWTests.test_None_or_NaN_rejected_before_unscale_or_step) ... ok
+test_actual_global_clip_then_one_step (test_h3_real_adamw_update.AdamWTests.test_actual_global_clip_then_one_step) ... ok
+test_adapter_and_optimizer_save_clear_reload_exact (test_h3_real_adamw_update.AdamWTests.test_adapter_and_optimizer_save_clear_reload_exact) ... ok
+test_first_actual_warmup_LR_and_closed_first_AdamW (test_h3_real_adamw_update.AdamWTests.test_first_actual_warmup_LR_and_closed_first_AdamW) ... ok
+test_numerical_mode_confounding_blocks_functional_readiness (test_h3_real_adamw_update.AdamWTests.test_numerical_mode_confounding_blocks_functional_readiness) ... ok
+test_optimizer_extra_key_dtype_and_byte_tampering_rejected (test_h3_real_adamw_update.AdamWTests.test_optimizer_extra_key_dtype_and_byte_tampering_rejected) ... ok
+test_real_target_parity_gate_forbids_backward (test_h3_real_adamw_update.AdamWTests.test_real_target_parity_gate_forbids_backward) ... ok
+test_strict_reload_includes_FP16_actual_decoder_cast (test_h3_real_adamw_update.AdamWTests.test_strict_reload_includes_FP16_actual_decoder_cast) ... ok
+test_unchanged_RGB_does_not_become_functional_readiness (test_h3_real_adamw_update.AdamWTests.test_unchanged_RGB_does_not_become_functional_readiness) ... ok
+test_400_states_four_modes_real_sampler_AST_one_AdamW (test_h3_real_adamw_update.CompleteTinyPath.test_400_states_four_modes_real_sampler_AST_one_AdamW) ... {"phase": "zero", "elapsed_seconds": 0.23552268836647272, "max_rss_KiB_linux": 358732, "rss": {"VmHWM": "358732 kB", "VmRSS": "358732 kB"}}
+{"phase": "zero_decode", "elapsed_seconds": 0.5795784797519445, "max_rss_KiB_linux": 372804, "rss": {"VmHWM": "372804 kB", "VmRSS": "372804 kB"}}
+{"phase": "backward", "elapsed_seconds": 0.6065894914790988, "max_rss_KiB_linux": 373256, "rss": {"VmHWM": "373256 kB", "VmRSS": "373256 kB"}}
+{"phase": "updated", "elapsed_seconds": 3.6110731000080705, "max_rss_KiB_linux": 385316, "rss": {"VmHWM": "385316 kB", "VmRSS": "385268 kB"}}
+{"phase": "updated_decode", "elapsed_seconds": 3.787094997242093, "max_rss_KiB_linux": 385316, "rss": {"VmHWM": "385316 kB", "VmRSS": "385268 kB"}}
+{"phase": "reloaded", "elapsed_seconds": 4.671882250346243, "max_rss_KiB_linux": 386252, "rss": {"VmHWM": "386252 kB", "VmRSS": "386220 kB"}}
+{"phase": "reloaded_decode", "elapsed_seconds": 4.846211523748934, "max_rss_KiB_linux": 386252, "rss": {"VmHWM": "386252 kB", "VmRSS": "386220 kB"}}
+{"phase": "merged", "elapsed_seconds": 5.041313610970974, "max_rss_KiB_linux": 386524, "rss": {"VmHWM": "386524 kB", "VmRSS": "385172 kB"}}
+{"phase": "merged_decode", "elapsed_seconds": 5.082192073576152, "max_rss_KiB_linux": 386524, "rss": {"VmHWM": "386524 kB", "VmRSS": "385172 kB"}}
+{"CPU_toy_actual": {"NFE": 12, "decode": 4}, "AdamW_steps": 1, "backwards": 1, "adapter_tensors": 400, "optimizer_named_entries": 400, "optimizer_state_tensors": 1200, "strict_reload": true, "native_full22_tile_geometry_tested_here": false, "functional": {"resident_unmerged_RGB_changed": false, "deployed_merged_RGB_changed": false, "zero_vs_accepted_reference_RGB_byte_exact": true, "merged_vs_accepted_reference_RGB_changed": false, "readiness_gate_passed": false, "attribution": "no_deployed_RGB_change", "repeatability_or_statistical_quality_claim": false, "same_sample_loss_descent_required": false, "quality_or_generalization_claim": false, "no_LR_rank_step_adjustment": true}}
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 10.239s
+
+OK

@@ -1,0 +1,54 @@
+{
+  "CPU_tests": {
+    "auditor": {
+      "pass": 10,
+      "receipt": "preparation/h3_real_adamw_terminal_cpu_validation_20261112c/cpu_receipt.json",
+      "sha256": "c789a5469c426dc02aa90784d52ba5ef7fe34c2b13ffcaa567957c4983948662",
+      "skip": 0
+    },
+    "producer": {
+      "pass": 10,
+      "receipt": "preparation/h3_real_adamw_cpu_validation_20261112b/cpu_receipt.json",
+      "sha256": "5adf92db237379331c3574a5065ba9ab7007526748b3766aa551ca401646eb76",
+      "skip": 0
+    },
+    "runner": {
+      "pass": 8,
+      "receipt": "preparation/h3_real_adamw_terminal_cpu_validation_20261112b/guard_cpu_receipt.json",
+      "sha256": "56cdf1f88b31a2e6c5d2804e315412952c7e03a0e5c6d9f028358cebeb0f8e7f",
+      "skip": 0
+    }
+  },
+  "actual_input_inspection": {
+    "NPU_calls": 0,
+    "complete": true,
+    "path": "preparation/h3_real_adamw_update_20261112a_cpu_inspection/status.json",
+    "seconds": 8.982881425879896,
+    "sha256": "121ff15db59c84d9b8c86cb87f5f92c2b42d52515fe2d4209b053befb8a2a884"
+  },
+  "archive_policy": "No large RGB/gradient/optimizer/model arrays downloaded",
+  "auditor_freeze": {
+    "path": "preparation/h3_real_adamw_terminal_audit_20261112a/freeze.json",
+    "sha256": "5315424b6829789ca660847403ad43b51c7cec731a3e6e39c507de70bffc79f7"
+  },
+  "execution_contract_pending_sha256": "94f64c33b17b7e1eb7ac046b844e904babc30d93823e80c38c6110dc756e7f51",
+  "formal_training_runs": 0,
+  "historical_failed_CPU_fixture": "terminal_cpu_validation_20261112a preserved: live tuple vs serialized list; corrected fixture serializes actual JSON; no production optimizer change",
+  "host": "huawei-modelarts-31112",
+  "protocol_sha256": "febe204693b74c1ceae303492cb2100ec176b651cd45fc30bc229e4c33cf26d5",
+  "remaining": [
+    "Independent source review before root admission",
+    "Root creates exact approved producer admission, final execution contract and queue/fresh launch admission; preserve pending payload receipt",
+    "Root independently admits and dispatches finalizer",
+    "No NPU launch performed by this preparation task"
+  ],
+  "runtime_freeze": {
+    "path": "preparation/h3_real_adamw_update_20261112a/freeze.json",
+    "sha256": "7198154182829589a0ea7e1ce3d447f53937a651e4992224936c85c626f8ab4e"
+  },
+  "runtime_pins": 1332,
+  "schema": "openh3.real_train_AdamW_preparation_delivery.v1",
+  "source_sha256": "d6c109bfe3a2a85940d5c07e1b455e22763567946a4acb4a17935e68f5103a23",
+  "status": "prepared_and_actual_CPU_inspected_not_admitted_not_launched",
+  "test_sha256": "cd2f0fa387ec4b45fd87a3d5162c56950a233e55ffb2d8907a6feeb578680360"
+}

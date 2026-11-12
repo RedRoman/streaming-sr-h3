@@ -1,7 +1,12 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
-## 当前接续入口（2026-11-12 14:33 SGT，下面早期记录是历史）
+## 当前接续入口（2026-11-12 15:41 SGT，下面早期记录是历史）
 
+- **P1教师1000步与headroom已全部完成/独立数值验收，原headroom门失败**：31984 `runs/history_utility_teacher_20261112a`及finalize、`runs/history_utility_headroom_20261112a`及finalize均completed，勿重跑。教师fresh legacy初始化、1000固定updates/16000rows，saved58参数174AdamW状态finite，最终checkpoint799956…26e34；实际433.81s/peakNPU1.049GiB。小证据1cf2a1…1345b3/14payload已唯一下载实核，root acceptance d71b91…391a8。
+- Headroom6dev×5profile×96中心crop已执行11430crop forwards/720invocations，180NPZ/1080真实FP32 arrays约1.91GB在远端独立CPU重算，maxdiff6.94e-17，producer142.63s/CPUaudit36.64s。唯一失败门：平均K1-minus-all MAE **-0.000260693**，虽4/6source略正，两源6UZ/EB在全部3退化profile负且主导均值。不得把complete当headroom通过。identity all平均MAE.00202832（50.4065dB），6/6损伤；nearclean平均48.5386→48.1427dB、5/6 MAE损伤；K1同样有保护问题。详见 `results/takeover_20261111/history_utility_headroom_completed_20261112a/root_review.json`，archive197aac…bb6fa已本地验14payload。没有LPIPS/全帧/光流flicker或独立测试结论。
+- **原定三学生臂不准入，不追加teacher步数、不改原门**。下一项为仅CPU、读取既有四mask输出的16tile oracle/LOO交互诊断，区分候选无空间与joint mask选择失败；附加input旁路候选仅作为clean保护诊断。GT只用于既有候选集合离线上界，不能部署或称soft-gate全局上界，不能据此追认旧门。源码/有界审计准备中，实际执行以后续receipt为准。
+- **H3真实TRAIN AdamW单更新正在运行**：31112 card1，07:32UTC fresh健康/无PID/共享锁/15秒二检通过；`runs/h3_real_adamw_update_20261112a/queue_status.json`，tmux `h3-real-adamw-20261112a`，worker510744。独立finalizer `runs/h3_real_adamw_update_20261112a_finalize/finalize_status.json` / tmux `h3-real-adamw-finalize-20261112a` 已waiting。固定3600+30s/4CPU/128GiB，12NFE4decode1back1AdamW，root source+1350pins核验；producer/auditor各11CPU tests、runner8，signed-zero字节门修复且独立review通过。07:36观察load_and_verify_assets/0updates；保持健康进程，勿重复启动。正式guide-matched LoRA训练仍0；此probe不能代替恢复质量结果。
+- 修订P1数据25来源19train/6dev、100NPZ及两份1000×16持久化schedule均已完成独立验收，donor25125有效槽/36strata/0impossible；旧research_ready=false。真实2步backend已验收，但smoke checkpoint禁止研究warmstart。headroom规则及全部已运行源码保持冻结。
 - Stage2、原SR300步、固定H3/native基线、缓存补偿、joint RGB小探针、首条训练VAE缓存及nonzero b均已终态，勿重跑。新guide-matched LoRA仍0步；小5×128通过不等于全22训练或恢复质量通过。
 - 31112完整资产已实核：Turbo从已有4step表示按alpha/rank=1/16与原header精确重建，416张量和完整文件SHA均等于原0b5e…fa99，已发布新链接。15原会话与8补传失败partial保留且superseded，**不再启动旧传输**。见`results/takeover_20261111/turbo_exact_reconstruction_review_20261112.json`。
 - **H3 nonzero b已完成并通过独立CPU终态审计**：31112卡1，12NFE/4decode/1RGBbackward/1SGD/1save/1clear-reload/1merge；producer2030.83s，finalizer04:45:53UTC完成。`runs/h3_nonzero_adapter_probe_20261112b_31112`及同名前缀_finalize勿重启。证据已下载至`results/takeover_20261111/h3_nonzero_adapter_probe_20261112b_31112_completed/`，archive SHA6410de…8533。**参数非零更新，但zero/updated/reloaded/merged的video、audio、RGB均byteexact相同**；这里只接受参数持久化、严格重载和声明合并流程，不能声称功能影响、质量收益或合并普遍等价。此synthetic checkpoint不得用于真实恢复训练warmstart。

@@ -1,0 +1,35 @@
+{
+  "schema": "openh3.real_AdamW_actual_CPU_inspection.v1",
+  "complete": true,
+  "NPU_calls": 0,
+  "model_loads": 0,
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "wall_limit": 180,
+  "RSS_limit": 4294967296,
+  "state": "worker_completed",
+  "producer_started": true,
+  "worker_pid": 501032,
+  "owned_pgid": 501032,
+  "command": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_update_20261112a/code/check_h3_real_adamw_update.py",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_update_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_real_adamw_update_20261112a_cpu_inspection/input"
+  ],
+  "peak_owned_group_RSS_bytes": 872722432,
+  "RSS_samples": 36,
+  "updated_at_utc": "2026-11-12T07:16:10.109227+00:00",
+  "active_worker_seconds": 8.982881425879896,
+  "returncode": 0,
+  "remaining_owned_live_processes": [],
+  "inspection_sha256": "ff9d4267618a4be7c4eb61f39e37354780e0b872ff0896e9de759ce2a5a50df6",
+  "runtime_files_verified": 1332,
+  "execution_contract_sha256": "94f64c33b17b7e1eb7ac046b844e904babc30d93823e80c38c6110dc756e7f51"
+}

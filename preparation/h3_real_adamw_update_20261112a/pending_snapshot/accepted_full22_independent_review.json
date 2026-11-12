@@ -1,0 +1,74 @@
+{
+  "schema": "openh3.full22_joint_RGB_independent_review.v1",
+  "complete": true,
+  "reviewed_at_utc": "2026-11-12T06:32:33.251564+00:00",
+  "verdict": "accepted_full22_joint_RGB_backward_engineering_only",
+  "evidence": {
+    "evidence.tar.gz": "ea6711dc4e52fcb0b216bac887c54802456338b32efb384eb7e0a6632a52888d",
+    "local_verification.json": "3df0ffc5da65ad996cf4f09d747b79025c7ffa342abe20ff0e6c69526f61379f",
+    "mirror_receipt.json": "c97bd4548c9bb2775bb6cc5d117f5dfa35fc5972171745268a85675b7e2c8588",
+    "transfer_recovery_receipt.json": "72bb9a72fd7da99b17b80e0e4f68c9a2bc30418dd6cdd1e523ea4d6c48f42e0b"
+  },
+  "scope": {
+    "sources": 1,
+    "source_id": "2BdYaGuVAKo",
+    "role": "train",
+    "task": "compression",
+    "RGB_geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "fresh_zero_B_adapters": true,
+    "synthetic_nonzero_checkpoint_used": false
+  },
+  "supported": [
+    "The frozen three-step H3 trajectory and full22 native VAE decoding support one scaled RGB-loss backward to LoRA under this exact engineering configuration.",
+    "Reference/candidate video, audio and decoder-input arrays are bitexact in local NumPy checks; source-bound remote CPU audit also verifies RGB parity and target MSE.",
+    "All 400 adapter gradient pairs are finite in remote actual-array verification; all 200 B gradient tensors are nonzero. No optimizer step or adapter update was performed.",
+    "Archive was safely extracted once and the same verified bytes were mirrored to a fresh31984 namespace without a second extraction."
+  ],
+  "actual_budget": {
+    "NFE": 6,
+    "VAE_decode": 2,
+    "RGB_backward": 1,
+    "optimizer_steps": 0,
+    "adapter_updates": 0,
+    "block_math_observations": 774,
+    "decoder_context_restorations": 217
+  },
+  "numerical_evidence": {
+    "RGB_MSE_torch_float32": 0.0030889883637428284,
+    "RGB_MSE_remote_NumPy_float64": 0.0030889882945633455,
+    "MSE_absolute_difference": 6.917948288873155e-11,
+    "B_gradient_nonzero_tensors": 200,
+    "B_gradient_unscaled_L2": 0.0003684823803099516,
+    "retained_video_gradient_finite_elements": 262080,
+    "retained_video_gradient_nonzero_elements": 262012
+  },
+  "resources": {
+    "producer_elapsed_seconds": 2067.3699362054467,
+    "active_worker_seconds": 2082.383274277672,
+    "peak_owned_host_RSS_bytes": 87015653376,
+    "reported_NPU_peak_allocated_bytes": 59523915264,
+    "reported_NPU_peak_reserved_bytes": 64277708800,
+    "interpretation": "Recorded probe/lifecycle and allocator measurements; not optimizer throughput or a measured training-step budget."
+  },
+  "verification_boundary": {
+    "remote_CPU_actual_saved_arrays": 815,
+    "remote_CPU_actual_saved_array_bytes": 622991744,
+    "local_actual_small_arrays": 10,
+    "local_actual_small_array_bytes": 6310144,
+    "large_RGB_target_gradient_arrays_downloaded": false,
+    "live_weights_reread": false,
+    "frozen_scope": "Local checks file/canonical inventory hashes and consistency of producer lifecycle evidence; live parameter bytes, object versions and residency were observed by the source-bound producer, not independently reread here."
+  },
+  "limitations": [
+    "This one train-source engineering probe establishes neither restoration improvement nor generalization, temporal-quality acceptance, omni task coverage, or deployment readiness.",
+    "Zero optimizer updates mean functional impact of adapted weights and deployment merge loss remain unestablished; previous tiny nonzero serialization evidence cannot substitute for those checks.",
+    "The loss uses as-returned VAE RGB, which is internally clipped; it is not a true pre-clamp decoder measurement.",
+    "No new model calls, NPU execution, remote NPZ scans or large-array rescoring were performed for this local review."
+  ],
+  "remaining_next_gate": "A separately admitted finite optimization experiment must demonstrate actual deploy-output changes and evaluate quality/merge differences under a fixed comparison protocol; this review does not authorize a launch."
+}

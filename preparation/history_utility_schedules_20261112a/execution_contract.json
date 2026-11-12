@@ -1,0 +1,69 @@
+{
+  "schema": "openh3.history_utility_schedule_preparation_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "files": {
+    "cohort": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+      "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+    },
+    "plan": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+      "sha256": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4"
+    },
+    "train_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    },
+    "dev_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    },
+    "dataset_audit": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/evidence/history_utility_revised_dataset_terminal_20261112a/dataset_audit/audit.json",
+      "sha256": "6456d81b20392b6ba8fb16f58324b649c26ad93ad6131bca88c992bdae226abd"
+    },
+    "materialization_complete": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/complete.json",
+      "sha256": "fd6be0ec7c70aeff5b40b551a873816f996aaf8e25a28d9fd725e68e4afcbf13"
+    },
+    "producer_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/execution_contract.json",
+      "sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9"
+    },
+    "root_acceptance": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_revised_dataset_completed_20261112a/root_acceptance.json",
+      "sha256": "43edaf6d84b80e271b8d078b195c7d25dc47aa49fefa6333075b59f3b42238c8"
+    },
+    "source_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_contract_20261111.json",
+      "sha256": "a2c94df6646936422ae3abde9599323db0eb5181c1a264b97d4593f948f37742"
+    },
+    "train_receipt_index": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/train_receipt_index.json",
+      "sha256": "50b470d9aca9c6826bdcd507074c3f2861eb8c3c5467c3e2234d5f5294a3b639"
+    },
+    "dev_receipt_index": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/dev_receipt_index.json",
+      "sha256": "30c6b61530b796e94c7133e6e7deb48b53de99496b90fb8107aa1a929119d329"
+    }
+  },
+  "implementation_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/code/prepare_history_utility_schedules.py": "a7e4c575ebe77310127ef8f5789909be9a05e6255bf7cf086a03a31f70125660",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1"
+  },
+  "resources": {
+    "CPU_cores": 2,
+    "threads": 1,
+    "wall_seconds": 900,
+    "RSS_limit_bytes": 34359738368,
+    "address_space_limit_bytes": 34359738368,
+    "schedule_cache_bytes": 12884901888,
+    "maximum_output_bytes": 268435456
+  },
+  "admission": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/admission.json",
+    "sha256": "e3edd6f9dae48730a09785d1d81b87bf5b14e429d49327999d244980bc724972"
+  },
+  "scope": "New exact accepted25-source schedules only, two1000x16 plans; no model/training. New execution separately admitted; old13b6 remains numerical namespace."
+}

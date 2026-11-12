@@ -1,0 +1,81 @@
+{
+  "created_at_utc": "2026-11-12T06:58:49.436872+00:00",
+  "scope": "heartbeat20261112_063541 continuation",
+  "dataset_accepted": true,
+  "root_acceptance_sha256": "43edaf6d84b80e271b8d078b195c7d25dc47aa49fefa6333075b59f3b42238c8",
+  "schedules": {
+    "host": "31984",
+    "run": "runs/history_utility_schedules_20261112a",
+    "tmux": "p1-schedules-20261112a",
+    "launch_returned": true,
+    "completed": true,
+    "queue_sha256": "e144bc40878fee6f2d68a957b711ab3d3d500393e1ea4ac04d11b02347a844e5",
+    "independent_audit_sha256": "32199a84ca4d88ae58d97314fc6d979c9eb3cef5c1a5e6d8f9ae37220997577c"
+  },
+  "P1_teacher1000_updates": 1000,
+  "H3_real_AdamW_updates": 0,
+  "notification": "Data completion and next finite experiments reported; do not repeat old completedfull22 conclusions.",
+  "updated_at_utc": "2026-11-12T07:41:52.591751+00:00",
+  "P1_backend": {
+    "accepted": true,
+    "root_acceptance_sha256": "526df00a7b77b188255d4e09c72869ffd277e45a6ce09d94188514ab15b1628e",
+    "updates": 2,
+    "initialization_for_teacher": false
+  },
+  "P1_teacher": {
+    "status": "completed_and_independently_accepted",
+    "host": "31984",
+    "card": 7,
+    "run": "runs/history_utility_teacher_20261112a",
+    "tmux": "p1-teacher-20261112a",
+    "worker_pid": 1051993,
+    "queue_sha256": "fe3bf82774cf4dac91e96e735441da4eabc9621b117e271daded8b2598609229",
+    "execution_sha256": "591a1734a35a2ef11d885fc770508ac781f9e57f6cbcb77ec6ade35cfc6dba8d",
+    "latest_observed_step": 1000,
+    "finite_losses_gradients_parameters": true,
+    "headroom_accepted": false,
+    "finalizer": {
+      "status": "completed",
+      "tmux": "p1-teacher-finalize-20261112a",
+      "run": "runs/history_utility_teacher_20261112a_finalize",
+      "config_sha256": "341f7883a4f607596753b398307fcbc81f71500802ebca696578089f64adf231",
+      "audit_invocations": 1
+    },
+    "root_acceptance": "results/takeover_20261111/history_utility_teacher_completed_20261112a/root_acceptance.json",
+    "root_acceptance_sha256": "d71b91d0bf6fbb6a2670be1928253949ebc5140d08d6337740ffb1950a0391a8"
+  },
+  "P1_headroom": {
+    "status": "completed_numerically_verified_headroom_failed",
+    "host": "31984",
+    "run": "runs/history_utility_headroom_20261112a",
+    "finalizer_run": "runs/history_utility_headroom_20261112a_finalize",
+    "report": "results/takeover_20261111/history_utility_headroom_completed_20261112a/producer/report.json",
+    "root_review": "results/takeover_20261111/history_utility_headroom_completed_20261112a/root_review.json",
+    "root_review_sha256": "36975fd9aee66548a26b350f18ba3c7c8f62f3dd4a86a20c9bfa383b184674fc",
+    "mean_degraded_history_gain": -0.00026069268747303903,
+    "sources_positive": 4,
+    "sources_total": 6,
+    "failed_gate": "source_balanced_degraded_gain",
+    "original_students_admitted": false,
+    "extra_teacher_steps_admitted": false,
+    "next": "CPU existing candidate four/five-state oracle and LOO interaction diagnostic; GT only offline candidate-set bound"
+  },
+  "H3_real_AdamW": {
+    "status": "running",
+    "host": "31112",
+    "card": 1,
+    "run": "runs/h3_real_adamw_update_20261112a",
+    "session": "h3-real-adamw-20261112a",
+    "worker_pid": 510744,
+    "queue_sha256": "0843ec7964cac52a40d8c811cf80143832ff566a702596c9a52806de2ba1117e",
+    "execution_sha256": "f81de1f4129085bd42579c6d7be15301fd4852749933d8cd452a73fd1cabe6d1",
+    "scope": "one real TRAIN AdamW engineering update;not formalguide-matchedtraining",
+    "latest_observation": "preparation/h3_real_adamw_update_20261112a/observation_0736.json",
+    "finalizer": {
+      "state": "waiting",
+      "session": "h3-real-adamw-finalize-20261112a",
+      "run": "runs/h3_real_adamw_update_20261112a_finalize",
+      "admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e"
+    }
+  }
+}

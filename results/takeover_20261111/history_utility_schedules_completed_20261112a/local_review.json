@@ -1,0 +1,36 @@
+{
+  "schema": "openh3.history_utility_schedule_local_review.v1",
+  "complete": true,
+  "reviewed_at_utc": "2026-11-12T07:03:10.572064+00:00",
+  "manifest_sha256": "5c001aaa3335e335a16311f9d42e400f29274d65049f967859b7969c9d75ee0b",
+  "independent_audit_sha256": "32199a84ca4d88ae58d97314fc6d979c9eb3cef5c1a5e6d8f9ae37220997577c",
+  "verdict": "accepted_persisted_schedules_and_metadata_derangement_only",
+  "scope": {
+    "teacher_rows": 16000,
+    "student_rows": 16000,
+    "whole_map_valid_slots": 25125,
+    "exact_strata": 36,
+    "impossible_strata": 0,
+    "training_admitted": false,
+    "teacher_updates": 0,
+    "student_updates": 0,
+    "label_values_materialized": false
+  },
+  "checks": "Remote independent stdlib CPU checked existing JSON bytes/semantic hashes, all32000 row hashes, source IDs/hashes/groups, boundary-valid support and raw-mask/phase/lag/family donor bijection against prior accepted audit. No schedule was regenerated.",
+  "local_verification": "Only small manifest and independent audit file SHA/content checked locally; actual large schedule/donor JSON stays on31984.",
+  "resources": {
+    "preparation_active_seconds": 179.50709842983633,
+    "preparation_peak_owned_RSS_bytes": 2359820288,
+    "independent_audit_seconds": 4.344723888672888,
+    "independent_audit_peak_RSS_bytes": 141684736
+  },
+  "read_boundary": {
+    "preparation_fresh_unique_NPZ": 100,
+    "preparation_additional_target_reads": 19,
+    "preparation_near_clean_frames": 1824,
+    "independent_audit_NPZ_reads": 0,
+    "independent_audit_schedule_regenerations": 0,
+    "model_calls": 0
+  },
+  "remaining": "A real backend two-step acceptance and separate teacher admission remain required. Donor readiness is metadata feasibility only; actual frozen-teacher utility labels and matched student acceptance do not yet exist."
+}

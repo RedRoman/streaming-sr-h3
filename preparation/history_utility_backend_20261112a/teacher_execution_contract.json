@@ -1,0 +1,125 @@
+{
+  "schema": "rphi.history_utility_training_execution.v1",
+  "phase": "teacher",
+  "steps": 1000,
+  "batch_size": 16,
+  "seed": 20261110,
+  "optimizer": {
+    "type": "AdamW",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.0,
+    "amsgrad": false,
+    "foreach": false,
+    "fused": false,
+    "gradient_clip_norm": 1.0,
+    "warmup_steps": 50,
+    "steps": 1000,
+    "lr_schedule": "train_rphi.learning_rate_cosine20percent"
+  },
+  "loss": {
+    "charbonnier_epsilon": 0.001,
+    "edge_weight": 0.1,
+    "guard_weight": 0.5
+  },
+  "model_config": {
+    "variant": "blind",
+    "k": 3,
+    "ch": 64,
+    "blocks": 8,
+    "condition_dim": 6,
+    "observation_encoder": "legacy"
+  },
+  "baseline_checkpoint": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_asset_20261112a/checkpoint_step003000.pt",
+    "sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617"
+  },
+  "cohort": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+    "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+  },
+  "source_contract": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_contract_20261111.json",
+    "sha256": "a2c94df6646936422ae3abde9599323db0eb5181c1a264b97d4593f948f37742"
+  },
+  "headroom_contract": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_headroom_20261112.json",
+    "sha256": "d529c075ba5499d512b3728ff689cc104f1a80e9b985d5bb10bda7eaca690b03"
+  },
+  "files": {
+    "materialization_complete": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/complete.json",
+      "sha256": "fd6be0ec7c70aeff5b40b551a873816f996aaf8e25a28d9fd725e68e4afcbf13"
+    },
+    "dataset_audit": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/evidence/history_utility_revised_dataset_terminal_20261112a/dataset_audit/audit.json",
+      "sha256": "6456d81b20392b6ba8fb16f58324b649c26ad93ad6131bca88c992bdae226abd"
+    },
+    "train_receipt_index": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/train_receipt_index.json",
+      "sha256": "50b470d9aca9c6826bdcd507074c3f2861eb8c3c5467c3e2234d5f5294a3b639"
+    },
+    "dev_receipt_index": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/dev_receipt_index.json",
+      "sha256": "30c6b61530b796e94c7133e6e7deb48b53de99496b90fb8107aa1a929119d329"
+    },
+    "plan": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+      "sha256": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4"
+    },
+    "train_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    },
+    "dev_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    },
+    "teacher_schedule": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/teacher_schedule.json",
+      "sha256": "1b9ed30072634352925dd04d8b14016df5aa9f3d100b8f783ebb83f38be43e48"
+    },
+    "student_schedule": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/student_schedule.json",
+      "sha256": "b5e6d4c6031d79d5b9457c98fe215d49e393e335994559597498176f4e666f08"
+    },
+    "schedule_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/manifest.json",
+      "sha256": "5c001aaa3335e335a16311f9d42e400f29274d65049f967859b7969c9d75ee0b"
+    }
+  },
+  "evidence_root": "/cache/zihaohe/omni_openh3_20261111",
+  "implementation_sha256": {
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/check_history_utility_backend.py": "0a48f122891e4ec898b4998c94424976729e6948c481f2f63a88eb1fb9f5945f",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9"
+  },
+  "data_cache_bytes": 12884901888,
+  "diagnostic_every": 100,
+  "runtime": {
+    "device": "npu:0",
+    "dtype": "float32",
+    "autocast": false,
+    "determinism": "inherit",
+    "cpu_threads": 4,
+    "version_match": "exact",
+    "expected_versions": {
+      "python": "3.12.14",
+      "numpy": "1.26.4",
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post2"
+    }
+  },
+  "resume": null,
+  "admission": null
+}

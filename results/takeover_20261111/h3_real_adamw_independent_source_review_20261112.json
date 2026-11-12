@@ -1,0 +1,58 @@
+{
+  "schema": "openh3.real_adamw_independent_source_review.v1",
+  "created_utc": "2026-11-12T07:26:54.594930+00:00",
+  "reviewer": "inspect_architecture",
+  "review_kind": "read_only_source_and_existing_CPU_receipts",
+  "status": "no_remaining_source_blocker_for_bounded_engineering_probe",
+  "launch_admitted": false,
+  "real_model_or_NPU_executed_by_reviewer": false,
+  "tests_rerun_by_reviewer": false,
+  "sources": {
+    "code/check_h3_real_adamw_update.py": "27fb9145790635a34398f52ae437f6a3f3f698f097c9a22ccc74ebcd4c6827b3",
+    "code/tests/test_h3_real_adamw_update.py": "6b85f066a5922bc028536f80146363f3506f908c8e1eb6ba05fd53ea2caf8862",
+    "preparation/h3_real_adamw_update_20261112a/run_once.py": "efabd330e5b49653fc01275bba18c9c408de43fd56e194685102bb313e097388",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/audit_terminal.py": "bddea2c2f93c5ef9db97f1e1f009cadf73669db559763fcc626a403859a14b55",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/adamw_equations.py": "973f97ef6b8f9f4751be84f6331ad1e74aa29e6617c2b385680ad61acdad3ef8",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/audit_arrays.py": "3690c70226993dbb4f88d613c7fc236b2831763bc3beaacc0a9c3e9dfeb9f1c4",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/audit_checkpoint.py": "4f947400caff009c69a7817ead63fe09d81ac7afbd5fcf402ad19b3ef9f436b8",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/finalize_once.py": "f71e9b6cfaab08cc38ef1c0573dbf9932e5b8a83d05e467cea06f332b3a311c0",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/owned_process.py": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/small_archive.py": "9e2d0ff6d047ee4aa718dfe6e4ea85e8efc463217e34bab7c4e573f8d768bd6c",
+    "preparation/h3_real_adamw_terminal_audit_20261112a/test_audit.py": "0e2ced561c20e6bb64d9878f6e718dff1a8ac4efc23b90587484c77dadf42f9c",
+    "preparation/h3_real_adamw_cpu_validation_20261112c/cpu_receipt.json": "115fb017b65211da90f95147aa02d64f2408adf41964bde9733227535e061a9a",
+    "preparation/h3_real_adamw_terminal_cpu_validation_20261112d/cpu_receipt.json": "0f2fb3852743e1fb28dc08823e1871ce4b710af0b989ea82c623cde96782d887"
+  },
+  "resolved_finding": {
+    "priority": "P2",
+    "issue": "Declared byte-exact zero/reference RGB control previously used numeric equality, permitting signed-zero differences.",
+    "resolution": "Producer now compares saved float32 RGB hashes; independent auditor uses byte_equal; both signed-zero regression fixtures and final CPU receipt source hashes verified.",
+    "producer_lines": [
+      276,
+      290
+    ],
+    "auditor_lines": [
+      238,
+      246
+    ]
+  },
+  "checked": {
+    "one_step_math": "Exactly one 1024 gradient unscale, fixed global clip 1, fresh FP32 AdamW, LR=1e-4*(1/100), betas(.9,.999), eps1e-8, weight_decay0, foreach/fusedFalse. No automatic LR/rank/step adjustment.",
+    "saved_state": "400 FP32 adapter arrays and 1200 named optimizer-state tensors; strict shape/dtype/finite/order, explicit clearing and reload, exact saved/reloaded arrays and updated/reloaded outputs.",
+    "functional_attribution": "Functional gate separately requires byte-exact zero/reference RGB and changed merged/reference RGB. Arithmetic persistence is not quality, loss-descent or generalization acceptance.",
+    "budget": "Four three-step modes: 12 NFE, four VAE decodes, one retained RGB backward, one AdamW update; prior accepted reference reused without another live reference forward.",
+    "independent_CPU_audit": "NumPy parses actual NPY and safetensors, recomputes unscale/clip/first-step AdamW equations under explicitly preregistered FP32 equation tolerances, actual output comparisons and persistence. No producer or model import.",
+    "merge_boundary": "CPU audit checks complete frozen inventories and exactly 200 declared merge writes; does not claim to recompute unsaved base matrices or prove BF16 merge equivalence.",
+    "runner": "Fresh isolated run, explicit admission, SHA pins, health/no-PID/60000MB plus shared lock and 15s second check; bounded owned process group only, signal/spawn protection, no retry or unrelated process termination. Finalizer wait4200s exceeds producer3600+30s; CPU audit separately bounded."
+  },
+  "CPU_evidence_scope": "Existing actual Torch CPU and independent NumPy fixture receipts both complete, final source bound; tiny fake model/sampler fixtures are not actual pretrained H3/NPU execution.",
+  "remaining_before_execution": [
+    "Root must finalize and verify the latest snapshot, queue and all runtime pins with the reviewed producer/auditor hashes. Older preparation freeze files are not a launch authorization for the corrected sources.",
+    "Fresh resource checks, exact admission and same actual TRAIN cache/source/target bindings remain required.",
+    "Actual NPU update, reload, merged RGB change, arithmetic equations, complete lifecycle and operation counts remain unmeasured for this new probe."
+  ],
+  "non_claims": [
+    "No formal matched LoRA training or quality acceptance.",
+    "No claim that earlier gradient bitwise-repeatability failure is resolved.",
+    "No equivalence claim between independent FP32 LoRA and BF16 merged execution."
+  ]
+}

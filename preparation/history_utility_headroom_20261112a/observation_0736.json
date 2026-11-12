@@ -1,0 +1,221 @@
+{
+  "at_utc": "2026-11-12T07:36:12.136325+00:00",
+  "host": "31984",
+  "run": "history_utility_headroom_20261112a",
+  "producer": {
+    "schema": "rphi.history_utility_once_status.v1",
+    "state": "completed",
+    "complete": true,
+    "kind": "teacher_headroom",
+    "plan_sha256": "fcdf7d7bf4b2f9664ce72aa5a41d176880cc76579ef656d4a0189be4aff90426",
+    "producer_started": true,
+    "physical_card": 7,
+    "resource": {
+      "wall_seconds": 1800,
+      "CPU_threads": 4,
+      "rss_bytes": 34359738368,
+      "grace_seconds": 30
+    },
+    "automatic_retry": false,
+    "cooperative_lock_only": true,
+    "first_resources": {
+      "available_RAM_bytes": 1585137700864,
+      "disk_free_bytes": 14534623412224
+    },
+    "first_devices": {
+      "0": {
+        "health": "OK",
+        "pids": [
+          1081353
+        ],
+        "used_mb": 3579,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "1": {
+        "health": "OK",
+        "pids": [
+          1081354
+        ],
+        "used_mb": 3577,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "2": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3419,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "3": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3418,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "4": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3413,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "5": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3412,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "6": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3421,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "7": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3419,
+        "total_mb": 65536,
+        "utilization": 0
+      }
+    },
+    "updated_at_utc": "2026-11-12T07:35:10.975805+00:00",
+    "second_devices": {
+      "0": {
+        "health": "OK",
+        "pids": [
+          1081353
+        ],
+        "used_mb": 3579,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "1": {
+        "health": "OK",
+        "pids": [
+          1081354
+        ],
+        "used_mb": 3577,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "2": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3418,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "3": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3418,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "4": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3412,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "5": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3411,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "6": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3420,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "7": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3419,
+        "total_mb": 65536,
+        "utilization": 0
+      }
+    },
+    "second_resources": {
+      "available_RAM_bytes": 1585118666752,
+      "disk_free_bytes": 14534623404032
+    },
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "worker_pid": 1086557,
+    "owned_pgid": 1086557,
+    "command": [
+      "bash",
+      "/cache/zihaohe/omni_openh3_20261111/code/run_takeover_command.sh",
+      "/cache/zihaohe/envs/minimax-h3-npu/bin/python",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_headroom_evaluator_cpu_20261112c/code/eval_history_utility_teacher.py",
+      "--execution-contract",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_headroom_20261112a/execution_contract.json",
+      "--out",
+      "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_headroom_20261112a/output",
+      "--execute"
+    ],
+    "peak_owned_group_RSS_bytes": 4792160256,
+    "RSS_samples": 585,
+    "active_worker_seconds": 148.20620316732675,
+    "returncode": 0,
+    "remaining_owned_live_processes": [],
+    "report_sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578",
+    "acceptance": "execution complete; independent result acceptance pending",
+    "pins_unchanged": true
+  },
+  "finalizer": {
+    "schema": "rphi.teacher_headroom_terminal_supervision.v1",
+    "state": "completed",
+    "complete": true,
+    "audit_invocations": 1,
+    "expected_rows": 2880,
+    "automatic_training_or_evaluation": false,
+    "config_sha256": "f5726b279c02d60980e729ca44726f72c6444682e506b7c19b0969ed81479c86",
+    "execution_payload_sha256": "2de73c9a5d946b99084ad689f34bcfe03c669461780c88217dc75e44bad14fb1",
+    "wait_seconds": 0.00019078142940998077,
+    "status_reads": 1,
+    "report_sha256": "6760dccb1e71cefae86ee23931b4b5b1491c88ba03f5c3a331e113183ed71578",
+    "owned_audit_PID": 1093689,
+    "audit_sha256": "38d783deb2f41fc31da4657ba0329383bc192fd41ff943962d3041e5d4607807",
+    "scope": "saved RGB numerical headroom recomputed; no automatic student or quality acceptance"
+  },
+  "partial": {
+    "status": null,
+    "phase": null,
+    "completed_rows": 2880,
+    "counts": {
+      "crop_forward_attempts": 11430,
+      "crop_forwards_completed": 11430,
+      "model_invocation_attempts": 720,
+      "model_invocations_completed": 720,
+      "unavailable_LOO_crops_skipped": 90
+    },
+    "failure": null,
+    "actual": null,
+    "elapsed_seconds": null,
+    "current_phase": null
+  },
+  "archive_receipt": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_headroom_20261112a_finalize/evidence.tar.gz",
+    "bytes": 246737,
+    "sha256": "197aac255290d08b9200c56ed152e9808390feec155b12d3116450bd096bb6fa",
+    "manifest_sha256": "098b54e15675e2055b9ab43afd3c66925e5861d228bd3d047eb7c8014f64ef0a",
+    "payloads": 14
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "rphi.history_utility_backend_local_review.v1",
+  "complete": true,
+  "reviewed_at_utc": "2026-11-12T07:13:09.363821+00:00",
+  "report_sha256": "c016e79a99baa2c089e19b53efcf75dc8909182537988df05f459662d7977b26",
+  "independent_checkpoint_audit_sha256": "4f2eb78b1c9113db502ddcd1269b9e86042f67d13136d57fa64a2531994b4741",
+  "verdict": "backend_two_step_engineering_accepted_not_research_warmstart",
+  "actual": {
+    "teacher_forwards": 2,
+    "teacher_backwards": 2,
+    "teacher_optimizer_updates": 2,
+    "save": 1,
+    "clear_reload": 1
+  },
+  "actual_saved_state": {
+    "model_parameters": 58,
+    "model_elements": 621155,
+    "optimizer_parameter_states": 58,
+    "optimizer_tensors": 174,
+    "step": 2,
+    "all_model_and_optimizer_tensors_finite_FP32": true,
+    "saved_model_sha256": "39300afcb16d5571392a816abe8f2ea154a425259ee79326ea31ccec19dac355",
+    "changed_model_tensors": 58,
+    "baseline_delta_L2": 0.003940790584249538,
+    "nonzero_moment_tensors": 116
+  },
+  "first32_teacher_row_hashes_verified": true,
+  "strict_reload_boundary": "Saved state actual CPU checks plus source-bound live clear/reload report. No extra forward/reloaded trajectory was run by reviewer.",
+  "resources": {
+    "active_worker_seconds": 178.3395126387477,
+    "producer_seconds": 173.01001584902406,
+    "host_owned_peak_RSS_bytes": 10902360064,
+    "NPU_peak_allocated_bytes": 1133998080,
+    "NPU_peak_reserved_bytes": 1363148800,
+    "update_seconds": [
+      4.674329776316881,
+      0.09042441286146641
+    ]
+  },
+  "quality_boundary": "Two steps establish the backend/optimizer/save-reload path and observed resource usage. They do not establish1000-step stability, teacher headroom, restoration quality or student usefulness.",
+  "no_research_warmstart": true,
+  "checkpoint_downloaded": false,
+  "actual_checkpoint_CPU_read_on": "31984",
+  "local_checks": "Small report and audit SHA/semantic consistency only.",
+  "additional_model_forwards": 0,
+  "additional_NPU_calls": 0,
+  "additional_NPZ_reads": 0
+}

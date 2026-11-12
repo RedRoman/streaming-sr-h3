@@ -1,0 +1,23 @@
+{
+  "schema": "rphi.history_utility_headroom_independent_source_review.v1",
+  "producer_sha256": "f20705d0b1851aec7b57264f7afb7b2fbe29cf359b5b4a0172a194b1225f5ed4",
+  "protocol_sha256": "d529c075ba5499d512b3728ff689cc104f1a80e9b985d5bb10bda7eaca690b03",
+  "blocking_findings": [],
+  "checks": [
+    "final1000 teacher + exact teacher training identity/unique final checkpoint/data audit bound",
+    "six dev sources x five profiles x96frame exact row chronology and source/target hashes",
+    "raw observed+availability only to model; target first used after all forwards",
+    "all/current-only/valid-slotLOO,11430 crop forwards and90skip, no optimizer",
+    "six actual FP32 RGB arrays per batch,180batch,3GiB bound, no extra forwards",
+    "FP64 unclamped headroom, clipped metrics separately; null zero-MSE PSNR",
+    "whole-run model state/versions/frozen flags and dependencies checked; original teacher source untouched",
+    "predeclared source-balanced rule + full negative reporting, no automatic student admission"
+  ],
+  "read_CPU_receipt": "preparation/history_utility_headroom_evaluator_cpu_20261112c/preparation_receipt.json",
+  "tests_repeated": false,
+  "scope_limitations": [
+    "source review, not actual headroom execution",
+    "only fixed96x96 development crops; no LPIPS or flow",
+    "actual headroom still requires independent streamed saved-array audit"
+  ]
+}

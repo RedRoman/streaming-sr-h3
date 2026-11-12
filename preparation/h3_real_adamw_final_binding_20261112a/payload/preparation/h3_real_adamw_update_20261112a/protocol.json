@@ -1,0 +1,100 @@
+{
+  "adapter_tensors": 400,
+  "alpha": 8,
+  "budget": {
+    "AdamW_updates": 1,
+    "NFE": 12,
+    "RGB_backwards": 1,
+    "Rphi_calls": 0,
+    "VAE_decodes": 4,
+    "VAE_encodes": 0,
+    "adapter_save_clear_reload": 1,
+    "extra_metric_forwards": 0,
+    "merge": 1,
+    "optimizer_save_clear_reload": 1
+  },
+  "full22_source_contract_sha256": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3",
+  "gates": {
+    "functional_readiness": "zero vs accepted reference RGB byte exact AND merged vs accepted reference changed coordinates>0; otherwise numerical_mode_confounded or no_deployed_RGB_change; observed impact only, no quality/repeatability claim",
+    "merge": "only200 declared base writes; sameFP32addmm/singleBF16cast; merged equivalence descriptive",
+    "no_effect_policy": "retain arithmetic/serialization result; functionalreadinessfalse, no LR/rank/step adjustment",
+    "updated_vs_reloaded": "torch.equal video/audio/decoderFP16/RGB, same no_grad mode",
+    "zero_RGB": "torch.allclose(candidate,reference,atol=.0002,rtol=.0001); bitexact also recorded",
+    "zero_latent_audio_decoder_cast": "torch.equal againstacceptedreference"
+  },
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "graph_lifecycle": "release zero output/RGB graph and retainedvideo refs before AdamW; independent mode sessions, checkpoint onlyzero; no optimizer survives merge",
+  "input_inventory_sha256": "c1a5e5339e335c1e536474da5712dbd04429753743803c51e6f3cfde8c880367",
+  "inputs": "unchanged cache-e Z_R guide and Z_raw warmstart; original clean target only in RGB loss",
+  "modes": [
+    "zero",
+    "updated",
+    "reloaded",
+    "merged"
+  ],
+  "native_VAE": {
+    "blocks": 36,
+    "context_breakdown": {
+      "backward": 108,
+      "merged_decode": 1,
+      "reloaded_decode": 1,
+      "updated_decode": 1,
+      "zero_decode": 109
+    },
+    "decoder_context_count": 220,
+    "fallback_or_geometry_change_allowed": false,
+    "per_decode_block_calls": 108,
+    "recompute_block_calls": 108,
+    "spatial_rows": 3,
+    "temporal_chunks": 1,
+    "tile_batch": 4
+  },
+  "optimizer": {
+    "actual_lr": 1.0000000000000002e-06,
+    "amsgrad": false,
+    "base_lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "capturable": false,
+    "class": "torch.optim.AdamW",
+    "clip_grad_norm": {
+      "error_if_nonfinite": true,
+      "foreach": false,
+      "max_norm": 1.0,
+      "norm_type": 2.0
+    },
+    "differentiable": false,
+    "eps": 1e-08,
+    "foreach": false,
+    "fused": false,
+    "global_step": 1,
+    "gradient_order": "one scaled RGB backward, exactlyone FP32 unscale, finite, fixedglobalclip, exactlyoneAdamW",
+    "loss_scale": 1024.0,
+    "lr_rule": "base_lr * min(1.0, global_step / warmup_steps)",
+    "maximize": false,
+    "state": "400 named entries, each stepFP32scalar==1 and exp_avg/exp_avg_sqFP32 matchingparameter shape; exact save clear reload",
+    "warmup_steps": 100,
+    "weight_decay": 0.0
+  },
+  "rank": 8,
+  "reference": "reuse accepted full22 reference arrays and pristine base/VAE inventories; no fresh reference calls",
+  "reference_audit_sha256": "fd6df63d3121474d9884e91d90514f273a15041ef5b8c6686d22a65e3c72e1f7",
+  "reference_report_sha256": "bf3db9f4eea9f9d2e29ea8c014e15cdd08e725712fe6f2e33cca07c6b51bae0f",
+  "resource_admission": "not present; new rootowned runtime/source pins/ownedPGtimeRSS/cardlock required before execution",
+  "role": "train",
+  "schema": "openh3.real_train_adamw_single_update_protocol.v1",
+  "scope": "singleTRAIN engineering result, not training recipe or restoration quality acceptance",
+  "seed": 101,
+  "source_id": "2BdYaGuVAKo",
+  "status": "implementation_preparation_only_not_execution_authority",
+  "target_modules": 200,
+  "task": "compression",
+  "zero_initialization": "fresh seed101 A, exactzero B; no nonzero checkpoint"
+}

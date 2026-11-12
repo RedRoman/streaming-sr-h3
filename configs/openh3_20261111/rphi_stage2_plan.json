@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-12T05:53:26.691359+00:00",
-    "stage": "full22_same_graph_RGB_backward_accepted_zero_updates;P1_revised25_materialization_running_with_CPU_finalizer",
+    "at_utc": "2026-11-12T07:41:52.591751+00:00",
+    "stage": "P1_teacher1000_completed;headroom_failed_preserved;H3_real_AdamW_probe_running",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,11 +269,11 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun accepted stage2,smalljoint,nonzero b,cache e,full22,targetscreen b orP1one-step.",
-      "P1 revised25 materializer and terminal auditor already running; first inspect their actual statuses,do not duplicate. On completion download one small archive and accept exact19train/6dev paired datasets/schedules.",
-      "Implement revised P1 trainer,cache/donor and evaluation entries; freeze headroom rule before teacher outcomes,then finite teacher1000 and three matched1000student arms after headroom acceptance.",
-      "Prepare new real-TRAIN H3 AdamW single-update/strict reload/merged RGB impact gate; preserve prior syntheticSGD zero-output-change negative result.",
-      "Only after that gate and complete shared data/cache/fixed controls,admit finite guide-matched LoRA training and source-level paired quality/clean-protection evaluation."
+      "Do not rerun completed Stage2/cache/full22/P1materialization/schedules/backend/teacher/headroom.",
+      "Read realTRAIN H3 AdamW producer and finalizer actual status; wait if healthy,accept actual output once terminal.",
+      "Preserve P1 negative mean-history-gain gate; do not extend teacher or silently admit original three student arms.",
+      "Run bounded CPU candidate-set oracle/LOO interaction diagnostic from already saved arrays,then freeze revised research hypothesis before any new training.",
+      "Keep guide-matched LoRA formal training at0 until realAdamW deployment/persistence outcome; no quality/generalization claim from engineering probes."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -608,7 +608,7 @@
       }
     },
     "P1_history_utility": {
-      "status": "revised_primary25_materialization_running;complete_dataset_validation_pending",
+      "status": "teacher1000_completed;fixed_headroom_failed;original_students_not_admitted",
       "contract": "configs/openh3_20261111/history_utility_contract_20261111.json",
       "model": "code/rphi_history_utility.py",
       "model_sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
@@ -826,15 +826,15 @@
           "train": 19,
           "dev": 6
         },
-        "materialization_ready": false,
-        "research_training_started": false,
+        "materialization_ready": true,
+        "research_training_started": true,
         "new_metadata_bridge_required": true,
         "profile_reuse_candidates": [
           "4EKWTiWjPTQ",
           "6UZVovkR3IU",
           "6rJrrfRO3cA"
         ],
-        "materialization_status": "running",
+        "materialization_status": "completed_and_independently_accepted",
         "new_metadata_bridge_implemented": true
       },
       "revised_loader": {
@@ -843,7 +843,7 @@
         "CPU_tests": 11,
         "evidence_preinspection_passed": true,
         "evidence": "results/takeover_20261111/history_utility_revised_data_preparation_20261112",
-        "actual_complete_dataset_validation_passed": false,
+        "actual_complete_dataset_validation_passed": true,
         "old_32_8_research_ready": false
       },
       "revised_materialization": {
@@ -851,7 +851,7 @@
         "run": "runs/history_utility_revised_materialization_20261112a",
         "supervisor_run": "runs/history_utility_revised_materialization_20261112a_supervisor",
         "session": "p1-revised-materialize-20261112a",
-        "status": "running",
+        "status": "completed_and_independently_accepted",
         "worker_pid": 908164,
         "prep": "preparation/history_utility_revised_materializer_20261112a",
         "observed_at_utc": "2026-11-12T06:09:49.287544+00:00",
@@ -882,14 +882,14 @@
           "worker_processes": 1
         },
         "do_not_restart": true,
-        "dataset_ready": false,
+        "dataset_ready": true,
         "quality_claim": false,
         "completed_sources_at_launch_observation": 2,
         "latest_observed_at_utc": "2026-11-12T06:29:56.660737+00:00",
         "completed_sources_latest": 18,
         "new_codec_passes_completed_latest": 102,
         "finalizer": {
-          "status": "waiting",
+          "status": "completed",
           "session": "p1-revised-finalize-20261112a",
           "evidence": "evidence/history_utility_revised_dataset_terminal_20261112a",
           "prep": "preparation/history_utility_revised_terminal_audit_20261112a",
@@ -911,12 +911,13 @@
           "source_review_sha256": "b73b32fe825cc3fe49c79e46e02ffdc05a29f315337ae09efd6d934a98b26e4a",
           "launch_receipt": "preparation/history_utility_revised_terminal_audit_20261112a/root_launch_receipt.json",
           "launch_receipt_sha256": "e1ff1c2522a21e72536c4c11e8f7a874febc09e5429dcfc80fb009deff1319bf",
-          "audit_invocations": 0,
+          "audit_invocations": 1,
           "unique_NPZ_to_verify": 100,
           "nearclean_additional_target_reads": 19,
           "training_admitted": false
         },
-        "latest_observation": "preparation/history_utility_revised_materializer_20261112a/observation_0630.json"
+        "latest_observation": "preparation/history_utility_revised_materializer_20261112a/observation_0630.json",
+        "root_acceptance": "results/takeover_20261111/history_utility_revised_dataset_completed_20261112a/root_acceptance.json"
       },
       "next_training_gates": {
         "path": "results/takeover_20261111/history_utility_next_training_gates_20261112.json",
@@ -927,6 +928,53 @@
         "headroom_decision_rule": "Freeze operational rule before teacher outcomes; root evidence review within existing authorization, not a new human permission requirement.",
         "revised_eval_crops_per_arm": 2880,
         "revised_eval_restorer_calls_upper_bound_per_arm": 20160
+      },
+      "persisted_schedules": {
+        "host": "31984",
+        "run": "runs/history_utility_schedules_20261112a",
+        "tmux": "p1-schedules-20261112a",
+        "launch_returned": true,
+        "completed": true,
+        "queue_sha256": "e144bc40878fee6f2d68a957b711ab3d3d500393e1ea4ac04d11b02347a844e5",
+        "independent_audit_sha256": "32199a84ca4d88ae58d97314fc6d979c9eb3cef5c1a5e6d8f9ae37220997577c"
+      },
+      "teacher1000": {
+        "status": "completed_and_independently_accepted",
+        "host": "31984",
+        "card": 7,
+        "run": "runs/history_utility_teacher_20261112a",
+        "tmux": "p1-teacher-20261112a",
+        "worker_pid": 1051993,
+        "queue_sha256": "fe3bf82774cf4dac91e96e735441da4eabc9621b117e271daded8b2598609229",
+        "execution_sha256": "591a1734a35a2ef11d885fc770508ac781f9e57f6cbcb77ec6ade35cfc6dba8d",
+        "latest_observed_step": 1000,
+        "finite_losses_gradients_parameters": true,
+        "headroom_accepted": false,
+        "finalizer": {
+          "status": "completed",
+          "tmux": "p1-teacher-finalize-20261112a",
+          "run": "runs/history_utility_teacher_20261112a_finalize",
+          "config_sha256": "341f7883a4f607596753b398307fcbc81f71500802ebca696578089f64adf231",
+          "audit_invocations": 1
+        },
+        "root_acceptance": "results/takeover_20261111/history_utility_teacher_completed_20261112a/root_acceptance.json",
+        "root_acceptance_sha256": "d71b91d0bf6fbb6a2670be1928253949ebc5140d08d6337740ffb1950a0391a8"
+      },
+      "headroom": {
+        "status": "completed_numerically_verified_headroom_failed",
+        "host": "31984",
+        "run": "runs/history_utility_headroom_20261112a",
+        "finalizer_run": "runs/history_utility_headroom_20261112a_finalize",
+        "report": "results/takeover_20261111/history_utility_headroom_completed_20261112a/producer/report.json",
+        "root_review": "results/takeover_20261111/history_utility_headroom_completed_20261112a/root_review.json",
+        "root_review_sha256": "36975fd9aee66548a26b350f18ba3c7c8f62f3dd4a86a20c9bfa383b184674fc",
+        "mean_degraded_history_gain": -0.00026069268747303903,
+        "sources_positive": 4,
+        "sources_total": 6,
+        "failed_gate": "source_balanced_degraded_gain",
+        "original_students_admitted": false,
+        "extra_teacher_steps_admitted": false,
+        "next": "CPU existing candidate four/five-state oracle and LOO interaction diagnostic; GT only offline candidate-set bound"
       }
     },
     "resource_snapshot_this_turn": {
@@ -1052,7 +1100,7 @@
       "source_train_only": true,
       "worker_PID_is_historical": true
     },
-    "updated_at_utc": "2026-11-12T06:33:34.148208+00:00",
+    "updated_at_utc": "2026-11-12T07:41:52.591751+00:00",
     "backup_31984_current_turn": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
@@ -1089,6 +1137,25 @@
       "overwritten_files": 0,
       "local_receipt": "preparation/followup_20261112_full22_terminal/verification.json",
       "scope": "60 changed/new small records after1405snapshot; full6.5MB archive separately mirrored exactly to31984. This completion record follows the point-in-time backup."
+    },
+    "followup_this_turn": "results/takeover_20261111/followup_20261112_063541.json",
+    "H3_real_AdamW": {
+      "status": "running",
+      "host": "31112",
+      "card": 1,
+      "run": "runs/h3_real_adamw_update_20261112a",
+      "session": "h3-real-adamw-20261112a",
+      "worker_pid": 510744,
+      "queue_sha256": "0843ec7964cac52a40d8c811cf80143832ff566a702596c9a52806de2ba1117e",
+      "execution_sha256": "f81de1f4129085bd42579c6d7be15301fd4852749933d8cd452a73fd1cabe6d1",
+      "scope": "one real TRAIN AdamW engineering update;not formalguide-matchedtraining",
+      "latest_observation": "preparation/h3_real_adamw_update_20261112a/observation_0736.json",
+      "finalizer": {
+        "state": "waiting",
+        "session": "h3-real-adamw-finalize-20261112a",
+        "run": "runs/h3_real_adamw_update_20261112a_finalize",
+        "admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e"
+      }
     }
   }
 }

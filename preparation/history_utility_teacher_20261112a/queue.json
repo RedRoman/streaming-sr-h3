@@ -1,0 +1,72 @@
+{
+  "schema": "rphi.history_utility_bounded_once.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "kind": "teacher1000",
+  "resource": {
+    "wall_seconds": 3600,
+    "CPU_threads": 4,
+    "rss_bytes": 34359738368,
+    "grace_seconds": 30
+  },
+  "physical_card": 7,
+  "supervision_source": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/frozen_supervision.py",
+  "execution_contract": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/execution_contract.json",
+  "run": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_teacher_20261112a",
+  "out": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_teacher_20261112a/output",
+  "report_file": "report.json",
+  "report_requires": {
+    "schema": "rphi.history_utility_teacher_run.v1",
+    "complete": true,
+    "status": "teacher1000_complete_pending_headroom"
+  },
+  "admission": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/launch_admission.json",
+  "argv": [
+    "/cache/zihaohe/envs/minimax-h3-npu/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_history_utility.py",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_teacher_20261112a/output",
+    "--execute"
+  ],
+  "pins": {
+    "/cache/zihaohe/omni_openh3_20261111/code/takeover_queue.py": "1ee1cca8081759e87b937dac1045a0060312924c1af508435afc87a399bd6a74",
+    "/cache/zihaohe/omni_openh3_20261111/code/run_takeover_command.sh": "d9b5211f2a1e5d4a3ada37c47e0f3d845605c815ba9091be5610027a4b0cbffb",
+    "/cache/zihaohe/omni_openh3_20261111/env.sh": "c68c3ebbc4eb1aec6fcafcc8209cbfe0018254a72c2e6052fd155d7e049d5a3a",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_schedules_20261112a/frozen_supervision.py": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_history_utility.py": "3cc874cf5dbdb9859f504ca24ef591eaa4a06e46ea17494563d327748cfb76ed",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/check_history_utility_backend.py": "0a48f122891e4ec898b4998c94424976729e6948c481f2f63a88eb1fb9f5945f",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_model.py": "6f8ceba5fdf911585ea258ba5795ba3efa97c311a19927b1d542c907980cebc6",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_condition_v2.py": "3df91547d2cfb1a46b5315f5b6b8182251d1692021ae6589b2c8e1f2bd4fc2a3",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/rphi_data.py": "8f434a7ace1cbafb7a141e7a1fc11ac4b1f31fc4181d60439407669afabec301",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_trainer_cpu_20261112b/code/train_rphi.py": "efbbf0fe83de575e5b3bf3d2c012e47369ebde336eb50fa42ef6787893fa20b9",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/complete.json": "fd6be0ec7c70aeff5b40b551a873816f996aaf8e25a28d9fd725e68e4afcbf13",
+    "/cache/zihaohe/omni_openh3_20261111/evidence/history_utility_revised_dataset_terminal_20261112a/dataset_audit/audit.json": "6456d81b20392b6ba8fb16f58324b649c26ad93ad6131bca88c992bdae226abd",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/train_receipt_index.json": "50b470d9aca9c6826bdcd507074c3f2861eb8c3c5467c3e2234d5f5294a3b639",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/dev_receipt_index.json": "30c6b61530b796e94c7133e6e7deb48b53de99496b90fb8107aa1a929119d329",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/teacher_schedule.json": "1b9ed30072634352925dd04d8b14016df5aa9f3d100b8f783ebb83f38be43e48",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/student_schedule.json": "b5e6d4c6031d79d5b9457c98fe215d49e393e335994559597498176f4e666f08",
+    "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/manifest.json": "5c001aaa3335e335a16311f9d42e400f29274d65049f967859b7969c9d75ee0b",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_checkpoint_asset_20261112a/checkpoint_step003000.pt": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_revised_cohort_20261112.json": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_contract_20261111.json": "a2c94df6646936422ae3abde9599323db0eb5181c1a264b97d4593f948f37742",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_headroom_20261112.json": "d529c075ba5499d512b3728ff689cc104f1a80e9b985d5bb10bda7eaca690b03",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/run_once.py": "08fea0223868fbd2a23e87eaa12bd44f1e8c74ff60c31cde86fd4d2fe0d0644f",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/execution_contract.json": "591a1734a35a2ef11d885fc770508ac781f9e57f6cbcb77ec6ade35cfc6dba8d",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_teacher_20261112a/producer_admission.json": "46f4b4c8f676a7f8ce321ef6be4ecf1aba06e8b715603f92d294435b53ef0580",
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_backend_completed_20261112a/root_acceptance.json": "526df00a7b77b188255d4e09c72869ffd277e45a6ce09d94188514ab15b1628e",
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_backend_completed_20261112a/report.json": "c016e79a99baa2c089e19b53efcf75dc8909182537988df05f459662d7977b26",
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_backend_completed_20261112a/independent_audit.json": "4f2eb78b1c9113db502ddcd1269b9e86042f67d13136d57fa64a2531994b4741",
+    "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_backend_completed_20261112a/independent_review.json": "e1c5b9395a1185063d88ec7f6383dcdb2585ed999afb69f1400dce13db6fdc12"
+  },
+  "accepted_backend_smoke": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/results/takeover_20261111/history_utility_backend_completed_20261112a/root_acceptance.json",
+    "sha256": "526df00a7b77b188255d4e09c72869ffd277e45a6ce09d94188514ab15b1628e"
+  }
+}

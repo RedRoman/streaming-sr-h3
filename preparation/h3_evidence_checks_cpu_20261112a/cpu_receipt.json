@@ -1,0 +1,36 @@
+{
+  "schema": "openh3.evidence_checks_stdlib_CPU_validation.v1",
+  "complete": true,
+  "utc": "2026-11-12T08:38:23.109641+00:00",
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "code/tests",
+    "-p",
+    "test_h3_evidence_checks.py",
+    "-v"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 0.05449641600716859,
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "source_sha256": {
+    "code/h3_evidence_checks.py": "cf6528c6f0d6b484f903a015a63af13850e725a14aa59f185678b5413c9daffe",
+    "code/tests/test_h3_evidence_checks.py": "2102785731cd11e2b3e08e694b5efa0e2c94875290878c540e11b290d61776d1",
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_real_adamw_update.py": "27fb9145790635a34398f52ae437f6a3f3f698f097c9a22ccc74ebcd4c6827b3"
+  },
+  "source_unchanged": true,
+  "tests": 7,
+  "skipped": 0,
+  "log_sha256": "33d3324258160c6ece895ee47668edc7028ffd93b5920b65d57dd0e9a3b07cfc",
+  "reference_AST_only": true,
+  "old_helpers_or_processes_modified": false,
+  "integrated_into_any_run": false,
+  "model_calls": 0,
+  "NPU_calls": 0,
+  "real_checkpoint_or_data_reads": 0,
+  "scope": "Synthetic stdlib evidence fixtures only; checks success0writes, same gate rejection, failure durable before raise, save-error propagation. Does not resume or resolve the prior timed-out AdamW run."
+}

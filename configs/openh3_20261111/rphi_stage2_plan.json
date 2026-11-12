@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-12T08:22:49.737226+00:00",
-    "stage": "P1_history_headroom_failed_preserved;input_preservation_module_CPU_passed_donor_metadata_completed;H3_real_AdamW_clear_reload_running",
+    "at_utc": "2026-11-12T08:44:51.324425+00:00",
+    "stage": "P1_history_headroom_failed_preserved;input_preservation_CPU_and_donors_accepted_no_training;H3_AdamW_timeout_failure_preserved",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,11 +269,13 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun completed Stage2/cache/full22/P1materialization/schedules/backend/teacher/headroom.",
-      "Read realTRAIN H3 AdamW producer and finalizer actual status; wait if healthy,accept actual output once terminal.",
-      "Preserve P1 negative mean-history-gain gate; do not extend teacher or silently admit original three student arms.",
-      "Input-preservation module CPU9passed; real16000row donor metadata independently accepted. Implement isolated train-only finalK1 labels and exactdev rawK3 cache; only then matched/shuffled1000step heads under prospectively frozen screen.",
-      "Keep guide-matched LoRA formal training at0 until realAdamW deployment/persistence outcome; no quality/generalization claim from engineering probes."
+      "Do not rerun completed Stage2/cache/full22/P1materialization/schedules/backend/teacher/headroom or the failed H3 AdamW producer.",
+      "Independently audit existing saved adapter/optimizer, first-step equations and zero/updated output artifacts on CPU under a new bounded contract.",
+      "In a new immutable snapshot integrate success-no-flush checks, retain all validation predicates, add explicit phase/progress flushing and exact checkpoint/runtime pins.",
+      "After successful CPU acceptance and fresh NPU health/memory/no-PID/shared-lock/15s second check, load existing checkpoint and perform only reloaded3NFE1decode plus declared BF16 merge3NFE1decode. No new backward, update, encode or Rphi calls.",
+      "Accept reload against original updated output byte-for-byte, audit declared merge and actual functional effect; keep original failed run unchanged and formal training0 until engineering requirements pass.",
+      "Keep P1 original mean-history-gain gate failure; no extra teacher steps or admission of the original three student arms.",
+      "Implement once-only train19 final-K1 label export and exact dev rawK3 reconstruction, then matched/shuffled1000step CPU heads under the frozen input-preservation screen. Existing head training remains0."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -1116,7 +1118,7 @@
       "source_train_only": true,
       "worker_PID_is_historical": true
     },
-    "updated_at_utc": "2026-11-12T08:28:15.890359+00:00",
+    "updated_at_utc": "2026-11-12T08:44:51.324425+00:00",
     "backup_31984_current_turn": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
@@ -1156,7 +1158,7 @@
     },
     "followup_this_turn": "results/takeover_20261111/followup_20261112_063541.json",
     "H3_real_AdamW": {
-      "status": "running",
+      "status": "failed_wall_budget_not_accepted",
       "host": "31112",
       "card": 1,
       "run": "runs/h3_real_adamw_update_20261112a",
@@ -1165,12 +1167,16 @@
       "queue_sha256": "0843ec7964cac52a40d8c811cf80143832ff566a702596c9a52806de2ba1117e",
       "execution_sha256": "f81de1f4129085bd42579c6d7be15301fd4852749933d8cd452a73fd1cabe6d1",
       "scope": "one real TRAIN AdamW engineering update;not formalguide-matchedtraining",
-      "latest_observation": "preparation/h3_real_adamw_update_20261112a/observation_082403.json",
+      "latest_observation": "results/takeover_20261111/h3_real_adamw_failed_20261112a/root_review.json",
       "finalizer": {
-        "state": "waiting",
+        "state": "completed_failure_audit",
         "session": "h3-real-adamw-finalize-20261112a",
         "run": "runs/h3_real_adamw_update_20261112a_finalize",
-        "admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e"
+        "admission_sha256": "88c525c1bcd08087018e96d31e5332ef2a1b560e5feb391074fd65123bd7ae7e",
+        "audit_complete": true,
+        "producer_accepted": false,
+        "numerical_acceptance": "producer_failed_not_accepted",
+        "terminal_audit_sha256": "171431f56e6807f0b9841df092e1e0fd923c86b2bba56caf782c18d78ee055b6"
       },
       "phase": "clear_and_strict_reload",
       "actual": {
@@ -1206,24 +1212,41 @@
         },
         "unscale_calls": 1
       },
-      "engineering_update_complete": true,
+      "engineering_update_complete": false,
       "complete": false,
       "persistence_or_deployment_accepted": false,
-      "observed_at_utc": "2026-11-12T08:24:03.524825+00:00"
+      "observed_at_utc": "2026-11-12T08:44:51.324425+00:00",
+      "failed_at_utc": "2026-11-12T08:32:23.000179+00:00",
+      "root_review_sha256": "b6fba2f6b379bd40b22bbce21c4f7c91ab01f25548cebf2751ab2ca6d006bc14",
+      "producer_reported_optimizer_step_completed": true,
+      "active_worker_seconds": 3601.0143717136234,
+      "error": {
+        "type": "TimeoutError",
+        "message": "owned worker exceeded fixed wall budget"
+      },
+      "owned_cleanup": {
+        "pgid": 510744,
+        "TERM_sent": true,
+        "KILL_sent": false,
+        "remaining_live": [],
+        "zombies_only": false
+      },
+      "next": "Independent saved-partial CPU audit, then new snapshot strict reload and merge only (6NFE/2decode/0backward/0update); do not restart failed producer."
     },
     "backup_31984_latest": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
-      "verified_at_utc": "2026-11-12T08:30:11.784400+00:00",
-      "files": 57,
-      "archive_sha256": "8ca1d4741b1f40958cb0b1ca93108470ee2ed217daf657c0dab469872b7ea5e1",
-      "archive_bytes": 185973,
-      "manifest_sha256": "e7aa9bc8c56ad9a1e6c095e4d078fb2f995dc512b950bcefede0c8965acb6897",
-      "payload": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_1629/verified_payload",
+      "verified_at_utc": "2026-11-12T08:47:22.661437+00:00",
+      "files": 18,
+      "archive_bytes": 2021204,
+      "archive_sha256": "1d9000b256018acfd05c50e2f91f42d6d72eb666d1ef188937a46faa55c066cb",
+      "manifest_sha256": "d29442002a3425716a10a877b2dd36d49fd3939a1a08520ed317133b78fd581c",
+      "payload": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_1647/verified_payload",
       "archive_members_verified": true,
       "extracted_files_verified": true,
       "overwritten_files": 0,
-      "scope": "57 changed/new small files after1545 snapshot; point-in-time before this completion record."
+      "failure_archive_included": true,
+      "scope": "Point-in-time failure evidence and helper snapshot before this verification/status bookkeeping."
     },
     "input_preservation": {
       "status": "module_CPU9_passed_actual_donors_independently_accepted_train_labels_missing",

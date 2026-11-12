@@ -1,0 +1,147 @@
+{
+  "actions": {
+    "SSH": 0,
+    "models": 0,
+    "new_launch": 0,
+    "process_actions": 0,
+    "runtime_edits": 0
+  },
+  "created_utc": "2026-11-12T08:36:51.872515+00:00",
+  "minimal_fresh_continuation_proposal": {
+    "combined_accounting": "If continuation fully passes, total observed work across both runs is12NFE/4decode/1backward/1AdamW plus a second asset load and separately counted state load. No new update/backward. Do not hide failed-run elapsed time or claim the original budget succeeded.",
+    "evidence_cost_fix_new_source_only": "Preserve every check/value, but make successful require checks in-memory; flush durable stage receipts and failure evidence, not full JSON for each scalar assertion. Copy each small adapter/state tensor toCPU once and reuse it for finite/value/hash/NPY evidence; use bounded incremental inventory ledgers. Keep explicit initial/premerge/final full base+buffer hashes and cheap lifecycle checks at decode boundaries; never clone the full20B base. Old producer/source/evidence remains frozen.",
+    "first_gate": "Freeze root-accepted failure report/supervisor/audit/pins plus actual checkpoint fileSHA and metadata. A separate CPU subset audit checks all400before/gradient/clipped/after tensors and1200postupdate optimizer tensors/safetensors using the already preregistered AdamW formulas/tolerances. Validate existing zero/updated video,audio,FP16decoder input,RGB/noise/guide/raw/target and frozen receipts. Do not require nonexistent reload/merge arrays to call the original run passed; call only those valid persisted components verified.",
+    "independent_audit": "New CPU terminal auditor links original persisted one-update evidence and new inference evidence by immutableSHA. Read all actual saved arrays/checkpoints and verify strict mode1 equality, budgets,merge scope,noise/input bindings and unchanged numeric policies. Clearly label original run failed and new result as completed continuation engineering checks, not an original12NFE monolithic pass or resumed optimizer trajectory.",
+    "load_and_state": "New namespace/producer/pins, pristine same pretrained base/VAE. Inject rank8 then strict-load the saved400FP32 adapter tensors; do not use H3(adaptation_path), which would merge before unmerged validation. Restore saved1200 optimizer states and verify exact keys,shape,dtype,step1,parameter order and actual devices without stepping; optimizer may then be released before inference/merge. Record this fresh-process load separately from the original attempted clear/reload. Cross-process object/version IDs are not comparable; establish new snapshots after loading.",
+    "mode1": "Same original no_grad+native-math path, guide Z_R/raw Z_raw/seed101/sigmas/audio noise;3NFE+1native22x480x832 decode. Require strict saved-byte equality of video/audio/actualFP16decoderinput/RGB versus original updated mode. Fail stops; no tolerance relaxation, extra forward or recomputation of updated/zero.",
+    "mode2": "Only after mode1 passes, exactly one declared200weight FP32addmm/singleBF16cast merge; preserve all other parameters/registered buffers. Same3NFE+1decode; compare actual outputs to mode1 and original zero/reference descriptively. Keep the existing functional rule: original zero/reference RGB bytes exact AND merged/reference changed coordinates>0; otherwise readiness remains false. No quality/generalization claim.",
+    "native_decode": "Unchanged Tlatent7→22frames,3spatialrows×4tile batch,108VAEblock calls perdecode, no fallback/resize/frame substitution. No checkpoint recompute because both continuation modes use no_grad. Expected2 outer decoder contexts,300total DiT block calls and216VAE block calls, measured rather than assumed.",
+    "new_budget": {
+      "NFE": 6,
+      "Rphi_calls": 0,
+      "VAE_decodes": 2,
+      "VAE_encodes": 0,
+      "backwards": 0,
+      "merge_calls": 1,
+      "new_training_checkpoint_saves": 0,
+      "optimizer_steps": 0,
+      "unscale_or_clip_calls": 0
+    },
+    "resources": "Fresh root resource/lock/idle admission and independent owned-PG guard; proposed same3600+30cap/128GiB hostRSS, no retry. Prior912s asset load and expensive merge/hash remain real costs; no asserted completion ETA. Do not extend or revive the failed producer.",
+    "status": "design_only_not_implemented_not_admitted"
+  },
+  "schema": "openh3.real_train_adamw_timeout_static_diagnostic.v1",
+  "scope": "Read-only local frozen-source analysis; remote terminal facts supplied by root. No SSH, model calls, process interventions, runtime edits or budget changes.",
+  "source_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_nonzero_adapter.py": "ab710d9a365ac8f502aea177f8993354e2a17d086de97cc71a0e4b265ae99f6b",
+    "code/check_h3_real_adamw_update.py": "27fb9145790635a34398f52ae437f6a3f3f698f097c9a22ccc74ebcd4c6827b3",
+    "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22"
+  },
+  "static_findings": [
+    {
+      "finding": "Counters increment immediately after optimizer.load_state_dict, before optimizer_inventory, exact_adapter/exact_optimizer receipts and final checkpoint checks. clear_reload_cycles=1 therefore does not establish successful completion of the reload verification.",
+      "lines": [
+        216,
+        222,
+        237,
+        247
+      ],
+      "path": "code/check_h3_real_adamw_update.py"
+    },
+    {
+      "finding": "Every require(), including success, calls evidence.save(), which rewrites the full growing pretty-printed partial.json. clear_reload has2400 per-state require calls before loading; optimizer_inventory adds about3203 successful require calls across400entries/1200state tensors. These are thousands of full-report serializations, not only the nominal every16-array flushes.",
+      "lines": [
+        47,
+        49,
+        67,
+        69
+      ],
+      "path": "code/check_h3_joint_rgb_grad.py"
+    },
+    {
+      "finding": "The reload path also repeats dtype/finite checks, NPU-to-CPU tensor SHA transfers, then1200 NPY saves/file+array hashes and about76 additional full-report flushes. This is a concrete static overhead risk. No per-line timing, bytes-written measurement or stack trace exists here to attribute the observed1380seconds to one operation.",
+      "lines": [
+        64,
+        80,
+        84,
+        110,
+        198,
+        247
+      ],
+      "path": "code/check_h3_real_adamw_update.py"
+    },
+    {
+      "finding": "After clear_reload returns, adapter_snapshot hashes400adapter tensors; audit_state(after_reload) defaults full=False. Its DiT/VAE check is object/version/device/grad lifecycle only, plus adapter-byte checks. It is not another20B full base hash.",
+      "lines": [
+        453,
+        460,
+        509,
+        523
+      ],
+      "path": "code/check_h3_real_adamw_update.py"
+    },
+    {
+      "finding": "ResidentH3Trajectory construction/entry validates residency/options/frozen flags and counts nonzero B, installs math contexts and calls pre_run; it does not reload or hash the full20B weights. With reloaded NFE0 and no lifecycle_after_reload event, these later phases are not established as reached. The last phase can also cover adapter_snapshot because no new phase event is emitted until audit_state.",
+      "lines": [
+        234,
+        240,
+        285,
+        348
+      ],
+      "path": "code/openh3_train_trajectory.py"
+    }
+  ],
+  "terminal_facts_from_root": {
+    "actual_at_last_observation": {
+      "AdamW_updates": 1,
+      "NFE": {
+        "merged": 0,
+        "reloaded": 0,
+        "updated": 3,
+        "zero": 3
+      },
+      "VAE_decodes": {
+        "merged": 0,
+        "reloaded": 0,
+        "updated": 1,
+        "zero": 1
+      },
+      "backwards": 1,
+      "clear_reload_cycles": 1,
+      "optimizer_state_clear_reload": 1
+    },
+    "audit_exitcode": 0,
+    "audit_invocations": 1,
+    "clear_phase_elapsed_start_seconds": 2220.965,
+    "finalizer_observed_utc": "2026-11-12T08:32:48Z",
+    "functional_readiness": false,
+    "last_phase": "clear_and_strict_reload",
+    "not_independently_requeried": true,
+    "numerical_acceptance": "producer_failed_not_accepted",
+    "observed_failed_utc": "2026-11-12T08:32:23Z",
+    "owned_remaining_live": [],
+    "pins_unchanged": true,
+    "producer_run": "runs/h3_real_adamw_update_20261112a",
+    "queue": "failed",
+    "reason": "TimeoutError fixed wall3600",
+    "root_reported_coarse_timings_seconds": {
+      "initial_hash_approx": 166,
+      "load_assets_approx": 912,
+      "one_decode_approx": 12,
+      "one_full_state_hash_approx": 84,
+      "update_operations_plus_save_approx": 659,
+      "zero3NFE_approx": 12
+    },
+    "timeout_elapsed_seconds_approx": 3601,
+    "worker_returncode": -15
+  },
+  "unknowns_not_to_infer": [
+    "Which exact line was executing at timeout, whether optimizer_inventory returned, and how many after_reload state arrays are complete. Phase/counter evidence is insufficient.",
+    "Whether actual updated output, saved400adapter arrays,1200postupdate optimizer arrays, checkpoints and updated_complete frozen receipt are all independently valid. Root terminal archive/CPU subset audit must establish this.",
+    "No fresh-reload inference equality or merged output/rounding/functional result exists yet. Checkpoint existence and parameter change cannot supply those claims.",
+    "A forcedTERM may prevent full producer finally evidence; absence must remain absent. The old failed run cannot be relabeled complete by a continuation."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "CPU_evidence": {
+    "executed_by_this_reviewer": false,
+    "existing_receipt_verified": true,
+    "fixture_test_elapsed_seconds": 0.013,
+    "result": "pass",
+    "runner_elapsed_seconds": 0.05449641600716859,
+    "scope": "Stdlib synthetic fixtures:5600successful checks versus old AST,truth/rejection,one truth evaluation,original exception identity,save error,durable failure on disk and explicit phase persistence. No Torch/model/real checkpoint/performance benchmark.",
+    "skipped": 0,
+    "tests": 7
+  },
+  "checks": {
+    "false_condition": "With the existing valid evidence.data dict/save interface, append message+phase to gate_failures, save, then raise RuntimeError(message). No false predicate can return success.",
+    "integration_search": "Current code tree references the new module only in its standalone test. No production import or monkeypatch was found in this read-only inspection.",
+    "intentional_semantic_delta": "Old helper saved before every truth test. New helper evaluates first, saves only on rejection/evaluation error and adds gate_failures. This preserves the acceptance predicate but intentionally changes successful I/O behavior. Callers must explicitly flush progress and completed-stage state.",
+    "reference_integrity": "Actual old J.require source852df835 and frozen AdamW source27fb9145 match receipt SHA; neither has been edited.",
+    "save_error": "Recording/save failure propagates, so it cannot be reported as durable evidence or a passed gate. As with the old helper, save error may take precedence over the rejection/condition exception; this exception is explicit.",
+    "success": "Normal Python truthiness tested once. True returns None with no evidence access, mutation or save. No finiteness/equality/threshold predicate is replaced or bypassed; caller still supplies the same check.",
+    "truth_evaluation_exception": "The original exception object/type is re-raised after diagnostics are saved, including BaseException-derived interruptions; no replacement RuntimeError hides a truth-evaluation error when recording succeeds."
+  },
+  "created_at_utc": "2026-11-12T08:44:19.948874+00:00",
+  "findings": [],
+  "limitations": [
+    "Not yet integrated into a new consumer or NPU run. This review does not establish an end-to-end runtime fix or successful checkpoint continuation.",
+    "Success now deliberately produces no durable checkpoint; a new consumer must retain explicit phase/inventory/checkpoint/finally persistence and bound any incremental evidence writes.",
+    "The original AdamW run remains timed out and not accepted; no prior scientific or resource gate is relaxed."
+  ],
+  "review_operations": {
+    "SSH": 0,
+    "launches": 0,
+    "models": 0,
+    "old_file_edits": 0,
+    "source_edits": 0,
+    "tests_rerun": 0
+  },
+  "reviewed_sha256": {
+    "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "code/check_h3_real_adamw_update.py": "27fb9145790635a34398f52ae437f6a3f3f698f097c9a22ccc74ebcd4c6827b3",
+    "code/h3_evidence_checks.py": "cf6528c6f0d6b484f903a015a63af13850e725a14aa59f185678b5413c9daffe",
+    "code/tests/test_h3_evidence_checks.py": "2102785731cd11e2b3e08e694b5efa0e2c94875290878c540e11b290d61776d1",
+    "preparation/h3_evidence_checks_cpu_20261112a/cpu_receipt.json": "270fb9fa33920f0f56afcc3476c30f38b23d091aa4dc60f540f1875b21697034",
+    "preparation/h3_evidence_checks_cpu_20261112a/tests.log": "33d3324258160c6ece895ee47668edc7028ffd93b5920b65d57dd0e9a3b07cfc"
+  },
+  "schema": "openh3.h3_evidence_checks_independent_source_review.v1",
+  "verdict": "no_blocking_issue_found_for_future_explicit_integration"
+}

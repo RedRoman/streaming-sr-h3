@@ -1,0 +1,133 @@
+{
+  "schema": "openh3.full22_terminal_auditor_independent_review.v1",
+  "reviewed_at_utc": "2026-11-12T05:42:14.976759+00:00",
+  "decision": "no_blocking_issue_found_in_frozen_auditor; CPU_preparation_accepted_not_NPU_admission",
+  "source_freeze": {
+    "path": "preparation/h3_full22_joint_terminal_audit_20261112/source_freeze.json",
+    "sha256": "a46ff938f6e93bcbb1d022ef7d971ea7451d11f00a16f51b02308724984a5a29"
+  },
+  "sources_sha256": {
+    "audit_arrays.py": "3690c70226993dbb4f88d613c7fc236b2831763bc3beaacc0a9c3e9dfeb9f1c4",
+    "audit_terminal.py": "094ee44f6a6b0c9bf89677c1d5d3370116a2ff2ba048e204dde48a87cd41a761",
+    "finalize_once.py": "a4445d98a9e510bee296f74d1732ffab8e4f1a7ce7b427ed621f0a53fcf777b2",
+    "small_archive.py": "80b8e9aca4c43ac053b20d60ba81debb847b0e67ebd581b2d188aea1bf3dd202",
+    "test_arrays.py": "b91b29b466a13dea35e79a2090ab2db977fdb1d05a64cd215857ba87325a9145",
+    "test_audit_terminal.py": "cee06dd5ae9487f34ae4f79a971049593e3e5f655da57ab00183458d70574eb6",
+    "test_finalizer.py": "514f93263cc26f0e91fa691c9118df4d9bbff14ce97d82c2c54f84222094553f"
+  },
+  "file_count_clarification": "7 Python files (4 implementation +3 test modules), plus source_freeze.json =8 uploaded payload files;8 executed unit tests. No eighth Python source is declared or invented.",
+  "producer_binding": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+  "blocking_findings": [],
+  "new_strengthenings": {
+    "frozen_inventory_counts": {
+      "file": "audit_terminal.py",
+      "line": 238,
+      "DiT": {
+        "parameters": 530,
+        "registered_buffers": 2
+      },
+      "VAE": {
+        "parameters": 559,
+        "registered_buffers": 42
+      },
+      "reason": "A self-consistent rehash after omitting inventory rows now fails the count gate."
+    },
+    "not_launched_evidence": {
+      "file": "audit_terminal.py",
+      "line": 313,
+      "producer_started_must_be": false,
+      "queue_error_preserved": true,
+      "reason": "A refusal cannot claim no producer execution if the queue records a started producer; refused runs never become numerical passes."
+    }
+  },
+  "field_compatibility": {
+    "actual_basic_arrays": 13,
+    "actual_gradient_arrays": 802,
+    "native_rows": 6,
+    "pixels_groups_per_row": 1,
+    "group_shape": [
+      4,
+      24,
+      7,
+      16,
+      16
+    ],
+    "row_indices_each_decode": [
+      0,
+      1,
+      2
+    ],
+    "native_temporal_chunks": 1,
+    "DiT_block_entries_total": 450,
+    "VAE_block_entries_total": 324,
+    "math_observations_total": 774,
+    "decoder_contexts": 217,
+    "stage_inputs": "Saved reference/candidate stage FP16 input records match producer stage_decoder_inputs; each is independently byte-compared to saved outer decoder cast, which is checked against actual FP32 video cast.",
+    "cache_and_target": "Actual saved guide/raw/clean target content SHA compared to the fixed reviewed train source contract. Frozen cached VAE_R cannot stand in as clean target.",
+    "RGB_acceptance": "candidate against reference existing atol0.0002/rtol0.0001, with strict latent/audio/cast equality; no tolerance search",
+    "gradient_acceptance": "Actual per-array file/content SHA, finite/counts/norms, FP32 raw/1024 exact,400 canonical tensors, aggregate B nonzero and retained video nonzero; A zero allowed."
+  },
+  "failure_packaging": {
+    "failed_never_passes": true,
+    "not_launched_never_passes": true,
+    "missing_report_or_arrays": "invalid_or_missing_evidence; original queue/report/partial/logs are archived; no replay",
+    "source_bound_claims": "Live object/version/residency and actual NPU operation counts remain producer attestations. Canonical inventory JSON and persisted arrays are independently recomputed; no model/weights reload."
+  },
+  "bounds": {
+    "finalizer_wait_seconds": 4200,
+    "poll_seconds": 30,
+    "audit_invocations_max": 1,
+    "actual_audit_timeout_seconds": 300,
+    "actual_audit_RLIMIT_AS_bytes": 4294967296,
+    "small_archive_max_uncompressed_bytes": 33554432,
+    "small_archive_max_files": 100,
+    "small_npy_max_bytes": 1048576,
+    "full22_latent_file_bytes": 1048448,
+    "margin_to_small_npy_bound_bytes": 128,
+    "archive_excludes": [
+      "large RGB",
+      "clean target pixels",
+      "gradient arrays",
+      "model weights"
+    ],
+    "capacity_check_for_final_prep_still_required": true
+  },
+  "Linux_validation": {
+    "host": "huawei-modelarts-31112",
+    "receipt_path": "preparation/h3_full22_joint_terminal_audit_20261112/cpu_receipt.json",
+    "receipt_sha256": "295f06f410d63df85c0aeeda5b506d4a23c62fe5d9d23abd84660bbfdea3a8a4",
+    "log_path": "preparation/h3_full22_joint_terminal_audit_20261112/cpu_tests.log",
+    "log_sha256": "3e78e5612a1f008d7196df3ffe50378e95b49c96b9c4792fd1664756a3d731e2",
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 1.2952358508482575,
+    "CPU_affinity": [
+      0
+    ],
+    "RLIMIT_AS_bytes": 4294967296,
+    "wall_cap_seconds": 60,
+    "peak_RSS_bytes": 490295296,
+    "Torch_Comfy_imported": false,
+    "sources_before_after_exact": true
+  },
+  "upload": {
+    "payload_sha256": "4716a7f9e35d9dbeb5e5568c1a0495b5b6421d3a29add694843847942fe366f5",
+    "target": "huawei-modelarts-31112:/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_terminal_audit_20261112",
+    "scope": "Exclusive new files; existing differing files rejected; frozen source unchanged"
+  },
+  "actions": {
+    "tests_runs": 1,
+    "producer_runs": 0,
+    "finalizer_dispatches": 0,
+    "admissions_created": 0,
+    "model_calls": 0,
+    "NPU_calls": 0
+  },
+  "limitations": [
+    "CPU fixtures do not establish actual H3 full22 memory fit or gradients.",
+    "No quality, full32 training, streaming, deployed nonzero-adapter impact, or repeatability acceptance.",
+    "Root owns subsequent exact admission, fresh resource checks, actual producer execution and one terminal finalizer invocation."
+  ]
+}

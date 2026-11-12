@@ -1,0 +1,120 @@
+{
+  "schema": "openh3.history_utility_revised_terminal_auditor_independent_review.v1",
+  "reviewer": "audit_evidence",
+  "reviewed_at_utc": "2026-11-12T06:17:04.506869+00:00",
+  "verdict": "no_blocking_issue_in_frozen_CPU_dataset_terminal_auditor",
+  "blocking_findings": [],
+  "freeze": {
+    "path": "preparation/history_utility_revised_terminal_audit_20261112a/freeze.json",
+    "sha256": "ceb2f41aab2315e6b3f111cbcb590baa98b6e05814f02273400f10e137f0191e",
+    "all_listed_local_file_SHA_verified": true,
+    "files": {
+      "README.md": "b5bbeba12cbe3750e035fb767a3325458999d7eb8633477241b56247e53735d4",
+      "audit_terminal.py": "e0e6bdac1bcd1016187a4e5e686d6d82e56724c44b7783ae88cc4f6c6d50d4e4",
+      "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+      "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+      "cpu_receipt.json": "a2865781a1dd881f8e5eff73ab9a62f1f2494e9be3b980d84fac09af00211bb8",
+      "cpu_tests.log": "67ac71f9560c77b273573e9f1c879b236895fe9ffbf8773e9221ec1c5e9b3ab7",
+      "execution_plan.json": "1bee29dd7a1ab6f4e389ef7765ecd1cc80856873dd7503a5a84821a761f0faee",
+      "finalize_once.py": "6c5910090dfbd8187700e3551d5c7727064e81f5e8302a4e15f0a38526093e7b",
+      "small_archive.py": "ae629e63b6d7378431660eecef57eee098a21829a44b7c430fdb4dac7f6ff2a2",
+      "test_terminal.py": "6f0f8eab08dd72d92075848c8c345a28a25dfe1cc520c494792eb7a8e13606bb"
+    }
+  },
+  "bound_producer": {
+    "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "contract_sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9",
+    "freeze_sha256": "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+    "admission_sha256": "bb16e8b84b4644e474e5b7f29ffef4bff28788e9cd545e214a316b20fbc2861a"
+  },
+  "dataset_gate_review": {
+    "producer_terminal_required": "Exact completed supervisor/report SHA,root admission/freeze/contract,measured elapsed<=3600/RSS<=768MiB/singleCPU,25sources/22new+3reuse/132codec/0MP4decode/0model. Failed producer is never promoted or scanned.",
+    "actual_dataset_validation": "Train and dev each constructed once through frozen revisedwrapper3f482 and original loader87ad,cache_bytes0,verify_pixels=True;100 unique NPZ actualfile/pixel/metadata validation. New inline authority and legacy reuse sidecar remain distinct.",
+    "pair_gate": "Both exact19train/6dev splits plus same cohort/fullregistry and source ID/fullSHA/group separation; originalresearch_readyfalse and training_admittedfalse remain.",
+    "read_accounting": {
+      "unique_NPZ": 100,
+      "additional_train_target_pixel_reads_for_control_hashes": 19,
+      "near_clean_fullframes_generated_and_hashed": 1824,
+      "new_metadata_only_NPZ_opens": 88,
+      "student_reuses_teacher_control_SHA_cache": true,
+      "only_100_filesystem_reads_claimed": false
+    },
+    "schedules": "Two original-seed1000x16 immutable numeric schedules with perstep family balance,crop/history/availability/source/observation/controlSHA/row digest checks. Only summaries/hashes saved. No sample/batch construction,model,backward,optimizer or training step.",
+    "final_stability": "Producer status/complete,contract/freeze/admission and actual wrapper/loader hashes checked again afterdataset/schedules."
+  },
+  "finalizer_gate_review": {
+    "wait_seconds": 4200,
+    "poll_seconds": 30,
+    "terminal_states": [
+      "completed",
+      "failed"
+    ],
+    "maximum_audit_invocations": 1,
+    "after_wait_total_budget_seconds": 900,
+    "audit_worker_seconds": 880,
+    "cleanup_seconds": 10,
+    "archive_uses_remaining_total_budget": true,
+    "CPU_affinity_count": 2,
+    "numeric_threads": 1,
+    "owned_group_RSS_bytes": 4294967296,
+    "RSS_scope": "actual current ownedPG sampled0.1s;not hardcgroup allocation cap",
+    "spawn_signal_window_closed": true,
+    "reaped_worker_PID_never_targeted_during_archive": true,
+    "archive_failure_revokes_outer_ready": true,
+    "fresh_output_exclusive_create": true,
+    "automatic_retry": false,
+    "producer_replay": false
+  },
+  "archive_review": {
+    "allowlisted_JSON_log_source_only": true,
+    "maximum_payload_bytes": 33554432,
+    "NPZ_included": false,
+    "images_videos_weights_included": false,
+    "perfile_manifestSHA_and_readback_verified": true,
+    "output_overwrite": false,
+    "failure_or_partial_preserved": true
+  },
+  "resolved_draft_findings": [
+    {
+      "issue": "Archive failure could leave completed/ready status.",
+      "resolution": "pack failure updates outer failed/completeFalse/revised_pair_readyFalse and archive_error;no retry."
+    },
+    {
+      "issue": "Timeout during archive could target a reaped workerPID.",
+      "resolution": "Separate active_process exists only inside owned worker context and is cleared onexit."
+    },
+    {
+      "issue": "Caught one-shot900s alarm could allow later unboundedpack.",
+      "resolution": "archive_remaining uses the originaldeadline;expired budget rejectspack and remainingtimer is never reset to another900seconds."
+    },
+    {
+      "issue": "Producer resource declarations alone did not validate actualsupervision measurements.",
+      "resolution": "Actualelapsed/RSS/singleCPU values nowchecked alongside frozenresourcecontract."
+    }
+  ],
+  "CPU_evidence_reviewed_not_reexecuted": {
+    "host": "31984",
+    "tests": 13,
+    "passed": 13,
+    "skipped": 0,
+    "unittest_seconds": 11.555,
+    "bounded_wrapper_seconds": 12.33826195076108,
+    "receipt_sha256": "a2865781a1dd881f8e5eff73ab9a62f1f2494e9be3b980d84fac09af00211bb8",
+    "log_sha256": "67ac71f9560c77b273573e9f1c879b236895fe9ffbf8773e9221ec1c5e9b3ab7",
+    "scope": "Synthetic terminal/row metadata,actualfrozen numeric schedules with syntheticcontrolhashes,realLinuxownedprocesscleanup;0 actualcohortNPZreads/0model."
+  },
+  "limitations": [
+    "This is source/contract/test-evidence review, not terminal acceptance of the running materializer or validation of its100 actualNPZ.",
+    "A successful later audit can establish revised dataset/schedule readiness only;19train/6dev remains selected development data,not independent test orqualityresult.",
+    "Historical macOSfixture1failure/2skip is not represented as passing; final binding uses13/13Linuxreceipt.",
+    "Producer operation counts and prior supervision peak/time remain bound producer-report evidence; actualdatasetfile/pixel/metadata checks are separately performed by thefutureCPUauditor."
+  ],
+  "reviewer_actions": {
+    "tests_rerun": false,
+    "real_NPZ_scanned": 0,
+    "model_or_NPU_calls": 0,
+    "admission_created": false,
+    "finalizer_dispatched": false,
+    "producer_interfered_with": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "openh3.full22_joint_producer_readiness.v1",
+  "status": "CPU_ready_pending_full_runtime_snapshot_resource_admission_and_actual_NPU_probe",
+  "utc": "2026-11-12T05:34:05.510028+00:00",
+  "host": "huawei-modelarts-31112",
+  "new_sources": {
+    "code/check_h3_full22_joint_rgb_grad.py": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+    "code/tests/test_h3_full22_joint_rgb_probe.py": "a8c44b5fa9eabc780d4d7e63e235d5dd157152cefc61e71ae56c4d6c6d649d74"
+  },
+  "old_pinned_sources_modified": false,
+  "CPU_fixture_validation": {
+    "passed": true,
+    "test_count": 10,
+    "skips": 0,
+    "receipt_sha256": "f66ef0f5e409cb679ac76c72eb3ab0fb8ed40ef63d9ccd7264a602f2a8bf2104",
+    "elapsed_seconds": 8.383052408695221,
+    "peak_owned_group_RSS_bytes": 423981056,
+    "actual_scope": "Tiny fake DiT/VAE with pinned actual sampler/tile-row AST; no weights,Comfy runtime import or NPU model calls. Actual full22 H3 remains unexecuted.",
+    "earlier_fixture_failure_preserved": {
+      "receipt_sha256": "2c64ed472def369262da355ad73754c76d56bfb39406f3818868d5b74c1b0e8a",
+      "complete": false,
+      "cause": "Tiny VAE fixture captured the pre-wrapper stage.decode bound method. Corrected only fixture to dispatch stage.decode dynamically as actual Comfy does. Producer source unchanged.",
+      "no_retrospective_threshold_change": true
+    }
+  },
+  "actual_input_inspection": {
+    "complete": true,
+    "receipt_sha256": "bbde7d19eb2cc1abda790bf6f71307958a69dd5602b94dc299b35208dd8da2da",
+    "inspection_sha256": "86912310101473b462f6146009d209452d0a271bbee1ac126c8b6c2b23e651e0",
+    "elapsed_seconds": 7.336531930603087,
+    "peak_owned_group_RSS_bytes": 651550720,
+    "identity": {
+      "geometry": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "parent_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+      "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+      "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+      "role": "train",
+      "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+      "source_id": "2BdYaGuVAKo",
+      "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "task": "compression"
+    },
+    "target_float32_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+    "model_input_keys": [
+      "guide",
+      "raw_warm_start"
+    ],
+    "target_model_input": false,
+    "source_verification": "materialization_attestation_only; no live original video SHA claim",
+    "verified_selected_files": 11,
+    "runtime_files_verified": 11,
+    "model_assets_size_only_verified": true,
+    "model_asset_bytes_SHA_verified": false,
+    "torch_imported": false,
+    "Rphi_calls": 0,
+    "VAE_calls": 0,
+    "H3_calls": 0
+  },
+  "future_probe_fixed_budget": {
+    "NFE": 6,
+    "RGB_backward": 1,
+    "Rphi_calls": 0,
+    "VAE_decodes": 2,
+    "VAE_encodes": 0,
+    "adapter_updates": 0,
+    "loss_scale": 1024.0,
+    "optimizer_steps": 0
+  },
+  "native_schedule": {
+    "temporal_chunks": 1,
+    "spatial_tile_rows_per_decode": 3,
+    "horizontal_tile_batch": 4,
+    "decoder_blocks": 36,
+    "decoder_block_calls_per_phase": 108,
+    "decoder_context_restorations": 217,
+    "schedule_mismatch_policy": "Fail before real pixel decode if grouped tensor batch is not4; do not force native memory-query result or retry."
+  },
+  "CLI": "--pretrained-manifest PATH --execution-contract PATH --out NEW [--execute]",
+  "execution_schema": "openh3.full22_joint_rgb_probe_execution.v1",
+  "inspection_snapshot_not_execution_qualified": {
+    "root_admission": null,
+    "complete_NPU_runtime_pins": false,
+    "no_NPU_launch_performed": true
+  },
+  "boundaries": [
+    "The CPU 217-context test uses pinned actual sampler/tile-row AST and tiny DiT/VAE models; it is not real H3 numerical or memory validation.",
+    "Input inspection rehashes selected caches and actual clean target; original source video identity is materialization attestation only.",
+    "Large pretrained assets were stat-checked here; actual H3 execution must freshly hash all used weight bytes under complete runtime pins.",
+    "Fresh zero-B initialization only; accepted nonzero b is a prerequisite receipt, not a checkpoint input.",
+    "No optimizer/update, no quality or streaming acceptance and no complete32-source training claim."
+  ],
+  "transport_archives_not_source_dependencies": [
+    "preparation/h3_full22_joint_cpu_validation_20261112a.tar.gz",
+    "preparation/h3_full22_joint_cpu_validation_20261112b.tar.gz",
+    "preparation/h3_full22_joint_input_inspection_20261112a.tar.gz"
+  ],
+  "evidence_archive_sha256": "2138eb494b996941dc1889d61f6f4858d6169ebbc78869a6f5811694211bba24"
+}

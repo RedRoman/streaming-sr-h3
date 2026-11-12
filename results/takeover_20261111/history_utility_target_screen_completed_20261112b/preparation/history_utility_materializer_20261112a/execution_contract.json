@@ -1,0 +1,95 @@
+{
+  "budget": {
+    "NPU_calls": 0,
+    "memory_mib": 768,
+    "model_calls": 0,
+    "termination_grace_seconds": 30,
+    "threads": 1,
+    "wall_seconds": 1800,
+    "worker_processes": 1
+  },
+  "ffmpeg": "/usr/local/ffmpeg/bin/ffmpeg",
+  "ffprobe": "/usr/local/ffmpeg/bin/ffprobe",
+  "files": {
+    "dev_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    },
+    "entry_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_history_utility_pilot.py",
+      "sha256": "5e79799bc7dc25fb57a26cadd6618f603392d1a5dcbb89a32c5508e43e73efd9"
+    },
+    "loader_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/history_utility_data.py",
+      "sha256": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+    },
+    "numeric_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_mixed_temporal_pilot.py",
+      "sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37"
+    },
+    "plan": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+      "sha256": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4"
+    },
+    "prior_single_source_receipt": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/prior_single_source_receipt.json",
+      "sha256": "d21717ea89c22414434b19a29d82073cbdc9fa45dbbc0f579c16bbb07840ea02"
+    },
+    "train_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    }
+  },
+  "frames": 96,
+  "natural_cut_status": "unknown_engineering_only",
+  "new_window_noise_version": "execution_contract_changes_window_key_and_keyed_noise",
+  "operator_contract_sha256": "3d08ba296e54fb1827d8ec81ed76f876148fca43cd88896048829cd10af8de3b",
+  "original_sources": {
+    "2BdYaGuVAKo": {
+      "bytes": 3860274,
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/_cand/2BdYaGuVAKo.mp4",
+      "sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394"
+    },
+    "4EKWTiWjPTQ": {
+      "bytes": 3546253,
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/_cand/4EKWTiWjPTQ.mp4",
+      "sha256": "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f"
+    },
+    "6UZVovkR3IU": {
+      "bytes": 4745496,
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/_cand/6UZVovkR3IU.mp4",
+      "sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f"
+    },
+    "6rJrrfRO3cA": {
+      "bytes": 6484636,
+      "path": "/cache/zihaohe/streaming_sr0/data/real_av/_cand/6rJrrfRO3cA.mp4",
+      "sha256": "c0a488b752166c64349009eba8111d0937b59e401221c5413d607733fa738297"
+    }
+  },
+  "profile_recipes_sha256": "9278ec87dc077a0653ee0d52ee1115d7aa88007ae2cad4e535d128d1d1448b06",
+  "profiles": [
+    "native_static_blur_noise_h264",
+    "native_smooth_blur_noise_h264",
+    "native_abrupt_blur_noise_h264"
+  ],
+  "replays": 2,
+  "schema": "openh3.history_utility_materialization_execution.v1",
+  "scientific_continuity_approved": false,
+  "scope": "engineering_only_no_training",
+  "shape": [
+    96,
+    480,
+    832,
+    3
+  ],
+  "sources": {
+    "dev": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA"
+    ],
+    "train": [
+      "2BdYaGuVAKo",
+      "4EKWTiWjPTQ"
+    ]
+  }
+}

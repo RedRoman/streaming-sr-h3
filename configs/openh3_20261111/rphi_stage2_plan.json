@@ -172,8 +172,8 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-12T05:11:41.753573+00:00",
-    "stage": "H3_nonzero_b_engineering_accepted;P1_actual_data_one_step_accepted;target_screen_b_running17reuse1priorineligible22attempts",
+    "at_utc": "2026-11-12T05:53:26.691359+00:00",
+    "stage": "full22_same_graph_RGB_backward_accepted_zero_updates;P1_revised25_materialization_running_with_CPU_finalizer",
     "native_quality": {
       "host": "31984",
       "status": "completed_and_audited",
@@ -269,10 +269,11 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Do not rerun accepted31112e cache. Continue exact refiner/turbo assets migration and verify existing base SHA before H3 on31112.",
-      "Finish independent nonzero CPU terminal auditor and run one fixed 12NFE/4decode/1SGD probe when a fully verified host/card is available.",
-      "After nonzero gate, prepare full22 joint backward memory and remaining deduplicated train-cache cases; prior i exact-repeatability failure remains negative.",
-      "Prepare finite same-budget raw-guide/Rphi-guide training only after valid interfaces; measure clean/near-clean protection and held-source quality."
+      "Do not rerun accepted stage2,smalljoint,nonzero b,cache e,full22,targetscreen b orP1one-step.",
+      "P1 revised25 materializer and terminal auditor already running; first inspect their actual statuses,do not duplicate. On completion download one small archive and accept exact19train/6dev paired datasets/schedules.",
+      "Implement revised P1 trainer,cache/donor and evaluation entries; freeze headroom rule before teacher outcomes,then finite teacher1000 and three matched1000student arms after headroom acceptance.",
+      "Prepare new real-TRAIN H3 AdamW single-update/strict reload/merged RGB impact gate; preserve prior syntheticSGD zero-output-change negative result.",
+      "Only after that gate and complete shared data/cache/fixed controls,admit finite guide-matched LoRA training and source-level paired quality/clean-protection evaluation."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -607,7 +608,7 @@
       }
     },
     "P1_history_utility": {
-      "status": "new_module_actual_data_one_step_accepted;target_screen_b_running_after_a_protocol_qualification_failure",
+      "status": "revised_primary25_materialization_running;complete_dataset_validation_pending",
       "contract": "configs/openh3_20261111/history_utility_contract_20261111.json",
       "model": "code/rphi_history_utility.py",
       "model_sha256": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
@@ -617,7 +618,7 @@
       "data_CPU_tests": 8,
       "data_evidence": "results/takeover_20261111/history_utility_data_cpu_validation_20261112/cpu_receipt.json",
       "mechanism": "mask-aware9RGB+2mask channels;1745-parameter shared observation-only gate;detached marginal history utility via fixed-other-slot removal",
-      "next": "Accept target-only terminal receipts and review all full-window contact sheets/candidate pairs. Freeze explicit revised continuous primary cohort versus cut diagnostics; reuse approved targets to materialize three profiles. Then fixed1000step teacher/headroom and matched generic/true-utility/shuffled arms.",
+      "next": "Finish25source materialization and once-only actual revised train19/dev6 pair audit; then separately prepare teacher1000/headroom and three equal-budget students. Do not restart healthy materializer.",
       "teacher_training_steps": 0,
       "student_training_steps": 0,
       "research_cohort_ready": false,
@@ -667,7 +668,7 @@
       },
       "continuity_review": {
         "evidence": "results/takeover_20261111/history_utility_materializer_completed_20261112b/target_visual_review.json",
-        "primary_screen_ready": false,
+        "primary_screen_ready": true,
         "hard_cut_source": "2BdYaGuVAKo",
         "clear_new_shot_frame_starts": [
           20,
@@ -676,10 +677,29 @@
           73,
           88
         ],
-        "ambiguous_game_camera_transition": "6rJrrfRO3cA around71to72",
-        "next": "Target-only screen all40 source windows before expensive observation materialization; explicit revised primary cohort/window contract, no silent source substitution or relabeling frozen receipts",
+        "ambiguous_game_camera_transition": "6r reviewed original-resolution71/72 and accepted visual candidate; no proof of every edit absent",
+        "next": "Source selection frozen in revisedcohort; preserve original32/8 roles and numerical protocol. Materialization and research training pending.",
         "known_cut_coverage": "results/takeover_20261111/history_utility_full_cohort_readiness_20261112/known_cut_coverage.json",
-        "known_cut_consequence": "2BdYaGuVAKo confirmed cuts imply no complete96-frame24fps cut-free window anywhere in this10.022s source; retain diagnostic and explicitly version revised primary cohort."
+        "known_cut_consequence": "2BdYaGuVAKo confirmed cuts imply no complete96-frame24fps cut-free window anywhere in this10.022s source; retain diagnostic and explicitly version revised primary cohort.",
+        "revised_cohort": "configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+        "revised_cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+        "counts": {
+          "primary": {
+            "train": 19,
+            "dev": 6
+          },
+          "diagnostic": {
+            "train": 11,
+            "dev": 2
+          },
+          "ineligible": {
+            "train": 2,
+            "dev": 0
+          }
+        },
+        "unresolved_diagnostic_source": "SJ-_0uGIL1c after six original-resolution frames",
+        "root_review": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/root_visual_review.json",
+        "architecture_review": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/architecture_visual_review.json"
       },
       "one_step_CPU": {
         "host": "31984",
@@ -719,7 +739,7 @@
         "remote_array_audit_model_calls": 0
       },
       "target_continuity_screen": {
-        "status": "running",
+        "status": "completed_and_independently_audited",
         "host": "31984",
         "run": "runs/history_utility_target_screen_20261112b",
         "supervisor_run": "runs/history_utility_target_screen_20261112b_supervisor",
@@ -742,10 +762,25 @@
         "CPU_tests": 7,
         "pins": 141,
         "continuity_accepted": false,
-        "scope": "Account every source explicitly; eligible target count at most39, not40target acceptance. Only exact validated source-count failure may be classified ineligible; all other errors stop. Full visual review still required.",
+        "scope": "Numerical target eligibility only; separate explicit reviewed cohort freezes primary25/diagnostic13/ineligible2. Original receipt continuity remainsfalse.",
         "do_not_restart": true,
         "latest_observation": "results/takeover_20261111/history_utility_full_cohort_readiness_20261112/target_screen_b_latest_observation.json",
-        "latest_observed_utc": "2026-11-12T05:12:57.643501+00:00"
+        "latest_observed_utc": "2026-11-12T05:53:26.691359+00:00",
+        "complete": true,
+        "accounted_sources": 40,
+        "eligible_targets": 38,
+        "ineligible_sources": 2,
+        "new_target_successes": 21,
+        "reused_verified_targets": 17,
+        "new_decode_attempts": 22,
+        "errors": 0,
+        "elapsed_seconds": 333.54,
+        "peak_owned_group_RSS_bytes": 213241856,
+        "evidence": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/engineering_review.json",
+        "archive_small_sha256": "16e133a4e7083d65ea1668859aff677b0a4bed304c0929e727dc0c17a93acf12",
+        "verified_archive_count": 9,
+        "verified_payload_count": 291,
+        "verified_PNG_count": 78
       },
       "target_continuity_screen_failed_a": {
         "status": "failed",
@@ -783,6 +818,115 @@
         "recovery": "Prepare fresh b:17 completed sources file/pixelSHA reuse,1priorineligible no redecode,22newattempts through unchanged numeric/sourcecount gate; classify only explicit sourcecount failure as ineligible, all other failures terminal. No a restart.",
         "failure_evidence": "results/takeover_20261111/history_utility_target_screen_failed_20261112a/local_verification.json",
         "failure_archive_sha256": "e246386844098711b4bb2be7060c34b0c456b16cf8da863c31e52b1afbc3d514"
+      },
+      "revised_cohort": {
+        "path": "configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+        "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+        "actual_selected_counts": {
+          "train": 19,
+          "dev": 6
+        },
+        "materialization_ready": false,
+        "research_training_started": false,
+        "new_metadata_bridge_required": true,
+        "profile_reuse_candidates": [
+          "4EKWTiWjPTQ",
+          "6UZVovkR3IU",
+          "6rJrrfRO3cA"
+        ],
+        "materialization_status": "running",
+        "new_metadata_bridge_implemented": true
+      },
+      "revised_loader": {
+        "path": "code/history_utility_revised_data.py",
+        "sha256": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+        "CPU_tests": 11,
+        "evidence_preinspection_passed": true,
+        "evidence": "results/takeover_20261111/history_utility_revised_data_preparation_20261112",
+        "actual_complete_dataset_validation_passed": false,
+        "old_32_8_research_ready": false
+      },
+      "revised_materialization": {
+        "host": "31984",
+        "run": "runs/history_utility_revised_materialization_20261112a",
+        "supervisor_run": "runs/history_utility_revised_materialization_20261112a_supervisor",
+        "session": "p1-revised-materialize-20261112a",
+        "status": "running",
+        "worker_pid": 908164,
+        "prep": "preparation/history_utility_revised_materializer_20261112a",
+        "observed_at_utc": "2026-11-12T06:09:49.287544+00:00",
+        "launch_receipt": "preparation/history_utility_revised_materializer_20261112a/root_launch_receipt.json",
+        "launch_receipt_sha256": "30cc23474fffd94bde7dd6fbcd86f0dbefb498973d6ecbb6a0bbab671c19484c",
+        "admission_sha256": "bb16e8b84b4644e474e5b7f29ffef4bff28788e9cd545e214a316b20fbc2861a",
+        "freeze_sha256": "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+        "execution_contract_sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9",
+        "entry_sha256": "04b369bfac80a9fc5b8d8638f5f5a3e8365421fccb082623990cac1faab18c8a",
+        "inspection_sha256": "092bf63fcd0ec9ec975dbc52418048e6799bfc87ffc79e2ebee72f2fe493df60",
+        "independent_review_sha256": "f7917ab641e6d42b69c4c8a4de315bbb39f5593e40781b11a89a037ba6115f12",
+        "CPU_tests": 11,
+        "runtime_pins": 158,
+        "target_sources": 25,
+        "reuse_profile_sources": 3,
+        "new_profile_sources": 22,
+        "new_codec_passes": 132,
+        "budget": {
+          "NPU_calls": 0,
+          "maximum_new_output_bytes": 32212254720,
+          "memory_mib": 768,
+          "minimum_free_bytes": 6442450944,
+          "model_calls": 0,
+          "source_MP4_decodes": 0,
+          "termination_grace_seconds": 30,
+          "threads": 1,
+          "wall_seconds": 3600,
+          "worker_processes": 1
+        },
+        "do_not_restart": true,
+        "dataset_ready": false,
+        "quality_claim": false,
+        "completed_sources_at_launch_observation": 2,
+        "latest_observed_at_utc": "2026-11-12T06:29:56.660737+00:00",
+        "completed_sources_latest": 18,
+        "new_codec_passes_completed_latest": 102,
+        "finalizer": {
+          "status": "waiting",
+          "session": "p1-revised-finalize-20261112a",
+          "evidence": "evidence/history_utility_revised_dataset_terminal_20261112a",
+          "prep": "preparation/history_utility_revised_terminal_audit_20261112a",
+          "freeze_sha256": "ceb2f41aab2315e6b3f111cbcb590baa98b6e05814f02273400f10e137f0191e",
+          "admission_sha256": "b8186214cd4a63e0b535c817dccb760d0523e73fd7b27bfa6e20854ba925cc6c",
+          "resource": {
+            "CPU_cores": 2,
+            "audit_total_seconds": 900,
+            "cleanup_seconds": 10,
+            "owned_group_RSS_bytes": 4294967296,
+            "poll_seconds": 30,
+            "threads": 1,
+            "wait_seconds": 4200,
+            "worker_seconds": 880
+          },
+          "CPU_tests_Linux": 13,
+          "CPU_tests_Linux_skips": 0,
+          "source_review": "results/takeover_20261111/history_utility_revised_terminal_auditor_independent_review_20261112.json",
+          "source_review_sha256": "b73b32fe825cc3fe49c79e46e02ffdc05a29f315337ae09efd6d934a98b26e4a",
+          "launch_receipt": "preparation/history_utility_revised_terminal_audit_20261112a/root_launch_receipt.json",
+          "launch_receipt_sha256": "e1ff1c2522a21e72536c4c11e8f7a874febc09e5429dcfc80fb009deff1319bf",
+          "audit_invocations": 0,
+          "unique_NPZ_to_verify": 100,
+          "nearclean_additional_target_reads": 19,
+          "training_admitted": false
+        },
+        "latest_observation": "preparation/history_utility_revised_materializer_20261112a/observation_0630.json"
+      },
+      "next_training_gates": {
+        "path": "results/takeover_20261111/history_utility_next_training_gates_20261112.json",
+        "sha256": "828b348b6e165508c009a98b39b1c43062a758b56c2f8d26239d67c5ff2ee6df",
+        "status": "three_new_research_entries_required;old_one_step_remains_frozen",
+        "teacher_steps_planned": 1000,
+        "student_arm_steps_planned": 1000,
+        "headroom_decision_rule": "Freeze operational rule before teacher outcomes; root evidence review within existing authorization, not a new human permission requirement.",
+        "revised_eval_crops_per_arm": 2880,
+        "revised_eval_restorer_calls_upper_bound_per_arm": 20160
       }
     },
     "resource_snapshot_this_turn": {
@@ -802,11 +946,11 @@
     },
     "observed_at_utc": "2026-11-12T05:12:57.643501+00:00",
     "full22_joint_preparation": {
-      "status": "pending_new_implementation_CPU_tests_review_and_admission",
+      "status": "completed_and_accepted;refer_full22_joint_probe",
       "contract": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/pending_execution_contract.json",
       "contract_sha256": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3",
       "root_review": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/root_preparation_review.json",
-      "model_launched": false,
+      "model_launched": true,
       "real_train_RGB_target": true,
       "optimizer_steps": 0
     },
@@ -816,6 +960,135 @@
       "files": 537,
       "archive_sha256": "6cd87a21f8d0a8e05750700739569ccad978d0cca48cc4f47411422de9d1458f",
       "local_receipt": "preparation/followup_20261112_1115/verification.json"
+    },
+    "full22_joint_probe": {
+      "status": "completed_and_independently_accepted_engineering_only",
+      "host": "31112",
+      "physical_card": 1,
+      "run": "runs/h3_full22_joint_rgb_probe_20261112a",
+      "queue_session": "h3-full22-joint-20261112a",
+      "worker_pid": 457195,
+      "prep": "preparation/h3_full22_joint_rgb_probe_20261112a",
+      "queue_sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+      "execution_sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+      "launch_receipt": "preparation/h3_full22_joint_rgb_probe_20261112a/root_launch_receipt.json",
+      "launch_receipt_sha256": "8d1ee37afbff5db2fbc677725412329fd197fa3ba94e5468b2e7d1d0b9ed330f",
+      "producer_sha256": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+      "producer_CPU_tests": 10,
+      "runner_CPU_tests": 8,
+      "terminal_auditor_CPU_tests": 8,
+      "runtime_source_pins": 1307,
+      "queue_pins": 1318,
+      "real_input_CPU_inspection": true,
+      "geometry": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "budget": {
+        "NFE": 6,
+        "decode": 2,
+        "RGB_backward": 1,
+        "optimizer": 0,
+        "VAE_encode": 0,
+        "Rphi_calls": 0,
+        "wall_seconds": 3600,
+        "owned_group_RSS_limit_bytes": 137438953472
+      },
+      "finalizer": {
+        "run": "runs/h3_full22_joint_rgb_probe_20261112a_finalize",
+        "session": "h3-full22-finalize-20261112a",
+        "state": "completed",
+        "admission_sha256": "0cdeccfdaeba4f52fa7aff8975a14537849f085e1eda366eff0c5af694627ea9",
+        "wait_seconds": 4200,
+        "audit_seconds": 300,
+        "audit_address_space_bytes": 4294967296,
+        "audit_invocations": 1,
+        "complete": true,
+        "terminal_audit_sha256": "fd6df63d3121474d9884e91d90514f273a15041ef5b8c6686d22a65e3c72e1f7"
+      },
+      "quality_accepted": false,
+      "full22_gradient_accepted": true,
+      "do_not_restart": true,
+      "latest_remote_status": "completed",
+      "last_confirmed_phase": "completed",
+      "connection_evidence": "results/takeover_20261111/connection_31112_20261112_0608.json",
+      "last_observation": "preparation/h3_full22_joint_rgb_probe_20261112a/observation_0613.json",
+      "last_observation_sha256": "8b2dc33a15d609d62394adb3cd86316994401fbd3b4a8397cf157d77e4137c40",
+      "actual_at_observation": {
+        "RGB_loss_expressions": 1,
+        "Rphi_calls": 0,
+        "VAE_encode_calls": 0,
+        "adapter_updates": 0,
+        "backward_attempts": 1,
+        "candidate_NFE": 3,
+        "candidate_VAE_decode_calls": 1,
+        "completed_backward_calls": 1,
+        "forbidden_calls": [],
+        "optimizer_steps": 0,
+        "reference_NFE": 3,
+        "reference_VAE_decode_calls": 1,
+        "stage_decode_calls": {
+          "candidate_decode": 1,
+          "reference_decode": 1
+        }
+      },
+      "observed_at_utc": "2026-11-12T06:33:34.148208+00:00",
+      "evidence": "results/takeover_20261111/h3_full22_joint_rgb_probe_20261112a_completed",
+      "root_acceptance": "results/takeover_20261111/h3_full22_joint_rgb_probe_20261112a_completed/root_acceptance.json",
+      "root_acceptance_sha256": "a72d936bf07fc51a58a13e7ed77d130caa49bcf593f31db3f7f4d4591665b99a",
+      "archive_sha256": "ea6711dc4e52fcb0b216bac887c54802456338b32efb384eb7e0a6632a52888d",
+      "terminal_audit_sha256": "fd6df63d3121474d9884e91d90514f273a15041ef5b8c6686d22a65e3c72e1f7",
+      "scientific_review_sha256": "2e183d05c8e024ae86fa4057e80e333c02ba205049c453f6b50cc2f32669628d",
+      "local_verification_sha256": "3df0ffc5da65ad996cf4f09d747b79025c7ffa342abe20ff0e6c69526f61379f",
+      "independent_review_sha256": "aabfc788ab872f63e99af10b4bfaf677d03cebe2787aa91ace3fd6f820b15821",
+      "producer_elapsed_seconds": 2067.3699362054467,
+      "peak_npu_allocated_bytes": 59523915264,
+      "peak_npu_reserved_bytes": 64277708800,
+      "gradient_pairs_independently_audited": 400,
+      "B_nonzero_tensors": 200,
+      "B_gradient_L2_unscaled": 0.0003684823803099516,
+      "source_train_only": true,
+      "worker_PID_is_historical": true
+    },
+    "updated_at_utc": "2026-11-12T06:33:34.148208+00:00",
+    "backup_31984_current_turn": {
+      "schema": "openh3.followup_backup_verification.v1",
+      "complete": true,
+      "verified_at_utc": "2026-11-12T06:19:36.032030+00:00",
+      "archive": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_1405/backup.tar.gz",
+      "archive_sha256": "230bdf5b914ab44916fc4505788353abe43a62ce43de0442117d108cfab8d8f3",
+      "archive_bytes": 1502324,
+      "files": 257,
+      "manifest_sha256": "2fc53422e4ddcb9c9afd8d22797963e229bb22c9595775794977ef02c3c51e95",
+      "payload": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_1405/verified_payload",
+      "archive_members_verified": true,
+      "extracted_files_verified": true,
+      "overwritten_files": 0,
+      "local_receipt": "preparation/followup_20261112_1405/verification.json",
+      "scope": "Point-in-time source/small-evidence snapshot before this completion record; 23 local transport/image copies omitted with SHA in manifest, originals preserved."
+    },
+    "full22_next_training_gates": {
+      "path": "results/takeover_20261111/h3_next_training_gates_20261112.json",
+      "sha256": "ff00fc291f1d51f4abf216c07222e9221c3a5ac77bc2703178c0f63a47ae5af2",
+      "status": "new_realTRAIN_AdamW_single_update_interface_required;not_dispatched"
+    },
+    "backup_31984_full22_terminal_delta": {
+      "schema": "openh3.followup_backup_verification.v1",
+      "complete": true,
+      "verified_at_utc": "2026-11-12T06:34:08.347950+00:00",
+      "archive": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_full22_terminal/backup.tar.gz",
+      "archive_sha256": "7eab06b3292baae84bb995745f08c901e9ce554c1229c90546769fc600ab0790",
+      "archive_bytes": 508910,
+      "files": 60,
+      "manifest_sha256": "d33abf054c20fe63fc5aec0101598f3a737b5ae3368d8f9db793b39a78f096be",
+      "payload": "/cache/zihaohe/omni_openh3_20261111/preparation/followup_20261112_full22_terminal/verified_payload",
+      "archive_members_verified": true,
+      "extracted_files_verified": true,
+      "overwritten_files": 0,
+      "local_receipt": "preparation/followup_20261112_full22_terminal/verification.json",
+      "scope": "60 changed/new small records after1405snapshot; full6.5MB archive separately mirrored exactly to31984. This completion record follows the point-in-time backup."
     }
   }
 }

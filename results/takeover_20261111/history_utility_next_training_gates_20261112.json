@@ -1,0 +1,211 @@
+{
+  "schema": "openh3.history_utility_next_training_gates_review.v1",
+  "created_at_utc": "2026-11-12T06:15:05.386135+00:00",
+  "status": "read_only_source_review_proposed_next_implementation_not_launch_admission",
+  "scope": "No source/runtime edit, model call, training, remote data scan or new execution. Only this evidence JSON was written.",
+  "evidence_sha256": {
+    "code/check_history_utility_one_step.py": "8c2611302c3d3d9445ea6f839f6705bac7bc5e6dc16916c90b3c0940887478a6",
+    "code/rphi_history_utility.py": "22131519f54403c08cb0992ea52acfd6b8de73783c4619353f25a3554a6d0367",
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7",
+    "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "configs/openh3_20261111/history_utility_contract_20261111.json": "a2c94df6646936422ae3abde9599323db0eb5181c1a264b97d4593f948f37742",
+    "configs/openh3_20261111/history_utility_revised_cohort_20261112.json": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "preparation/history_utility_revised_materializer_20261112a/ready_receipt.json": "5c529b18964deec6acf1a3a34476810d4096c4b01ea8ef24074bfa1614176a5d",
+    "results/takeover_20261111/history_utility_one_step_completed_20261112a/scientific_review.json": "ba39067db74e10adca05cc74b6d270afe519dea0bf876c77aad6afd7f3cf0a92",
+    "results/takeover_20261111/history_utility_one_step_completed_20261112a/root_acceptance.json": "2040cb514934bf6f790cb51623a58359b90a2e09776e6bfeaa9ead6d7e1e3042"
+  },
+  "current_facts": {
+    "baseline": {
+      "checkpoint_sha256": "61ff3a2f696033791f2168410a15f02fc2f8b25274d8fb0c62a0e8cbf7a3f617",
+      "name": "stage2 legacy_g05 final3000",
+      "model_config": {
+        "variant": "blind",
+        "k": 3,
+        "ch": 64,
+        "blocks": 8,
+        "condition_dim": 6,
+        "observation_encoder": "legacy"
+      }
+    },
+    "implemented": "Mask-aware 11-channel warmstart, shared 1745-parameter gate, detached slot-removal tile-MAE utility, fixed matched losses, deterministic causal data/mask schedules and separately versioned revised-cohort wrapper.",
+    "accepted_actual_engineering": {
+      "teacher_optimizer_updates": 1,
+      "student_optimizer_updates": 0,
+      "backward_calls": 2,
+      "restorer_forwards": 7,
+      "CPU_only": true,
+      "source_cohort": "old 2train/2dev engineering data",
+      "independent_array_audit": "379 arrays, 43851024 bytes, remotely recomputed with NumPy; local small archive only"
+    },
+    "not_accepted": "No 1000-step teacher, frozen teacher headroom, 16000-row label cache, shuffled donor map, trained student arm or held-out quality result exists in the reviewed P1 evidence.",
+    "revised_data": "Cohort frozen at 19 train / 6 dev. Materializer preparation and default inspection passed; parent controls actual execution. This review did not poll or assert terminal materialization or actual revised-dataset readiness.",
+    "one_step_not_reusable_as_research": "check_history_utility_one_step.py:75-119 strictly requires old completed_engineering_only materialization, exact 2+2 source identities and one-step schedules; lines291-304 enforce zero student updates. Keep it frozen."
+  },
+  "source_evidence": [
+    {
+      "path": "code/rphi_history_utility.py",
+      "lines": "1-8,20-25,256-311",
+      "finding": "Building blocks explicitly exclude training loop/cache/scheduler. Utility scale is 0.25/255 (not 0.02); neutral margin 0.05/255; coefficients 0/.01/.01."
+    },
+    {
+      "path": "code/check_history_utility_one_step.py",
+      "lines": "221-240,247-268,269-304,307-327",
+      "finding": "Real AdamW teacher step and frozen label generation exist; shared student initialization and utility backward exist; no student update; CPU-specific backend contract."
+    },
+    {
+      "path": "code/history_utility_revised_data.py",
+      "lines": "258-338,340-366",
+      "finding": "Actual exact membership/pixels/authority/evidence validation; 1000x16 schedules; pair identity/group disjointness; readiness is not training admission."
+    },
+    {
+      "path": "code/history_utility_data.py",
+      "lines": "306-360,362-395",
+      "finding": "Immutable row identity, true predecessor availability, shared crop, deterministic masks, teacher/student seeds and centered96 dev evaluation. Only observed/availability enter model_inputs."
+    }
+  ],
+  "minimum_new_entries_proposed_not_created": [
+    {
+      "entry": "train_history_utility.py",
+      "phases": [
+        "teacher",
+        "student"
+      ],
+      "requirements": "New execution schema only; bind revised materialization terminal audit, both exact datasets, baseline/config, schedules and implementation/software. Teacher1000 and each student1000 use the same optimizer helper, finite checks, clipping, atomic progress/final checkpoint and no automatic extension. Student phase requires frozen teacher/headroom/cache/shuffle admission. Save full model and optimizer state, step and RNG/schedule offsets; final step1000 only is the comparison artifact. Do not reuse old engineering admission."
+    },
+    {
+      "entry": "cache_history_utility_labels.py",
+      "phases": [
+        "prepare_schedules_and_donor_feasibility",
+        "cache_frozen_teacher_labels"
+      ],
+      "requirements": "Persist exact teacher/student schedules before model execution; construct deterministic same-stratum source/group-disjoint donor permutation and fail if impossible before any student. After teacher/headroom acceptance cache detached raw/normalized/valid maps once with row/crop/input/teacher/code hashes. Verify arrays/support/hash before all arms. Metadata is never a model input."
+    },
+    {
+      "entry": "eval_history_utility.py",
+      "phases": [
+        "teacher_headroom",
+        "student_own_interventions_and_fixed_policies"
+      ],
+      "requirements": "One fixed6dev centered96/stride1 evaluation schedule. Teacher all-history/current-only/LOO headroom first; final student own-LOO with unaffected other gate weights, normal RGB quality, clean/near-clean damage, transition trajectories and fixed K1/K3/decay/hysteresis. Report per-source paired effects and undefined correlations. Pin LPIPS and any flow support; no motion-compensated claim without verified common support."
+    }
+  ],
+  "ordered_gates": [
+    {
+      "id": "G0_revised_actual_data",
+      "required": "Actual complete materialization + independent terminal audit for25 targets/75 observations (22 newly materialized,3 reused). Instantiate both RevisedHistoryUtilityDataset objects, assert_revised_pair, preserve old research_ready=false. Freeze a new19/6 research execution contract referring to original numerical contract, not rewriting its32/8 claims."
+    },
+    {
+      "id": "G1_schedules_and_runtime",
+      "required": "Freeze teacher seed20261110 and student/gate seed20261111, each1000x16. Preflight shuffle feasibility with seed20261112 before student runs. CPU fixtures plus one bounded real-backend smoke establish actual float32 optimizer support/memory/throughput. Freeze identical backend/determinism policy; no unsupported deterministic fallback silently added. The reviewed CPU one-step does not establish NPU throughput or numerical parity."
+    },
+    {
+      "id": "G2_teacher_final_and_freeze",
+      "required": "Exactly1000 teacher updates from the fixed legacy checkpoint, no learned gate. Save full state_dict/config/source/mask schedule/code/software/optimizer and verify strict load. Then eval/requires_gradFalse, gradients cleared, complete state fingerprint unchanged across headroom/label generation. Students independently copy final teacher; original baseline remains unchanged."
+    },
+    {
+      "id": "G3_headroom_before_students",
+      "required": "Use all predeclared6dev crops, compare all-history against current-only and local whole-slot LOO in controls/static/smooth/abrupt segments. Publish per-source paired errors, positive/negative/neutral utility support and nondegenerate variance. Original contract specifies a qualitative review gate, not a numeric success threshold: freeze its operational decision rule before examining teacher outcomes. A no-headroom/degenerate result stops student admission for review; no automatic extra teacher steps, checkpoint selection or source replacement."
+    },
+    {
+      "id": "G4_cache_and_shuffle",
+      "required": "Freeze teacher label cache for16000 shared student rows. Require exact valid support and zero labels for missing predecessors, finite float32 maps, raw utility sign and clipped normalization. Whole6x6-map donor permutation preserves strata/multisets and excludes same source AND group. If derangement is impossible, fail; any schedule revision is a new version before all arms, not post-result pooling."
+    },
+    {
+      "id": "G5_three_matched_arms",
+      "required": "Initialize all3 restorers from the identical frozen teacher and gates from identical seed; assert exact named shapes/trainable counts/state bytes and independent storage. Reset the same per-arm RNG/runtime policy; use identical1000 rows-of-batches, masks, labels valid support, optimizer/LR and final checkpoint step. Generic still computes same SmoothL1 then multiplies by0; real/shuffled coefficients .01. Teacher never invoked during student optimization. Count one normal forward/backward/update per batch."
+    },
+    {
+      "id": "G6_final_screen",
+      "required": "Normal-output paired quality is primary; student own interventions test utility transfer. Lower harm obtained by suppressing all useful history cannot pass. Keep all6 source differences, controls and transition strata. Separate shared teacher/cache overhead from student cost. This is revised-cohort development, not original32/8 completion, full480p quality, independent test or long-memory streaming."
+    }
+  ],
+  "fixed_numerics": {
+    "teacher_steps": 1000,
+    "student_steps_per_arm": 1000,
+    "arms": [
+      "generic_gate",
+      "utility_gate",
+      "shuffled_utility_gate"
+    ],
+    "batch": 16,
+    "composition": {
+      "three_profiles_each": 4,
+      "identity": 2,
+      "near_clean": 2
+    },
+    "crop": 96,
+    "history": "t-2,t-1,t; boundary repeats marked unavailable",
+    "optimizer": {
+      "class": "AdamW",
+      "lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "clip_norm": 1,
+      "warmup_steps": 50,
+      "schedule": "train_rphi.learning_rate(step,1000,1e-4,50), cosine20% floor",
+      "foreach": false,
+      "fused": false,
+      "dtype": "float32",
+      "autocast": false
+    },
+    "loss": {
+      "charbonnier_epsilon": 0.001,
+      "edge": 0.1,
+      "identity_guard": 0.5,
+      "utility_scale": 0.000980392156862745,
+      "utility_clip": [
+        -4,
+        4
+      ],
+      "neutral_margin": 0.00019607843137254904,
+      "SmoothL1_beta": 1
+    },
+    "matching_boundary": "Different auxiliary losses intentionally change gradients/trajectories. Initial bytes, inputs, support, schedules and runtime policy must match; identical trained checkpoints are not expected."
+  },
+  "revised_budget": {
+    "teacher_training": {
+      "batch_forwards": 1000,
+      "backwards": 1000,
+      "updates": 1000,
+      "sample_presentations": 16000
+    },
+    "shared_label_inference": {
+      "crop_forward_upper_bound": 48000,
+      "batch16_forward_upper_bound": 3000,
+      "actual_skip_count_required": true
+    },
+    "student_training_all_arms": {
+      "batch_forwards": 3000,
+      "backwards": 3000,
+      "updates": 3000,
+      "sample_presentations": 48000
+    },
+    "dev_frame_crops_per_arm": 2880,
+    "derivation": "6 sources * (3 profiles + identity + near-clean) *96; controls once per source.",
+    "teacher_headroom_proposed_crop_forward_upper_bound": 11520,
+    "teacher_headroom_budget_meaning": "2880 * (all-history + current-only +2 removals); must be bound in new execution contract before running; reusable identical boundary outputs may reduce actual counts.",
+    "student_normal_and_own_LOO_crop_forward_upper_bound_per_arm": 8640,
+    "four_fixed_policy_crop_forwards_per_arm": 11520,
+    "student_eval_total_crop_forward_upper_bound_per_arm": 20160,
+    "old_counts_not_reused": "Original8dev3840 rows/26880 calls perarm do not apply to revised6dev; operation counts are crop evaluations, not necessarily individual batching calls.",
+    "runtime_time_and_memory": "Not estimated from tiny CPU one-step. Set finite wall/RSS/NPU bounds only after one separately admitted actual-backend smoke; no training launched by this review."
+  },
+  "necessary_new_tests": [
+    "Exact revised cohort/authority and 16000-row schedule tamper rejection; old2+2 admission rejected.",
+    "Teacher save/reload/freeze and missing-history labels; labels never reach model forward.",
+    "Source/group-disjoint within-stratum permutation preserves complete-map multiset and rejects impossible strata.",
+    "Three initialized students have exact equal tensors, optimizer/schedule/support and independent storage; one batch only factor differs.",
+    "Student own removal preserves other gate/weight and evaluator counts control sequences once per source."
+  ],
+  "not_done_here": [
+    "No new implementation files",
+    "No schedules computed from actual revised pixels",
+    "No training/teacher/cache/evaluation executed",
+    "No current materializer or H3 task status assumed from this review"
+  ]
+}

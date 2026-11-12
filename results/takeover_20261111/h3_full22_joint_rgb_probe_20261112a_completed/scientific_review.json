@@ -1,0 +1,135 @@
+{
+  "schema": "openh3.full22_joint_rgb_root_scientific_review.v1",
+  "reviewed_at_utc": "2026-11-12T06:28:15.733511+00:00",
+  "engineering_acceptance": "full22_same_graph_RGB_gradient_and_zero_adapter_parity_accepted_subject_to_independent_archive_review",
+  "evidence": {
+    "report_sha256": "bf3db9f4eea9f9d2e29ea8c014e15cdd08e725712fe6f2e33cca07c6b51bae0f",
+    "terminal_audit_sha256": "fd6df63d3121474d9884e91d90514f273a15041ef5b8c6686d22a65e3c72e1f7",
+    "archive_sha256": "ea6711dc4e52fcb0b216bac887c54802456338b32efb384eb7e0a6632a52888d"
+  },
+  "actual": {
+    "RGB_loss_expressions": 1,
+    "Rphi_calls": 0,
+    "VAE_encode_calls": 0,
+    "adapter_updates": 0,
+    "backward_attempts": 1,
+    "candidate_NFE": 3,
+    "candidate_VAE_decode_calls": 1,
+    "completed_backward_calls": 1,
+    "forbidden_calls": [],
+    "optimizer_steps": 0,
+    "reference_NFE": 3,
+    "reference_VAE_decode_calls": 1,
+    "stage_decode_calls": {
+      "candidate_decode": 1,
+      "reference_decode": 1
+    }
+  },
+  "geometry": [
+    22,
+    480,
+    832,
+    3
+  ],
+  "source_identity": {
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "parent_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc",
+    "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+    "role": "train",
+    "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+    "source_id": "2BdYaGuVAKo",
+    "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+    "task": "compression"
+  },
+  "parity": {
+    "video": {
+      "exact_equal": true,
+      "byte_equal": true,
+      "allclose": true,
+      "max_abs_float64": 0.0,
+      "relative_l2_float64": 0.0,
+      "reference_zero_norm": false
+    },
+    "audio": {
+      "exact_equal": true,
+      "byte_equal": true,
+      "allclose": true,
+      "max_abs_float64": 0.0,
+      "relative_l2_float64": 0.0,
+      "reference_zero_norm": false
+    },
+    "RGB": {
+      "exact_equal": true,
+      "byte_equal": true,
+      "allclose": true,
+      "max_abs_float64": 0.0,
+      "relative_l2_float64": 0.0,
+      "reference_zero_norm": false
+    },
+    "loss": {
+      "independent_numpy_float64_mse": 0.0030889882945633455,
+      "torch_float32_mse_attestation": 0.0030889883637428284,
+      "torch32_minus_independent64": 6.917948288873155e-11,
+      "note": "Torch32 reduction is the actual backward scalar; NumPy64 is an independent saved-pixel metric, without a new training tolerance."
+    }
+  },
+  "gradients": {
+    "adapter_pairs_verified": 400,
+    "B_nonzero_tensors": 200,
+    "B_l2_raw": 0.37732595743739056,
+    "retained_video": {
+      "elements": 262080,
+      "raw_nonzero": 262012,
+      "unscaled_nonzero": 262012,
+      "raw_l2_float64": 0.35357290652752266,
+      "unscaled_l2_float64": 0.00034528604153078384
+    },
+    "A_zero_legal": true,
+    "every_B_nonzero_required": false
+  },
+  "B_l2_unscaled": 0.0003684823803099516,
+  "frozen_scope": {
+    "inventory_groups": [
+      "frozen_initial",
+      "final_frozen"
+    ],
+    "scope": "Producer-recorded full named parameters/registered buffers and lifecycle checks; canonical JSON hashes independently recomputed. No live model re-read or unregistered Python cache claim."
+  },
+  "DiT_parameters_buffers": [
+    530,
+    2
+  ],
+  "VAE_parameters_buffers": [
+    559,
+    42
+  ],
+  "runtime_contexts": {
+    "math_observation_count": 774,
+    "decoder_context_restorations": 217,
+    "VAE_native_rope": {
+      "id": 281470485074528,
+      "module": "comfy_kitchen.backends.ascend.rope",
+      "qualname": "rms_rope_split_half"
+    }
+  },
+  "peak_npu_allocated_bytes": 59523915264,
+  "peak_npu_reserved_bytes": 64277708800,
+  "peak_npu_allocated_GiB": 55.43596601486206,
+  "peak_npu_reserved_GiB": 59.86328125,
+  "memory_scope": "Producer synchronized event counters since explicit post-load reset, across reference/candidate/decode/backward plus engineering hashes and saved evidence; not an optimizer-memory or steady-state training benchmark.",
+  "producer_elapsed_seconds": 2067.3699362054467,
+  "limitations": [
+    "Exactly zero optimizer updates; this establishes gradient connectivity/fit for one full geometry with checkpointing, not useful adapted output or quality benefit.",
+    "Only one TRAIN compression sample. Known scene-cut source remains engineering evidence; no source-level dev pairing, clean/near-clean protection, compression failure study, confidence calibration or adjacent-frame flicker/generalization claim is established here.",
+    "PSNR/LPIPS and confidence coverage were not evaluated by this engineering probe. RGB MSE is a training-sample diagnostic, not restoration acceptance.",
+    "Frozen weight identity is independently recomputed canonical inventory metadata plus source-bound producer lifecycle byte checks; terminal audit does not reload live models.",
+    "Prior nonzero SGD b remains a negative result for functional output change; this zero-B probe does not repair it."
+  ],
+  "next": "New real-TRAIN AdamW single-update, same-input strict reload and actual merged deployment output-change/rounding check before full matched-training admission; do not rerun this completed probe."
+}

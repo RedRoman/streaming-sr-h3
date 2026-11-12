@@ -1,0 +1,108 @@
+{
+  "observed_at_utc": "2026-11-12T06:09:49.287544+00:00",
+  "supervisor": {
+    "schema": "openh3.history_utility_cpu_supervision.v1",
+    "state": "running",
+    "complete": false,
+    "freeze_sha256": "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+    "admission_sha256": "bb16e8b84b4644e474e5b7f29ffef4bff28788e9cd545e214a316b20fbc2861a",
+    "command": [
+      "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/code/materialize_history_utility_revised.py",
+      "--contract",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/execution_contract.json",
+      "--out",
+      "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a",
+      "--execute",
+      "--admission",
+      "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/admission.json"
+    ],
+    "cpu_affinity": [
+      0
+    ],
+    "wall_seconds": 3600,
+    "grace_seconds": 30,
+    "memory_mib": 768,
+    "available_memory_before_bytes": 1605638672384,
+    "peak_owned_group_rss_bytes": 0,
+    "owned_group_only": true,
+    "worker_pid": 908164,
+    "owned_pgid": 908164
+  },
+  "partial": {
+    "NPU_calls": 0,
+    "codec_count_scope": "completed sources; an incomplete source has separate failure/partial receipt",
+    "cohort": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+      "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+    },
+    "complete": false,
+    "current_source_id": "4OvgouW2OyA",
+    "execution_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/execution_contract.json",
+      "sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9"
+    },
+    "legacy_research_ready": false,
+    "model_calls": 0,
+    "new_codec_passes_completed": 6,
+    "new_output_bytes_after_source": 165543563,
+    "new_target_decodes": 0,
+    "receipt_indices": {
+      "dev": [],
+      "train": [
+        {
+          "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/complete.json",
+          "revised_authority": {
+            "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/sources/4EKWTiWjPTQ/reuse_admission.json",
+            "sha256": "d648ec82dbe4e898475c9bd5ee983332848f1fadfa52280dee8a6a87e941501e"
+          },
+          "sha256": "b179ce364f844d646dad0ea68e073bea15074e89c2e95fd8db2ca79200ce9587"
+        },
+        {
+          "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/sources/4M_k01zIbVM/complete.json",
+          "sha256": "50cb42ee2a97cd42959b8da09bc1aa75914ec1d617b2dc9858f8df1dbbbced92"
+        }
+      ]
+    },
+    "revised_dataset_validation_pending": true,
+    "schema": "openh3.history_utility_revised_materialization.v1",
+    "source_results": [
+      {
+        "entry": {
+          "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/complete.json",
+          "revised_authority": {
+            "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/sources/4EKWTiWjPTQ/reuse_admission.json",
+            "sha256": "d648ec82dbe4e898475c9bd5ee983332848f1fadfa52280dee8a6a87e941501e"
+          },
+          "sha256": "b179ce364f844d646dad0ea68e073bea15074e89c2e95fd8db2ca79200ce9587"
+        },
+        "mode": "reused_complete",
+        "new_codec_passes": 0,
+        "new_target_decodes": 0,
+        "source_id": "4EKWTiWjPTQ",
+        "verification": {
+          "legacy_research_ready": false,
+          "old_loader_actual_files_pixels_metadata_verified": 4
+        }
+      },
+      {
+        "entry": {
+          "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_revised_materialization_20261112a/sources/4M_k01zIbVM/complete.json",
+          "sha256": "50cb42ee2a97cd42959b8da09bc1aa75914ec1d617b2dc9858f8df1dbbbced92"
+        },
+        "mode": "new_materialization",
+        "new_codec_passes": 6,
+        "new_target_decodes": 0,
+        "source_id": "4M_k01zIbVM",
+        "verification": {
+          "legacy_research_ready": false,
+          "old_loader_actual_files_pixels_metadata_verified": 4
+        }
+      }
+    ],
+    "status": "running",
+    "training_admitted": false
+  },
+  "complete": null,
+  "failure": null
+}

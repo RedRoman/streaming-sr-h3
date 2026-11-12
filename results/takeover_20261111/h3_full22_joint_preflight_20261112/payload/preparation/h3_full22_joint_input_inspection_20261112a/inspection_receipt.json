@@ -1,0 +1,31 @@
+{
+  "schema": "openh3.full22_joint_actual_input_CPU_inspection.v1",
+  "complete": true,
+  "returncode": 0,
+  "limit_failure": null,
+  "elapsed_seconds": 7.336531930603087,
+  "peak_owned_group_RSS_bytes": 651550720,
+  "wall_cap_seconds": 120,
+  "kill_grace_seconds": 10,
+  "RSS_cap_bytes": 4294967296,
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "threads": 1,
+  "argv": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_cpu_validation_20261112b/code/check_h3_full22_joint_rgb_grad.py",
+    "--pretrained-manifest",
+    "/cache/zihaohe/omni_openh3_20261111/configs/openh3_20261111/refiner_turbo_30794.json",
+    "--execution-contract",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_input_inspection_20261112a/execution_contract.json",
+    "--out",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_input_inspection_20261112a/actual_input_inspection"
+  ],
+  "source_manifest_sha256": "6e6d14dbc950749a1894d58310db7bcfac3ea1c0679e374c1f9d7d651fa45ff5",
+  "execution_contract_sha256": "ee00e8fd48ce24992d1c203309f8097ace37a09416900220504da0425acd0faf",
+  "inspection_sha256": "86912310101473b462f6146009d209452d0a271bbee1ac126c8b6c2b23e651e0",
+  "log_sha256": "6e38670052a3629172bcfa5ce3c5dcc3da98a6f6bd67e86c1c598da191e48a39",
+  "scope": "Actual cache bytes and source/target identity inspection only; zero model calls. No NPU admission."
+}

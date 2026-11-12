@@ -1,0 +1,60 @@
+{
+  "schema": "openh3.history_utility_revised_materialization_ready.v1",
+  "status": "CPU_inspected_ready_for_separate_root_admission_not_executed",
+  "verified_utc": "2026-11-12T06:06:13.670144+00:00",
+  "host": "31984",
+  "entry_sha256": "04b369bfac80a9fc5b8d8638f5f5a3e8365421fccb082623990cac1faab18c8a",
+  "supervisor_sha256": "25daa676153175a44706619277bb90f1d59a7971acc02e35f34a25ea6cb055c5",
+  "contract_sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9",
+  "freeze_sha256": "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+  "inspection_sha256": "092bf63fcd0ec9ec975dbc52418048e6799bfc87ffc79e2ebee72f2fe493df60",
+  "inspection_remote_path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/inspection/inspection.json",
+  "default_inspection_exit": 0,
+  "actual_158_pins_passed_frozen_supervisor_validation": true,
+  "actual_pixel_arrays_read_by_this_inspection": false,
+  "target_evidence_count": 25,
+  "cohort_counts": {
+    "primary_train": 19,
+    "primary_dev": 6,
+    "diagnostic": 13,
+    "ineligible": 2
+  },
+  "reuse_complete_sources": 3,
+  "new_sources": 22,
+  "budget": {
+    "NPU_calls": 0,
+    "maximum_new_output_bytes": 32212254720,
+    "memory_mib": 768,
+    "minimum_free_bytes": 6442450944,
+    "model_calls": 0,
+    "source_MP4_decodes": 0,
+    "termination_grace_seconds": 30,
+    "threads": 1,
+    "wall_seconds": 3600,
+    "worker_processes": 1
+  },
+  "run_exists_after_inspection": false,
+  "supervisor_exists_after_inspection": false,
+  "admission_written": false,
+  "new_codec_calls": 0,
+  "new_MP4_decodes": 0,
+  "new_model_calls": 0,
+  "tests": {
+    "passed": 11,
+    "skipped": 0,
+    "seconds": 3.287,
+    "receipt_sha256": "92a3b4085243eab537bdf8a8f1a54066f63e7dbfef917da30c204a792a908f89"
+  },
+  "independent_review_sha256": "f7917ab641e6d42b69c4c8a4de315bbb39f5593e40781b11a89a037ba6115f12",
+  "launch_command_pending_admission": [
+    "/cache/zihaohe/omni_openh3_20261111/venv/bin/python",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/run_once.py",
+    "--freeze",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/freeze.json",
+    "--freeze-sha256",
+    "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+    "--execute",
+    "--admission",
+    "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_revised_materializer_20261112a/admission.json"
+  ]
+}

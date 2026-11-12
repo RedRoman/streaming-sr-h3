@@ -1,0 +1,1023 @@
+{
+  "schema": "openh3.history_utility_revised_cohort_evidence_inspection.v1",
+  "complete": true,
+  "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+  "registry_sha256": "8e4dceb0dece1df8a2cde4301955dbf2a6017ca5c23aa24e68193cfc66824d85",
+  "original_registry_counts": {
+    "train": 32,
+    "dev": 8
+  },
+  "primary_source_ids": {
+    "train": [
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "Gf6owJ8AY2E",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q975D6bpK_c",
+      "VPp9ArDokWY"
+    ],
+    "dev": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "MjfCH89sBzs"
+    ]
+  },
+  "actual_selected_counts": {
+    "train": 19,
+    "dev": 6
+  },
+  "terminal_audit": {
+    "sha256": "5f0b25d6bb3c13d171fc838233c2f61d1b5f083c333aa903adee5ddac69525ab",
+    "source_count": 40,
+    "target_protocol_eligible_count": 38,
+    "original_pixels_verified_by": "bound prior terminal audit; current dataset verifies observation/target NPZ independently"
+  },
+  "primary_evidence": {
+    "4EKWTiWjPTQ": {
+      "target_receipt_sha256": "28357c8f78f2210bb4a0eedb2ee6e9c6ff64e8eac4b7785793d463da8bd61a92",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 60811956,
+        "dtype": "uint8",
+        "file_sha256": "d19faa1b49589422a7d99d6fd6ad7c655775a664ef9c85de51e27256c928bf79",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/target.npz",
+        "pixel_sha256": "e6a081f4019b99df6b2611ab363e92308c9f93ce413166aa115c9f47ed53f7be",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:4EKWTiWjPTQ",
+        "source_id": "4EKWTiWjPTQ",
+        "source_sha256": "164a829f5cfc838e7f3c70f481f96c0f35b759a58cc035e4a0f574891830254f",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "4M_k01zIbVM": {
+      "target_receipt_sha256": "23689b513849a6ae0f9a063db67d600a222999be22c195bdc5476033da3f7114",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 31583701,
+        "dtype": "uint8",
+        "file_sha256": "299cd8223f4b8ccb4c44a7b0cf311022ae6269138e4862ab8b0b81961de0fb80",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/4M_k01zIbVM/target.npz",
+        "pixel_sha256": "1d69d9a904dc82998caf81a9e2f92cac7c250bd01180d967e0232dc86c424c86",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:4M_k01zIbVM",
+        "source_id": "4M_k01zIbVM",
+        "source_sha256": "528467e02fc259a1965fbd3036da85797eb35f1e2e970bacf9a0abe3b25b4bad",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "4OvgouW2OyA": {
+      "target_receipt_sha256": "e6bbc32d28c6b6474c9da75043eeca58a6a7fa720e7b9c1f047296e4e77d9418",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 7839751,
+        "dtype": "uint8",
+        "file_sha256": "207e85ec669c07b0b898fde498f36d1ebd8f5e1269612cdaa6ea2c04ea43cf60",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/4OvgouW2OyA/target.npz",
+        "pixel_sha256": "55c37bbd53bd79669e017c983a6591a9169ae324a075c4754f5176e98920e11d",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:4OvgouW2OyA",
+        "source_id": "4OvgouW2OyA",
+        "source_sha256": "ab0e2dcbd29861bd2a04b078bc5fc567b199218df13b9ad1ff7a0efec5b3dff7",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.012000",
+        "width": 832
+      }
+    },
+    "4WlLNs_yXWQ": {
+      "target_receipt_sha256": "cf8fe486089fd3648912db709b83189c9d2997ab80a18345c62b84d4f8592776",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 45455489,
+        "dtype": "uint8",
+        "file_sha256": "f7dfa9c83f6246e11f58225ff283a3da48ecbb90136f47810b7e1a6f509d262e",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/4WlLNs_yXWQ/target.npz",
+        "pixel_sha256": "73340c1b75c92f99f75e181141f140934df6dd32eed59e2fc26a3977ab442771",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:4WlLNs_yXWQ",
+        "source_id": "4WlLNs_yXWQ",
+        "source_sha256": "c671925f6231590b131b1efc94a6514778baa79c1165b518cc8864586e5ac10a",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "6UZVovkR3IU": {
+      "target_receipt_sha256": "f2b30475b7cf8f55e0db3010606884fc1fd854937b62b7ad9d8d319295818f5a",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 48311702,
+        "dtype": "uint8",
+        "file_sha256": "a780907789981f64d32fa6daf80a4dec4b449bb3cb4b7c27910973a6febfcdce",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6UZVovkR3IU/target.npz",
+        "pixel_sha256": "7d2af2b2fcadc0f996e39199b67950f984b2ca47cd65033507d2f1d335a9849d",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:6UZVovkR3IU",
+        "source_id": "6UZVovkR3IU",
+        "source_sha256": "e3da491daf5cf68335fa6dfda1c8e6cd8a25c921d0da0fcf9cbf731b0f3a9a6f",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "6X6wb0FC6Fg": {
+      "target_receipt_sha256": "c634a2053497529a644b071386d8d074d29e29c2071b3981bed5daf5537f45d7",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 41811567,
+        "dtype": "uint8",
+        "file_sha256": "2f163810e5beda91b8db44c24960609528ee23f185c456085ad91ffed60a410c",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/6X6wb0FC6Fg/target.npz",
+        "pixel_sha256": "099275990ed684dd2b93c00faf8f20abdb6dedd04ad716902f00c697128ae934",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:6X6wb0FC6Fg",
+        "source_id": "6X6wb0FC6Fg",
+        "source_sha256": "e84bab5f4f2855676e18b94ddf7b78f6c9fde1eecf360d71fba89b3a5eb73512",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "6rJrrfRO3cA": {
+      "target_receipt_sha256": "22b02d035c438786a01152fdd673ff9ce6bbfa7de16c338cf17e922799e58561",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 3,
+      "target": {
+        "bytes_on_disk": 31611577,
+        "dtype": "uint8",
+        "file_sha256": "d6ee8e819add2f48139edd6bc5b639b4ed89b37c07e6d6de3e8a34199723ec0f",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6rJrrfRO3cA/target.npz",
+        "pixel_sha256": "938266046b33e61e5f4c543909b6095069582593fc3375d1f28b7032dd89f53e",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:6rJrrfRO3cA",
+        "source_id": "6rJrrfRO3cA",
+        "source_sha256": "c0a488b752166c64349009eba8111d0937b59e401221c5413d607733fa738297",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "6vv_w-TvcrY": {
+      "target_receipt_sha256": "0233542fc5e1f8f51d480d3b95816369b483b334edc4d3b703b5d57c0f1fefe1",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 68800556,
+        "dtype": "uint8",
+        "file_sha256": "b78187ca4f19ec89f2e1507d421b3bd8447f6735d84d87877760fc28574595d6",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/6vv_w-TvcrY/target.npz",
+        "pixel_sha256": "c3362bcb320a7052706542e9a7f56c01c90d1c625becca64b4aef94ced757afe",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:6vv_w-TvcrY",
+        "source_id": "6vv_w-TvcrY",
+        "source_sha256": "944e1d3cf3f4db7a2ad37e898562243966c96716c0dd5256729ad2d024bdf5f1",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "74ZtTQKeQoU": {
+      "target_receipt_sha256": "5e2be0d24c7594d9df05cdf6c5cad11c72584a2b8c5625895bed0ed162b1a2be",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 43458808,
+        "dtype": "uint8",
+        "file_sha256": "2e6de5a5bc7d90db7f401878237c1b0daa4ed45f7beaaee126dbfe2c593c534f",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/74ZtTQKeQoU/target.npz",
+        "pixel_sha256": "547276ffc8aaefc4cbe24675c0e787a992aa25866383b2db1ae16222448132b7",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:74ZtTQKeQoU",
+        "source_id": "74ZtTQKeQoU",
+        "source_sha256": "d09784e162459a9cd1df80c1d0e41b0f295edcc020ef53ee46597f8db70282e0",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "8ySFFOeBGEs": {
+      "target_receipt_sha256": "d26d189417f18312971fe685ad36ab78095fdad1f091f71a8fdb1e769df001fc",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 71848209,
+        "dtype": "uint8",
+        "file_sha256": "56bd97955f94fb8c64e0d8190e2ff65cb34fad27a72f85fa2b6e5a925cea7d5e",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/8ySFFOeBGEs/target.npz",
+        "pixel_sha256": "8ad30dd2e32ef223096aef2daa5aeb7bf97024fe7d14b7945dc5a0a37fd1995b",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:8ySFFOeBGEs",
+        "source_id": "8ySFFOeBGEs",
+        "source_sha256": "d4600b5b4c9609251539ac45c58aff31789eef2b1465f572cc275b0df1617b2a",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "90wsfIQ0kHs": {
+      "target_receipt_sha256": "41207303ca2932db8eea2e091a109bf219cc6db434aa5283509bb33a87459f20",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 57987874,
+        "dtype": "uint8",
+        "file_sha256": "167039416ce247aa40bff7c9f10c79165d45853ad1738c37ed67470fee0765eb",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/90wsfIQ0kHs/target.npz",
+        "pixel_sha256": "8b67b06b8ac1400630939596f3d327fa0b570388c927971dce8e93cd719b1a92",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:90wsfIQ0kHs",
+        "source_id": "90wsfIQ0kHs",
+        "source_sha256": "0c5cd9b83eb2a791f307b1e620e2b9ef647536e994d72c3174abf95225165d46",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "9eY__Y9Zl2Y": {
+      "target_receipt_sha256": "d96d2a5cdb99d3ce00e10ad26e9971308081c58faea8a5acd582cea04e5ef7db",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 50508113,
+        "dtype": "uint8",
+        "file_sha256": "0dd16c8f4e4688cd7240e7a4cbb456fb5139fa3c2707fbc6c2027cc1e38d15d8",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/9eY__Y9Zl2Y/target.npz",
+        "pixel_sha256": "ffcff7cef173e4b0ae59125ad72b6e0d231fa7f9ef153f8224ff13676c643ee4",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:9eY__Y9Zl2Y",
+        "source_id": "9eY__Y9Zl2Y",
+        "source_sha256": "fdc47208eb97518887999ce59d18cc45891600fed09cce5c356bb3fa3a08b31d",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.012000",
+        "width": 832
+      }
+    },
+    "9hJigrKndKw": {
+      "target_receipt_sha256": "81c9c20bceb6dc4deadab6104648a6c2a15c2f05083ceef61f0246a3970a0581",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 55478916,
+        "dtype": "uint8",
+        "file_sha256": "4b16af8086ed3bc5e90ba017712d3dd34491a937cdeb388b8f2273aba633fdd2",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/9hJigrKndKw/target.npz",
+        "pixel_sha256": "f6f4df42e5b2276399a4515948935fcb055e0312248d2485bc8b8d99d14a71e7",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:9hJigrKndKw",
+        "source_id": "9hJigrKndKw",
+        "source_sha256": "d0f51330782d6928e78bc5de2a9b4e251d27c93661d18a53fc82ed5acb6987ba",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "BYbIKQqGE2U": {
+      "target_receipt_sha256": "d900042fe042eb4ab36862d257c53de73af0988093a90d47bad2ba49f9f01a6b",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 40019142,
+        "dtype": "uint8",
+        "file_sha256": "393440d302d600239ae5c94715fd89de902d593a10cb7583ae599a17b641dd36",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112a/sources/BYbIKQqGE2U/target.npz",
+        "pixel_sha256": "03a5e372f7af6acbebb13d0016ec768a0e2fc302d126b2694876353266081cbb",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:BYbIKQqGE2U",
+        "source_id": "BYbIKQqGE2U",
+        "source_sha256": "ec35a1ed3acf6d935bbb0b294adf5bd9c544908d99c95f317d3d21a7f9632718",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "EBmROluwLkc": {
+      "target_receipt_sha256": "ffd0802f5aa3929d7efffcfc1b744a77c94f6c3987a38cc4e6f85d6cff3df626",
+      "visual_review_sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 42505214,
+        "dtype": "uint8",
+        "file_sha256": "d5eb2dc8673b4c96653c782b9fd628fa97cd0ae5e36fb5b17f148a46133460ae",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/EBmROluwLkc/target.npz",
+        "pixel_sha256": "964d7c3ddfc52f2f8aa755f7f18d89f950b11d2bf4c8c817cbe29b6bdc330628",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:EBmROluwLkc",
+        "source_id": "EBmROluwLkc",
+        "source_sha256": "64d2f614b02de50ddde0c8523262c50758226a8e5a18a4a6501a37d1867d797f",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "GcdzBmlxyN0": {
+      "target_receipt_sha256": "08aef2aa2af477394f5eabf191091d64e57637bc5364d5a5c8225e3754155b05",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 61919601,
+        "dtype": "uint8",
+        "file_sha256": "4471da194e9f65b1c8b8ff1dd311020f8d40bee17eb8e3622373d0bb18bc90e5",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/GcdzBmlxyN0/target.npz",
+        "pixel_sha256": "a90dae6d89ac88f94250ad4d5b05ce14c8a4c9d11d9ee244f7a3d2d7826e791e",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:GcdzBmlxyN0",
+        "source_id": "GcdzBmlxyN0",
+        "source_sha256": "d0b7a721f385de8b87cf06b1fbb394c8c6f818bfcc26967322f62eca37c1725f",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.012000",
+        "width": 832
+      }
+    },
+    "Gf6owJ8AY2E": {
+      "target_receipt_sha256": "e2ad6db3aa6db530b7486f1ab48a6dcbd97d047abc895b5e12f5ef0e24e5b71c",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 70750142,
+        "dtype": "uint8",
+        "file_sha256": "8fc6eccb893e54a5d7d4bb540ad37efdb753a3eaa318d91cef0896078cbbc48c",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/Gf6owJ8AY2E/target.npz",
+        "pixel_sha256": "5327c3d88fb33972db288eaf35747e1fc24e5a43dd7218fd263068dc5d132c84",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:Gf6owJ8AY2E",
+        "source_id": "Gf6owJ8AY2E",
+        "source_sha256": "dda7753e9ae9fcef00b92445eae7ae695338d1f0cc2d13adfdfca0feab21cded",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "JN95P7fLJLc": {
+      "target_receipt_sha256": "90c2bcbf27cd569f7bb1f4ae8decf8e520a63f7b3df0366d849ecb639a9d029a",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 11833896,
+        "dtype": "uint8",
+        "file_sha256": "9fc74e7b234ccca7d4ff21b550be7151fd6fa636496afcd31f8f7bb26b802682",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/JN95P7fLJLc/target.npz",
+        "pixel_sha256": "ee4f79bc2bd1dd92a5e9a89234de27b7a93d1bf7445cc0e02e4cf3cfe16ce590",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:JN95P7fLJLc",
+        "source_id": "JN95P7fLJLc",
+        "source_sha256": "51c07a02ddd3ebe97dc3938a9cfa47ee5803a5e2f21e1724c7f2326ff7dfc530",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "JfQZeAIHg3s": {
+      "target_receipt_sha256": "049eb2b9cf3a22dd3833f75fad6f0b056462324dc079c983397cfd1c7abfae9c",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 38195307,
+        "dtype": "uint8",
+        "file_sha256": "6d56fb2cacd8cbffc40b701d20479d7ba8152989577952022cdd842c972cc5b2",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/JfQZeAIHg3s/target.npz",
+        "pixel_sha256": "04e32161022c34c58207bda28bb1f0b36a68bfe601eecf0cd54e30c856dbe894",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:JfQZeAIHg3s",
+        "source_id": "JfQZeAIHg3s",
+        "source_sha256": "e271d063cbd18f5f404a780725c1950e58f60325159427f5c0c3277e2f2437e8",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "MB9_-kTLSbg": {
+      "target_receipt_sha256": "0086f33a4a26aa876f827084877033af0418d4b508a82131f96a8efd2d1c4bed",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 52554820,
+        "dtype": "uint8",
+        "file_sha256": "674a15a239ffa546231849ff7fa629dda8d52e215138b70e9d676ee6d4183311",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/MB9_-kTLSbg/target.npz",
+        "pixel_sha256": "4be1936e552580bcfa49b639c55de88ef688cce1f54f7cd3f076b847a5389dd1",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:MB9_-kTLSbg",
+        "source_id": "MB9_-kTLSbg",
+        "source_sha256": "141a8d5061804e39eae68c9a1b5556e60ffcd20388570f121b1a2299395a1801",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "MjfCH89sBzs": {
+      "target_receipt_sha256": "48200ffb66fd7c3f84c1f158b5fb9d6e373a117cb1193f60a0804738d917f472",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 22851060,
+        "dtype": "uint8",
+        "file_sha256": "7571af670c1fddeb3907d68996670a7f5719bca19534177caad4cc6d0dd156af",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/MjfCH89sBzs/target.npz",
+        "pixel_sha256": "5d2f68fca8707be439f3504337bad47f661d1dab5717be8bdbc71a958c70564d",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:MjfCH89sBzs",
+        "source_id": "MjfCH89sBzs",
+        "source_sha256": "14a56187f654f5e4806f584b182aaafd43446972f590bd5ce3541a3b1bf27853",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "dev",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "NYaslQ8njPc": {
+      "target_receipt_sha256": "7862c2b4cafd23a08dd9309c6dd8e5113517bb48c30eeae149e485e9f1800123",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 55569720,
+        "dtype": "uint8",
+        "file_sha256": "c335cd0de00ba7bce74954714265511c268ae15cfdf5262b95216f134a5688ca",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/NYaslQ8njPc/target.npz",
+        "pixel_sha256": "3e1a1afd745082297b6d4d56078e275da46d0a563251f7303c66f8eb4d36a325",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:NYaslQ8njPc",
+        "source_id": "NYaslQ8njPc",
+        "source_sha256": "1a84cbf1b5080ade2e9652490823494a9a0869639f22bcda20cd26b53054773e",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "Na-NDcdjEik": {
+      "target_receipt_sha256": "f0b9eb0c95a3c292441c2c1df83e86da1bcfddd5ab032da9fb84ec174f11ffd2",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 38024739,
+        "dtype": "uint8",
+        "file_sha256": "948aab862e74dd1632fbf75282d4fb76c1b925f417d60bb350a26f16008d1f67",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/Na-NDcdjEik/target.npz",
+        "pixel_sha256": "77eb6c71f5f5e4e691cdbd048b8dc4f7f3209cda4ee918739b3cbb3b5ffd860c",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:Na-NDcdjEik",
+        "source_id": "Na-NDcdjEik",
+        "source_sha256": "77ecfddda8b9591b83e2aaed31ea6d8ceb4d4eb428ad9d35fae0dce0123179ce",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.012000",
+        "width": 832
+      }
+    },
+    "Q975D6bpK_c": {
+      "target_receipt_sha256": "13a7816ca82550f5700d90abafeddb62b5da62876f60c04c43a5b69dd75e1451",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 57109579,
+        "dtype": "uint8",
+        "file_sha256": "3e676953d8ecae7ca0078e5ff367f246a688d3dbd96af334c2cd346cc68fda66",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/Q975D6bpK_c/target.npz",
+        "pixel_sha256": "b9f751dbd338b071dbd97651e2dfbcbfd649d3efdf922043b03cba52b6f338f0",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:Q975D6bpK_c",
+        "source_id": "Q975D6bpK_c",
+        "source_sha256": "daa90f52b75a71d9ded5ef0c9cd47ada37fb8e904096f4b90ad7047686cec935",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    },
+    "VPp9ArDokWY": {
+      "target_receipt_sha256": "73807e0479e13ab7bf2e057fd36656ba9c4d6ef5387e707978f2d12b7df8d56a",
+      "visual_review_sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183",
+      "reviewed_images": 2,
+      "target": {
+        "bytes_on_disk": 82382318,
+        "dtype": "uint8",
+        "file_sha256": "3d0f3f2757defa3f87b74cd8d98fedef9ca2ee293101e307398f50a059e43501",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_target_screen_20261112b/sources/VPp9ArDokWY/target.npz",
+        "pixel_sha256": "0cd409c70262ed5b3928b7f201467a992e355dad1163d5a6a04dade1787be6cc",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      },
+      "target_specification": {
+        "channels": 3,
+        "color": "RGB24",
+        "dtype": "uint8",
+        "duration_definition": "ffprobe format.duration",
+        "execution_contract_sha256": "c95a796acbbd50c247b3448e11cc3bad6bcedb62aed972796612811c3bda94e1",
+        "fps": 24,
+        "frame_selection": "accurate_input_seek_then_fps24_round_near_on_window_relative_grid",
+        "frames": 96,
+        "height": 480,
+        "schema": "openh3.mixed_temporal_target.v1",
+        "source_format_start_time": "0.000000",
+        "source_group_id": "audioset-youtube:VPp9ArDokWY",
+        "source_id": "VPp9ArDokWY",
+        "source_sha256": "b9c21383b06241c7deb486b96c35123baf50ebffb06e3df8907c6909eb7a4c8b",
+        "spatial_transform": "RGB24_then_integer_floor_center_crop_no_resize",
+        "split": "train",
+        "start_seconds": "3.011000",
+        "width": 832
+      }
+    }
+  },
+  "visual_files_and_numerical_receipts_SHA_verified": true,
+  "current_target_NPZ_read": false,
+  "observation_NPZ_read": false,
+  "revised_dataset_ready": false,
+  "legacy_research_ready": false,
+  "training_admitted": false,
+  "model_calls": 0,
+  "decode_calls": 0,
+  "scope": "Cohort/role/numerical-receipt/image evidence only; observation materialization and actual dataset pixel validation remain pending.",
+  "execution_contract_sha256": "ad31a29a085e2245e9b104d6ecec343875a24a892968792ff90159e26dc43393",
+  "actual_source_sha256": {
+    "preparation/history_utility_revised_data_20261112a/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "preparation/history_utility_revised_data_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+  },
+  "actual_registry_input_sha256": {
+    "plan": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4",
+    "train_manifest": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "dev_manifest": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+  },
+  "forbidden_modules_loaded": []
+}

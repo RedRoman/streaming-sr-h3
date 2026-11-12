@@ -1,0 +1,58 @@
+{
+  "schema": "openh3.history_utility_revised_data_readiness.v1",
+  "status": "wrapper_CPU_validated_cohort_evidence_passed_observation_materialization_pending",
+  "source_sha256": {
+    "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "code/tests/test_history_utility_revised_data.py": "09b06b2fb4831f70e80d9e512de058c4b0498d94f4462b4a28b719671bd2b4a1",
+    "unchanged_legacy_loader": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+  },
+  "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+  "original_registry_counts": {
+    "train": 32,
+    "dev": 8
+  },
+  "actual_selected_counts": {
+    "train": 19,
+    "dev": 6
+  },
+  "CPU_tests": {
+    "count": 11,
+    "passed": 11,
+    "skips": 0,
+    "unittest_seconds": 3.869,
+    "receipt_sha256": "93222a9de2ed05a5649262efb42072f8c471c4da04c21c9872a1713308d34477",
+    "scope": "Synthetic fullshape NumPy fixtures; no model or research training."
+  },
+  "actual_evidence_inspection": {
+    "host": "huawei-modelarts-31984",
+    "inspection_sha256": "f35730014e56a2de66a26011fa508e6c7c5d757561f8c7d4c622898ec43f90c3",
+    "supervision_sha256": "5537f0a253601f44bb35b8eebe30c59b1d78616c3d15093ce9dc441537b19a8c",
+    "seconds": 0.5167770702391863,
+    "peak_owned_group_RSS_bytes": 42123264,
+    "registry_sources": 40,
+    "prior_numeric_eligible_sources": 38,
+    "primary_evidence_sources": 25,
+    "current_target_NPZ_read": false,
+    "observation_NPZ_read": false,
+    "model_calls": 0,
+    "decode_calls": 0
+  },
+  "dataset_ready": false,
+  "training_admitted": false,
+  "API": {
+    "constructor": "RevisedHistoryUtilityDataset(receipts, cohort={path,sha256}, plan=..., train_manifest=..., dev_manifest=..., split=train|dev, evidence_root=repository_root, cache_bytes=512MiB)",
+    "receipt_entry": "Original path/sha256/artifact_root. Reused original source also requires revised_authority:{path,sha256} pointing to new reuse_admission sidecar. Newly materialized receipt and all4NPZ metadata must carry exact inline execution_authority and revised_cohort_sha256.",
+    "schedule": "schedule(teacher|student, steps=1000) returns new revised outer schema and numeric_schedule equal to original engineering loader schedule(1000); two original seeds,16 samples/step unchanged.",
+    "sample_batch": "sample(row), batch(rows), evaluation_rows() directly delegate original numeric loader. Model inputs remain observed/availability only.",
+    "pair": "assert_revised_pair(train,dev) checks both split readiness, same cohort/original registry and source identity separation; never grants training admission.",
+    "pre_materialization": "inspect_cohort_evidence(...) checks source roles/terminal audit/primary numeric receipts/visual actual files; explicitly not dataset-ready."
+  },
+  "required_next_gate": "After separate materializer has completed all exact19train+6dev sources, construct and pixel-verify both revised datasets, then assert_revised_pair. Old receipts/gates unchanged; no fallback to a partial dataset.",
+  "independent_review": "audit_evidence read final3f48214e source/tests and found no blocking issue; did not repeat tests or create real dataset.",
+  "old_files_modified": false,
+  "archive": {
+    "sha256": "f860363c0cbd652e785d967bcdc65a900715ec05c978d93943a8f845d61d00e1",
+    "bytes": 77569,
+    "payloads_verified": 12
+  }
+}

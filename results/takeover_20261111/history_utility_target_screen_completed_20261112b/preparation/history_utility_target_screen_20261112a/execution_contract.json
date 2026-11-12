@@ -1,0 +1,228 @@
+{
+  "acceptance": "40 receipts completed with exact original source role/SHA and uint8 pixel/timestamp geometry; exactly4reuse/36decode,0observation/0model/0NPU; actual budget evidence. Completion means pending root visual review only.",
+  "budget": {
+    "CPU_threads": 1,
+    "NPU_calls": 0,
+    "degradation_codec_passes": 0,
+    "grace_seconds": 30,
+    "memory_mib": 768,
+    "model_calls": 0,
+    "new_target_decodes": 36,
+    "output_disk_bytes": 6442450944,
+    "reused_targets": 4,
+    "simultaneous_compute_workers": 1,
+    "wall_seconds": 1800
+  },
+  "cut_diagnostics": {
+    "all_frames": 96,
+    "auto_approve": false,
+    "definition": "Mean absolute RGB change in104x60 PIL BOX thumbnails; rank top6 per source, not a cut classifier. Natural cuts/motion remain for human review. Full-resolution original pairs71/72(game),93/94(montage) also emitted.",
+    "pair_count": 95,
+    "quiet_source_replacement": false,
+    "shortening_frames": false
+  },
+  "disk_enforcement": {
+    "after_each_source_output_cap_bytes": 6442450944,
+    "free_before_bytes": 6442450944,
+    "new_target_uint8_payload_upper_bytes": 4140564480,
+    "note": "NPZ compression can add small ZIP overhead; temporary per-source raw is deleted before next source. Images/logs and metadata plus uncompressed payload remain below6GiB for fixed geometry. Supervisor bounds wall/RSS; disk is checked per-source.",
+    "one_live_raw_scratch_bytes": 115015680,
+    "realtime_filesystem_quota": false
+  },
+  "execution_authority": "This new40source contract authorizes target-only preparation. Original13b6 is only immutable numerical window/noise namespace; its2+2 execution scope is neither edited nor reused as40source authority.",
+  "files": {
+    "dev_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+      "sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+    },
+    "entry": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_target_screen_20261112a/code/screen_history_utility_targets.py",
+      "sha256": "97ae60ceee2b038afbe68fe9f7b51cb4e61a6a79c50258a0ad68d79df8f40c39"
+    },
+    "loader_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/history_utility_data.py",
+      "sha256": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+    },
+    "numeric_source": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_mixed_temporal_pilot.py",
+      "sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37"
+    },
+    "numerical_window_contract": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/execution_contract.json",
+      "sha256": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad"
+    },
+    "original_entry": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/code/materialize_history_utility_pilot.py",
+      "sha256": "5e79799bc7dc25fb57a26cadd6618f603392d1a5dcbb89a32c5508e43e73efd9"
+    },
+    "plan": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+      "sha256": "2035cadbd9f928230a71ed17cc01af1a4987654c8021f6443b7eb1c9fc2a07f4"
+    },
+    "prior_single_source_receipt": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/prior_single_source_receipt.json",
+      "sha256": "d21717ea89c22414434b19a29d82073cbdc9fa45dbbc0f579c16bbb07840ea02"
+    },
+    "source_inventory": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/evidence/history_utility_full_cohort_inventory_20261112a.json",
+      "sha256": "8d528586d2eba0870bea9b29e5d83bd8a4efc0737564185fa872167b1340f4e6"
+    },
+    "train_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+      "sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb"
+    }
+  },
+  "full_resolution_pairs": {
+    "2BdYaGuVAKo": [
+      94
+    ],
+    "6rJrrfRO3cA": [
+      72
+    ]
+  },
+  "known_cut_boundary": {
+    "candidate_only_new_frame_indices": [
+      94
+    ],
+    "conditional_conclusion": "Given visually confirmed cuts, no96sample continuous24fps window anywhere in this source; keep diagnostic-only pending explicit cohort revision.",
+    "confirmed_root_visual_cut_new_frame_indices": [
+      20,
+      35,
+      64,
+      73,
+      88
+    ],
+    "coverage_evidence_local": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/results/takeover_20261111/history_utility_full_cohort_readiness_20261112/known_cut_coverage.json",
+    "coverage_evidence_sha256": "458a482d781d206660218b5d6d9cbe861c7edf9ae5ea17fe1274edfcf65bf805",
+    "largest_source_continuous_interval_upper_seconds": 3.9039,
+    "required96frame_span_seconds": 3.9583333333333335,
+    "source_id": "2BdYaGuVAKo"
+  },
+  "reuse_semantics": "Four immutable NPZ targets are read and actual file/pixel SHA verified; no decoder call for these. Newly generated target-only metadata is explicit and not a completed training receipt. Later materialization needs a reviewed metadata bridge, not redecoding source MP4.",
+  "reused_targets": {
+    "2BdYaGuVAKo": {
+      "receipt": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/complete.json",
+        "sha256": "44bbe2ff1376be5e8fed6903cd8ba50cb044f3f1b92c5c477eb9421dfb16923d"
+      },
+      "target": {
+        "bytes_on_disk": 40200671,
+        "dtype": "uint8",
+        "file_sha256": "c9b6907a566485f5ebb19bb0fc109acfff26da9e136884641177245566381e7e",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112a/materialized/train/2BdYaGuVAKo/target.npz",
+        "pixel_sha256": "e69fa6f47606b3e68450bcb5c095bf36ed96a4a37f1fa7d44742b6bf9743f17d",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      }
+    },
+    "4EKWTiWjPTQ": {
+      "receipt": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/complete.json",
+        "sha256": "b179ce364f844d646dad0ea68e073bea15074e89c2e95fd8db2ca79200ce9587"
+      },
+      "target": {
+        "bytes_on_disk": 60811956,
+        "dtype": "uint8",
+        "file_sha256": "d19faa1b49589422a7d99d6fd6ad7c655775a664ef9c85de51e27256c928bf79",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/train/4EKWTiWjPTQ/target.npz",
+        "pixel_sha256": "e6a081f4019b99df6b2611ab363e92308c9f93ce413166aa115c9f47ed53f7be",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      }
+    },
+    "6UZVovkR3IU": {
+      "receipt": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6UZVovkR3IU/complete.json",
+        "sha256": "d471792ce1e3d428d8b1b34622f3c74982835878cf801da3a8d731d944aecb46"
+      },
+      "target": {
+        "bytes_on_disk": 48311702,
+        "dtype": "uint8",
+        "file_sha256": "a780907789981f64d32fa6daf80a4dec4b449bb3cb4b7c27910973a6febfcdce",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6UZVovkR3IU/target.npz",
+        "pixel_sha256": "7d2af2b2fcadc0f996e39199b67950f984b2ca47cd65033507d2f1d335a9849d",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      }
+    },
+    "6rJrrfRO3cA": {
+      "receipt": {
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6rJrrfRO3cA/complete.json",
+        "sha256": "676659e70af89cf5898345ca3c6b1ccd99b784bb5f0819ccf59ba8473eac5f3c"
+      },
+      "target": {
+        "bytes_on_disk": 31611577,
+        "dtype": "uint8",
+        "file_sha256": "d6ee8e819add2f48139edd6bc5b639b4ed89b37c07e6d6de3e8a34199723ec0f",
+        "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_engineering_2x2_20261112b/materialized/dev/6rJrrfRO3cA/target.npz",
+        "pixel_sha256": "938266046b33e61e5f4c543909b6095069582593fc3375d1f28b7032dd89f53e",
+        "shape": [
+          96,
+          480,
+          832,
+          3
+        ]
+      }
+    }
+  },
+  "schema": "openh3.history_utility_target_screen.v1",
+  "scientific_continuity_approved": false,
+  "scope": "target_only_continuity_preparation_not_research_cohort_acceptance",
+  "source_order": [
+    "2BdYaGuVAKo",
+    "4EKWTiWjPTQ",
+    "4M_k01zIbVM",
+    "4OvgouW2OyA",
+    "4WlLNs_yXWQ",
+    "4bXb6GLm6zg",
+    "6UZVovkR3IU",
+    "6X6wb0FC6Fg",
+    "6rJrrfRO3cA",
+    "6vv_w-TvcrY",
+    "74ZtTQKeQoU",
+    "75UH33tO0Bo",
+    "8ySFFOeBGEs",
+    "90wsfIQ0kHs",
+    "9eY__Y9Zl2Y",
+    "9hJigrKndKw",
+    "BYbIKQqGE2U",
+    "DtgdD48804M",
+    "EBmROluwLkc",
+    "E_W73B44qOk",
+    "GcdzBmlxyN0",
+    "Gf6owJ8AY2E",
+    "H2pTKitY56w",
+    "HOsBXlQHWdE",
+    "HU9sbY3A1bo",
+    "JLyjEE1UKaU",
+    "JN95P7fLJLc",
+    "JfQZeAIHg3s",
+    "JnbfAFodjZg",
+    "KR4M9nGv2is",
+    "Kc0bCgT5P04",
+    "MB9_-kTLSbg",
+    "MjfCH89sBzs",
+    "NPCSVxYpK3k",
+    "NYaslQ8njPc",
+    "Na-NDcdjEik",
+    "Q0-CI3XJvxw",
+    "Q975D6bpK_c",
+    "SJ-_0uGIL1c",
+    "VPp9ArDokWY"
+  ],
+  "status": "prepared_not_launched",
+  "target_rule": "Unchanged frozen original target_specification + decode_target_owned: center 4s,96 frames,24fps,480x832 RGB uint8; source-relative actual PTS retained.",
+  "top_candidate_pairs_per_source": 6
+}

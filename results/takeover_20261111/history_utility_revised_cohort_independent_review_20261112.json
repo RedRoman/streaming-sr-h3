@@ -1,0 +1,152 @@
+{
+  "schema": "openh3.history_utility_revised_cohort_independent_review.v1",
+  "reviewer": "audit_evidence",
+  "reviewed_at_utc": "2026-11-12T05:57:45.420665+00:00",
+  "verdict": "no_blocker_for_separate_revised_materialization_preparation",
+  "blocking_findings": [],
+  "evidence": {
+    "cohort": {
+      "path": "configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+      "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+    },
+    "selection_policy": {
+      "path": "configs/openh3_20261111/history_utility_revised_cohort_policy_20261112.json",
+      "sha256": "1271b6e1abe0519ac34ae5455fe4d0f8afe3a3da26ca7a010b4c6e13716fa277"
+    },
+    "root_visual_review": {
+      "path": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/root_visual_review.json",
+      "sha256": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183"
+    },
+    "architecture_visual_review": {
+      "path": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/architecture_visual_review.json",
+      "sha256": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13"
+    },
+    "actual_audit": {
+      "path": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/evidence/history_utility_target_screen_completed_20261112b/actual_audit.json",
+      "sha256": "5f0b25d6bb3c13d171fc838233c2f61d1b5f083c333aa903adee5ddac69525ab"
+    },
+    "engineering_review": {
+      "path": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/engineering_review.json",
+      "sha256": "98a438d82e758d9142bd6a4675cd6f06b4d161f807ac3296ecce478c3f8b4587"
+    },
+    "local_verification": {
+      "path": "results/takeover_20261111/history_utility_target_screen_completed_20261112b/local_verification.json",
+      "sha256": "53063a49eb56a8b6a2c5ea5fae2b0ffa9e17b26b63820d30e8ab9edb8adb7fca"
+    },
+    "train_manifest_sha256": "a32736578195bcc17f16fbfc3614ccc7f38689de18680ba1a38fe393515bb1cb",
+    "dev_manifest_sha256": "6ae49698cd332db88606820d4d59d0221087e5979816f247b3992693864caeba"
+  },
+  "independently_checked": {
+    "original_source_roles": {
+      "train": 32,
+      "dev": 8
+    },
+    "manifest_file_SHA_and_source_ID_full_source_SHA_role_matches": true,
+    "all_original_sources_accounted": 40,
+    "distinct_full_source_file_SHA_in_bound_registry": 40,
+    "cohort_decisions_match_actual_audit_rows": 40,
+    "visual_rows_match_source_role_window_target_file_pixel_SHA": 38,
+    "local_numerical_or_failure_receipt_file_SHA_checks": 40,
+    "local_unique_visual_image_file_SHA_checks": 83,
+    "two_disjoint_visual_shards": {
+      "root": 19,
+      "inspect_architecture": 19
+    },
+    "primary_membership_exact": true,
+    "all_count_fields_match_recomputed_decisions": true,
+    "bound_policy_and_reference_file_SHA_match": true,
+    "primary_count": {
+      "train": 19,
+      "dev": 6
+    },
+    "diagnostic_count": {
+      "train": 11,
+      "dev": 2
+    },
+    "ineligible_count": {
+      "train": 2,
+      "dev": 0
+    }
+  },
+  "primary_source_ids": {
+    "train": [
+      "4EKWTiWjPTQ",
+      "4M_k01zIbVM",
+      "4OvgouW2OyA",
+      "4WlLNs_yXWQ",
+      "6X6wb0FC6Fg",
+      "6vv_w-TvcrY",
+      "8ySFFOeBGEs",
+      "90wsfIQ0kHs",
+      "9eY__Y9Zl2Y",
+      "9hJigrKndKw",
+      "BYbIKQqGE2U",
+      "Gf6owJ8AY2E",
+      "JN95P7fLJLc",
+      "JfQZeAIHg3s",
+      "MB9_-kTLSbg",
+      "NYaslQ8njPc",
+      "Na-NDcdjEik",
+      "Q975D6bpK_c",
+      "VPp9ArDokWY"
+    ],
+    "dev": [
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA",
+      "74ZtTQKeQoU",
+      "EBmROluwLkc",
+      "GcdzBmlxyN0",
+      "MjfCH89sBzs"
+    ]
+  },
+  "ineligible_source_ids": [
+    "DtgdD48804M",
+    "Q0-CI3XJvxw"
+  ],
+  "existing_profile_reuse_candidates": [
+    "4EKWTiWjPTQ",
+    "6UZVovkR3IU",
+    "6rJrrfRO3cA"
+  ],
+  "continuity_interpretation": {
+    "SJ-_0uGIL1c": {
+      "disposition": "diagnostic",
+      "reviewed_original_frame_indices": [
+        23,
+        24,
+        25,
+        78,
+        79,
+        80
+      ],
+      "proven_hard_cut": false,
+      "reason": "Continuity remains unresolved between editing and source cadence/stuttering; the frozen decision is diagnostic, with no asserted hard-cut indices."
+    },
+    "6rJrrfRO3cA": "Existing original-resolution71/72 review interprets the transition as camera motion; this is visual screening only, not proof that every edit is absent.",
+    "2BdYaGuVAKo": "Preserved as diagnostic for visible multi-shot transitions; not silently kept in primary because prior engineering used it."
+  },
+  "outcome_independence_review": {
+    "policy_precedes_complete_38_source_review": true,
+    "selection_criteria": "unchanged numerical eligibility plus target-only visual continuity",
+    "model_quality_metrics_in_selection_decisions": false,
+    "historical_model_use_excluded_claim": false,
+    "interpretation": "The frozen policy and recorded reasons contain no restoration quality criterion. This audit validates the recorded selection protocol, not an unobservable claim that nobody ever saw a model result for these historical sources."
+  },
+  "execution_boundary": {
+    "original_numerical_window_contract_sha256": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad",
+    "numeric_namespace_only": true,
+    "old_2plus2_authorizes_new22": false,
+    "new_materializer_and_execution_authority_required": true,
+    "new_target_MP4_decode_budget": 0,
+    "target_pixel_changes_allowed": false,
+    "new_expected_codec_passes": 132,
+    "calculation": "22 new primary sources x3 profiles x2 actual replays;3 existing complete primary sources require exact receipt/pixel/software/role validation plus new reuse sidecars."
+  },
+  "limitations": [
+    "No image reinterpretation or new decoding was performed in this independent binding audit; it verifies already-recorded visual decisions and image bytes.",
+    "No target NPZ was downloaded or locally re-read. Actual38 pixel verification remains the separately bound remote audit; the new dataset loader must verify actual target/observation pixels.",
+    "Distinct file SHA does not prove semantic source independence or pristine GT. Existing development sources remain previously used for model selection and recipe tuning.",
+    "The primary cohort is19train/6dev, not completed original32/8, independent frozen test, universal cut-free proof or model quality acceptance.",
+    "No new materialization, model, training, NPU or admission operation was performed."
+  ]
+}

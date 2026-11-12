@@ -1,0 +1,489 @@
+{
+  "schema": "openh3.full22_root_launch_receipt.v1",
+  "observed_at_utc": "2026-11-12T05:52:19.616685+00:00",
+  "host": "31112",
+  "queue_session": "h3-full22-joint-20261112a",
+  "finalizer_session": "h3-full22-finalize-20261112a",
+  "queue_status": {
+    "schema": "openh3.full22_bounded_queue_status.v1",
+    "state": "running",
+    "complete": false,
+    "queue_sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+    "runner_sha256": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+    "physical_card": 1,
+    "execution_contract_sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+    "resource": {
+      "CPU_threads": 4,
+      "wall_seconds": 3600,
+      "termination_grace_seconds": 30,
+      "owned_process_group_RSS_limit_bytes": 137438953472,
+      "minimum_host_available_bytes": 171798691840,
+      "minimum_disk_free_bytes": 10737418240,
+      "stable_seconds": 15
+    },
+    "RSS_scope": "simultaneously sampled owned process-group RSS; not historical peak sums; not cgroup enforcement",
+    "cooperative_lock_only": true,
+    "automatic_retry": false,
+    "producer_started": true,
+    "first_resources": {
+      "host_MemAvailable_bytes": 1581692854272,
+      "disk_free_bytes": 16232889856000
+    },
+    "first_devices": {
+      "0": {
+        "health": "OK",
+        "pids": [
+          3811242
+        ],
+        "used_mb": 30940,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "1": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3416,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "2": {
+        "health": "OK",
+        "pids": [
+          434763
+        ],
+        "used_mb": 54359,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "3": {
+        "health": "OK",
+        "pids": [
+          434763
+        ],
+        "used_mb": 51842,
+        "total_mb": 65536,
+        "utilization": 69
+      },
+      "4": {
+        "health": "OK",
+        "pids": [
+          434764
+        ],
+        "used_mb": 55904,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "5": {
+        "health": "OK",
+        "pids": [
+          434764
+        ],
+        "used_mb": 53948,
+        "total_mb": 65536,
+        "utilization": 99
+      },
+      "6": {
+        "health": "OK",
+        "pids": [
+          434765
+        ],
+        "used_mb": 57321,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "7": {
+        "health": "OK",
+        "pids": [
+          434765
+        ],
+        "used_mb": 54691,
+        "total_mb": 65536,
+        "utilization": 99
+      }
+    },
+    "updated_at_utc": "2026-11-12T05:52:17.959336+00:00",
+    "second_resources": {
+      "host_MemAvailable_bytes": 1581581418496,
+      "disk_free_bytes": 16232889806848
+    },
+    "second_devices": {
+      "0": {
+        "health": "OK",
+        "pids": [
+          3811242
+        ],
+        "used_mb": 30940,
+        "total_mb": 65536,
+        "utilization": 100
+      },
+      "1": {
+        "health": "OK",
+        "pids": [],
+        "used_mb": 3416,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "2": {
+        "health": "OK",
+        "pids": [
+          434763
+        ],
+        "used_mb": 54359,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "3": {
+        "health": "OK",
+        "pids": [
+          434763
+        ],
+        "used_mb": 51843,
+        "total_mb": 65536,
+        "utilization": 100
+      },
+      "4": {
+        "health": "OK",
+        "pids": [
+          434764
+        ],
+        "used_mb": 55904,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "5": {
+        "health": "OK",
+        "pids": [
+          434764
+        ],
+        "used_mb": 53948,
+        "total_mb": 65536,
+        "utilization": 96
+      },
+      "6": {
+        "health": "OK",
+        "pids": [
+          434765
+        ],
+        "used_mb": 57321,
+        "total_mb": 65536,
+        "utilization": 0
+      },
+      "7": {
+        "health": "OK",
+        "pids": [
+          434765
+        ],
+        "used_mb": 54691,
+        "total_mb": 65536,
+        "utilization": 100
+      }
+    },
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "launch_attempted": true,
+    "worker_pid": 457195,
+    "owned_pgid": 457195,
+    "command": [
+      "bash",
+      "/cache/zihaohe/omni_openh3_20261111/code/run_takeover_command.sh",
+      "venv/bin/python",
+      "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_full22_joint_rgb_grad.py",
+      "--pretrained-manifest",
+      "configs/openh3_20261111/refiner_turbo_30794.json",
+      "--execution-contract",
+      "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json",
+      "--out",
+      "runs/h3_full22_joint_rgb_probe_20261112a/eval",
+      "--execute"
+    ],
+    "peak_owned_group_RSS_bytes": 87015653376,
+    "RSS_samples": 1692,
+    "active_worker_seconds": 439.0617277920246
+  },
+  "finalizer_status": {
+    "schema": "openh3.full22_joint_rgb_cpu_finalizer.v1",
+    "state": "waiting_for_terminal",
+    "pid": 457149,
+    "started_at_utc": "2026-11-12T05:44:44.252523+00:00",
+    "admission": {
+      "schema": "openh3.full22_joint_rgb_cpu_finalizer_admission.v1",
+      "run": "runs/h3_full22_joint_rgb_probe_20261112a",
+      "prep": "preparation/h3_full22_joint_rgb_probe_20261112a",
+      "out": "runs/h3_full22_joint_rgb_probe_20261112a_finalize",
+      "producer_sha256": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+      "trajectory_sha256": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+      "execution_contract_sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+      "queue_sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+      "target_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+      "source_sha256": {
+        "audit_terminal.py": "094ee44f6a6b0c9bf89677c1d5d3370116a2ff2ba048e204dde48a87cd41a761",
+        "audit_arrays.py": "3690c70226993dbb4f88d613c7fc236b2831763bc3beaacc0a9c3e9dfeb9f1c4",
+        "finalize_once.py": "a4445d98a9e510bee296f74d1732ffab8e4f1a7ce7b427ed621f0a53fcf777b2",
+        "small_archive.py": "80b8e9aca4c43ac053b20d60ba81debb847b0e67ebd581b2d188aea1bf3dd202"
+      }
+    },
+    "admission_sha256": "0cdeccfdaeba4f52fa7aff8975a14537849f085e1eda366eff0c5af694627ea9",
+    "complete": false,
+    "wait_limit_seconds": 4200,
+    "poll_seconds": 30,
+    "audit_timeout_seconds": 300,
+    "audit_address_space_limit_bytes": 4294967296,
+    "audit_invocations": 0,
+    "NPU_calls": 0,
+    "model_job_interventions": 0,
+    "elapsed_seconds": 450.0228845719248,
+    "updated_at_utc": "2026-11-12T05:52:14.275404+00:00",
+    "polls": 16,
+    "wait_seconds": 450.0212202388793,
+    "last_queue_observation": {
+      "record": {
+        "schema": "openh3.full22_bounded_queue_status.v1",
+        "state": "running",
+        "complete": false,
+        "queue_sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+        "runner_sha256": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+        "physical_card": 1,
+        "execution_contract_sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+        "resource": {
+          "CPU_threads": 4,
+          "wall_seconds": 3600,
+          "termination_grace_seconds": 30,
+          "owned_process_group_RSS_limit_bytes": 137438953472,
+          "minimum_host_available_bytes": 171798691840,
+          "minimum_disk_free_bytes": 10737418240,
+          "stable_seconds": 15
+        },
+        "RSS_scope": "simultaneously sampled owned process-group RSS; not historical peak sums; not cgroup enforcement",
+        "cooperative_lock_only": true,
+        "automatic_retry": false,
+        "producer_started": true,
+        "first_resources": {
+          "host_MemAvailable_bytes": 1581692854272,
+          "disk_free_bytes": 16232889856000
+        },
+        "first_devices": {
+          "0": {
+            "health": "OK",
+            "pids": [
+              3811242
+            ],
+            "used_mb": 30940,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "1": {
+            "health": "OK",
+            "pids": [],
+            "used_mb": 3416,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "2": {
+            "health": "OK",
+            "pids": [
+              434763
+            ],
+            "used_mb": 54359,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "3": {
+            "health": "OK",
+            "pids": [
+              434763
+            ],
+            "used_mb": 51842,
+            "total_mb": 65536,
+            "utilization": 69
+          },
+          "4": {
+            "health": "OK",
+            "pids": [
+              434764
+            ],
+            "used_mb": 55904,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "5": {
+            "health": "OK",
+            "pids": [
+              434764
+            ],
+            "used_mb": 53948,
+            "total_mb": 65536,
+            "utilization": 99
+          },
+          "6": {
+            "health": "OK",
+            "pids": [
+              434765
+            ],
+            "used_mb": 57321,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "7": {
+            "health": "OK",
+            "pids": [
+              434765
+            ],
+            "used_mb": 54691,
+            "total_mb": 65536,
+            "utilization": 99
+          }
+        },
+        "updated_at_utc": "2026-11-12T05:52:02.843097+00:00",
+        "second_resources": {
+          "host_MemAvailable_bytes": 1581581418496,
+          "disk_free_bytes": 16232889806848
+        },
+        "second_devices": {
+          "0": {
+            "health": "OK",
+            "pids": [
+              3811242
+            ],
+            "used_mb": 30940,
+            "total_mb": 65536,
+            "utilization": 100
+          },
+          "1": {
+            "health": "OK",
+            "pids": [],
+            "used_mb": 3416,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "2": {
+            "health": "OK",
+            "pids": [
+              434763
+            ],
+            "used_mb": 54359,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "3": {
+            "health": "OK",
+            "pids": [
+              434763
+            ],
+            "used_mb": 51843,
+            "total_mb": 65536,
+            "utilization": 100
+          },
+          "4": {
+            "health": "OK",
+            "pids": [
+              434764
+            ],
+            "used_mb": 55904,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "5": {
+            "health": "OK",
+            "pids": [
+              434764
+            ],
+            "used_mb": 53948,
+            "total_mb": 65536,
+            "utilization": 96
+          },
+          "6": {
+            "health": "OK",
+            "pids": [
+              434765
+            ],
+            "used_mb": 57321,
+            "total_mb": 65536,
+            "utilization": 0
+          },
+          "7": {
+            "health": "OK",
+            "pids": [
+              434765
+            ],
+            "used_mb": 54691,
+            "total_mb": 65536,
+            "utilization": 100
+          }
+        },
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "launch_attempted": true,
+        "worker_pid": 457195,
+        "owned_pgid": 457195,
+        "command": [
+          "bash",
+          "/cache/zihaohe/omni_openh3_20261111/code/run_takeover_command.sh",
+          "venv/bin/python",
+          "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_full22_joint_rgb_grad.py",
+          "--pretrained-manifest",
+          "configs/openh3_20261111/refiner_turbo_30794.json",
+          "--execution-contract",
+          "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json",
+          "--out",
+          "runs/h3_full22_joint_rgb_probe_20261112a/eval",
+          "--execute"
+        ],
+        "peak_owned_group_RSS_bytes": 87015653376,
+        "RSS_samples": 1634,
+        "active_worker_seconds": 423.9454890592024
+      },
+      "sha256": "fd68a28cf35173d9470d8f17e42812cc0f125be5278ca5d040c997ed1ea36f23"
+    }
+  },
+  "configuration_verification": {
+    "complete": true,
+    "files": {
+      "preparation/h3_full22_joint_rgb_probe_20261112a/producer_admission.json": {
+        "sha256": "3bb897e4b5ea0840d51ba0caa5f8897f67044001446dc7670b0aa8a4cc0af5bf",
+        "bytes": 908
+      },
+      "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json": {
+        "sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+        "bytes": 172760
+      },
+      "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract_unadmitted.json": {
+        "sha256": "aafefb23108e5f021a03e5dee52be86758a6122f715d9fc53477f9e52a33dfc9",
+        "bytes": 172591
+      },
+      "preparation/h3_full22_joint_rgb_probe_20261112a/queue.json": {
+        "sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+        "bytes": 174041
+      },
+      "preparation/h3_full22_joint_rgb_probe_20261112a/launch_admission.json": {
+        "sha256": "5b5105dbdd31d71c100f8e2bdec2a4a4735ae61ec023d18dd7c96536022cf9f0",
+        "bytes": 704
+      },
+      "preparation/h3_full22_joint_rgb_probe_20261112a/root_runner_review.json": {
+        "sha256": "07083972fb68c5b94f35b8d2977f06d4911a4c87017353a22f78f23ba0ead961",
+        "bytes": 1245
+      },
+      "preparation/h3_full22_joint_terminal_audit_20261112/admission.json": {
+        "sha256": "0cdeccfdaeba4f52fa7aff8975a14537849f085e1eda366eff0c5af694627ea9",
+        "bytes": 1090
+      }
+    },
+    "queue_pins_verified": 1318,
+    "runner_validation": true,
+    "finalizer_validation": true,
+    "NPU_calls": 0,
+    "run_absent": true
+  },
+  "queue_sha256": "a276715cab8a0de332928f876b7fe0aa265e11b1b57528b9846001d602900e3b",
+  "execution_sha256": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+  "finalizer_admission_sha256": "0cdeccfdaeba4f52fa7aff8975a14537849f085e1eda366eff0c5af694627ea9",
+  "worker_alive": true,
+  "accepted_result": false
+}

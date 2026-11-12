@@ -1,0 +1,53 @@
+{
+  "schema": "openh3.full22_runner_configuration_template.v1",
+  "status": "template_only_not_executable_or_admitted",
+  "queue": {
+    "schema": "openh3.full22_bounded_queue.v1",
+    "root": "/cache/zihaohe/omni_openh3_20261111",
+    "cards": [1],
+    "min_free_mb": 60000,
+    "lock_dir": "/cache/zihaohe/.npu-reservations",
+    "fresh_admission": "preparation/h3_full22_joint_rgb_probe_20261112a/launch_admission.json",
+    "execution_contract": "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json",
+    "status": "runs/h3_full22_joint_rgb_probe_20261112a/queue_status.json",
+    "resource": {
+      "CPU_threads": 4,
+      "wall_seconds": 3600,
+      "termination_grace_seconds": 30,
+      "owned_process_group_RSS_limit_bytes": 137438953472,
+      "minimum_host_available_bytes": 171798691840,
+      "minimum_disk_free_bytes": 10737418240,
+      "stable_seconds": 15
+    },
+    "implementation_sha256": {"REPLACE_WITH_ALL_EXACT_RUNTIME_PINS_INCLUDING_RUNNER_EXECUTION_HELPER_ENV_WRAPPER_ENTRY_MANIFEST": "not_a_digest"},
+    "environment": {
+      "H3_BASE_ENV": "/cache/zihaohe/envs/minimax-h3-npu",
+      "COMFYROOT": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+      "PYTHONPATH": "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_rgb_probe_20261112a/code:/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v2/code"
+    },
+    "required_json_values": [],
+    "steps": [{
+      "name": "single_full22_joint_RGB_backward_no_update",
+      "argv": ["venv/bin/python", "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_full22_joint_rgb_grad.py", "--pretrained-manifest", "configs/openh3_20261111/refiner_turbo_30794.json", "--execution-contract", "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json", "--out", "runs/h3_full22_joint_rgb_probe_20261112a/eval", "--execute"],
+      "log": "runs/h3_full22_joint_rgb_probe_20261112a/logs/probe.log"
+    }],
+    "automatic_launch": false
+  },
+  "launch_admission": {
+    "schema": "openh3.full22_launch_admission.v1",
+    "approved": false,
+    "scope": "full22_single_joint_engineering_probe",
+    "physical_card": 1,
+    "queue_sha256": "ROOT_BINDS_FINAL_QUEUE_SHA",
+    "execution_contract_sha256": "ROOT_BINDS_FINAL_EXECUTION_SHA",
+    "runner_sha256": "ROOT_BINDS_FINAL_RUNNER_SHA"
+  },
+  "acyclic_binding_order": [
+    "producer root_admission binds execution payload excluding root_admission",
+    "execution contract includes producer admission path and SHA",
+    "queue pins final execution contract and runner; fresh_admission is path only",
+    "separate launch_admission binds final queue/runner/execution SHA and chosen physical card"
+  ],
+  "launch_command_template": "python3 preparation/h3_full22_joint_rgb_probe_20261112a/run_once.py preparation/h3_full22_joint_rgb_probe_20261112a/queue.json",
+  "authorization": "root chooses actual card and writes both admissions after independent source/CPU/input review and fresh resources; this template grants no launch"
+}

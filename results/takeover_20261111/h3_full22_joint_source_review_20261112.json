@@ -1,0 +1,210 @@
+{
+  "schema": "openh3.full22_independent_source_review.v1",
+  "reviewed_at_utc": "2026-11-12T05:34:44.740163+00:00",
+  "decision": "no_blocking_source_issue_found; eligible_for_root_final_snapshot_and_fresh_resource_admission_only",
+  "reviewer_scope": "Independent read-only producer/test/contract review; no producer modification, model replay, or NPU dispatch. Reviewer separately authored bounded runner; root must independently review that runner.",
+  "sources": {
+    "code/check_h3_full22_joint_rgb_grad.py": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+    "code/tests/test_h3_full22_joint_rgb_probe.py": "a8c44b5fa9eabc780d4d7e63e235d5dd157152cefc61e71ae56c4d6c6d649d74"
+  },
+  "pending_contract": {
+    "path": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/pending_execution_contract.json",
+    "sha256": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3"
+  },
+  "prior_root_review": {
+    "path": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/root_preparation_review.json",
+    "sha256": "53906f6d8af614c87cbeb1603af17684f16b3aff983ebcd726fa92da6540db9a"
+  },
+  "blocking_findings": [],
+  "resolved_review_suggestion": {
+    "topic": "Native VAE plan must bind actual source, not only a self-consistent changed runtime pin map",
+    "implementation_line": 526,
+    "resolution": "inspect now explicitly requires resolved minimax/vae.py SHA 1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe"
+  },
+  "input_and_GT_review": {
+    "source_id": "2BdYaGuVAKo",
+    "role": "train",
+    "task": "ordinary compression",
+    "geometry": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "source_identity_lines": [
+      93,
+      118
+    ],
+    "cache_bindings_lines": [
+      119,
+      140
+    ],
+    "clean_target_binding_lines": [
+      141,
+      153
+    ],
+    "actual_target_float32_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+    "target_only_loss_lines": [
+      239,
+      267
+    ],
+    "model_inputs": [
+      "guide Z_R",
+      "observed raw warm-start Z_raw"
+    ],
+    "cached_VAE_R_usage": "provenance only, never loss target",
+    "source_provenance": "materialization_attestation_only; no live original video SHA claim",
+    "checks": "Fresh selected-file size/SHA, exact train record and no train/dev source ID or full-source-SHA overlap; NPY file/content/dtype/shape/finite; actual observation equals raw draft; clipped Rphi relation; original uint8 clean target conversion exact. No target resize, VAE encode, Rphi rerun or input substitution."
+  },
+  "native_VAE_review": {
+    "remote_readonly_source_check": {
+      "host": "huawei-modelarts-31112",
+      "path": "/cache/zihaohe/streaming_sr0/code/ComfyUI/comfy/ldm/minimax/vae.py",
+      "actual_sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe",
+      "model_imports": 0
+    },
+    "source_lines": {
+      "native_tile_row": [
+        612,
+        619
+      ],
+      "native_row_consumption": [
+        631,
+        659
+      ],
+      "temporal_plan": [
+        717,
+        727
+      ]
+    },
+    "guard_lines": [
+      169,
+      219
+    ],
+    "temporal_chunks": 1,
+    "spatial_rows": 3,
+    "tiles_per_row": 4,
+    "actual_group_expected_shape": [
+      4,
+      24,
+      7,
+      16,
+      16
+    ],
+    "decision": "Native generator retained; fourth-yield accounting avoids requiring a fifth next(). Any changed grouping is rejected before real pixels call; no memory-query override or fallback. Three spatial rows explain108 block entries per decode, not three temporal chunks.",
+    "pixel_semantics": "as-returned internally clipped VAE RGB; does not expose pre-internal-clamp pixels"
+  },
+  "model_and_budget_review": {
+    "fresh_base_recipe_lines": [
+      289,
+      290
+    ],
+    "fresh_zero_B_lines": [
+      407,
+      411
+    ],
+    "synthetic_nonzero_adapter_checkpoint_loaded": false,
+    "reference_candidate_NFE": [
+      3,
+      3
+    ],
+    "whole_VAE_decode_calls": 2,
+    "stage_decode_calls": 2,
+    "VAE_encode_calls": 0,
+    "Rphi_calls": 0,
+    "RGB_loss_expressions": 1,
+    "loss_scale": 1024,
+    "backward_calls": 1,
+    "optimizer_steps": 0,
+    "adapter_updates": 0,
+    "DiT_block_entries": {
+      "reference": 150,
+      "candidate": 150,
+      "backward_recompute": 150
+    },
+    "VAE_block_entries": {
+      "reference_decode": 108,
+      "candidate_decode": 108,
+      "backward_recompute": 108
+    },
+    "decoder_math_contexts": {
+      "candidate_decode": 109,
+      "backward": 108,
+      "total": 217
+    },
+    "strict_video_audio_and_cast_parity": true,
+    "RGB_allclose": {
+      "atol": 0.0002,
+      "rtol": 0.0001,
+      "candidate_against_reference": true
+    },
+    "budget_gate_lines": [
+      480,
+      506
+    ],
+    "frozen_mapping": "Original parameter object/canonical name mapping retained across .base LoRA renaming; base and registered buffers separately byte-hashed. Residency checked around decodes/backward; adapters unchanged; 400 actual gradients finite/present, aggregate B nonzero, A zero permitted."
+  },
+  "failure_and_evidence_review": {
+    "finally_lines": [
+      453,
+      479
+    ],
+    "behavior": "Writes actual RGB/latent arrays before verdict. Keeps failure origin; attempted gradients are saved on failed backward when possible. Final frozen/import/restoration diagnostics remain separate; errors do not become success. Independent terminal auditor must distinguish saved-array verification from producer-only live-object/version claims.",
+    "scope_boundary": "No successful full22 NPU result exists in this review; OOM/fallback/group change, parity failure or zero/nonfinite gradients must stay failed without retries or tolerance change."
+  },
+  "CPU_validation": {
+    "receipt_path": "results/takeover_20261111/h3_full22_joint_preflight_20261112/payload/preparation/h3_full22_joint_cpu_validation_20261112b/cpu_receipt.json",
+    "receipt_sha256": "f66ef0f5e409cb679ac76c72eb3ab0fb8ed40ef63d9ccd7264a602f2a8bf2104",
+    "tests_passed": 10,
+    "tests_skipped": 0,
+    "test_seconds": 5.287,
+    "bounded_process_seconds": 8.383052408695221,
+    "peak_RSS_bytes": 423981056,
+    "scope": "Tiny fake DiT/VAE with pinned actual sampler/tile-row AST; no weights,Comfy runtime import or NPU model calls. Actual full22 H3 remains unexecuted.",
+    "coverage": [
+      "Torch-free module import",
+      "target exact conversion and tamper",
+      "latent shape/dtype/hash/nonfinite",
+      "train/dev role and source hash",
+      "admission payload changes",
+      "native temporal/space plan",
+      "batch change rejects before pixels and restores",
+      "block budget overflow",
+      "pinned sampler/tile-row AST with tiny operators: same graph,217 contexts,324 VAE block entries,1 RGB backward",
+      "RGB or target mismatch prevents backward"
+    ]
+  },
+  "actual_input_inspection": {
+    "receipt_path": "results/takeover_20261111/h3_full22_joint_preflight_20261112/payload/preparation/h3_full22_joint_input_inspection_20261112a/inspection_receipt.json",
+    "receipt_sha256": "bbde7d19eb2cc1abda790bf6f71307958a69dd5602b94dc299b35208dd8da2da",
+    "inspection_path": "results/takeover_20261111/h3_full22_joint_preflight_20261112/payload/preparation/h3_full22_joint_input_inspection_20261112a/actual_input_inspection/inspection.json",
+    "inspection_sha256": "86912310101473b462f6146009d209452d0a271bbee1ac126c8b6c2b23e651e0",
+    "seconds": 7.336531930603087,
+    "peak_RSS_bytes": 651550720,
+    "verified_runtime_files": 11,
+    "model_calls": 0,
+    "torch_imported": false,
+    "limitation": "This default inspection uses11 scoped CPU helper/native-plan pins and stats model assets. It is not final full runtime or fresh weight-byte verification; new execution must bind full actual imported union and H3 loader must freshly hash all recipe assets."
+  },
+  "runner_preparation": {
+    "path": "preparation/h3_full22_joint_rgb_probe_20261112a/run_once.py",
+    "sha256": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+    "CPU_tests": 8,
+    "CPU_model_calls": 0,
+    "independence_note": "Authored by this reviewer, so root review is required; not self-described as independently reviewed."
+  },
+  "remaining_before_any_launch": [
+    "Root final full runtime snapshot and independent runner/terminal-auditor review",
+    "Actual chosen physical card with two fresh health/no-PID/memory checks plus host RAM/disk and shared lock",
+    "Separate producer and launch admissions binding exact execution payload/contract/queue/runner hashes"
+  ],
+  "not_established": [
+    "full22 joint memory fit or gradients",
+    "quality or functional nonzero adapter impact",
+    "omni restoration or SOTA",
+    "streaming/latency",
+    "full32 source training acceptance",
+    "continuity qualification of2Bd or independent test generalization"
+  ],
+  "NPU_launches_by_reviewer": 0
+}

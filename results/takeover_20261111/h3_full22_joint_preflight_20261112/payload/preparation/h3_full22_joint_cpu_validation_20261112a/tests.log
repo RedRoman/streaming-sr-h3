@@ -1,0 +1,32 @@
+test_admission_payload_cannot_hide_budget_or_input_change (test_h3_full22_joint_rgb_probe.InputTests.test_admission_payload_cannot_hide_budget_or_input_change) ... ok
+test_array_file_shape_dtype_pixels_and_finite_bound (test_h3_full22_joint_rgb_probe.InputTests.test_array_file_shape_dtype_pixels_and_finite_bound) ... ok
+test_module_import_does_not_load_torch_comfy_or_model (test_h3_full22_joint_rgb_probe.InputTests.test_module_import_does_not_load_torch_comfy_or_model) ... ok
+test_target_loss_conversion_exact_and_tamper_rejected (test_h3_full22_joint_rgb_probe.InputTests.test_target_loss_conversion_exact_and_tamper_rejected) ... ok
+test_train_source_not_dev_or_oracle_identity (test_h3_full22_joint_rgb_probe.InputTests.test_train_source_not_dev_or_oracle_identity) ... ok
+test_RGB_or_target_mismatch_prevents_backward (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_RGB_or_target_mismatch_prevents_backward) ... ok
+test_actual_joint_three_rows_217_contexts_and_only_RGB_backward (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_actual_joint_three_rows_217_contexts_and_only_RGB_backward) ... {"phase": "reference", "elapsed_seconds": 0.15009585488587618, "max_rss_KiB_linux": 253792, "rss": {"VmHWM": "253792 kB", "VmRSS": "253792 kB"}}
+{"phase": "reference_decode", "elapsed_seconds": 0.1948528289794922, "max_rss_KiB_linux": 270176, "rss": {"VmHWM": "270176 kB", "VmRSS": "270176 kB"}}
+{"phase": "candidate", "elapsed_seconds": 0.5309845739975572, "max_rss_KiB_linux": 271600, "rss": {"VmHWM": "271600 kB", "VmRSS": "271600 kB"}}
+{"phase": "candidate_decode", "elapsed_seconds": 3.4830647874623537, "max_rss_KiB_linux": 376920, "rss": {"VmHWM": "376920 kB", "VmRSS": "376920 kB"}}
+{"phase": "backward", "elapsed_seconds": 3.974870389327407, "max_rss_KiB_linux": 408464, "rss": {"VmHWM": "408464 kB", "VmRSS": "407696 kB"}}
+FAIL
+test_dynamic_batch_change_blocks_real_decode_and_restores (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_dynamic_batch_change_blocks_real_decode_and_restores) ... {"phase": "reference_decode", "elapsed_seconds": 0.15534494630992413, "max_rss_KiB_linux": 413080, "rss": {"VmHWM": "413080 kB", "VmRSS": "393500 kB"}}
+ok
+test_fourth_block_call_fails_before_original_and_restores (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_fourth_block_call_fails_before_original_and_restores) ... {"phase": "candidate", "elapsed_seconds": 0.14860509056597948, "max_rss_KiB_linux": 413080, "rss": {"VmHWM": "413080 kB", "VmRSS": "393500 kB"}}
+ok
+test_native_plan_is_one_temporal_chunk_and_three_spatial_rows (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_native_plan_is_one_temporal_chunk_and_three_spatial_rows) ... ok
+
+======================================================================
+FAIL: test_actual_joint_three_rows_217_contexts_and_only_RGB_backward (test_h3_full22_joint_rgb_probe.NativeAndJointTests.test_actual_joint_three_rows_217_contexts_and_only_RGB_backward)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_cpu_validation_20261112a/code/tests/test_h3_full22_joint_rgb_probe.py", line 200, in test_actual_joint_three_rows_217_contexts_and_only_RGB_backward
+    self.assertEqual(self.e.data['actual']['stage_decode_calls'],{'reference_decode':1,'candidate_decode':1})
+AssertionError: {} != {'reference_decode': 1, 'candidate_decode': 1}
+- {}
++ {'candidate_decode': 1, 'reference_decode': 1}
+
+----------------------------------------------------------------------
+Ran 10 tests in 5.576s
+
+FAILED (failures=1)

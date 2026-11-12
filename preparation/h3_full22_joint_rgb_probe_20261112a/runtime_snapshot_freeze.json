@@ -1,0 +1,51 @@
+{
+  "schema": "openh3.full22_joint_runtime_snapshot_freeze.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "host": "huawei-modelarts-31112",
+  "entry": "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_full22_joint_rgb_grad.py",
+  "entry_sha256": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+  "execution_contract": "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json",
+  "execution_contract_sha256_with_null_admission": "aafefb23108e5f021a03e5dee52be86758a6122f715d9fc53477f9e52a33dfc9",
+  "execution_payload_sha256": "3e5f806fa01bff67768c06c5ac85dedfede8086359f84763238a93fcf44e8127",
+  "parent_execution_contract": "preparation/h3_nonzero_adapter_probe_20261112b_31112/execution_contract.json",
+  "parent_execution_contract_sha256": "559e0fc5fa0ebd4d326ce0a364c258d90f08dd906f313f73847b3523ecc13f38",
+  "inherited_runtime_pins": 1288,
+  "new_runtime_pins": 19,
+  "runtime_pins": 1307,
+  "environment": {
+    "H3_BASE_ENV": "/cache/zihaohe/envs/minimax-h3-npu",
+    "COMFYROOT": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI",
+    "PYTHONPATH": "/cache/zihaohe/omni_openh3_20261111/preparation/h3_full22_joint_rgb_probe_20261112a/code:/cache/zihaohe/omni_openh3_20261111/preparation/vae_roundtrip_runtime_20261111_v2/code"
+  },
+  "producer_root_admission": null,
+  "launch_admission_created": false,
+  "queue_created": false,
+  "NPU_launched": false,
+  "new_files": {
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_full22_joint_rgb_grad.py": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/openh3_assets.py": "fc95b9dd6deb42f7df8c207a101f8426c2ee58df3ab21bdf4a729bcaed42e4aa",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/pixel_consistency.py": "253c4bbbc3e4bd35ff73596b34d1784131042359678fd0a7666638f34a15c509",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/tests/test_h3_full22_joint_rgb_probe.py": "a8c44b5fa9eabc780d4d7e63e235d5dd157152cefc61e71ae56c4d6c6d649d74",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/code/tests/test_openh3_train_trajectory.py": "f9e05c4cadff196e0da0c7ef511321ee21db73e30252dc092df01d1534f61287",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json": "aafefb23108e5f021a03e5dee52be86758a6122f715d9fc53477f9e52a33dfc9",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/input_inventory.json": "c1a5e5339e335c1e536474da5712dbd04429753743803c51e6f3cfde8c880367",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/nonzero_terminal_audit.json": "8d113ad97d2d207e820102879efb9451a05cf46cf7280239e768e9fc84d9441a",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/root_preparation_review.json": "53906f6d8af614c87cbeb1603af17684f16b3aff983ebcd726fa92da6540db9a",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/source_contract.json": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3"
+  },
+  "runner_ownership": "audit_evidence; source read/pinned, never modified or packed here",
+  "root_next_steps": [
+    "Verify uploaded snapshot and all runtime hashes; preserve source bytes.",
+    "Create producer admission with approved true, scope full22_single_joint_engineering_probe, probe_sha256 and execution_payload_sha256. Add admission path/SHA to execution root_admission; this does not change payload hash.",
+    "Construct a new queue from the frozen runner template, pin the final execution contract/runner/admission plus runtime union, then create separate launch admission binding queue/final execution/runner SHA and exactly one chosen card.",
+    "Fresh resources and one-shot shared-lock plus 15s recheck must pass before the sole bounded launch."
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "schema": "openh3.full22_joint_rgb_memory_probe_pending.v1",
+  "status": "pending_new_implementation_review_and_admission_not_executable",
+  "prepared_at_utc": "2026-11-12T04:48:18.468888+00:00",
+  "scope": "One full22 actual TRAIN workload joint-gradient and memory engineering probe; no training update, research quality or streaming claim.",
+  "authorization": {
+    "model_execution_authorized_by_this_file": false,
+    "new_entry_implemented": false,
+    "queue_created": false,
+    "root_selected_actual_clean_RGB_target": true,
+    "nonzero_b_terminal_acceptance_required": true,
+    "nonzero_b_terminal_review": null
+  },
+  "asset_inventory": {
+    "path": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/asset_inventory_31112.json",
+    "sha256": "c1a5e5339e335c1e536474da5712dbd04429753743803c51e6f3cfde8c880367"
+  },
+  "target_pixel_inventory": {
+    "path": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/target_pixel_inventory_31112.json",
+    "sha256": "40a543a1fa7ac4e8675b503d12df102179a7c43d90d0cf2f1ef5b2194d33c9ba"
+  },
+  "verified_prior_evidence": {
+    "small_joint_a": {
+      "path": "results/takeover_20261111/h3_joint_rgb_probe_20261112a_completed/scientific_review.json",
+      "sha256": "8f4aa8133dfa87c223c4afd0d19eb32809c3e06461e8dd91e4af93976492da05"
+    },
+    "VAE_full22_j_report": {
+      "path": "results/takeover_20261111/vae_latent_descent_20261111j_completed/runs/vae_latent_descent_20261111j/eval/report.json",
+      "sha256": "46cfef48730766b62f3dad245502de2e753a395ca5f78ef00fdb369d7246a3e5"
+    },
+    "train_cache_e": {
+      "path": "results/takeover_20261111/train_vae_cache_portable_20261112e_31112_completed/science_review.json",
+      "sha256": "34452cd78197842fd3c8e0982f3c961d72fa7000f9c15ec526567743c34099d6"
+    },
+    "prior_boundary": "Small5x128 contract and results remain unchanged. VAE-only full22 success and small-joint peak are not proof of full22 joint fit."
+  },
+  "execution": {
+    "host_candidate": "huawei-modelarts-31112",
+    "physical_card": null,
+    "logical_device": "npu:0 after explicit ASCEND_RT_VISIBLE_DEVICES mapping",
+    "dispatch": "One fresh immutable snapshot/run after root admission; no polling for an available card; no retry or automatic followup.",
+    "proposed_wall_seconds": 3600,
+    "TERM_then_KILL_grace_seconds": 30,
+    "CPU_threads": 4,
+    "proposed_owned_process_group_RSS_limit_bytes": 137438953472,
+    "initial_min_device_free_MB": 60000,
+    "host_min_available_RAM_bytes": 171798691840,
+    "disk_min_free_bytes": 10737418240,
+    "admission": "Fresh healthy assigned card, no foreign PID, exclusive per-card lock and 15-second second resource check; refuse if nonzero b has not completed and passed its independent terminal audit. Resource values are predeclared proposed bounds for root review, not measured estimates."
+  },
+  "inputs": {
+    "identity": {
+      "source_id": "2BdYaGuVAKo",
+      "source_sha256": "ab1d437859fa6de7a25d2235bd4c144e319749bee0249f9556f1c708b09f9394",
+      "sample_id": "rphi-2ac5b3e69cafa70f77d0c6603615ebc56162f4c6bec6e64664ca5bbb7e4b33a9",
+      "record_sha256": "d6bfe3ef3a9880eaf811c1a46b942619e90ee2e4e7918a7f6c9cb32be6d6e959",
+      "role": "train",
+      "task": "compression",
+      "geometry": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "parent_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+      "pretrained_fingerprint": "f7de8282b89d21b7e5bf4504e774e94b3bfeb25d63e7e33a11d3e5bc89370ddc"
+    },
+    "cache_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/manifest.json",
+      "sha256": "a2c5a5b7607aaa0bce74e0bd573a98f5fb36ecb0a8ee61d5726d6d72c134d62e",
+      "complete": true
+    },
+    "guide": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/rphi_guide_latent.npy",
+      "bytes": 1048448,
+      "file_sha256": "7878c6860be75e731ca7b396aa620f69cf16a3787fa06b839cc7e3b2ed852da7",
+      "array_sha256": "e0f7712b1c398becac71bfe4b78bf99392041415a2b19b7206b5e759ce84ec9f",
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "warm_start": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/raw_warm_start_latent.npy",
+      "bytes": 1048448,
+      "file_sha256": "ba050f2bdab60a0b3d5462e1390bc848f390c67a501770569f697f7c631889ad",
+      "array_sha256": "9333b3813f8a1820abd722784dbbbb947b756f60e24d1a680563f68fcb9512a1",
+      "shape": [
+        1,
+        24,
+        7,
+        30,
+        52
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "cached_VAE_R_provenance_only": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/train_vae_cache_legacy_smoke_20261112e_31112/cache/arrays/vae_rphi_as_returned_internal_clipped.npy",
+      "bytes": 105431168,
+      "file_sha256": "b2976f56f3349dc810ff85ad7a2454f22bdb3c5bd38762ac0d01e8aec4b9210e",
+      "array_sha256": "f1feb211975064e8ab3f3430b21ef84f9b6aed837864fc2fbc14dfad4033f5cd",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "context": {
+      "actual_file_checked": true,
+      "bytes": 299557,
+      "path": "/cache/zihaohe/streaming_sr0/assets/comfy_h3/h3_qwen_context_neutral_restore.pt",
+      "sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2",
+      "fresh_sha256": "fb03abcc1eb569d2fcd360fe512f2ae0d707298f4a7ad8b6a35b609e1d97d5d2"
+    },
+    "raw_warm_start_fixed": true,
+    "guide_semantics": "Z_R = native normalized VAE encode of official same-size PIL Lanczos P(clip(Rphi_raw_RGB,0,1)); cached FP32, no additional scale/clamp/resize or re-encode.",
+    "warm_start_semantics": "Z_raw = native normalized VAE encode of official P(actual observed RGB); never replace with Z_R or target.",
+    "target": {
+      "npz": "/cache/zihaohe/omni_openh3_20261111/datasets/omni_pilot_v1/train/4bf3899ab4b0549094789693104e84ed98d3e6ef5f1e4fdc0b11c0bbdec60fc0/target.npz",
+      "npz_file_sha256": "f78630561aca1c67d02fc0a6ddfac92adf036164cd1a4c85be3c233d569a616a",
+      "key": "frames",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "dtype": "uint8",
+      "array_sha256": "da17b42cb45382deb3415384562ab09dde42eca78be1fee7b1475b6b4b36c614",
+      "min": 0,
+      "max": 255,
+      "loss_target_float32_sha256": "e15655f1da67e8000ba2fa78e7a3fcbf4407b758afc59cbf3c0760ed3d6def5d",
+      "conversion": "CPU numpy frames.astype(float32)/float32(255), then torch.from_numpy; save actual bytes and require the predeclared float32 SHA.",
+      "usage": "Original-recording clean proxy, only RGB loss/supervision; never sent to H3/conditioning/guide/warm-start/noise/decoder input; no target VAE encode."
+    },
+    "record_binding": "Strict manifest/source_id/source_sha256/record_sha256/sample_id/split train/task compression and file/pixel hashes; target is not an independent test source.",
+    "original_video_scope": "materialization_attestation_only; no live original video SHA claim",
+    "source_cache_reuse": "0 Rphi calls,0 VAE encodes; existing e artifacts are read-only."
+  },
+  "fixed_numerics": {
+    "new_model": "Fresh H3 full original base+Refiner+Turbo manifest; adaptation_path=None,lora_path=None. Nonzero-b saved weights are not loaded. New rank8 zero-B adapter seed101.",
+    "parent_pretrained_manifest_sha256": "1023bd6e1df1552240cc7ff4bfac960836d2eeda05e680ecd2eb4b752bf7d975",
+    "full_asset_verification": "Unlike VAE-only e, actually hash/load base,refiner,turbo,VAE,context. Inventory currently fresh-hashes context but only stats large model assets; new execution cannot call this full verification.",
+    "video_shape": [
+      1,
+      24,
+      7,
+      30,
+      52
+    ],
+    "audio_shape": [
+      1,
+      32,
+      2,
+      37
+    ],
+    "rgb_shape": [
+      22,
+      480,
+      832,
+      3
+    ],
+    "sampling_seed": 101,
+    "adapter_seed": 101,
+    "audio_init": "zeros",
+    "noise": "Actual Comfy prepare_noise shared CPU RNG, video then audio; preserve exact packed noise/initial state across reference and candidate.",
+    "sigmas_specification": [
+      0.909375,
+      0.8571428571428571,
+      0.6666666666666666,
+      0.0
+    ],
+    "sigma_dtype": "float32",
+    "sampler": "Euler zero churn,CFG1,mode=base,hw=(480,832),refs=[]; no innerDC,soft anchor,mask,SR resize,frame selection or external video padding.",
+    "adapter": {
+      "rank": 8,
+      "modules": 200,
+      "tensors": 400,
+      "targets": [
+        "attn.qkv_proj",
+        "attn.out_proj",
+        "mlp.fc1",
+        "mlp.fc2"
+      ],
+      "dtype": "float32",
+      "base_dtype": "bfloat16",
+      "initial_B": "exact zero",
+      "optimizer_steps": 0,
+      "merge": false
+    },
+    "math": "Match accepted joint source: JIT=false, matmul/conv HF32=false, FP32 independent LoRA branch, native_training_math for DiT; scoped native Ascend functional RoPE per VAE forward/recompute, restored before DiT recompute. Preserve actual deterministic flags; no precision/tolerance/scale search.",
+    "vae_dtype": "float16",
+    "latent_scale": "Native normalized latent; direct VAE decode internally denormalizes; no external scale.",
+    "decoder_output": "H3.decode/ResidentH3Trajectory.decode remove only the single batch axis if returned ndim5. Native VAE outputs exactly22x480x832x3; require exact shape. Existing frame_pre_padding,token_drop,overlap and output-buffer semantics remain native; no extra trimming,selection,resize or clamp.",
+    "rgb_semantics": "Float32 as returned after native internal clamp; no claim of pre-clamp RGB."
+  },
+  "native_VAE_execution_plan": {
+    "source_path": "/cache/zihaohe/omni_openh3_20261111/code/ComfyUI/comfy/ldm/minimax/vae.py",
+    "source_sha256": "1fd97eb3f756eb97bc8060c0cde5e31a9013a2bbd93b18d263801919980207fe",
+    "recorded_cache_e_plan": {
+      "decode_temporal_pad_and_chunks": [
+        0,
+        1
+      ],
+      "height_tile_plan": [
+        [
+          0,
+          112,
+          224
+        ],
+        [
+          256,
+          256,
+          256
+        ],
+        [
+          144,
+          144
+        ]
+      ],
+      "latent_scale": "native normalized (mean-latents_mean)/latents_std; no extra external scale",
+      "output_shape": [
+        1,
+        3,
+        22,
+        480,
+        832
+      ],
+      "policy_changed": false,
+      "tile_size": 256,
+      "tiling": true,
+      "vae_ratio": 16,
+      "vae_ratio_t": 4,
+      "width_tile_plan": [
+        [
+          0,
+          192,
+          384,
+          576
+        ],
+        [
+          256,
+          256,
+          256,
+          256
+        ],
+        [
+          64,
+          64,
+          64
+        ]
+      ]
+    },
+    "temporal_padding": 0,
+    "temporal_chunks": 1,
+    "spatial_tile_rows": 3,
+    "spatial_tile_columns": 4,
+    "native_expected_tile_batch": 4,
+    "count_derivation": "108=36 transformer blocks x3 spatial tile rows with all4 horizontal tiles batched per row. This is NOT3 temporal chunks; Tlat7 gives pad0/chunks1.",
+    "dynamic_batch_risk": "Actual source612-619 picks tile batch=min(4,floor(free_memory/(128MiB*batch))) per row. Reference/candidate fullH3 residency and retained graph may change it. New passive observer must require native realized batch4 for all rows and identical two-path group geometry; no override of native memory query or tile math.",
+    "declared_calls_per_block": {
+      "reference_decode": 3,
+      "candidate_decode": 3,
+      "backward": 3
+    },
+    "declared_total_calls": {
+      "reference_decode": 108,
+      "candidate_decode": 108,
+      "backward_recompute": 108
+    },
+    "decoder_context_restorations": {
+      "candidate_decode": 109,
+      "backward": 108,
+      "total": 217,
+      "basis": "Source-derived1 outer candidate decode+108 checkpoint forward contexts+108 backward contexts; not yet measured for this proposed joint run."
+    },
+    "OOM_policy": "Scoped fail-closed Comfy sd.VAE OOM fallback encode/decode entrypoints, one stage.decode per path; retain native stage.tiled_decode. Native tile-batch departure,OOM,extra decode or loss of residency is terminal failure, never retry/resize."
+  },
+  "fixed_budget": {
+    "reference_NFE": 3,
+    "candidate_NFE": 3,
+    "total_NFE": 6,
+    "reference_VAE_decodes": 1,
+    "candidate_VAE_decodes": 1,
+    "stage_decode_calls": 2,
+    "VAE_encodes": 0,
+    "Rphi_forwards": 0,
+    "RGB_loss_expressions": 1,
+    "scaled_RGB_backward_calls": 1,
+    "optimizer_steps": 0,
+    "adapter_updates": 0,
+    "merge_calls": 0,
+    "DiT_block_calls": {
+      "reference": 150,
+      "candidate": 150,
+      "backward_recompute": 150
+    },
+    "distinct_DiT_blocks": 50,
+    "distinct_VAE_blocks": 36,
+    "recompute_scope": "Block recomputation is counted independently and is not extra explicit sampling NFE. No extra full-model evaluation for metrics or diagnostics."
+  },
+  "phases": [
+    {
+      "name": "preflight",
+      "model_calls": 0,
+      "action": "Validate exact cached files/pixels/identity and clean-target conversion, complete new runtime+assets pins, free-card admission. No e cache regeneration."
+    },
+    {
+      "name": "reference",
+      "NFE": 3,
+      "decodes": 1,
+      "action": "Official H3.sample uses fixed Z_R/Z_raw/noise/context; full resident restore and byte checks before official H3.decode. Save actual video/audio,FP16 stage input,RGB."
+    },
+    {
+      "name": "candidate",
+      "NFE": 3,
+      "decodes": 1,
+      "action": "Inject new zero-B after base-identity snapshot; same retained ResidentH3Trajectory(checkpoint_blocks=True,checkpoint_decoder=True), sample+decode once. Save outputs before strict parity verdict."
+    },
+    {
+      "name": "RGB_backward",
+      "backward_calls": 1,
+      "action": "Only if exact video/audio/FP16-input gates and unchanged RGB allclose pass: loss=mean((candidate_RGB.float().cpu()-clean_target_float32)**2); backward loss*1024 exactly once, retain final-video gradients. No auxiliary latent/audio loss or optimizer."
+    },
+    {
+      "name": "finally",
+      "model_calls": 0,
+      "action": "Save raw/unscaled400adapter gradients and video gradients when present; complete param/buffer/version/device inventories and restoration diagnostics even on failure; no extra forward/backward for audit."
+    }
+  ],
+  "hard_gates": {
+    "latent_parity": "torch.equal reference and candidate final FP32 video AND audio; finite,exact declared shapes; no tolerance.",
+    "decoder_input": "Actual reference/candidate FP16 stage-input bytes exactly equal expected final-video cast; save both.",
+    "RGB_parity": "torch.allclose(candidate,reference,atol=0.0002,rtol=0.0001), exact22x480x832x3; bitexact/maxabs measured descriptively. Same unchanged VAE gate as small joint.",
+    "loss_scale": 1024.0,
+    "retained_video_gradient": "Present,finite,nonzero; raw/unscaled-by1024 saved and independently auditable.",
+    "adapter_gradients": "400present finite; aggregate B norm>0 and at least1 nonzero B. A exactlyzero is legal atzeroB; None is failure.",
+    "frozen": "DiT530params+2registeredbuffers and VAE559params+42registeredbuffers before/after byteSHA; canonical original objects/version/device/requires_grad and no base/VAE grads. Adapter values unchanged. Enforce residency across each VAE decode/before backward.",
+    "restoration": "DiT/VAE checkpoint wrappers/math/instance overrides,session and whole-run current_patcher/latent_shapes restored; initialized-session failure cannot hide restoration state.",
+    "counts": "All declared whole-model/block/recompute/tile-group counters exact. Any mismatch is engineering failure; no posthoc acceptance relaxation."
+  },
+  "required_new_implementation": {
+    "proposed_entry": "code/check_h3_full22_joint_rgb_grad.py",
+    "existing_pinned_files_must_not_be_edited": true,
+    "reusable_sources": {
+      "code/check_h3_joint_rgb_grad.py": "852df835da5385e0e1f9761df79a6b4f6cf77384bde5a8adf462f5dc118e44e0",
+      "code/check_h3_trajectory_grad.py": "68f14475de075bba2eed1f538fb6fc25e8f31144fe9219c2237806c8146346b3",
+      "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+      "code/openh3_differentiable_euler.py": "409872e1b870716cdb2363e8e435fbf3355764c03a03aa8fdf5c548fa343b73f",
+      "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+      "code/check_vae_decode_grad.py": "d788520e9566ec0e68c10b293eb678c40b6aea97e4876095723f1b68647f418c",
+      "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+      "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909"
+    },
+    "reusable_helpers": [
+      "Joint Evidence/save_array/frozen_inventory/freeze_snapshot/check_snapshot/save_gradients/save_latent_parity/guarded_vae/counted_blocks/math and restoration helpers",
+      "ResidentH3Trajectory including eager options snapshot and per-recompute decoder contexts",
+      "Full base asset reader,official H3 sampling and exact independent FP32 adaptation"
+    ],
+    "new_glue_required": [
+      "Independent execution/schema/sourcecontract; do not monkeypatch constants or reuse small-J.execute unchanged.",
+      "Replace synthetic generator with hash-bound CPU Z_R/Z_raw caches and real train-only clean target loader.",
+      "New RGB loss function accepting already verified target; old fixed_target and rgb_backward hardcodewidth128.",
+      "Native temporal/tile plan and passive _decode_pixels grouping observer with predeclared3calls ofbatch4; full geometry shape checks.",
+      "Derive/save full-noise audio_t37 and native frame22; baseline hw480x832.",
+      "New full22 counter and217context restoration acceptance, not old36/73.",
+      "Inspect-only mode must import noNPU and perform0model calls; new meaningfulCPU fixtures then independent source review before anylaunch."
+    ],
+    "line_references": {
+      "code/check_h3_joint_rgb_grad.py": [
+        23,
+        25,
+        87,
+        214,
+        232,
+        409,
+        413,
+        421,
+        483,
+        517,
+        526,
+        573,
+        598,
+        612
+      ],
+      "code/openh3_train_trajectory.py": [
+        96,
+        116,
+        379,
+        459
+      ],
+      "code/h3_comfy.py": [
+        230,
+        244
+      ],
+      "ComfyUI/comfy/ldm/minimax/vae.py": [
+        612,
+        621,
+        717,
+        729,
+        752,
+        755,
+        818
+      ]
+    }
+  },
+  "resource_risks": [
+    {
+      "risk": "Full DiT activations/attention with retained three-step graph",
+      "evidence": "Video latent elements and patch tokens rise85.3125x relativeT2x8x8; RGB elements107.25x. Frozen weights dominate prior43.301GiB peak, so multiplying that peak or adding VAE-only peak is invalid.",
+      "response": "One full geometry attempt only; checkpoint all50DiT/36VAEblocks; stage-labelled actual allocated/reserved/driver/ownedRSS and save failure."
+    },
+    {
+      "risk": "VAE loader can offload retained DiT and may change native spatial batch",
+      "response": "Full residency/object/version/bytes gates around each decode,passive per-row group recording,no sd tiled fallback."
+    },
+    {
+      "risk": "Native output internal clamp/copy/blend may yield sparse orzeroRGB gradients",
+      "response": "Exact retained-video and aggregateBgradient hardgates; do not change target/loss oraddlatent loss afterfailure."
+    },
+    {
+      "risk": "Frozen hash scans and model coldload consume substantial walltime/hostRAM",
+      "response": "Distinct phase logs beforeeachscan; record elapsed/RSS and fixed3600+30bound asbound,notETA; no all-baseclone."
+    },
+    {
+      "risk": "Asset inventory does not rehash50GBmodel files",
+      "response": "Fresh newexecution must verify all actual recipeweights and runtimeimports; portablee asset scope cannot authorizeDiTmerge."
+    }
+  ],
+  "terminal_evidence": "Independently CPU-audit exact arrays/counts/targetconversion/grads and frozen inventory JSON; distinguish producer live-object attestation from independently saved arrays. Smallarchive includes JSON/logs/sources/smalllatents, not largeRGB/weights; remote audit largeRGB once.",
+  "not_claimed": [
+    "Full32training",
+    "Restoration quality gain",
+    "Blind omni generalization",
+    "Causal or streamingH3",
+    "Independent test evaluation",
+    "Capacity-fit already established",
+    "Nonzero-b weights oroptimizer update onthisfullclip"
+  ]
+}

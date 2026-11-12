@@ -1,0 +1,18 @@
+{
+  "schema": "openh3.full22_joint_RGB_root_acceptance.v1",
+  "accepted_at_utc": "2026-11-12T06:33:34.148208+00:00",
+  "engineering_accepted": true,
+  "quality_accepted": false,
+  "functional_update_accepted": false,
+  "optimizer_updates": 0,
+  "evidence_sha256": {
+    "local_verification.json": "3df0ffc5da65ad996cf4f09d747b79025c7ffa342abe20ff0e6c69526f61379f",
+    "independent_review.json": "aabfc788ab872f63e99af10b4bfaf677d03cebe2787aa91ace3fd6f820b15821",
+    "scientific_review.json": "2e183d05c8e024ae86fa4057e80e333c02ba205049c453f6b50cc2f32669628d",
+    "mirror_receipt.json": "c97bd4548c9bb2775bb6cc5d117f5dfa35fc5972171745268a85675b7e2c8588",
+    "transfer_recovery_receipt.json": "72bb9a72fd7da99b17b80e0e4f68c9a2bc30418dd6cdd1e523ea4d6c48f42e0b"
+  },
+  "archive_sha256": "ea6711dc4e52fcb0b216bac887c54802456338b32efb384eb7e0a6632a52888d",
+  "decision": "Accept one complete22x480x832 same-graph real-TRAIN RGB backward with zero-adapter parity, finite nonzeroB/latent gradients, fixed native tilebatch4 and frozen-model lifecycle verification. No rerun. Independent archive verification condition in scientific_review is now satisfied.",
+  "next_gate": "New real-TRAIN AdamW single update and deployed-output/reload/BF16-rounding validation; separately prepare complete matched data/cache/controls. P1 revised data finalizer remains independent."
+}

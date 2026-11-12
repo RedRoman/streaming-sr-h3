@@ -1,0 +1,20 @@
+{
+  "schema": "openh3.full22_runner_root_review.v1",
+  "created_at_utc": "2026-11-12T05:41:08.921272+00:00",
+  "reviewer": "root",
+  "reviewed_source_sha256": "6e4e3beae0351f21cf81ff8559776419e7d4b61a8bd2ab88f0fd5fc9db60d60f",
+  "test_receipt_sha256": "ea25f636bed52239d74999a72151b907874fac789e98b2a774b0b8334bfe2606",
+  "source_review_sha256": "0b38e4fdf3749d8bc0ef015f2436791199f85e90207e8d615568b69e7029effb",
+  "runtime_verification_sha256": "11a1076d25f19064c9574d2a2860e4d46a9d60cb280a742296563b1e053d2371",
+  "status": "implementation_accepted_pending_final_CPU_auditor_and_fresh_resource_admission",
+  "findings": [],
+  "checked": [
+    "all source bytes and exact queue/execution/producer admission binding before launch",
+    "shared card lock and actual health/PID/60GBfree two checks15sec apart",
+    "fresh owned process group only; 3600s timeout,128GiB aggregate sampledRSS,30s TERM to KILL",
+    "cleanup on worker failure, orphan live child, external TERM/INT; foreign process untouched in test",
+    "single worker/no retry; completed report required before queue completed",
+    "pins verified after terminal, original locked runtime unchanged"
+  ],
+  "scope": "No NPU capacity, gradient, throughput or quality acceptance."
+}

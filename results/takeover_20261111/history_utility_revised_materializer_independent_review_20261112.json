@@ -1,0 +1,120 @@
+{
+  "schema": "openh3.history_utility_revised_materializer_independent_source_review.v1",
+  "reviewer": "audit_evidence",
+  "reviewed_at_utc": "2026-11-12T06:04:06.465240+00:00",
+  "verdict": "no_blocking_source_or_contract_issue_after_supervisor_fix",
+  "blocking_findings": [],
+  "frozen_sources": {
+    "code/materialize_history_utility_revised.py": "04b369bfac80a9fc5b8d8638f5f5a3e8365421fccb082623990cac1faab18c8a",
+    "code/tests/test_history_utility_revised_materializer.py": "df0ade11157778257fcfe700c58960265aa8bfde561d1f2269dedd8754d7f8bb",
+    "preparation/history_utility_revised_materializer_20261112a/run_once.py": "25daa676153175a44706619277bb90f1d59a7971acc02e35f34a25ea6cb055c5",
+    "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1"
+  },
+  "execution_contract": {
+    "path": "preparation/history_utility_revised_materializer_20261112a/execution_contract.json",
+    "sha256": "f89b906a028e483361b765546b213a0ec63b3169e0ff83d220168f3e3e32afe9"
+  },
+  "freeze": {
+    "path": "preparation/history_utility_revised_materializer_20261112a/freeze.json",
+    "sha256": "96f9b75c7c9dcf23bad21d03003a16bd2d0d49ffae98ddd7fd5c8c5d793581d8",
+    "pins": 158,
+    "smallpins_independent_local_file_SHA_checked": 99,
+    "largepins_bound_to_existing_source_and_artifact_receipts": 59,
+    "largepin_breakdown": {
+      "original_source_MP4": 25,
+      "target_NPZ": 25,
+      "reused_observation_NPZ": 9
+    },
+    "large_remote_bytes_rehashed_by_this_review": false
+  },
+  "data_contract": {
+    "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "selected_counts": {
+      "train": 19,
+      "dev": 6
+    },
+    "new_sources": 22,
+    "reused_complete_sources": [
+      "4EKWTiWjPTQ",
+      "6UZVovkR3IU",
+      "6rJrrfRO3cA"
+    ],
+    "source_MP4_decode_calls": 0,
+    "new_codec_passes": 132,
+    "profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "actual_replays_per_profile": 2,
+    "numerical_window_contract_sha256": "13b6e03f8b5387a101997e1545214a03b43d281454e1d1848a589a57fd9c47ad",
+    "old_numeric_source_sha256": "80fa35dd84e941fb009b276cc704afb07b41088ca2b80ba72604afedc40d1c37"
+  },
+  "source_review": [
+    {
+      "lines": "93-179",
+      "finding": "Exact25 primary membership,3reuse/22new split, source roles, source/full SHA/window/target evidence, unchanged frozen operator/profile/software recipes and total132 codec passes are explicit. Default inspection does not call codecs."
+    },
+    {
+      "lines": "182-252",
+      "finding": "New execution authority binds cohort and exact original target receipt/artifact. Existing3 complete profile sources undergo original engineering-loader actual4NPZ verification and receive new sidecars; old files/receipts are not rewritten."
+    },
+    {
+      "lines": "255-329",
+      "finding": "New target metadata bridge preserves target pixels and original target_spec/window/noise key; numerical13b6 is clearly not new execution authority. Three profiles use frozen numeric implementation with two actual replays and shared smooth/abrupt unit-noise checks. Failure receipts retain started/completed pass counts."
+    },
+    {
+      "lines": "336-416",
+      "finding": "Each source is a fresh sequential child within the supervisor-owned PG. Original/partial run paths reject overwrite and no implicit retry occurs. Final receipt identifies22new/3reuse and requires25complete/132 new codec passes, leaving real revised-dataset validation pending."
+    },
+    {
+      "file": "run_once.py",
+      "lines": "29-94,145-179",
+      "finding": "Current owned-group RSS is sampled; zombies excluded. TERM/INT are blocked across spawn and handler setup, unblocked in child and under the installed parent guard. Context exit performs owned-group-only cleanup once. Worker completion requires no live owned descendants."
+    }
+  ],
+  "resolved_draft_findings": [
+    {
+      "issue": "Spawn-to-signal-handler gap could leave an owned worker alive if supervisor terminated before guard installation.",
+      "resolution": "spawned_owned blocks TERM/INT beforePopen and restores child mask; pending parent signal is delivered under owned_signal_guard. Covered by a dedicated mocked lifecycle fixture."
+    },
+    {
+      "issue": "Zombie membership plus duplicated cleanup could extend termination grace.",
+      "resolution": "group_memory excludesZ state; cleanup is a single context exit, and main exception handler only records failure."
+    }
+  ],
+  "resource_contract": {
+    "host": "31984",
+    "CPU_affinity_count": 1,
+    "threads": 1,
+    "owned_group_RSS_limit_bytes": 805306368,
+    "wall_seconds": 3600,
+    "termination_grace_seconds": 30,
+    "minimum_free_disk_bytes": 6442450944,
+    "maximum_new_output_accounting_bytes": 32212254720,
+    "disk_scope": "checked before/after each source, not a realtime filesystem quota",
+    "RSS_scope": "current ownedPG sampled every0.2s, not a cgroup hard allocation cap"
+  },
+  "CPU_evidence_reviewed_not_reexecuted": {
+    "tests_passed": 11,
+    "skips": 0,
+    "seconds": 3.287,
+    "receipt_sha256": "92a3b4085243eab537bdf8a8f1a54066f63e7dbfef917da30c204a792a908f89",
+    "log_sha256": "44bf9eb89ff5f05db64af5c94ebdbb24b5fc3635a55bc1b18655e688db348a9d",
+    "scope": "Real synthetic fullshape NPZ pixels/file/metadata plus old-loader compatibility; codec outputs stubbed and supervisor lifecycle mocked. No claim of realcodec or Linux process test from these fixtures."
+  },
+  "remaining_gates": [
+    "Unique default remote inspection must verify every158 actual source pin against the frozen bytes.",
+    "Root must separately bind actual inspection SHA and newfreeze/entry/contract in an execution admission; this review does not authorize old2+2 contract to runnew22.",
+    "After materialization, verify both exact19train/6dev revised datasets using actual target/observation NPZ and assert_revised_pair before separately admitted training."
+  ],
+  "review_actions": {
+    "new_decode_calls": 0,
+    "new_codec_calls": 0,
+    "model_calls": 0,
+    "NPU_calls": 0,
+    "training_calls": 0,
+    "old_runtime_or_metadata_mutations": 0,
+    "admission_created": false
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "schema": "openh3.guide_matched_lora_next_engineering_gates.v1",
+  "created_at_utc": "2026-11-12T06:26:36.800602+00:00",
+  "status": "source_and_accepted_evidence_review_only_no_implementation_or_launch",
+  "evidence_sha256": {
+    "configs/openh3_20261111/guide_matched_lora_interface_readiness_20261111.json": "d548134b2739fc5d185171fb1ff874bd3d313f04572c639a9b9066958b0f6d6a",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/source_contract.json": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3",
+    "preparation/h3_full22_joint_rgb_probe_20261112a/execution_contract.json": "aba45adbfc3c119318f95d4eb8a572cf38a3269819fab10403a8321431c3ee20",
+    "results/takeover_20261111/train_vae_cache_portable_20261112e_31112_completed/science_review.json": "34452cd78197842fd3c8e0982f3c961d72fa7000f9c15ec526567743c34099d6",
+    "results/takeover_20261111/h3_nonzero_adapter_probe_20261112b_31112_completed/scientific_review.json": "76c33661a020b2cb2a81ba4eae048bf6680d93ef27befaa75c9254bc6e325475",
+    "results/takeover_20261111/h3_nonzero_adapter_probe_20261112b_31112_completed/root_acceptance.json": "19a8c3cddc4dde8d8d2e24d2eb9c06bf22cba44b098011f75c3766ef8c655476",
+    "results/takeover_20261111/cached_rgb_compensation_completed_20261111/scientific_review.json": "d44293922c39e8cad3c201de3be68f55a9e004c02f3d82c8a9c6cb6bd4c3a953",
+    "code/check_h3_full22_joint_rgb_grad.py": "4de576ad99a372214930ae28791e275b9bf8f745ab794f4ccb113a2a41c60c21",
+    "code/check_h3_nonzero_adapter.py": "ab710d9a365ac8f502aea177f8993354e2a17d086de97cc71a0e4b265ae99f6b",
+    "code/openh3_train_trajectory.py": "69bc9ca998b02cc9b40704743f63ac14806113732bb250f0c28d7b4bee2fce22",
+    "code/openh3_runtime.py": "2b10070132c7ced7c99fe9e75ed9e4a924975832d79c3b81397f330a8927150c",
+    "code/lora.py": "ca4e8183e30330645773d952818a6b817ba6747882ae59c4d9d8adc3e15e2909",
+    "code/h3_comfy.py": "9caac2a282b83229fc0845138a3eccdaaac43ce5c6b0bd03788d1ced2487e50c",
+    "code/train_stage1.py": "a4ffd679296839a2615688fc507275e5c57998a02b431847f3d461eb700f3b10",
+    "code/export_rphi_train_guides.py": "86133823a46a42ddcd8b833aa117932a721e48e873d959248c1b6aad0bf7924f",
+    "code/export_rphi_train_controls.py": "b78df2c3b39a0c47a5d4f513c95b14cad0d647b85c83d529b05b50b7f92fd503",
+    "code/export_train_vae_cache.py": "5e2e18f3325ed2473bba088ce4fb1d846b0fa356319a1ff64e0c60958f7714a1",
+    "code/export_train_vae_cache_portable.py": "05ad19f05c8dcc10b83520c1eb4cc87f94c41e5a87f973528a23959e1999561a",
+    "code/run_fixed_h3_rphi.py": "05383516e55d395f161337df26568d34e7d6add1092786db640f9c8aaa33630d",
+    "code/rphi_h3_controls.py": "ca515675deda019e885bd24c218c7c2fbce7f9749a5f029d764e3562f9c1b8de"
+  },
+  "scope": "Read-only local sources and accepted small-cache/nonzero evidence. No remote polling, arrays/model execution, source edits, new run or training. This JSON is a next-gates proposal, not an execution contract.",
+  "current_boundary": {
+    "cache_e": "Accepted one TRAIN source 2BdYaGuVAKo, one compression record, full22x480x832; exactly2encode/1decode, no controls, no H3/backward/update. Z_raw and Z_R are distinct actual normalized FP32 latents. Not full32 source cache.",
+    "small_nonzero_b": {
+      "scope": "synthetic5x128 plainSGD diagnostic, not training initialization",
+      "actual_updates": 1,
+      "optimizer": "SGD lr1e-4, no momentum/decay, gradients unscaled by1024",
+      "B_tensors_changed": 200,
+      "B_coordinates_changed": 24371200,
+      "updated_reloaded_exact": true,
+      "zero_updated_reloaded_merged_endpoints_all_identical": true,
+      "functional_output_influence_established": false,
+      "BF16_merge_changed_coordinates_reported": 91,
+      "BF16_target_weight_coordinates": 19267584000,
+      "weight_statistics_boundary": "Producer statistics constrained by remote audit; large base matrices not locally recomputed."
+    },
+    "full22": "Parent reports producer and independent CPU terminal audit passed. Root archive/local review is still pending at this assignment; this review does not assert independently verified terminal hashes or resource numbers. Frozen contract is real TRAIN compression,6NFE/2decode/1RGBbackward,0optimizer/0adapter update; accepted engineering status does not change that budget.",
+    "guide_matched_training_updates_accepted": 0,
+    "historical_stage1": "Historical latent objective/300step work is a different experiment and remains in its own records. Do not call it final deployed-RGB trajectory training.",
+    "compensation": "Cached grid is negative/mixed one-source evidence: no universal dominance; denoise loses useful correction, compression and clean/near-clean have failures. No beta was selected for deployment."
+  },
+  "most_important_missing_gate": {
+    "name": "one_fixed_real_training_optimizer_update_and_functional_deployment_sensitivity",
+    "why": "Nonzero parameters and nonzero backward do not establish a changed restoration output. Small-b updates were effectively invisible at all observed endpoints. Full22 now adds a real target and geometry but still performs no update.",
+    "proposed_data": "Reuse exact cache-e raw warm-start, Rphi guide, original22-frame clean-proxy target and accepted full22 reference. Keep seed101, same3sigmas, joint video/audio noise, rank8/200modules/400FP32 tensors, base/refiner/Turbo/VAE/Rphi fixed.",
+    "optimizer": "Use the optimizer intended for later training (proposed AdamW, not rerunning diagnostic SGD). Freeze actual LR/warmup first-step value/betas/eps/weight-decay/foreach/fused/clip and precision before execution. Historical train_stage1 defaults are AdamW1e-4,warmup100,betas(.9,.999),eps1e-8,decay0; these are a candidate reference, not automatic new-run authorization. If kept, actual first-stepLR=1e-6. No LR/rank/step search after seeing output.",
+    "gradient_sequence": "One retained full3step H3->native VAE graph and original-RGB MSE as the existing engineering objective; multiply loss by1024 for backward, divide adapter grads once inFP32, finite inventory, predeclared clip, one AdamW update. Record raw/unscaled/clipped gradients, optimizer moments/step, actualA/B deltas. Zero A gradient at initial B=0 is allowed; do not replace unexpected None gradients with zero.",
+    "four_modes": [
+      "zero/pre-update: one gradient-bearing trajectory and decode",
+      "updated unmerged: same inputs/noise, no-grad trajectory and decode",
+      "cleared and strictly reloaded unmerged: identical adapter plus optimizer-state bytes, same-mode trajectory/decode",
+      "merged: FP32 W+BA then one BF16 storage cast, no live adapters; same inputs/noise trajectory/decode"
+    ],
+    "proposed_budget": {
+      "NFE": 12,
+      "VAE_decodes": 4,
+      "VAE_encodes": 0,
+      "Rphi_forwards": 0,
+      "backwards": 1,
+      "AdamW_updates": 1,
+      "adapter_save_clear_reload": 1,
+      "merge": 1,
+      "additional_forward_for_metrics": 0
+    },
+    "budget_condition": "12/4 reuses already accepted full22 reference artifacts for the zero-path gate. If a fresh official reference is required instead, explicitly approve15NFE/5decode before launch; never add it silently. Recompute block counts and native tile grouping remain separately accounted.",
+    "hard_gates": [
+      "Root acceptance and exact bytes of full22 report/audit/reference/cache inputs first.",
+      "400 expected FP32 adapter tensors and optimizer moments/steps finite, only allowed adapters update; base/VAE parameters and buffers unchanged before declaredmerge; full state/lifecycle/restoration checks.",
+      "Same-mode updated versus clear/reloaded video/audio/FP16decoderinput/RGB strict equality; optimizer state exact reload proves serialization only, not resumed next-step trajectory equivalence.",
+      "Record exact changed coordinate counts at video/audio/FP16cast/RGB endpoints. Functional deployment readiness requires nonzero actual RGB effect in the chosen deployment representation; finite gradients/changed weights alone do not satisfy it.",
+      "Merged weights exactly match the declared FP32-addmm/single-storage-cast implementation and only declared200 weights are written; no live adapter remains."
+    ],
+    "descriptive_only": [
+      "Merged-versus-unmerged maxabs/relativeL2/changed coordinates and original-RGB MSE, plus same-input repair magnitude and clipping. Do not impose a newly invented allclose threshold or demand bitwise equivalence across arithmetic representations.",
+      "Weight ideal delta, realized BF16 delta and rounding residual; unmerged adapter branch also casts its delta to base-output dtype before addition, so unmerged is not guaranteed to preserve arbitrarily small functional changes.",
+      "Before/after same-sample loss is a local diagnostic, not generalization or proof of a better optimizer."
+    ],
+    "failure_handling": "If outputs remain unchanged, preserve a successful arithmetic/persistence result but fail functional-effect readiness; do not silently increaseLR/steps/rank. If unmerged changes while deployed BF16 merge erases the effect, choose and independently admit an explicit resident-unmerged inference path or a separately justified arithmetic study. Existing H3(adaptation_path) always merges, so unmerged requires a new explicit serving/eval entry. No STE or hidden base dtype change.",
+    "memory_gate": "Optimizer moment allocation and additional nonzero forward modes are new memory events beyond0update full22. Release completed graph before optimizer/inference as specified, preserve full-resident DiT/VAE and native tilebatch4; observe actual peak. No automatic offload, OOM retry or geometry reduction."
+  },
+  "implementation_reuse_and_gaps": [
+    {
+      "path": "code/openh3_train_trajectory.py",
+      "lines": "285-340,459-478",
+      "reuse": "Differentiable joint3step sampling, resident base/VAE and per-forward/recompute math/checkpoint lifecycles. Keep session alive through backward; create new sessions after updates/merge."
+    },
+    {
+      "path": "code/check_h3_full22_joint_rgb_grad.py",
+      "lines": "93-150,156-219,239-268,387-449,490-508",
+      "reuse": "Exact real cache/target loading, raw warmstart, geometry/tile observation, RGB loss and full22 gradient/state evidence.",
+      "gap": "Standalone producer explicitly gates0updates and2decodes. Do not change its locked limits; new orchestration needed."
+    },
+    {
+      "path": "code/check_h3_nonzero_adapter.py",
+      "lines": "59-97,106-217,217-276,348-376",
+      "reuse": "Adapter inventory, strict safetensors save/clear/reload and merge statistics/fingerprint helpers.",
+      "gap": "Current execute is fixed tiny syntheticSGD. New full22 realAdamW producer, optimizer-state receipt/auditor and CPU fixtures needed."
+    },
+    {
+      "path": "code/lora.py",
+      "lines": "12-21,39-42",
+      "finding": "A/B FP32, independent branch casts delta to out.dtype before addition; small deltas can disappear before any weight merge."
+    },
+    {
+      "path": "code/h3_comfy.py",
+      "lines": "185-198",
+      "finding": "adaptation_path strict-loads then immediately merges for inference. Existing path cannot claim unmerged deployment."
+    },
+    {
+      "path": "code/openh3_runtime.py",
+      "lines": "113-157,185-196",
+      "reuse": "Verified pretrained injection/provenance and FP32sum/BF16cast merge. check_adapter binds base/rank/training record; new schema must add objective/cache/schedule/optimizer identity."
+    },
+    {
+      "path": "code/train_stage1.py",
+      "lines": "206-249,290-348",
+      "gap": "Uses independently sampled single-sigma warmstart x0 latent MSE; optionalLPIPS target is decoded targetlatent. Cannot become finalRGB trajectory trainer by flags; reuse only explicit optimizer/saving ideas, not objective or surrogate sampling."
+    },
+    {
+      "path": "code/export_rphi_train_guides.py",
+      "lines": "82-113,220-315",
+      "reuse": "General ordinary train-role32/8 isolation/guide export already parameterized by source count; preserve frozen Rphi and old completed exports."
+    },
+    {
+      "path": "code/export_rphi_train_controls.py",
+      "lines": "23,51-72,123-204",
+      "gap": "Controls are hard-fixed to1train source; general cohort/control manifest exporter requires new entry, same recipes/seed, explicit unique-identity accounting."
+    },
+    {
+      "path": "code/export_train_vae_cache.py",
+      "lines": "30-32,77-91,156-219,330-442",
+      "gap": "Hard-fixed one compression sample; portable wrapper also validates legacy.SAMPLE_ID. Batch ordinary/control VAE cache exporter requires new entry, not changed constants in lockedfiles."
+    },
+    {
+      "path": "code/run_fixed_h3_rphi.py",
+      "lines": "130-169,194-196",
+      "reuse": "Existing fixed controls, raw draft/guide comparison and metrics contracts.",
+      "gap": "Existingrun declaresadaptationNone; matched updated checkpoint inference and direct/compensated outputs need new runner, keeping old fixed results intact."
+    }
+  ],
+  "data_and_controls_order": [
+    "First root-close full22 actual evidence, then the bounded real-optimizer functional/deployment gate above. No need to finish all32 source caches to discover a deployment arithmetic failure.",
+    "In parallel, CPU-only inventory can freeze selected train/dev source/record manifests, task/control recipes, exact22frame geometry, shared sample order/seeds and cache disk budget. Expensive complete model exports should be separately bounded after functional gate; do not wait until trained outputs to choosecontrols.",
+    "Before any matched LoRA pilot, complete immutable shared caches for the selected source-level training scope and corresponding development evaluation. Original materialized single-task cohort is32train/8dev; this is separate from P1 revised19/6 mixed96 cohort. No silent substitution or claim that one-source e is full data.",
+    "Cache observed raw RGB draft, unclamped and clipped Rphi RGB with clipping stats, official quantized P inputs, Z_raw, Z_R and frozen as-returned internally-clipped VAE(R). Bind original proxy RGB target for loss/metrics only; identity controls intentionally make clean RGB the observed input and are explicitly labeled controls, not hidden ordinary-task conditioning.",
+    "Preserve official P truncation uint8/PIL resize and native latent normalization/padding, exact22frames. Cachee measured Rphi quantization maxabs.003921567928; skippingP is a changed method. Target is not encoded as ordinary guide.",
+    "Freeze ordinary4task plus clean/near-clean training proportions and evaluation cases before training; deduplicate identity identical hashes per source for statistical counting. Verify all sample/source/cache/code/weight hashes; train/dev isolation atID/SHA/group level.",
+    "Freeze initial fixed references on identical dev inputs: input/Rphi-only, fixedH3direct, fixedcompensation at the same predeclaredbeta, native/Q4 softanchor as separate inference policy. Reuse accepted exact existing samples; do not resample to improve controls. PinLPIPS and stride1 commonflow support.",
+    "Only then admit finite matched direct-versus-compensated LoRA arms. Same pristine base/Refiner/Turbo, frozenRphi/VAE, exact initial LoRA bytes, rawdraft/Rguide, seed/sampleorder,3stepNFE, optimizer/update budget, RGB distortion/perceptual objective weights and finalcheckpointstep. Compensation usesstop_gradient(VAE(R)), same frozenbeta and explicitfinalclamp; no inference-only compensation applied to a differently trained direct objective and called matched.",
+    "Evaluate final adapted deployment outputs against all fixed references, originalinput and Rphi including compression/denoise negativeexamples and clean/nearclean damage. Account Rphi/VAEcache cost,3stepforward and blockrecompute, optimization, finalVAE and all audit costs separately. Source-paired dev only; no independenttest or causalH3 claim."
+  ],
+  "still_to_freeze_before_finite_training": [
+    "Exact selected source scope and shared crop/window/seed schedule; full caches for that scope.",
+    "Chosen deployed representation (mergedBF16 or explicitlyvalidatedresidentunmerged), comparisonbeta and outputclipping semantics.",
+    "Original-RGB distortion/perceptual lossweights and differentiableLPIPS implementation/memory acceptance if enabled; currentfull22MSE alone does not validateLPIPS graph.",
+    "AdamWLR/warmup/clip/precision, finite update count, checkpoint/resume semantics, wall/RSS/NPU budgets measured from newoptimizergate; no invented finish-time estimate.",
+    "Paired evaluation/no-harm acceptance rules before viewing results; compensation remains hypothesis, not assumed improvement."
+  ],
+  "preserved_limits": [
+    "Old VAEgradient exact-repeatability i failure remains; non-bitwise gradients do not alone invalidate training but do not establish deterministicAdamW trajectories.",
+    "Full22 is a22frame block denoiser with joint attention, not causally streaming because the Rphi guide isK3causal.",
+    "No new training implementation, automaticqueue, launch, sourceexpansion or posthocLR/beta selection is authorized by this report."
+  ]
+}

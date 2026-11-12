@@ -1,0 +1,33 @@
+{
+  "schema": "openh3.full22_pending_contract_root_review.v1",
+  "reviewed_at_utc": "2026-11-12T04:56:50.778027+00:00",
+  "status": "approved_for_new_implementation_only_not_executable",
+  "contract": {
+    "path": "results/takeover_20261111/h3_full22_joint_probe_preparation_20261112/pending_execution_contract.json",
+    "sha256": "0b1b34b1fbedb26cf18b8d9d636e820185fe6ff2e701822b9661a627172d8df3"
+  },
+  "prerequisite": {
+    "nonzero_terminal_audit": "results/takeover_20261111/h3_nonzero_adapter_probe_20261112b_31112_completed/payload/runs/h3_nonzero_adapter_probe_20261112b_31112_finalize/terminal_audit.json",
+    "audit_sha256": "8d113ad97d2d207e820102879efb9451a05cf46cf7280239e768e9fc84d9441a",
+    "nonzero_producer_report_sha256": "f0e4276b455d7ca9c57d5e34f749739047f06af38d1b86b2e45c6650f0581792",
+    "accepted_scope": "one small synthetic SGD update, parameter persistence and strictly reloaded output; merge arithmetic descriptive only"
+  },
+  "decision": {
+    "real_train_clean_RGB_target": true,
+    "zero_new_adapter": true,
+    "synthetic_nonzero_weights_must_not_be_loaded": true,
+    "six_NFE_two_decodes_one_backward_zero_update": true,
+    "full22_memory_fit_unverified": true,
+    "new_source_and_CPU_tests_required": true,
+    "new_snapshot_and_source_review_required": true,
+    "fresh_card_admission_required": true
+  },
+  "functional_boundary": {
+    "nonzero_parameter_update": true,
+    "zero_updated_reloaded_merged_outputs_identical": true,
+    "functional_impact_demonstrated": false,
+    "required_for_later_matched_training": "Report deployed RGB change, merged-vs-unmerged drift and paired source-level quality; no claim that this micro-update established functional adapter sensitivity or quality. Do not raise LR/steps merely to erase this negative observation."
+  },
+  "next": "Implement the separate full22 entry from the frozen pending contract; pin complete actual assets/runtime; CPU test real input loading, shape/group accounting and fail-closed counts; independent source review; then one fresh bounded free-card admission. Do not repeat nonzero b or cache e.",
+  "model_launches_by_this_review": 0
+}

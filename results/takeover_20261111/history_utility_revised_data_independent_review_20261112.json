@@ -1,0 +1,70 @@
+{
+  "schema": "openh3.history_utility_revised_data_independent_source_review.v1",
+  "reviewer": "audit_evidence",
+  "reviewed_at_utc": "2026-11-12T06:00:08.691433+00:00",
+  "verdict": "no_source_blocker_observation_materialization_and_real_pair_validation_pending",
+  "blocking_findings": [],
+  "source_sha256": {
+    "code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "code/tests/test_history_utility_revised_data.py": "09b06b2fb4831f70e80d9e512de058c4b0498d94f4462b4a28b719671bd2b4a1",
+    "code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+  },
+  "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+  "reference_readiness": {
+    "path": "results/takeover_20261111/history_utility_revised_data_preparation_20261112/readiness.json",
+    "sha256": "702233a3ae54c73f347a65b05bc1038de6a58b1d69e7d3db791b42b59364873e"
+  },
+  "read_review": [
+    {
+      "lines": "49-107",
+      "finding": "Full original40 registry/source roles plus bound40/38/2 terminal eligibility rows; primary split membership is exact and nonempty, rather than implicitly usable partial data."
+    },
+    {
+      "lines": "123-178",
+      "finding": "Every primary binds source/window/numerical receipt,96 target frames/source>=96 and exact Fraction24fps grid; visual rows and actual image files SHA are bound to original diagnostic artifacts."
+    },
+    {
+      "lines": "181-229",
+      "finding": "New inline execution authority and unchanged old receipt plus new reuse sidecar are distinct. Both bind the revised cohort, original target receipt/artifact and old13b6 numerical contract. New target/observation NPZ metadata must carry exact new authority."
+    },
+    {
+      "lines": "258-331",
+      "finding": "Actual source receipts are loaded via unchanged v1 engineering loader with verify_pixels=True. Every target/observation file/pixels/metadata is checked. Old research_ready remains false; revised readiness is exact current split only and grants no training admission."
+    },
+    {
+      "lines": "333-360",
+      "finding": "Revised1000-step outer schedule delegates original deterministic numeric schedule unchanged; crops/history/controls/teacher masks/model observed+availability inputs delegate old numerics. Targets remain supervision/control construction, not added model input."
+    },
+    {
+      "lines": "363-375",
+      "finding": "Both splits must explicitly verify; cohort/registry must match, and sourceID/fullSHA/group intersections reject. Does not claim frozen-test or semantic independence beyond declared groups."
+    }
+  ],
+  "validation_evidence_not_reexecuted": {
+    "CPU_fixture_tests": {
+      "passed": 11,
+      "skipped": 0,
+      "seconds": 3.869,
+      "receipt_sha256": "93222a9de2ed05a5649262efb42072f8c471c4da04c21c9872a1713308d34477"
+    },
+    "real_metadata_and_image_evidence_inspection": {
+      "host": "31984",
+      "inspection_sha256": "f35730014e56a2de66a26011fa508e6c7c5d757561f8c7d4c622898ec43f90c3",
+      "seconds": 0.5167770702391863,
+      "peak_owned_group_RSS_bytes": 42123264,
+      "original_sources": 40,
+      "numerical_eligible_sources": 38,
+      "primary_sources": 25,
+      "target_or_observation_NPZ_read": false
+    }
+  },
+  "next_gate": "After all19train+6dev primary materialization completes, construct both real RevisedHistoryUtilityDataset instances with actual NPZ verification, assert_revised_pair and bind resulting datasets/schedules to a separate finite training admission. Metadata inspection and synthetic fixture parity do not substitute for that gate.",
+  "review_scope": {
+    "read_only_source_and_existing_receipts": true,
+    "tests_rerun": false,
+    "real_dataset_instantiated": false,
+    "model_or_NPU_calls": 0,
+    "other_sources_modified": false,
+    "training_admitted": false
+  }
+}

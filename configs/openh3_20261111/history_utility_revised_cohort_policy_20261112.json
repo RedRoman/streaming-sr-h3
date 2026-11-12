@@ -1,0 +1,77 @@
+{
+  "schema": "openh3.history_utility_revised_cohort_policy.v1",
+  "created_at_utc": "2026-11-12T05:18:30.239366+00:00",
+  "status": "visual_selection_policy_before_full38_review_not_a_materialization_or_training_admission",
+  "reason": "Fixed40 source registry contains two actual source-frame-count ineligible windows and at least one visually confirmed multi-shot window. Preserve all outcomes and define a separate explicitly versioned primary cohort.",
+  "original_registry": "configs/openh3_20261111/mixed_temporal_data_plan_20261111.json#/source_roles",
+  "original_registry_counts": {
+    "train": 32,
+    "dev": 8
+  },
+  "membership_rules": {
+    "eligible_target": "Must pass unchanged target file/pixel/96-output/source>=96/timestamp gates and terminal CPU budget audit. No original MP4 redecode.",
+    "primary": "Use every numerically eligible original window with no visible hard cut or unresolved continuity concern in all96-frame contact sheet plus ranked adjacent-pair review. This is an explicit visual screening protocol, not a proof of the absence of every edit.",
+    "diagnostic": "Retain confirmed cuts and unresolved continuity concerns separately; do not silently discard, replace sources, move train/dev roles or shorten windows.",
+    "not_a_cut": "Ordinary motion, occlusion, flashes and camera movement alone are not hard cuts. Large RGB scores only prioritize inspection.",
+    "uncertain": "For ambiguous candidate transitions inspect original-resolution adjacent frames from existing target pixels. If still unresolved keep diagnostic-only.",
+    "ineligible": "DtgdD48804M and any newly proven protocol-ineligible source retain original evidence; no fabricated contact sheets.",
+    "outcome_independence": "Selection uses input-video continuity and frozen protocol eligibility only, before teacher/student training or per-source recovery metrics. No quality-based source selection.",
+    "review_record": "Each source decision binds source_id/split/sourceSHA/window_key/target pixelSHA, image files SHA and reviewed frame ranges; no copied continuity labels into old receipts."
+  },
+  "visual_review_scope": {
+    "all_target_frames": 96,
+    "ranked_pairs_per_source": 6,
+    "ranked_pair_image_dimensions": [
+      416,
+      924
+    ],
+    "full_frame_sheet_dimensions": [
+      832,
+      1000
+    ],
+    "automatic_cut_classifier": false,
+    "full_resolution_followup": "Only unresolved transitions, derive from already verified target NPZ; zero source decode, zero model."
+  },
+  "cohort_receipt": {
+    "account_all_original_sources": 40,
+    "actual_primary_train_count": "pending explicit visual decisions",
+    "actual_primary_dev_count": "pending explicit visual decisions",
+    "fixed_test_sources": 0,
+    "development_selection_used": true,
+    "continuity_approved_in_old_receipts": false
+  },
+  "next_materialization": {
+    "new_entry_required": true,
+    "targets_reused": true,
+    "target_pixels_immutable": true,
+    "decode_calls": 0,
+    "profiles": [
+      "native_static_blur_noise_h264",
+      "native_smooth_blur_noise_h264",
+      "native_abrupt_blur_noise_h264"
+    ],
+    "replays_per_profile": 2,
+    "new_codec_passes_per_new_source": 6,
+    "existing_complete_profile_sources": "Reuse only exact matching window/pixel/noise/codec/role receipts of an approved primary source. Cut-source prior observations remain diagnostic.",
+    "metadata_bridge": "New explicit execution authority binds original numerical13b6 namespace, reviewed target-only receipt and primary cohort. New NPZ metadata may be written around identical pixels for compatibility, never overwrite existing target.",
+    "original_execution_authority_unchanged": true
+  },
+  "dataset_integration": {
+    "original_loader_unchanged": "HistoryUtilityDataset v1 research still requires all32/8 and original receipt continuity. Do not weaken or monkeypatch this gate.",
+    "new_wrapper_required": "A distinct revised-cohort binding validates the original full40 registry, exact new selected membership/source roles and bound visual decisions plus actual pixels. It may reuse original engineering loader numerics without claiming old research_ready.",
+    "sample_numeric_rule_unchanged": true,
+    "schedule_steps": 1000,
+    "teacher_seed": 20261110,
+    "student_seed": 20261111,
+    "batch_size": 16,
+    "study": "Same teacher/mask distributions, gate/restorer, losses and equal-budget generic/true-utility/shuffled arms; no source replacement or additional mechanism."
+  },
+  "not_claimed": [
+    "original32/8cohort completion",
+    "independent frozen test",
+    "full omni restoration",
+    "quality improvement",
+    "all natural cuts mathematically excluded"
+  ],
+  "launch_ready": false
+}

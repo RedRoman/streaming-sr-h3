@@ -1,0 +1,30 @@
+{
+  "schema": "openh3.history_utility_revised_evidence_CPU_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "cohort": {
+    "path": "configs/openh3_20261111/history_utility_revised_cohort_20261112.json",
+    "sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1"
+  },
+  "plan": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/plan.json",
+  "train_manifest": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/train_materialized.jsonl",
+  "dev_manifest": "/cache/zihaohe/omni_openh3_20261111/preparation/history_utility_materializer_20261112a/dev_materialized.jsonl",
+  "source_sha256": {
+    "preparation/history_utility_revised_data_20261112a/code/history_utility_revised_data.py": "3f48214e3df626f988a92e78349a8929dea01414b831566fda0dd793ac1937d1",
+    "preparation/history_utility_revised_data_20261112a/code/history_utility_data.py": "87ad6a83965869846fdeb4dc3abcea800ed0e16ce1819074d6753c8ff481a1d7"
+  },
+  "reference_sha256": {
+    "configs/openh3_20261111/history_utility_revised_cohort_20261112.json": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "results/takeover_20261111/history_utility_target_screen_completed_20261112b/engineering_review.json": "98a438d82e758d9142bd6a4675cd6f06b4d161f807ac3296ecce478c3f8b4587",
+    "results/takeover_20261111/history_utility_target_screen_completed_20261112b/local_verification.json": "53063a49eb56a8b6a2c5ea5fae2b0ffa9e17b26b63820d30e8ab9edb8adb7fca",
+    "results/takeover_20261111/history_utility_target_screen_completed_20261112b/architecture_visual_review.json": "60daec3597158b9101cf2c5b71c26b9fbc810eed3f49ec6b9d5028ee1d15cc13",
+    "results/takeover_20261111/history_utility_target_screen_completed_20261112b/root_visual_review.json": "aee05a08ff6822ca01d3aa63775563bb4cdbe9b6ad5fa116c79bcdf68af69183"
+  },
+  "budget": {
+    "wall_seconds": 120,
+    "kill_grace_seconds": 10,
+    "owned_group_RSS_bytes": 2147483648,
+    "threads": 1,
+    "CPU_affinity_count": 2
+  },
+  "scope": "One evidence-only inspection of40roles/38numerical eligibility/25primary numerical+visual+actual image SHA; no target/observation NPZ read, no MP4/model/training."
+}

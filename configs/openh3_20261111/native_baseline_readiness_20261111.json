@@ -32,7 +32,7 @@
         "models/spynet.py": "746f2378800afa51cd246a736f5aab8c20f6f14085ff9619645588a481f11756"
       },
       "method": "FaverNet TUDCommon",
-      "readiness": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
+      "readiness": "six_native_CPU_quality_smokes_completed_and_audited_one_dev_source_not_multisource_main_table",
       "license_evidence": {
         "file": "LICENSE",
         "declaration": "MIT"
@@ -65,7 +65,13 @@
         "dcn": "models/favernet.py:7,415-462",
         "cuda_cache": "models/favernet.py:306-341,355-378"
       },
-      "scope": "Common only; Weather is a separate released checkpoint and is not acquired or covered here"
+      "scope": "Common only; Weather is a separate released checkpoint and is not acquired or covered here",
+      "readiness_evidence": {
+        "summary": "results/native_quality_completed_20261111/summary.json",
+        "final_increment_archive": "results/native_quality_completed_20261111/avernet_compression.tar.gz",
+        "final_increment_archive_sha256": "7c957697f1460274daf636f1e974b98472f2edd5d8934f2c34a5d6f2d3faf4ec",
+        "scope": "Both models completed three native tasks on one historical DEV source; not a multisource benchmark or independent test."
+      }
     },
     {
       "official_repository": "https://github.com/XLearning-SCU/2024-NeurIPS-AverNet",
@@ -85,7 +91,7 @@
         "options/test/test_AverNet_DAVIS_T6.yml": "767cf6e0ec1fe1b26ee348050c3853f638b4fd7199cef66c239c50811b83e57b"
       },
       "method": "AverNet",
-      "readiness": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
+      "readiness": "six_native_CPU_quality_smokes_completed_and_audited_one_dev_source_not_multisource_main_table",
       "license_evidence": {
         "file": "setup.py:161,168",
         "declaration": "Apache-2.0 package metadata; no standalone LICENSE found in pinned tree"
@@ -121,6 +127,12 @@
         "dcn": "basicsr/archs/avernet_arch.py:9-10,348",
         "cpu_eval_caveat": "basicsr/models/video_recurrent_model.py:89 (validation metrics allocate CUDA; prepared direct-model runner avoids framework validation)",
         "package_setup": "basicsr/__init__.py:1-8; setup.py:67-85,144"
+      },
+      "readiness_evidence": {
+        "summary": "results/native_quality_completed_20261111/summary.json",
+        "final_increment_archive": "results/native_quality_completed_20261111/avernet_compression.tar.gz",
+        "final_increment_archive_sha256": "7c957697f1460274daf636f1e974b98472f2edd5d8934f2c34a5d6f2d3faf4ec",
+        "scope": "Both models completed three native tasks on one historical DEV source; not a multisource benchmark or independent test."
       }
     }
   ],

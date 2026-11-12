@@ -172,7 +172,7 @@
     "historical_first_H3_run_now_completed": true
   },
   "latest_followup": {
-    "at_utc": "2026-11-12T08:44:51.324425+00:00",
+    "at_utc": "2026-11-12T10:55:14.273261+00:00",
     "stage": "P1_history_headroom_failed_preserved;input_preservation_CPU_and_donors_accepted_no_training;H3_AdamW_timeout_failure_preserved",
     "native_quality": {
       "host": "31984",
@@ -269,10 +269,10 @@
     "train_controls_run": "runs/rphi_train_controls_legacy_smoke_20261111a",
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
-      "Read new cache audit actual status; never restart completed producers/Stage2/teacher/headroom/failed H3.",
-      "Accept H3 saved subset independently; original failed run remains failed.",
-      "Fresh idle resources needed before one new H3 reload/merge continuation; inspect+CPU10 complete; no NPU run started.",
-      "Finish source-reviewed CPU head trainer/evaluator and fixed LPIPS metric backend; two-step backend smoke then matched/shuffled1000 final-only, no threshold/step tuning."
+      "Do not repeat completed preservation runs; retain failedscreen and pause this branch.",
+      "Keep sole H3 archive download healthy; full SHA once complete, single upload31984, no-overwrite installer and full1406 dependency/model hashes plus runtime checks. Before any NPU launch require fresh health/noPID/memory/sharedlock and15s second idle.",
+      "If31112 becomes idle, original ready saved continuation can run after fresh checks; never duplicate same continuation on twohosts.",
+      "Prepare multisource same-input native baseline matrix, respecting oldsingle-source and offlinefuture scope; no rerun of completed6smokes."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
     "VAE_repeatability_terminal": "two_complete_observations_then_exact_comparator_exit2",
@@ -1115,7 +1115,7 @@
       "source_train_only": true,
       "worker_PID_is_historical": true
     },
-    "updated_at_utc": "2026-11-12T10:24:26.304735+00:00",
+    "updated_at_utc": "2026-11-12T10:29:04.929464+00:00",
     "backup_31984_current_turn": {
       "schema": "openh3.followup_backup_verification.v1",
       "complete": true,
@@ -1232,11 +1232,11 @@
     },
     "backup_31984_latest": {
       "complete": true,
-      "path": "preparation/followup_20261112_1743",
-      "files": 252,
-      "archive_sha256": "8194d0832e0283dc606ae9257182d0e0ab008f003246e28928bbc39a3ab85ba3",
-      "commit": "b49038df9b408785ef5216db524e4d4fb4c0e15a",
-      "scope": "before final train-cache acceptance and head trainer/evaluator development"
+      "path": "preparation/followup_20261112_1827",
+      "files": 315,
+      "archive_sha256": "1ccd721be46b7bb541e69d21cdd9605b24c1e5ebd81d1390b8fb894b8404aa07",
+      "commit": "34e630c600fa47ea37d0614a403c42172ba09ce2",
+      "scope": "Completed head/eval evidence before new train feature diagnostic and migration transfer."
     },
     "input_preservation": {
       "status": "both1000_complete_independently_verified_failed_dev_screen_all_K1",
@@ -1287,7 +1287,7 @@
       },
       "new_restorer_training_steps": 0,
       "training_admitted": false,
-      "next": "Prepare one fixed 5-fold TRAIN-source-heldout linear Huber diagnostic vs fold-train constant; 19TRAIN only, no6DEV, no tuning threshold/steps/seeds. Preserve failed head screen and previous history headroom failure.",
+      "next": "Preserve all negative results and pause this head branch. Do not rerun/extend steps or retune DEV. Prioritize H3 continuation and multisource same-input comparisons/new data. Any richer-information module requires a separate prospective plan.",
       "caches": {
         "host": "31984",
         "train": {
@@ -1425,9 +1425,176 @@
         "proof_boundary": "Supports positive prior dominance; not proof of feature insufficiency or sole cause."
       },
       "next_feature_diagnostic": {
-        "status": "implementation_in_progress_not_launched",
+        "status": "completed_TRAIN_only_negative_no_training_admission",
         "prep": "preparation/input_preservation_train_feature_probe_20261112a",
-        "scope": "Five TRAIN source-group folds, fold-local standardization, fixed linear Huber ridge1e-3/200GD steps per fold, analytical Lipschitz step, constant baseline; CPU2/4GiB/180s, no6DEV or main-model update."
+        "run": "runs/input_preservation_train_feature_probe_20261112a",
+        "source_sha256": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+        "execution_sha256": "09fa7efa488c2cc8760d1edd264befe5ce1031b73774e529a4a57b4f3d46a32e",
+        "report_sha256": "0508eaa406ce8053e9fbb0fb4f477e5aeaab4dd83d6bd52e8a5cb8c4ec5bfd87",
+        "archive_sha256": "e1ea16964e7d4f497ba28afc6238fbb129d5a13f0238d6fab82eac229bc3c5e5",
+        "evidence": "results/takeover_20261111/input_preservation_train_feature_probe_completed_20261112a",
+        "elapsed_seconds": 48.063703967258334,
+        "source_macro_primary": {
+          "constant": {
+            "Huber_loss": 1.145315808721952,
+            "K1_tile_fraction": 1.0,
+            "negative_label_false_K1_fraction": 1.0,
+            "positive_label_K1_retained_fraction": 1.0
+          },
+          "linear": {
+            "Huber_loss": 1.1474196328954012,
+            "K1_tile_fraction": 1.0,
+            "negative_label_false_K1_fraction": 1.0,
+            "positive_label_K1_retained_fraction": 1.0
+          }
+        },
+        "sources_with_positive_Huber_gain": 8,
+        "source_count": 19,
+        "all_folds_K1_coverage": 1.0,
+        "negative_label_false_K1_fraction": 1.0,
+        "dev_reads": 0,
+        "main_model_updates": 0,
+        "actual_probe_fits": 5,
+        "fixed_probe_GD_updates": 1000,
+        "teacher_saw_all_19_TRAIN_sources": true,
+        "quality_or_generalization_claim": false,
+        "rerun": false,
+        "independent_acceptance": "results/takeover_20261111/input_preservation_train_feature_probe_completed_20261112a/independent_acceptance.json",
+        "independent_acceptance_sha256": "b25b90a34676fd634e799d921d549a1a57c6bb0498ce07f13234c7d79830352e",
+        "source_macro_max_reaggregation_error": 4.440892098500626e-16
+      },
+      "balanced_objective_diagnostic": {
+        "status": "completed_negative_diagnostic_branch_paused_no_more_head_steps",
+        "host": "31984",
+        "prep": "preparation/input_preservation_balanced_huber_probe_20261112a",
+        "run": "runs/input_preservation_balanced_huber_probe_20261112a",
+        "session": "input-preservation-balanced-huber-probe-20261112a",
+        "observed_utc": "2026-11-12T10:50:50.876509+00:00",
+        "source_sha256": "ef50bca6030e2ffd8cf5f65b5f381fa8c1bac52ce79e91593405f3c687e15fd2",
+        "execution_sha256": "99eb901ed3c6d7bbf3ca5259bc3ce3e83e4c90e8636e777fdc1ea514c9c746af",
+        "source_review_sha256": "1aa98726f5804221cf035f5d6fe4c95a860724e4d0304c409d3c84e5511c41c8",
+        "remote_CPU_tests_passed": 7,
+        "remote_CPU_log_sha256": "f4f1619f5b28bc569b71313c34eab316cbd9fea8986173f023529bc98cfd72eb",
+        "metadata_inspection_complete": true,
+        "resources": "180seconds/2CPU/4GiB",
+        "single_change": "fold-training positive/negative tile weights each total0.5; original normalized target and Huber beta1 preserved",
+        "no_deployment_or_main_training_admission": true,
+        "after_single_trial": "pause preservation-head iterations; prioritize H3 continuation and multisource comparison/new information/data",
+        "complete": true,
+        "elapsed_seconds": 86.2607171908021,
+        "new_weighted_fits": 5,
+        "new_probe_updates": 1000,
+        "research_head_updates": 0,
+        "old_scores_replayed_exact": true,
+        "source_macro": {
+          "old_Huber_linear": {
+            "balanced_accuracy": {
+              "mean": 0.5,
+              "valid_sources": 19
+            },
+            "negative_false_K1": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "positive_K1_recall": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "K1_tile_fraction": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "AUROC": {
+              "mean": 0.5110367706260923,
+              "valid_sources": 19
+            },
+            "unweighted_Huber_loss": {
+              "mean": 1.1474196328954012,
+              "valid_sources": 19
+            }
+          },
+          "old_Huber_constant": {
+            "balanced_accuracy": {
+              "mean": 0.5,
+              "valid_sources": 19
+            },
+            "negative_false_K1": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "positive_K1_recall": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "K1_tile_fraction": {
+              "mean": 1.0,
+              "valid_sources": 19
+            },
+            "AUROC": {
+              "mean": 0.5,
+              "valid_sources": 19
+            },
+            "unweighted_Huber_loss": {
+              "mean": 1.145315808721952,
+              "valid_sources": 19
+            }
+          },
+          "balanced_Huber": {
+            "balanced_accuracy": {
+              "mean": 0.5014223696902281,
+              "valid_sources": 19
+            },
+            "negative_false_K1": {
+              "mean": 0.530612960007104,
+              "valid_sources": 19
+            },
+            "positive_K1_recall": {
+              "mean": 0.5334576993875604,
+              "valid_sources": 19
+            },
+            "K1_tile_fraction": {
+              "mean": 0.5329030796859221,
+              "valid_sources": 19
+            },
+            "AUROC": {
+              "mean": 0.5103255940310295,
+              "valid_sources": 19
+            },
+            "unweighted_Huber_loss": {
+              "mean": 1.2456455712059953,
+              "valid_sources": 19
+            }
+          },
+          "weighted_Huber_constant": {
+            "balanced_accuracy": {
+              "mean": 0.5,
+              "valid_sources": 19
+            },
+            "negative_false_K1": {
+              "mean": 0.5789473684210527,
+              "valid_sources": 19
+            },
+            "positive_K1_recall": {
+              "mean": 0.5789473684210527,
+              "valid_sources": 19
+            },
+            "K1_tile_fraction": {
+              "mean": 0.5789473684210527,
+              "valid_sources": 19
+            },
+            "AUROC": {
+              "mean": 0.5,
+              "valid_sources": 19
+            },
+            "unweighted_Huber_loss": {
+              "mean": 1.2434675107666153,
+              "valid_sources": 19
+            }
+          }
+        },
+        "evidence": "results/takeover_20261111/input_preservation_balanced_huber_probe_completed_20261112a",
+        "archive_sha256": "3e231db93143ec1f5aee0fbc30409cb0d8c350d7b601c7b61391b655e0fd9048",
+        "root_acceptance_sha256": "4d67313325c274dd200b4d403b7f7a915dabd724133ef8ccfb1409597163eff4"
       }
     },
     "H3_saved_subset_audit": {
@@ -1449,7 +1616,7 @@
     },
     "H3_saved_continuation": {
       "host": "31112",
-      "status": "31112_all8occupied_31984_missing_dependency_migration_preparing_not_launched",
+      "status": "31112_all8occupied_unique_migration_download_running_target_installer_prepared_not_executed",
       "prep": "preparation/h3_adamw_saved_continuation_preparation_20261112b",
       "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
       "execution_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
@@ -1467,13 +1634,49 @@
         "NPU_admission": false
       },
       "migration": {
-        "status": "bounded_source_bundle_preparation_delegated",
+        "status": "source_pack_completed_verified_unique_download_in_progress",
         "prep": "preparation/h3_saved_continuation_migration_31984_20261112a",
         "source_host": "31112",
         "target_host": "31984",
-        "no_transfer_started": true,
-        "no_model_launch": true
+        "archive_sha256": "b26949c1b9c8b9fbd98d94249146c4135a19dda16ec824a465c3987124fd3f2a",
+        "archive_bytes": 718719172,
+        "missing_paths": 346,
+        "unique_blobs": 150,
+        "unique_bytes": 1084653343,
+        "source_pack_seconds": 39.21,
+        "download_session": "h3-saved-continuation-missing-download-20261112a",
+        "transfer_state_file": "preparation/h3_saved_continuation_migration_31984_20261112a/transfer_jobs.json",
+        "upload_started": false,
+        "target_extracted": false,
+        "NPU_launched": false,
+        "do_not_repeat_healthy_transfers": true,
+        "last_observation": {
+          "at_utc": "2026-11-12T10:55:14.273261+00:00",
+          "local_bytes": 37340160,
+          "download_complete": false,
+          "transfer_status": "RUNNING"
+        }
+      },
+      "target_installer": {
+        "status": "prepared_locally_not_deployed_not_executed",
+        "path": "preparation/h3_saved_continuation_target_install_20261112a",
+        "freeze_sha256": "7e9121188f36775b223f5005e719f2444f15c73cd3460dca0771dfa82f7104f7",
+        "CPU_fixture_tests_passed": 12,
+        "independent_new_destination_inodes": true,
+        "existing_targets_never_overwritten": true,
+        "full_target_file_count": 1406,
+        "large_parent_model_bytes": 53258114120,
+        "full_target_SHA_or_runtime_verified": false,
+        "actual_NPU_admission": false,
+        "README_authorization_note": "Existing user takeover authorization includes these necessary CPU verification and nonoverwriting migration steps; no new user approval is required. Linux runtime checks still pending."
       }
+    },
+    "native_baseline_reconciliation": {
+      "six_single_source_jobs_completed_and_already_archived": true,
+      "no_new_inference_or_download": true,
+      "receipt": "results/takeover_20261111/native_baseline_followup_reconciliation_20261112.json",
+      "stale_nested_readiness_text_corrected": true,
+      "next": "Freeze multisource same-input/target/window/budget comparison manifest; reuse previous6 predictions only with exact input hashes. Current6 are single-source/offline22frames with future21frames, not a multisource SOTA table."
     }
   }
 }

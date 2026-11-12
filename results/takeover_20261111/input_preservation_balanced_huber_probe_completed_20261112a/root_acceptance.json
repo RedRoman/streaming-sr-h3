@@ -1,0 +1,258 @@
+{
+  "schema": "rphi.balanced_Huber_diagnostic_root_acceptance.v1",
+  "at_utc": "2026-11-12T10:54:21.590778+00:00",
+  "engineering_complete": true,
+  "diagnostic_supports_deployable_protection": false,
+  "previous_DEV_failure_unchanged": true,
+  "next_head_training_admitted": false,
+  "source_count": 19,
+  "teacher_trained_on_all_19_sources": true,
+  "macro_reaggregation_checks": 144,
+  "maximum_reaggregation_difference": 4.440892098500626e-16,
+  "bound_old_scores_and_split_and_array_identity_verified": true,
+  "fit_and_tile_AUROC_numerics_scope": "Bound producer evidence; report aggregates independently rechecked here. No cache reread or fit replay.",
+  "source_macro": {
+    "old_Huber_linear": {
+      "balanced_accuracy": {
+        "mean": 0.5,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.5110367706260923,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.1474196328954012,
+        "valid_sources": 19
+      }
+    },
+    "old_Huber_constant": {
+      "balanced_accuracy": {
+        "mean": 0.5,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 1.0,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.5,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.145315808721952,
+        "valid_sources": 19
+      }
+    },
+    "balanced_Huber": {
+      "balanced_accuracy": {
+        "mean": 0.5014223696902281,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.530612960007104,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.5334576993875604,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5329030796859221,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.5103255940310295,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.2456455712059953,
+        "valid_sources": 19
+      }
+    },
+    "weighted_Huber_constant": {
+      "balanced_accuracy": {
+        "mean": 0.5,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.5789473684210527,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.5789473684210527,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5789473684210527,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.5,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.2434675107666153,
+        "valid_sources": 19
+      }
+    }
+  },
+  "profiles": {
+    "identity": {
+      "balanced_accuracy": {
+        "mean": null,
+        "valid_sources": 0
+      },
+      "negative_false_K1": {
+        "mean": 0.5343954750608176,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": null,
+        "valid_sources": 0
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5343954750608176,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": null,
+        "valid_sources": 0
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.2811297592239697,
+        "valid_sources": 19
+      }
+    },
+    "native_abrupt_blur_noise_h264": {
+      "balanced_accuracy": {
+        "mean": 0.47381506341409557,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.5482987759732942,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.4959289028014852,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.504952415266708,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.46519485948864936,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.7904322882540384,
+        "valid_sources": 19
+      }
+    },
+    "native_smooth_blur_noise_h264": {
+      "balanced_accuracy": {
+        "mean": 0.49542802774081984,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.53035992718598,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.5212159826676195,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5238773935892919,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.4947730166486485,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 1.517775755159106,
+        "valid_sources": 19
+      }
+    },
+    "native_static_blur_noise_h264": {
+      "balanced_accuracy": {
+        "mean": 0.4714878499782996,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.6215970595180798,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.564572759474679,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5719101928069251,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.45113529870320934,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 0.7594699717545247,
+        "valid_sources": 19
+      }
+    },
+    "near_clean": {
+      "balanced_accuracy": {
+        "mean": 0.5746777160466914,
+        "valid_sources": 19
+      },
+      "negative_false_K1": {
+        "mean": 0.4269751640965322,
+        "valid_sources": 19
+      },
+      "positive_K1_recall": {
+        "mean": 0.5763305961899153,
+        "valid_sources": 19
+      },
+      "K1_tile_fraction": {
+        "mean": 0.5273563888757533,
+        "valid_sources": 19
+      },
+      "AUROC": {
+        "mean": 0.631389545023187,
+        "valid_sources": 19
+      },
+      "unweighted_Huber_loss": {
+        "mean": 0.5486045748757907,
+        "valid_sources": 19
+      }
+    }
+  },
+  "elapsed_seconds": 86.2607171908021,
+  "peak_RSS_bytes": 313139200,
+  "archive_sha256": "3e231db93143ec1f5aee0fbc30409cb0d8c350d7b601c7b61391b655e0fd9048",
+  "report_sha256": "e2a164102e27045d0a08a6154b7fc7205dc74394ad3107bbbb9e1eede9b210a1",
+  "interpretation": "Weights change actions but overall discrimination remains close to chance: balanced accuracy0.501422 and source AUROC0.510326. FalseK1 reduction trades off almost equally with positive recall. Near-clean subgroup improves, while all3 native mixed-profile balanced accuracies fall below0.5. This supports no deployment or extra steps, and is not proof that richer raw features are uninformative.",
+  "next": "Pause this preservation-head branch after the predeclared single diagnostic. Continue H3 saved reload/merge completion, source-disjoint new/mixed data and multisource same-input baselines; consider a genuinely different information representation only under a new independent plan."
+}

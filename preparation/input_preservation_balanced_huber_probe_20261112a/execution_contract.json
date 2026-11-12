@@ -1,0 +1,50 @@
+{
+  "schema": "rphi.input_preservation_balanced_huber_probe_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "expected_root": "/cache/zihaohe/omni_openh3_20261111",
+  "source_sha256": "ef50bca6030e2ffd8cf5f65b5f381fa8c1bac52ce79e91593405f3c687e15fd2",
+  "legacy_source_sha256": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+  "resources": {
+    "wall_seconds": 180,
+    "CPU_cores": 2,
+    "address_space_bytes": 4294967296,
+    "maximum_output_bytes": 8388608
+  },
+  "protocol": {
+    "single_intervention": "Only replace equal tile weights by fold-training class-balanced positive/negative tile weights; normalized targets, beta1 Huber loss, model/features/split/std/ridge/steps/threshold unchanged.",
+    "features": "Same frozen FP64 arithmetic mean of two raw-feature slots;11 tile-local channels plus intercept; no source/profile input.",
+    "folds": "Exact accepted19TRAIN source_group split, seed20261112, five folds. No DEV files.",
+    "labels": "Keep the original FP32 normalized benefit converted to FP64 without target change. Positive/negative signs define weights only. The accepted cache contains no zero labels; any zero encountered aborts rather than dropping/relabeling rows.",
+    "weights": "Each positive training tile weight1/(2*n_positive); each negative1/(2*n_negative); total weight1. Counts from fold-training only; missing class aborts.",
+    "objective": "sum_i weight_i*SmoothL1_beta1(score_i-original_normalized_y_i)+.5*.001*sum(slopes**2); intercept unregularized.",
+    "solver": "Zero coefficients; exactly200 full-batch GD steps with1/L, L=lambda_max(Z.T@diag(weights)@Z+ridge_diagonal). No line search/early stop.",
+    "threshold": 0,
+    "tie": "preserve raw",
+    "ridge": 0.001,
+    "iterations": 200,
+    "std_zero_threshold": 1e-12,
+    "baseline": "Replay accepted Huber coefficients/constants on the exact same held-out standardized features; require both complete score array SHA match before any new fit. Zero extra unweighted Huber fits. Weighted constant uses the same60-bisection interval search and closest-to-zero choice.",
+    "metrics": "Per-source sign balanced accuracy, negative-label falseK1, positive-label recall, coverage, exact-tie half-credit AUROC; source macro primary with valid denominators, source/profile and tile micro secondary. No pooled cross-fold AUC used for a scientific conclusion.",
+    "decision": "Descriptive diagnostic only: report old ranking vs fixed-zero action, and new balanced sign tradeoff. No deployment/threshold/teacher/head-training admission. After this single experiment pause preservation-head iterations; no automatic followup regardless of outcome.",
+    "interpretation": "AUC>0.5 with all-positive Huber scores is evidence of ranking hidden by its positive offset. Better balanced sign decisions after this weights-only intervention support a role for class weighting in the failed decisions, not proof of raw MAE improvement. Failure is limited to this tile-local linear family and fixed200 steps."
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "BLAS_threads": 2,
+    "Torch_imported": false
+  },
+  "out": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_balanced_huber_probe_20261112a",
+  "old_execution": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/preparation/input_preservation_train_feature_probe_20261112a/execution_contract.json",
+    "sha256": "09fa7efa488c2cc8760d1edd264befe5ce1031b73774e529a4a57b4f3d46a32e"
+  },
+  "old_report": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_feature_probe_20261112a/report.json",
+    "sha256": "0508eaa406ce8053e9fbb0fb4f477e5aeaab4dd83d6bd52e8a5cb8c4ec5bfd87"
+  },
+  "old_split": {
+    "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_feature_probe_20261112a/split.json",
+    "sha256": "2b1b1d627b8b8cfd2169385139466026e3d0db938ad43200c35c1504f1d82ae4"
+  }
+}

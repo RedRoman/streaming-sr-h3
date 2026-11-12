@@ -1,0 +1,51 @@
+{
+  "schema": "rphi.input_preservation_train_feature_probe_source_review.v1",
+  "reviewed_utc": "2026-11-12T10:30:30.889368+00:00",
+  "status": "no_source_blocker_found_for_fixed_TRAIN_internal_diagnostic",
+  "source_directory": "/Users/hezihao/Documents/New project/omni-openh3-takeover-20261111/preparation/input_preservation_train_feature_probe_20261112a",
+  "sha256": {
+    "probe.py": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+    "test_probe.py": "df0b792e2d5991ab4613fb6fa084d99d65d342676708da4635a8377c2d6f2724",
+    "execution_contract.json": "09fa7efa488c2cc8760d1edd264befe5ce1031b73774e529a4a57b4f3d46a32e",
+    "cpu_receipt.json": "e99f47449eb9d3960b685132008283ff5e72443d7fcd76e83bfd04844799e064",
+    "source_freeze.json": "70d98f9874058c0e9ad8eeeb5eb7ff0442da8feea3e2f49224ad6f423af73634"
+  },
+  "source_function_lines": {
+    "split_rows": 61,
+    "metadata": 83,
+    "read_training_arrays": 99,
+    "constant_huber": 130,
+    "standardizer": 150,
+    "linear_probe": 162,
+    "score_summary": 178,
+    "fit_folds": 190,
+    "set_limits": 226,
+    "main": 235
+  },
+  "checks": [
+    "The only input bindings are the accepted TRAIN cache, its independent audit, and the fixed student schedule; no DEV file is opened. All rows must be train and the 19 source identities remain within their unique groups.",
+    "Group hashes are computed from seed20261112 and source_group_id, sorted and round-robin assigned to five folds; the split is written before features/labels are loaded.",
+    "Means, standard deviations, zero-variance flags, Huber constant minimizer interval, and linear fit use fold-training tiles only. Held-out labels are used only for descriptive scoring.",
+    "The FP64 tile-local eleven-dimensional vector is the arithmetic mean of the two original feature slots. The loss is mean beta1 Huber plus half ridge .001 times squared slopes; the intercept is unregularized.",
+    "The gradient uses clipped residuals and ridge slopes. The largest eigenvalue of Z.T@Z/n+ridge diagonal bounds the Huber gradient Lipschitz constant, giving the fixed1/L step. There are exactly200 updates, no line search/threshold tuning or convergence claim.",
+    "The fold-training constant baseline solves both Huber minimizer interval endpoints with60 bisections and chooses the closest-to-zero minimizer. Exact/signed-zero score does not select K1.",
+    "Primary Huber comparison is equal-weighted across19 held-out sources. Tile micro and profile/source macro summaries are separate. Conditional rates explicitly include valid-source denominators.",
+    "Linux execution sets two-CPU affinity and BLAS thread environment before NumPy import,4GiB address-space limit, and180s SIGALRM; output is new-only, fixed small JSON and failure remains failed/no-retry."
+  ],
+  "limitations": [
+    "These are head-fit held-out TRAIN groups; the fixed K1 teacher previously trained on all19 sources. This is not teacher/restorer-held-out or independent-test evaluation.",
+    "A linear per-tile slot mean omits the original3x3 context and nonlinear interactions; failure cannot establish that all raw-observation information is useless.",
+    "Normalized clipped utility Huber gain is not physical RGB MAE gain or restoration quality; no significance claim is made for correlated frames/tiles.",
+    "200 iterations do not certify an optimum. Runtime3.12.14/NumPy1.26.4 and Linux limits remain actual-execution gates; the read7/7 fixture receipt was produced locally with Python3.14.5/NumPy2.5.1.",
+    "CPU/array run not performed by this reviewer; no model, training, SSH or DEV-cache scan."
+  ],
+  "tests_evidence_read_only": {
+    "reported_passed": 7,
+    "reported_skipped": 0,
+    "rerun_by_reviewer": false
+  },
+  "actual_data_read": false,
+  "SSH_calls": 0,
+  "source_edits": 0,
+  "root_admission_required": true
+}

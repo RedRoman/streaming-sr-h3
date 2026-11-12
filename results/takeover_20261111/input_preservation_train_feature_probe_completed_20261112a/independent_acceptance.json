@@ -1,0 +1,118 @@
+{
+  "schema": "rphi.input_preservation_train_feature_probe_independent_acceptance.v1",
+  "complete": true,
+  "artifact_execution_accepted": true,
+  "diagnostic_result": "negative_for_fixed_tile_local_slot_mean_linear_Huber_probe",
+  "quality_or_deployment_accepted": false,
+  "archive": {
+    "path": "results/takeover_20261111/input_preservation_train_feature_probe_completed_20261112a/evidence.tar.gz",
+    "sha256": "e1ea16964e7d4f497ba28afc6238fbb129d5a13f0238d6fab82eac229bc3c5e5",
+    "bytes": 74393,
+    "members": 3,
+    "download_calls": 1
+  },
+  "source_bindings": {
+    "producer_sha256": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+    "execution_sha256": "09fa7efa488c2cc8760d1edd264befe5ce1031b73774e529a4a57b4f3d46a32e",
+    "report_sha256": "0508eaa406ce8053e9fbb0fb4f477e5aeaab4dd83d6bd52e8a5cb8c4ec5bfd87",
+    "split_sha256": "2b1b1d627b8b8cfd2169385139466026e3d0db938ad43200c35c1504f1d82ae4",
+    "cohort_sha256": "c4c3a1c044fa13e6af93c03259ca0e52ea18531ddb6a2c55bbd19abff81d44e1",
+    "local_verification_sha256": "b8086444bb4eed0ad5201f03c15119e9bb479bd3ade78a544bc22bd1fd074b75"
+  },
+  "independently_checked_here": {
+    "archive_regular_relative_unique_and_all_member_SHA": true,
+    "local_frozen_source_contract_protocol_and_report_match": true,
+    "exact_SHA_group_sort_round_robin5_assignment": true,
+    "all19_frozen_train_sources_no6dev_source": true,
+    "groups_disjoint_each_fold": true,
+    "split_row_fold_counts_and_report_tile_counts": true,
+    "source_and_profile_macro_and_valid_denominators": true,
+    "per_source_gain_and_profile_to_source_loss_and_micro_loss": true,
+    "maximum_report_aggregation_abs_difference": 4.440892098500626e-16,
+    "tolerance": 1e-12,
+    "new_NPZ_reads": 0,
+    "new_probe_fits": 0
+  },
+  "producer_attested_not_independently_replayed_here": {
+    "array_file_hashing_and_array_loading": {
+      "unique_NPZ_files": 1000,
+      "file_bytes_hashed": 1838210000,
+      "feature_members_decompressed": 1000,
+      "normalized_label_members_decompressed": 1000,
+      "RGB_raw_benefit_or_target_members_decompressed": 0,
+      "dev_paths_opened": 0,
+      "rows": 16000,
+      "tiles": 576000,
+      "feature_mean_array_sha256": "d022bb6aef22fca742115a04bc4f34f71797bc66dc2016ca2ec4e86160e1ba8a",
+      "label_array_sha256": "363c4c443458861b61a86858133458d0a0d53387b881c147be8526eb9b0c301a"
+    },
+    "five_numerical_fits": 5,
+    "gradient_updates": 1000,
+    "split_written_before_array_loading": true,
+    "resources": {
+      "elapsed_seconds": 48.063703967258334,
+      "peak_RSS_bytes": 300535808,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "1.26.4",
+        "BLAS_threads": 2,
+        "Torch_imported": false
+      }
+    },
+    "note": "Local verification reads saved JSON only. Report inventories/counts/SHA strings are bound evidence, not a second actual array or fit verification."
+  },
+  "independently_recomputed_findings": {
+    "source_macro_constant_Huber_loss": 1.145315808721952,
+    "source_macro_linear_Huber_loss": 1.1474196328954012,
+    "linear_minus_constant_Huber_loss": 0.0021038241734492313,
+    "positive_source_gains": 8,
+    "negative_source_gains": 11,
+    "all19_sources_constant_and_linear_K1_fraction": 1.0,
+    "identity_and_near_clean_source_macro_K1_fraction": 1.0,
+    "worst_source": {
+      "source_id": "4OvgouW2OyA",
+      "constant_minus_linear": -0.03161052354884086
+    },
+    "best_source": {
+      "source_id": "Gf6owJ8AY2E",
+      "constant_minus_linear": 0.006601496462229184
+    },
+    "source_gains_constant_minus_linear": {
+      "4OvgouW2OyA": -0.03161052354884086,
+      "MB9_-kTLSbg": -0.00709871382641003,
+      "6vv_w-TvcrY": -0.006548000871537285,
+      "JN95P7fLJLc": -0.006275457263960615,
+      "9eY__Y9Zl2Y": -0.0037189312163077304,
+      "Q975D6bpK_c": -0.003482841761305533,
+      "VPp9ArDokWY": -0.002448969331485751,
+      "4WlLNs_yXWQ": -0.0019839469949016753,
+      "9hJigrKndKw": -0.001927546093266952,
+      "90wsfIQ0kHs": -0.0013534373568644398,
+      "4M_k01zIbVM": -0.0003232805990540655,
+      "4EKWTiWjPTQ": 0.0002846641658722504,
+      "6X6wb0FC6Fg": 0.0005776269218311647,
+      "8ySFFOeBGEs": 0.0011902810968578148,
+      "BYbIKQqGE2U": 0.003704423713312366,
+      "Na-NDcdjEik": 0.0038791742496657733,
+      "NYaslQ8njPc": 0.00399285805623939,
+      "JfQZeAIHg3s": 0.006568464902388493,
+      "Gf6owJ8AY2E": 0.006601496462229184
+    },
+    "profile_source_macro_linear_minus_constant": {
+      "identity": 0.001092930607428988,
+      "native_abrupt_blur_noise_h264": 0.0014148411385817017,
+      "native_smooth_blur_noise_h264": 0.002803956629411797,
+      "native_static_blur_noise_h264": 0.00032388858043330693,
+      "near_clean": 0.006640495947677905
+    }
+  },
+  "interpretation": [
+    "Training-group-local standardization plus this fixed linear Huber probe did not improve held-out-source macro loss and did not yield any input preservation at threshold0. The previous failed development screen remains failed.",
+    "The loss difference is small and source-dependent; no source is removed and8/19positive is descriptive, not a significance test.",
+    "All reported held-out linear scores remain positive (minimum0.19161487017743012). Different score magnitudes do not change the all-K1 action. The scalar minimum is a producer statistic; this audit did not read score arrays.",
+    "This isolates only fixed200-step tile-local slot-mean linear prediction under the old clipped Huber objective. It does not prove nonlinear/spatial raw information absent, solver optimality, or that more iterations or a new loss would work.",
+    "K1 teacher was trained on all19 sources. These folds hold out sources only from probe fitting; frames/tiles remain correlated and this is not an independent restoration test.",
+    "No threshold/hyperparameter search, new model execution, dataset change, or automatic next training is authorized by this acceptance."
+  ],
+  "accepted_utc": "2026-11-12T10:39:26.499152+00:00"
+}

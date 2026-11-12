@@ -1,0 +1,65 @@
+{
+  "schema": "rphi.input_preservation_one_weighting_intervention.v1",
+  "status": "prepared_not_executed_not_admitted",
+  "decision": "One final bounded TRAIN-only weights intervention, then pause preservation-head iterations pending H3 engineering completion and a genuinely different information/data design. Do not train another1745 head or retune6DEV after this diagnostic.",
+  "observed": {
+    "prior_report_sha256": "0508eaa406ce8053e9fbb0fb4f477e5aeaab4dd83d6bd52e8a5cb8c4ec5bfd87",
+    "elapsed_seconds": 48.063703967258334,
+    "source_macro_Huber_constant": 1.145315808721952,
+    "source_macro_Huber_linear": 1.1474196328954012,
+    "sources_with_positive_unweighted_Huber_gain": 8,
+    "sources": 19,
+    "old_scores_all_positive": true,
+    "old_linear_score_range": [
+      0.19161487017743012,
+      2.0630752528492207
+    ],
+    "negative_false_K1": 1.0,
+    "positive_recall": 1.0,
+    "inference": "All-positive actions do not prove uninformative ranking. The existing fitted function is not strictly constant; its held-out AUC has not yet been computed."
+  },
+  "single_changed_factor": "Fold-training tile weights only: positive/negative classes each contribute0.5 total weight. Normalized utility values and Huber beta1 remain unchanged; no target conversion/logistic family.",
+  "frozen_quantities": [
+    "19TRAIN and the exact old5group folds;0DEV",
+    "11slot-mean raw features and fold-training unweighted standardization",
+    "ridge.001, unregularized intercept, zero initialization,200GD",
+    "threshold0, literal signed-zero tie raw; no epsilon recentering",
+    "same576000 labels with no zeros; any unexpectedzero/missingclass fails"
+  ],
+  "baselines": [
+    "Replay original unweighted Huber constant and linear coefficients with exact held-out scoreSHA before any new fit.",
+    "Weighted Huber constant optimum interval (60bisections per endpoint), closest0; descriptive comparator under the new cost."
+  ],
+  "readout_before_results": {
+    "primary": [
+      "Per-source balanced accuracy at0, negative falseK1, positive recall, correction coverage",
+      "Per-source AUROC with exact-tie half credit and single-class null; macro valid-source counts",
+      "Same unweighted Huber error for both functions, reported separately from changed weighted training objective"
+    ],
+    "controls": "TRAIN identity and nearclean source/profile strata remain visible; identity AUC is null because all labels are negative. Report its falseK1/coverage instead.",
+    "information_with_positive_offset": "If old score AUROC is consistently above.5 across sources despite BA=.5, its ranking contains sign information not expressed by its fixedzero decisions. This does not authorize a threshold shift.",
+    "weighting_sensitive": "If weights-only fit improves source balanced accuracy while reducing negativefalseK1 and retaining positive recall, class weighting affects extractable decisions in this linear family. Report the full tradeoff rather than just an all-raw constant.",
+    "negative_or_heterogeneous": "No consistent source-level advantage, only an all-raw/all-K1 action, or lost positive recall: pause this head branch. Do not respond by increasing steps, changingridge, tryingnewthresholds or reopening6DEV.",
+    "positive_result_limit": "Even a descriptive positive result does not restore the failedDEV gate or prove physicalMAE/LPIPS/deployment benefit. It only motivates a future separately designed objective/data experiment after the stated pause."
+  },
+  "budget": {
+    "new_linear_fits": 5,
+    "gradient_updates_per_fit": 200,
+    "old_Huber_refits": 0,
+    "model_or_restorer_calls": 0,
+    "NPU_calls": 0,
+    "DEV_paths": 0,
+    "wall_seconds": 180,
+    "CPU_cores": 2,
+    "address_space_bytes": 4294967296,
+    "maximum_output_bytes": 8388608,
+    "automatic_retries": 0
+  },
+  "implementation": "New probe.py imports only a byte-identical snapshot of the old reader/helper; no old source or old result is modified.",
+  "limitations": [
+    "Teacher trained on all19 sources; only probe fit is group-heldout.",
+    "Classweight intervention preserves magnitude but normalized utility is saturated/clipped; no physical harm can be inferred without rawRGB metrics.",
+    "Tile-local linear family omits3x3/nonlinear features; failure is not an impossibility claim.",
+    "200fixed steps are not an optimality certificate; no statistical significance claimed for correlated source tiles."
+  ]
+}

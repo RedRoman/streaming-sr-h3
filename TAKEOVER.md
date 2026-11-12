@@ -1,6 +1,16 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
-## 当前接续入口（2026-11-12 18:24 SGT，下面早期记录是历史）
+## 当前接续入口（2026-11-12 18:55 SGT，下面早期记录是历史）
+
+- **18:55 balanced-Huber单变量诊断已完成，保护头支线暂缓，勿再加步/调阈值**：31984 `runs/input_preservation_balanced_huber_probe_20261112a`，86.26s/峰313.1MB，先精确重放旧分数SHA，再只改正负tile权重，各类总重0.5；5TRAIN-fold×200GD，0DEV/0恢复器/0NPU。source宏BA **0.501422**、AUC **0.510326**；负标签误选K1由1降到.530613，但正标签保留也由1降到.533458。nearclean BA.574678/AUC.631390，三native混合profile BA却为.473815/.495428/.471488；不是统一保护收益。19TRAIN且教师已见过全部来源，不是独立泛化测试；固定线性小模型结果也不能否定所有raw特征。小归档50338B/SHA3e231db9…fd9048唯一下载、5payload全核，144个source/profile宏汇总最大差4.44e-16；root_acceptance4d673133…3eff4。当前1745头旧screen仍失败，**本支线按预声明停止迭代，项目继续**。
+- **接续重点**：H3唯一download session `h3-saved-continuation-missing-download-20261112a`仍RUNNING，最新本地37,340,160/718,719,172B；慢但增长，勿重复传输。目标安装/完整SHA工具已准备于`preparation/h3_saved_continuation_target_install_20261112a`，12/12本地测试通过、每目标独立inode且绝不覆盖已有文件；未部署/未执行，全1406依赖与4大模型53.26GB SHA/runtime仍待核。已有接管授权足够执行必要CPU验证，不另设确认。完成下载后按README顺序验、单次上传、安装、全SHA；新NPU仍要资源/锁/15秒双检。若31112先有空卡，可在原主机做已准备reload+merge补验，绝不能两机重复启动。guide-matched正式LoRA仍0步。
+- **基线没有漏跑**：FaverNet/AverNet6/6单源三任务早已在`results/native_quality_completed_20261111`收束。本次只核现有小证据并修正readiness嵌套旧pending文字，0新推理/下载。下一优先冻结多源相同输入/target/window/预算矩阵，只补缺格；旧6条仅hash完全一致才复用。它们是offline22帧/未来21帧单源smoke，不能称多源SOTA结论。
+
+
+- **18:40 TRAIN内部5折特征诊断完成，勿重跑**：31984 `runs/input_preservation_train_feature_probe_20261112a`，48.06s/峰300.5MB/0NPU/0DEV；同19TRAIN按source_group冻结5折，每折200固定GD。source-macro Huber常数1.14531581、线性1.14741963（8/19来源损失略改善，整体更差）；所有折均100%选K1、负标签误选率100%。小证据74393B/SHA e1ea1696…3c5e5已唯一下载并核SHA，report0508eaa4…bfd87。固定K1教师已训练全部19来源，所以仅head内部诊断；不能称完整恢复器泛化失败或证明原图无信息。停止给旧1745头加步数；下一只准备同特征/同折的类别平衡目标诊断，尚未运行。H3迁移下载仍在增长，31112 18:37所有8卡仍有PID。
+
+- **18:30 H3迁移包已实际完成，唯一下载进行中**：31112新prep `h3_saved_continuation_migration_31984_20261112a`，346缺失路径→150内容去重blob/1,084,653,343B；所有源与打包流SHA实核，39.21s/2CPU/峰26.5MB/0NPU。归档718,719,172B/SHA b26949c1…3f2a。local小manifest/receipt已验，`transfer_jobs.json`记录唯一download session `h3-saved-continuation-missing-download-20261112a`；先用transfer_status核实，健康不要重启。全archive SHA核对后才能单次上传31984并无覆盖验证安装；4大模型SHA/runtime/空闲双检仍未通过，不准NPU。315完成源码小证据另已备份31984 `followup_20261112_1827`，SHA1ccd721b…4aa07，全大小/SHA通过，commit34e630c。
+
 
 - **18:24四臂完整评估与两独立CPU审计完成，科学门失败，勿重跑**：head matched/shuffled各1000步已真实保存/严格重载，1745参数及AdamW.step1000已CPU实物审计；同初始/同1000个输入批次/完整donor映射通过。eval220.84s/720LPIPS，2880rows全部matched=shuffled=K1（clipped/unclipped RGB SHA逐行相同）。两头103680tile全选择K1，保留输入0%，不是有效confidence校准。独立NumPy70.69s核900保存array、1080旧RGB、23040RGB SHA、2880rows/2850stride1 pairs，metric/PSNRmaxdiff0。两个小归档124files/35c727be…9d9f与218files/54967767…1330b均唯一下载逐SHA验收。root review `results/takeover_20261111/input_preservation_eval_completed_20261112a/root_acceptance.json` SHA b4f8ac32…ad31a。
 - **质量结论**：native raw29.09718dB/LPIPS.15249456→K1与两头31.08496/.09686566；新头对K1增益严格0。identity输出MAE.00154814/LPIPS.00249051，未保护原本无误差输入；nearclean PSNR48.53855→47.97560、LPIPS.00288145→.00373010（MAE虽略降，不能称保护通过）。最坏混合H264例6rJrrfRO3cA/abrupt/frame44，MAE.012341→.014390、LPIPS.039418→.129378；不是纯去压缩基准。maskflip0来自全1常数决策，不是flicker质量通过。19train/6dev为开发集，无独立泛化/SOTA结论。

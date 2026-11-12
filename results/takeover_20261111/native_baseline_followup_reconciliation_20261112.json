@@ -1,0 +1,195 @@
+{
+  "actions_this_review": {
+    "SSH_calls": 0,
+    "downloads": 0,
+    "metric_calls": 0,
+    "model_forwards": 0,
+    "modification_scope": "Only native_baseline_readiness two nested readiness fields and their existing-archive references; this reconciliation receipt updated to record the correction.",
+    "original_files_modified": 1
+  },
+  "complete": true,
+  "created_at_utc": "2026-11-12T10:47:56.285309+00:00",
+  "final_increment": {
+    "actual_prediction_NPZ_rehashed_now": false,
+    "archive_members_rehashed_now": 11,
+    "archive_sha256": "7c957697f1460274daf636f1e974b98472f2edd5d8934f2c34a5d6f2d3faf4ec",
+    "historical_remote_prediction_array_audit": {
+      "device": "cpu",
+      "dtype": "float32",
+      "file_sha256": "02a75d96c4c3897699e6e25e9cda2527fcb838a9d2b0fe76b7c4789cb3c98cf6",
+      "finite": true,
+      "gt_read_by_inference": false,
+      "raw_clamp_exact": true,
+      "raw_rgb_sha256": "e06afefeaebdb1fd64b92831972b1a19028f55f087f077057a33066ba19c7154",
+      "remote_path": "/cache/zihaohe/omni_openh3_20261111/runs/native_avernet_6UZVovkR3IU_smoke_20261111a/compression/prediction/restored_float32.npz",
+      "rgb_sha256": "14b2bcccb92f89df9aa5328614526387389922c066880c3433b9ca0fa6c1b675",
+      "shape": [
+        22,
+        480,
+        832,
+        3
+      ],
+      "strict_checkpoint_load": true
+    },
+    "path": "results/native_quality_completed_20261111/avernet_compression"
+  },
+  "finding": "No missing final evidence: Aver compression and completed six-clip queue were archived and locally verified on2026-11-11T14:05Z. No remote read/download needed.",
+  "metrics_and_prediction_receipts_rehashed": [
+    {
+      "method": "favernet",
+      "metrics_path": "results/takeover_20261111/native_quality_heartbeat_20261111T1240Z/favernet_deblur/metrics.json",
+      "metrics_sha256": "169328ccaa2606a43dbc1ab95696deaf2eebbe424ad54ff92329a2d5abd899e9",
+      "prediction_receipt_sha256": "9b187134941e521727328038a3b10ef1823cb0014d05eaeb193d6dcba14f192a",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "deblur"
+    },
+    {
+      "method": "favernet",
+      "metrics_path": "results/takeover_20261111/native_quality_denoise_increment_20261111T1300Z/metrics.json",
+      "metrics_sha256": "39b11407cea906a16b5126217aef3f1fac41d7be1024fac5862339e21c2564a9",
+      "prediction_receipt_sha256": "795eebfe12ae954c14c0e13d390fefec60d8d2e13e8ea1c4b36a6008be38b4f5",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "denoise"
+    },
+    {
+      "method": "favernet",
+      "metrics_path": "results/takeover_20261111/native_quality_compression_increment_20261111T1312Z/metrics.json",
+      "metrics_sha256": "5f7b49e01c49c40f841c86609fae5e020e68f46d5a9e964454fdd94c4c6a5194",
+      "prediction_receipt_sha256": "c7e008926997779de36794b6841648e8bdefc20014b60cca7071984b6a04ea2f",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "compression"
+    },
+    {
+      "method": "avernet",
+      "metrics_path": "results/takeover_20261111/native_quality_aver_deblur_increment_20261111T1330Z/metrics.json",
+      "metrics_sha256": "199c8c869e37fcba9b3a932cdb096ed2ab2a110eb2a570e69ec69df1c0924b48",
+      "prediction_receipt_sha256": "bb367131c52edd6fe191cf65f1ddf8a9d2ca48ffa652cb1bd06c0d251bc54ae5",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "deblur"
+    },
+    {
+      "method": "avernet",
+      "metrics_path": "results/takeover_20261111/native_quality_aver_denoise_increment_20261111/metrics.json",
+      "metrics_sha256": "36c25a91d422249604f88df9a7cb81ab5bfb3261ba2563216f82ee3e3a1a8f86",
+      "prediction_receipt_sha256": "1e9722ef4142f87b6ff015c298b2e0ac6ba3aed481cf212fe6fdcc37b36eb13a",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "denoise"
+    },
+    {
+      "method": "avernet",
+      "metrics_path": "results/native_quality_completed_20261111/avernet_compression/metrics.json",
+      "metrics_sha256": "7cc87194ee06d2b60cdd4d1cbfe957e3868003fe2c14207ab73ccc964f3113ad",
+      "prediction_receipt_sha256": "60870583731bbc495b114d25f5ab42576d03bce9e582ca6d7ea621f212f31260",
+      "source_input_target_frame_and_budget_bindings_passed": true,
+      "task": "compression"
+    }
+  ],
+  "next_complete_comparison_minimum": {
+    "first_action_no_forward": "Freeze an exact source-qualified multi-source DEV comparison manifest with native observed/clean target file+pixel hashes, source roles, same frames/geometry, selected fixed Rphi/H3 checkpoint hashes, identity/near-clean recipe and fixed metric/runtime hashes. Reuse these six outputs only when exact source/window/input/target identity matches.",
+    "not_required_for_next_CPU_comparison": "NPU port is optional; no need repeat synthetic forward or this one-source smoke. Ascend operator/model parity remains unverified.",
+    "primary_execution": "Run the missing method\u00d7source\u00d7native-task cells on that common manifest using the already verified CPU operator path and lossless FP32 outputs; score input/Rphi/native/H3 on identical observations and stride1 support. Native static3tasks, mixed/time-varying and clean controls must be explicitly separate strata.",
+    "reporting": "Per-source paired PSNR/MAE/LPIPS/adjacent flow plus clean harm, clipping and cost; separate offline full-clip future access from causal K3. Keep independent frozen-test empty unless truly new qualified sources are locked."
+  },
+  "quality_findings": [
+    "Denoise and deblur native PSNR/LPIPS improve over this historical Rphi; deblur flow-error-change is worse than input/Rphi despite pixel/perceptual gains.",
+    "Both compression native PSNR are below input and all three recorded metrics below Rphi-only; preserve this negative result.",
+    "Clamped FP32 scores retain raw-MSE and clipping fractions; no raw LPIPS measured."
+  ],
+  "queue": {
+    "all_returncodes_zero": true,
+    "completed_forwards": 6,
+    "completed_metrics": 6,
+    "queue_sha256": "8da8eba67113d0d9dcac569056253da4e1a85ebeecae010261460057a8badb1b",
+    "status": "complete"
+  },
+  "schema": "openh3.native_baseline_followup_local_reconciliation.v1",
+  "scope": [
+    "One previously used development source, not independent frozen test or a multisource ranking.",
+    "Aver/Faver use offline22/maxfuture21; parameters and compute are not matched. Rphi-only is causalK3; H3 uses22-frame blocks with different compute.",
+    "PSNR is mean frame PSNR. No pooled cross-task ranking: task severity and reference quality differ.",
+    "Scores use float32 clamp[0,1] RGB without uint8 quantization. Raw output MSE and clipping fractions are retained; raw LPIPS was not evaluated.",
+    "GT-proxy Farneback error-change is not a complete perceptual flicker measure. Prior flow tensor hashes were absent, so exact baseline scores/support are verified without claiming prior flow pixel identity.",
+    "Aver uses isolated official architecture-only imports and original CPU operators; this does not verify the full BasicSR training entrypoint.",
+    "CPU execution is supported by tensor/model paths and receipts. torch_npu_imported=false is a pre-import/hardcoded inference field and does not prove no subsequent indirect import; warnings or manager handles do not demonstrate NPU inference."
+  ],
+  "six_native_results": [
+    {
+      "flow_aligned_rgb_error_change_mae": 0.0038385894149541855,
+      "lpips": 0.0589685147120194,
+      "method": "favernet",
+      "psnr": 34.49857168159924,
+      "task": "deblur"
+    },
+    {
+      "flow_aligned_rgb_error_change_mae": 0.0051830098299043515,
+      "lpips": 0.029445808465507897,
+      "method": "favernet",
+      "psnr": 39.94092509780152,
+      "task": "denoise"
+    },
+    {
+      "flow_aligned_rgb_error_change_mae": 0.005244242382191476,
+      "lpips": 0.016030815937979656,
+      "method": "favernet",
+      "psnr": 40.25884287325552,
+      "task": "compression"
+    },
+    {
+      "flow_aligned_rgb_error_change_mae": 0.0033924757236880915,
+      "lpips": 0.05574721859937364,
+      "method": "avernet",
+      "psnr": 34.9592887771538,
+      "task": "deblur"
+    },
+    {
+      "flow_aligned_rgb_error_change_mae": 0.004931595819514422,
+      "lpips": 0.028487037020650776,
+      "method": "avernet",
+      "psnr": 40.73592868956917,
+      "task": "denoise"
+    },
+    {
+      "flow_aligned_rgb_error_change_mae": 0.005116217902728489,
+      "lpips": 0.015862883407283913,
+      "method": "avernet",
+      "psnr": 40.272995329164395,
+      "task": "compression"
+    }
+  ],
+  "stale_nested_readiness_fields": [
+    "Resolved in this status-only correction: both sources now declare6/6 single historical DEV-source smoke complete, not a multisource main table, and reference the existing final archive.",
+    "historical_initial_snapshot execution_boundary and validation.not_run remain historical acquisition statements, not current runtime status."
+  ],
+  "status_text_correction": {
+    "added_fields": [
+      "sources[0].readiness_evidence",
+      "sources[1].readiness_evidence"
+    ],
+    "after_sha256": "c87e64e16787f86f099b65a08fb49f82a45fd89b2e8771d8d39772f865155027",
+    "all_other_config_fields_exactly_unchanged": true,
+    "before_sha256": "183bf0eb411f50b98e3e704cf562186efb266f409f1f08f6f1c6bff14ffc5aba",
+    "changed_fields": [
+      {
+        "after": "six_native_CPU_quality_smokes_completed_and_audited_one_dev_source_not_multisource_main_table",
+        "before": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
+        "field": "sources[0].readiness"
+      },
+      {
+        "after": "six_native_CPU_quality_smokes_completed_and_audited_one_dev_source_not_multisource_main_table",
+        "before": "official_CPU_one_dev_source_Faver3_and_Aver2_native_quality_audited_compression_pending",
+        "field": "sources[1].readiness"
+      }
+    ],
+    "checkpoint_or_source_hashes_modified": false,
+    "config_path": "configs/openh3_20261111/native_baseline_readiness_20261111.json",
+    "execution_contracts_modified": false,
+    "metrics_recomputed": false,
+    "recorded_at_utc": "2026-11-12T10:48:49.037231+00:00",
+    "reference_archive": "results/native_quality_completed_20261111/avernet_compression.tar.gz",
+    "reference_archive_sha256": "7c957697f1460274daf636f1e974b98472f2edd5d8934f2c34a5d6f2d3faf4ec"
+  },
+  "summary": {
+    "path": "results/native_quality_completed_20261111/summary.json",
+    "sha256": "f9030b8054c2cbe584137d7cce2bc5bd178f1afe57a2f5b53328f9cf0b291116"
+  }
+}

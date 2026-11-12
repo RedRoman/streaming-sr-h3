@@ -1,0 +1,50 @@
+{
+  "schema": "rphi.input_preservation_train_feature_probe_execution.v1",
+  "root": "/cache/zihaohe/omni_openh3_20261111",
+  "source_sha256": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+  "resources": {
+    "wall_seconds": 180,
+    "CPU_cores": 2,
+    "address_space_bytes": 4294967296,
+    "maximum_output_bytes": 8388608
+  },
+  "protocol": {
+    "folds": 5,
+    "split_seed": 20261112,
+    "split": "SHA256 canonical [seed,source_group_id] sorted then round-robin folds",
+    "feature": "FP64 arithmetic mean over the two saved raw-feature slots;11 channels per tile; no source/profile input",
+    "standardization": "all11 channels using fold-training tiles only; std<=1e-12 becomes zero channel; intercept retained",
+    "target": "original saved normalized_benefit FP32 converted to FP64; no scale or clip change",
+    "loss": "tile-mean SmoothL1 beta1 + .5*.001*sum(slope**2); intercept unregularized",
+    "solver": "zero coefficients; exactly200 full-batch gradient steps, fixed step1/lambda_max(Ztrain.T@Ztrain/n+ridge_diagonal); no line search or early stopping",
+    "constant": "fold-training unregularized Huber minimizer interval using60 bisections per endpoint; closest-to-zero minimizer",
+    "threshold": 0,
+    "iterations": 200,
+    "ridge": 0.001,
+    "std_zero_threshold": 1e-12,
+    "primary_summary": "held-out source macro mean; tile-micro summary separately",
+    "hyperparameter_search": false,
+    "dev_allowed": false
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "BLAS_threads": 2,
+    "Torch_imported": false
+  },
+  "out": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_feature_probe_20261112a",
+  "files": {
+    "train_cache_manifest": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_cache_20261112b/output/manifest.json",
+      "sha256": "4fc49311e3c03b1e089e9eafbd33207965b806ddc5b250fb4fbe936297dc70b9"
+    },
+    "train_cache_audit": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/input_preservation_train_cache_audit_20261112a/output/audit.json",
+      "sha256": "ce53dccdd3c8a10c52a01944bb6829d13de492e133850ebf077fb8e5fc7c6893"
+    },
+    "student_schedule": {
+      "path": "/cache/zihaohe/omni_openh3_20261111/runs/history_utility_schedules_20261112a/output/student_schedule.json",
+      "sha256": "b5e6d4c6031d79d5b9457c98fe215d49e393e335994559597498176f4e666f08"
+    }
+  }
+}

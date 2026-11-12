@@ -1,0 +1,103 @@
+{
+  "schema": "rphi.input_preservation_balanced_huber_independent_source_review.v1",
+  "created_utc": "2026-11-12T10:49:59.970902+00:00",
+  "status": "no_source_or_math_blocker_found_for_frozen_bounded_diagnostic",
+  "reviewer": "audit_evidence",
+  "scope": "Read-only source, mathematics, frozen contract and author fixture receipt; no SSH, real NPZ reads, test rerun, model execution or diagnostic fitting by this reviewer.",
+  "bindings": {
+    "preparation": "preparation/input_preservation_balanced_huber_probe_20261112a",
+    "source_freeze_sha256": "7da5a1c2b09773adb42f729e87fe631302b1a1451b1d141d2ade8b5946728ffe",
+    "files": {
+      "probe.py": "ef50bca6030e2ffd8cf5f65b5f381fa8c1bac52ce79e91593405f3c687e15fd2",
+      "legacy_probe.py": "b8e087522775c43f6f2dea5f4a047ffcbed2046417a7097d9ca1a2c9ab2e7c59",
+      "test_probe.py": "e164c68c9b0fb002890e761539a62b5d22466251b1e6a916b17cb6d9a77e3b7b",
+      "tests.log": "6525e068a1803bb70b87a808dea679f99c9914231631fc73f8cb876427b37f24",
+      "cpu_receipt.json": "da9fafc86d270e8c02edeb4011ef76fafe9b7a850bcf423d41383a93af1adb0e",
+      "execution_contract.json": "99eb901ed3c6d7bbf3ca5259bc3ce3e83e4c90e8636e777fdc1ea514c9c746af",
+      "scientific_plan.json": "9f67fba8aa184bf30f189d878c4d4f217cb6021fa4aabd6ff7b4592ed076db21",
+      "README.md": "82aced7d9f2347d30465a2e38a70c7c1bda429cd3d0c38e23756a9a75194964e"
+    },
+    "all_8_frozen_member_sha256_verified": true
+  },
+  "blocking_findings": [],
+  "checks": [
+    {
+      "topic": "Single changed factor",
+      "source_lines": [
+        51,
+        60,
+        92,
+        111,
+        225,
+        229
+      ],
+      "finding": "Only fold-training positive/negative tile weights change to total mass 0.5 per sign. The original normalized magnitudes, Huber beta1, fold-local unweighted standardization, eleven features plus intercept, ridge 0.001, zero initialization, fixed 200 updates and threshold zero remain. Missing sign or unexpected zero labels fail; no dropped rows, resampling or target conversion."
+    },
+    {
+      "topic": "Leakage and accepted baseline replay",
+      "source_lines": [
+        137,
+        149,
+        183,
+        193,
+        214,
+        228
+      ],
+      "finding": "Exact accepted TRAIN metadata and split are recomputed and persisted before array reads. Every standardizer is recomputed from fold-training only and must equal the saved prior statistics. Both old held-out score arrays must match their complete SHA before any new fit. The weighted fit and constant receive only fold-training labels. Six DEV sources are not opened."
+    },
+    {
+      "topic": "Weighted optimization",
+      "source_lines": [
+        63,
+        111
+      ],
+      "finding": "For beta1 Huber the score second derivative is at most one, so the maximum eigenvalue of Z.T W Z plus the slope-only ridge diagonal is a valid global gradient Lipschitz bound. The step 1/L and weighted clipped-residual gradient match the declared objective; intercept is unregularized. The constant endpoint search evaluates the same two-class weighted gradient, preserves a flat minimizer interval, and selects the closest point to zero. No optimum claim is made after 200 fixed updates; final gradient norm remains visible."
+    },
+    {
+      "topic": "Comparable readout",
+      "source_lines": [
+        114,
+        180
+      ],
+      "finding": "All arms retain the same unweighted held-out Huber loss. Changed weighted training objectives are separately named. Sign metrics use literal score>0 with zero tie preserving input; AUROC awards exact score ties half credit and returns null for a single-class source. Source macro averages report valid-source denominators; paired source changes and source/profile controls retain negative cases and positive recall."
+    },
+    {
+      "topic": "Bounded execution and evidence",
+      "source_lines": [
+        196,
+        238
+      ],
+      "legacy_source_lines": [
+        226,
+        233
+      ],
+      "finding": "Execution inherits the fixed Linux 180-second alarm, two-CPU affinity/BLAS limit, 4-GiB address-space limit and fresh-output rules. Old result files are read-only. Failures retain a false-complete report; there is no retry, parameter search, model import, or automatic admission. Metadata-only default does not load cache arrays."
+    }
+  ],
+  "fixture_evidence": {
+    "author_receipt_sha256": "da9fafc86d270e8c02edeb4011ef76fafe9b7a850bcf423d41383a93af1adb0e",
+    "observed_receipt_result": "7 passed, 0 skipped, 0.040 s; local NumPy synthetic fixtures only",
+    "reviewer_reexecuted": false,
+    "coverage": [
+      "weights-only target identity; zero/missing sign rejection",
+      "weighted constant magnitude and flat [-3,3] interval",
+      "noninformative constant action BA/AUC 0.5 despite numerical near-zero",
+      "informative signal and exact Hessian bound",
+      "AUC ties, positive offset and single-class null",
+      "wrong prior coefficients reject score replay",
+      "source macro valid denominators"
+    ],
+    "Linux_wall_affinity_actual_execution_tested_by_this_receipt": false,
+    "earlier_fixture_correction": "Only the fixture expecting exact floating zero was corrected to near-zero residual and invariant BA/AUC 0.5; score threshold and solver were not changed."
+  },
+  "scientific_boundaries": [
+    "This is a weights-only objective contrast, avoiding the logistic-loss/binary-target confound. The Lipschitz-based step value naturally follows the changed weighted objective; this is not proof of convergence or of a unique causal explanation for the original nonlinear head failure.",
+    "The teacher/restorer trained on all nineteen sources. Only this diagnostic probe fit is source-group held out; these are correlated development sources, not an independent restoration test.",
+    "Per-source AUROC above 0.5 with all-positive scores would show ranking masked by their positive offset; it does not authorize a new threshold. Report the negative false-K1 versus positive-recall tradeoff, not merely a shift to an all-input constant.",
+    "Normalized saturated utility regression/classification is not raw RGB MAE, PSNR or LPIPS improvement. It cannot restore the failed DEV screen or admit a deployment/student model.",
+    "The tile-local linear model lacks the original 3x3/nonlinear context; a negative result is limited to this family and fixed 200 steps. Per the frozen plan, pause this preservation-head branch after the single diagnostic regardless of outcome."
+  ],
+  "execution_admitted_by_this_review": false,
+  "actual_data_fit_completed_by_this_review": false,
+  "parent_next_step": "Parent may bind the exact frozen source/contract and perform its single bounded CPU fixture/actual run; this review makes no claim that it has executed."
+}

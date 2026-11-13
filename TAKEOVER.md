@@ -1,6 +1,11 @@
 # Open-H3 restoration 接管记录（2026-11-11）
 
-## 当前接续入口（2026-11-12 18:55 SGT，下面早期记录是历史）
+## 当前接续入口（2026-11-13 GitHub handoff，下面条目是历史）
+
+用户已要求把完整进展发布到 GitHub 交给另一 agent。**最新入口是 [HANDOFF.md](HANDOFF.md)**，完整技术汇报、实验账本、运行手册及新鲜快照在 `docs/handoff/20261113/`。本次仅整理与发布，没有新启动远端任务。`omni-r` 已处于 PAUSED。
+
+**新状态覆盖旧记录**：迁移 download 已 FAILED(exit255)，本地 partial105,492,480/718,719,172B，不可安装；31112在11月13日约10:42SGT的卡4–7无PID快照，接手应优先考虑原机补验，但仍需新plan/admission、资源/锁/15秒双检。已有generic runner支持saved_adamw_continuation，无需重新训练或重写执行器。正式guide-matched LoRA仍0步；保护头支线保持暂缓。后续执行责任交由接手agent，本线程仅在用户重新指示后启动新的实验。
+
 
 - **18:57收束备份已验**：本地commit `2ea2aaa0ae92b5ca4b5fede1e8faca014da59b79`；31984 `preparation/followup_20261112_1856` 的64文件和两个诊断小归档全部SHA通过，0覆盖，backup SHA `0e4edbd819836196f00b9e8293c623120035b49aebd6bfcbcd15cea4de5bda9b`。这是本条收据落盘前快照。仅通知新完成/失败/重要结论；无变化保持安静。
 

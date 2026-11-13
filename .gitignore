@@ -40,3 +40,12 @@ code/ComfyUI/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Re-creatable transfer bundles and local-only evidence transports.
+# Their manifests, hashes and extracted small evidence remain tracked.
+preparation/**/source_bundle.tar.gz
+preparation/**/root_source_bundle.tar.gz
+preparation/omni_followup_runtime_*/runtime.tar.gz
+preparation/followup_*/backup.tar.gz
+preparation/h3_saved_continuation_migration_31984_20261112a/missing_dependencies.tar.gz
+results/takeover_20261111/*/evidence.tar.gz

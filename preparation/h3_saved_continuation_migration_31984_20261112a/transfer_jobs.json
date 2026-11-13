@@ -16,11 +16,13 @@
   "extracted_target": false,
   "NPU_launched": false,
   "do_not_restart_healthy_transfer": true,
-  "next": "Read transfer_status once, verify full archive SHA after completion, then unique background upload to31984; verify archive/manifest/blob hashes and preserve every existing target. Target model largeSHA/runtime/resource/lock/15ssecondidle still required before new continuation run.",
+  "next": "Handoff: original31112 has idle-card snapshot; prioritize same-host saved continuation after fresh plan/admission/resource checks. Migration download is failed/partial, not installable. Do not rerun source pack; inspect transfer failure and resume only if migration remains needed.",
   "last_observation": {
-    "at_utc": "2026-11-12T10:55:14.273261+00:00",
-    "local_bytes": 37340160,
+    "at_utc": "2026-11-13T02:43:56.143910+00:00",
+    "local_bytes": 105492480,
     "download_complete": false,
-    "transfer_status": "RUNNING"
+    "transfer_status": "FAILED",
+    "exit_code": 255,
+    "reason_detail": "No additional failure detail returned by transfer_status."
   }
 }

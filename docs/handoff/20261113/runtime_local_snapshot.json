@@ -1,0 +1,28 @@
+{
+  "schema": "omni.handoff_local_runtime_snapshot.v1",
+  "observed_at_utc": "2026-11-13T02:42:43.694069+00:00",
+  "observed_at_singapore": "2026-11-13T10:42:43.694069+08:00",
+  "branch": "codex/omni-openh3-takeover-20261111",
+  "local_HEAD_before_handoff": "d68273bc221d6e8516e2c43c3d1588e035214ae8",
+  "migration_transfer": {
+    "session": "h3-saved-continuation-missing-download-20261112a",
+    "status": "FAILED",
+    "exit_code": 255,
+    "source_host": "31112",
+    "target_host": "31984",
+    "local_partial_bytes": 105492480,
+    "expected_bytes": 718719172,
+    "expected_complete_sha256": "b26949c1b9c8b9fbd98d94249146c4135a19dda16ec824a465c3987124fd3f2a",
+    "partial_is_not_an_installable_archive": true,
+    "failure_reason_detail": "transfer_status returned exit255 without diagnostic log",
+    "retried_during_handoff": false,
+    "target_upload_or_install_started": false
+  },
+  "automation": {
+    "id": "omni-r",
+    "status": "PAUSED",
+    "interval_minutes": 20,
+    "modified_during_this_handoff": false
+  },
+  "handoff_execution_policy": "Read-only live verification and documentation/publication only; no new training, transfer, installation or remote scheduling in this handoff turn."
+}

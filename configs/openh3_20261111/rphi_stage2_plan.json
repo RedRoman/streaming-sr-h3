@@ -270,8 +270,8 @@
     "train_controls_evidence": "results/takeover_20261111/rphi_train_controls_legacy_smoke_completed/engineering_review.json",
     "next_actions": [
       "Do not repeat completed preservation runs; retain failedscreen and pause this branch.",
-      "Keep sole H3 archive download healthy; full SHA once complete, single upload31984, no-overwrite installer and full1406 dependency/model hashes plus runtime checks. Before any NPU launch require fresh health/noPID/memory/sharedlock and15s second idle.",
-      "If31112 becomes idle, original ready saved continuation can run after fresh checks; never duplicate same continuation on twohosts.",
+      "Migration download FAILED(exit255), partial not installable. Prefer original31112 continuation; only recover the unique transfer if migration remains necessary. Full archive SHA, single upload31984, no-overwrite installation and full1406 dependency/model hashes plus runtime checks are still prerequisites for target execution.",
+      "31112 cards4-7 had noPID in the20261113 snapshot. Bind a fresh plan/admission to the existing saved-continuation runner, then require fresh health/noPID/memory/sharedlock and15s second idle. Never duplicate the same continuation on twohosts.",
       "Prepare multisource same-input native baseline matrix, respecting oldsingle-source and offlinefuture scope; no rerun of completed6smokes."
     ],
     "VAE_repeatability_run": "runs/vae_gradient_repeatability_20261111i",
@@ -1619,7 +1619,7 @@
     },
     "H3_saved_continuation": {
       "host": "31112",
-      "status": "31112_all8occupied_unique_migration_download_running_target_installer_prepared_not_executed",
+      "status": "handoff_ready_original_host_idle_snapshot_requires_fresh_admission_migration_download_failed",
       "prep": "preparation/h3_adamw_saved_continuation_preparation_20261112b",
       "entry_sha256": "bebc1fa7ed902d521f99d9b22987e07fc91d722647d63d561844f04a51b023c8",
       "execution_sha256": "be8e73ba1fd8d6d84af2115365164012b10ba907f0adc0db32b0ef61742c7c5e",
@@ -1637,7 +1637,7 @@
         "NPU_admission": false
       },
       "migration": {
-        "status": "source_pack_completed_verified_unique_download_in_progress",
+        "status": "download_failed_exit255_partial_not_installable",
         "prep": "preparation/h3_saved_continuation_migration_31984_20261112a",
         "source_host": "31112",
         "target_host": "31984",
@@ -1654,10 +1654,12 @@
         "NPU_launched": false,
         "do_not_repeat_healthy_transfers": true,
         "last_observation": {
-          "at_utc": "2026-11-12T10:55:14.273261+00:00",
-          "local_bytes": 37340160,
+          "at_utc": "2026-11-13T02:43:56.143910+00:00",
+          "local_bytes": 105492480,
           "download_complete": false,
-          "transfer_status": "RUNNING"
+          "transfer_status": "FAILED",
+          "exit_code": 255,
+          "reason_detail": "No additional failure detail returned by transfer_status."
         }
       },
       "target_installer": {
@@ -1689,6 +1691,17 @@
         "H3 single migration transfer running formal_guide_matched_steps0"
       ],
       "do_not_repeat_without_new_evidence": true
+    },
+    "handoff_20261113": {
+      "requested_by_user": true,
+      "entry": "HANDOFF.md",
+      "runtime_snapshots": [
+        "docs/handoff/20261113/runtime_local_snapshot.json",
+        "docs/handoff/20261113/runtime_ops_snapshot.json"
+      ],
+      "automation_status": "PAUSED",
+      "new_remote_jobs_started_during_handoff": false,
+      "priority": "Prefer original31112 saved continuation if fresh checks allow; create concrete plan/admission for existing generic once runner. Migration is optional fallback, not mandatory before original-host continuation."
     }
   }
 }

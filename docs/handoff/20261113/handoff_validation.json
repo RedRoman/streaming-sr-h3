@@ -1,0 +1,48 @@
+{
+  "schema": "omni.handoff_validation.v1",
+  "verified_at_utc": "2026-11-13T02:56:24.139350+00:00",
+  "passed": true,
+  "ledger_experiments": 52,
+  "ledger_summary_counts": {
+    "completed": 30,
+    "failed": 7,
+    "diagnostic": 14,
+    "ready_notrun": 1
+  },
+  "local_evidence_full_sha_and_bytes_checked": 153,
+  "experiment_refs_checked": 188,
+  "relative_markdown_links_checked": 75,
+  "changed_and_new_json_parsed": 7,
+  "reported_small_json_consistency_checks": 56,
+  "all_reported_small_json_checks_passed": true,
+  "publication_text_files_screened": 15,
+  "publication_pattern_screen_findings": [],
+  "handoff_documents": {
+    "README.md": {
+      "bytes": 1481,
+      "sha256": "79bbbcdd1d3dde1e61b34ac481ecb2b68e343bdad394d45bed3297d25a73b70f"
+    },
+    "HANDOFF.md": {
+      "bytes": 8384,
+      "sha256": "d94d8374e45b69c355aa54483799a9554b34db1a7a353821e33ee99942b668dc"
+    },
+    "docs/handoff/20261113/OPERATIONS.md": {
+      "bytes": 25361,
+      "sha256": "46847e6f3842990992bf68f343070340533800cbceb966bda3faeaf971a23ea6"
+    },
+    "docs/handoff/20261113/TECHNICAL_REPORT.md": {
+      "bytes": 52530,
+      "sha256": "00fe74fecd2cb336e266eac2c78c4eb086aa563b89c0f6e292fc8c339ba68764"
+    },
+    "docs/handoff/20261113/EVIDENCE_INDEX.md": {
+      "bytes": 23894,
+      "sha256": "bceb797892f3c2f67eadaaab817174be9ffbc54d5f26ff72f9df86b19eddf6dd"
+    }
+  },
+  "scope": "Local complete-file SHA/byte checks and reference consistency only. Existing metric JSON checks are recorded by the evidence ledger; no model/NPZ rescoring or training was performed. Credential pattern screening is not a comprehensive security audit. Remote snapshots were collected read-only by the operations audit.",
+  "independent_report_spot_checks": {
+    "groups": 8,
+    "passed": true,
+    "scope": "Local JSON comparison of stage2, controls/confidence, fixed H3, native baselines, full22 gradients, AdamW saved subset, input heads, and balanced Huber. No model runs or remote access."
+  }
+}
